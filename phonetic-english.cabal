@@ -1,4 +1,4 @@
-name:                phonetic-english
+name:                phoneng
 version:             0.1.0.0
 synopsis:            Shows how English is pronounced
 description:
@@ -6,7 +6,7 @@ description:
     The lytspel command converts them into a simplified spelling.
     The provided tools can also be used to implement your own
     spelling reform proposals or to adapt the chosen respellings as needed.
-homepage:            https://github.com/ChristianSi/phonetic-english
+homepage:            https://github.com/ChristianSi/phoneng
 license:             BSD3
 license-file:        LICENSE.txt
 author:              Christian Siefkes

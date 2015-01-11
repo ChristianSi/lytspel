@@ -1,3 +1,8 @@
+data/cmudict
+data/moby
+data/scowl
+data/varcon
 dist
-*.swp
 *~
+*.bak
+*.swp
