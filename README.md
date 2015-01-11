@@ -1,10 +1,10 @@
-# Phonetic English README
+# phoneng README
 
 ## Overview
 
-This program suite shows how English is pronounced and offers a more
-alternative spelling system that is more consistent and easier to learn and
-use than the traditional spelling.
+This phoneng program suite (short for: Phonetic English) shows how English
+is pronounced and offers an alternative spelling system that is more
+consistent and easier to learn and use than the traditional spelling.
 
 TODO These programs aren't implemented yet.
 The `pronounce` command shows how English texts are pronounced. The
@@ -15,7 +15,7 @@ proposals or to adapt the chosen respellings as needed.
 
 ## Installation
 
-The Phonetic English program suite is written
+The phoneng program suite is written in
 [Haskell](https://www.haskell.org/haskellwiki/Haskell). To build it from
 source, you need the [Cabal](https://www.haskell.org/cabal/) build system.
 If you use a Debian-based system, install the `cabal-install` package to
