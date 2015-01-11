@@ -40,8 +40,8 @@ TODO document
 
 You normally don't need to to this, as the `phonetic-dict.txt` file is
 distributed as part of this package. But if you want to recreate it from
-scratch, you can use the `dictbuilder` to do so. Prior to doing this, you need
-to download several knowledge sources:
+scratch, you can use the `dictbuilder` program to do so. Prior to doing this,
+you need to download several knowledge sources:
 
   * Download SCOWL and VarCon from [SCOWL And
     Friends](http://wordlist.aspell.net/) -- version 2014.08.11 was used to
@@ -53,7 +53,7 @@ to download several knowledge sources:
     file `cmudict.0.7a` and store it in a new `data` subdirectory named
     `cmudict`.
   * Download the [Moby Pronunciation List by Grady
-    Ward](http://www.gutenberg.org/ebooks/3205). Created a `data` subdirectory
+    Ward](http://www.gutenberg.org/ebooks/3205). Create a `data` subdirectory
     named `moby` and unzip it there.
 
 Now invoke `dictbuilder` within the `data` subdirectory to create a new version
