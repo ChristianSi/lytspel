@@ -29,6 +29,7 @@ executable dictbuilder
   -- other-extensions:
   build-depends:       base >=4.6,
                        bytestring >=0.10,
+                       case-insensitive >=1.1,
                        cond >=0.4,
                        containers >=0.5,
                        directory >=1.2,

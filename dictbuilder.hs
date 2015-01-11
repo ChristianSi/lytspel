@@ -18,6 +18,8 @@ import Text.Read
 import Control.Conditional (whenM)
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy.Char8 as LB
+import qualified Data.CaseInsensitive as CI
+import Data.CaseInsensitive (CI)
 import qualified Data.Map.Strict as Map
 import Data.Map.Strict (Map, (!))
 import qualified Data.Set as Set
@@ -34,27 +36,6 @@ import System.Process (readProcess)
 import Text.EditDistance as ED
 
 ---------------------- Data types and related functions ----------------------
-
--- |Text that implements Eq and Ord in a case-insensitive way.
--- Use the 'makeCis' helper function to make instances that are guarantees to
--- be valid.
-data CisText = CisText__
-    {cisCased :: Text  -- ^ Text in original capitalization
-    ,cisLower :: Text  -- ^ Same text converted to lower case
-    }
-
-instance Eq CisText where
-    (==) = (==) `on` cisLower
-
-instance Ord CisText where
-    compare = compare `on` cisLower
-
-makeCis :: Text -> CisText
-makeCis t = CisText__ {cisCased = t, cisLower = T.toLower t}
-
--- |Drop n characters from a CisText.
-cisDrop :: Int -> CisText -> CisText
-cisDrop n = makeCis . T.drop n . cisCased
 
 -- |POS (part-of-speech) markers as used in Moby.
 data PosTag
@@ -100,10 +81,10 @@ data Stress = MajorStress | WeakStress | NoStress
 
 newtype Redirect = Redirect { rdTarget :: Text }
 
-type Cis2TextsMap    = Map CisText [Text]
-type Cis2EntriesMap  = Map CisText [DictEntry]
-type Cis2ExtendedMap = Map CisText (Either [DictEntry] Redirect)
-type TextMap         = Map Text Text
+type CI2TextsMap    = Map (CI Text) [Text]
+type CI2EntriesMap  = Map (CI Text) [DictEntry]
+type CI2ExtendedMap = Map (CI Text) (Either [DictEntry] Redirect)
+type TextMap        = Map Text Text
 
 ------------------------ main and its helper functions -----------------------
 
@@ -203,7 +184,7 @@ addWordsNotInScowl wordMap =
 -- Each key is a word as listed in SCOWL; each value is a list of
 -- pronunciations (sometimes cmudict has multiple pronunciations for the same
 -- word).
-collectCmudictPronunciations :: TextMap -> IO Cis2TextsMap
+collectCmudictPronunciations :: TextMap -> IO CI2TextsMap
 collectCmudictPronunciations wordMap = do
     contents <- LB.readFile "cmudict/cmudict.0.7a"
     let entries = map decodeUtf8 $ strictByteLines contents
@@ -217,8 +198,8 @@ collectCmudictPronunciations wordMap = do
     stripFinalParens (word, pron)
       | T.last word == ')' = (T.takeWhile (/= '(') word, pron)
       | otherwise          = (word, pron)
-    addCmudictEntry :: (Text, Text) -> Cis2TextsMap -> Cis2TextsMap
-    addCmudictEntry (word, pron) = Map.insertWith (++) (makeCis word) [pron]
+    addCmudictEntry :: (Text, Text) -> CI2TextsMap -> CI2TextsMap
+    addCmudictEntry (word, pron) = Map.insertWith (++) (CI.mk word) [pron]
 
 -- |Split a text at the first whitespace sequence.
 -- Any whitespace at the end of the text is stripped.
@@ -236,7 +217,7 @@ entryAsInScowl wordMap (word, pron) = case Map.lookup word wordMap of
 
 -- |Unify "w" and "hh w" [ẃ] where cmudict has both as alternatives.
 -- We unify this to "hw" for further processing.
-unifyWwithVoicelessW :: Cis2TextsMap -> Cis2TextsMap
+unifyWwithVoicelessW :: CI2TextsMap -> CI2TextsMap
 unifyWwithVoicelessW = Map.map unify
   where
     unify, unified, replaced, obsolete :: [Text] -> [Text]
@@ -248,7 +229,7 @@ unifyWwithVoicelessW = Map.map unify
     hhwIsInfix     = T.isInfixOf "hh w"
 
 -- |Convert cmudict pronunciations to the Phonetic English phoneme set.
-convertCmudictPronunciations  :: Cis2TextsMap -> IO Cis2TextsMap
+convertCmudictPronunciations  :: CI2TextsMap -> IO CI2TextsMap
 convertCmudictPronunciations cmudictProns = do
     phonemeMap <- readPhonemeMapping "cmudict-phonemes.csv"
     return $ Map.map (convertCmudictProns phonemeMap) cmudictProns
@@ -310,45 +291,45 @@ isVowel '\'' = True
 isVowel ch   = isVowelButNotSchwa ch
 
 -- |Remove some ambiguities and inconsistencies in the cmudict data.
-cleanupCmudictInconsistencies :: Cis2TextsMap -> Cis2TextsMap
+cleanupCmudictInconsistencies :: CI2TextsMap -> CI2TextsMap
 cleanupCmudictInconsistencies cmudictProns =
     Map.mapWithKey cleanupProns cmudictProns
    where
-    cleanupProns :: CisText -> [Text] -> [Text]
+    cleanupProns :: CI Text -> [Text] -> [Text]
     cleanupProns word = map $ cleanupInconsistencies cmudictProns word
 
-cleanupInconsistencies :: Cis2TextsMap -> CisText -> Text -> Text
+cleanupInconsistencies :: CI2TextsMap -> CI Text -> Text -> Text
 cleanupInconsistencies cmudictProns word pron
   -- "trans" should be [trans] rather than [tranz], except before vowel
-  | "trans" `T.isInfixOf` cisLower word,
+  | "trans" `T.isInfixOf` CI.foldedCase word,
     Just (prefix, match, suffix) <- breakOnOneOf ["tranz", "tra°nz"] pron,
     doesntStartWithVowel suffix =
         T.concat [prefix, T.init match, "s", suffix]
   -- Unstressed "semi-" in compounds should be [semi]
-  | "semi" `T.isPrefixOf` cisCased word,
-    cisDrop 4 word `Map.member` cmudictProns,
+  | "semi" `T.isPrefixOf` CI.original word,
+    ciDrop 4 word `Map.member` cmudictProns,
     not $ T.any (`elem` "°'") $ T.take 4 pron =
         "semi" `T.append` T.drop 4 pron
   -- Initial ['] should be [u] if word starts with "u"
-  | T.head pron == '\'', T.head (cisLower word) == 'u' =
+  | T.head pron == '\'', T.head (CI.foldedCase word) == 'u' =
         'u' `T.cons` T.tail pron
   -- Initial "au" should be [ó] rather than one of [oá']
-  | "au" `T.isPrefixOf` cisLower word, T.head pron `elem` "oá'" =
+  | "au" `T.isPrefixOf` CI.foldedCase word, T.head pron `elem` "oá'" =
         'ó' `T.cons` T.tail pron
   -- Initial "ar" should be [ár]  rather than [or]
-  | "ar" `T.isPrefixOf` cisLower word, T.head pron == 'o' =
+  | "ar" `T.isPrefixOf` CI.foldedCase word, T.head pron == 'o' =
         'á' `T.cons` T.tail pron
   -- Initial vowel should be [ä] if word starts with "air" or "aer"
-  | "air" `T.isPrefixOf` cisLower word || "aer" `T.isPrefixOf` cisLower word =
-        'ä' `T.cons` T.tail pron
+  | "air" `T.isPrefixOf` CI.foldedCase word
+    || "aer" `T.isPrefixOf` CI.foldedCase word = 'ä' `T.cons` T.tail pron
   -- Initial [u] should otherwise be [a] if word starts with "a"
-  | T.head pron == 'u', T.head (cisLower word) == 'a' =
+  | T.head pron == 'u', T.head (CI.foldedCase word) == 'a' =
         'a' `T.cons` T.tail pron
     -- Initial [á] should be [o] if word starts with "o" (except before "r")
-  | T.head pron == 'á', T.head (cisLower word) == 'o',
-    not $ "or" `T.isPrefixOf` cisLower word = 'o' `T.cons` T.tail pron
+  | T.head pron == 'á', T.head (CI.foldedCase word) == 'o',
+    not $ "or" `T.isPrefixOf` CI.foldedCase word = 'o' `T.cons` T.tail pron
   -- German "kind" is spoken with short [i]
-  | cisLower word == "wunderkind" = T.replace "ï" "i" pron
+  | CI.foldedCase word == "wunderkind" = T.replace "ï" "i" pron
   | otherwise                               = pron
   where
     doesntStartWithVowel t
@@ -366,6 +347,10 @@ breakOnOneOf (t:ts) haystack
   | otherwise   = Just (prefix, t, T.drop (T.length t) rest)
   where (prefix, rest) = T.breakOn t haystack
 
+-- |Drop n characters from a CI Text.
+ciDrop :: Int -> CI Text -> CI Text
+ciDrop n = CI.mk . T.drop n . CI.original
+
 -- |Remove duplicate elements from a list, keeping the first occurrence of
 -- each element. Source: https://github.com/nh2/haskell-ordnub.
 ordNub :: (Ord a) => [a] -> [a]
@@ -376,7 +361,7 @@ ordNub = go Set.empty
     go s (x:xs) = if x `Set.member` s then go s xs
                                       else x:go (Set.insert x s) xs
 
-addMobyPronunciations :: Cis2TextsMap -> TextMap -> IO Cis2EntriesMap
+addMobyPronunciations :: CI2TextsMap -> TextMap -> IO CI2EntriesMap
 addMobyPronunciations cmudictProns wordMap = do
     contents <- LB.readFile "moby/mpron.txt"
     let entries = map decodeLatin1 $ strictByteLines contents
@@ -388,22 +373,22 @@ addMobyPronunciations cmudictProns wordMap = do
         unifiedMap = Map.unionWithKey unifyMobyWithCmudict mobyDict cmuDict
     return $ Map.mapWithKey keepJustOneUntaggedEntry unifiedMap
   where
-    prepareEntry :: Text -> Cis2EntriesMap -> Cis2EntriesMap
+    prepareEntry :: Text -> CI2EntriesMap -> CI2EntriesMap
     prepareEntry = addEntryIfRelevant wordMap . makeDictEntry . splitAtFirstWS
     cmuDict = Map.map (map pronToDictEntry) cmudictProns
 
 -- |If there are multiple untagged entries (from cmudict), we keep the most
 -- similar one.
-keepJustOneUntaggedEntry :: CisText -> [DictEntry] -> [DictEntry]
+keepJustOneUntaggedEntry :: CI Text -> [DictEntry] -> [DictEntry]
 keepJustOneUntaggedEntry _ [entry]    = [entry]
 keepJustOneUntaggedEntry _ entries | isJust $ dePos $ head entries = entries
 keepJustOneUntaggedEntry word entries = [mostSimilarEntry word entries]
 
-mostSimilarEntry :: CisText -> [DictEntry] -> DictEntry
+mostSimilarEntry :: CI Text -> [DictEntry] -> DictEntry
 mostSimilarEntry word = minimumBy (compare `on` editDistanceFromWord)
   where
     editDistanceFromWord de = ED.levenshteinDistance ED.defaultEditCosts
-                              (preparePron de) (T.unpack $ cisLower word)
+                              (preparePron de) (T.unpack $ CI.foldedCase word)
     preparePron = T.unpack . removeDiacritics . T.replace "°" "" . dePron
 
 -- Create a DictEntry from a Moby entry already split at first whitespace.
@@ -421,15 +406,15 @@ makeDictEntry (first, pron)
 
 -- |Add a DictEntry if the word is either listed in SCOWL or starts with a
 -- common prefix and the rest is in SCOWL.
-addEntryIfRelevant :: TextMap -> DictEntry -> Cis2EntriesMap -> Cis2EntriesMap
+addEntryIfRelevant :: TextMap -> DictEntry -> CI2EntriesMap -> CI2EntriesMap
 addEntryIfRelevant wordMap de m
   | Just wordInScowl <- Map.lookup lower wordMap =
-        Map.insertWith (++) (makeCis wordInScowl) [de] m
+        Map.insertWith (++) (CI.mk wordInScowl) [de] m
   | T.any (== '-') lower,
     [prefix, suffix] <- T.splitOn "-" lower,
     prefix `Map.member` commonPrefixMap,
     Just suffixInScowl <- Map.lookup suffix wordMap = Map.insertWith (++)
-        (makeCis suffixInScowl) [strippedEntry prefix suffix] m
+        (CI.mk suffixInScowl) [strippedEntry prefix suffix] m
   | otherwise           = m
   where
     lower = T.toLower $ deWord de
@@ -479,17 +464,17 @@ stripOnePrefix (p:ps) t
   | otherwise                      = stripOnePrefix ps t
 
 -- |Unify entries for a word from Moby, discarding redundant entries.
-unifyMobyEntries :: CisText -> [DictEntry] -> Maybe [DictEntry]
+unifyMobyEntries :: CI Text -> [DictEntry] -> Maybe [DictEntry]
 -- If there is just one entry, we simply return it.
 unifyMobyEntries _ [de] = Just [de]
 unifyMobyEntries word des
   -- If there are 2 or more POS-tagged entries, we generally just keep them
   -- (but "frequent/n" is unnecessary and discarded)
-  | length taggedEntries > 1 = Just $ if cisCased word == "frequent"
+  | length taggedEntries > 1 = Just $ if CI.original word == "frequent"
         then [head taggedEntries, last taggedEntries] else taggedEntries
   -- There are just 3 words with a single tagged entry, and we deal with
   -- each of them as appropriate
-  | length taggedEntries == 1 = case cisCased word of
+  | length taggedEntries == 1 = case CI.original word of
       "predicate"  -> Just $ tagAs N (head untaggedEntries) : taggedEntries
       "ingenerate" -> Just $ taggedEntries ++ [tagAs V $ head untaggedEntries]
       "ingeminate" -> Just untaggedEntries
@@ -499,7 +484,7 @@ unifyMobyEntries word des
   | length filteredUntaggedEntries == 1 = Just filteredUntaggedEntries
   -- If none of the entries is spelled as in SCOWL, we discard the entry
   -- altogether if it's all-caps (e.g. LA, MIDI, WAF)
-  | null filteredUntaggedEntries = if T.all isAsciiUpper (cisCased word)
+  | null filteredUntaggedEntries = if T.all isAsciiUpper (CI.original word)
         then Nothing
         -- Otherwise we keep the first entry that's not from a compound
         else Just [head $ filter (('-' /=) . T.head . deWord) des]
@@ -510,11 +495,11 @@ unifyMobyEntries word des
     tagAs :: PosTag -> DictEntry -> DictEntry
     tagAs pos entry = entry {dePos = Just pos}
     throwError= error $ concat [ "dictbuilder:unifyMobyEntries: ",
-        "Don't know how to unify entries for ", T.unpack (cisCased word)]
+        "Don't know how to unify entries for ", T.unpack (CI.original word)]
     filteredUntaggedEntries   = filter keepIfWordMatchesScowl untaggedEntries
-    keepIfWordMatchesScowl de = deWord de == cisCased word
+    keepIfWordMatchesScowl de = deWord de == CI.original word
 
-convertMobyProns :: Cis2TextsMap -> TextMap -> [DictEntry] -> Maybe [DictEntry]
+convertMobyProns :: CI2TextsMap -> TextMap -> [DictEntry] -> Maybe [DictEntry]
 convertMobyProns cmudictProns phonemeMap des = if null convertedEntries
         then Nothing else Just convertedEntries
   where
@@ -524,7 +509,7 @@ convertMobyProns cmudictProns phonemeMap des = if null convertedEntries
 -- |Convert the pronunciation of a Moby entry. If the pronunciation contains
 -- a transcription mistake that cannot be fixed unambiguously, 'Nothing' is
 -- returned instead.
-convertMobyEntry :: Cis2TextsMap -> TextMap -> DictEntry -> Maybe DictEntry
+convertMobyEntry :: CI2TextsMap -> TextMap -> DictEntry -> Maybe DictEntry
 convertMobyEntry cmudictProns phonemeMap de =
    if any (`elem` ["c", "e", "o"]) sounds then Nothing
                                           else Just $ de {dePron = fixedPron}
@@ -551,22 +536,22 @@ convertMobyEntry cmudictProns phonemeMap de =
     splitIfUnknown s | isShortOrPhoneme s = [s]
                      | otherwise          = T.chunksOf 1 s
     fixedPron         = cleanupMobyInconsistencies cmudictProns
-                        (makeCis $ deWord de) convertedPron
+                        (CI.mk $ deWord de) convertedPron
     convertedPron     = convertMobySounds phonemeMap majorStressMarker sounds
     majorStressMarker = if T.any (== '\'') (dePron de) then "'" else ","
 
 
 -- |Remove some ambiguities and inconsistencies in the Moby data.
-cleanupMobyInconsistencies :: Cis2TextsMap -> CisText -> Text -> Text
+cleanupMobyInconsistencies :: CI2TextsMap -> CI Text -> Text -> Text
 cleanupMobyInconsistencies cmudictProns word pron
   -- Moby doesn't have [ó] so we try to fix that in some cases
   | wordContainsOrNotFollowedByROrVowel, "or" `T.isInfixOf` pron'  =
         T.replace "or" "ór" pron'
   | wordContainsOrNotFollowedByROrVowel, "o°r" `T.isInfixOf` pron' =
         T.replace "o°r" "ó°r" pron'
-  | "aul" `T.isInfixOf` cisLower word, "ol" `T.isInfixOf` pron'    =
+  | "aul" `T.isInfixOf` CI.foldedCase word, "ol" `T.isInfixOf` pron'    =
         T.replace "ol" "ól" pron'
-  | "aul" `T.isInfixOf` cisLower word, "o°l" `T.isInfixOf` pron'   =
+  | "aul" `T.isInfixOf` CI.foldedCase word, "o°l" `T.isInfixOf` pron'   =
         T.replace "o°l" "ó°l" pron'
   | otherwise = pron'
   where
@@ -575,12 +560,12 @@ cleanupMobyInconsistencies cmudictProns word pron
     wordContainsOrNotFollowedByROrVowel =
         length wordParts > 1 && isEmptyOrStartsWithROrVowel (wordParts !! 1)
     wordParts :: [Text]
-    wordParts = T.splitOn "or" $ cisLower word
+    wordParts = T.splitOn "or" $ CI.foldedCase word
     isEmptyOrStartsWithROrVowel "" = True
     isEmptyOrStartsWithROrVowel t  =
         not $ T.head t == 'r' || isVowel (T.head t)
 
-cleanupMobyVowels :: CisText -> Text -> Text
+cleanupMobyVowels :: CI Text -> Text -> Text
 cleanupMobyVowels  word =
     -- Sometimes [á] is used instead of [o]
     replaceWithIfWordContainsButNot "dá" "do" "do" ["dah", "dan"] word
@@ -602,22 +587,22 @@ cleanupMobyVowels  word =
     . replaceWithIfWordContainsButNot "gu°t" "gä°t" "gate" [] word
 
 -- |Call 'cleanupInconsistencies' and replace [ll] by [l] where appropriate.
-cleanupGeneralAndConsonantIssues :: Cis2TextsMap -> CisText -> Text -> Text
+cleanupGeneralAndConsonantIssues :: CI2TextsMap -> CI Text -> Text -> Text
 cleanupGeneralAndConsonantIssues cmudictProns word pron
-  | "ll" `T.isInfixOf` pron', not $ "lless" `T.isSuffixOf` cisLower word
-    || "leless" `T.isSuffixOf` cisLower word = T.replace "ll" "l" pron'
+  | "ll" `T.isInfixOf` pron', not $ "lless" `T.isSuffixOf` CI.foldedCase word
+    || "leless" `T.isSuffixOf` CI.foldedCase word = T.replace "ll" "l" pron'
   | otherwise = pron'
   where pron' = cleanupInconsistencies cmudictProns word pron
 
 -- |Replace a fragment of the pronunciation if the written word contains one
 -- fragment but not others.
-replaceWithIfWordContainsButNot :: Text -> Text -> Text -> [Text] -> CisText
+replaceWithIfWordContainsButNot :: Text -> Text -> Text -> [Text] -> CI Text
                                 -> Text -> Text
 replaceWithIfWordContainsButNot original replacement inWord noneInWord word pron
-  | inWord `T.isInfixOf` cisLower word,
-    not $ any (`T.isInfixOf` cisLower word) noneInWord =
+  | inWord `T.isInfixOf` CI.foldedCase word,
+    not $ any (`T.isInfixOf` CI.foldedCase word) noneInWord =
         T.replace original replacement pron
-  | otherwise                                          = pron
+  | otherwise                                               = pron
 
 -- |Convert a Moby pronunciation that has already been split into a sequence of
 -- phonemes and stress markers.
@@ -645,7 +630,7 @@ convertMobySounds phonemeMap majorStressMarker = stressFirstVowelIfNoStress
     handleStress stress sound          = (stress, sound)
     ignorable s = T.length s == 1 && T.head s `elem` "_ ()"
 
-unifyMobyWithCmudict :: CisText -> [DictEntry] -> [DictEntry] -> [DictEntry]
+unifyMobyWithCmudict :: CI Text -> [DictEntry] -> [DictEntry] -> [DictEntry]
 unifyMobyWithCmudict word mobyEntries cmudictEntries
   -- If Moby has just one entry which is also in cmudict, we keep it
   | mobyEntryCount == 1 = if cmudictHasMatchingEntry firstMobyEntry
@@ -655,14 +640,14 @@ unifyMobyWithCmudict word mobyEntries cmudictEntries
   -- If there are two or more (POS-tagged) Moby entries, we keep them
   | mobyEntryCount > 1 = mobyEntries
   | otherwise = error $ concat ["dictbuilder:unifyMobyWithCmudict: ",
-      "Don't know how to unify entries for: ", T.unpack $ cisCased word]
+      "Don't know how to unify entries for: ", T.unpack $ CI.original word]
   where
     mobyEntryCount = length mobyEntries
     firstMobyEntry = head mobyEntries
     cmudictHasMatchingEntry de = any ((== dePron de) . dePron) cmudictEntries
 
 -- |Add redirects for variant spellings, e.g. from "colour" to "color".
-addVarconRedirects :: Cis2EntriesMap -> IO Cis2ExtendedMap
+addVarconRedirects :: CI2EntriesMap -> IO CI2ExtendedMap
 addVarconRedirects dict = do
       ls <- strictByteLines <$> LB.readFile "varcon/varcon.txt"
       let relevantLines = map decodeLatin1 $ filter skipEmptyAndCommentLines ls
@@ -683,8 +668,8 @@ addVarconRedirects dict = do
       | length texts < 2 = False
       | otherwise = not $ "'s" `T.isSuffixOf` head texts
     convertedMap = Map.foldrWithKey convertToLeft Map.empty dict
-    convertToLeft :: CisText -> [DictEntry] -> Cis2ExtendedMap
-                  -> Cis2ExtendedMap
+    convertToLeft :: CI Text -> [DictEntry] -> CI2ExtendedMap
+                  -> CI2ExtendedMap
     convertToLeft word des = Map.insert word $ Left des
 
 -- |Discard tagging info such as "A Av1 B Bv". If all tags are merely
@@ -700,16 +685,16 @@ discardTagInfoAndVariants text = if all (T.any (`elem` "v.-x")) tags
     splitted = T.splitOn ":" text
 
 -- |Add redirects from unlisted words to the first listed word (if any).
-addRedirects :: Cis2ExtendedMap -> [Text] -> Cis2ExtendedMap
+addRedirects :: CI2ExtendedMap -> [Text] -> CI2ExtendedMap
 addRedirects m texts
   | not $ null listedWords || null unlistedWords =
     foldl' insertRedirects m unlistedWords
   | otherwise = m
   where
     (listedWords, unlistedWords) = partition inDict texts
-    inDict                       = flip Map.member m . makeCis
-    insertRedirects :: Cis2ExtendedMap -> Text -> Cis2ExtendedMap
-    insertRedirects m' text = Map.insert (makeCis text)
+    inDict                       = flip Map.member m . CI.mk
+    insertRedirects :: CI2ExtendedMap -> Text -> CI2ExtendedMap
+    insertRedirects m' text = Map.insert (CI.mk text)
                                   (Right . Redirect . head $ listedWords) m'
 
 -- |Write the phonetic dictionary into a line file.
@@ -718,26 +703,26 @@ addRedirects m texts
 -- (part-of-speed) it is, it is written as 'word/n: pron1; v: pron2'
 -- (where "n", "v" etc. are POS tags).
 -- Redirects are written as 'word:> target', e.g. 'colour:> color'.
-writePhoneticDict :: Cis2ExtendedMap -> IO ()
+writePhoneticDict :: CI2ExtendedMap -> IO ()
 writePhoneticDict m = do
     renameToBackupFileIfExists file
     LT.writeFile file contents
   where
     file                 = "phonetic-dict.txt"
     contents             = lazyUnlines $ Map.foldrWithKey addLine [] m
-    addLine :: CisText -> Either [DictEntry] Redirect -> [Text] -> [Text]
+    addLine :: CI Text -> Either [DictEntry] Redirect -> [Text] -> [Text]
     addLine word (Left des) = addLeft word des
     addLine word (Right rd) = addRight word rd
-    addLeft :: CisText -> [DictEntry] -> [Text] -> [Text]
-    addLeft word [de] ls = T.concat [cisCased word, ": ", showEntry de] : ls
-    addLeft word des ls = T.concat [cisCased word, "/",
-                              T.intercalate "; " $ map showEntry des] : ls
+    addLeft :: CI Text -> [DictEntry] -> [Text] -> [Text]
+    addLeft word [de] ls = T.concat [CI.original word, ": ", showEntry de] : ls
+    addLeft word des ls  = T.concat [CI.original word, "/",
+                               T.intercalate "; " $ map showEntry des] : ls
     showEntry de = showPos (dePos de) `T.append` dePron de
     showPos :: Maybe PosTag -> Text
     showPos Nothing    = ""
     showPos (Just pos) = posToText pos `T.append` ": "
-    addRight :: CisText -> Redirect -> [Text] -> [Text]
-    addRight word rd ls = T.concat [cisCased word, ":> ", rdTarget rd] : ls
+    addRight :: CI Text -> Redirect -> [Text] -> [Text]
+    addRight word rd ls = T.concat [CI.original word, ":> ", rdTarget rd] : ls
 
 -- |Rename a file into a backup file by appending ".bak" to its name.
 -- A previously existing backup file with the same name will be silently
