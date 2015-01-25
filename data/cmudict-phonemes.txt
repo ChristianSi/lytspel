@@ -1,0 +1,43 @@
+aa: o
+ae: a
+ah: u
+ah0: '  # unstressed [ah] typically represents a schwa
+ao: ó
+aw: aú
+ax: '
+ay: ï
+b: b
+ch: ć
+d: d
+dh: ð
+eh: e
+er: ér  # cmudict uses stressed [er]
+er0: 'r # cmudict uses unstressed [er]
+ey: ä
+f: f
+g: g
+hh: h
+hw: ẃ   # added by us when unifying [hh w] with [w]
+ih: i
+iy: ë
+jh: j
+k: k
+l: l
+m: m
+ng: ń
+n: n
+ow: ö
+oy: oi
+p: p
+r: r
+sh: ś
+s: s
+th: þ
+t: t
+uh: ú
+uw: ü
+v: v
+w: w
+y: y
+zh: ź
+z: z

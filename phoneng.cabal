@@ -17,11 +17,7 @@ build-type:          Simple
 extra-source-files:  README.txt
 cabal-version:       >=1.10
 data-dir:            data
-data-files:          cmudict-phonemes.csv,
-                     lytspel-phonemes.csv,
-                     moby-phonemes.csv,
-                     phonetic-dict.txt,
-                     words-not-in-scowl.txt
+data-files:          *.txt
 
 executable dictbuilder
   main-is:             dictbuilder.hs

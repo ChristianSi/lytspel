@@ -1,0 +1,52 @@
+A: á
+a: a    # Occasional transcription mistake
+à: a    # In foreign (e.g. French) words, written "A" without surrounding "/" in the raw Moby data
+(@): ä  # Before [r]
+&: a
+aI: ï
+AU: aú
+b: b
+d: d
+D: ð
+dZ: j
+[@]: é  # Only before [r], except in a handful of foreign words
+E: e
+eI: ä
+f: f
+g: g
+h: h
+hw: ẃ
+i: ë
+I: i
+j: y
+k: k
+l: l
+m: m
+n: n
+N: ń
+ǹ: n    # In foreign (e.g. French) words, written "N" without surrounding "/" in the raw Moby data
+Oi: oi
+O: o
+oU: ö
+p: p
+R: r    # In foreign (e.g. German) words
+r: r
+S: ś
+s: s
+-: '
+tS: ć
+t: t
+T: þ
+@: u    # Also used for ['], since Moby doesn't distinguish between the two
+U: ú
+u: ü
+V: v
+v: v
+w: w
+W: w
+x: k    # In foreign words
+y: é    # In foreign (e.g. French) words
+Y: ë    # In foreign (e.g. French) words
+Z: ź
+z: z
+¾: '    # Occasional transcription mistake

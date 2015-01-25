@@ -66,23 +66,20 @@ All files are in UTF-8 format (some of them may use just the ASCII subset).
 *Line files* (extension: .txt) have one entry per line; line breaks in entries
 are therefore not allowed.
 
-*CSV files* (extension: .csv) use a simple dialect of the widespread CSV
-format. They have one entry per line and a list of fields in each entry.
-Fields are separated by semicolons (not commas). Fields must not be surrounded
-by quotation marks. The first line is considered as header line and ignored.
-No escape syntax is supported, hence field values cannot contain semicolons or
-line breaks.
+*Key-value files* (extension: .txt) are line files where each line represents
+a key/value pair. Keys and values are separated by ':'; trailing comments
+introduced by '#' are stripped. No escape syntax is supported, hence keys
+cannot contain ':', values cannot contain '#', and neither can contain line
+breaks.
 
 ### Files in data Directory
 
-  * `cmudict-phonemes.csv`: CSV file containing a mapping from the phonemes
-    used in cmudict (first field) to the corresponding Phonetic English
-    phonemes (second field); further fields are ignored. Used by the
+  * `cmudict-phonemes.txt`: key-value file containing a mapping from the
+    phonemes used in cmudict to the corresponding Phonetic English phonemes.
+    Used by the `dictbuilder` program.
+  * `moby-phonemes.txt`: key-value file containing a mapping from the phonemes
+    used in Moby to the corresponding Phonetic English phonemes. Used by the
     `dictbuilder` program.
-  * `moby-phonemes.csv`: CSV file containing a mapping from the phonemes used
-    in Moby (first field) to the corresponding Phonetic English phonemes
-    (second field); further fields are ignored. Used by the `dictbuilder`
-    program.
   * `words-not-in-scowl.txt`: Line file containing words that aren't listed in
     SCOWL but should become part of the pronunciation dictionary. Used by the
     `dictbuilder` program.

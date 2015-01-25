@@ -16,6 +16,7 @@ import Data.Maybe
 import Text.Read
 
 import Control.Conditional (whenM)
+import Control.Monad
 import qualified Data.ByteString.Char8 as B
 import qualified Data.ByteString.Lazy.Char8 as LB
 import qualified Data.CaseInsensitive as CI
@@ -35,7 +36,7 @@ import qualified System.Directory as Dir
 import System.Process (readProcess)
 import Text.EditDistance as ED
 
----------------------- Data types and related functions ----------------------
+---- Data types and related functions ----
 
 -- |POS (part-of-speech) markers as used in Moby.
 data PosTag
@@ -86,7 +87,7 @@ type CI2EntriesMap  = Map (CI Text) [DictEntry]
 type CI2ExtendedMap = Map (CI Text) (Either [DictEntry] Redirect)
 type TextMap        = Map Text Text
 
------------------------- main and its helper functions -----------------------
+---- main and its helper functions ----
 
 -- |Main entry point.
 main :: IO ()
@@ -231,25 +232,24 @@ unifyWwithVoicelessW = Map.map unify
 -- |Convert cmudict pronunciations to the Phonetic English phoneme set.
 convertCmudictPronunciations  :: CI2TextsMap -> IO CI2TextsMap
 convertCmudictPronunciations cmudictProns = do
-    phonemeMap <- readPhonemeMapping "cmudict-phonemes.csv"
+    phonemeMap <- readKeyValueFile "cmudict-phonemes.txt"
     return $ Map.map (convertCmudictProns phonemeMap) cmudictProns
   where
     convertCmudictProns :: TextMap -> [Text] ->  [Text]
     convertCmudictProns pm = map $ convertCmudictPron pm
 
--- |Read a phoneme mapping from a semicolon-separated CSV-style file.
--- First line is skipped as header. In subsequent lines, the first two fields
--- give source and target phoneme; any additional fields are ignored.
-readPhonemeMapping :: FilePath -> IO TextMap
-readPhonemeMapping file = do
-    contents <- T.readFile file
-    let linesWithoutHeader = tail $ T.lines contents
-    return $ foldl' insertPair Map.empty linesWithoutHeader
+-- |Read a key-value file. Keys and values are separated by ':'; trailing
+-- comments introduced by '#' are stripped.
+readKeyValueFile :: FilePath -> IO TextMap
+readKeyValueFile file =
+    liftM (foldl' insertKeyValuePair Map.empty . T.lines) $ T.readFile file
+
+-- |Insert a line from a key-value file into a map.
+insertKeyValuePair :: TextMap -> Text -> TextMap
+insertKeyValuePair m line = Map.insert (T.strip rawKey) value m
   where
-    insertPair :: TextMap -> Text -> TextMap
-    insertPair m line = Map.insert (head $ fields line) (fields line !! 1) m
-    fields :: Text -> [Text]
-    fields = T.split (== ';')
+    value              = T.strip . T.takeWhile (/= '#') . T.tail $ rawValue
+    (rawKey, rawValue) = T.break (== ':') line
 
 convertCmudictPron :: TextMap -> Text -> Text
 convertCmudictPron phonemeMap pron = stressFirstVowelIfNoStress
@@ -367,7 +367,7 @@ addMobyPronunciations cmudictProns wordMap = do
     let entries = map decodeLatin1 $ strictByteLines contents
         relevantEntries = foldr prepareEntry Map.empty entries
         unifiedEntries = Map.mapMaybeWithKey unifyMobyEntries relevantEntries
-    phonemeMap <- readPhonemeMapping "moby-phonemes.csv"
+    phonemeMap <- readKeyValueFile "moby-phonemes.txt"
     let mobyDict   = Map.mapMaybe (convertMobyProns cmudictProns phonemeMap)
                      unifiedEntries
         unifiedMap = Map.unionWithKey unifyMobyWithCmudict mobyDict cmuDict
