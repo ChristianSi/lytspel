@@ -13,7 +13,6 @@ import Data.Function
 import Data.Functor
 import Data.List
 import Data.Maybe
-import Text.Read
 
 import Control.Conditional (whenM)
 import Control.Monad
@@ -36,29 +35,9 @@ import qualified System.Directory as Dir
 import System.Process (readProcess)
 import Text.EditDistance as ED
 
+import PhonEng (PosTag(N, V), posToText, textToPos)
+
 ---- Data types and related functions ----
-
--- |POS (part-of-speech) markers as used in Moby.
-data PosTag
-    = Aj   -- ^Adjective
-    | Av   -- ^Adverb
-    | Inj  -- ^Interjection
-    | N    -- ^Noun
-    | Prp  -- ^Preposition
-    | V    -- ^Verb
-    deriving (Eq, Ord, Read, Show)
-
--- Convert a text such as "n" or "aj" into a 'PosTag'.
--- Throws an error if the text doesn't correspond to a 'PosTag'.
-textToPos :: Text -> PosTag
-textToPos t = fromMaybe errorMsg result
-  where
-    result = readMaybe $ toUpper (T.head t) : T.unpack (T.tail t)
-    errorMsg = error $
-        "dictbuilder:textToPos: Not a valid POS tag: " ++ T.unpack t
-
-posToText :: PosTag -> Text
-posToText = T.toLower . T.pack . show
 
 -- |A dictionary entry with an optional POS tag.
 data DictEntry = DictEntry

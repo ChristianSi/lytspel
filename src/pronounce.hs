@@ -10,8 +10,11 @@ module Main (main) where
 
 import Data.Char
 import Data.Function
+import Data.List
 import System.Environment
 
+import qualified Data.CaseInsensitive as CI
+import Data.CaseInsensitive (CI)
 import qualified Data.Map.Strict as Map
 import Data.Map.Strict (Map)
 import qualified Data.Text as T
@@ -21,21 +24,46 @@ import qualified Data.Text.Lazy as LT
 import qualified Data.Text.Lazy.IO as LT
 
 import Paths_phoneng (getDataFileName)
+import PhonEng (PosTag)
+
+---- Data types and related functions ----
+
+data PhoneticEntry
+    =  SimpleEntry { pePron :: Text}
+    | RedirectEntry { peRedirect :: Text }
+    | TaggedEntry { peTagMap :: Map PosTag Text }
+
+type PhoneticDict = Map (CI Text) PhoneticEntry
 
 -- |Main entry point.
 main :: IO ()
 main = do
     -- TODO initially treat each command-line arg as filename and process it
     phoneticDict <- readPhoneticDict
+    -- TODO just for testing
+    T.putStrLn $ T.pack (show $ Map.size phoneticDict) `T.append` " entries in dict"
     args <- getArgs
     mapM_ processFile args
 
--- TODO implement correctly, returning dict contents
-readPhoneticDict :: IO (Map Text Text)
+readPhoneticDict :: IO PhoneticDict
 readPhoneticDict = do
-    phoneticDict <- getDataFileName "phonetic-dict.txt"
-    putStrLn phoneticDict
-    return Map.empty
+    dictFile <- getDataFileName "phonetic-dict.txt"
+    contents <- T.readFile dictFile
+    return $ foldl' addDictEntry Map.empty $ T.lines contents
+  where
+    addDictEntry :: PhoneticDict -> Text -> PhoneticDict
+    addDictEntry pd line = addEntryFromParts pd $ T.splitOn ":" line
+
+-- Add a dictionary entry from a line already split at ":".
+addEntryFromParts :: PhoneticDict -> [Text] -> PhoneticDict
+addEntryFromParts pd parts
+  | length parts == 2 = Map.insert (CI.mk $ T.strip $ head parts)
+                                   (SimpleEntry $ T.strip $ last parts) pd
+    -- TODO create TaggedEntry
+  | length parts > 2 = Map.insert (CI.mk "dummy") (SimpleEntry "dummy") pd
+  | otherwise        = error $ concat [
+        "pronounce:addEntryFromParts: not a valid dict entry: '",
+        T.unpack $ T.concat parts, "'"]
 
 processFile :: String -> IO ()
 processFile file = do

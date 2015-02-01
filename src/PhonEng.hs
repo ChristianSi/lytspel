@@ -1,0 +1,38 @@
+-- Copyright (c) 2015 Christian Siefkes
+--
+-- See accompanying LICENSE file for licensing information.
+--
+-- |Shared code for the phoneng tools.
+
+module PhonEng (PosTag(..), posToText, textToPos) where
+
+import Data.Char
+import Data.Maybe
+import Text.Read
+
+import qualified Data.Text as T
+import Data.Text (Text)
+
+---- Data types and related functions ----
+
+-- |POS (part-of-speech) markers as used in Moby.
+data PosTag
+    = Aj   -- ^Adjective
+    | Av   -- ^Adverb
+    | Inj  -- ^Interjection
+    | N    -- ^Noun
+    | Prp  -- ^Preposition
+    | V    -- ^Verb
+    deriving (Eq, Ord, Read, Show)
+
+-- Convert a text such as "n" or "aj" into a 'PosTag'.
+-- Throws an error if the text doesn't correspond to a 'PosTag'.
+textToPos :: Text -> PosTag
+textToPos t = fromMaybe errorMsg result
+  where
+    result = readMaybe $ toUpper (T.head t) : T.unpack (T.tail t)
+    errorMsg = error $
+        "dictbuilder:textToPos: Not a valid POS tag: " ++ T.unpack t
+
+posToText :: PosTag -> Text
+posToText = T.toLower . T.pack . show
