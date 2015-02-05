@@ -41,9 +41,9 @@ import PhonEng (PosTag(N, V), posToText, textToPos)
 
 -- |A dictionary entry with an optional POS tag.
 data DictEntry = DictEntry
-    {deWord :: Text
-    ,dePron :: Text
-    ,dePos :: Maybe PosTag
+    { deWord :: Text
+    , dePron :: Text
+    , dePos :: Maybe PosTag
     } deriving (Eq, Ord, Read, Show)
 
 -- |Make a 'DictEntry' without a 'PosTag'.
@@ -375,9 +375,9 @@ mostSimilarEntry word = minimumBy (compare `on` editDistanceFromWord)
 makeDictEntry :: (Text, Text) -> DictEntry
 makeDictEntry (first, pron)
   | T.any (== '/') first = DictEntry
-        {deWord = T.init wordWithTrailingSlash
-        ,dePron = pron
-        ,dePos = Just $ textToPos rawPos
+        { deWord = T.init wordWithTrailingSlash
+        , dePron = pron
+        , dePos = Just $ textToPos rawPos
         }
   | otherwise            = untaggedDictEntry first pron
   where
