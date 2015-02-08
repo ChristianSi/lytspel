@@ -43,6 +43,7 @@ executable pronounce
                        PhonEng
   build-depends:       base >=4.6,
                        case-insensitive >=1.1,
+                       chatter >=0.5,
                        containers >=0.5,
                        text >=0.11
   default-language:    Haskell2010
