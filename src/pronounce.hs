@@ -24,7 +24,10 @@ import qualified Data.Text.IO as T
 import Data.Text (Text)
 import qualified Data.Text.Lazy as LT
 import qualified Data.Text.Lazy.IO as LT
-import NLP.POS (defaultTagger, tagText)
+import NLP.Corpora.Conll (Tag)
+import NLP.POS (defaultTagger, tag)
+import NLP.Types (POSTagger)
+import NLP.Types.Tree (TaggedSentence)
 
 import Paths_phoneng (getDataFileName)
 import PhonEng (PosTag, textToPos)
@@ -43,17 +46,23 @@ data State = State
   { stPD             :: PhoneticDict
     -- |Set of word whose pronounciation depends on their POS tag
   , stAmbiguousWords :: CISet
+  , stTagger         :: POSTagger Tag
   }
 
 -- |Main entry point.
 main :: IO ()
 main = do
-    -- TODO initially treat each command-line arg as filename and process it
     pd <- readPhoneticDict
-    let state = State pd $ Map.foldrWithKey insertTaggedWords Set.empty pd
+    tagger <- defaultTagger
+    let state = State {stPD = pd,
+                       stAmbiguousWords = mkAmbiguousWords pd,
+                       stTagger = tagger}
     args <- getArgs
+    -- TODO initially treat each command-line arg as filename and process it
     mapM_ (processFile state) args
   where
+    mkAmbiguousWords :: PhoneticDict -> CISet
+    mkAmbiguousWords = Map.foldrWithKey insertTaggedWords Set.empty
     insertTaggedWords :: CI Text -> PhoneticEntry -> CISet -> CISet
     insertTaggedWords word (TaggedEntry _) set = Set.insert word set
     insertTaggedWords _ _ set = set
@@ -108,14 +117,13 @@ processFile state file = do
 -- If one of the tokens in the line is ambiguous, the whole line is
 -- POS-tagged to determine the correct pronounciation.
 pronounceLine :: State -> Text -> Text
-pronounceLine state line = if any isAmbiguous tokens
-    then "Line is ambiguous" -- TODO
+pronounceLine state line = if any ambiguous tokens
+    then pronounceAmbiguousLine state line
     else T.concat $ map (pronounceToken $ stPD state) tokens
   where
     tokens :: [Text]
     tokens = tokenize line
-    isAmbiguous :: Text -> Bool
-    isAmbiguous token = Set.member (CI.mk token) $ stAmbiguousWords state
+    ambiguous token = Set.member (CI.mk token) $ stAmbiguousWords state
 
 -- |Convert a text into a list of tokens. Each token is either a word (letter
 -- sequence) or a non-word (sequence of other characters). Words that contain
@@ -136,7 +144,11 @@ tokenize line = consolidate tokens
     typicalSuffix t      =
         T.toLower t `elem` ["am", "d", "en", "er", "ll", "m", "re", "t", "ve"]
 
--- |Convert a token (word or non-word) into its pronounciation.
+pronounceAmbiguousLine :: State -> Text -> Text
+pronounceAmbiguousLine state line = "Line is ambiguous"
+  -- where tagged = ... TODO
+
+-- |Convert a non-ambiguous token (word or non-word) into its pronounciation.
 pronounceToken :: PhoneticDict -> Text -> Text
 pronounceToken pd token | isLetter $ T.head token =
     pronounceWord pd (Map.lookup (CI.mk token) pd) token
