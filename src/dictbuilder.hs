@@ -350,18 +350,24 @@ addMobyPronunciations cmudictProns wordMap = do
     let mobyDict   = Map.mapMaybe (convertMobyProns cmudictProns phonemeMap)
                      unifiedEntries
         unifiedMap = Map.unionWithKey unifyMobyWithCmudict mobyDict cmuDict
-    return $ Map.mapWithKey keepJustOneUntaggedEntry unifiedMap
+    return $ Map.mapWithKey discardRedundantEntries unifiedMap
   where
     prepareEntry :: Text -> CI2EntriesMap -> CI2EntriesMap
     prepareEntry = addEntryIfRelevant wordMap . makeDictEntry . splitAtFirstWS
     cmuDict = Map.map (map pronToDictEntry) cmudictProns
 
+-- |Discard redundant entries.
 -- |If there are multiple untagged entries (from cmudict), we keep the most
--- similar one.
-keepJustOneUntaggedEntry :: CI Text -> [DictEntry] -> [DictEntry]
-keepJustOneUntaggedEntry _ [entry]    = [entry]
-keepJustOneUntaggedEntry _ entries | isJust $ dePos $ head entries = entries
-keepJustOneUntaggedEntry word entries = [mostSimilarEntry word entries]
+-- similar one. Multiple tagged entries that are all spoken the same (or
+-- almost) are unified into a single untagged entry.
+discardRedundantEntries :: CI Text -> [DictEntry] -> [DictEntry]
+discardRedundantEntries _ [entry]    = [entry]
+discardRedundantEntries _ entries@(first:rest) | isJust $ dePos first =
+    if all (== dePron first) (map dePron rest)
+        -- TODO also check if tagged entries are spoken almost the same
+        then [untaggedDictEntry (deWord first) $ dePron first]
+        else entries
+discardRedundantEntries word entries = [mostSimilarEntry word entries]
 
 mostSimilarEntry :: CI Text -> [DictEntry] -> DictEntry
 mostSimilarEntry word = minimumBy (compare `on` editDistanceFromWord)
