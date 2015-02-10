@@ -16317,7 +16317,7 @@ chechia: śä°śyá
 Chechnya: će°ćnë'
 Chechnyan: će°ćnë'n
 Chechnyans: će°ćnë'nz
-check/n: će°k; v: će°k
+check: će°k
 checkbook: će°kbúk
 checkbooks: će°kbúks
 checked: će°kt
@@ -21812,7 +21812,7 @@ countinghouse: kaú°ntińhaús
 countless: kaú°ntl's
 countries: ku°ntrëz
 countrified: ku°ntrifïd
-country/aj: ku°ntrë; n: ku°ntrë
+country: ku°ntrë
 countryfolk: ku°ntrëfök
 countryman: ku°ntrëm'n
 countrymen: ku°ntrëmin
@@ -42132,7 +42132,7 @@ gypsum: ji°ps'm
 gypsy: ji°psë
 gyral: jï°r'l
 gyrally: jï°r'lë
-gyrate/aj: jï°rät; v: jï°rät
+gyrate: jï°rät
 gyrated: jï°rätid
 gyrates: jï°räts
 gyrating: jï°rätiń
@@ -48932,7 +48932,7 @@ inlander: i°nl'nd'r
 inlaw: inló°
 inlaws: inló°z
 inlay/n: i°nlä; v: inlä°
-inlet/n: i°nlet; v: i°nlet
+inlet: i°nlet
 inlets: i°nlets
 inlier: i°nlï'r
 inline: i°nlïn
@@ -66717,7 +66717,7 @@ outings: aú°tińz
 outjockey: aútjá°kë
 outjump: aútju°mp
 outlaid: aútlä°d
-outland/aj: aú°tland; n: aú°tland
+outland: aú°tland
 outlander: aú°tland'r
 outlandish: aútla°ndiś
 outlandishly: aútla°ndiślë
