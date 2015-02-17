@@ -363,10 +363,14 @@ addMobyPronunciations cmudictProns wordMap = do
 discardRedundantEntries :: CI Text -> [DictEntry] -> [DictEntry]
 discardRedundantEntries _ [entry]    = [entry]
 discardRedundantEntries _ entries@(first:rest) | isJust $ dePos first =
-    if all (== dePron first) (map dePron rest)
-        -- TODO also check if tagged entries are spoken almost the same
-        then [untaggedDictEntry (deWord first) $ dePron first]
+    if all (== pronWithoutFinalStress first) (map pronWithoutFinalStress rest)
+        then [untaggedDictEntry (deWord first) $ pronWithoutFinalStress first]
         else entries
+  where
+    pronWithoutFinalStress :: DictEntry -> Text
+    pronWithoutFinalStress de
+        | T.isSuffixOf "°" $ dePron de = T.init $ dePron de
+        | otherwise                    = dePron de
 discardRedundantEntries word entries = [mostSimilarEntry word entries]
 
 mostSimilarEntry :: CI Text -> [DictEntry] -> DictEntry

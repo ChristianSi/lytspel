@@ -38859,7 +38859,7 @@ gangsta: ga°ńst'
 gangster: ga°ńst'r
 gangsters: ga°ńst'rz
 gangue: ga°ń
-gangway/inj: ga°ńwä°; n: ga°ńwä
+gangway: ga°ńwä
 ganister: ga°nist'r
 gannet: ga°nit
 ganof: gá°n'f
@@ -103079,7 +103079,7 @@ whomp: ẃá°mp
 whomsoever: hümsöe°v'r
 whoop: ẃü°p
 whooped: ẃü°pt
-whoopee/inj: ẃú°pë°; n: ẃú°pë
+whoopee: ẃú°pë
 whooper: hü°p'r
 whoopie: ẃü°pë
 whooping: ẃü°piń
