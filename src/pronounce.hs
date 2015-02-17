@@ -25,9 +25,9 @@ import Data.Text (Text)
 import qualified Data.Text.Lazy as LT
 import qualified Data.Text.Lazy.IO as LT
 import NLP.Corpora.Conll (Tag)
-import NLP.POS (defaultTagger, tag)
-import NLP.Types (POSTagger)
-import NLP.Types.Tree (TaggedSentence)
+import NLP.POS (defaultTagger, tagTokens)
+import NLP.Types (POSTagger(posSplitter, posTokenizer))
+import qualified NLP.Types.Tree as Tree
 
 import Paths_phoneng (getDataFileName)
 import PhonEng (PosTag, textToPos)
@@ -132,7 +132,7 @@ pronounceLine state line = if any ambiguous tokens
 tokenize :: Text -> [Text]
 tokenize line = consolidate tokens
   where
-    tokens = T.groupBy ((==) `on` isLetter) line
+    tokens = sepWordsFromNonWords line
     consolidate :: [Text] -> [Text]
     consolidate (a:b:c:rest)
       | apostrophe b, typicalPrefix a || typicalSuffix c
@@ -144,9 +144,36 @@ tokenize line = consolidate tokens
     typicalSuffix t      =
         T.toLower t `elem` ["am", "d", "en", "er", "ll", "m", "re", "t", "ve"]
 
+-- |Split a text into a list of words (letter sequences) and non-words
+-- (sequences of other characters).
+sepWordsFromNonWords :: Text -> [Text]
+sepWordsFromNonWords = T.groupBy ((==) `on` isLetter)
+
+-- TODO Implement correctly
 pronounceAmbiguousLine :: State -> Text -> Text
-pronounceAmbiguousLine state line = "Line is ambiguous"
-  -- where tagged = ... TODO
+pronounceAmbiguousLine state line = printTS tagged
+  where
+    tagged :: Tree.TaggedSentence Tag
+    tagged = Tree.tsConcat $ tag (stTagger state) $ T.replace "’" "'" line
+    -- TODO clean up this mess
+    tag :: POSTagger Tag -> Text -> [Tree.TaggedSentence Tag]
+    tag p txt = let sentences = posSplitter p txt
+                    tokens, tokens' :: [Tree.Sentence]
+                    tokens  = map (posTokenizer p) sentences
+                    tokens' = map (Tree.Sent . fixMistokenizations . Tree.tokens) tokens
+                in tagTokens p tokens'
+    fixMistokenizations :: [Tree.Token] ->  [Tree.Token]
+    fixMistokenizations = concatMap $ map Tree.Token . splitPunct . Tree.showTok
+    printTS (Tree.TaggedSent pts) = T.intercalate "+++" $ map printPOS pts
+    printPOS :: Tree.POS Tag -> Text
+    printPOS pt = T.concat [Tree.showPOStok pt, "->", Tree.showPOStag pt]
+
+-- |Sometimes the NLP tokenizer fails to split punctuation chars from words.
+-- We fix that, but leave apostrophized suffixes such as "'ll" (split e.g. from
+-- "I'll") alone.
+splitPunct :: Text -> [Text]
+splitPunct text | T.isPrefixOf "'" text = [text]
+                | otherwise             = sepWordsFromNonWords text
 
 -- |Convert a non-ambiguous token (word or non-word) into its pronounciation.
 pronounceToken :: PhoneticDict -> Text -> Text
