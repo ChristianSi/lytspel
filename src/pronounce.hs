@@ -10,6 +10,7 @@ module Main (main) where
 
 import Data.Char
 import Data.Function
+import Data.Maybe
 import Data.List
 import System.Environment
 
@@ -175,36 +176,48 @@ splitPunct text | T.isPrefixOf "'" text = [text]
 
 pronounceTaggedLine :: PhoneticDict -> [Text] -> Tree.TaggedSentence Tag -> Text
 pronounceTaggedLine pd ourTokens (Tree.TaggedSent posTags) =
-    T.concat . reverse $ go [] ourTokens posTags
+    T.concat . reverse $ go [] tokensSplitAtSpace posTags
   where
-    -- TODO unify I'll/I 'll and continue from there
+    tokensSplitAtSpace :: [Text]
+    tokensSplitAtSpace = concatMap (T.groupBy ((==) `on` isSpace)) ourTokens
     go :: [Text] -> [Text] -> [Tree.POS Tag] -> [Text]
-    go acc (tok:tokens) (tag:tags) | tok == Tree.showPOStok tag =
-        go (pronounceToken pd tok : acc) tokens tags
+    go acc (tok:tokens) (tag:tags) | T.strip tok == Tree.showPOStok tag =
+        go (pronounceTaggedToken pd (justPosTag tag) tok : acc) tokens tags
     go acc (tok:tokens) taglist | T.all isSpace tok =
-        go (pronounceToken pd tok : acc) tokens taglist
-    go acc (tok:tokens) (tag:tags) = go (T.concat [
-        "<", tok, "/", Tree.showPOStok tag, ">"] : acc) tokens tags
-    go acc [] _ = acc
-    go acc _ [] = acc
-
-    --TODO printOurTokens = T.intercalate ";" ourTokens
-    --printTS (Tree.TaggedSent pts) = T.intercalate ";" $ map printPOS pts
-    --printPOS :: Tree.POS Tag -> Text
-    --printPOS pt = T.concat [Tree.showPOStok pt, "/", Tree.showPOStag pt]
+        go (pronounceTaggedToken pd Nothing tok : acc) tokens taglist
+    -- Contractions such as "I'll"
+    go acc (tok:tokens) (t1:t2:tags) | tok == joinTags t1 t2 =
+        go (pronounceTaggedToken pd (justPosTag t1) tok : acc) tokens tags
+    go acc [] [] = acc
+    go _ tokens tags = error $ concat [
+        "pronounce:pronounceTaggedLine: Don't know how to unify <",
+        T.unpack $ T.intercalate "/" tokens, "> with <",
+        T.unpack . T.intercalate "/" . map Tree.showPOStok $ tags, ">"]
+    joinTags :: Tree.POS Tag -> Tree.POS Tag -> Text
+    joinTags t1 t2 = Tree.showPOStok t1 `T.append` Tree.showPOStok t2
+    justPosTag :: Tree.POS Tag -> Maybe Text
+    justPosTag = Just . Tree.showPOStag
 
 -- |Convert a non-ambiguous token (word or non-word) into its pronounciation.
 pronounceToken :: PhoneticDict -> Text -> Text
-pronounceToken pd token | isLetter $ T.head token =
-    pronounceWord pd (Map.lookup (CI.mk token) pd) token
-pronounceToken _ token = token
+pronounceToken pd = pronounceTaggedToken pd Nothing
 
-pronounceWord :: PhoneticDict -> Maybe PhoneticEntry -> Text -> Text
-pronounceWord _ (Just (SimpleEntry pron)) _ = pron
-pronounceWord pd (Just (RedirectEntry redirect)) _ = pronounceToken pd redirect
--- TODO handle TaggedEntry correctly
-pronounceWord _ (Just (TaggedEntry _)) token = "!t!" `T.append` token
-pronounceWord _ Nothing token = '?' `T.cons` token
+-- |Convert a token (word or non-word) into its pronounciation. The POS tag
+-- (2nd argument) is used for ambiguation, if present and needed.
+pronounceTaggedToken :: PhoneticDict -> Maybe Text -> Text -> Text
+pronounceTaggedToken pd tag token | isLetter $ T.head token =
+    pronounceWord pd tag (Map.lookup (CI.mk token) pd) token
+pronounceTaggedToken _ _ token = token
+
+pronounceWord :: PhoneticDict -> Maybe Text -> Maybe PhoneticEntry -> Text
+              -> Text
+pronounceWord _ _ (Just (SimpleEntry pron)) _        = pron
+pronounceWord pd _ (Just (RedirectEntry redirect)) _ =
+    pronounceToken pd redirect
+-- TODO handle TaggedEntry correctly (tag may be NN, VBD etc.)
+pronounceWord _ tag (Just (TaggedEntry _)) token     =
+    T.concat [token, "/", fromJust tag]
+pronounceWord _ _ Nothing token                      = '?' `T.cons` token
 
 -- |Break a lazy text into a list of strict texts at newline chars.
 strictLines :: LT.Text -> [Text]
