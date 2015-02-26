@@ -10,7 +10,6 @@ module Main (main) where
 
 import Data.Char
 import Data.Function
-import Data.Maybe
 import Data.List
 import System.Environment
 
@@ -211,13 +210,19 @@ pronounceTaggedToken _ _ token = token
 
 pronounceWord :: PhoneticDict -> Maybe Text -> Maybe PhoneticEntry -> Text
               -> Text
-pronounceWord _ _ (Just (SimpleEntry pron)) _        = pron
-pronounceWord pd _ (Just (RedirectEntry redirect)) _ =
+pronounceWord _ _ (Just (SimpleEntry pron)) _            = pron
+pronounceWord pd _ (Just (RedirectEntry redirect)) _     =
     pronounceToken pd redirect
--- TODO handle TaggedEntry correctly (tag may be NN, VBD etc.)
-pronounceWord _ tag (Just (TaggedEntry _)) token     =
-    T.concat [token, "/", fromJust tag]
-pronounceWord _ _ Nothing token                      = '?' `T.cons` token
+pronounceWord _ (Just tag) (Just (TaggedEntry tagMap)) _ =
+    pronounceTaggedEntry tag tagMap
+pronounceWord _ Nothing (Just (TaggedEntry _)) token     =
+     error $ concat ["pronounce:pronounceWord: Don't know how to pronounce ",
+         "ambiguous word '", T.unpack token, "' without POS tag"]
+pronounceWord _ _ Nothing token                          = '?' `T.cons` token
+
+-- TODO implement correctly
+pronounceTaggedEntry :: Text -> Map PosTag Text -> Text
+pronounceTaggedEntry tag tagMap = tag
 
 -- |Break a lazy text into a list of strict texts at newline chars.
 strictLines :: LT.Text -> [Text]
