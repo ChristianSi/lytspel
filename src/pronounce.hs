@@ -8,6 +8,7 @@
 
 module Main (main) where
 
+import Control.Monad
 import Data.Char
 import Data.Function
 import Data.List
@@ -30,7 +31,7 @@ import NLP.Types (POSTagger(posSplitter, posTokenizer))
 import qualified NLP.Types.Tree as Tree
 
 import Paths_phoneng (getDataFileName)
-import PhonEng (PosTag, textToPos)
+import PhonEng (PosTag(Aj, Av, N, Prp, V), textToPos)
 
 ---- Data types and related functions ----
 
@@ -46,20 +47,20 @@ data State = State
   { stPD             :: PhoneticDict
     -- |Set of word whose pronounciation depends on their POS tag
   , stAmbiguousWords :: CISet
-  , stTagger         :: POSTagger Tag
+    -- |The POS tagger is loaded on demand
+  , stTagger         :: Maybe (POSTagger Tag)
   }
 
 -- |Main entry point.
 main :: IO ()
 main = do
     pd <- readPhoneticDict
-    tagger <- defaultTagger
     let state = State {stPD = pd,
                        stAmbiguousWords = mkAmbiguousWords pd,
-                       stTagger = tagger}
+                       stTagger = Nothing}
     args <- getArgs
     -- TODO initially treat each command-line arg as filename and process it
-    mapM_ (processFile state) args
+    foldM_ processFile state args
   where
     mkAmbiguousWords :: PhoneticDict -> CISet
     mkAmbiguousWords = Map.foldrWithKey insertTaggedWords Set.empty
@@ -108,18 +109,23 @@ insertTaggedEntry pd parts =
         "pronounce:insertTaggedEntry: Not a valid dict entry: '",
         T.unpack $ T.intercalate ":" parts, "'"]
 
-processFile :: State -> String -> IO ()
+processFile :: State -> String -> IO State
 processFile state file = do
     contents <- LT.readFile file
-    mapM_ (T.putStrLn . pronounceLine state) (strictLines contents)
+    foldM pronounceLine state $ strictLines contents
 
 -- |Convert a line of text into its pronounciation.
 -- If one of the tokens in the line is ambiguous, the whole line is
 -- POS-tagged to determine the correct pronounciation.
-pronounceLine :: State -> Text -> Text
+pronounceLine :: State -> Text -> IO State
 pronounceLine state line = if any ambiguous tokens
-    then pronounceAmbiguousLine state line
-    else T.concat $ map (pronounceToken $ stPD state) tokens
+    then do
+        (result, state') <- pronounceAmbiguousLine state line
+        T.putStrLn result
+        return state'
+    else do
+        T.putStrLn . T.concat . map (pronounceToken $ stPD state) $ tokens
+        return state
   where
     tokens :: [Text]
     tokens = tokenize line
@@ -149,22 +155,27 @@ tokenize line = consolidate tokens
 sepWordsFromNonWords :: Text -> [Text]
 sepWordsFromNonWords = T.groupBy ((==) `on` isLetter)
 
-pronounceAmbiguousLine :: State -> Text -> Text
-pronounceAmbiguousLine state line = pronounceTaggedLine pd ourTokens tagged
+pronounceAmbiguousLine :: State -> Text -> IO (Text, State)
+pronounceAmbiguousLine state line
+  | Just tagger <- stTagger state = do
+        let posTokens = map ((Tree.Sent . fixMistokenizations . Tree.tokens) .
+                             posTokenizer tagger) sentences
+            sentences = posSplitter tagger $ normApo line
+            tagged = Tree.tsConcat $ tagTokens tagger posTokens
+        return (pronounceTaggedLine pd ourTokens tagged, state)
+  | otherwise = do
+        tagger <- defaultTagger
+        pronounceAmbiguousLine state {stTagger = Just tagger} line
   where
     pd = stPD state
     ourTokens :: [Text]
     ourTokens = tokenize line
-    tagged :: Tree.TaggedSentence Tag
-    tagged = Tree.tsConcat $ tagTokens tagger posTokens
-    tagger = stTagger state
-    posTokens :: [Tree.Sentence]
-    posTokens = map ((Tree.Sent . fixMistokenizations . Tree.tokens) .
-                     posTokenizer tagger) sentences
-    sentences :: [Text]
-    sentences = posSplitter tagger $ T.replace "’" "'" line
     fixMistokenizations :: [Tree.Token] ->  [Tree.Token]
     fixMistokenizations = concatMap $ map Tree.Token . splitPunct . Tree.showTok
+
+-- |Replace typographic apostrophes by plain ones.
+normApo :: Text -> Text
+normApo = T.replace "’" "'"
 
 -- |Sometimes the NLP tokenizer fails to split punctuation chars from words.
 -- We fix that, but leave apostrophized suffixes such as "'ll" (split e.g. from
@@ -180,12 +191,13 @@ pronounceTaggedLine pd ourTokens (Tree.TaggedSent posTags) =
     tokensSplitAtSpace :: [Text]
     tokensSplitAtSpace = concatMap (T.groupBy ((==) `on` isSpace)) ourTokens
     go :: [Text] -> [Text] -> [Tree.POS Tag] -> [Text]
-    go acc (tok:tokens) (tag:tags) | T.strip tok == Tree.showPOStok tag =
+    go acc (tok:tokens) (tag:tags)
+      | T.strip (normApo tok) == Tree.showPOStok tag =
         go (pronounceTaggedToken pd (justPosTag tag) tok : acc) tokens tags
     go acc (tok:tokens) taglist | T.all isSpace tok =
         go (pronounceTaggedToken pd Nothing tok : acc) tokens taglist
     -- Contractions such as "I'll"
-    go acc (tok:tokens) (t1:t2:tags) | tok == joinTags t1 t2 =
+    go acc (tok:tokens) (t1:t2:tags) | normApo tok == joinTags t1 t2 =
         go (pronounceTaggedToken pd (justPosTag t1) tok : acc) tokens tags
     go acc [] [] = acc
     go _ tokens tags = error $ concat [
@@ -210,19 +222,27 @@ pronounceTaggedToken _ _ token = token
 
 pronounceWord :: PhoneticDict -> Maybe Text -> Maybe PhoneticEntry -> Text
               -> Text
-pronounceWord _ _ (Just (SimpleEntry pron)) _            = pron
-pronounceWord pd _ (Just (RedirectEntry redirect)) _     =
+pronounceWord _ _ (Just (SimpleEntry pron)) _                = pron
+pronounceWord pd _ (Just (RedirectEntry redirect)) _         =
     pronounceToken pd redirect
-pronounceWord _ (Just tag) (Just (TaggedEntry tagMap)) _ =
-    pronounceTaggedEntry tag tagMap
-pronounceWord _ Nothing (Just (TaggedEntry _)) token     =
+pronounceWord _ (Just tag) (Just (TaggedEntry tagMap)) token =
+    pronounceTaggedEntry tag tagMap token
+pronounceWord _ Nothing (Just (TaggedEntry _)) token =
      error $ concat ["pronounce:pronounceWord: Don't know how to pronounce ",
-         "ambiguous word '", T.unpack token, "' without POS tag"]
-pronounceWord _ _ Nothing token                          = '?' `T.cons` token
+                     "ambiguous word '", T.unpack token, "' without POS tag"]
+pronounceWord _ _ Nothing token                      = '?' `T.cons` token
 
--- TODO implement correctly
-pronounceTaggedEntry :: Text -> Map PosTag Text -> Text
-pronounceTaggedEntry tag tagMap = tag
+pronounceTaggedEntry :: Text -> Map PosTag Text -> Text -> Text
+pronounceTaggedEntry tag tagMap token
+  | T.isPrefixOf "NN" tag, Just pron <- Map.lookup N tagMap     = pron
+  | T.isPrefixOf "J" tag, Just pron <- Map.lookup Aj tagMap     = pron
+  | T.isPrefixOf "VB" tag, Just pron <- Map.lookup V tagMap     = pron
+  | T.isInfixOf "RB" tag, Just pron <- Map.lookup Av tagMap     = pron
+  | tag `elem` ["CC", "IN"], Just pron <- Map.lookup Prp tagMap = pron
+  | Just pron <- Map.lookup N tagMap                            = pron
+  | Just pron <- Map.lookup Aj tagMap                           = pron
+  | otherwise = error $ concat ["pronounce:pronounceTaggedEntry: Don't know ",
+                        "how to pronounce ", T.unpack token, "/", T.unpack tag]
 
 -- |Break a lazy text into a list of strict texts at newline chars.
 strictLines :: LT.Text -> [Text]
