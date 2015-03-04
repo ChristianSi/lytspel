@@ -35,7 +35,8 @@ import qualified System.Directory as Dir
 import System.Process (readProcess)
 import Text.EditDistance as ED
 
-import PhonEng (PosTag(N, V), posToText, textToPos)
+import PhonEng (PosTag(N, V), posToText, textToPos, isVowel,
+                isVowelButNotSchwa)
 
 ---- Data types and related functions ----
 
@@ -143,8 +144,8 @@ removeDiacritics t
       | ch `elem` "óôöø"   = 'o'
       | ch `elem` "ùúûü"   = 'u'
       | otherwise          = error $ concat [
-            "dictbuilder:removeDiacritics: Unexpected char '", [ch],
-            "' in word: ", T.unpack t]
+            "removeDiacritics: Unexpected char '", [ch], "' in word: ",
+            T.unpack t]
 
 -- |Insert a list of texts into a map, mapping from a lower-case version of
 -- each text to its original (possibly cased) form. If a lower-case version
@@ -242,7 +243,7 @@ convertCmudictPron phonemeMap pron = stressFirstVowelIfNoStress
             conv `T.snoc` '°'
       | Just conv <- lookupPhoneme $ T.init s, isStressHint $ T.last s = conv
       | otherwise          = error $ concat [
-            "dictbuilder:convertCmudictPron: Unknown phoneme '", T.unpack s,
+            "convertCmudictPron: Unknown phoneme '", T.unpack s,
             "' in pronunciation: ", T.unpack pron]
     lookupPhoneme :: Text -> Maybe Text
     lookupPhoneme s       = Map.lookup s phonemeMap
@@ -261,13 +262,6 @@ stressFirstVowelIfNoStress pron = fixDiphthongStress pronWithStress
       | otherwise                                 = pron
     (beforeFirstVowel, rest) = T.break isVowelButNotSchwa pron
     fixDiphthongStress = T.replace "a°ú" "aú°" . T.replace "o°i" "oi°"
-
-isVowelButNotSchwa :: Char -> Bool
-isVowelButNotSchwa ch = ch `elem` "aeiouäëïöüáéóú"
-
-isVowel :: Char -> Bool
-isVowel '\'' = True
-isVowel ch   = isVowelButNotSchwa ch
 
 -- |Remove some ambiguities and inconsistencies in the cmudict data.
 cleanupCmudictInconsistencies :: CI2TextsMap -> CI2TextsMap
@@ -441,7 +435,7 @@ forceStripPronPrefix prefixes wordSuffix de =
     forceStripOnePrefix :: [Text] -> Text -> Text
     forceStripOnePrefix ps t
       | t' <- stripOnePrefix ps t, t' /= t = t'
-      | otherwise = error $ concat ["dictbuilder:forceStripPronPrefix: ",
+      | otherwise = error $ concat ["forceStripPronPrefix: ",
           "Couldn't force-strip prefix from ", T.unpack (dePron de)]
 
 -- |Strip one of the prefixes listed as first argument from a text.
@@ -483,7 +477,7 @@ unifyMobyEntries word des
     (taggedEntries, untaggedEntries) = partition (isJust . dePos) des
     tagAs :: PosTag -> DictEntry -> DictEntry
     tagAs pos entry = entry {dePos = Just pos}
-    throwError= error $ concat [ "dictbuilder:unifyMobyEntries: ",
+    throwError= error $ concat [ "unifyMobyEntries: ",
         "Don't know how to unify entries for ", T.unpack (CI.original word)]
     filteredUntaggedEntries   = filter keepIfWordMatchesScowl untaggedEntries
     keepIfWordMatchesScowl de = deWord de == CI.original word
@@ -606,7 +600,7 @@ convertMobySounds phonemeMap majorStressMarker = stressFirstVowelIfNoStress
       | sound == ","                     = (WeakStress, "")
       | ignorable sound                  = (stress, "")
       | otherwise = error $
-            "dictbuilder:convertMobySounds: Unknown phoneme: " ++ T.unpack sound
+            "convertMobySounds: Unknown phoneme: " ++ T.unpack sound
     lookupPhoneme :: Text -> Maybe Text
     lookupPhoneme s = Map.lookup s phonemeMap
     handleStress :: Stress -> Text -> (Stress, Text)
@@ -628,7 +622,7 @@ unifyMobyWithCmudict word mobyEntries cmudictEntries
         else [mostSimilarEntry word (cmudictEntries ++ mobyEntries)]
   -- If there are two or more (POS-tagged) Moby entries, we keep them
   | mobyEntryCount > 1 = mobyEntries
-  | otherwise = error $ concat ["dictbuilder:unifyMobyWithCmudict: ",
+  | otherwise = error $ concat ["unifyMobyWithCmudict: ",
       "Don't know how to unify entries for: ", T.unpack $ CI.original word]
   where
     mobyEntryCount = length mobyEntries

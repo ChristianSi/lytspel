@@ -31,7 +31,7 @@ import NLP.Types (POSTagger(posSplitter, posTokenizer))
 import qualified NLP.Types.Tree as Tree
 
 import Paths_phoneng (getDataFileName)
-import PhonEng (PosTag(Aj, Av, N, Prp, V), textToPos)
+import PhonEng (PosTag(Aj, Av, N, Prp, V), textToPos, isVowelButNotSchwa)
 
 ---- Data types and related functions ----
 
@@ -84,9 +84,8 @@ addEntryFromParts pd parts
         then Map.insert key (RedirectEntry . T.strip . T.tail . last $ parts) pd
         else Map.insert key (SimpleEntry . T.strip . last $ parts) pd
   | length parts > 2  = insertTaggedEntry pd parts
-  | otherwise         = error $ concat [
-        "pronounce:addEntryFromParts: Not a valid dict entry: '",
-        T.unpack $ T.concat parts, "'"]
+  | otherwise         = error $ concat ["addEntryFromParts: ",
+        "Not a valid dict entry: '", T.unpack $ T.concat parts, "'"]
   where key = CI.mk . T.strip . head $ parts
 
 -- |Insert a TaggedEntry from a line already split in parts at ":".
@@ -105,14 +104,17 @@ insertTaggedEntry pd parts =
     makeTagMap :: [Text] -> Map PosTag Text
     makeTagMap (key:val:rest) = Map.insert (textToPos key) val (makeTagMap rest)
     makeTagMap []  = Map.empty
-    makeTagMap [_] = error $ concat [
-        "pronounce:insertTaggedEntry: Not a valid dict entry: '",
-        T.unpack $ T.intercalate ":" parts, "'"]
+    makeTagMap [_] = error $ concat ["insertTaggedEntry: ",
+        "Not a valid dict entry: '", T.unpack $ T.intercalate ":" parts, "'"]
 
 processFile :: State -> String -> IO State
 processFile state file = do
     contents <- LT.readFile file
     foldM pronounceLine state $ strictLines contents
+
+-- |Break a lazy text into a list of strict texts at newline chars.
+strictLines :: LT.Text -> [Text]
+strictLines = map (T.concat . LT.toChunks) . LT.lines
 
 -- |Convert a line of text into its pronounciation.
 -- If one of the tokens in the line is ambiguous, the whole line is
@@ -201,7 +203,7 @@ pronounceTaggedLine pd ourTokens (Tree.TaggedSent posTags) =
         go (pronounceTaggedToken pd (justPosTag t1) tok : acc) tokens tags
     go acc [] [] = acc
     go _ tokens tags = error $ concat [
-        "pronounce:pronounceTaggedLine: Don't know how to unify <",
+        "pronounceTaggedLine: Don't know how to unify <",
         T.unpack $ T.intercalate "/" tokens, "> with <",
         T.unpack . T.intercalate "/" . map Tree.showPOStok $ tags, ">"]
     joinTags :: Tree.POS Tag -> Tree.POS Tag -> Text
@@ -217,7 +219,7 @@ pronounceToken pd = pronounceTaggedToken pd Nothing
 -- (2nd argument) is used for ambiguation, if present and needed.
 pronounceTaggedToken :: PhoneticDict -> Maybe Text -> Text -> Text
 pronounceTaggedToken pd tag token | isLetter $ T.head token =
-    pronounceWord pd tag (Map.lookup (CI.mk token) pd) token
+    adjustPron $ pronounceWord pd tag (Map.lookup (CI.mk token) pd) token
 pronounceTaggedToken _ _ token = token
 
 pronounceWord :: PhoneticDict -> Maybe Text -> Maybe PhoneticEntry -> Text
@@ -228,9 +230,12 @@ pronounceWord pd _ (Just (RedirectEntry redirect)) _         =
 pronounceWord _ (Just tag) (Just (TaggedEntry tagMap)) token =
     pronounceTaggedEntry tag tagMap token
 pronounceWord _ Nothing (Just (TaggedEntry _)) token =
-     error $ concat ["pronounce:pronounceWord: Don't know how to pronounce ",
+     error $ concat ["pronounceWord: Don't know how to pronounce ",
                      "ambiguous word '", T.unpack token, "' without POS tag"]
-pronounceWord _ _ Nothing token                      = '?' `T.cons` token
+-- Unknown lower-case words are prefixed with a question mark, while unknown
+-- capitalized words as considered proper names and rendered as is.
+pronounceWord _ _ Nothing token | isLower $ T.head token = '?' `T.cons` token
+                                | otherwise              = token
 
 pronounceTaggedEntry :: Text -> Map PosTag Text -> Text -> Text
 pronounceTaggedEntry tag tagMap token
@@ -241,9 +246,21 @@ pronounceTaggedEntry tag tagMap token
   | tag `elem` ["CC", "IN"], Just pron <- Map.lookup Prp tagMap = pron
   | Just pron <- Map.lookup N tagMap                            = pron
   | Just pron <- Map.lookup Aj tagMap                           = pron
-  | otherwise = error $ concat ["pronounce:pronounceTaggedEntry: Don't know ",
-                        "how to pronounce ", T.unpack token, "/", T.unpack tag]
+  | otherwise = error $ concat ["pronounceTaggedEntry: ",
+        "Don't know how to pronounce ", T.unpack token, "/", T.unpack tag]
 
--- |Break a lazy text into a list of strict texts at newline chars.
-strictLines :: LT.Text -> [Text]
-strictLines = map (T.concat . LT.toChunks) . LT.lines
+-- |Adjust a pronounciation by deleting its stress marker if it's redundant.
+-- A stress marker is considered redundant if it's the only one and if it
+-- occurs after the first non-schwa vowel in the word.
+adjustPron :: Text -> Text
+adjustPron pron
+  | T.count "°" pron /= 1 = pron
+  | otherwise             = if stressAfterFirstVowel then T.replace "°" "" pron
+                                                     else pron
+  where
+    stressAfterFirstVowel
+      | T.length rest < 2                                  = False
+      | T.isPrefixOf  "°" $ T.tail rest                    = True
+      | T.isPrefixOf "aú°" rest || T.isPrefixOf "oi°" rest = True
+      | otherwise                                          = False
+    rest = T.dropWhile (not . isVowelButNotSchwa) pron

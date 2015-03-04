@@ -6,7 +6,13 @@
 
 {-# LANGUAGE OverloadedStrings #-}
 
-module PhonEng (PosTag(..), posToText, textToPos) where
+module PhonEng
+    ( PosTag(..)
+    , posToText
+    , textToPos
+    , isVowel
+    , isVowelButNotSchwa
+    ) where
 
 import Data.Char
 import Data.Maybe
@@ -30,11 +36,20 @@ data PosTag
 -- Convert a text such as "n" or "aj" into a 'PosTag'.
 -- Throws an error if the text doesn't correspond to a 'PosTag'.
 textToPos :: Text -> PosTag
-textToPos "" = error "PhonEng:textToPos: Empty POS tag"
+textToPos "" = error "PhonEng.textToPos: Empty POS tag"
 textToPos t  = fromMaybe errorMsg result
   where
     result = readMaybe $ toUpper (T.head t) : T.unpack (T.tail t)
-    errorMsg = error $ "PhonEng:textToPos: Not a valid POS tag: " ++ T.unpack t
+    errorMsg = error $ "PhonEng.textToPos: Not a valid POS tag: " ++ T.unpack t
 
 posToText :: PosTag -> Text
 posToText = T.toLower . T.pack . show
+
+---- Utility functions ----
+
+isVowel :: Char -> Bool
+isVowel '\'' = True
+isVowel ch   = isVowelButNotSchwa ch
+
+isVowelButNotSchwa :: Char -> Bool
+isVowelButNotSchwa ch = ch `elem` "aeiouäëïöüáéóú"
