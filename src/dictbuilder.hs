@@ -301,6 +301,9 @@ cleanupInconsistencies cmudictProns word pron
     -- Initial [á] should be [o] if word starts with "o" (except before "r")
   | T.head pron == 'á', T.head (CI.foldedCase word) == 'o',
     not $ "or" `T.isPrefixOf` CI.foldedCase word = 'o' `T.cons` T.tail pron
+    -- Final "age" should be [ij] instead of ['j]
+  | "age" `T.isSuffixOf` CI.foldedCase word, "'j" `T.isSuffixOf` pron =
+         T.dropEnd 2 pron `T.append` "ij"
   -- German "kind" is spoken with short [i]
   | CI.foldedCase word == "wunderkind" = T.replace "ï" "i" pron
   | otherwise                               = pron

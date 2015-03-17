@@ -3711,7 +3711,7 @@ ancestry: a°nsestrë
 Anchises: ankï°sëz
 ancho: a°nćö
 anchor: a°ńk'r
-anchorage: a°ńk'r'j
+anchorage: a°ńk'rij
 anchored: a°ńk'rd
 anchoress: a°ńk'ris
 anchoret: a°ńk'rit
@@ -19784,7 +19784,7 @@ concretion: konkrë°ś'n
 concretionary: konkrë°ś'nerë
 concretise:> concretize
 concretize: ko°nkr'tïz
-concubinage: konkyü°b'n'j
+concubinage: konkyü°b'nij
 concubinary: konkyü°b'nerë
 concubine: ko°nky'bïn
 concubines: ko°nky'bïnz
@@ -20951,7 +20951,7 @@ coontie: kü°ntë
 coop: kü°p
 cooped: kü°pt
 cooper: kü°p'r
-cooperage: kü°p'r'j
+cooperage: kü°p'rij
 cooperate: köo°p'rät
 cooperated: köo°p'rät'd
 cooperates: köo°p'räts
@@ -21133,7 +21133,7 @@ Corcovado: kórková°dú
 Corcyra: kórsï°r'
 Corcyraean: kórsirë°'n
 cord: kó°rd
-cordage: kó°rd'j
+cordage: kó°rdij
 cordate: kó°rdät
 cordately: kó°rdätlë
 corded: kó°rd'd
@@ -45003,7 +45003,7 @@ holy: hö°lë
 Holyhead: há°lëhed
 holystone: hö°lëstön
 holytide: hö°lëtïd
-homage: ho°m'j
+homage: ho°mij
 homager: há°m'j'r
 homages: ho°m'j'z
 hombre: ho°mbr'
@@ -55448,7 +55448,7 @@ Lindsay: li°ndzë
 Lindsey: li°ndzë
 Lindy: li°ndë
 line: lï°n
-lineage: li°në'j
+lineage: li°nëij
 lineages: li°nëijiz
 lineal: li°në'l
 lineally: li°në'lë
@@ -56399,7 +56399,7 @@ louver: lü°v'r
 Louvre: lü°vr'
 lovable: lu°v'b'l
 lovableness: lu°v'b'lnes
-lovage: lu°v'j
+lovage: lu°vij
 lovastatin: löva°st'tin
 love: lu°v
 lovebird: lu°vbérd
@@ -61857,7 +61857,7 @@ mortals: mó°rt'lz
 mortar: mó°rt'r
 mortarboard: mó°rt'rbörd
 mortars: mó°rt'rz
-mortgage: mó°rg'j
+mortgage: mó°rgij
 mortgaged: mó°rgijd
 mortgagee: mórg'jë°
 mortgages: mó°rg'j'z
@@ -66300,7 +66300,7 @@ orotund: ö°r'tund
 orotundity: ör'tu°nditë
 Orozco: órö°zkö
 orphan: ó°rf'n
-orphanage: ó°rf'n'j
+orphanage: ó°rf'nij
 orphanages: ó°rf'nijiz
 orphaned: ó°rf'nd
 orphaning: ó°rf'niń
@@ -72822,7 +72822,7 @@ portability: pórt'bi°litë
 portable: pó°rt'b'l
 portables: pó°rt'b'lz
 portae:> porte
-portage: pó°rt'j
+portage: pó°rtij
 portal: pó°rt'l
 portals: pó°rt'lz
 portamento: pört'me°ntö
@@ -73662,7 +73662,7 @@ preordain: prëórdä°n
 preordained: prëórdä°nd
 prep: pre°p
 prepack: prëpa°k
-prepackage: prëpa°k'j
+prepackage: prëpa°kij
 prepackaged: prëpa°k'jd
 prepaid: prëpä°d
 preparation: prep'rä°ś'n
@@ -82320,7 +82320,7 @@ saurian: so°rë'n
 saurischian: sori°skë'n
 sauropod: so°r'pád
 saury: so°rë
-sausage: só°s'j
+sausage: só°sij
 sausages: só°sijiz
 saussurite: so°s'rït
 saussuritic: sos'ri°tik
@@ -89747,7 +89747,7 @@ stopt: sto°pt
 stopwatch: sto°pwáć
 stopwatches: sto°pwoćiz
 storable: stö°r'b'l
-storage: stó°r'j
+storage: stó°rij
 storax: stö°raks
 store: stó°r
 stored: stó°rd
@@ -101393,7 +101393,7 @@ virus: vï°r's
 viruses: vï°r's'z
 vis: vi°s
 visa: vë°z'
-visage: vi°z'j
+visage: vi°zij
 visagist: vi°z'jist
 visagiste: vëzáźë°st
 visard:> vizard
