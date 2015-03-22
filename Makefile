@@ -15,3 +15,4 @@ test-dictbuilder:
 test-pronounce:
 	pronounce samples/mad-tea-party.txt |diff -U1 - samples/mad-tea-party.pron
 	pronounce samples/universal-declaration-of-human-rights.txt |diff -U1 - samples/universal-declaration-of-human-rights.pron
+	pronounce samples/testcases.txt |diff -U1 - samples/testcases.pron
