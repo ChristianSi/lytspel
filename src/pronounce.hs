@@ -135,8 +135,8 @@ pronounceLine state line = if any ambiguous tokens
 
 -- |Convert a text into a list of tokens. Each token is either a word (letter
 -- sequence) or a non-word (sequence of other characters). Words that contain
--- an apostrophe in a typical position (e.g. "she'll" and "O'Neill") will be
--- preserved as a single token rather.
+-- an apostrophe in a typical position (e.g. "she'll", "O'Neill, author's")
+-- will be preserved as a single token rather.
 tokenize :: Text -> [Text]
 tokenize line = consolidate tokens
   where
@@ -149,8 +149,8 @@ tokenize line = consolidate tokens
     consolidate []       = []
     apostrophe t         = T.length t == 1 && toLower (T.head t) `elem` "'’"
     typicalPrefix t      = T.length t == 1 && toLower (T.head t) `elem` "dlo"
-    typicalSuffix t      =
-        T.toLower t `elem` ["am", "d", "en", "er", "ll", "m", "re", "t", "ve"]
+    typicalSuffix t      = T.toLower t `elem`
+                      ["am", "d", "en", "er", "ll", "m", "re", "s", "t", "ve"]
 
 -- |Split a text into a list of words (letter sequences) and non-words
 -- (sequences of other characters).
@@ -218,9 +218,15 @@ pronounceToken pd = pronounceTaggedToken pd Nothing
 -- |Convert a token (word or non-word) into its pronounciation. The POS tag
 -- (2nd argument) is used for ambiguation, if present and needed.
 pronounceTaggedToken :: PhoneticDict -> Maybe Text -> Text -> Text
-pronounceTaggedToken pd tag token | isLetter $ T.head token =
-    adjustPron $ pronounceWord pd tag (Map.lookup (CI.mk token) pd) token
+pronounceTaggedToken pd tag token | isLetter $ T.head token = adjustPron token
+    $ pronounceWord pd tag (Map.lookup (CI.mk actualToken) pd) actualToken
+  where
+    actualToken | isGenitive token = T.dropEnd 2 token
+                | otherwise        = token
 pronounceTaggedToken _ _ token = token
+
+isGenitive :: Text -> Bool
+isGenitive = T.isSuffixOf "'s"
 
 pronounceWord :: PhoneticDict -> Maybe Text -> Maybe PhoneticEntry -> Text
               -> Text
@@ -252,15 +258,39 @@ pronounceTaggedEntry tag tagMap token
 -- |Adjust a pronounciation by deleting its stress marker if it's redundant.
 -- A stress marker is considered redundant if it's the only one and if it
 -- occurs after the first non-schwa vowel in the word.
-adjustPron :: Text -> Text
-adjustPron pron
-  | T.count "°" pron /= 1 = pron
-  | otherwise             = if stressAfterFirstVowel then T.replace "°" "" pron
-                                                     else pron
+adjustPron :: Text -> Text -> Text
+adjustPron token pron
+  | isGenitive token = addGenitiveOrPlural deStressedPron
+  | otherwise        = deStressedPron
   where
+    deStressedPron
+      | T.count "°" pron /= 1 = pron
+      | otherwise             = if stressAfterFirstVowel
+                                then T.replace "°" "" pron else pron
     stressAfterFirstVowel
       | T.length rest < 2                                  = False
       | T.isPrefixOf  "°" $ T.tail rest                    = True
       | T.isPrefixOf "aú°" rest || T.isPrefixOf "oi°" rest = True
       | otherwise                                          = False
     rest = T.dropWhile (not . isVowelButNotSchwa) pron
+
+-- Add genitive or plural to the end of a pronounciation.
+addGenitiveOrPlural :: Text -> Text
+addGenitiveOrPlural pron = pron `T.append` genitiveOrPluralSound
+  where
+    genitiveOrPluralSound | isSibilant lastSound           = "'z"
+                          | isVoicelessConsonant lastSound = "s"
+                          | otherwise                      = "z"
+    lastSound = findLastSound pron
+
+-- Find the last sound in a pronounciation.
+findLastSound :: Text -> Char
+findLastSound "" = error "findLastSound: empty pronounciation"
+findLastSound pron | T.last pron == '°' = findLastSound $ T.init pron
+                   | otherwise          = T.last pron
+
+isSibilant :: Char -> Bool
+isSibilant ch = ch `elem` "jszćśź"
+
+isVoicelessConsonant :: Char -> Bool
+isVoicelessConsonant ch = ch `elem` "fkpstćśþ"
