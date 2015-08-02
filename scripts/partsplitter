@@ -179,10 +179,8 @@ sub write_csv_line {
 # the header file. Returns the opened file handle.
 sub open_outfile_and_write_header {
     rename_to_backup_file_if_exists $OUT_FILE;
-    open my $outfh, '>', $OUT_FILE
-        or die "Unable to open $OUT_FILE for writing: $!";
-    write_csv_line $outfh, 'Traditional', 'POS', 'Phonetic',
-                   'Redirect/Word parts', 'Alternatives';
+    open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!";
+    write_csv_line $outfh, 'Traditional', 'POS', 'Phonetic', 'Redirect', 'Alternatives';
     return $outfh;
 }
 
