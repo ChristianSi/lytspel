@@ -1,0 +1,72 @@
+#!/usr/bin/perl -CA
+# Interactively select the best compound analysis among the candidates identified for each
+# compound or derived word.
+#
+# Entries already in the output file are preserved rather than being overwritten.
+# That allows interrupting the interactive use of this script and restarting it later.
+#
+# Copyright (c) 2015 Christian Siefkes
+# See accompanying LICENSE file for licensing information.
+#
+# Required modules: Readonly and those listed in PhonEng.pm.
+
+use 5.014;
+use open qw(:std :utf8);  # use UTF-8 for all I/O (by default)
+use utf8;                 # allow UTF-8 in source code
+use warnings;
+
+use Cwd 'abs_path';
+use File::Basename 'dirname';
+use Readonly;
+
+use lib dirname(abs_path $0);  # to locate the PhonEng package
+use PhonEng;
+
+Readonly my $IN_FILE  => 'phonetic-dict-candidates.csv';
+Readonly my $OUT_FILE => 'phonetic-dict.csv';
+
+# choose_alternative @alternatives: Interactively let the user choose one of the alternatives.
+# The choosen alternative is returned. The user also has the option to choose NONE of the
+# alternatives, in which case an empty string is returned.
+sub choose_alternative {
+    my @alternatives = @_;
+    my $i = 1;
+    my $query = '';
+    for my $alt (@alternatives) {
+        $query .= "($i) $alt  ";
+        $i++;
+    }
+    $query .= '(0) NONE  (x) QUIT';
+    say $query;
+    # TODO get response from user; also document and handle quit
+    return '';
+}
+
+# process_entries: Process all entries in $IN_FILE.
+sub process_entries {
+    open my $infh, '<', $IN_FILE or die "Unable to open $IN_FILE: $!";
+    my $incsv = new_csv_in;
+    open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!";
+    my $outcsv = new_csv_out;
+    $outcsv->print($outfh, ['Traditional', 'POS', 'Phonetic', 'Redirect', 'Parts']);
+
+    while (my $colref = $incsv->getline($infh)) {
+        if (@$colref <= 4) {
+            # Copy as is
+            $outcsv->print($outfh, $colref);
+        } else {
+            # TODO Let user choose alternative
+            my @initial = splice @$colref, 0, 4;
+            my $choosen = choose_alternative @$colref;
+            # TODO push choosen (unless empty) and print
+        }
+        # TODO Skip any words already in the output file and append new ones at the end.
+        ##my $word = $colref->[0];
+    }
+
+    close $infh;
+    close $outfh;
+}
+
+# Main block
+process_entries;
