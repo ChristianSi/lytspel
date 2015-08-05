@@ -8,16 +8,20 @@
 # Parts of the code are based on
 # https://squarecog.wordpress.com/2008/10/19/splitting-words-joined-into-a-single-string/
 #
-# Required modules: Data::Munge, Readonly, Text::CSV_XS.
+# Required modules: Data::Munge, Readonly and those listed in PhonEng.pm.
 
 use 5.014;
 use open qw(:std :utf8);  # use UTF-8 for all I/O (by default)
 use utf8;                 # allow UTF-8 in source code
 use warnings;
 
+use Cwd 'abs_path';
 use Data::Munge;
+use File::Basename 'dirname';
 use Readonly;
-use Text::CSV_XS;
+
+use lib dirname(abs_path $0);  # to locate the PhonEng package
+use PhonEng;
 
 Readonly my $IN_FILE  => 'phonetic-dict.txt';
 Readonly my $OUT_FILE => 'phonetic-dict-candidates.csv';
@@ -27,7 +31,7 @@ Readonly my $WORD   => '_WORD';
 Readonly my $PREFIX => '_PREFIX';
 Readonly my $SUFFIX => '_SUFFIX';
 
-my $CSV = Text::CSV_XS->new({ eol => "\n", auto_diag => 1 });
+my $CSV = new_csv_out;
 
 # read_dict: Reads the original phonetic dict into a hash. Returns a mapping
 # from words (e.g. 'yeld', 'hectometre', 'detail') to the corresponding raw
@@ -160,27 +164,12 @@ sub find_candidate_parts {
     return $hashref;
 }
 
-# rename_to_backup_file_if_exists $filename: renames a file into a backup
-# file by appending '.bak' to its name. A previously existing backup file
-# with the same name will be silently overwritten. If $filename doesn't exist,
-# this function does nothing.
-sub rename_to_backup_file_if_exists {
-    my ($filename) = @_;
-    rename $filename, "$filename.bak" if -e $filename;
-}
-
-# write_csv_line $outfh, @fields: Writes @fields to $outfh.
-sub write_csv_line {
-    my ($outfh, @fields) = @_;
-    $CSV->print($outfh, \@fields);
-}
-
 # open_outfile_and_write_header: Opens output file in CSV format and writes
 # the header file. Returns the opened file handle.
 sub open_outfile_and_write_header {
     rename_to_backup_file_if_exists $OUT_FILE;
     open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!";
-    write_csv_line $outfh, 'Traditional', 'POS', 'Phonetic', 'Redirect', 'Alternatives';
+    $CSV->print($outfh, ['Traditional', 'POS', 'Phonetic', 'Redirect', 'Alternatives']);
     return $outfh;
 }
 
@@ -265,7 +254,7 @@ sub join_combo {
 # pronunciation of the word depends on its POS tag, several CSV entries will
 # be written, otherwise just one. If a word is a redirect, no compound
 # analysis is performed. Otherwise, each possible compound analysis is
-# written into a separate field, starting with the fourth.
+# written into a separate field, starting with the fifth.
 sub find_matches_and_write_entry {
     my ($outfh, $word, $dict, $candidate_parts) = @_;
     my $value = $dict->{$word};
@@ -274,7 +263,7 @@ sub find_matches_and_write_entry {
 
     if (defined $redirect_target) {
         # Redirect
-        write_csv_line $outfh, $word, '', $phonetic, ">$redirect_target";
+        $CSV->print($outfh, [$word, '', $phonetic, "$redirect_target"]);
     } else {
         my $parts = find_matches $candidate_parts, $word;
         my @sorted_parts = sort { find_word_seq_score($b, $candidate_parts)
@@ -284,12 +273,16 @@ sub find_matches_and_write_entry {
 
         if ($value =~ /^:\s+(.*)$/) {
             # Simple entry
-            write_csv_line $outfh, $word, '', $1, @flattened_parts;
+            my $fields = @flattened_parts ? [$word, '', $1, '', @flattened_parts]
+                                          : [$word, '', $1];
+            $CSV->print($outfh, $fields);
         } elsif ($value =~ m{^/(.*)$}) {
             # Tagged entries
             for my $tagged_pron (split /;\s*/, $1) {
                 if ($tagged_pron =~ /^(.*):\s*(.*)$/) {
-                    write_csv_line $outfh, $word, $1, $2, @flattened_parts;
+                    my $fields = @flattened_parts ? [$word, $1, $2, '', @flattened_parts]
+                                                  : [$word, $1, $2];
+                    $CSV->print($outfh, $fields);
                 } else {
                     die "Invalid line: $word$value";
                 }
