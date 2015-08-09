@@ -18,6 +18,7 @@ use warnings;
 use Cwd 'abs_path';
 use File::Basename 'dirname';
 use Readonly;
+use Scalar::Util 'looks_like_number';
 
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
@@ -25,43 +26,87 @@ use PhonEng;
 Readonly my $IN_FILE  => 'phonetic-dict-candidates.csv';
 Readonly my $OUT_FILE => 'phonetic-dict.csv';
 
-# choose_alternative @alternatives: Interactively let the user choose one of the alternatives.
-# The choosen alternative is returned. The user also has the option to choose NONE of the
-# alternatives, in which case an empty string is returned.
+# read_existing_entries_or_write_header $fh, $csv: Return a set of all existing words listed in $fh,
+# skipping the header line (if any). If $fh is an empty file, a header line is written into it. $fh
+# must be a file handle opened in read/append mode.
+sub read_existing_entries_or_write_header {
+    my ($fh, $csv) = @_;
+    my %words;
+    seek $fh, 0, 0;
+    my $colref = $csv->getline($fh);  # skip header line, if any
+
+    if (!defined $colref) {
+        $csv->print($fh, ['Traditional', 'POS', 'Phonetic', 'Redirect', 'Parts']);
+    } else {
+        while ($colref = $csv->getline($fh)) {
+            my $word = $colref->[0];
+            $words{$word} = 1;
+        }
+    }
+
+    return \%words;
+}
+
+# choose_alternative $word, @alternatives: Interactively let the user choose one of the
+# alternatives. The chosen alternative is returned. The user also has the option to choose NONE of
+# the alternatives, in which case an empty string is returned. If the user wants to quit, undef is
+# returned.
 sub choose_alternative {
-    my @alternatives = @_;
+    my ($word, @alternatives) = @_;
     my $i = 1;
-    my $query = '';
+    my $query = "$word: ";
+
     for my $alt (@alternatives) {
         $query .= "($i) $alt  ";
         $i++;
     }
-    $query .= '(0) NONE  (x) QUIT';
-    say $query;
-    # TODO get response from user; also document and handle quit
-    return '';
+
+    $query .= '(0) NONE  (q) QUIT';
+    my $done = 0;
+
+    while (1) {
+        say $query;
+        my $reply = <STDIN>;
+        chomp $reply;
+
+        if (looks_like_number($reply) && 0 <= $reply && $reply < $i) {
+            return '' if $reply == 0;
+            return $alternatives[$reply - 1];
+        } elsif (lc $reply eq 'q') {
+            return undef;
+        }
+    }
 }
 
 # process_entries: Process all entries in $IN_FILE.
 sub process_entries {
     open my $infh, '<', $IN_FILE or die "Unable to open $IN_FILE: $!";
     my $incsv = new_csv_in;
-    open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!";
+    $incsv->getline($infh);  # skip header line
+    open my $outfh, '+>>', $OUT_FILE or die "Unable to open $OUT_FILE for appending: $!";
     my $outcsv = new_csv_out;
-    $outcsv->print($outfh, ['Traditional', 'POS', 'Phonetic', 'Redirect', 'Parts']);
+    my $existing_entries = read_existing_entries_or_write_header $outfh, $outcsv;
 
     while (my $colref = $incsv->getline($infh)) {
+        my $word = $colref->[0];
+        next if $existing_entries->{$word};  # skip existing entries
+
         if (@$colref <= 4) {
             # Copy as is
             $outcsv->print($outfh, $colref);
         } else {
-            # TODO Let user choose alternative
+            # Let user choose an alternative
             my @initial = splice @$colref, 0, 4;
-            my $choosen = choose_alternative @$colref;
-            # TODO push choosen (unless empty) and print
+            my $chosen = choose_alternative $word, @$colref;
+
+            if ($chosen) {
+                push @initial, $chosen;
+            } elsif (!defined $chosen) {
+                last;  # undef signals that the user wants to quit
+            }
+
+            $outcsv->print($outfh, \@initial);
         }
-        # TODO Skip any words already in the output file and append new ones at the end.
-        ##my $word = $colref->[0];
     }
 
     close $infh;
