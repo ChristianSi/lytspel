@@ -16,6 +16,7 @@ use utf8;                 # allow UTF-8 in source code
 use warnings;
 
 use Cwd 'abs_path';
+use FileHandle;
 use File::Basename 'dirname';
 use Readonly;
 use Scalar::Util 'looks_like_number';
@@ -86,6 +87,7 @@ sub process_entries {
     open my $outfh, '+>>', $OUT_FILE or die "Unable to open $OUT_FILE for appending: $!";
     my $outcsv = new_csv_out;
     my $existing_entries = read_existing_entries_or_write_header $outfh, $outcsv;
+    $outfh->autoflush(1);
 
     while (my $colref = $incsv->getline($infh)) {
         my $word = $colref->[0];
