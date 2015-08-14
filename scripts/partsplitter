@@ -176,12 +176,19 @@ sub open_outfile_and_write_header {
 # is_valid_candidate $part, $candidate_parts, $words_sofar, $prev_kind:
 # Checks whether $part is a word part that is valid in the current position.
 # The accepted sequence is:
+#
 # * any number of prefixes
 # * any number of normal word parts
 # * any number of variants
 # * any number of suffixes
+#
+# Moreover, $part is always rejected if two (or more) parts have been been found and the
+# $rest of the string is non-empty. Thus no more than three parts will be identified in
+# total -- such compact parses are usually best.
 sub is_valid_candidate {
-    my ($part, $candidate_parts, $words_sofar, $prev_kind) = @_;
+    my ($part, $candidate_parts, $words_sofar, $prev_kind, $rest) = @_;
+    # Accept no more than 3 parts in total
+    return 0 if @$words_sofar >= 2 && $rest;
     my $current_kind = $candidate_parts->{$part};
     return 0 unless $current_kind;
     # If last word part is a $PREFIX, anything is valid
@@ -208,7 +215,7 @@ sub find_matches_rec {
         my $part = substr($string, 0, $i);
         my $rest = substr($string, $i, $length-$i);
 
-        if (is_valid_candidate $part, $candidate_parts, $words_sofar, $prev_kind) {
+        if (is_valid_candidate $part, $candidate_parts, $words_sofar, $prev_kind, $rest) {
             # If $part redirects to another word, we use that one instead
             my $part_kind = $candidate_parts->{$part};
             my $actual_part = $part_kind =~ /^_/ ? $part : $part_kind;
