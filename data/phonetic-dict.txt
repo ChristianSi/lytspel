@@ -8563,7 +8563,7 @@ bead: bë°d
 beaded: bë°did
 beadhouse: bë°dhaús
 beading: bë°diń
-Beadle: bë°d'l
+beadle: bë°d'l
 beadledom: bë°d'ld'm
 beadles: bë°d'lz
 beadroll: bë°dröl

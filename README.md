@@ -96,6 +96,10 @@ Invoke the dictbuilder program (written in Haskell):
 
 This writes a file called `phonetic-dict.txt`.
 
+Manual changes to `phonetic-dict.txt`:
+
+  * Changed "Beadle" to lower case.
+
 Invoke the partsplitter script:
 
     $ partsplitter
