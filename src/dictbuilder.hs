@@ -10,7 +10,6 @@ module Main (main) where
 
 import Data.Char
 import Data.Function
-import Data.Functor
 import Data.List
 import Data.Maybe
 
@@ -35,8 +34,7 @@ import qualified System.Directory as Dir
 import System.Process (readProcess)
 import Text.EditDistance as ED
 
-import PhonEng (PosTag(N, V), posToText, textToPos, isVowel,
-                isVowelButNotSchwa)
+import PhonEng
 
 ---- Data types and related functions ----
 
@@ -83,8 +81,10 @@ main = do
     writePhoneticDict completePronunciations
 
 -- |Build a mapping of words in SCOWL, omitting very rare words.
--- Each key is the lower-case form of a word, the corresponding value is the
--- most frequent cased form of the word.
+-- Each key is the lower-case form of a word. Among possible values,
+-- lower-case forms are preferred over capitalized or upper-case ones
+-- (e.g. "doctor" is added instead of "Doctor", even though the latter is
+-- more frequent).
 buildWordMapFromScowl :: IO TextMap
 buildWordMapFromScowl = do
     fileList <- listScowlFilesToRead
@@ -113,9 +113,9 @@ listScowlFilesToRead = do
     let filteredListing = filter skipRareProperNames $ lines fileListing
     return $ sortBy (compare `on` numberInName) filteredListing
   where
-    skipRareProperNames str = not $ "proper-names" `isInfixOf` str
-                                  && numberInName str > 50
-    numberInName str        = read (filter isDigit str) :: Int
+    skipRareProperNames s = not $ "proper-names" `isInfixOf` s
+                                && numberInName s > 50
+    numberInName s        = read (filter isDigit s) :: Int
 
 -- |Break a lazy bytestring into a list of strict bytestrings at newline chars.
 strictByteLines :: LB.ByteString -> [B.ByteString]
@@ -136,25 +136,25 @@ removeDiacritics t
     replaceIfDiacritic 'þ' = 't'
     replaceIfDiacritic 'ź' = 'z'
     replaceIfDiacritic ch
-      | ch `elem` "àáâäå"  = 'a'
-      | ch `elem` "çć"     = 'c'
-      | ch `elem` "èéêë"   = 'e'
-      | ch `elem` "íîï"    = 'i'
-      | ch `elem` "ñń"     = 'n'
-      | ch `elem` "óôöø"   = 'o'
-      | ch `elem` "ùúûü"   = 'u'
-      | otherwise          = error $ concat [
+      | ch `elem` str "àáâäå" = 'a'
+      | ch `elem` str "çć"    = 'c'
+      | ch `elem` str "èéêë"  = 'e'
+      | ch `elem` str "íîï"   = 'i'
+      | ch `elem` str "ñń"    = 'n'
+      | ch `elem` str "óôöø"  = 'o'
+      | ch `elem` str "ùúûü"  = 'u'
+      | otherwise             = error $ concat [
             "removeDiacritics: Unexpected char '", [ch], "' in word: ",
             T.unpack t]
 
 -- |Insert a list of texts into a map, mapping from a lower-case version of
--- each text to its original (possibly cased) form. If a lower-case version
--- of a text already exists in the map, the map is not changed.
+-- each text to its original (possibly cased) form. Among words differing only in their case,
+-- lower-case forms are preferred over capitalized or upper-case ones.
 wordListToMap :: TextMap -> [Text] -> TextMap
-wordListToMap = foldl' addLowerMappingIfNew
+wordListToMap = foldl' go
   where
-    addLowerMappingIfNew :: TextMap -> Text -> TextMap
-    addLowerMappingIfNew m t = Map.insertWith (const id) (T.toLower t) t m
+    go :: TextMap -> Text -> TextMap
+    go m t = Map.insertWith max (T.toLower t) t m  -- max will prefer lower over upper case
 
 -- |Add relevant words that are missing in SCOWL.
 addWordsNotInScowl :: TextMap -> IO TextMap
@@ -248,7 +248,7 @@ convertCmudictPron phonemeMap pron = stressFirstVowelIfNoStress
     lookupPhoneme :: Text -> Maybe Text
     lookupPhoneme s       = Map.lookup s phonemeMap
     majorStressMarker     = if T.any (== '1') pron then '1' else '2'
-    isStressHint ch       = ch `elem` "012"
+    isStressHint ch       = ch `elem` str "012"
     moveStressMarkBeforeR = T.replace "r°" "°r"
 
 -- |Mark the first vowel as stressed if none is. Also fixes stress markers
@@ -281,13 +281,13 @@ cleanupInconsistencies cmudictProns word pron
   -- Unstressed "semi-" in compounds should be [semi]
   | "semi" `T.isPrefixOf` CI.original word,
     ciDrop 4 word `Map.member` cmudictProns,
-    not $ T.any (`elem` "°'") $ T.take 4 pron =
+    not $ T.any (`elem` str "°'") $ T.take 4 pron =
         "semi" `T.append` T.drop 4 pron
   -- Initial ['] should be [u] if word starts with "u"
   | T.head pron == '\'', T.head (CI.foldedCase word) == 'u' =
         'u' `T.cons` T.tail pron
   -- Initial "au" should be [ó] rather than one of [oá']
-  | "au" `T.isPrefixOf` CI.foldedCase word, T.head pron `elem` "oá'" =
+  | "au" `T.isPrefixOf` CI.foldedCase word, T.head pron `elem` str "oá'" =
         'ó' `T.cons` T.tail pron
   -- Initial "ar" should be [ár]  rather than [or]
   | "ar" `T.isPrefixOf` CI.foldedCase word, T.head pron == 'o' =
@@ -433,7 +433,7 @@ forceStripPronPrefix prefixes wordSuffix de =
     cleanedPron  = stripOnePrefix ["_", "/_"] strippedPron
     strippedPron = forceStripOnePrefix prefixes pronWithoutInitialStress
     pronWithoutInitialStress
-      | T.head (dePron de) `elem` "'," = T.tail $ dePron de
+      | T.head (dePron de) `elem` str "'," = T.tail $ dePron de
       | otherwise                      = dePron de
     forceStripOnePrefix :: [Text] -> Text -> Text
     forceStripOnePrefix ps t
@@ -517,7 +517,7 @@ convertMobyEntry cmudictProns phonemeMap de =
     replaceSpecials 'N' = 'ǹ'
     replaceSpecials ch  = ch
     isShortOrPhoneme s  = T.length s == 1 || s `Map.member` phonemeMap
-    isStressMarker ch   = ch `elem` "',"
+    isStressMarker ch   = ch `elem` str "',"
     splitIfUnknown :: Text -> [Text]
     splitIfUnknown s | isShortOrPhoneme s = [s]
                      | otherwise          = T.chunksOf 1 s
@@ -614,7 +614,7 @@ convertMobySounds phonemeMap majorStressMarker = stressFirstVowelIfNoStress
     -- unstressed [@] should be ['] rather than [u]
     handleStress NoStress "u"          = (NoStress, "'")
     handleStress stress sound          = (stress, sound)
-    ignorable s = T.length s == 1 && T.head s `elem` "_ ()"
+    ignorable s = T.length s == 1 && T.head s `elem` str "_ ()"
 
 unifyMobyWithCmudict :: CI Text -> [DictEntry] -> [DictEntry] -> [DictEntry]
 unifyMobyWithCmudict word mobyEntries cmudictEntries
@@ -646,7 +646,7 @@ addVarconRedirects dict = do
     lineToWords line = mapMaybe (discardTagInfoAndVariants . discardNotes)
                        $ T.splitOn "/" line
     -- Discard anything after "|" or "#"
-    discardNotes = head . T.split (`elem` "|#")
+    discardNotes = head . T.split (`elem` str "|#")
     -- Skip entries that are just genitive forms (ending in "'s") or don't
     -- contain at least 2 variants
     skipTrivialEntries :: [Text] -> Bool
@@ -662,7 +662,7 @@ addVarconRedirects dict = do
 -- variants (containing a marker such as "v"), the whole word is discarded
 -- and 'Nothing' is returned.
 discardTagInfoAndVariants :: Text -> Maybe Text
-discardTagInfoAndVariants text = if all (T.any (`elem` "v.-x")) tags
+discardTagInfoAndVariants text = if all (T.any (`elem` str "v.-x")) tags
                                     then Nothing else Just $ T.strip word
   where
     word = last splitted

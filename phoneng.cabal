@@ -23,28 +23,30 @@ executable dictbuilder
   main-is:             dictbuilder.hs
   hs-source-dirs:      src
   other-modules:       PhonEng
-  build-depends:       base >=4.6,
-                       bytestring >=0.10,
-                       case-insensitive >=1.1,
-                       cond >=0.4,
-                       containers >=0.5,
-                       directory >=1.2,
-                       edit-distance >=0.2,
-                       filepath >=1.3,
-                       process >=1.1,
-                       text >=1.1.1.0
+  build-depends:       base >=4.8.0.0,
+                       bytestring >=0.10.6.0,
+                       case-insensitive >=1.2.0.4,
+                       cond >=0.4.1.1,
+                       containers >=0.5.6.3,
+                       directory >=1.2.2.0,
+                       edit-distance >=0.2.2.1,
+                       filepath >=1.4.0.0,
+                       process >=1.2.3.0,
+                       text >=1.2.1.3
   default-language:    Haskell2010
   ghc-options:         -Wall -O2 -with-rtsopts=-K32m
 
-executable pronounce
-  main-is:             pronounce.hs
-  hs-source-dirs:      src
-  other-modules:       Paths_phoneng,
-                       PhonEng
-  build-depends:       base >=4.6,
-                       case-insensitive >=1.1,
-                       chatter >=0.5.0.1,
-                       containers >=0.5,
-                       text >=1.1.1.0
-  default-language:    Haskell2010
-  ghc-options:         -Wall -O2
+
+--Commented out since chatter fails to compile with ghc 7.10.2
+--executable pronounce
+--  main-is:             pronounce.hs
+--  hs-source-dirs:      src
+--  other-modules:       Paths_phoneng,
+--                       PhonEng
+--  build-depends:       base >=4.8.0.0,
+--                       case-insensitive >=1.2.0.4,
+--                       chatter >=0.8.0.0,
+--                       containers >=0.5.6.3,
+--                       text >=1.2.1.3
+--  default-language:    Haskell2010
+--  ghc-options:         -Wall -O2

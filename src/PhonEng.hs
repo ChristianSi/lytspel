@@ -12,6 +12,7 @@ module PhonEng
     , textToPos
     , isVowel
     , isVowelButNotSchwa
+    , str
     ) where
 
 import Data.Char
@@ -52,4 +53,9 @@ isVowel '\'' = True
 isVowel ch   = isVowelButNotSchwa ch
 
 isVowelButNotSchwa :: Char -> Bool
-isVowelButNotSchwa ch = ch `elem` "aeiouäëïöüáéóú"
+isVowelButNotSchwa ch = ch `elem` str "aeiouäëïöüáéóú"
+
+-- |Allows writing string literals without explicit type annotation (in
+-- case ghc complains about ambiguity).
+str :: String -> String
+str = id
