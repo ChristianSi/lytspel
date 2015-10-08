@@ -8,7 +8,7 @@
 # Copyright (c) 2015 Christian Siefkes
 # See accompanying LICENSE file for licensing information.
 #
-# Required modules: Readonly and those listed in PhonEng.pm.
+# Required modules: Readonly, Text::Fold, and those listed in PhonEng.pm.
 
 use 5.014;
 use open qw(:std :utf8);  # use UTF-8 for all I/O (by default)
@@ -20,6 +20,7 @@ use FileHandle;
 use File::Basename 'dirname';
 use Readonly;
 use Scalar::Util 'looks_like_number';
+use Text::Fold;
 
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
@@ -63,14 +64,14 @@ sub trim {
 sub choose_alternative {
     my ($word, @alternatives) = @_;
     my $i = 1;
-    my $query = "$word: ";
+    my $query = "$word  ";
 
     for my $alt (@alternatives) {
         $query .= "($i) $alt  ";
         $i++;
     }
 
-    $query .= '(0) NONE  (q) QUIT  (:...) ENTER PARTS';
+    $query = fold_text "$query(0) NONE  (q) QUIT  (:...) ENTER PARTS";
     my $done = 0;
 
     while (1) {
