@@ -8,7 +8,7 @@
 # Parts of the code are based on
 # https://squarecog.wordpress.com/2008/10/19/splitting-words-joined-into-a-single-string/
 #
-# Required modules: Data::Munge, Readonly and those listed in PhonEng.pm.
+# Required modules: Data::Munge, Const::Fast and those listed in PhonEng.pm.
 
 use 5.014;
 use open qw(:std :utf8);  # use UTF-8 for all I/O (by default)
@@ -18,18 +18,18 @@ use warnings;
 use Cwd 'abs_path';
 use Data::Munge;
 use File::Basename 'dirname';
-use Readonly;
+use Const::Fast;
 
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
 
-Readonly my $IN_FILE  => 'phonetic-dict.txt';
-Readonly my $OUT_FILE => 'phonetic-dict-candidates.csv';
+const my $IN_FILE  => 'phonetic-dict.txt';
+const my $OUT_FILE => 'phonetic-dict-candidates.csv';
 
 # Special markers used in %$candidate_parts
-Readonly my $WORD   => '_WORD';
-Readonly my $PREFIX => '_PREFIX';
-Readonly my $SUFFIX => '_SUFFIX';
+const my $WORD   => '_WORD';
+const my $PREFIX => '_PREFIX';
+const my $SUFFIX => '_SUFFIX';
 
 my $CSV = new_csv_out;
 

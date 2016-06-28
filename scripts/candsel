@@ -8,25 +8,25 @@
 # Copyright (c) 2015 Christian Siefkes
 # See accompanying LICENSE file for licensing information.
 #
-# Required modules: Readonly, Text::Fold, and those listed in PhonEng.pm.
+# Required modules: Const::Fast, Text::Fold, and those listed in PhonEng.pm.
 
 use 5.014;
 use open qw(:std :utf8);  # use UTF-8 for all I/O (by default)
 use utf8;                 # allow UTF-8 in source code
 use warnings;
 
+use Const::Fast;
 use Cwd 'abs_path';
 use FileHandle;
 use File::Basename 'dirname';
-use Readonly;
 use Scalar::Util 'looks_like_number';
 use Text::Fold;
 
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
 
-Readonly my $IN_FILE  => 'phonetic-dict-candidates.csv';
-Readonly my $OUT_FILE => 'phonetic-dict.csv';
+const my $IN_FILE  => 'phonetic-dict-candidates.csv';
+const my $OUT_FILE => 'phonetic-dict.csv';
 
 # read_existing_entries_or_write_header $fh, $csv: Return a set of all existing words listed in $fh,
 # skipping the header line (if any). If $fh is an empty file, a header line is written into it. $fh
