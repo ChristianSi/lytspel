@@ -130,9 +130,9 @@ The consonants are written as follows:
   * «t» /t/ as in «test»
   * «th» /T/ as in «thin»
   * «v» /v/ as in «ever»
-  * «w» /w/ as in «west, wen» ‹...when›. Note: In a some English accepts,
-    the «w» in «wen» ‹when› is spoken differently than the «w» in «west»,
-    but since most accents (including RP and GA) no longer make this
+  * «w» /w/ as in «west, wen» ‹...when›. Note: In some English accepts, the
+    «w» in «wen» ‹when› is spoken differently than the «w» in «west», but
+    since most accents (including RP and GA) no longer make this
     difference, it is not preserved in Lytspel (cf. [wine-whine
     merger](https://en.wikipedia.org/wiki/Pronunciation_of_English_%E2%9F%A8wh%E2%9F%A9#Wine.E2.80.93whine_merger)).
   * «y» /j/ as in «yet»
