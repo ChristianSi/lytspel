@@ -138,7 +138,6 @@ The consonants are written as follows:
   * «y» /j/ as in «yet»
   * «zh» /Z/ as in «mi'raazh» ‹mirage›
   * The sound /k/ is written as «c» or «k», depending on context:
-
       * «k» is used before any vowel starting with «e, i, y», e.g. «keep,
         king, kynd» ‹...kind›
       * «c» is used before any other letter, e.g. «cat, cost, crisp»
@@ -146,9 +145,7 @@ The consonants are written as follows:
         e.g. «public, majic» ‹...magic›
       * «k» is used at the end of other words ending in /k/, e.g. «book,
         drink, quik, speek, naimsaik» ‹...quick, speak, namesake›
-
   * The sound /s/ is written as «c», «s», or «ss», depending on context:
-
       * «c» is used between any vowel and a vowel starting with «e, i, y»,
         e.g. «deecent, ex'plicit, nececeri, de'cyd» ‹decent, explicit,
         necessary, decide›
@@ -165,9 +162,7 @@ The consonants are written as follows:
         letter follows, e.g. «disa'gree, disen'chantment, misin'turpret,
         misunder'stand» ‹disagree, disenchantment, misinterpret,
         misunderstand›
-
   * The sound /z/ is written as «s» or «z», depending on context:
-
       * «s» is used between two vowels, e.g. «visit, eesi, dusen, di'syr,
         bi'sar, ri'sult» ‹...easy, dozen, desire, bizarre, result›
       * «s» is also used at the end of words except after any of the
@@ -180,19 +175,15 @@ The schwa /@/:
 
   * The schwa is an unstressed and neutral vowel that occurs frequently in
     English words. Lytspel generally writes it as «e» or «u».
-
   * «u» is used whenever the traditional spelling contains this vowel, e.g.
     «album, nurvuss, sus'pend» ‹...nervous, suspend›.
-
   * «e» is used otherwise, e.g. «camel, problem, hiden, sentrel»
     ‹...hidden, central›.
-
   * This means that Lytspel doesn't distinguish between unstressed /V/ as
     in «funda'mentl» ‹fundamental› or /E/ as in «index» and the schwa /@/.
     However, since the unstressed form of these vowels sounds quite similar
     to the schwa and there is often no agreement between speakers whether
     to use one or the other, this shouldn't hurt.
-
   * A schwa immediately preceding the primarily stressed syllable can also
     be represented by one of the other three vowel letters («a, i, o», but
     not «y»), e.g. «a» in «a'bout» ‹about›, «i» in «imaji'naition»
@@ -206,11 +197,9 @@ The schwa /@/:
     clearly audible in related words, e.g. while the second «i» in
     «imaji'naition» ‹imagination› is often reduced to a schwa, in «i'majin»
     ‹imagine› it's clearly audible as /I/.
-
   * Between some consonant pairs at the end of words, the schwa is omitted
     in writing; since these pairs never occur *without* an intervening
     vowel at the end of words, there is no risk of confusion:
-
       * Final /s@l/ is written «ssl», e.g. «counssl, mussl» ‹council,
         muscle›
       * Final /z@l/ is written «sl», e.g. «pro'poasl, pusl» ‹proposal,
@@ -398,15 +387,12 @@ Rules for derived and related words:
 
   * In front of suffixes starting with «e, i, y», final «c» is changed to
     «k», e.g. «trafiking» ‹trafficking› from «trafic» ‹traffic›.
-
   * Final «c» remains unchanged in front of such suffixes if its
     pronunciation changes from /k/ to /s/, e.g. «publicist, publicys»
     ‹...publicize› from «public».
-
   * Otherwise, end-of-word spellings are preserved in all derived forms as
     long as of the base word doesn't change (except for possible shifts of
     stress), e.g.
-
       * «c» representing /k/: «publicli, publi'caition» ‹publicly,
         publication› from «public»; «me'canics, me'canicl» ‹mechanics,
         mechanical› from «me'canic» ‹mechanic›
@@ -431,29 +417,24 @@ Rules for derived and related words:
         ‹supply›
       * «yr» representing /aI@`/: «in'spyrd» ‹inspired› from «in'spyr»
         ‹inspire›
-
   * They are also preserved in compounds, e.g. «bakground,
     extrate'restriel, fyrwurks›» ‹background, extraterrestrial, fireworks›.
-
   * If the pronunciation of the base word itself changes (beyond mere
     shifts of stress), the spelling reflects this, e.g. «cri'aition,
     creecher» ‹creation, creature› from «cri'ait» ‹create›; «dis'cution»
     ‹discussion› from «dis'cuss» ‹discuss›; «con'cluusion» ‹conclusion›
     from «con'cluud» ‹conclude›; «acchual» ‹actual› from «act»;
     «as'sumption» ‹assumption› from «as'suum» ‹assume›.
-
   * The past tense of regular verbs is formed by appending «ed» if /@d/ is
     spoken (e.g. «se'lected, waisted» ‹selected, wasted›), «d» if /d/ or
     /t/ is spoken (e.g. «ri'veeld, con'siderd, payd, fixd, con'vinssd»
     ‹revealed, considered, paid, fixed, convinced›). The past tense of
     irregular verbs is spelled as it's spoken, e.g. «kept» from «keep».
-
   * While in tradspell a noun and a related verb are often written the same
     even if spoken differently, in Lytspel the spelling reflects the actual
     pronunciation, e.g. «a suspect, to sus'pect; a recoard, to ri'coard; a
     houss, to hous» ‹a suspect, to suspect; a record, to record; a house,
     to house›.
-
   * Normally Lytspel doesn't use double consonants, except in those cases
     where a double consonant is spoken differently than a single one (e.g.
     «ss» spoken /s/ in certain contexts where «s» is spoken /z/). However,
