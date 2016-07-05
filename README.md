@@ -101,7 +101,7 @@ The long vowels and diphthongs are written as follows:
   * «ai» /eI/ as in «aim, saint, fais» ‹...face›
   * «au» /O:/ as in «auther, paus» ‹author, pause›
   * «ee» /i:/ as in «tree, teem» ‹...team›
-  * «oa» /oU/ as in «boat, hoam» ‹boat, home›
+  * «oa» /oU/ as in «boat, hoam» ‹...home›
   * «oi» /OI/ as in «oil, point, a'void» ‹...avoid›
   * «ou» /aU/ as in «mouth, doun» ‹...down›
   * «uu» /u:/ as in «muun, ex'cluud, gruup» ‹moon, exclude, group›
@@ -136,7 +136,7 @@ The consonants are written as follows:
     difference, it is not preserved in Lytspel (cf. [wine-whine
     merger](https://en.wikipedia.org/wiki/Pronunciation_of_English_%E2%9F%A8wh%E2%9F%A9#Wine.E2.80.93whine_merger)).
   * «y» /j/ as in «yet»
-  * «zh» /Z/ as in «miraazh» ‹mirage›
+  * «zh» /Z/ as in «mi'raazh» ‹mirage›
   * The sound /k/ is written as «c» or «k», depending on context:
 
       * «k» is used before any vowel starting with «e, i, y», e.g. «keep,
@@ -277,14 +277,13 @@ vowels:
   * /O:/ is spelled «aw» at the end of words and before other vowels
     (instead of «au»), e.g. «law, drawing».
   * Unstressed /i:/ is spelled «i» at the end of words and before other
-    vowels (instead of «ee»), e.g. «fansi, ne'ceciti, teedius, vidio,
-    ma'teeriel, cri'aition» ‹fancy, necessity, tedious, video, material,
-    creation›. This means that Lytspel cannot distinguish between
-    unstressed /i:/ and unstressed /I/ (as in «big») before other vowels,
-    but that shouldn't hurt, as /I/ before other vowels is very rare and
-    dictionaries often disagree on which of these sounds to use anyway.
-    Should unstressed /I/ occur at the end of words, it could be written
-    «ih», but it practice it never seems to occur.
+    vowels (instead of «ee»), e.g. «fansi, ne'ceciti, vidio, cri'aition»
+    ‹fancy, necessity, video, creation›. This means that Lytspel cannot
+    distinguish between unstressed /i:/ and unstressed /I/ (as in «big»)
+    before other vowels, but that shouldn't hurt, as /I/ before other
+    vowels is very rare and dictionaries often disagree on which of these
+    sounds to use anyway. Should unstressed /I/ occur at the end of words,
+    it could be written «ih», but it practice it never seems to occur.
   * This spelling is also used in the personal pronouns ending in /i:/ (as
     these are often less stressed than other words in a sentence): «hi,
     shi, wi, mi» ‹he, she, we, me›. And it's used in the prefixes «anti,
@@ -304,10 +303,9 @@ vowels:
   * /aU/ is spelled «ow» at the end of words and before other vowels
     (instead of «ou»), e.g. «now, power, a'low» ‹...allow›.
   * Unstressed /u:/ is spelled «u» at the end of words and before other
-    vowels (instead of «uu»), e.g. «ishu, vurchu, acchuel, sichu'aition,
-    influenss» ‹issue, virtue, actual, situation, influence›. This poses
-    little risk of confusion, as unstressed /V/ (as in «bus») occurs rarely
-    or never before other vowels.
+    vowels (instead of «uu»), e.g. «ishu, vurchu, sichu'aition» ‹issue,
+    virtue, situation›. This poses little risk of confusion, as unstressed
+    /V/ (as in «bus») occurs rarely or never before other vowels.
   * Final /V/ is spelled «uh» (instead of «u»), e.g. «huh».
   * Final schwa /@/ is spelled «a» (instead of «e» or «u»), e.g. «extra,
     daita» ‹...data›. Should unstressed /a/ (as in «cat») occur at the end
@@ -319,7 +317,18 @@ vowels:
 
 Spellings involving several sounds:
 
-  * The sound combination /kw/ is written «qu», e.g. «quit, ri'quest»
+  * The vowel combination /i:@/ is written «ia», e.g. «mis'teeriass,
+    ma'teerial, meediam, obviass, vairiabl, airia, i'meediat» ‹mysterious,
+    material, medium, obvious, variable, area, immediate›. In the rare
+    cases where unstressed /a/ occurs after /i:/ (or /I/), a hyphen is
+    inserted for disambiguation, e.g. «am'neesi-ak, zoadi-ak» ‹amnesiac,
+    zodiac›.
+  * The vowel combination /u:@/ is written «ua», e.g. «acchual,
+    indi'vijual, influanss, soo'purfluass, crual» ‹actual, individual,
+    influence, superfluous, cruel›.  In the very rare cases where
+    unstressed /a/ occurs after /u:/, a hyphen is inserted for
+    disambiguation, e.g. «bivu-ak» ‹bivouac›.
+  * The consonant combination /kw/ is written «qu», e.g. «quit, ri'quest»
     ‹...request›; the letter «q» only occurs in this combination.
   * The sound combination /ks/ is written «x», e.g. «mix, next, ex'plicit,
     axident» ‹...explicit, accident›.
@@ -371,7 +380,7 @@ single sound or an r-colored vowel):
     such, e.g. «reeel» ‹real› is read as «r-ee-e-l» /ri:@l/.
   * In cases where the previous rule would lead to a misreading, Lytspel
     recommends inserting a hyphen to indicate the correct reading, e.g.
-    «co-ope'raition, soo'purflu-uss» ‹cooperation, superfluous›.
+    «co-ope'raition» ‹cooperation›.
   * Multigraphs ending in «r» may be interrupted by a stress marker before
     the final «r» and are still read as multigraphs, e.g. «co-ope'raition,
     ho'rific» ‹cooperation, horrific›. However, other multigraphs are never
@@ -410,8 +419,8 @@ Rules for derived and related words:
         ‹American› from «A'merrica» ‹America›
       * «aw» representing /O:/: «draws, drawn, drawing» from «draw»
       * «i» representing unstressed /i:/: «sitis» ‹cities› from «siti»
-        ‹city›; «fanciful, fanciing» ‹...fancying› from «fanci» ‹fancy›;
-        «hapiness» ‹happiness› from «hapi» ‹happy›
+        ‹city›; «fansiful, fansiing» ‹fanciful, fancying› from «fansi»
+        ‹fancy›; «hapiness» ‹happiness› from «hapi» ‹happy›
       * «o» representing unstressed /oU/: «yeloer, yeloest» ‹yellower,
         yellowest› from «yelo» ‹yellow›; «vurchus» ‹virtues› from «vurchu»
         ‹virtue›
@@ -430,7 +439,7 @@ Rules for derived and related words:
     shifts of stress), the spelling reflects this, e.g. «cri'aition,
     creecher» ‹creation, creature› from «cri'ait» ‹create›; «dis'cution»
     ‹discussion› from «dis'cuss» ‹discuss›; «con'cluusion» ‹conclusion›
-    from «con'cluud» ‹conclude›; «acchuel» ‹actual› from «act»;
+    from «con'cluud» ‹conclude›; «acchual» ‹actual› from «act»;
     «as'sumption» ‹assumption› from «as'suum» ‹assume›.
 
   * The past tense of regular verbs is formed by appending «ed» if /@d/ is
@@ -444,6 +453,14 @@ Rules for derived and related words:
     pronunciation, e.g. «a suspect, to sus'pect; a recoard, to ri'coard; a
     houss, to hous» ‹a suspect, to suspect; a record, to record; a house,
     to house›.
+
+  * Normally Lytspel doesn't use double consonants, except in those cases
+    where a double consonant is spoken differently than a single one (e.g.
+    «ss» spoken /s/ in certain contexts where «s» is spoken /z/). However,
+    double consonant can also occur if they belong to different parts of a
+    compound or if one belongs to a prefix or suffix and the other to the
+    base word, e.g. «toatelli, suuper'reejennel, un'nececeri» ‹totally,
+    superregional, unnecessary›.
 
 Irregular words:
 
@@ -532,11 +549,12 @@ speakers).
 
 Various details of the Lytspel spellings have already been motivated above
 as representing sound distinctions that exist either in RP or in GA, and
-the «ue» spelling is a compromise used in words spoken differently in RP
-and GA. But such compromises are not almost possible without making the
-written language extremely complex and unwieldy. In other cases, Lytspel
-therefore resolves differences between RP and GA by preferring the spelling
-that keeps the written language more similar to tradspell:
+the «ue» and «uer» spellings are a compromise used in words spoken
+differently in RP and GA. But such compromises are not almost possible
+without making the written language extremely complex and unwieldy. In
+other cases, Lytspel therefore resolves differences between RP and GA by
+preferring the spelling that keeps the written language more similar to
+tradspell:
 
   * «a» is used if one variety speaks /a/ and the other /A/, e.g. «last»
   * «o» is used if one variety speaks /Q/ and the other /O:/, e.g. «cloth»
