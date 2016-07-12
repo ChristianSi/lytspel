@@ -647,8 +647,8 @@ Invoke the dictbuilder program (written in Haskell):
 
 This writes a file called `phonetic-dict.txt`.
 
-Invoke the partsplitter script:
+Invoke the csvdict script:
 
-    $ partsplitter
+    $ csvdict
 
-This writes a file called `phonetic-dict-candidates.csv`.
+This writes a file called `phoneng-espeak-dict.csv`.
