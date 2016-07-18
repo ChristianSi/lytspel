@@ -11,15 +11,15 @@ use open qw(:std :utf8);  # use UTF-8 for all I/O (by default)
 use utf8;                 # allow UTF-8 in source code
 use warnings;
 
+use Const::Fast;
 use Cwd 'abs_path';
 use File::Basename 'dirname';
-use Const::Fast;
 
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
 
-const my $IN_FILE  => 'phonetic-dict.txt';
-const my $OUT_FILE => 'phoneng-espeak-dict.csv';
+const my $IN_FILE    => 'phonetic-dict.txt';
+const my $OUT_FILE   => 'phoneng-espeak-dict.csv';
 const my $ESPEAK_TMP => 'espeak-in.tmp';
 
 my $CSV = new_csv_out;
@@ -28,12 +28,12 @@ my $CSV = new_csv_out;
 # from words (e.g. 'yeld', 'hectometre', 'detail') to the corresponding raw
 # values (e.g. ': ye°ld', ':> hectometer', '/n: di°täl; v: ditä°l').
 sub read_dict {
-    open my $file, '<', $IN_FILE or die "Unable to open $IN_FILE: $!";
+    open my $file, '<', $IN_FILE or die "Unable to open $IN_FILE: $!\n";
     my %dict;
 
     while (my $line = <$file>) {
-        $line =~ m{^(['\w]+)([:/].*)$} or die "Invalid line: $line";
-        my $word = $1;
+        $line =~ m{^(['\w]+)([:/].*)$} or die "Invalid line: $line\n";
+        my $word  = $1;
         my $value = $2;
         # Only add words with two or more letters as well as 'a'
         $dict{$word} = $value if length $word > 1 || $word eq 'a';
@@ -55,7 +55,7 @@ sub redirect_target {
 # if any.
 sub open_outfile_and_write_header {
     rename_to_backup_file_if_exists $OUT_FILE;
-    open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!";
+    open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!\n";
     $CSV->print($outfh, [qw(Traditional POS Redirect PhonEng RP GA)]);
     return $outfh;
 }
@@ -64,6 +64,7 @@ sub open_outfile_and_write_header {
 # espeak where pronunciation depends on the POS tag of the word.
 sub generate_tagged_espeak_input {
     my ($espeak_fh, $word, $pos) = @_;
+
     if ($pos eq 'v') {
         say $espeak_fh "to $word";
     } elsif ($pos eq 'n') {
@@ -75,18 +76,18 @@ sub generate_tagged_espeak_input {
     } elsif ($pos eq 'prp') {
         say $espeak_fh $word;  # espeak cannot properly distinguish this unique case anyway
     } else {
-        die "Unknown POS tag: $pos!";
+        die "Unknown POS tag: $pos\n";
     }
 }
 
-# write_entry $espeak_fh, $word, $dict: Writes input to be pronounced by espeak for a word.
+# prepare_espeak_input $espeak_fh, $word, $dict: Writes input to be pronounced by espeak.
 # If the pronunciation of the word depends on its POS tag, several lines will be written,
 # otherwise just one.
 sub prepare_espeak_input {
     my ($espeak_fh, $word, $dict) = @_;
-    my $value = $dict->{$word};
+    my $value           = $dict->{$word};
     my $redirect_target = redirect_target $value;
-    my $phonetic = '';
+    my $phonetic        = '';
 
     unless (defined $redirect_target) {  # Skip redirects
         if ($value =~ /^:\s+(.*)$/) {
@@ -98,11 +99,11 @@ sub prepare_espeak_input {
                 if ($tagged_pron =~ /^(.*):\s*(.*)$/) {
                     generate_tagged_espeak_input $espeak_fh, $word, $1;
                 } else {
-                    die "Invalid line: $word$value";
+                    die "Invalid line: $word$value\n";
                 }
             }
         } else {
-            die "Invalid line: $word$value";
+            die "Invalid line: $word$value\n";
         }
     }
 }
@@ -132,9 +133,9 @@ sub untag_espeak_output {
 # entries of these arrays will be consumed and the rest will be returned for subsequent calls.
 sub write_entry {
     my ($outfh, $word, $rp_pron_ref, $ga_pron_ref, $dict) = @_;
-    my $value = $dict->{$word};
+    my $value           = $dict->{$word};
     my $redirect_target = redirect_target $value;
-    my $phonetic = '';
+    my $phonetic        = '';
 
     if (defined $redirect_target) {
         # Redirect
@@ -155,11 +156,11 @@ sub write_entry {
                     $ga = '' if $ga eq $rp;  # Only print GA if different from RP
                     $CSV->print($outfh, [$word, $1, '', $2, $rp, $ga]);
                 } else {
-                    die "Invalid line: $word$value";
+                    die "Invalid line: $word$value\n";
                 }
             }
         } else {
-            die "Invalid line: $word$value";
+            die "Invalid line: $word$value\n";
         }
     }
 
@@ -169,7 +170,7 @@ sub write_entry {
 # Main block
 say 'Preparing input for espeak';
 my $dict = read_dict;
-open my $espeak_fh, '>', $ESPEAK_TMP or die "Unable to open $ESPEAK_TMP for writing: $!";
+open my $espeak_fh, '>', $ESPEAK_TMP or die "Unable to open $ESPEAK_TMP for writing: $!\n";
 prepare_espeak_input $espeak_fh, $_, $dict for sort { lc $a cmp lc $b } keys %$dict;
 close $espeak_fh;
 say 'Invoking espeak to generate British pronunciations';
@@ -178,7 +179,7 @@ say 'Invoking espeak to generate American pronunciations';
 my $ga_prons = `espeak -q --ipa -v en-us < $ESPEAK_TMP`;
 unlink $ESPEAK_TMP;
 say 'Generating final dictionary';
-my $outfh = open_outfile_and_write_header;
+my $outfh       = open_outfile_and_write_header;
 my $rp_pron_ref = [split /\s*\n\s*/, strip_spaces $rp_prons];
 my $ga_pron_ref = [split /\s*\n\s*/, strip_spaces $ga_prons];
 ($rp_pron_ref, $ga_pron_ref) = write_entry $outfh, $_, $rp_pron_ref, $ga_pron_ref, $dict

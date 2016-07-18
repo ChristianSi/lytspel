@@ -20,13 +20,13 @@ our @EXPORT = qw(new_csv_in new_csv_out write_csv_line rename_to_backup_file_if_
 # new_csv_in: Create an instance of Text::CSV_XS suitable for reading.
 # Any common line separators are accepted.
 sub new_csv_in {
-    return Text::CSV_XS->new({ auto_diag => 1 });
+    return Text::CSV_XS->new({auto_diag => 1});
 }
 
 # new_csv_out: Create an instance of Text::CSV_XS suitable for writing.
 # Lines are separated by the usual line separator of the used platform.
-sub new_csv_out: {
-    return Text::CSV_XS->new({ eol => "\n", auto_diag => 1 });
+sub new_csv_out : {
+    return Text::CSV_XS->new({eol => "\n", auto_diag => 1});
 }
 
 # rename_to_backup_file_if_exists $filename: renames a file into a backup
