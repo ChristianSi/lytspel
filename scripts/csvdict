@@ -5,6 +5,7 @@
 # See accompanying LICENSE file for licensing information.
 #
 # Required modules: Const::Fast and those listed in PhonEng.pm.
+# Required external programs (must be in path): espeak.
 
 use 5.014;
 use open qw(:std :utf8);  # use UTF-8 for all I/O (by default)
@@ -50,9 +51,8 @@ sub redirect_target {
     return $value =~ /^:>\s+(.*)$/ ? $1 : undef;
 }
 
-# open_outfile_and_write_header: Opens output file in CSV format and writes
-# the header file. Returns the opened file handle. Also backups an old version of the file,
-# if any.
+# open_outfile_and_write_header: Open output file in CSV format and write the header line.
+# Returns the opened file handle. Also backups an old version of the file, if any.
 sub open_outfile_and_write_header {
     rename_to_backup_file_if_exists $OUT_FILE;
     open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!\n";
