@@ -1,11 +1,14 @@
 SAMPA,IPA-UK,IPA-US,Phoneng,Lytspel,Sample,Notes
+',ˈ,,°,,,Stress marker
+-,ˌ,,-,,,Secondary stress marker (ignored)
 @,ə,,',e,lemon,
-@`,,ɚ,'r,er,number,RP doesn’t have this sound
+@`,-,ɚ,'r,er,number,RP doesn’t have this sound
 3:,ɜː,,ér,ur,turn,
 a,a,æ,a,,cat,
 A,ɑː,,á,aa,palm,
 aI,aɪ,,ï,ai,price,
 aU,aʊ,,aú,ou,mouth,
+a#,ɐ,,-,a,about,More schwa-like /a/
 b,,,,,bed,
 d,,,,,desk,
 D,ð,,,dh,this,
@@ -18,6 +21,7 @@ f,,,,,fat,
 g,ɡ,,g,,big,
 h,,,,,hot,
 I,ɪ,,i,,kid,
+I#,-,ᵻ,-,,cases,More schwa-like /I/
 i:,iː,,ë,ee,tree,
 i:,i,,,,fancy,Variant used by espeak (at end of words and in front of other vowels)
 j,,,y,,yes,
@@ -27,7 +31,8 @@ m,,,,,mad,
 n,,,,,now,
 N,ŋ,,ń,ng,long,
 O:,ɔː,,ó,au,law,
-or,,oːɹ,ö°r,oar,port,"RP doesn’t have this, using /Or/ instead"
+O:,ɔ,,-,,lost,Occasionally used variant (particularly in GA)
+or,-,oːɹ,ör,oar,port,"RP doesn’t have this, using /Or/ instead"
 OI,ɔɪ,,oi,,point,
 oU,əʊ,oʊ,ö,oa,boat,
 p,,,,,pop,
@@ -36,13 +41,15 @@ r,ɹ,,r,,run,
 s,,,,,sun,
 S,ʃ,,ś,sh,ship,
 t,,,,,test,
+t,-,ɾ,-,,better,Alternative /t/ pronunciation (GA only)
 T,θ,,þ,th,thin,
 tS,tʃ,,ć,ch,much,
 U,ʊ,,ú,oo,book,
 u:,uː,,ü,uu,soon,
 v,,,,,ever,
 V,ʌ,,u,,bus,
-w,,,w/ẃ,w,"week, when",Not distinguished in RP and GA (wine–whine merger)
+w,,,w,w,week,
+w,,,ẃ,,when,Not distinguished in RP and GA (wine–whine merger)
 z,,,,,zoo,
 Z,ʒ,,ź,zh,mirage,
 ,,,,,,
@@ -58,3 +65,5 @@ Ur,,,,,tour,Doesn’t need special treatment
 Vr,,,,urr,worry,
 ju:,,,,,value,
 jUr,,,,iur,Europe,
+An,ɔ̃,,-,,denouement,Nasal variant
+An,ɑ̃,,-,,croissant,Nasal variant
