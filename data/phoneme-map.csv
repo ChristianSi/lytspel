@@ -1,9 +1,11 @@
-SAMPA,IPA-UK,IPA-US,Phoneng,Lytspel,Sample,Notes
+SAMPA,IPA-UK,IPA-US,PhonEng,Lytspel,Sample,Notes
 ',ˈ,,°,,,Stress marker
 -,ˌ,,-,,,Secondary stress marker (ignored)
+-,ʲ,,-,,,Rarely used palatization marker (ignored)
 @,ə,,',e,lemon,
 @`,-,ɚ,'r,er,number,RP doesn’t have this sound
 3:,ɜː,,ér,ur,turn,
+E,-,,é,,danseuse,Occasionally used in foreign words
 a,a,æ,a,,cat,
 A,ɑː,,á,aa,palm,
 aI,aɪ,,ï,ai,price,
@@ -19,6 +21,7 @@ eI,eɪ,,ä,ei,face,
 Er,ɛɹ,,er,err,merry,
 f,,,,,fat,
 g,ɡ,,g,,big,
+g,ɣ,,-,,Miguel,Occasionally used in foreign words
 h,,,,,hot,
 I,ɪ,,i,,kid,
 I#,-,ᵻ,-,,cases,More schwa-like /I/
@@ -26,7 +29,10 @@ i:,iː,,ë,ee,tree,
 i:,i,,,,fancy,Variant used by espeak (at end of words and in front of other vowels)
 j,,,y,,yes,
 k,,,,c,cat,
+k,x,,-,,Ahmed,Occasionally used in foreign words
+k,ç,,-,,Utrecht,Occasionally used in foreign words
 l,,,,,leg,
+l,ɬ,,-,,llano,Occasionally used in foreign words
 m,,,,,mad,
 n,,,,,now,
 N,ŋ,,ń,ng,long,
@@ -35,9 +41,11 @@ O:,ɔ,,-,,lost,Occasionally used variant (particularly in GA)
 or,-,oːɹ,ör,oar,port,"RP doesn’t have this, using /Or/ instead"
 OI,ɔɪ,,oi,,point,
 oU,əʊ,oʊ,ö,oa,boat,
+oU,oː,,-,,adios,Occasionally used in foreign words
 p,,,,,pop,
 Q,ɒ,,o,,dog,GA doesn’t have this sound (unified with /A/)
 r,ɹ,,r,,run,
+r,r,,-,,,Occasionally used alternative
 s,,,,,sun,
 S,ʃ,,ś,sh,ship,
 t,,,,,test,
@@ -65,5 +73,7 @@ Ur,,,,,tour,Doesn’t need special treatment
 Vr,,,,urr,worry,
 ju:,,,,,value,
 jUr,,,,iur,Europe,
-An,ɔ̃,,-,,denouement,Nasal variant
-An,ɑ̃,,-,,croissant,Nasal variant
+An,ɔ̃,ɔ̃,,,denouement,Nasal variant
+An,ɑ̃,ɑ̃,,,croissant,Nasal variant
+t@,ʔ,ʔ,,,written,Glottal stop: /t/ followed by a barely audible schwa (esp. in GA)
+@l,,ɫ,,,squirrel,Rarely used in GA
