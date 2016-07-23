@@ -124,20 +124,29 @@ sub convert_pron {
             my $val = $mapref->{$start};
 
             if (defined $val) {  # Match found
+
+                # In PhonEng, move stress marker in front of stressed vowel
+                if ($alphabet_name eq 'PhonEng' && substr($rest, 0, 1) eq '°') {
+                    $converted .= "'";
+                    $rest = substr $rest, 1;
+                }
+
                 $converted .= $val;
                 $unconverted = $rest;
+
+                # Occasionally espeak inserts spaces or combining diacritical marks that can be
+                # ignored
+                $unconverted =~ s/^[ \p{InCombining_Diacritical_Marks}]+//s;
                 next OUTER;
             }
 
             $charcount--;
         }
 
-        die "No match found for converting $pron from $alphabet_name, unconverted part: "
-            . "$unconverted\n (already converted: $converted)"; # TODO delete already part
+        die "No match found for converting /$pron/ from $alphabet_name, unconverted part: "
+            . "/$unconverted/\n";
     }
 
-    # TODO Add missing pronunciations
-    say "Converted $pron to $converted using $alphabet_name";  # TODO
     return $converted;
 }
 
@@ -160,9 +169,19 @@ sub convert_dict {
         my $converted_phoneng = convert_pron $colref->[3], $phoneng_map, $maxkeylen, 'PhonEng';
         my $converted_rp = convert_pron $colref->[4], $rp_map, $maxkeylen, 'RP';
         my $converted_ga = convert_pron $colref->[5], $ga_map, $maxkeylen, 'GA';
-        # TODO Unify espeak and Phoneng spellings, defining suitable rules or otherwise manually
-        # disambiguating if necessary.
-        my $converted_col = [@$colref[0..2], $converted_phoneng, $converted_rp, $converted_ga];
+
+        # Omit GA if identical to RP
+        $converted_ga = '' if $converted_ga eq $converted_rp;
+
+        # Check whether PhonEng is identical to RP or GA
+        if ($converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga) {
+            $converted_phoneng = '';
+        } else {
+            # TODO Decide how to unify, defining suitable rules or otherwise manually disambiguating
+            $converted_phoneng = "!$converted_phoneng";
+        }
+
+        my $converted_col = [@$colref[0..2], $converted_rp, $converted_ga, $converted_phoneng];
         $CSV_OUT->print($outfh, $converted_col);
     }
 
