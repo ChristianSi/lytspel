@@ -640,15 +640,13 @@ Downloaded and installed knowledge sources:
     Ward](http://www.gutenberg.org/ebooks/3205). Created a `data` subdirectory
     named `moby` and unzipped it there.
 
-Invoke the dictbuilder program (written in Haskell):
+Invoked the `dictbuilder` program within the `data` directory. This writes
+a file called `phonetic-dict.txt`.
 
-    $ cd data
-    $ dictbuilder
+Invoked the `csvdict` script. This writes a file called
+`phoneng-espeak-dict.csv`.
 
-This writes a file called `phonetic-dict.txt`.
+Invoked the `mergeprons` script. This writes a file called `phonetic-dict.csv`.
 
-Invoke the csvdict script:
+Invoked the `lytspelify` script. This writes a file called `lytspel-dict.csv`.
 
-    $ csvdict
-
-This writes a file called `phoneng-espeak-dict.csv`.
