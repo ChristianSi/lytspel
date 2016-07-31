@@ -1,0 +1,226 @@
+#!/usr/bin/perl -CA
+# Convert phonetic SAMPA spellings into Lytspel.
+#
+# Copyright (c) 2016 Christian Siefkes
+# See accompanying LICENSE file for licensing information.
+#
+# Required modules: Const::Fast, Text::LevenshteinXS, and those listed in PhonEng.pm.
+
+use 5.014;
+use open qw(:std :utf8);  # use UTF-8 for all I/O (by default)
+use utf8;                 # allow UTF-8 in source code
+use warnings;
+
+use Const::Fast;
+use Cwd 'abs_path';
+use File::Basename 'dirname';
+use List::Util qw(min max);
+use Text::LevenshteinXS 'distance';
+
+use lib dirname(abs_path $0);  # to locate the PhonEng package
+use PhonEng;
+
+const my $IN_FILE          => 'phonetic-dict.csv';
+const my $OUT_FILE         => 'lytspel-dict.csv';
+const my $PHONEME_MAP      => 'phoneme-map.csv';
+
+const my $SAMPA_VOWELS     => '@:#3aAeEiIoOQuUV';         # vowel letters
+const my $SAMPA_CONSONANTS => '`bdDfghjklmnNprsStTvwzZ';  # consonant letters
+
+my $CSV_IN  = new_csv_in;
+my $CSV_OUT = new_csv_out;
+
+# build_mapping: Create and return a mapping from SAMPA to the standard Lytspel spellings.
+# Also return the length of the longest key in the map.
+sub build_mapping {
+    my %dict;
+    my $maxkeylen = 0;
+    open my $fh, '<', $PHONEME_MAP or die "Unable to open $PHONEME_MAP: $!\n";
+    my $colref = $CSV_IN->getline($fh);  # Skip header line
+
+    while ($colref = $CSV_IN->getline($fh)) {
+        my $sampa   = $colref->[0];
+        my $lytspel = $colref->[4];
+
+        # Skip if SAMPA or Lytspel entry is missing or if SAMPA is '-'
+        next unless valid_key($sampa) && $lytspel;
+
+        $maxkeylen = max $maxkeylen, length($lytspel);
+        $dict{$sampa} = $lytspel;
+
+        # Add stressed variant if phoneme is a consonant followed by a vowel
+        if ($sampa =~ /^[$SAMPA_CONSONANTS][$SAMPA_VOWELS]/) {
+            my $stressed_key = substr($sampa, 0, 1) . "'" . substr($sampa, 1);
+            my $stressed_val = "'$lytspel";
+            $maxkeylen = max $maxkeylen, length($stressed_val);
+            $dict{$stressed_key} = $stressed_val;
+        }
+    }
+
+    close $fh;
+    return \%dict, $maxkeylen;
+}
+
+# open_outfile_and_write_header: Open output file in CSV format and write the header line.
+# Returns the opened file handle. Also backups an old version of the file, if any.
+sub open_outfile_and_write_header {
+    rename_to_backup_file_if_exists $OUT_FILE;
+    open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!\n";
+    $CSV_OUT->print($outfh, [qw(Traditional POS RedirectLytspel)]);
+    return $outfh;
+}
+
+# e_or_u_or_other $other, $left, $right, $tradspell: Return 'e', 'o', or $other depending on which
+# is most similar to $tradspell. In case of a tie, 'e' is preferred over 'o' and  $other is
+# preferred over both. $other is ignored if it's is undefined or empty.
+sub e_or_u_or_other {
+    my ($other, $left, $right, $tradspell) = @_;
+    my $result = distance($tradspell, "${left}e$right") <= distance($tradspell, "${left}u$right")
+                 ? 'e' : 'u';
+
+    if ($other) {
+        $result = distance($tradspell, "$left$other$right")
+                  <= distance($tradspell, "$left$result$right")
+                  ? $other : $result;
+    }
+
+    return $result;
+}
+
+# adjust $val, $left, $right, $tradspell: Adjust a spelling applying context-specific rules.
+sub adjust {
+    my ($val, $left, $right, $tradspell) = @_;
+
+    if ($val eq '@') {
+        # /@/ becomes «e/u» depending on what's more similar to tradspell (in preference order)
+        return e_or_u_or_other '', $left, $right, $tradspell;
+    }
+
+    if ($val eq 'a#') {
+        # /a#/ becomes «a/e/u» depending on what's more similar to tradspell (in preference order)
+        return e_or_u_or_other 'a', $left, $right, $tradspell;
+    }
+
+    if ($val eq 'I#') {
+        # /I#/ becomes «i/e/u» depending on what's more similar to tradspell (in preference order)
+        return e_or_u_or_other 'i', $left, $right, $tradspell;
+    }
+
+    # TODO Distinguish consonant y from vowel Y and fix in final case conversion; use
+    # case-insensitive dist function for all comparisons
+    # TODO Recheck all conversion dicts
+    # TODO Eliminate double "r"
+    # TODO Final /@/ and /a#/ become «a»
+    return $val;
+}
+
+# convert_pron $pron, $mapref, $maxkeylen, $tradspell: Convert a pronunciation using a given
+# mapping alphabet (dictionary reference).
+# $maxkeylen is the maximumg length of keys that may occur in $mapref.
+sub convert_pron {
+    my ($pron, $mapref, $maxkeylen, $tradspell) = @_;
+    return '' unless $pron;  # Empty input
+
+    my $unconverted = $pron;
+    my $converted   = '';
+
+OUTER: while ($unconverted) {
+        my $charcount = min $maxkeylen, length $unconverted;
+
+    INNER: while ($charcount) {
+            my $start = substr $unconverted, 0, $charcount;
+            my $rest  = substr $unconverted, $charcount;
+            my $val   = $mapref->{$start};
+
+            if (defined $val) {  # Match found
+                $val = adjust $val, $converted, $rest, $tradspell;
+                $converted .= $val;
+                $unconverted = $rest;
+                next OUTER;
+            }
+
+            $charcount--;
+        }
+
+        die "No match found for converting /$pron/, unconverted part: /$unconverted/\n";
+    }
+
+    return $converted;
+}
+
+# select_nearest_and_calc_distance: Select among the three converted spellings the one that's
+# closest to $tradspell and return it. Also returns the edit distance between the selected
+# spelling and $tradspell as a second value.
+# $converted_ga and $converted_phoneng may be empty.
+sub select_nearest_and_calc_distance {
+    my ($converted_rp, $converted_ga, $converted_phoneng, $tradspell) = @_;
+    my $dist = distance $converted_rp, $tradspell;
+    return $converted_rp, $converted_ga, $converted_phoneng, $dist;
+    # TODO Implement correctly and test
+    my $selected = 'RP';
+
+    if ($converted_ga) {
+        my $dist_ga = distance $converted_ga, $tradspell;
+
+        if ($dist_ga == $dist) {
+            warn "Identical distance from RP:$converted_rp and GA:$converted_ga to $tradspell";
+        } elsif ($dist_ga == $dist) {
+            $dist = $dist_ga;
+            $selected = 'GA';
+        }
+    }
+
+    # TODO For now, we just prefix the choosen value with a '*'
+}
+
+# convert_dict: Convert SAMPA spellings to Lytspel.
+sub convert_dict {
+    my ($mapref, $maxkeylen) = build_mapping;
+    open my $infh, '<', $IN_FILE or die "Unable to open $IN_FILE: $!\n";
+    my $colref = $CSV_IN->getline($infh);       # Skip header line
+    my $outfh  = open_outfile_and_write_header;
+    my $summed_dist = 0;
+    my $wordcount = 0;
+
+    while ($colref = $CSV_IN->getline($infh)) {
+        if (scalar @$colref < 4) {
+            # Nothing to convert, just output line as is
+            $CSV_OUT->print($outfh, $colref);
+            next;
+        }
+
+        my $tradspell         = $colref->[0];
+        my $converted_rp      = convert_pron $colref->[3], $mapref, $maxkeylen, $tradspell;
+        my $converted_ga      = convert_pron $colref->[4], $mapref, $maxkeylen, $tradspell;
+        my $converted_phoneng = convert_pron $colref->[5], $mapref, $maxkeylen, $tradspell;
+
+        # Omit GA if identical to RP
+        $converted_ga = '' if $converted_ga eq $converted_rp;
+        # Omit PhonEng if identical to RP or GA
+        $converted_phoneng = ''
+            if $converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga;
+
+        # TODO Restore capitalization
+
+        # TODO Keep only the spelling that's closest to tradspell.
+        my $dist;
+        ($converted_rp, $converted_ga, $converted_phoneng, $dist) = select_nearest_and_calc_distance
+                $converted_rp, $converted_ga, $converted_phoneng, $tradspell;
+        $summed_dist += $dist;
+        $wordcount++;
+
+        # TODO Move stress marker before stressed syllable, omitting if the first vowel is the
+        # stressed one.
+        $CSV_OUT->print($outfh,
+            [@$colref[0 .. 2], $converted_rp, $converted_ga, $converted_phoneng]);
+    }
+
+    my $avg_dist = $summed_dist / $wordcount;
+    say "Average distance between tradspell and Lytspel: $avg_dist";
+
+    close $infh;
+    close $outfh;
+}
+
+# Main block
+convert_dict;
