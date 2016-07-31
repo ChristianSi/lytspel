@@ -15,7 +15,7 @@ use warnings;
 use Exporter 'import';
 use Text::CSV_XS;
 
-our @EXPORT = qw(new_csv_in new_csv_out write_csv_line rename_to_backup_file_if_exists);
+our @EXPORT = qw(new_csv_in new_csv_out write_csv_line rename_to_backup_file_if_exists valid_key);
 
 # new_csv_in: Create an instance of Text::CSV_XS suitable for reading.
 # Any common line separators are accepted.
@@ -36,6 +36,13 @@ sub new_csv_out : {
 sub rename_to_backup_file_if_exists {
     my ($filename) = @_;
     rename $filename, "$filename.bak" if -e $filename;
+}
+
+# valid_key $key: Check whether a mapping key is valid. Empty or undefined keys are invalid;
+# '-' is invalid too (it marks keys that should be skipped).
+sub valid_key {
+    my $key = shift;
+    return $key && $key ne '-';
 }
 
 1;

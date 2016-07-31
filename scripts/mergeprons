@@ -19,32 +19,25 @@ use List::Util qw(min max);
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
 
-const my $IN_FILE  => 'phoneng-espeak-dict.csv';
-const my $OUT_FILE => 'phonetic-dict.csv';
+const my $IN_FILE     => 'phoneng-espeak-dict.csv';
+const my $OUT_FILE    => 'phonetic-dict.csv';
 const my $PHONEME_MAP => 'phoneme-map.csv';
 
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
 
-# valid $key: Check whether a mapping key is valid. Empty or undefined keys are invalid;
-# '-' is invalid too (it marks keys that should be skipped).
-sub valid {
-    my $key = shift;
-    return $key && $key ne '-';
-}
-
 # build_mappings: Create and return three mappings from IPA-UK / IPA-US / Phoneng to SAMPA.
 # Also return the length of the longest key in any of the maps.
 sub build_mappings {
     my (%rp_map, %ga_map, %phoneng_map);
-    my $maxkeylen = 0;
+    my $maxkeylen  = 0;
     my $combi_mode = 0;
-    open my $fh, '<', $PHONEME_MAP or die "Unable to open $PHONEME_MAP $!\n";
+    open my $fh, '<', $PHONEME_MAP or die "Unable to open $PHONEME_MAP: $!\n";
     my $colref = $CSV_IN->getline($fh);  # Skip header line
 
     while ($colref = $CSV_IN->getline($fh)) {
         my $sampa = $colref->[0];
-        next unless $sampa;  # Skip empty lines
+        next unless $sampa;              # Skip empty lines
 
         if ($sampa eq '#') {
             # '#' marks the beginning of sound combinations where only explicitly listed values
@@ -53,22 +46,22 @@ sub build_mappings {
             next;
         }
 
-        my $rp = $colref->[1];
-        my $ga = $colref->[2];
+        my $rp      = $colref->[1];
+        my $ga      = $colref->[2];
         my $phoneng = $colref->[3];
         $maxkeylen = max $maxkeylen, length($rp), length($ga), length($phoneng);
 
         unless ($combi_mode) {
             # Empty fields indicate that the latest explictly set value should be used instead
-            $rp ||= $sampa;
-            $ga ||= $rp;
+            $rp      ||= $sampa;
+            $ga      ||= $rp;
             $phoneng ||= $ga;
         }
 
-        $sampa = '' if $sampa eq '-';  # '-' is used for tokens that should be ignored
-        $rp_map{$rp} = $sampa if valid $rp;
-        $ga_map{$ga} = $sampa if valid $ga;
-        $phoneng_map{$phoneng} = $sampa if valid $phoneng;
+        $sampa       = ''     if $sampa eq '-';  # '-' is used for tokens that should be ignored
+        $rp_map{$rp} = $sampa if valid_key $rp;
+        $ga_map{$ga} = $sampa if valid_key $ga;
+        $phoneng_map{$phoneng} = $sampa if valid_key $phoneng;
     }
 
     close $fh;
@@ -100,7 +93,7 @@ sub add_stressed_r_colored_vowels {
 sub open_outfile_and_write_header {
     rename_to_backup_file_if_exists $OUT_FILE;
     open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!\n";
-    $CSV_OUT->print($outfh, [qw(Traditional POS Redirect RP GA)]);
+    $CSV_OUT->print($outfh, [qw(Traditional POS Redirect RP GA PhonEng)]);
     return $outfh;
 }
 
@@ -113,15 +106,15 @@ sub convert_pron {
     return '' unless $pron;  # Empty input
 
     my $unconverted = $pron;
-    my $converted = '';
+    my $converted   = '';
 
-    OUTER: while ($unconverted) {
+OUTER: while ($unconverted) {
         my $charcount = min $maxkeylen, length $unconverted;
 
-        INNER: while ($charcount) {
+    INNER: while ($charcount) {
             my $start = substr $unconverted, 0, $charcount;
-            my $rest = substr $unconverted, $charcount;
-            my $val = $mapref->{$start};
+            my $rest  = substr $unconverted, $charcount;
+            my $val   = $mapref->{$start};
 
             if (defined $val) {  # Match found
 
@@ -156,33 +149,28 @@ sub convert_dict {
     my ($rp_map, $ga_map, $phoneng_map, $maxkeylen) = build_mappings;
     $phoneng_map = add_stressed_r_colored_vowels $phoneng_map;
     open my $infh, '<', $IN_FILE or die "Unable to open $IN_FILE: $!\n";
-    my $colref = $CSV_IN->getline($infh);  # Skip header line
-    my $outfh = open_outfile_and_write_header;
+    my $colref = $CSV_IN->getline($infh);       # Skip header line
+    my $outfh  = open_outfile_and_write_header;
 
     while ($colref = $CSV_IN->getline($infh)) {
         if (scalar @$colref < 4) {
-            # Nothing to convert, just outline line as is
+            # Nothing to convert, just output line as is
             $CSV_OUT->print($outfh, $colref);
             next;
         }
 
         my $converted_phoneng = convert_pron $colref->[3], $phoneng_map, $maxkeylen, 'PhonEng';
-        my $converted_rp = convert_pron $colref->[4], $rp_map, $maxkeylen, 'RP';
-        my $converted_ga = convert_pron $colref->[5], $ga_map, $maxkeylen, 'GA';
+        my $converted_rp      = convert_pron $colref->[4], $rp_map,      $maxkeylen, 'RP';
+        my $converted_ga      = convert_pron $colref->[5], $ga_map,      $maxkeylen, 'GA';
 
         # Omit GA if identical to RP
         $converted_ga = '' if $converted_ga eq $converted_rp;
+        # Omit PhonEng if identical to RP or GA
+        $converted_phoneng = ''
+            if $converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga;
 
-        # Check whether PhonEng is identical to RP or GA
-        if ($converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga) {
-            $converted_phoneng = '';
-        } else {
-            # TODO Decide how to unify, defining suitable rules or otherwise manually disambiguating
-            $converted_phoneng = "!$converted_phoneng";
-        }
-
-        my $converted_col = [@$colref[0..2], $converted_rp, $converted_ga, $converted_phoneng];
-        $CSV_OUT->print($outfh, $converted_col);
+        $CSV_OUT->print($outfh,
+            [@$colref[0 .. 2], $converted_rp, $converted_ga, $converted_phoneng]);
     }
 
     close $infh;
