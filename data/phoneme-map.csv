@@ -1,77 +1,77 @@
 SAMPA,IPA-UK,IPA-US,PhonEng,Lytspel,Sample,Notes
-',ˈ,,°,,,Stress marker
+',ˈ,,°,',,Stress marker
 -,ˌ,,-,,,Secondary stress marker (ignored)
 -,ʲ,,-,,,Rarely used palatization marker (ignored)
-@,ə,,',e,lemon,
+@,ə,,',@,lemon,
 @`,-,ɚ,'r,er,number,RP doesn’t have this sound
 3:,ɜː,,ér,ur,turn,
 E,-,,é,,danseuse,Occasionally used in foreign words
-a,a,æ,a,,cat,
+a,a,æ,a,a,cat,
 A,ɑː,,á,aa,palm,
-aI,aɪ,,ï,ai,price,
+aI,aɪ,,ï,y,price,
 aU,aʊ,,aú,ou,mouth,
-a#,ɐ,,-,a,about,More schwa-like /a/
-b,,,,,bed,
-d,,,,,desk,
+a#,ɐ,,-,a#,about,More schwa-like /a/
+b,,,,b,bed,
+d,,,,d,desk,
 D,ð,,,dh,this,
-dZ,dʒ,,j,,joy,
-E,ɛ,,e,,pen,
-e@,eə,,är,eir,hair,GA doesn’t have this combination (Mary–merry merger)
-eI,eɪ,,ä,ei,face,
+dZ,dʒ,,j,j,joy,
+E,ɛ,,e,e,pen,
+e@,eə,,är,air,hair,GA doesn’t have this combination (Mary–merry merger)
+eI,eɪ,,ä,ai,face,
 Er,ɛɹ,,er,err,merry,
-f,,,,,fat,
-g,ɡ,,g,,big,
+f,,,,f,fat,
+g,ɡ,,g,g,big,
 g,ɣ,,-,,Miguel,Occasionally used in foreign words
-h,,,,,hot,
-I,ɪ,,i,,kid,
-I#,-,ᵻ,-,,cases,More schwa-like /I/
+h,,,,h,hot,
+I,ɪ,,i,i,kid,
+I#,-,ᵻ,-,I#,cases,More schwa-like /I/
 i:,iː,,ë,ee,tree,
-i:,i,,,,fancy,Variant used by espeak (at end of words and in front of other vowels)
-j,,,y,,yes,
-k,,,,c,cat,
+i:,i,,-,,fancy,Variant used by espeak (at end of words and in front of other vowels)
+j,,,y,y,yes,
+k,,,,k,cat,
 k,x,,-,,Ahmed,Occasionally used in foreign words
 k,ç,,-,,Utrecht,Occasionally used in foreign words
-l,,,,,leg,
+l,,,,l,leg,
 l,ɬ,,-,,llano,Occasionally used in foreign words
-m,,,,,mad,
-n,,,,,now,
+m,,,,m,mad,
+n,,,,n,now,
 N,ŋ,,ń,ng,long,
 O:,ɔː,,ó,au,law,
 O:,ɔ,,-,,lost,Occasionally used variant (particularly in GA)
 or,-,oːɹ,ör,oar,port,"RP doesn’t have this, using /Or/ instead"
-OI,ɔɪ,,oi,,point,
+OI,ɔɪ,,oi,oi,point,
 oU,əʊ,oʊ,ö,oa,boat,
 oU,oː,,-,,adios,Occasionally used in foreign words
-p,,,,,pop,
-Q,ɒ,,o,,dog,GA doesn’t have this sound (unified with /A/)
-r,ɹ,,r,,run,
+p,,,,p,pop,
+Q,ɒ,,o,o,dog,GA doesn’t have this sound (unified with /A/)
+r,ɹ,,r,r,run,
 r,r,,-,,,Occasionally used alternative
-s,,,,,sun,
+s,,,,s,sun,
 S,ʃ,,ś,sh,ship,
-t,,,,,test,
+t,,,,t,test,
 t,-,ɾ,-,,better,Alternative /t/ pronunciation (GA only)
 T,θ,,þ,th,thin,
 tS,tʃ,,ć,ch,much,
 U,ʊ,,ú,oo,book,
 u:,uː,,ü,uu,soon,
-v,,,,,ever,
-V,ʌ,,u,,bus,
+v,,,,v,ever,
+V,ʌ,,u,u,bus,
 w,,,w,w,week,
 w,,,ẃ,,when,Not distinguished in RP and GA (wine–whine merger)
-z,,,,,zoo,
+z,,,,z,zoo,
 Z,ʒ,,ź,zh,mirage,
 ,,,,,,
 #,,,,,,SOUND COMBINATIONS
 Ar,,,,ar,dark,
 ar,,,,arr,carry,
-aUr,,aɪʊɹ,,our,flour,RP doesn’t have this combination (no distinction between “flour” and “flower”)
+aUr,,aɪʊɹ,,,flour,RP doesn’t have this combination (no distinction between “flour” and “flower”)
 i@,,,,eer,year,GA doesn’t have this combination due to the mirror–mere merger
 Ir,,,,,mirror,Doesn’t need special treatment
 Or,,,,or,north,
 Qr,,,,orr,sorry,"GA doesn’t have this combination, using /Or/ instead"
-Ur,,,,,tour,Doesn’t need special treatment
+Ur,ʊəɹ,,,,tour,
 Vr,,,,urr,worry,
-ju:,,,,,value,
+ju:,,,,iu,value,
 jUr,,,,iur,Europe,
 An,ɔ̃,ɔ̃,,,denouement,Nasal variant
 An,ɑ̃,ɑ̃,,,croissant,Nasal variant
