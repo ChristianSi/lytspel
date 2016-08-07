@@ -70,48 +70,113 @@ sub open_outfile_and_write_header {
     return $outfh;
 }
 
+# delsep $str: Delete any occurrences of '=' (used as separator) from a string.
+sub delsep {
+    my $str = shift;
+    $str =~ s/=//g;
+    return $str;
+}
+
+# dist $str1, $str2: Calculate the Levenshtein edit distance between two strings, ignoring case.
+# Separators are deleted from both strings before doing the conversion:
+sub dist {
+    my ($str1, $str2) = @_;
+    return distance(lc(delsep $str1), lc(delsep $str2));
+}
+
 # e_or_u_or_other $other, $left, $right, $tradspell: Return 'e', 'o', or $other depending on which
 # is most similar to $tradspell. In case of a tie, 'e' is preferred over 'o' and  $other is
 # preferred over both. $other is ignored if it's is undefined or empty.
 sub e_or_u_or_other {
     my ($other, $left, $right, $tradspell) = @_;
-    my $result = distance($tradspell, "${left}e$right") <= distance($tradspell, "${left}u$right")
+    my $result = dist($tradspell, "${left}e$right") <= dist($tradspell, "${left}u$right")
                  ? 'e' : 'u';
 
     if ($other) {
-        $result = distance($tradspell, "$left$other$right")
-                  <= distance($tradspell, "$left$result$right")
+        $result = dist($tradspell, "$left$other$right")
+                  <= dist($tradspell, "$left$result$right")
                   ? $other : $result;
     }
 
     return $result;
 }
 
-# adjust $val, $left, $right, $tradspell: Adjust a spelling applying context-specific rules.
-sub adjust {
+# combine $left, $right: Combine two strings into one.
+# Except when $left ends with a stress marker ("'"), the strings are separated by '='.
+sub combine {
+    my ($left, $right) = @_;
+    return $left =~ /'$/ ? "$left$right" : "$left=$right";
+}
+
+# combine_and_adjust $val, $left, $right, $tradspell: Combine $left and $val into a joined
+# string, applying context-specific rules to the resulting spelling as suitable.
+sub combine_and_adjust {
     my ($val, $left, $right, $tradspell) = @_;
+
+    if ($right eq '') {
+        # End of word spellings
+
+        if ($val eq '@' || $val eq 'a#') {
+            # Final schwa becomes «er» if tradspell ends in ‹r› (typical for non-rhotic RP),
+            # otherwise «a»
+            $val = $tradspell =~ /r$/ ? 'er' : 'a';
+        }
+    }
 
     if ($val eq '@') {
         # /@/ becomes «e/u» depending on what's more similar to tradspell (in preference order)
-        return e_or_u_or_other '', $left, $right, $tradspell;
-    }
-
-    if ($val eq 'a#') {
+        $val = e_or_u_or_other('', $left, $right, $tradspell);
+    } elsif ($val eq 'a#') {
         # /a#/ becomes «a/e/u» depending on what's more similar to tradspell (in preference order)
-        return e_or_u_or_other 'a', $left, $right, $tradspell;
-    }
-
-    if ($val eq 'I#') {
+        $val = e_or_u_or_other('a', $left, $right, $tradspell);
+    } elsif ($val eq 'I#') {
         # /I#/ becomes «i/e/u» depending on what's more similar to tradspell (in preference order)
-        return e_or_u_or_other 'i', $left, $right, $tradspell;
+        $val = e_or_u_or_other('i', $left, $right, $tradspell);
+    } elsif ($val eq 'r' && $left =~ /r$/) {
+        # Eliminate double «r»
+        return $left;
     }
 
-    # TODO Distinguish consonant y from vowel Y and fix in final case conversion; use
-    # case-insensitive dist function for all comparisons
-    # TODO Recheck all conversion dicts
-    # TODO Eliminate double "r"
-    # TODO Final /@/ and /a#/ become «a»
-    return $val;
+    if ($val !~ /^['eiY]/) {
+        # Non-final /k/ becomes «c» unless followed by a vowel starting with «e, i, y»
+        $left =~ s/k$/c/;
+        $left =~ s/k='$/c='/;
+    }
+
+    # TODO Implement rules from README from sound /k/ (end-of-word spellings)
+    # TODO Generally use «ue» in cases were RP has /j'u:/ and GA has /u:/, e.g. ‹new›
+    # (PhonEng may have either)
+    # TODO Generally use «eer» in cases were RP has /i:@/ and GA has /Ir/, e.g. ‹year, peculiar›
+    # (ignoring PhonEng?)
+    return combine($left, $val);
+}
+
+# restore_capitalization $converted, $tradspell: Restore the proper capitalization of a converted
+# word. Also deletes separators ('=').
+sub restore_capitalization {
+    my ($converted, $tradspell) = @_;
+     # Delete separators ('=') and lower-case capital letters (vowel «Y» as distinguished from
+     # consonant «y»)
+    $converted = lc(delsep $converted);
+    if ($tradspell =~ /^[A-Z][a-z']*$/) {  # Capitalized
+        $converted = ucfirst $converted;
+    }
+    # TODO Later fully restore capitalization to match tradspell:
+    # Mc|MacCapitalized becomes McCapitalized, e.g. «McAdem, McDowel» ‹McAdam, McDowell›;
+    # a repeated /k/ sound is preserved, e.g. «McCoy, McKinli» ‹...McKinley›
+    # The stress marker is omitted since the second (capitalized) syllable is always stressed
+    # (except McEnroe, McIntosh, McIntyre, McNamara where the first syllable is stressed --
+    # probably rewrite those without capital letter e.g. as «Makintosh»; ‹Macintosh› is already
+    # in the dict)
+    # Preserve D?Capitalized by capitalizing the first two vowels, e.g. «DiCaprio, DuuPont»
+    # ‹...DuPont›; the stress marker is omitted since the second syllable is always stressed
+    # Preserve O'Capitalized, e.g. «O'Braien» ‹O'Brien›; the capitalized O is spoken /oU/
+    # N'Djamena and IJssel become simple capitalized words
+    # Other Cap'Capitalized words are dropped as foreign names, e.g. ‹L'Oreal›
+    # ALL CAPS and other forms are considered proper names or abbreviations are also dropped
+    # lowercase (including apostrophes)
+    ##if ($tradspell =~ /^[a-z']+$/) {  # lowercase (including apostrophes)
+    return $converted;
 }
 
 # convert_pron $pron, $mapref, $maxkeylen, $tradspell: Convert a pronunciation using a given
@@ -133,8 +198,7 @@ OUTER: while ($unconverted) {
             my $val   = $mapref->{$start};
 
             if (defined $val) {  # Match found
-                $val = adjust $val, $converted, $rest, $tradspell;
-                $converted .= $val;
+                $converted = combine_and_adjust $val, $converted, $rest, $tradspell;
                 $unconverted = $rest;
                 next OUTER;
             }
@@ -145,7 +209,25 @@ OUTER: while ($unconverted) {
         die "No match found for converting /$pron/, unconverted part: /$unconverted/\n";
     }
 
+    $converted = restore_capitalization $converted, $tradspell;
     return $converted;
+}
+
+# choose_nearer_or_shorter $first, $second, $tradspell: Choose and return $first or $second
+# depending on which one is more similar to $tradspell.
+# If both are equally similar, the shorter one is returned
+# If there is still a tie, $first is returned.
+# If $second is undefined or empty, $first is returned without further checks.
+sub choose_nearer_or_shorter {
+    my ($first, $second, $tradspell) = @_;
+    return $first unless $second;
+
+    my $comp = dist($first, $tradspell) <=> dist($second, $tradspell);
+    $comp = length($first) <=> length($second) unless $comp;
+    ## TODO Find out how to disambiguiate these cases
+    #warn "$first and $second have equal distance to $tradspell and equal length\n" unless $comp;
+
+    return ($comp <= 0) ? $first : $second;
 }
 
 # select_nearest_and_calc_distance: Select among the three converted spellings the one that's
@@ -154,23 +236,21 @@ OUTER: while ($unconverted) {
 # $converted_ga and $converted_phoneng may be empty.
 sub select_nearest_and_calc_distance {
     my ($converted_rp, $converted_ga, $converted_phoneng, $tradspell) = @_;
-    my $dist = distance $converted_rp, $tradspell;
-    return $converted_rp, $converted_ga, $converted_phoneng, $dist;
-    # TODO Implement correctly and test
-    my $selected = 'RP';
-
-    if ($converted_ga) {
-        my $dist_ga = distance $converted_ga, $tradspell;
-
-        if ($dist_ga == $dist) {
-            warn "Identical distance from RP:$converted_rp and GA:$converted_ga to $tradspell";
-        } elsif ($dist_ga == $dist) {
-            $dist = $dist_ga;
-            $selected = 'GA';
-        }
-    }
+    my $choosen = choose_nearer_or_shorter $converted_rp, $converted_ga, $tradspell;
+    $choosen = choose_nearer_or_shorter $choosen, $converted_phoneng, $tradspell;
+    my $dist = dist $choosen, $tradspell;
 
     # TODO For now, we just prefix the choosen value with a '*'
+    if ($choosen eq $converted_rp) {
+        # Omit '*' if it's the only value
+        $converted_rp = "*$converted_rp" if $converted_ga || $converted_phoneng;
+    } elsif ($choosen eq $converted_ga) {
+        $converted_ga = "*$converted_ga";
+    } else {
+        $converted_phoneng = "*$converted_phoneng";
+    }
+
+    return $converted_rp, $converted_ga, $converted_phoneng, $dist;
 }
 
 # convert_dict: Convert SAMPA spellings to Lytspel.
@@ -200,9 +280,7 @@ sub convert_dict {
         $converted_phoneng = ''
             if $converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga;
 
-        # TODO Restore capitalization
-
-        # TODO Keep only the spelling that's closest to tradspell.
+        # TODO Finally keep only the spelling that's closest to tradspell.
         my $dist;
         ($converted_rp, $converted_ga, $converted_phoneng, $dist) = select_nearest_and_calc_distance
                 $converted_rp, $converted_ga, $converted_phoneng, $tradspell;
@@ -213,6 +291,8 @@ sub convert_dict {
         # stressed one.
         $CSV_OUT->print($outfh,
             [@$colref[0 .. 2], $converted_rp, $converted_ga, $converted_phoneng]);
+
+        # TODO Finally drop POS tag if all variants are written the same, e.g. «mouth»
     }
 
     my $avg_dist = $summed_dist / $wordcount;
