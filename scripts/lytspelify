@@ -24,8 +24,13 @@ const my $IN_FILE          => 'phonetic-dict.csv';
 const my $OUT_FILE         => 'lytspel-dict.csv';
 const my $PHONEME_MAP      => 'phoneme-map.csv';
 
-const my $SAMPA_VOWELS     => '@:#3aAeEiIoOQuUV';         # vowel letters
-const my $SAMPA_CONSONANTS => '`bdDfghjklmnNprsStTvwzZ';  # consonant letters
+# Vowel letters in SAMPA and Lytspel
+const my $SAMPA_VOWELS      => '@:#3aAeEiIoOQuUV';
+const my $LYTSPEL_VOWELS    => '[aeiouY]';
+# Consonant letters
+const my $SAMPA_CONSONANTS  => '`bdDfghjklmnNprsStTvwzZ';
+# Pattern fragment matching an optional stress marker
+const my $OPT_STRESS_MARKER => "(?:=')?";
 
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
@@ -84,8 +89,8 @@ sub dist {
     return distance(lc(delsep $str1), lc(delsep $str2));
 }
 
-# e_or_u_or_other $other, $left, $right, $tradspell: Return 'e', 'o', or $other depending on which
-# is most similar to $tradspell. In case of a tie, 'e' is preferred over 'o' and  $other is
+# e_or_u_or_other $other, $left, $right, $tradspell: Return 'e', 'u', or $other depending on which
+# is most similar to $tradspell. In case of a tie, 'e' is preferred over 'u' and $other is
 # preferred over both. $other is ignored if it's is undefined or empty.
 sub e_or_u_or_other {
     my ($other, $left, $right, $tradspell) = @_;
@@ -99,6 +104,28 @@ sub e_or_u_or_other {
     }
 
     return $result;
+}
+
+# any_short_vowel $left, $right, $tradspell: Return any of the five vowel letters depending on
+# which is most similar to $tradspell. Ties are resolved by preferring the left-most match from
+# the following list: e, u, a, o, i. ('e' and 'u' are generally preferred because their sound
+# is close to a schwa sound, the other vowel letters are ranked by how often they represent a
+# schwa in tradspel.)
+sub any_short_vowel {
+    my ($left, $right, $tradspell) = @_;
+    my $chosen = '';
+    my $olddist = 1000;
+
+    for my $vowel (qw/e u a o i/) {
+        my $newdist = dist($tradspell, "$left$vowel$right");
+
+        if ($newdist < $olddist) {
+            $chosen = $vowel;
+            $olddist = $newdist;
+        }
+    }
+
+    return $chosen;
 }
 
 # combine $left, $right: Combine two strings into one.
@@ -120,10 +147,20 @@ sub combine_and_adjust {
             # Final schwa becomes «er» if tradspell ends in ‹r› (typical for non-rhotic RP),
             # otherwise «a»
             $val = $tradspell =~ /r$/ ? 'er' : 'a';
+        } elsif ($val eq 'k' && $left =~ /[^'aeou]i$/) {
+            # «c» is used at the end of words ending in unstressed /Ik/
+            $val = 'c';
+        } elsif ($left !~ /([fkpt]|th)$/) {
+            # Final /s/ becomes «ss» and /z/ becomes «s» except after /f, k, p, t, T/
+            $val = 'ss' if $val eq 's';
+            $val = 's' if $val eq 'z';
         }
     }
 
-    if ($val eq '@') {
+    if ($val =~ /^(@|a#|I#)$/ && $right =~ /^[$SAMPA_CONSONANTS]*'/) {
+        # Any schwa followed by a stressed vowel can become «e/u/a/o/i» (in preference order)
+        $val = any_short_vowel $left, $right, $tradspell;
+    } elsif ($val eq '@') {
         # /@/ becomes «e/u» depending on what's more similar to tradspell (in preference order)
         $val = e_or_u_or_other('', $left, $right, $tradspell);
     } elsif ($val eq 'a#') {
@@ -137,13 +174,28 @@ sub combine_and_adjust {
         return $left;
     }
 
-    if ($val !~ /^['eiY]/) {
-        # Non-final /k/ becomes «c» unless followed by a vowel starting with «e, i, y»
-        $left =~ s/k$/c/;
-        $left =~ s/k='$/c='/;
+    if ($val =~ /^[aou]/) {
+        # /s/ becomes «ss» between any vowel and a vowel starting with «a, o, u»
+        $left =~ s/($LYTSPEL_VOWELS=)s($OPT_STRESS_MARKER)$/$1ss$2/;
+    } elsif ($val =~ /^[eiY]/) {
+        # /s/ becomes «c» between any vowel and a vowel starting with «e, i, y»
+        $left =~ s/($LYTSPEL_VOWELS=)s($OPT_STRESS_MARKER)$/$1c$2/;
     }
 
-    # TODO Implement rules from README from sound /k/ (end-of-word spellings)
+    if ($val !~ /^['eiY]/) {
+        # Non-final /k/ becomes «c» unless followed by a vowel starting with «e, i, y»
+        $left =~ s/k($OPT_STRESS_MARKER)$/c$1/;
+    }
+
+    if ($val =~ /^$LYTSPEL_VOWELS/) {
+        # /z/ becomes «s» between two vowels
+        $left =~ s/($LYTSPEL_VOWELS=)z($OPT_STRESS_MARKER)$/$1s$2/;
+
+    }
+
+    # TODO Implement rules from README from l.200 (Between some consonant pairs at the end of words)
+    # TODO Handle prefixes and suffixes correctly («dis, mis» are spelled like that regardless
+    # of which letter follows)
     # TODO Generally use «ue» in cases were RP has /j'u:/ and GA has /u:/, e.g. ‹new›
     # (PhonEng may have either)
     # TODO Generally use «eer» in cases were RP has /i:@/ and GA has /Ir/, e.g. ‹year, peculiar›
@@ -288,7 +340,7 @@ sub convert_dict {
         $wordcount++;
 
         # TODO Move stress marker before stressed syllable, omitting if the first vowel is the
-        # stressed one.
+        # stressed one («ss» is separated by the marker: as'sault, as'sumption)
         $CSV_OUT->print($outfh,
             [@$colref[0 .. 2], $converted_rp, $converted_ga, $converted_phoneng]);
 
