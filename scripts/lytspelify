@@ -75,6 +75,14 @@ sub open_outfile_and_write_header {
     return $outfh;
 }
 
+# prepare_pron $pron: Fix the pronunication of a word by normalizing non-standard forms.
+sub prepare_pron {
+    my $pron = shift;
+    # Normalize alternative forms of the r-colored schwa
+    $pron =~ s/(?<![ei])\@r|\@`r|a#r/\@`/g;
+    return $pron;
+}
+
 # delsep $str: Delete any occurrences of '=' (used as separator) from a string.
 sub delsep {
     my $str = shift;
@@ -129,10 +137,11 @@ sub any_short_vowel {
 }
 
 # combine $left, $right: Combine two strings into one.
-# Except when $left ends with a stress marker ("'"), the strings are separated by '='.
+# Except when $left ends with a stress marker ("'") or $right is empty, the strings are separated
+# by '='.
 sub combine {
     my ($left, $right) = @_;
-    return $left =~ /'$/ ? "$left$right" : "$left=$right";
+    return $left =~ /'$/ || $right eq '' ? "$left$right" : "$left=$right";
 }
 
 # combine_and_adjust $val, $left, $right, $tradspell: Combine $left and $val into a joined
@@ -152,12 +161,33 @@ sub combine_and_adjust {
             $val = 'c';
         } elsif ($left !~ /([fkpt]|th)$/) {
             # Final /s/ becomes «ss» and /z/ becomes «s» except after /f, k, p, t, T/
-            $val = 'ss' if $val eq 's';
-            $val = 's' if $val eq 'z';
+            if ($val eq 's') {
+                $val = 'ss';
+            } elsif ($val eq 'z') {
+                $val = 's';
+            }
         }
     }
 
-    if ($val =~ /^(@|a#|I#)$/ && $right =~ /^[$SAMPA_CONSONANTS]*'/) {
+    if ($val eq '@' && $right eq 'l' && $left =~ /[bpdtfgksz]($OPT_STRESS_MARKER)$/) {
+        # TODO $OPT_STRESS_MARKER can be omitted?
+        # Schwa is omitted between any of /b, p, d, t, f, g, k/ and final /l/
+        $val = '';
+
+        # Final /s@l/ is written «ssl» and final /z@l/ is written «sl»
+        if ($left =~ /s$/) {
+            $left .= 's';
+        } elsif ($left =~ /z$/) {
+            chop $left;
+            $left .= 's';
+        }
+
+    } elsif ($val eq '@' && $right eq 'm' && $left =~ /z$/) {
+        # Final /z@m/ is written «sm»
+        $val = '';
+        chop $left;
+        $left .= 's';
+    } elsif ($val =~ /^(@|a#|I#)$/ && $right =~ /^[$SAMPA_CONSONANTS]*'/) {
         # Any schwa followed by a stressed vowel can become «e/u/a/o/i» (in preference order)
         $val = any_short_vowel $left, $right, $tradspell;
     } elsif ($val eq '@') {
@@ -171,7 +201,7 @@ sub combine_and_adjust {
         $val = e_or_u_or_other('i', $left, $right, $tradspell);
     } elsif ($val eq 'r' && $left =~ /r$/) {
         # Eliminate double «r»
-        return $left;
+        $val = '';
     }
 
     if ($val =~ /^[aou]/) {
@@ -193,9 +223,11 @@ sub combine_and_adjust {
 
     }
 
-    # TODO Implement rules from README from l.200 (Between some consonant pairs at the end of words)
+    # TODO Implement rules from README from l.215: schwa is also omitted between /D/ and final /m/
+    # TODO When handling «x» /ks/, make sure that the schwa in /ks@l/ is not omitted,
+    # e.g. «axel, pixel» ‹axle...›
     # TODO Handle prefixes and suffixes correctly («dis, mis» are spelled like that regardless
-    # of which letter follows)
+    # of which letter follows; suffix «ful» is preserved)
     # TODO Generally use «ue» in cases were RP has /j'u:/ and GA has /u:/, e.g. ‹new›
     # (PhonEng may have either)
     # TODO Generally use «eer» in cases were RP has /i:@/ and GA has /Ir/, e.g. ‹year, peculiar›
@@ -236,6 +268,7 @@ sub restore_capitalization {
 # $maxkeylen is the maximumg length of keys that may occur in $mapref.
 sub convert_pron {
     my ($pron, $mapref, $maxkeylen, $tradspell) = @_;
+    $pron = prepare_pron $pron;
     return '' unless $pron;  # Empty input
 
     my $unconverted = $pron;
@@ -276,7 +309,9 @@ sub choose_nearer_or_shorter {
 
     my $comp = dist($first, $tradspell) <=> dist($second, $tradspell);
     $comp = length($first) <=> length($second) unless $comp;
-    ## TODO Find out how to disambiguiate these cases
+    # TODO Words ending in «r» should be preferred if tradspell ends in ‹r› or ‹re»,
+    # e.g. ‹creature› should become «creecher», not "creecha"
+    # TODO Find out how to disambiguate these cases
     #warn "$first and $second have equal distance to $tradspell and equal length\n" unless $comp;
 
     return ($comp <= 0) ? $first : $second;
