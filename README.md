@@ -346,6 +346,8 @@ Spellings involving several sounds:
 Some sound combinations are written in a special way if they occur at the
 end of words:
 
+  * Final /O:l/ is written «all», e.g. «ball, in'stall» ‹...install›. This
+    spelling is preserved in derived words, e.g. «walls, calling».
   * Final /S@n/ is written «tion», e.g. «recog'nition, obzur'vaition,
     section, per'mition, moation, oation, miu'sition» ‹recognition,
     observation, section, permission, motion, ocean, musician›.
