@@ -230,9 +230,9 @@ Before «r», the vowels are spelled as follows:
     usually sounds like a normal schwa; likewise, «r» after other vowels is
     often inaudible or reduced to a schwa.
   * «err» /Er/ as in «merry, errer» ‹...error›
-  * «ir» /Ir/ as in «mirer, iritait, di'ryv» ‹mirror, irritate, derive›
+  * «ir» /Ir/ as in «mirer, iritait» ‹mirror, irritate›
   * «oar» /or/ as in «poart, ig'noar, keeboard» ‹port, ignore, keyboard›
-  * «or» /Or/ as in «north, order, iuniform» ‹...uniform›. Note: Most RP
+  * «or» /O:r/ as in «north, order, iuniform» ‹...uniform›. Note: Most RP
     speakers pronounce this in the same way as the «oar» /or/ in «board»,
     but the two sounds are distinguished in GA.
   * «orr» /Qr/ as in «sorri, to'morro» ‹sorry, tomorrow›. Note: Most GA
@@ -247,7 +247,7 @@ Before «r», the vowels are spelled as follows:
     ‹...perfect, first, concern, observation›. This sound only occurs
     before «r» and can be considered a stronger (and often stressed)
     variant of the schwa.
-  * «urr» /Vr/ as in «wurri, thurro» ‹worry, thorough›
+  * «urr» /Vr/ as in «wurri, current» ‹worry...›
   * «yr» is spoken /aI@`/ at the end of words (e.g. «fyr, in'spyr» ‹fire,
     inspire›), /aIr/ elsewhere (e.g. «vyruss, yreni, spyrel» ‹virus, irony,
     spiral›)
