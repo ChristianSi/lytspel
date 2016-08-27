@@ -83,6 +83,89 @@ sub prepare_pron {
     return $pron;
 }
 
+# Unify a vowel that may be pronounced differently in two accents. Arguments:
+#
+# * $rp: British pronunciation
+# * $ga: American pronunciation
+# * $phoneng: PhonEng pronunciation (optional)
+# * $alt1: how the vowel is pronounced in RP
+# * $alt2: how it is pronounced in GA
+# * $winner: the pronouncation that should be used
+# * $tradspell: the traditional spelling (used for debugging/logging)
+sub unify_vowel {
+    my ($rp, $ga, $phoneng, $alt1, $alt2, $winner, $tradspell) = @_;
+
+    my $rp_alt1_count = () = $rp =~ /$alt1/g;
+    my $ga_alt2_count = () = $ga =~ /$alt2/g;
+
+    return $rp, $ga, $phoneng unless $rp_alt1_count && $ga_alt2_count;  # Nothing to do
+
+    # Split on either alternative
+    my @rp_split      = split /($alt1|$alt2)/, $rp;
+    my @ga_split      = split /($alt1|$alt2)/, $ga;
+    my @phoneng_split = split /($alt1|$alt2)/, $phoneng;
+    my $rp_elem_count = scalar @rp_split;
+
+    unless ($rp_elem_count == scalar @ga_split) {
+        warn "Cannot unify $tradspell pronouncations re $alt1/$alt2\n";
+        return $rp, $ga, $phoneng;
+    }
+
+    my $unify_phoneng_too = $rp_elem_count == scalar @phoneng_split;
+
+    for my $i (0 .. $rp_elem_count-1) {
+        if ($rp_split[$i] eq $alt1 && $ga_split[$i] eq $alt2) {
+            $rp_split[$i] = $winner;
+            $ga_split[$i] = $winner;
+
+            $phoneng_split[$i] = $winner if $unify_phoneng_too && ($phoneng_split[$i] eq $alt1
+                                                               || $phoneng_split[$i] eq $alt2);
+        }
+    }
+
+    $rp = join '', @rp_split;
+    $ga = join '', @ga_split;
+
+    $phoneng = join '', @phoneng_split if $unify_phoneng_too;
+
+    return $rp, $ga, $phoneng;
+}
+
+# Unify the vowels used in different pronunciations in cases where a specific vowel
+# pronunciation should "win". Unification is only attempted if RP and GA differ; otherwise
+# the given pronunciations are returned unchanged. Redundant pronunciations (identical to an
+# earlier one) are eliminated in any case.
+sub unify_vowels {
+    my ($rp, $ga, $phoneng, $tradspell) = @_;
+    $rp      = prepare_pron $rp;
+    $ga      = prepare_pron $ga;
+    $phoneng = prepare_pron $phoneng;
+
+    # Discard GA if identical to RP
+    $ga = '' if $ga eq $rp;
+    # Discard PhonEng if identical to RP or GA
+    $phoneng = '' if $phoneng eq $rp || $phoneng eq $ga;
+
+    return $rp, $ga, $phoneng unless $ga;  # Nothing to unify
+
+    # pair, share, variation...
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'e@', 'Er', 'e@', $tradspell;
+
+    # TODO
+    # RP:e@ / GA:Er: use RP (e.g. pair, share, variation)
+    # RP:A / GA:Ar: use GA (e.g. dark, argument) -- use this for all vowels
+    # RP:i:@ / GA:Ir: «eer» (e.g. cheer, year, peculiar)
+    # RP:@ / GA:@`: use GA (e.g. number, modern)
+    # RP:O: or O:r / GA:or: use GA (e.g. «poart, ig'noar, keeboard» ‹port, ignore, keyboard›)
+    # RP:Qr / GA:O:r: use RP (e.g. «sorri, to'morro» ‹sorry, tomorrow›)
+    # RP:U@ / GA:Ur: use GA (e.g. «poor, toor, in'shoorenss» ‹...tour, insurance›)
+    # RP:aU@ / GA:aUr: use GA (e.g. «flour, our» ‹flour, our *or* hour›)
+    # RP:Vr / GA : 3: or 3:r: use RP (e.g. «wurri, current» ‹worry...›)
+    # RP:ju: / GA:u: : «ue» ( e.g. «due, nuetrel, tuen» ‹...neutral, tune›)
+    # /ju:r/ or /jUr/ in RP, /Ur/ in GA: «uer», e.g. «nuerel» ‹neural›
+    return $rp, $ga, $phoneng;
+}
+
 # delsep $str: Delete any occurrences of '=' (used as separator) from a string.
 sub delsep {
     my $str = shift;
@@ -148,6 +231,7 @@ sub combine {
 # string, applying context-specific rules to the resulting spelling as suitable.
 sub combine_and_adjust {
     my ($val, $left, $right, $tradspell) = @_;
+    # TODO Convert final /aI@`/ to «yr», e.g. «fyr, in'spyr» ‹fire, inspire
 
     if ($right eq '') {
         # End of word spellings
@@ -169,8 +253,7 @@ sub combine_and_adjust {
         }
     }
 
-    if ($val eq '@' && $right eq 'l' && $left =~ /[bpdtfgksz]($OPT_STRESS_MARKER)$/) {
-        # TODO $OPT_STRESS_MARKER can be omitted?
+    if ($val eq '@' && $right eq 'l' && $left =~ /[bpdtfgksz]$/) {
         # Schwa is omitted between any of /b, p, d, t, f, g, k/ and final /l/
         $val = '';
 
@@ -187,6 +270,9 @@ sub combine_and_adjust {
         $val = '';
         chop $left;
         $left .= 's';
+    } elsif ($val eq '@' && $right eq 'm' && $left =~ /dh$/) {
+        # Schwa is also omitted between /D/ and final /m/
+        $val = '';
     } elsif ($val =~ /^(@|a#|I#)$/ && $right =~ /^[$SAMPA_CONSONANTS]*'/) {
         # Any schwa followed by a stressed vowel can become «e/u/a/o/i» (in preference order)
         $val = any_short_vowel $left, $right, $tradspell;
@@ -223,15 +309,12 @@ sub combine_and_adjust {
 
     }
 
-    # TODO Implement rules from README from l.215: schwa is also omitted between /D/ and final /m/
+    # TODO Implement rules from README from l.258: final /eI/ is spelled «ay»
     # TODO When handling «x» /ks/, make sure that the schwa in /ks@l/ is not omitted,
     # e.g. «axel, pixel» ‹axle...›
     # TODO Handle prefixes and suffixes correctly («dis, mis» are spelled like that regardless
     # of which letter follows; suffix «ful» is preserved)
-    # TODO Generally use «ue» in cases were RP has /j'u:/ and GA has /u:/, e.g. ‹new›
-    # (PhonEng may have either)
-    # TODO Generally use «eer» in cases were RP has /i:@/ and GA has /Ir/, e.g. ‹year, peculiar›
-    # (ignoring PhonEng?)
+    # Ensure that «obzur'vaition» ‹observation› is converted correctly (from «ob'zurv» ‹observe›)
     return combine($left, $val);
 }
 
@@ -268,7 +351,6 @@ sub restore_capitalization {
 # $maxkeylen is the maximumg length of keys that may occur in $mapref.
 sub convert_pron {
     my ($pron, $mapref, $maxkeylen, $tradspell) = @_;
-    $pron = prepare_pron $pron;
     return '' unless $pron;  # Empty input
 
     my $unconverted = $pron;
@@ -309,8 +391,6 @@ sub choose_nearer_or_shorter {
 
     my $comp = dist($first, $tradspell) <=> dist($second, $tradspell);
     $comp = length($first) <=> length($second) unless $comp;
-    # TODO Words ending in «r» should be preferred if tradspell ends in ‹r› or ‹re»,
-    # e.g. ‹creature› should become «creecher», not "creecha"
     # TODO Find out how to disambiguate these cases
     #warn "$first and $second have equal distance to $tradspell and equal length\n" unless $comp;
 
@@ -356,10 +436,11 @@ sub convert_dict {
             next;
         }
 
-        my $tradspell         = $colref->[0];
-        my $converted_rp      = convert_pron $colref->[3], $mapref, $maxkeylen, $tradspell;
-        my $converted_ga      = convert_pron $colref->[4], $mapref, $maxkeylen, $tradspell;
-        my $converted_phoneng = convert_pron $colref->[5], $mapref, $maxkeylen, $tradspell;
+        my $tradspell           = $colref->[0];
+        my ($rp, $ga, $phoneng) = unify_vowels $colref->[3], $colref->[4], $colref->[5], $tradspell;
+        my $converted_rp        = convert_pron $rp, $mapref, $maxkeylen, $tradspell;
+        my $converted_ga        = convert_pron $ga, $mapref, $maxkeylen, $tradspell;
+        my $converted_phoneng   = convert_pron $phoneng, $mapref, $maxkeylen, $tradspell;
 
         # Omit GA if identical to RP
         $converted_ga = '' if $converted_ga eq $converted_rp;
