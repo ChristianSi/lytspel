@@ -241,13 +241,14 @@ Before «r», the vowels are spelled as follows:
   * «oor» /Ur/ as in «poor, toor, in'shoorenss» ‹...tour, insurance›
   * «iur» /jUr/ as in «Iurep, piur, ob'skiur» ‹Europe, pure, obscure›
   * The spelling «uer» is used in words that are typically spoken with
-    /ju:r/ or /jUr/ in RP, with /Ur/ in GA, e.g. «nuerel» ‹neural›
+    /ju:r/ or /jUr/ in RP, with /Ur/ in GA, e.g. «duering, nuerel» ‹during,
+    neural›
   * «our» /aUr/ as in «flour, our» ‹flour, our *or* hour›
   * «ur» /3:/ as in «turn, purfect, furst, con'surn, obzur'vaition»
     ‹...perfect, first, concern, observation›. This sound only occurs
     before «r» and can be considered a stronger (and often stressed)
     variant of the schwa.
-  * «urr» /Vr/ as in «wurri, current» ‹worry...›
+  * «urr» /Vr/ as in «hurri, current» ‹hurry...›
   * «yr» is spoken /aI@`/ at the end of words (e.g. «fyr, in'spyr» ‹fire,
     inspire›), /aIr/ elsewhere (e.g. «vyruss, yreni, spyrel» ‹virus, irony,
     spiral›)
@@ -258,7 +259,7 @@ vowels:
   * /eI/ is spelled «ay» at the end of words and before other vowels
     (instead of «ai»), e.g. «play, holiday, layer, cayoss» ‹...chaos›.
   * /aI/ is spelled «ai» before other vowels (instead of «y»), e.g.
-    «daiameter, quaiet, vaielenss, aiern, haierarki, Ha'waiee» ‹diameter,
+    «dai'ameter, quaiet, vaielenss, aiern, haierarki, Ha'waii» ‹diameter,
     quiet, violence, iron, hierarchy, Hawaii›. This prevents confusion with
     the consonant /j/ (as in «yet») which is also spelled «y» but only
     occurs before vowels. There is also no risk of confusion with /eI/ (as
@@ -268,21 +269,20 @@ vowels:
   * Unstressed /i:/ is spelled «i» at the end of words and before other
     vowels (instead of «ee»), e.g. «fansi, ne'ceciti, vidio, cri'aition»
     ‹fancy, necessity, video, creation›. This means that Lytspel cannot
-    distinguish between unstressed /i:/ and unstressed /I/ (as in «big»)
-    before other vowels, but that shouldn't hurt, as /I/ before other
-    vowels is very rare and dictionaries often disagree on which of these
-    sounds to use anyway. Should unstressed /I/ occur at the end of words,
-    it could be written «ih», but it practice it never seems to occur.
+    distinguish between unstressed /i:/ and unstressed /I/ (as in «big») in
+    these positions, but that shouldn't hurt, as /I/ is rarely used in
+    these positions and dictionaries often disagree on which of these
+    sounds to use anyway.
   * This spelling is also used in the personal pronouns ending in /i:/ (as
     these are often less stressed than other words in a sentence): «hi,
     shi, wi, mi» ‹he, she, we, me›. And it's used in the prefixes «anti,
     semi» (spoken with /i:/ by many speakers, with /aI/ by others), e.g.
     «anti'aircraft, anti'soashel; semi'fynel, semiauto'matic»
     ‹antiaircraft, antisocial; semifinal, semiautomatic›.
-  * Unstressed /oU/ is spelled «o» at the end of words and before other
-    vowels (instead of «oa»), e.g. «yelo, zeero, co'operait, po'etic»
-    ‹yellow, zero, cooperate, poetic›. This poses little risk of confusion,
-    as unstressed /Q/ (as in «dog») occurs rarely or never before other
+  * /oU/ is spelled «o» at the end of words and before other vowels
+    (instead of «oa»), e.g. «yelo, zeero, co'operait, po'etic, sho»
+    ‹yellow, zero, cooperate, poetic, show›. This poses little risk of
+    confusion, as /Q/ (as in «dog») occurs rarely or never before other
     vowels. Should unstressed /Q/ occur at the end of words, it could be
     written «oh», but it practice it never seems to occur.
   * This spelling is also used in the prefixes «baio, nio» ‹bio, neo›, e.g.
