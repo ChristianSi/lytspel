@@ -88,38 +88,40 @@ sub prepare_pron {
 # * $rp: British pronunciation
 # * $ga: American pronunciation
 # * $phoneng: PhonEng pronunciation (optional)
-# * $alt1: how the vowel is pronounced in RP
-# * $alt2: how it is pronounced in GA
+# * $alt1: how the vowel is pronounced in RP (treated as a regex)
+# * $alt2: how it is pronounced in GA (treated as a regex)
 # * $winner: the pronouncation that should be used
 # * $tradspell: the traditional spelling (used for debugging/logging)
+# * $suppress_warning: set to a true value to suppresss a warning if unification isn't possible
+#   (useful for unreliable latterns)
 sub unify_vowel {
-    my ($rp, $ga, $phoneng, $alt1, $alt2, $winner, $tradspell) = @_;
+    my ($rp, $ga, $phoneng, $alt1, $alt2, $winner, $tradspell, $suppress_warning) = @_;
 
     my $rp_alt1_count = () = $rp =~ /$alt1/g;
     my $ga_alt2_count = () = $ga =~ /$alt2/g;
 
     return $rp, $ga, $phoneng unless $rp_alt1_count && $ga_alt2_count;  # Nothing to do
 
-    # Split on either alternative
-    my @rp_split      = split /($alt1|$alt2)/, $rp;
-    my @ga_split      = split /($alt1|$alt2)/, $ga;
-    my @phoneng_split = split /($alt1|$alt2)/, $phoneng;
+    # Split on either alternative (NOT matching if /`/ as in /@`/ follows)
+    my @rp_split      = split /($alt1|$alt2)(?!`)/, $rp;
+    my @ga_split      = split /($alt1|$alt2)(?!`)/, $ga;
+    my @phoneng_split = split /($alt1|$alt2)(?!`)/, $phoneng;
     my $rp_elem_count = scalar @rp_split;
 
     unless ($rp_elem_count == scalar @ga_split) {
-        warn "Cannot unify $tradspell pronouncations re $alt1/$alt2\n";
+        warn "Cannot unify $tradspell pronouncations re $alt1/$alt2\n" unless $suppress_warning;
         return $rp, $ga, $phoneng;
     }
 
     my $unify_phoneng_too = $rp_elem_count == scalar @phoneng_split;
 
     for my $i (0 .. $rp_elem_count-1) {
-        if ($rp_split[$i] eq $alt1 && $ga_split[$i] eq $alt2) {
+        if ($rp_split[$i] =~ /^$alt1$/ && $ga_split[$i] =~ /^$alt2$/) {
             $rp_split[$i] = $winner;
             $ga_split[$i] = $winner;
 
-            $phoneng_split[$i] = $winner if $unify_phoneng_too && ($phoneng_split[$i] eq $alt1
-                                                               || $phoneng_split[$i] eq $alt2);
+            $phoneng_split[$i] = $winner
+                if $unify_phoneng_too && $phoneng_split[$i] =~ /^($alt1|$alt2)$/;
         }
     }
 
@@ -148,21 +150,33 @@ sub unify_vowels {
 
     return $rp, $ga, $phoneng unless $ga;  # Nothing to unify
 
-    # pair, share, variation...
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'e@', 'Er', 'e@', $tradspell;
+    # pair, share, variation -> «air»
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'e@', 'Er', 'e@', $tradspell, 0;
+    # cheer, year, peculiar -> «eer»
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'i:?@', 'Ir', 'i@', $tradspell, 0;
+    # poor, tour -> «oor»
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'U@', 'Ur', 'Ur', $tradspell, 1;
+    # number, modern -> «er» (schwa vs. r-colored schwa)
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, '(?<![ei])@', '@`', '@`', $tradspell, 1;
+    # port, ignore, keyboard, floral -> «oar»
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'O:r?', 'or', 'or', $tradspell, 1;
+    # sorry, tomorrow -> «orr»
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'Qr', 'O:r', 'Qr', $tradspell, 0;
+    # for, dinosaur -> «or»
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'O:r?', 'O:r', 'O:r', $tradspell, 0;
+    # encourage, current -> «urr»
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'Vr', '3:r?', 'Vr', $tradspell, 0;
+    # due, neutral, tune -> «ue»
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, "j'u:", "(?<![j])'u:", "'U:",
+                                       $tradspell, 0;
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, "ju:", "(?<![j'])u:", "U:",
+                                       $tradspell, 0;
+    # during, neural -> «uer» (/ju:r/ or /jUr/ in RP, /Ur/ in GA)
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, "j'(?:u:|U)r", "(?<![j])'Ur", "'U:r",
+                                       $tradspell, 0;
+    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, "j(?:u:|U)r", "(?<![j'])Ur", "U:r",
+                                       $tradspell, 0;
 
-    # TODO
-    # RP:e@ / GA:Er: use RP (e.g. pair, share, variation)
-    # RP:A / GA:Ar: use GA (e.g. dark, argument) -- use this for all vowels
-    # RP:i:@ / GA:Ir: «eer» (e.g. cheer, year, peculiar)
-    # RP:@ / GA:@`: use GA (e.g. number, modern)
-    # RP:O: or O:r / GA:or: use GA (e.g. «poart, ig'noar, keeboard» ‹port, ignore, keyboard›)
-    # RP:Qr / GA:O:r: use RP (e.g. «sorri, to'morro» ‹sorry, tomorrow›)
-    # RP:U@ / GA:Ur: use GA (e.g. «poor, toor, in'shoorenss» ‹...tour, insurance›)
-    # RP:aU@ / GA:aUr: use GA (e.g. «flour, our» ‹flour, our *or* hour›)
-    # RP:Vr / GA : 3: or 3:r: use RP (e.g. «wurri, current» ‹worry...›)
-    # RP:ju: / GA:u: : «ue» ( e.g. «due, nuetrel, tuen» ‹...neutral, tune›)
-    # /ju:r/ or /jUr/ in RP, /Ur/ in GA: «uer», e.g. «nuerel» ‹neural›
     return $rp, $ga, $phoneng;
 }
 
@@ -231,7 +245,6 @@ sub combine {
 # string, applying context-specific rules to the resulting spelling as suitable.
 sub combine_and_adjust {
     my ($val, $left, $right, $tradspell) = @_;
-    # TODO Convert final /aI@`/ to «yr», e.g. «fyr, in'spyr» ‹fire, inspire
 
     if ($right eq '') {
         # End of word spellings
@@ -243,6 +256,9 @@ sub combine_and_adjust {
         } elsif ($val eq 'k' && $left =~ /[^'aeou]i$/) {
             # «c» is used at the end of words ending in unstressed /Ik/
             $val = 'c';
+        } elsif ($val eq 'er' && $left =~ /Y$/) {
+            # Final /aI@`/ is written «yr», e.g. «fyr, in'spyr» ‹fire, inspire›
+            $val = 'r';
         } elsif ($left !~ /([fkpt]|th)$/) {
             # Final /s/ becomes «ss» and /z/ becomes «s» except after /f, k, p, t, T/
             if ($val eq 's') {
@@ -285,6 +301,22 @@ sub combine_and_adjust {
     } elsif ($val eq 'I#') {
         # /I#/ becomes «i/e/u» depending on what's more similar to tradspell (in preference order)
         $val = e_or_u_or_other('i', $left, $right, $tradspell);
+    } elsif ($val eq 'ai' && $right !~ /^[$SAMPA_CONSONANTS]/) {
+        # «ai» /eI/ becomes «ay» at the end of words and before other vowels
+        $val = 'ay';
+    } elsif ($val eq 'au' && $right !~ /^[$SAMPA_CONSONANTS]/) {
+        # «au» /O:/ becomes «aw» at the end of words and before other vowels
+        $val = 'aw';
+    } elsif ($val eq 'ee' && $right !~ /^[$SAMPA_CONSONANTS]/ && $left !~ /'$/) {
+        # Unstressed «ee» /i:/ becomes «i» at the end of words and before other vowels
+        $val = 'i';
+    } elsif ($val eq 'oa' && $right !~ /^[$SAMPA_CONSONANTS]/) {
+        # «oa» /oU/ becomes «o» at the end of words and before other vowels
+        $val = 'o';
+    } elsif ($val eq 'Y' && $right && $right !~ /^([$SAMPA_CONSONANTS]|@`$)/) {
+        # «y» /aI/ becomes «ai» before other vowels
+        # (except before final /@` -- that combination becomes «yr»)
+        $val = 'ai';
     } elsif ($val eq 'r' && $left =~ /r$/) {
         # Eliminate double «r»
         $val = '';
@@ -309,11 +341,23 @@ sub combine_and_adjust {
 
     }
 
-    # TODO Implement rules from README from l.258: final /eI/ is spelled «ay»
+    # TODO Recheck examples in README since stressed /oU/ before vowels or at end of words now
+    # also becomes «o»
+    # TODO What to do about words with two stress markers, e.g. association?
+    # TODO Implement rules from README from l.290: /OI/ is spelled «oy» at the end of words and before other vowel
+    # (check that that also works at the begin of words, e.g. aeolotropy, est)
     # TODO When handling «x» /ks/, make sure that the schwa in /ks@l/ is not omitted,
     # e.g. «axel, pixel» ‹axle...›
-    # TODO Handle prefixes and suffixes correctly («dis, mis» are spelled like that regardless
-    # of which letter follows; suffix «ful» is preserved)
+    # TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
+    # TODO ‹worry› should become «wurri» (using blacklist-phoneng.txt, but first find out
+    # why "w'uree" currently wins); ‹dewar›: PhonEng «dueer» should win;
+    # ‹bourgeois, cha, grandma, grandpa›: RP should win
+    # ‹cushaw, da, na›: original spelling should remain
+    # Custom spellings: pshaw -> shaw
+    # Delete (foreign words or names): Artois, Borodino, trois, Valoi
+    # TODO Handle prefixes and suffixes correctly («dis, mis; anti, semi» are spelled like that
+    # regardless of which letter follows; prefixes «baio, nio» ‹bio, neo›;
+    # suffix «ful» is preserved)
     # Ensure that «obzur'vaition» ‹observation› is converted correctly (from «ob'zurv» ‹observe›)
     return combine($left, $val);
 }
@@ -322,12 +366,13 @@ sub combine_and_adjust {
 # word. Also deletes separators ('=').
 sub restore_capitalization {
     my ($converted, $tradspell) = @_;
-     # Delete separators ('=') and lower-case capital letters (vowel «Y» as distinguished from
-     # consonant «y»)
+     # Delete separators ('=') and convert capital letters to lower case (vowel «Y» as
+     # distinguished from consonant «y»)
     $converted = lc(delsep $converted);
-    if ($tradspell =~ /^[A-Z][a-z']*$/) {  # Capitalized
-        $converted = ucfirst $converted;
-    }
+
+    # TODO Make sure that this also works if the word starts with a stressed vowel
+    $converted = ucfirst($converted) if $tradspell =~ /^[A-Z][a-z']*$/; # Capitalized
+
     # TODO Later fully restore capitalization to match tradspell:
     # Mc|MacCapitalized becomes McCapitalized, e.g. «McAdem, McDowel» ‹McAdam, McDowell›;
     # a repeated /k/ sound is preserved, e.g. «McCoy, McKinli» ‹...McKinley›
@@ -373,7 +418,8 @@ OUTER: while ($unconverted) {
             $charcount--;
         }
 
-        die "No match found for converting /$pron/, unconverted part: /$unconverted/\n";
+        die "No match found for converting /$pron/ ($tradspell), " .
+            "unconverted part: /$unconverted/\n";
     }
 
     $converted = restore_capitalization $converted, $tradspell;
