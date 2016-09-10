@@ -47,18 +47,18 @@ second is made up of two nonsense sentences that contain most of the sounds
 of English.
 
 > Dhe North Wind and dhe Sun wur dis'piuting wich wos dhe strongger, wen a
-> traveler caim a'long rapd in a worm cloak. Dhay a'greed dhat dhe won huu
+> traveler caim a'long rapd in a worm cloak. Dhay a'greed dhat dhe won hu
 > furst su'xeeded in maiking dhe traveler taik his cloak of shood bee
-> con'siderd strongger dhan dhe udher. Dhen dhe North Wind bluu as hard as
-> hi cood, but dhe mor hi bluu dhe mor cloassli did dhe traveler foald his
+> con'siderd strongger dhan dhe udher. Dhen dhe North Wind blu as hard as
+> hi cood, but dhe mor hi blu dhe mor cloassli did dhe traveler foald his
 > cloak a'round him; and at last dhe North Wind gaiv up dhe a'tempt. Dhen
 > dhe Sun shynd out wormli, and i'meedietli dhe traveler took of his cloak.
 > And so dhe North Wind wos o'blyjd to con'fess dhat dhe Sun wos dhe
-> strongger ov dhe tuu.
+> strongger ov dhe tu.
 >
 > Dhat quik baizh fox jumpd in dhe air oaver eech thin dog under a caam
 > autum muun. Look out, y shout, for hi's foild iu yet a'gen, cri'aiting
-> kayoss.
+> cayoss.
 
 Here are the same paragraphs written in tradspell. Lytspel might look a
 bit unusual at first, but should be easy to get used too. Just try reading
@@ -266,6 +266,7 @@ vowels:
     in «aim, layer») which is always spelled «ay» in this position.
   * /O:/ is spelled «aw» at the end of words and before other vowels
     (instead of «au»), e.g. «law, drawing».
+  * Final /E/ is spelled «eh» (instead of «e»), e.g. «eh».
   * Unstressed /i:/ is spelled «i» at the end of words and before other
     vowels (instead of «ee»), e.g. «fansi, ne'ceciti, vidio, cri'aition»
     ‹fancy, necessity, video, creation›. This means that Lytspel cannot
@@ -291,10 +292,10 @@ vowels:
     (instead of «oi»), e.g. «boy, en'joy, em'ployi» ‹...enjoy, employee›.
   * /aU/ is spelled «ow» at the end of words and before other vowels
     (instead of «ou»), e.g. «now, power, a'low» ‹...allow›.
-  * Unstressed /u:/ is spelled «u» at the end of words and before other
-    vowels (instead of «uu»), e.g. «ishu, vurchu, sichu'aition» ‹issue,
-    virtue, situation›. This poses little risk of confusion, as unstressed
-    /V/ (as in «bus») occurs rarely or never before other vowels.
+  * /u:/ is spelled «u» at the end of words and before other vowels
+    (instead of «uu»), e.g. «clu, ishu, sichu'aition» ‹clue, issue,
+    situation›. This poses little risk of confusion, as /V/ (as in «bus»)
+    occurs rarely or never before other vowels.
   * Final /V/ is spelled «uh» (instead of «u»), e.g. «huh».
   * Final schwa /@/ is spelled «a» (instead of «e» or «u»), e.g. «extra,
     daita» ‹...data›. Should unstressed /a/ (as in «cat») occur at the end
@@ -306,12 +307,12 @@ vowels:
 
 Spellings involving several sounds:
 
-  * The vowel combination /i:@/ is written «ia», e.g. «mis'teeriass,
-    ma'teerial, meediam, obviass, vairiabl, airia, i'meediat» ‹mysterious,
-    material, medium, obvious, variable, area, immediate›. In the rare
-    cases where unstressed /a/ occurs after /i:/ (or /I/), a hyphen is
-    inserted for disambiguation, e.g. «am'neesi-ak, zoadi-ak» ‹amnesiac,
-    zodiac›.
+  * The vowel combination /i:@/ or /I@/ is written «ia», e.g.
+    «mis'teeriass, ma'teerial, meediam, obviass, vairiabl, airia,
+    i'meediat» ‹mysterious, material, medium, obvious, variable, area,
+    immediate›. In the rare cases where unstressed /a/ occurs after /i:/ or
+    /I/, a hyphen is inserted for disambiguation, e.g. «am'neesi-ak,
+    zoadi-ak» ‹amnesiac, zodiac›.
   * The vowel combination /u:@/ is written «ua», e.g. «acchual,
     indi'vijual, influanss, soo'purfluass, crual» ‹actual, individual,
     influence, superfluous, cruel›.  In the very rare cases where
@@ -324,7 +325,7 @@ Spellings involving several sounds:
   * Since «ng» represents the single sound /N/ (as in «long»), the sound
     combination /ng/ is written «n'g» if a stress marker is needed in this
     position (e.g. «en'gaij, in'grain» ‹engage, ingrain›), «nng» otherwise
-    (e.g. «keirnngorm, martenngail» ‹cairngorm, martingale›).
+    (e.g. «cairnngorm, martenngail» ‹cairngorm, martingale›).
   * Before /k/, «n» is pronounced /N/ rather then /n/ (e.g. «bank,
     tranquil, dis'tinct, bron'kytiss» ‹...distinct, bronchitis›), except if
     «n» and /k/ belong to different parts of a compound (e.g. «mankynd,
@@ -449,11 +450,13 @@ Irregular words:
 
   * The vowels in the articles «dhe, a, an» ‹the, a, an› retain their
     traditional spelling.
-  * «ey» ‹eye› remains somewhat irregular to distinguish it from «y» ‹I›
-    and for easier recognition in compounds such as «fishey» ‹fisheye›.
-  * «no» remains irregular to distinguish it from «noa» ‹know›.
-  * «so» remains irregular to distinguish it from «soa» ‹sew *or* sow›.
-  * «to» remains irregular to distinguish it from «tuu» ‹too *or* two›.
+  * «ey» ‹eye› is written somewhat irregularly to distinguish it from «y»
+    ‹I› and for easier recognition in compounds such as «fishey» ‹fisheye›.
+  * «noa» ‹know› is written somewhat irregularly to distinguish it from
+    «no».
+  * «soa» ‹sew *or* sow› is written somewhat irregularly to distinguish it
+    from «so».
+  * «to» remains irregular to distinguish it from «tu» ‹too *or* two›.
 
 Uses of the apostrophe:
 
