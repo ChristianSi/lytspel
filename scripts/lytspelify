@@ -80,6 +80,8 @@ sub prepare_pron {
     my $pron = shift;
     # Normalize alternative forms of the r-colored schwa
     $pron =~ s/(?<![ei])\@r|\@`r|a#r/\@`/g;
+    # If there are multiple stress markers, remove all but the last one
+    $pron =~ s/'(?=.*')//g;
     return $pron;
 }
 
@@ -253,12 +255,20 @@ sub combine_and_adjust {
             # Final schwa becomes «er» if tradspell ends in ‹r› (typical for non-rhotic RP),
             # otherwise «a»
             $val = $tradspell =~ /r$/ ? 'er' : 'a';
-        } elsif ($val eq 'k' && $left =~ /[^'aeou]i$/) {
-            # «c» is used at the end of words ending in unstressed /Ik/
-            $val = 'c';
+        } elsif ($val eq 'e') {
+            # Final «e» /E/ becomes «eh»
+            $val = 'eh';
+            # TODO Continue checking diff with .old from Chuvashi
+            # TODO Check final /i, o/
+        } elsif ($val eq 'u') {
+            # Final /V/ is spelled «uh»
+            $val = 'uh';
         } elsif ($val eq 'er' && $left =~ /Y$/) {
             # Final /aI@`/ is written «yr», e.g. «fyr, in'spyr» ‹fire, inspire›
             $val = 'r';
+        } elsif ($val eq 'k' && $left =~ /[^'aeou]i$/) {
+            # «c» is used at the end of words ending in unstressed /Ik/
+            $val = 'c';
         } elsif ($left !~ /([fkpt]|th)$/) {
             # Final /s/ becomes «ss» and /z/ becomes «s» except after /f, k, p, t, T/
             if ($val eq 's') {
@@ -317,6 +327,15 @@ sub combine_and_adjust {
         # «y» /aI/ becomes «ai» before other vowels
         # (except before final /@` -- that combination becomes «yr»)
         $val = 'ai';
+    } elsif ($val eq 'oi' && $right !~ /^[$SAMPA_CONSONANTS]/) {
+        # «oi» /OI/ becomes «oy» at the end of words and before other vowels
+        $val = 'oy';
+    } elsif ($val eq 'ou' && $right !~ /^[$SAMPA_CONSONANTS]/) {
+        # «ou» /aU/ becomes «ow» at the end of words and before other vowels
+        $val = 'ow';
+    } elsif ($val eq 'uu' && $right !~ /^[$SAMPA_CONSONANTS]/) {
+        # «uu» /u:/ becomes «u» at the end of words and before other vowels
+        $val = 'u';
     } elsif ($val eq 'r' && $left =~ /r$/) {
         # Eliminate double «r»
         $val = '';
@@ -341,24 +360,30 @@ sub combine_and_adjust {
 
     }
 
-    # TODO Recheck examples in README since stressed /oU/ before vowels or at end of words now
-    # also becomes «o»
-    # TODO What to do about words with two stress markers, e.g. association?
-    # TODO Implement rules from README from l.290: /OI/ is spelled «oy» at the end of words and before other vowel
+    # TODO Implement rules from README from l.304: Schwa /@/ before other vowels
     # (check that that also works at the begin of words, e.g. aeolotropy, est)
+    # and from l.328: Before /k/, «n» is pronounced /N/
     # TODO When handling «x» /ks/, make sure that the schwa in /ks@l/ is not omitted,
     # e.g. «axel, pixel» ‹axle...›
     # TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
     # TODO ‹worry› should become «wurri» (using blacklist-phoneng.txt, but first find out
-    # why "w'uree" currently wins); ‹dewar›: PhonEng «dueer» should win;
-    # ‹bourgeois, cha, grandma, grandpa›: RP should win
-    # ‹cushaw, da, na›: original spelling should remain
-    # Custom spellings: pshaw -> shaw
-    # Delete (foreign words or names): Artois, Borodino, trois, Valoi
+    # why "w'uree" currently wins)
+    # ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
+    # Christianization, Christianize, Christiansand, dewar, superfluous, cairngorm, martingale,
+    # Apure, comte, conge, Cambrai, Campeche, canzone, carabiniere, Cavite, Cetinje, chicalote,
+    # cairngorm›: PhonEng should win
+    # ‹bourgeois, cha, christian, grandma, grandpa›: RP should win
+    # ‹cushaw, da, na, ca, Sta›: original spelling should remain
+    # Custom spellings: pshaw -> shaw, brough -> brok
+    # Delete (foreign words or names): Artois, Borodino, trois, Valoi, Condorcet, Attlee,
+    # Beauharnais, Beaumarchais, Buonaparte
     # TODO Handle prefixes and suffixes correctly («dis, mis; anti, semi» are spelled like that
     # regardless of which letter follows; prefixes «baio, nio» ‹bio, neo›;
-    # suffix «ful» is preserved)
+    # suffix «ful» is preserved; «-est» remains as is (never "ast"))
     # Ensure that «obzur'vaition» ‹observation› is converted correctly (from «ob'zurv» ‹observe›)
+    # TODO Insert hyphens were necessary to prevent misreadings, incl.
+    # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
+    # unstressed /a/ after /u:/ e.g. «bivu-ak» ‹bivouac›
     return combine($left, $val);
 }
 
@@ -407,6 +432,13 @@ OUTER: while ($unconverted) {
     INNER: while ($charcount) {
             my $start = substr $unconverted, 0, $charcount;
             my $rest  = substr $unconverted, $charcount;
+
+            # No sound starts with '`' or ':'
+            if ($rest =~ /^[`:]/) {
+                $charcount--;
+                next INNER;
+            }
+
             my $val   = $mapref->{$start};
 
             if (defined $val) {  # Match found
@@ -502,7 +534,9 @@ sub convert_dict {
         $wordcount++;
 
         # TODO Move stress marker before stressed syllable, omitting if the first vowel is the
-        # stressed one («ss» is separated by the marker: as'sault, as'sumption)
+        # stressed one
+        # «ss» is separated by the marker: as'sault, as'sumption
+        # «nng» may become «n'g»: «en'gaij, in'grain» ‹engage, ingrain›
         $CSV_OUT->print($outfh,
             [@$colref[0 .. 2], $converted_rp, $converted_ga, $converted_phoneng]);
 
