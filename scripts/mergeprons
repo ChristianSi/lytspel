@@ -105,6 +105,9 @@ sub convert_pron {
     my ($pron, $mapref, $maxkeylen, $alphabet_name) = @_;
     return '' unless $pron;  # Empty input
 
+    # Eliminate duplicate consonant sounds from PhonEng
+    $pron =~ s/([bdfghjklmnprstvwyzćðńśþẃź])\1/$1/g if $alphabet_name eq 'PhonEng';
+
     my $unconverted = $pron;
     my $converted   = '';
 
