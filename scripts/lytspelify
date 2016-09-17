@@ -71,7 +71,7 @@ sub build_mapping {
 sub open_outfile_and_write_header {
     rename_to_backup_file_if_exists $OUT_FILE;
     open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!\n";
-    $CSV_OUT->print($outfh, [qw(Traditional POS RedirectLytspel)]);
+    $CSV_OUT->print($outfh, [qw(Traditional POS Redirect Lytspel)]);
     return $outfh;
 }
 
@@ -85,7 +85,7 @@ sub prepare_pron {
     return $pron;
 }
 
-# Unify a vowel that may be pronounced differently in two accents. Arguments:
+# Unify a sound that may be pronounced differently in two accents. Arguments:
 #
 # * $rp: British pronunciation
 # * $ga: American pronunciation
@@ -96,7 +96,7 @@ sub prepare_pron {
 # * $tradspell: the traditional spelling (used for debugging/logging)
 # * $suppress_warning: set to a true value to suppresss a warning if unification isn't possible
 #   (useful for unreliable latterns)
-sub unify_vowel {
+sub unify_sound {
     my ($rp, $ga, $phoneng, $alt1, $alt2, $winner, $tradspell, $suppress_warning) = @_;
 
     my $rp_alt1_count = () = $rp =~ /$alt1/g;
@@ -135,11 +135,11 @@ sub unify_vowel {
     return $rp, $ga, $phoneng;
 }
 
-# Unify the vowels used in different pronunciations in cases where a specific vowel
-# pronunciation should "win". Unification is only attempted if RP and GA differ; otherwise
-# the given pronunciations are returned unchanged. Redundant pronunciations (identical to an
-# earlier one) are eliminated in any case.
-sub unify_vowels {
+# Unify the sound used in different pronunciations in cases where a specific vowel
+# pronunciation should "win". Generally, unification is only attempted if RP and GA differ;
+# otherwise the given pronunciations are returned unchanged. Redundant pronunciations
+# (identical to an earlier one) are eliminated in any case.
+sub unify_sounds {
     my ($rp, $ga, $phoneng, $tradspell) = @_;
     $rp      = prepare_pron $rp;
     $ga      = prepare_pron $ga;
@@ -150,33 +150,41 @@ sub unify_vowels {
     # Discard PhonEng if identical to RP or GA
     $phoneng = '' if $phoneng eq $rp || $phoneng eq $ga;
 
-    return $rp, $ga, $phoneng unless $ga;  # Nothing to unify
+    # If PhonEng has /Nk/ where RP/GA have /nk/, use the former as it's usually correct
+    if ($phoneng =~ /Nk/ && $rp =~ /nk/) {
+        ($rp, $phoneng) = unify_sound $rp, $phoneng, '', 'nk', 'Nk', 'Nk', $tradspell, 0;
+        ($ga, $phoneng) = unify_sound $ga, $phoneng, '', 'nk', 'Nk', 'Nk', $tradspell, 0
+            if $ga;
+    }
 
+    return $rp, $ga, $phoneng unless $ga;  # Nothing more to unify
+
+    # Unify vowels:
     # pair, share, variation -> «air»
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'e@', 'Er', 'e@', $tradspell, 0;
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'e@', 'Er', 'e@', $tradspell, 0;
     # cheer, year, peculiar -> «eer»
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'i:?@', 'Ir', 'i@', $tradspell, 0;
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'i:?@', 'Ir', 'i@', $tradspell, 0;
     # poor, tour -> «oor»
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'U@', 'Ur', 'Ur', $tradspell, 1;
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'U@', 'Ur', 'Ur', $tradspell, 1;
     # number, modern -> «er» (schwa vs. r-colored schwa)
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, '(?<![ei])@', '@`', '@`', $tradspell, 1;
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, '(?<![ei])@', '@`', '@`', $tradspell, 1;
     # port, ignore, keyboard, floral -> «oar»
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'O:r?', 'or', 'or', $tradspell, 1;
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'O:r?', 'or', 'or', $tradspell, 1;
     # sorry, tomorrow -> «orr»
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'Qr', 'O:r', 'Qr', $tradspell, 0;
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'Qr', 'O:r', 'Qr', $tradspell, 0;
     # for, dinosaur -> «or»
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'O:r?', 'O:r', 'O:r', $tradspell, 0;
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'O:r?', 'O:r', 'O:r', $tradspell, 0;
     # encourage, current -> «urr»
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, 'Vr', '3:r?', 'Vr', $tradspell, 0;
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'Vr', '3:r?', 'Vr', $tradspell, 0;
     # due, neutral, tune -> «ue»
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, "j'u:", "(?<![j])'u:", "'U:",
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j'u:", "(?<![j])'u:", "'U:",
                                        $tradspell, 0;
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, "ju:", "(?<![j'])u:", "U:",
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "ju:", "(?<![j'])u:", "U:",
                                        $tradspell, 0;
     # during, neural -> «uer» (/ju:r/ or /jUr/ in RP, /Ur/ in GA)
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, "j'(?:u:|U)r", "(?<![j])'Ur", "'U:r",
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j'(?:u:|U)r", "(?<![j])'Ur", "'U:r",
                                        $tradspell, 0;
-    ($rp, $ga, $phoneng) = unify_vowel $rp, $ga, $phoneng, "j(?:u:|U)r", "(?<![j'])Ur", "U:r",
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j(?:u:|U)r", "(?<![j'])Ur", "U:r",
                                        $tradspell, 0;
 
     return $rp, $ga, $phoneng;
@@ -201,6 +209,10 @@ sub dist {
 # preferred over both. $other is ignored if it's is undefined or empty.
 sub e_or_u_or_other {
     my ($other, $left, $right, $tradspell) = @_;
+
+    # Schwa before vowels is always spelled «e»
+    return 'e' if $right && $right !~ /^[$SAMPA_CONSONANTS]/;
+
     my $result = dist($tradspell, "${left}e$right") <= dist($tradspell, "${left}u$right")
                  ? 'e' : 'u';
 
@@ -236,11 +248,11 @@ sub any_short_vowel {
 }
 
 # combine $left, $right: Combine two strings into one.
-# Except when $left ends with a stress marker ("'") or $right is empty, the strings are separated
-# by '='.
+# Except when $left ends with a stress marker ("'") or either string is empty, the strings are
+# separated by '='.
 sub combine {
     my ($left, $right) = @_;
-    return $left =~ /'$/ || $right eq '' ? "$left$right" : "$left=$right";
+    return $left =~ /'$/ || !$right || !$left ? "$left$right" : "$left=$right";
 }
 
 # combine_and_adjust $val, $left, $right, $tradspell: Combine $left and $val into a joined
@@ -258,8 +270,6 @@ sub combine_and_adjust {
         } elsif ($val eq 'e') {
             # Final «e» /E/ becomes «eh»
             $val = 'eh';
-            # TODO Continue checking diff with .old from Chuvashi
-            # TODO Check final /i, o/
         } elsif ($val eq 'u') {
             # Final /V/ is spelled «uh»
             $val = 'uh';
@@ -269,6 +279,9 @@ sub combine_and_adjust {
         } elsif ($val eq 'k' && $left =~ /[^'aeou]i$/) {
             # «c» is used at the end of words ending in unstressed /Ik/
             $val = 'c';
+        } elsif ($val eq 'l' && $left =~ /au$/) {
+            # Final /O:l/ is written «all», e.g. «ball»
+            $left =~ s/au$/al/;
         } elsif ($left !~ /([fkpt]|th)$/) {
             # Final /s/ becomes «ss» and /z/ becomes «s» except after /f, k, p, t, T/
             if ($val eq 's') {
@@ -299,6 +312,11 @@ sub combine_and_adjust {
     } elsif ($val eq '@' && $right eq 'm' && $left =~ /dh$/) {
         # Schwa is also omitted between /D/ and final /m/
         $val = '';
+    } elsif ($val eq '@' && $right eq 'n' && $left =~ /[sz]h$/) {
+        # Final /S@n/ becomes «tion» and /Z@n/ becomes «sion»
+        $val = 'o';
+        $left =~ s/sh$/ti/;
+        $left =~ s/zh$/si/;
     } elsif ($val =~ /^(@|a#|I#)$/ && $right =~ /^[$SAMPA_CONSONANTS]*'/) {
         # Any schwa followed by a stressed vowel can become «e/u/a/o/i» (in preference order)
         $val = any_short_vowel $left, $right, $tradspell;
@@ -336,6 +354,14 @@ sub combine_and_adjust {
     } elsif ($val eq 'uu' && $right !~ /^[$SAMPA_CONSONANTS]/) {
         # «uu» /u:/ becomes «u» at the end of words and before other vowels
         $val = 'u';
+    } elsif ($val eq 'ng' && $right =~ /^k/ && $left !~ /^('?[eiu]|[cn]='?o)$/) {
+        # TODO Unify this and the next branch into one
+        # Before /k/, «n» is pronounced /N/ rather then /n/, unless the word starts with
+        # «con, en, in, non, un»
+        $val = 'n';
+    } elsif ($val eq 'n' && $right =~ /^k/ && $left !~ /^('?[eiu]|[cn]='?o)$/) {
+        # /n/ is written «nn» when it occurs before /k/ in places where «n» would be spoken /N/
+        $val = 'nn';
     } elsif ($val eq 'r' && $left =~ /r$/) {
         # Eliminate double «r»
         $val = '';
@@ -349,8 +375,8 @@ sub combine_and_adjust {
         $left =~ s/($LYTSPEL_VOWELS=)s($OPT_STRESS_MARKER)$/$1c$2/;
     }
 
-    if ($val !~ /^['eiY]/) {
-        # Non-final /k/ becomes «c» unless followed by a vowel starting with «e, i, y»
+    if ($val !~ /^['eiYy]/) {
+        # Non-final /k/ becomes «c» unless followed by any of «e, i, y»
         $left =~ s/k($OPT_STRESS_MARKER)$/c$1/;
     }
 
@@ -360,27 +386,48 @@ sub combine_and_adjust {
 
     }
 
-    # TODO Implement rules from README from l.304: Schwa /@/ before other vowels
-    # (check that that also works at the begin of words, e.g. aeolotropy, est)
-    # and from l.328: Before /k/, «n» is pronounced /N/
-    # TODO When handling «x» /ks/, make sure that the schwa in /ks@l/ is not omitted,
-    # e.g. «axel, pixel» ‹axle...›
+    # TODO decompose script (cf. partsplitter) to suggest compounds; correct and use the
+    # result for each prefix/suffixes (in: phonetic-dict.csv; out compounds.csv)
+    # TODO Afterwards delete legacy dir?
+    # Integrate compounds.csv (all entries are lower-case)
+    # TODO Handle prefixes and suffixes correctly («dis, mis; anti, semi» are spelled like that
+    # regardless of which letter follows; prefixes «baio, nio» ‹bio, neo›;
+    # suffix «ful» is preserved; «-est» remains as is (never "ast"))
+    # ‹oncoming› should be analysed as ‹on-coming›
+    # Ensure that «obzur'vaition» ‹observation› is converted correctly (from «ob'zurv» ‹observe›)
+    # Ensure that the «tion» and «sion» spellings aren't used in words derived by appending «n» or
+    # «en», e.g. «ashen, freshen, Rushan, Purzhan»
+    # Ensure that «tion» and «sion» are preserved in derived words, even if the derived form is
+    # irregular (e.g. «nationel» ‹national› from «naition» ‹nation›).
+    # Warn if the chosen variant would have been selected anyway or if a listed word is not in the
+    # dict or listed twice
     # TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
     # TODO ‹worry› should become «wurri» (using blacklist-phoneng.txt, but first find out
     # why "w'uree" currently wins)
     # ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
     # Christianization, Christianize, Christiansand, dewar, superfluous, cairngorm, martingale,
     # Apure, comte, conge, Cambrai, Campeche, canzone, carabiniere, Cavite, Cetinje, chicalote,
-    # cairngorm›: PhonEng should win
-    # ‹bourgeois, cha, christian, grandma, grandpa›: RP should win
-    # ‹cushaw, da, na, ca, Sta›: original spelling should remain
-    # Custom spellings: pshaw -> shaw, brough -> brok
+    # cairngorm, combe, complice, Courtrai, Edirne, esse, estaminet, Este, fettucine, Fiesole,
+    # Frunze, Gliwice, Iquique, irade, Katowice, Kielce, Kure, Lecce, Lidice, Loiret, Marche,
+    # marchese, Marinduque, metage, Montefiascone, Mugabe, Nivernais, Ordzhonikidze, Oriente,
+    # Orjonikidze, Palenque, petuntse, Piave, Que, reflet, Rene, rete, Roubaix, Skopje, Teide,
+    # Udine, Zabrze, Zaporozhye, zaptieh, Quebecer, mozzette, Anschauung, chiaus, kiaugh, Yaounde,
+    # elasmobranch, Gelsenkirchen, nomenclature, abranchial, abranchiate, alencon, Algonquian,
+    # asynchronism, asynchronous, Barranquilla, Bianca, blanquette, charabanc, palanquin,
+    # pancratium, Chinkiang, messieurs›:
+    # PhonEng should win
+    # ‹bourgeois, cha, christian, grandma, grandpa, overslaugh, Quebec›: RP should win
+    # ‹cushaw, da, na, ca, Sta, conquest, wonk›: original spelling should remain
+    # Custom spellings (note: better specify /pronunciation/ instead of resulting spelling):
+    # pshaw -> shaw, brough -> brok, cushaw: cu'shaw, duomo: dwoamo, foh: faw,
+    # kakemono: caake'moano, Charleroi: Shauleroy, branchiopod: brankiapod, false: faulss
     # Delete (foreign words or names): Artois, Borodino, trois, Valoi, Condorcet, Attlee,
-    # Beauharnais, Beaumarchais, Buonaparte
-    # TODO Handle prefixes and suffixes correctly («dis, mis; anti, semi» are spelled like that
-    # regardless of which letter follows; prefixes «baio, nio» ‹bio, neo›;
-    # suffix «ful» is preserved; «-est» remains as is (never "ast"))
-    # Ensure that «obzur'vaition» ‹observation› is converted correctly (from «ob'zurv» ‹observe›)
+    # Beauharnais, Beaumarchais, Buonaparte, Cimabue, Courbet, Delaunay, dele, Dubuffet, Duse,
+    # Farnese, Firenze, Fiume, Foucquet, Giorgione, conversazione, improvvisatore, jefe, jeu,
+    # jeux, Jorge, Jose, Labe, Lyautey, madre, Manolete, Monteux, mozzette, Piemonte, Quesnay,
+    # religieux, Tevere, Teyde, ubique, veloce, di, gi, Leopoldo, moi, Pareto, Delacroix, est,
+    # Francoise, Goncourt
+    # TODO Continue README from l.366: Disambiguating multigraphs
     # TODO Insert hyphens were necessary to prevent misreadings, incl.
     # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
     # unstressed /a/ after /u:/ e.g. «bivu-ak» ‹bivouac›
@@ -515,7 +562,7 @@ sub convert_dict {
         }
 
         my $tradspell           = $colref->[0];
-        my ($rp, $ga, $phoneng) = unify_vowels $colref->[3], $colref->[4], $colref->[5], $tradspell;
+        my ($rp, $ga, $phoneng) = unify_sounds $colref->[3], $colref->[4], $colref->[5], $tradspell;
         my $converted_rp        = convert_pron $rp, $mapref, $maxkeylen, $tradspell;
         my $converted_ga        = convert_pron $ga, $mapref, $maxkeylen, $tradspell;
         my $converted_phoneng   = convert_pron $phoneng, $mapref, $maxkeylen, $tradspell;
