@@ -138,8 +138,8 @@ The consonants are written as follows:
   * «y» /j/ as in «yet»
   * «zh» /Z/ as in «mi'raazh» ‹mirage›
   * The sound /k/ is written as «c» or «k», depending on context:
-      * «k» is used before any vowel starting with «e, i, y», e.g. «keep,
-        king, kynd» ‹...kind›
+      * «k» is used before «e, i, y», e.g. «keep, king, kynd,
+        calkyu'laition» ‹...kind, calculation›
       * «c» is used before any other letter, e.g. «cat, cost, crisp»
       * «c» is also used at the end of words ending in unstressed /Ik/,
         e.g. «public, majic» ‹...magic›
@@ -284,8 +284,8 @@ vowels:
     (instead of «oa»), e.g. «yelo, zeero, co'operait, po'etic, sho»
     ‹yellow, zero, cooperate, poetic, show›. This poses little risk of
     confusion, as /Q/ (as in «dog») occurs rarely or never before other
-    vowels. Should unstressed /Q/ occur at the end of words, it could be
-    written «oh», but it practice it never seems to occur.
+    vowels. (Final /Q/ could be written «oh», but in practice it never seems
+    to occur.)
   * This spelling is also used in the prefixes «baio, nio» ‹bio, neo›, e.g.
     «baio'kemistri, nio'classic» ‹biochemistry, neoclassic›.
   * /OI/ is spelled «oy» at the end of words and before other vowels
@@ -298,9 +298,9 @@ vowels:
     occurs rarely or never before other vowels.
   * Final /V/ is spelled «uh» (instead of «u»), e.g. «huh».
   * Final schwa /@/ is spelled «a» (instead of «e» or «u»), e.g. «extra,
-    daita» ‹...data›. Should unstressed /a/ (as in «cat») occur at the end
-    of words, it could be written «ah», but it practice it never seems to
-    occur.
+    daita» ‹...data›. (Should unstressed /a/ (as in «cat») occur at the end
+    of words, it could be written «ah», but in practice it never seems to
+    occur.)
   * Schwa /@/ before other vowels is always spelled «e» (never «u») to
     prevent confusion with /u:/ (spelled «u» in this position). Schwa in
     this position is very rare.
