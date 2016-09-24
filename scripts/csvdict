@@ -51,15 +51,6 @@ sub redirect_target {
     return $value =~ /^:>\s+(.*)$/ ? $1 : undef;
 }
 
-# open_outfile_and_write_header: Open output file in CSV format and write the header line.
-# Returns the opened file handle. Also backups an old version of the file, if any.
-sub open_outfile_and_write_header {
-    rename_to_backup_file_if_exists $OUT_FILE;
-    open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!\n";
-    $CSV->print($outfh, [qw(Traditional POS Redirect PhonEng RP GA)]);
-    return $outfh;
-}
-
 # generate_tagged_espeak_input $espeak_fh, $word, $pos: Write a line to be pronounced by
 # espeak where pronunciation depends on the POS tag of the word.
 sub generate_tagged_espeak_input {
@@ -179,7 +170,7 @@ say 'Invoking espeak to generate American pronunciations';
 my $ga_prons = `espeak -q --ipa -v en-us < $ESPEAK_TMP`;
 unlink $ESPEAK_TMP;
 say 'Generating final dictionary';
-my $outfh       = open_outfile_and_write_header;
+my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Traditional POS Redirect PhonEng RP GA)];
 my $rp_pron_ref = [split /\s*\n\s*/, strip_spaces $rp_prons];
 my $ga_pron_ref = [split /\s*\n\s*/, strip_spaces $ga_prons];
 ($rp_pron_ref, $ga_pron_ref) = write_entry $outfh, $_, $rp_pron_ref, $ga_pron_ref, $dict

@@ -88,15 +88,6 @@ sub add_stressed_r_colored_vowels {
     return \%result;
 }
 
-# open_outfile_and_write_header: Open output file in CSV format and write the header line.
-# Returns the opened file handle. Also backups an old version of the file, if any.
-sub open_outfile_and_write_header {
-    rename_to_backup_file_if_exists $OUT_FILE;
-    open my $outfh, '>', $OUT_FILE or die "Unable to open $OUT_FILE for writing: $!\n";
-    $CSV_OUT->print($outfh, [qw(Traditional POS Redirect RP GA PhonEng)]);
-    return $outfh;
-}
-
 # convert_pron $pron, $mapref, $maxkeylen, $alphabet_name: Convert a pronunciation using a given
 # mapping alphabet (dictionary reference).
 # $maxkeylen is the maximumg length of keys that may occur in $mapref.
@@ -152,8 +143,9 @@ sub convert_dict {
     my ($rp_map, $ga_map, $phoneng_map, $maxkeylen) = build_mappings;
     $phoneng_map = add_stressed_r_colored_vowels $phoneng_map;
     open my $infh, '<', $IN_FILE or die "Unable to open $IN_FILE: $!\n";
-    my $colref = $CSV_IN->getline($infh);       # Skip header line
-    my $outfh  = open_outfile_and_write_header;
+    my $colref = $CSV_IN->getline($infh);                 # Skip header line
+    my $outfh  = open_outfile_and_write_header $OUT_FILE,
+        [qw(Traditional POS Redirect RP GA PhonEng)];
 
     while ($colref = $CSV_IN->getline($infh)) {
         if (scalar @$colref < 4) {
