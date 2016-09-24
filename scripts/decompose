@@ -1,0 +1,269 @@
+#!/usr/bin/perl -CA
+# Recognize compounds and derived forms.
+#
+# Copyright (c) 2016 Christian Siefkes
+# See accompanying LICENSE file for licensing information.
+#
+# Required modules: Const::Fast and those listed in PhonEng.pm.
+
+use 5.014;
+use open qw(:std :utf8);  # use UTF-8 for all I/O (by default)
+use utf8;                 # allow UTF-8 in source code
+use warnings;
+
+use Const::Fast;
+use Cwd 'abs_path';
+use File::Basename 'dirname';
+use List::Util qw(min max);
+
+use lib dirname(abs_path $0);  # to locate the PhonEng package
+use PhonEng;
+
+const my $IN_FILE  => 'phonetic-dict.csv';
+const my $OUT_FILE => 'compounds.csv';
+
+const my $UNAMBIGUOUS_CONSONANTS => 'bcdfghjklmnpqrstvwxz';  # excluding 'y' (ambiguous)
+
+my $CSV_IN  = new_csv_in;
+my $CSV_OUT = new_csv_out;
+
+# build_dict: Return a reference to a list of all words in the dict. Words (keys) are converted
+# to lower-case; values are set to an array of references of the (up to) three pronunciatons.
+# Single-letter words and redirects are skipped.
+sub build_dict {
+    open my $file, '<', $IN_FILE or die "Unable to open $IN_FILE: $!";
+    my $colref = $CSV_IN->getline($file);  # Skip header line
+    my %dict;
+
+    while ($colref = $CSV_IN->getline($file)) {
+        next if scalar @$colref < 4;       # skip redirects
+        my $word = lc $colref->[0];
+        my @prons = splice @$colref, 3;
+        $dict{$word} = \@prons if length $word > 1;
+    }
+
+    close $file;
+    return \%dict;
+}
+
+# build_affix_set $filename: Build a set of affixes (pre- or suffixes).
+# Returns a reference to a set of affixes (a hash with dummy values).
+# Also returns the minimun and maximum affix length.
+sub build_affix_set {
+    my ($filename) = @_;
+    my %prefix_set;
+    my $min_prefix_len = 1000;
+    my $max_prefix_len = 0;
+
+    open my $file, '<', $filename or die "Unable to open $filename $!";
+
+    while (my $line = <$file>) {
+        chomp $line;
+        $prefix_set{$line} = 1;
+        my $len = length $line;
+        $min_prefix_len = min $min_prefix_len, $len;
+        $max_prefix_len = max $max_prefix_len, $len;
+    }
+
+    close $file;
+    return \%prefix_set, $min_prefix_len, $max_prefix_len;
+}
+
+# discard_empty_elements $arr_ref: Discard empty or undefined elements from the passed-in
+# array reference, returning those that remain.
+sub discard_empty_elements {
+    my ($arr_ref) = @_;
+    return grep { $_ } @$arr_ref;
+}
+
+# prons_match $first, $second, $word, $dict_ref: Return true (1) if at least one of the
+# pronunciations of $word starts with one of the pronunciations of $first and ends with one of the
+# pronunciations of $second. Returns false (0) otherwise.
+# This filters out apparent compounds and derived forms which aren't pronounced as an actual
+# compound would be.
+sub prons_match {
+    my ($first, $second, $word, $dict_ref) = @_;
+    my @first_prons  = discard_empty_elements $dict_ref->{$first};
+    my @second_prons = discard_empty_elements $dict_ref->{$second};
+    my @word_prons   = discard_empty_elements $dict_ref->{$word};
+    ##say 'first: ' . join('|', @first_prons). ', second: ' . join('|', @second_prons). ', full: ' . join('|', @word_prons); # TODO
+    # TODO Probably only accept split forms if at least one of the pronuncations matches
+    # (ignoring stress markers and probably also ':'),
+    # except for suffixed forms of a word ending in /S@n/ or /Z@n/
+    return 1;
+}
+
+# analyze_as_prefixed_form $word, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len:
+# Check whether $word is the prefixed form of another word in $dict_ref.
+# Returns a result of the form "prefix=stem" if a match was found, undef otherwise.
+# When in doubt, longer prefixes are preferred over shorter ones.
+sub analyze_as_prefixed_form {
+    my ($word, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len) = @_;
+
+    for (my $i = min($max_prefix_len, length($word) - 2) ; $i >= $min_prefix_len ; $i--) {
+        my $prefix = substr $word, 0, $i;
+        my $stem = substr $word, $i;
+
+        if (exists $prefix_set_ref->{$prefix} && exists $dict_ref->{$stem}) {
+            # TODO Sanity-check pronunciation before accepting the match?
+            return "$prefix=$stem";
+        }
+    }
+
+    return undef;
+}
+
+# find_alternative_base $stem: Return an alternative base form of $stem. Generates one of the
+# following alternatives:
+#
+# * A repeated final consonant (excluding 'y') is dropped, e.g. 'acquitt' becomes 'acquit'
+# * Otherwise 'e' is appended after a final consonant, e.g. 'judg' becomes 'judge'
+# * Final 'i' after a consonant becomes 'y', e.g. 'happi' becomes 'happy'
+#
+# Otherwise undef is returned.
+sub find_alternative_base {
+    my ($stem) = @_;
+
+    if ($stem =~ /([$UNAMBIGUOUS_CONSONANTS])\1$/) {
+        chop $stem;
+        return $stem;
+    } elsif ($stem =~ /([$UNAMBIGUOUS_CONSONANTS])$/) {
+        return $stem . 'e';
+    } elsif ($stem =~ /([$UNAMBIGUOUS_CONSONANTS])i$/) {
+        chop $stem;
+        return $stem . 'y';
+    } else {
+        return undef;
+    }
+}
+
+# analyze_as_suffixed_form $word, $dict_ref, $suffix_set_ref, $min_suffix_len, $max_suffix_len:
+# Check whether $word is the suffixed form of another word in $dict_ref.
+# Returns a result of the form "stem=suffix" if a match was found, undef otherwise.
+# When in doubt, shorter suffixes are preferred over longer ones.
+# Stem changes in words such as ‹running› (run=ing) and ‹happiness› (happy=ness) are taken into
+# account.
+sub analyze_as_suffixed_form {
+    my ($word, $dict_ref, $suffix_set_ref, $min_suffix_len, $max_suffix_len) = @_;
+    my $len = length $word;
+    my $max_len = min($max_suffix_len, $len - 2);
+
+    for (my $i = $min_suffix_len ; $i <= $max_len ; $i++) {
+        my $suffix_start = $len - $i;
+        my $stem         = substr $word, 0, $suffix_start;
+        my $suffix       = substr $word, $suffix_start;
+
+        if (exists $suffix_set_ref->{$suffix}) {
+            # TODO Sanity-check pronunciation before accepting the match (in both cases)?
+            return "$stem=$suffix" if exists $dict_ref->{$stem};
+
+            # Check whether a match can be found by taking stem changes such as ‹running›
+            # (run=ing), ‹judgment› (judge=ment), and ‹happiness› (happy=ness) into account
+            my $alternative_base = find_alternative_base $stem;
+
+            return "$alternative_base=$suffix"
+                if $alternative_base && exists $dict_ref->{$alternative_base};
+        }
+    }
+
+    return undef;
+}
+
+# check_for_better_match $length_of_first_part, $word, $prev_first, $prev_second, $dict_ref:
+# Splits word into a compound pair according to $length_of_first_part.
+# If both parts of the pair exist in $dict_ref and if their joined pronunciation matches that
+# of $word, then the new pair is returned if it seems to be a better match than the previously
+# best pair specified by $prev_first, $prev_second.
+# If there is no new pair, the old pair is returned.
+# If the old pair is empty (= none found yet), the new pair is returned.
+# Otherwise the pair whose variants are more similar to each other in length is returned
+# (a split into a 4-letter and a 3-letter word will be preferred over one into a 5-letter and a
+# 2-letter word).
+sub check_for_better_match {
+    my ($length_of_first_part, $word, $first, $second, $dict_ref) = @_;
+    my $new_first = substr $word, 0, $length_of_first_part;
+    my $new_second = substr $word, $length_of_first_part;
+
+    # Check whether parts are known
+    if (   exists $dict_ref->{$new_first}
+        && exists $dict_ref->{$new_second}
+        && prons_match($new_first, $new_second, $word, $dict_ref))
+    {
+
+        if ($first) {
+            my $old_dist = abs(length($first) - length($second));
+            my $new_dist = abs(length($new_first) - length($new_second));
+
+            if ($new_dist < $old_dist) {
+                $first  = $new_first;
+                $second = $new_second;
+            } elsif ($new_dist == $old_dist) {
+                # TODO Decide how to resolve this case
+                say "TIE between $first-$second and $new_first-$new_second!";
+            }
+        } else {
+            $first  = $new_first;
+            $second = $new_second;
+        }
+    }
+
+    return $first, $second;
+}
+
+# find_parts ...: Check if the word seems to be a compound or a derived form and add a suitable
+# entry to the output file if it does.
+#
+# Separators used:
+#
+# * '-' between parts of a compound
+# * '=' after a prefix and before a suffix
+# * '!' After a stem ending in /S@n/ or /Z@n/ if the derived form is spoken irregularly
+#       (e.g. ‹nation!al› from ‹nation›)
+sub find_parts {
+    my (
+        $outfh,          $word,           $dict_ref,       $prefix_set_ref, $min_prefix_len,
+        $max_prefix_len, $suffix_set_ref, $min_suffix_len, $max_suffix_len
+    ) = @_;
+    my $len = length $word;
+
+    return if $len < 4;  # too short to be a compound
+
+    # Check whether it's a prefixed or suffixed form
+    my $result = analyze_as_prefixed_form $word, $dict_ref, $prefix_set_ref, $min_prefix_len,
+        $max_prefix_len;
+    $result = analyze_as_suffixed_form $word, $dict_ref, $suffix_set_ref, $min_suffix_len,
+        $max_suffix_len
+        unless $result;
+
+    if ($result) {
+        $CSV_OUT->print($outfh, [$word, $result]);
+        return;
+    }
+
+    my $first  = '';
+    my $second = '';
+
+    # Check whether it's a compound of two words
+    for my $i (2 .. $len - 2) {
+        ($first, $second) = check_for_better_match $i, $word, $first, $second, $dict_ref;
+    }
+
+    if ($first) {
+        $CSV_OUT->print($outfh, [$word, "$first-$second"]);
+    }
+}
+
+# decompose: Recognize compounds and derived forms.
+sub decompose {
+    my $dict_ref = build_dict;
+    my ($prefix_set_ref, $min_prefix_len, $max_prefix_len) = build_affix_set 'prefix.list';
+    my ($suffix_set_ref, $min_suffix_len, $max_suffix_len) = build_affix_set 'suffix.list';
+    my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Word Parts)];
+    find_parts $outfh, $_, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len,
+        $suffix_set_ref, $min_suffix_len, $max_suffix_len
+        for sort { lc $a cmp lc $b } keys %$dict_ref;
+    close $outfh;
+}
+
+# Main block
+decompose;
