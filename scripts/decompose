@@ -14,7 +14,7 @@ use warnings;
 use Const::Fast;
 use Cwd 'abs_path';
 use File::Basename 'dirname';
-use List::Util qw(min max);
+use List::Util qw(any min max);
 
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
@@ -28,18 +28,28 @@ my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
 
 # build_dict: Return a reference to a list of all words in the dict. Words (keys) are converted
-# to lower-case; values are set to an array of references of the (up to) three pronunciatons.
-# Single-letter words and redirects are skipped.
+# to lower-case; values are set to an array of references of the three pronunciatons.
+# If a word is listed several times (with different POS tags, e.g. "house"), all of its
+# pronunciations are combined. Single-letter words and redirects are skipped.
 sub build_dict {
     open my $file, '<', $IN_FILE or die "Unable to open $IN_FILE: $!";
-    my $colref = $CSV_IN->getline($file);  # Skip header line
+    my $colref = $CSV_IN->getline($file);  # skip header line
     my %dict;
 
     while ($colref = $CSV_IN->getline($file)) {
         next if scalar @$colref < 4;       # skip redirects
         my $word = lc $colref->[0];
         my @prons = splice @$colref, 3;
-        $dict{$word} = \@prons if length $word > 1;
+
+        if (length $word > 1) {
+            my $oldval = $dict{$word};
+
+            if ($oldval) {
+                push @$oldval, @prons;
+            } else {
+                $dict{$word} = \@prons;
+            }
+        }
     }
 
     close $file;
@@ -69,11 +79,38 @@ sub build_affix_set {
     return \%prefix_set, $min_prefix_len, $max_prefix_len;
 }
 
-# discard_empty_elements $arr_ref: Discard empty or undefined elements from the passed-in
-# array reference, returning those that remain.
-sub discard_empty_elements {
+# normalize_pron $pron: Normalize a pronounciation as follows:
+# TODO Reintegrate into code below
+sub normalize_pron {
+    my ($pron) = @_;
+    ##$pron =~ s/'(a#?|A|a[IU]?|E|eI|I#?|i:|O[:I]|oU|Q|U|u:|V)/@/g;
+    # TODO Change stressed vowel to @ (and @` to @r?) to recognise combinations
+    # such as hexagon=al -- adapt vowel in base word in such cases, e.g.
+    # «hexagen» ‹hexagon›; cf. also normalizations in lytspelify
+    # Maybe normalize r-colored vowels to @r
+    $pron =~ s/'//g;
+    return $pron;
+}
+
+# discard_empty_elements_and_normalize $arr_ref: Discard empty, undefined, or duplicate elements
+# from the passed-in array reference, returning those that remain. Also normalizes each element as
+# follows:
+#
+# * All stress markers are removed (since stress often moves in derived words)
+# * As alternative variant in which all stressed vowels (except special r-colored vowels) are
+#   replaced by a schwa is added to the result array (since stress often moves in derived words and
+#   a stressed vowel may be reduced to a schwa or vice versa)
+#
+# The alternative variants allow the recognition of derived words such "hexagonal" (hexagon=al)
+# and "Zealand" (zea-land).
+sub discard_empty_elements_and_normalize {
+    # TODO Add both schwa-normalized and other variants?
+    # Test cases: hexagen
     my ($arr_ref) = @_;
-    return grep { $_ } @$arr_ref;
+    my @non_empty       = grep { $_ } @$arr_ref;
+    my @stress_filtered = map  { normalize_pron $_ } @non_empty;
+    ##old: my @stress_filtered =  map { local $_ = $_; s/'//g; $_  } @non_empty;
+    return @stress_filtered;
 }
 
 # prons_match $first, $second, $word, $dict_ref: Return true (1) if at least one of the
@@ -81,16 +118,28 @@ sub discard_empty_elements {
 # pronunciations of $second. Returns false (0) otherwise.
 # This filters out apparent compounds and derived forms which aren't pronounced as an actual
 # compound would be.
+# If $first or $second is empty, only the other part is checked -- that's useful for affixes
+# (which aren't always listed in the dict and may be spoken differently in some cases).
 sub prons_match {
     my ($first, $second, $word, $dict_ref) = @_;
-    my @first_prons  = discard_empty_elements $dict_ref->{$first};
-    my @second_prons = discard_empty_elements $dict_ref->{$second};
-    my @word_prons   = discard_empty_elements $dict_ref->{$word};
-    ##say 'first: ' . join('|', @first_prons). ', second: ' . join('|', @second_prons). ', full: ' . join('|', @word_prons); # TODO
-    # TODO Probably only accept split forms if at least one of the pronuncations matches
-    # (ignoring stress markers and probably also ':'),
-    # except for suffixed forms of a word ending in /S@n/ or /Z@n/
-    return 1;
+    my @word_prons      = discard_empty_elements_and_normalize $dict_ref->{$word};
+    my $first_check_ok  = 1;
+    my $second_check_ok = 1;
+
+    if ($first) {
+        my @first_prons = discard_empty_elements_and_normalize $dict_ref->{$first};
+        my $first_pattern = '^(' . join('|', @first_prons) . ')';
+        $first_check_ok = any { /$first_pattern/ } @word_prons;
+    }
+
+    if ($first_check_ok && $second) {
+        my @second_prons = discard_empty_elements_and_normalize $dict_ref->{$second};
+        my $second_pattern = '(' . join('|', @second_prons) . ')$';
+        $second_check_ok = any { /$second_pattern/ } @word_prons;
+    }
+
+    return $first_check_ok && $second_check_ok;
+    # TODO Make exception for suffixed forms of a word ending in /S@n/ or /Z@n/
 }
 
 # analyze_as_prefixed_form $word, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len:
@@ -104,8 +153,9 @@ sub analyze_as_prefixed_form {
         my $prefix = substr $word, 0, $i;
         my $stem = substr $word, $i;
 
-        if (exists $prefix_set_ref->{$prefix} && exists $dict_ref->{$stem}) {
-            # TODO Sanity-check pronunciation before accepting the match?
+        if (exists $prefix_set_ref->{$prefix} && exists $dict_ref->{$stem} && prons_match '',
+            $stem, $word, $dict_ref)
+        {
             return "$prefix=$stem";
         }
     }
@@ -154,15 +204,18 @@ sub analyze_as_suffixed_form {
         my $suffix       = substr $word, $suffix_start;
 
         if (exists $suffix_set_ref->{$suffix}) {
-            # TODO Sanity-check pronunciation before accepting the match (in both cases)?
-            return "$stem=$suffix" if exists $dict_ref->{$stem};
+            return "$stem=$suffix"
+                if exists $dict_ref->{$stem}
+                && prons_match $stem, '', $word, $dict_ref;
 
             # Check whether a match can be found by taking stem changes such as ‹running›
             # (run=ing), ‹judgment› (judge=ment), and ‹happiness› (happy=ness) into account
             my $alternative_base = find_alternative_base $stem;
 
             return "$alternative_base=$suffix"
-                if $alternative_base && exists $dict_ref->{$alternative_base};
+                if $alternative_base
+                && exists $dict_ref->{$alternative_base}
+                && prons_match $alternative_base, '', $word, $dict_ref;
         }
     }
 
@@ -185,11 +238,9 @@ sub check_for_better_match {
     my $new_second = substr $word, $length_of_first_part;
 
     # Check whether parts are known
-    if (   exists $dict_ref->{$new_first}
-        && exists $dict_ref->{$new_second}
-        && prons_match($new_first, $new_second, $word, $dict_ref))
+    if (exists $dict_ref->{$new_first} && exists $dict_ref->{$new_second} && prons_match $new_first,
+        $new_second, $word, $dict_ref)
     {
-
         if ($first) {
             my $old_dist = abs(length($first) - length($second));
             my $new_dist = abs(length($new_first) - length($new_second));
@@ -206,6 +257,11 @@ sub check_for_better_match {
             $second = $new_second;
         }
     }
+
+    # TODO integrate manual entries:
+    # inorganization,in=organization
+    # heretical,heretic=al
+    # ready,
 
     return $first, $second;
 }
@@ -244,7 +300,7 @@ sub find_parts {
     my $second = '';
 
     # Check whether it's a compound of two words
-    for my $i (2 .. $len - 2) {
+    for my $i (3 .. $len - 3) {
         ($first, $second) = check_for_better_match $i, $word, $first, $second, $dict_ref;
     }
 
