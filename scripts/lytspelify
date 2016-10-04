@@ -203,6 +203,8 @@ sub e_or_u_or_other {
 
     # Schwa before vowels is always spelled «e»
     return 'e' if $right && $right !~ /^[$SAMPA_CONSONANTS]/;
+    # TODO Write schwa after other vowels as «a», e.g. «maniuel» ‹manual›?
+    # (check whether/how often /a/ occurs in this position)
 
     my $result =
         dist($tradspell, "${left}e$right") <= dist($tradspell, "${left}u$right") ? 'e' : 'u';
