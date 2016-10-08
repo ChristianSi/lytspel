@@ -377,7 +377,9 @@ sub combine_and_adjust {
     }
 
 # TODO decompose script (cf. partsplitter) to suggest compounds; correct and use the
-# result for each prefix/suffixes (in: phonetic-dict.csv; out compounds.csv)
+# result for each prefix/suffixes (in: phonetic-dict.csv; out compounds.csv); also handle and
+# document schwa/single-letter short changes such as «hexagen» ‹hexagon› due to «he'xagenel»
+# ‹hexagonal›; deal with national,nation=al as special case
 # TODO Afterwards delete legacy dir?
 # Integrate compounds.csv (note that all entries are lower-case)
 # TODO Handle prefixes and suffixes correctly («dis, mis; anti, semi» are spelled like that
