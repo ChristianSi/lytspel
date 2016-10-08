@@ -23,6 +23,8 @@ const my $IN_FILE  => 'phonetic-dict.csv';
 const my $OUT_FILE => 'compounds.csv';
 
 const my $UNAMBIGUOUS_CONSONANTS => 'bcdfghjklmnpqrstvwxz';  # excluding 'y' (ambiguous)
+const my $SHORT_VOWEL            => 'a#?|E|I#?|Q|V';         # excluding schwa and «oo» /U/
+const my $NON_SCHWA_VOWEL => 'a[#IU]?|A|E|eI|I#?|i:|O[:I]|oU|Q|U|u:|V';
 
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
@@ -79,38 +81,34 @@ sub build_affix_set {
     return \%prefix_set, $min_prefix_len, $max_prefix_len;
 }
 
-# normalize_pron $pron: Normalize a pronounciation as follows:
-# TODO Reintegrate into code below
-sub normalize_pron {
-    my ($pron) = @_;
-    ##$pron =~ s/'(a#?|A|a[IU]?|E|eI|I#?|i:|O[:I]|oU|Q|U|u:|V)/@/g;
-    # TODO Change stressed vowel to @ (and @` to @r?) to recognise combinations
-    # such as hexagon=al -- adapt vowel in base word in such cases, e.g.
-    # «hexagen» ‹hexagon›; cf. also normalizations in lytspelify
-    # Maybe normalize r-colored vowels to @r
-    $pron =~ s/'//g;
-    return $pron;
-}
-
 # discard_empty_elements_and_normalize $arr_ref: Discard empty, undefined, or duplicate elements
 # from the passed-in array reference, returning those that remain. Also normalizes each element as
 # follows:
 #
 # * All stress markers are removed (since stress often moves in derived words)
-# * As alternative variant in which all stressed vowels (except special r-colored vowels) are
+# * '#' is removed (since it only marks a vowel variant)
+# * As alternative variant in which all stressed short vowels (except special r-colored vowels) are
 #   replaced by a schwa is added to the result array (since stress often moves in derived words and
-#   a stressed vowel may be reduced to a schwa or vice versa)
+#   a stressed short vowel may be reduced to a schwa or vice versa) -- to prevent spurious matches,
+#   this alternative is only added if it at least one non-schwa vowel remains
 #
-# The alternative variants allow the recognition of derived words such "hexagonal" (hexagon=al)
-# and "Zealand" (zea-land).
+# The alternative variants allow the recognition of derived words such "hexagonal" (hexagon=al).
 sub discard_empty_elements_and_normalize {
-    # TODO Add both schwa-normalized and other variants?
-    # Test cases: hexagen
     my ($arr_ref) = @_;
-    my @non_empty       = grep { $_ } @$arr_ref;
-    my @stress_filtered = map  { normalize_pron $_ } @non_empty;
-    ##old: my @stress_filtered =  map { local $_ = $_; s/'//g; $_  } @non_empty;
-    return @stress_filtered;
+    my %result_set;
+
+    for my $pron (@$arr_ref) {
+        next unless $pron;  # Skip empty entries
+
+        # Create schwa-ified alternative
+        my $altpron = $pron =~ s/'($SHORT_VOWEL)/@/gr;
+        $altpron =~ s/['#]//g;  # Remove stress markers and '#'
+        $result_set{$altpron} = 1 if $altpron =~ /$NON_SCHWA_VOWEL/;
+        $pron =~ s/['#]//g;     # Remove stress markers and '#'
+        $result_set{$pron} = 1;
+    }
+
+    return keys %result_set;
 }
 
 # prons_match $first, $second, $word, $dict_ref: Return true (1) if at least one of the
@@ -139,7 +137,6 @@ sub prons_match {
     }
 
     return $first_check_ok && $second_check_ok;
-    # TODO Make exception for suffixed forms of a word ending in /S@n/ or /Z@n/
 }
 
 # analyze_as_prefixed_form $word, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len:
@@ -222,6 +219,28 @@ sub analyze_as_suffixed_form {
     return undef;
 }
 
+# prefer_new_match $first, $second, $new_first, $new_second: Return true-ish iff the newer match
+# ($new_first-$new_second) should be preferred over the older one ($first-$second).
+# Prefers the pair whose variants are more similar to each other in length (a split into a
+# 4-letter and a 3-letter word will be preferred over one into a 5-letter and a 2-letter word).
+sub prefer_new_match {
+    my ($first, $second, $new_first, $new_second) = @_;
+    my $old_dist = abs(length($first) - length($second));
+    my $new_dist = abs(length($new_first) - length($new_second));
+
+    if ($new_dist == $old_dist) {
+        # TODO implement and document: By default keep old match, e.g. ‹ear-plug› instead of
+        # ‹earp-lug›.
+        # But if the old match splits a double letter and the new match doesn't,
+        # use the latter, e.g. ‹sell-out› instead of ‹sel-lout›
+        # first letter: substr $word, 0, 1; last letter: substr $word, -1;
+        say "TIE between $first-$second and $new_first-$new_second!";
+    }
+
+    return ($new_dist < $old_dist);
+
+}
+
 # check_for_better_match $length_of_first_part, $word, $prev_first, $prev_second, $dict_ref:
 # Splits word into a compound pair according to $length_of_first_part.
 # If both parts of the pair exist in $dict_ref and if their joined pronunciation matches that
@@ -229,9 +248,7 @@ sub analyze_as_suffixed_form {
 # best pair specified by $prev_first, $prev_second.
 # If there is no new pair, the old pair is returned.
 # If the old pair is empty (= none found yet), the new pair is returned.
-# Otherwise the pair whose variants are more similar to each other in length is returned
-# (a split into a 4-letter and a 3-letter word will be preferred over one into a 5-letter and a
-# 2-letter word).
+# Otherwise the algorithm documented in 'prefer_new_match' is used.
 sub check_for_better_match {
     my ($length_of_first_part, $word, $first, $second, $dict_ref) = @_;
     my $new_first = substr $word, 0, $length_of_first_part;
@@ -242,15 +259,9 @@ sub check_for_better_match {
         $new_second, $word, $dict_ref)
     {
         if ($first) {
-            my $old_dist = abs(length($first) - length($second));
-            my $new_dist = abs(length($new_first) - length($new_second));
-
-            if ($new_dist < $old_dist) {
+            if (prefer_new_match $first, $second, $new_first, $new_second) {
                 $first  = $new_first;
                 $second = $new_second;
-            } elsif ($new_dist == $old_dist) {
-                # TODO Decide how to resolve this case
-                say "TIE between $first-$second and $new_first-$new_second!";
             }
         } else {
             $first  = $new_first;
@@ -258,9 +269,10 @@ sub check_for_better_match {
         }
     }
 
-    # TODO integrate manual entries:
+    # TODO Integrate manual entries:
     # inorganization,in=organization
     # heretical,heretic=al
+    # national,nation=al
     # ready,
 
     return $first, $second;
@@ -273,8 +285,6 @@ sub check_for_better_match {
 #
 # * '-' between parts of a compound
 # * '=' after a prefix and before a suffix
-# * '!' After a stem ending in /S@n/ or /Z@n/ if the derived form is spoken irregularly
-#       (e.g. ‹nation!al› from ‹nation›)
 sub find_parts {
     my (
         $outfh,          $word,           $dict_ref,       $prefix_set_ref, $min_prefix_len,
