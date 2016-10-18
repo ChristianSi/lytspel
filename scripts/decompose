@@ -111,6 +111,57 @@ sub discard_empty_elements_and_normalize {
     return keys %result_set;
 }
 
+# build_combined_pattern $first_prons_aref, $second_prons_aref: Build a combined matching
+# pattern from two lists of pronunciations for the parts of a compound (two array references).
+# TODO If first ends in "`" and second starts with "r", the latter should be optional
+# e.g. bitterroot
+# TODO anybody should be recognized
+# TODO manual entries (sort):
+# armorbearer,armor-bearer
+# aromatherapy,aroma-therapy
+# birddog,bird-dog
+# boattail,boat-tail
+# boottopping,boot-topping
+# bottommost,bottom-most
+# cannot,can-not
+# bitesize,bite-size
+# bodyguard,body-guard
+# bogeymen,bogey-men
+# coulombmeter,coulomb-meter
+# dampproof,damp-proof
+# earreach,ear-reach
+# eellike,eel-like
+# filmmaker,film-maker
+# filmmaking,film-making
+# flattop,flat-top
+# goddam,
+# goddamn,
+# goddaughter,god-daughter
+# granddad,grand-dad
+# granddaughter,grand-daughter
+# lamppost,lamp-post
+# loosestrife,loose-strife
+# ohmmeter,ohm-meter
+# roommate,room-mate
+# stepparent,step-parent
+# tableland,table-land
+# teammate,team-mate
+# whencesoever,whence-soever
+# TODO Recognize frolicking,frolic=ing (‹c› may become ‹ck› before [ei])
+sub build_combined_pattern {
+    my ($first_prons_aref, $second_prons_aref) = @_;
+    my $second_start_chars = '';
+
+    for my $pron (@$first_prons_aref) {
+        # Allow subsequent /r/ if pron ends in /`/ (e.g. "after-hours")
+        $pron =~ s/`$/`r?/;
+    }
+
+    my $first_pattern = '^(' . join('|', @$first_prons_aref) . ')';
+    my $second_pattern = '(' . join('|', @$second_prons_aref) . ')$';
+    return "$first_pattern$second_pattern";
+}
+
 # prons_match $first, $second, $word, $dict_ref: Return true (1) if at least one of the
 # pronunciations of $word starts with one of the pronunciations of $first and ends with one of the
 # pronunciations of $second. Returns false (0) otherwise.
@@ -120,20 +171,29 @@ sub discard_empty_elements_and_normalize {
 # (which aren't always listed in the dict and may be spoken differently in some cases).
 sub prons_match {
     my ($first, $second, $word, $dict_ref) = @_;
-    my @word_prons      = discard_empty_elements_and_normalize $dict_ref->{$word};
+    my @word_prons = discard_empty_elements_and_normalize $dict_ref->{$word};
+    my @first_prons;
+    my @second_prons;
     my $first_check_ok  = 1;
     my $second_check_ok = 1;
 
     if ($first) {
-        my @first_prons = discard_empty_elements_and_normalize $dict_ref->{$first};
+        @first_prons = discard_empty_elements_and_normalize $dict_ref->{$first};
         my $first_pattern = '^(' . join('|', @first_prons) . ')';
         $first_check_ok = any { /$first_pattern/ } @word_prons;
     }
 
     if ($first_check_ok && $second) {
-        my @second_prons = discard_empty_elements_and_normalize $dict_ref->{$second};
+        @second_prons = discard_empty_elements_and_normalize $dict_ref->{$second};
         my $second_pattern = '(' . join('|', @second_prons) . ')$';
-        $second_check_ok = any { /$second_pattern/ } @word_prons;
+
+        if ($first) {
+            # Check whether full pronunciation matches
+            my $combined_pattern = build_combined_pattern \@first_prons, \@second_prons;
+            $second_check_ok = any { /$combined_pattern/ } @word_prons;
+        } else {
+            $second_check_ok = any { /$second_pattern/ } @word_prons;
+        }
     }
 
     return $first_check_ok && $second_check_ok;
@@ -219,26 +279,26 @@ sub analyze_as_suffixed_form {
     return undef;
 }
 
-# prefer_new_match $first, $second, $new_first, $new_second: Return true-ish iff the newer match
-# ($new_first-$new_second) should be preferred over the older one ($first-$second).
+# prefer_new_match $first, $second, $new_first, $new_second: Return true-ish iff the new match
+# ($new_first-$new_second) should be preferred over the old one ($first-$second).
 # Prefers the pair whose variants are more similar to each other in length (a split into a
 # 4-letter and a 3-letter word will be preferred over one into a 5-letter and a 2-letter word).
+# In case of the tie, the new match is chosen if it doesn't split a double letter, while
+# the old one does (e.g. ‹sell-out› instead of ‹sel-lout›).
+# Otherwise, the old match is chosen (e.g. ‹ear-plug› instead of ‹earp-lug›).
 sub prefer_new_match {
     my ($first, $second, $new_first, $new_second) = @_;
     my $old_dist = abs(length($first) - length($second));
     my $new_dist = abs(length($new_first) - length($new_second));
 
-    if ($new_dist == $old_dist) {
-        # TODO implement and document: By default keep old match, e.g. ‹ear-plug› instead of
-        # ‹earp-lug›.
-        # But if the old match splits a double letter and the new match doesn't,
-        # use the latter, e.g. ‹sell-out› instead of ‹sel-lout›
-        # first letter: substr $word, 0, 1; last letter: substr $word, -1;
-        say "TIE between $first-$second and $new_first-$new_second!";
+    if ($new_dist < $old_dist) {
+        return 1;
+    } elsif ($new_dist == $old_dist) {
+        return substr($first,     -1) eq substr($second,     0, 1)
+            && substr($new_first, -1) ne substr($new_second, 0, 1);
+    } else {
+        return 0;
     }
-
-    return ($new_dist < $old_dist);
-
 }
 
 # check_for_better_match $length_of_first_part, $word, $prev_first, $prev_second, $dict_ref:
@@ -269,8 +329,10 @@ sub check_for_better_match {
         }
     }
 
+    # TODO Why ready,reade=y ??
+
     # TODO Integrate manual entries:
-    # inorganization,in=organization
+    # cattail,cat-tail
     # heretical,heretic=al
     # national,nation=al
     # ready,
