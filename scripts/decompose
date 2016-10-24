@@ -19,8 +19,9 @@ use List::Util qw(any min max);
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
 
-const my $IN_FILE  => 'phonetic-dict.csv';
-const my $OUT_FILE => 'compounds.csv';
+const my $IN_FILE        => 'phonetic-dict.csv';
+const my $OUT_FILE       => 'compounds.csv';
+const my $MANUAL_ENTRIES => 'compounds-manual.csv';
 
 const my $UNAMBIGUOUS_CONSONANTS => 'bcdfghjklmnpqrstvwxz';  # excluding 'y' (ambiguous)
 const my $SHORT_VOWEL            => 'a#?|E|I#?|Q|V';         # excluding schwa and «oo» /U/
@@ -34,7 +35,7 @@ my $CSV_OUT = new_csv_out;
 # If a word is listed several times (with different POS tags, e.g. "house"), all of its
 # pronunciations are combined. Single-letter words and redirects are skipped.
 sub build_dict {
-    open my $file, '<', $IN_FILE or die "Unable to open $IN_FILE: $!";
+    open my $file, '<', $IN_FILE or die "Unable to open $IN_FILE: $!\n";
     my $colref = $CSV_IN->getline($file);  # skip header line
     my %dict;
 
@@ -67,7 +68,7 @@ sub build_affix_set {
     my $min_prefix_len = 1000;
     my $max_prefix_len = 0;
 
-    open my $file, '<', $filename or die "Unable to open $filename $!";
+    open my $file, '<', $filename or die "Unable to open $filename: $!\n";
 
     while (my $line = <$file>) {
         chomp $line;
@@ -79,6 +80,23 @@ sub build_affix_set {
 
     close $file;
     return \%prefix_set, $min_prefix_len, $max_prefix_len;
+}
+
+# Build a list of manual entries from the $MANUAL_ENTRIES CSV file. All entries in this
+# file will be used as is; or, if the second field is empty, they will be skipped altogether
+# (not considered as compounds).
+sub build_manual_entries_dict {
+    open my $file, '<', $MANUAL_ENTRIES or die "Unable to open $MANUAL_ENTRIES: $!\n";
+    my $colref = $CSV_IN->getline($file);  # skip header line
+    my %dict;
+
+    while ($colref = $CSV_IN->getline($file)) {
+        my $word = $colref->[0];
+        $dict{$word} = $colref->[1] // '';
+    }
+
+    close $file;
+    return \%dict;
 }
 
 # discard_empty_elements_and_normalize $arr_ref: Discard empty, undefined, or duplicate elements
@@ -113,49 +131,12 @@ sub discard_empty_elements_and_normalize {
 
 # build_combined_pattern $first_prons_aref, $second_prons_aref: Build a combined matching
 # pattern from two lists of pronunciations for the parts of a compound (two array references).
-# TODO If first ends in "`" and second starts with "r", the latter should be optional
-# e.g. bitterroot
-# TODO anybody should be recognized
-# TODO manual entries (sort):
-# armorbearer,armor-bearer
-# aromatherapy,aroma-therapy
-# birddog,bird-dog
-# boattail,boat-tail
-# boottopping,boot-topping
-# bottommost,bottom-most
-# cannot,can-not
-# bitesize,bite-size
-# bodyguard,body-guard
-# bogeymen,bogey-men
-# coulombmeter,coulomb-meter
-# dampproof,damp-proof
-# earreach,ear-reach
-# eellike,eel-like
-# filmmaker,film-maker
-# filmmaking,film-making
-# flattop,flat-top
-# goddam,
-# goddamn,
-# goddaughter,god-daughter
-# granddad,grand-dad
-# granddaughter,grand-daughter
-# lamppost,lamp-post
-# loosestrife,loose-strife
-# ohmmeter,ohm-meter
-# roommate,room-mate
-# stepparent,step-parent
-# tableland,table-land
-# teammate,team-mate
-# whencesoever,whence-soever
-# TODO Recognize frolicking,frolic=ing (‹c› may become ‹ck› before [ei])
 sub build_combined_pattern {
     my ($first_prons_aref, $second_prons_aref) = @_;
     my $second_start_chars = '';
 
-    for my $pron (@$first_prons_aref) {
-        # Allow subsequent /r/ if pron ends in /`/ (e.g. "after-hours")
-        $pron =~ s/`$/`r?/;
-    }
+    # Allow subsequent /r/ if pron ends in /`/ (e.g. "after-hours")
+    s/`$/`r?/ for @$first_prons_aref;
 
     my $first_pattern = '^(' . join('|', @$first_prons_aref) . ')';
     my $second_pattern = '(' . join('|', @$second_prons_aref) . ')$';
@@ -224,6 +205,7 @@ sub analyze_as_prefixed_form {
 # following alternatives:
 #
 # * A repeated final consonant (excluding 'y') is dropped, e.g. 'acquitt' becomes 'acquit'
+# * Final 'ck' becomes 'c', e.g. 'panick' becomes 'panic'
 # * Otherwise 'e' is appended after a final consonant, e.g. 'judg' becomes 'judge'
 # * Final 'i' after a consonant becomes 'y', e.g. 'happi' becomes 'happy'
 #
@@ -231,7 +213,7 @@ sub analyze_as_prefixed_form {
 sub find_alternative_base {
     my ($stem) = @_;
 
-    if ($stem =~ /([$UNAMBIGUOUS_CONSONANTS])\1$/) {
+    if ($stem =~ /([$UNAMBIGUOUS_CONSONANTS])\1$/ || $stem =~ /ck$/) {
         chop $stem;
         return $stem;
     } elsif ($stem =~ /([$UNAMBIGUOUS_CONSONANTS])$/) {
@@ -329,14 +311,6 @@ sub check_for_better_match {
         }
     }
 
-    # TODO Why ready,reade=y ??
-
-    # TODO Integrate manual entries:
-    # cattail,cat-tail
-    # heretical,heretic=al
-    # national,nation=al
-    # ready,
-
     return $first, $second;
 }
 
@@ -349,10 +323,19 @@ sub check_for_better_match {
 # * '=' after a prefix and before a suffix
 sub find_parts {
     my (
-        $outfh,          $word,           $dict_ref,       $prefix_set_ref, $min_prefix_len,
-        $max_prefix_len, $suffix_set_ref, $min_suffix_len, $max_suffix_len
+        $outfh,          $word,           $dict_ref,       $prefix_set_ref,
+        $min_prefix_len, $max_prefix_len, $suffix_set_ref, $min_suffix_len,
+        $max_suffix_len, $manual_entries_ref
     ) = @_;
     my $len = length $word;
+
+    # Use manual entries, if any
+    my $manual_val = $manual_entries_ref->{$word};
+    if (defined $manual_val) {
+        # Use the manual entry unless it's empty (then the word is skipped altogether)
+        $CSV_OUT->print($outfh, [$word, $manual_val]) if $manual_val;
+        return;
+    }
 
     return if $len < 4;  # too short to be a compound
 
@@ -386,9 +369,10 @@ sub decompose {
     my $dict_ref = build_dict;
     my ($prefix_set_ref, $min_prefix_len, $max_prefix_len) = build_affix_set 'prefix.list';
     my ($suffix_set_ref, $min_suffix_len, $max_suffix_len) = build_affix_set 'suffix.list';
+    my $manual_entries_ref = build_manual_entries_dict;
     my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Word Parts)];
     find_parts $outfh, $_, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len,
-        $suffix_set_ref, $min_suffix_len, $max_suffix_len
+        $suffix_set_ref, $min_suffix_len, $max_suffix_len, $manual_entries_ref
         for sort { lc $a cmp lc $b } keys %$dict_ref;
     close $outfh;
 }
