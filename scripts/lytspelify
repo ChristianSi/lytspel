@@ -26,11 +26,13 @@ const my $PHONEME_MAP => 'phoneme-map.csv';
 
 # Vowel letters in SAMPA and Lytspel
 const my $SAMPA_VOWELS   => '@:#3aAeEiIoOQuUV';
-const my $LYTSPEL_VOWELS => '[aeiouY]';
+const my $LYTSPEL_VOWELS => 'aeiouY';
 # Consonant letters
 const my $SAMPA_CONSONANTS => '`bdDfghjklmnNprsStTvwzZ';
 # Pattern fragment matching an optional stress marker
 const my $OPT_STRESS_MARKER => "(?:=')?";
+# Pattern fragment matching a Lytspel consonant
+const my $LYTSPEL_CONSONANT => "(?:(?:[bcdfghjklmnprstvwxyz]h?|nn?g|qu)=?)";
 
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
@@ -203,8 +205,6 @@ sub e_or_u_or_other {
 
     # Schwa before vowels is always spelled «e»
     return 'e' if $right && $right !~ /^[$SAMPA_CONSONANTS]/;
-    # TODO Write schwa after other vowels as «a», e.g. «maniuel» ‹manual›?
-    # (check whether/how often /a/ occurs in this position)
 
     my $result =
         dist($tradspell, "${left}e$right") <= dist($tradspell, "${left}u$right") ? 'e' : 'u';
@@ -359,10 +359,10 @@ sub combine_and_adjust {
 
     if ($val =~ /^[aou]/) {
         # /s/ becomes «ss» between any vowel and a vowel starting with «a, o, u»
-        $left =~ s/($LYTSPEL_VOWELS=)s($OPT_STRESS_MARKER)$/$1ss$2/;
+        $left =~ s/([$LYTSPEL_VOWELS]=)s($OPT_STRESS_MARKER)$/$1ss$2/;
     } elsif ($val =~ /^[eiY]/) {
         # /s/ becomes «c» between any vowel and a vowel starting with «e, i, y»
-        $left =~ s/($LYTSPEL_VOWELS=)s($OPT_STRESS_MARKER)$/$1c$2/;
+        $left =~ s/([$LYTSPEL_VOWELS]=)s($OPT_STRESS_MARKER)$/$1c$2/;
     }
 
     if ($val !~ /^['eiYy]/) {
@@ -370,60 +370,71 @@ sub combine_and_adjust {
         $left =~ s/k($OPT_STRESS_MARKER)$/c$1/;
     }
 
-    if ($val =~ /^$LYTSPEL_VOWELS/) {
+    if ($val =~ /^[$LYTSPEL_VOWELS]/) {
         # /z/ becomes «s» between two vowels
-        $left =~ s/($LYTSPEL_VOWELS=)z($OPT_STRESS_MARKER)$/$1s$2/;
+        $left =~ s/([$LYTSPEL_VOWELS]=)z($OPT_STRESS_MARKER)$/$1s$2/;
 
     }
 
-# TODO decompose script (cf. partsplitter) to suggest compounds; correct and use the
-# result for each prefix/suffixes (in: phonetic-dict.csv; out compounds.csv); also handle and
-# document schwa/single-letter short changes such as «hexagen» ‹hexagon› due to «he'xagenel»
-# ‹hexagonal›; deal with national,nation=al as special case
-# TODO Afterwards delete legacy dir?
-# Integrate compounds.csv (note that all entries are lower-case)
-# TODO Handle prefixes and suffixes correctly («dis, mis; anti, semi» are spelled like that
-# regardless of which letter follows; prefixes «baio, nio» ‹bio, neo›;
-# suffix «ful» is preserved; «-est» remains as is (never "ast"))
-# ‹oncoming› should be analysed as ‹on-coming›
-# Ensure that «obzur'vaition» ‹observation› is converted correctly (from «ob'zurv» ‹observe›)
-# Ensure that the «tion» and «sion» spellings aren't used in words derived by appending «n» or
-# «en», e.g. «ashen, freshen, Rushan, Purzhan»
-# Ensure that «tion» and «sion» are preserved in derived words, even if the derived form is
-# irregular (e.g. «nationel» ‹national› from «naition» ‹nation›).
-# Warn if the chosen variant would have been selected anyway or if a listed word is not in the
-# dict or listed twice
-# TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
-# TODO ‹worry› should become «wurri» (using blacklist-phoneng.txt, but first find out
-# why "w'uree" currently wins)
-# ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
-# Christianization, Christianize, Christiansand, dewar, superfluous, cairngorm, martingale,
-# Apure, comte, conge, Cambrai, Campeche, canzone, carabiniere, Cavite, Cetinje, chicalote,
-# cairngorm, combe, complice, Courtrai, Edirne, esse, estaminet, Este, fettucine, Fiesole,
-# Frunze, Gliwice, Iquique, irade, Katowice, Kielce, Kure, Lecce, Lidice, Loiret, Marche,
-# marchese, Marinduque, metage, Montefiascone, Mugabe, Nivernais, Ordzhonikidze, Oriente,
-# Orjonikidze, Palenque, petuntse, Piave, Que, reflet, Rene, rete, Roubaix, Skopje, Teide,
-# Udine, Zabrze, Zaporozhye, zaptieh, Quebecer, mozzette, Anschauung, chiaus, kiaugh, Yaounde,
-# elasmobranch, Gelsenkirchen, nomenclature, abranchial, abranchiate, alencon, Algonquian,
-# asynchronism, asynchronous, Barranquilla, Bianca, blanquette, charabanc, palanquin,
-# pancratium, Chinkiang, messieurs›:
-# PhonEng should win
-# ‹bourgeois, cha, christian, grandma, grandpa, overslaugh, Quebec›: RP should win
-# ‹cushaw, da, na, ca, Sta, conquest, wonk›: original spelling should remain
-# Custom spellings (note: better specify /pronunciation/ instead of resulting spelling):
-# pshaw -> shaw, brough -> brok, cushaw: cu'shaw, duomo: dwoamo, foh: faw,
-# kakemono: caake'moano, Charleroi: Shauleroy, branchiopod: brankiapod, false: faulss
-# Delete (foreign words or names): Artois, Borodino, trois, Valoi, Condorcet, Attlee,
-# Beauharnais, Beaumarchais, Buonaparte, Cimabue, Courbet, Delaunay, dele, Dubuffet, Duse,
-# Farnese, Firenze, Fiume, Foucquet, Giorgione, conversazione, improvvisatore, jefe, jeu,
-# jeux, Jorge, Jose, Labe, Lyautey, madre, Manolete, Monteux, mozzette, Piemonte, Quesnay,
-# religieux, Tevere, Teyde, ubique, veloce, di, gi, Leopoldo, moi, Pareto, Delacroix, est,
-# Francoise, Goncourt
-# TODO Continue README from l.366: Disambiguating multigraphs
-# TODO Insert hyphens were necessary to prevent misreadings, incl.
-# unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
-# unstressed /a/ after /u:/ e.g. «bivu-ak» ‹bivouac›
+    # TODO Afterwards delete legacy dir?
+    # TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
+    # TODO ‹worry› should become «wurri» (using blacklist-phoneng.txt, but first find out
+    # why "w'uree" currently wins)
+    # ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
+    # Christianization, Christianize, Christiansand, dewar, superfluous, cairngorm, martingale,
+    # Apure, comte, conge, Cambrai, Campeche, canzone, carabiniere, Cavite, Cetinje, chicalote,
+    # cairngorm, combe, complice, Courtrai, Edirne, esse, estaminet, Este, fettucine, Fiesole,
+    # Frunze, Gliwice, Iquique, irade, Katowice, Kielce, Kure, Lecce, Lidice, Loiret, Marche,
+    # marchese, Marinduque, metage, Montefiascone, Mugabe, Nivernais, Ordzhonikidze, Oriente,
+    # Orjonikidze, Palenque, petuntse, Piave, Que, reflet, Rene, rete, Roubaix, Skopje, Teide,
+    # Udine, Zabrze, Zaporozhye, zaptieh, Quebecer, mozzette, Anschauung, chiaus, kiaugh, Yaounde,
+    # elasmobranch, Gelsenkirchen, nomenclature, abranchial, abranchiate, alencon, Algonquian,
+    # asynchronism, asynchronous, Barranquilla, Bianca, blanquette, charabanc, palanquin,
+    # pancratium, Chinkiang, messieurs›:
+    # PhonEng should win
+    # ‹bourgeois, cha, christian, grandma, grandpa, overslaugh, Quebec›: RP should win
+    # ‹cushaw, da, na, ca, Sta, conquest, wonk›: original spelling should remain
+    # Custom spellings (note: better specify /pronunciation/ instead of resulting spelling):
+    # pshaw -> shaw, brough -> brok, cushaw: cu'shaw, duomo: dwoamo, foh: faw,
+    # kakemono: caake'moano, Charleroi: Shauleroy, branchiopod: brankiapod, false: faulss
+    # Delete (foreign words or names): Artois, Borodino, trois, Valoi, Condorcet, Attlee,
+    # Beauharnais, Beaumarchais, Buonaparte, Cimabue, Courbet, Delaunay, dele, Dubuffet, Duse,
+    # Farnese, Firenze, Fiume, Foucquet, Giorgione, conversazione, improvvisatore, jefe, jeu,
+    # jeux, Jorge, Jose, Labe, Lyautey, madre, Manolete, Monteux, mozzette, Piemonte, Quesnay,
+    # religieux, Tevere, Teyde, ubique, veloce, di, gi, Leopoldo, moi, Pareto, Delacroix, est,
+    # Francoise, Goncourt
+    # TODO Continue README from l.366: Disambiguating multigraphs
+    # TODO Insert hyphens were necessary to prevent misreadings, incl.
+    # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
+    # unstressed /a/ after /u:/ e.g. «bivu-ak» ‹bivouac›
     return combine($left, $val);
+}
+
+# move_stress_marker $word: Move stress marker before the stressed syllable, omitting if the
+# first vowel is the stressed one.
+sub move_stress_marker {
+    my ($word) = @_;
+
+    if ($word =~ /^[^$LYTSPEL_VOWELS]*'/) {
+        # TODO x 'qu' as in ‹quote› must be recognized as well -- probably integrate with next
+        # section and store pre-match part
+        # First vowel is the stressed one
+        $word =~ s/'//;
+    } elsif ($word =~ /($LYTSPEL_CONSONANT*)'/) {
+        my $consonants_before_marker = $1;
+        # TODO No or one consonants are easy
+        say "$word -> $consonants_before_marker";
+        # TODO Stressed vowel is preceded by another vowel: nothing to do (don't move stress marker)
+    } else {
+        # This shouldn't happen
+        warn "Don't know how to move stress in '$word'\n";
+    }
+
+    # TODOx implement
+    # «ss» is separated by the marker: as'sault, as'sumption
+    # «nng» may become «n'g»: «en'gaij, in'grain» ‹engage, ingrain›
+    ##say $word;
+    return $word;
 }
 
 # restore_capitalization $converted, $tradspell: Restore the proper capitalization of a converted
@@ -493,6 +504,7 @@ OUTER: while ($unconverted) {
             . "unconverted part: /$unconverted/\n";
     }
 
+    $converted = move_stress_marker $converted;
     $converted = restore_capitalization $converted, $tradspell;
     return $converted;
 }
@@ -523,18 +535,7 @@ sub select_nearest_and_calc_distance {
     my $choosen = choose_nearer_or_shorter $converted_rp, $converted_ga, $tradspell;
     $choosen = choose_nearer_or_shorter $choosen, $converted_phoneng, $tradspell;
     my $dist = dist $choosen, $tradspell;
-
-    # TODO For now, we just prefix the choosen value with a '*'
-    if ($choosen eq $converted_rp) {
-        # Omit '*' if it's the only value
-        $converted_rp = "*$converted_rp" if $converted_ga || $converted_phoneng;
-    } elsif ($choosen eq $converted_ga) {
-        $converted_ga = "*$converted_ga";
-    } else {
-        $converted_phoneng = "*$converted_phoneng";
-    }
-
-    return $converted_rp, $converted_ga, $converted_phoneng, $dist;
+    return $choosen, $dist;
 }
 
 # convert_dict: Convert SAMPA spellings to Lytspel.
@@ -554,6 +555,23 @@ sub convert_dict {
         }
 
         my $tradspell = $colref->[0];
+
+# TODO Integrate compounds.csv (note that all entries are lower-case);
+# correct and use the result for each prefix/suffixes; also handle and
+# document schwa/single-letter short changes such as «hexagen» ‹hexagon› due to «he'xagenel»
+# ‹hexagonal›; deal with national,nation=al as special case
+# TODO Handle prefixes and suffixes correctly («dis, mis; anti, semi» are spelled like that
+# regardless of which letter follows; prefixes «baio, nio» ‹bio, neo›;
+# suffix «ful» is preserved; «-est» remains as is (never "ast"))
+# ‹oncoming› should be analysed as ‹on-coming›
+# Ensure that «obzur'vaition» ‹observation› is converted correctly (from «ob'zurv» ‹observe›)
+# Ensure that the «tion» and «sion» spellings aren't used in words derived by appending «n» or
+# «en», e.g. «ashen, freshen, Rushan, Purzhan»
+# Ensure that «tion» and «sion» are preserved in derived words, even if the derived form is
+# irregular (only «nationel» ‹national› from «naition» ‹nation›).
+# Warn if the chosen variant would have been selected anyway or if a listed word is not in the
+# dict or listed twice
+
         my ($rp, $ga, $phoneng) = unify_sounds $colref->[3], $colref->[4], $colref->[5], $tradspell;
         my $converted_rp      = convert_pron $rp,      $mapref, $maxkeylen, $tradspell;
         my $converted_ga      = convert_pron $ga,      $mapref, $maxkeylen, $tradspell;
@@ -565,20 +583,12 @@ sub convert_dict {
         $converted_phoneng = ''
             if $converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga;
 
-        # TODO Finally keep only the spelling that's closest to tradspell.
-        my $dist;
-        ($converted_rp, $converted_ga, $converted_phoneng, $dist) =
-            select_nearest_and_calc_distance $converted_rp, $converted_ga, $converted_phoneng,
-            $tradspell;
+        # Keep only the spelling that's closest to tradspell
+        my ($converted, $dist) = select_nearest_and_calc_distance $converted_rp, $converted_ga,
+            $converted_phoneng, $tradspell;
         $summed_dist += $dist;
         $wordcount++;
-
-        # TODO Move stress marker before stressed syllable, omitting if the first vowel is the
-        # stressed one
-        # «ss» is separated by the marker: as'sault, as'sumption
-        # «nng» may become «n'g»: «en'gaij, in'grain» ‹engage, ingrain›
-        $CSV_OUT->print($outfh,
-            [@$colref[0 .. 2], $converted_rp, $converted_ga, $converted_phoneng]);
+        $CSV_OUT->print($outfh, [@$colref[0 .. 2], $converted]);
 
         # TODO Finally drop POS tag if all variants are written the same, e.g. «mouth»
     }
