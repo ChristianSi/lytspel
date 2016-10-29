@@ -4,7 +4,7 @@
 # Copyright (c) 2016 Christian Siefkes
 # See accompanying LICENSE file for licensing information.
 #
-# Required modules: Const::Fast, Text::LevenshteinXS, and those listed in PhonEng.pm.
+# Required modules: Const::Fast, Text::Hyphen, Text::LevenshteinXS, and those listed in PhonEng.pm.
 
 use 5.014;
 use open qw(:std :utf8);  # use UTF-8 for all I/O (by default)
@@ -15,6 +15,7 @@ use Const::Fast;
 use Cwd 'abs_path';
 use File::Basename 'dirname';
 use List::Util qw(min max);
+use Text::Hyphen;
 use Text::LevenshteinXS 'distance';
 
 use lib dirname(abs_path $0);  # to locate the PhonEng package
@@ -36,6 +37,7 @@ const my $LYTSPEL_CONSONANT => "(?:(?:[bcdfghjklmnprstvwxyz]h?|nn?g|qu)=?)";
 
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
+my $HYPH    = new Text::Hyphen min_word => 3, min_prefix => 1, min_suffix => 1;
 
 # build_mapping: Create and return a mapping from SAMPA to the standard Lytspel spellings.
 # Also return the length of the longest key in the map.
@@ -410,30 +412,158 @@ sub combine_and_adjust {
     return combine($left, $val);
 }
 
-# move_stress_marker $word: Move stress marker before the stressed syllable, omitting if the
-# first vowel is the stressed one.
-sub move_stress_marker {
-    my ($word) = @_;
+# insert_at_start $consonants: Insert a stress at the start of a consonant sequence (separated
+# by '='). Also restores the final '='.
+sub insert_at_start {
+    my ($consonants) = @_;
+    return "'$consonants=";
+}
 
-    if ($word =~ /^[^$LYTSPEL_VOWELS]*'/) {
-        # TODO x 'qu' as in ‹quote› must be recognized as well -- probably integrate with next
-        # section and store pre-match part
-        # First vowel is the stressed one
-        $word =~ s/'//;
-    } elsif ($word =~ /($LYTSPEL_CONSONANT*)'/) {
-        my $consonants_before_marker = $1;
-        # TODO No or one consonants are easy
-        say "$word -> $consonants_before_marker";
-        # TODO Stressed vowel is preceded by another vowel: nothing to do (don't move stress marker)
-    } else {
-        # This shouldn't happen
-        warn "Don't know how to move stress in '$word'\n";
+# insert_in_middle $cons_pair: Insert a stress marker in a middle of a consonant pair (separated
+# by '='). Also restores the final '='.
+sub insert_in_middle {
+    my ($cons_pair) = @_;
+    $cons_pair =~ s/=/='/;
+    return "$cons_pair=";
+}
+
+# insert_after_second $consonants: Insert a stress marker after the second consonant of a sequence.
+# If the sequence contains just one or two consonants, it's inserted at the end instead.
+# Also restores the final '='.
+sub insert_after_second {
+    my ($consonants) = @_;
+    $consonants .= '=';
+    return $consonants =~ s/(.*?=.*?=)/$1'/r;
+}
+
+# insert_at_end $consonants: Insert a stress at the end of a consonant sequence (separated by '=').
+# Also restores the final '='.
+sub insert_at_end {
+    my ($consonants) = @_;
+    return "$consonants='";
+}
+
+# insert_stress_marker $consonants, $hyphenated: Insert a stress marker in the proper place
+# in the sequence of $consonants before a stressed vowel.
+sub insert_stress_marker {
+    my ($consonants, $hyphenated, $word) = @_;  # TODO $word only for debugging
+    my $just_consonants = $consonants =~ s/=//gr;
+
+    # Move stress marker before whole consonant sequence
+    return insert_at_start $consonants if $hyphenated =~ /=$just_consonants/;
+
+    # Break after 'ns', if $hyphenated confirms that
+    return insert_after_second $consonants
+        if $just_consonants =~ /^(ns)(.*)/ && $hyphenated =~ /$1=$2/;
+
+    $consonants =~ s/=$//;                      # drop final '='
+    my $sep_count = () = $consonants =~ /=/g;
+
+    if ($sep_count > 1) {
+        # TODO x implement (sometimes there are 3 or even 4 consonants)
+        # 3: typically split after 1st
+        # except transvestite, north=west=ern
+        # 4: split before 2nd if it's 's', otherwise in middle
+        # except trans=gression
+        say "Multiple consonants ($sep_count: $consonants): $word <- $hyphenated";
+        return insert_at_end $consonants;
     }
 
-    # TODOx implement
+    return insert_in_middle $consonants if $hyphenated =~ /$consonants/;
+
+    # e.g. «eg'zact, ang'zaieti, lug'zhueriass» ‹exact, anxiety, luxurious›
+    return insert_in_middle $consonants if $consonants =~ /g=z/;
+
+    # Also accept 're=' in place of 'r='
+    my $mod_cons = $consonants =~ s/r=/re=/r;
+    return insert_in_middle $consonants if $mod_cons ne $consonants && $hyphenated =~ /$mod_cons/;
+
+    # Also accept '=c' in place of '=s'
+    $mod_cons = $consonants =~ s/=s/=c/r;
+    return insert_in_middle $consonants if $mod_cons ne $consonants && $hyphenated =~ /$mod_cons/;
+
+    # TODO x implement
+    say "Don't know how to deal with $consonants $word <- $hyphenated";
+    return insert_at_end $consonants;
+    # n=s: Middle unless hyp has ns=, e.g. transact
+    # c=r, t=r, s=t: Stress before
+
+    # TODO Cf. his'toric vs. homeo'stasis
     # «ss» is separated by the marker: as'sault, as'sumption
     # «nng» may become «n'g»: «en'gaij, in'grain» ‹engage, ingrain›
-    ##say $word;
+
+    # Check
+    # grep ' s=t:' log.txt |shuf|head -15|cut -f10 -d' '
+    #   208 r=s:
+    #   174 c=r:
+    #   152 n=j:
+    #   120 p=r:
+    #   100 z=m:
+    #    95 n=t:
+    #    93 n=d:
+    #    92 b=r:
+    #    89 s=f:
+    #    85 d=r:
+    #    83 r=n:
+    #    83 nng=r:
+    #    83 f=r:
+    #    82 n=y:
+    #    81 c=l:
+    #    78 ng=g:
+    #    77 p=l:
+    #    70 r=t:
+    #    68 b=l:
+    #    66 nn=c:
+    #    66 b=z:
+    #    65 s=p:
+    #    65 r=j:
+    #    63 r=k:
+    #    63 m=f:
+    #    61 r=d:
+    #    59 c=n:
+    #    57 n=sh:
+    #    54 g=l:
+    #    52 r=m:
+    #    50 s=k:
+    #    50 s=c:
+    #    50 n=k:
+}
+
+# move_stress_marker $word, $tradspell: Move stress marker before the stressed syllable,
+# omitting it if the first vowel is the stressed one.
+sub move_stress_marker {
+    my ($word, $tradspell) = @_;
+
+    return $word unless $word =~ /'/;  # Nothing to do
+
+    if ($word =~ /(.*?)($LYTSPEL_CONSONANT*)'/) {
+        my $pre_match                = $1;
+        my $consonants_before_marker = $2;
+
+        if ($pre_match eq '') {
+            # First vowel is the stressed one
+            $word =~ s/'//;
+        } elsif ($consonants_before_marker eq '') {
+            # Stressed vowel is preceded by another vowel: nothing to do
+        } elsif ($consonants_before_marker eq 'ss=') {
+            # «ss» is separated by the marker, e.g «as'sault, as'sumption»
+            $word =~ s/s='/'s=/;
+        } elsif ($consonants_before_marker =~ '^[^=]+=$') {
+            # Move stress marker before the single consonant
+            $word =~ s/$consonants_before_marker'/'$consonants_before_marker/;
+        } else {
+            # Ask Text::Hyphen
+            my $hyphenated = $HYPH->hyphenate($tradspell, '=');
+            # TODO $word only for debugging
+            my $stressed_cons = insert_stress_marker $consonants_before_marker, $hyphenated, $word;
+            $word =~ s/$consonants_before_marker'/$stressed_cons/;
+        }
+
+    } else {
+        # This shouldn't happen
+        warn "Don't know how to move stress in '$word' ($tradspell)\n";
+    }
+
     return $word;
 }
 
@@ -504,7 +634,7 @@ OUTER: while ($unconverted) {
             . "unconverted part: /$unconverted/\n";
     }
 
-    $converted = move_stress_marker $converted;
+    $converted = move_stress_marker $converted,     $tradspell;
     $converted = restore_capitalization $converted, $tradspell;
     return $converted;
 }
@@ -591,6 +721,9 @@ sub convert_dict {
         $CSV_OUT->print($outfh, [@$colref[0 .. 2], $converted]);
 
         # TODO Finally drop POS tag if all variants are written the same, e.g. «mouth»
+        # TODO Handle most frequent pre- and suffixes in converter rather than dict
+        # (also creating a compact version of the dict where they are dropped, after
+        # making sure that the converter will indeed lead to the same results)
     }
 
     my $avg_dist = $summed_dist / $wordcount;
