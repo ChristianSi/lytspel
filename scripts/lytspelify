@@ -378,37 +378,50 @@ sub combine_and_adjust {
 
     }
 
-    # TODO Afterwards delete legacy dir?
-    # TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
-    # TODO ‹worry› should become «wurri» (using blacklist-phoneng.txt, but first find out
-    # why "w'uree" currently wins)
-    # ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
-    # Christianization, Christianize, Christiansand, dewar, superfluous, cairngorm, martingale,
-    # Apure, comte, conge, Cambrai, Campeche, canzone, carabiniere, Cavite, Cetinje, chicalote,
-    # cairngorm, combe, complice, Courtrai, Edirne, esse, estaminet, Este, fettucine, Fiesole,
-    # Frunze, Gliwice, Iquique, irade, Katowice, Kielce, Kure, Lecce, Lidice, Loiret, Marche,
-    # marchese, Marinduque, metage, Montefiascone, Mugabe, Nivernais, Ordzhonikidze, Oriente,
-    # Orjonikidze, Palenque, petuntse, Piave, Que, reflet, Rene, rete, Roubaix, Skopje, Teide,
-    # Udine, Zabrze, Zaporozhye, zaptieh, Quebecer, mozzette, Anschauung, chiaus, kiaugh, Yaounde,
-    # elasmobranch, Gelsenkirchen, nomenclature, abranchial, abranchiate, alencon, Algonquian,
-    # asynchronism, asynchronous, Barranquilla, Bianca, blanquette, charabanc, palanquin,
-    # pancratium, Chinkiang, messieurs›:
-    # PhonEng should win
-    # ‹bourgeois, cha, christian, grandma, grandpa, overslaugh, Quebec›: RP should win
-    # ‹cushaw, da, na, ca, Sta, conquest, wonk›: original spelling should remain
-    # Custom spellings (note: better specify /pronunciation/ instead of resulting spelling):
-    # pshaw -> shaw, brough -> brok, cushaw: cu'shaw, duomo: dwoamo, foh: faw,
-    # kakemono: caake'moano, Charleroi: Shauleroy, branchiopod: brankiapod, false: faulss
-    # Delete (foreign words or names): Artois, Borodino, trois, Valoi, Condorcet, Attlee,
-    # Beauharnais, Beaumarchais, Buonaparte, Cimabue, Courbet, Delaunay, dele, Dubuffet, Duse,
-    # Farnese, Firenze, Fiume, Foucquet, Giorgione, conversazione, improvvisatore, jefe, jeu,
-    # jeux, Jorge, Jose, Labe, Lyautey, madre, Manolete, Monteux, mozzette, Piemonte, Quesnay,
-    # religieux, Tevere, Teyde, ubique, veloce, di, gi, Leopoldo, moi, Pareto, Delacroix, est,
-    # Francoise, Goncourt
-    # TODO Continue README from l.366: Disambiguating multigraphs
-    # TODO Insert hyphens were necessary to prevent misreadings, incl.
-    # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
-    # unstressed /a/ after /u:/ e.g. «bivu-ak» ‹bivouac›
+   # TODO Afterwards delete legacy dir?
+   # TODO Compound handling: unguessable -> add guessable as extra entry
+   # Create Makefile to regenerate all dict files whenever one of their dependencies has changed
+   # TODO Add -ance, -ence as suffixes
+   # TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
+   # TODO ‹worry› should become «wurri» (but first find out why "w'uree" currently wins)
+   # ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
+   # Christianization, Christianize, Christiansand, dewar, superfluous, cairngorm, martingale,
+   # Apure, comte, conge, Cambrai, Campeche, canzone, carabiniere, Cavite, Cetinje, chicalote,
+   # cairngorm, combe, complice, Courtrai, Edirne, esse, estaminet, Este, fettucine, Fiesole,
+   # Frunze, Gliwice, Iquique, irade, Katowice, Kielce, Kure, Lecce, Lidice, Loiret, Marche,
+   # marchese, Marinduque, metage, Montefiascone, Mugabe, Nivernais, Ordzhonikidze, Oriente,
+   # Orjonikidze, Palenque, petuntse, Piave, Que, reflet, Rene, rete, Roubaix, Skopje, Teide,
+   # Udine, Zabrze, Zaporozhye, zaptieh, Quebecer, mozzette, Anschauung, chiaus, kiaugh, Yaounde,
+   # elasmobranch, Gelsenkirchen, nomenclature, abranchial, abranchiate, alencon, Algonquian,
+   # asynchronism, asynchronous, Barranquilla, Bianca, blanquette, charabanc, palanquin,
+   # pancratium, Chinkiang, messieurs, baklava, baklawa, concubinary, Alkmaar, neurosecretion,
+   # Avalokitesvara, Blagoveshchensk, lorgnette, dimenhydrinate, paresthesia, postliminy,
+   # transhumance, uphroe, isoperimetry, Juneteenth, homeostasis, craquelure, erysipelas,
+   # erysipelatous, armipotent, bersaglieri, coparcenary, dolichocephalic, Hanseatic, Miskolc,
+   # leptocephalic, platycephalic, popliteal, popliteus, Vespucci, scleroderma, Tlaxcala,
+   # sexagenary, abiogenetic, anthropogenetic, cytogenetics, digenetic, ectogenetic,
+   # epeirogenetic, gamogenetic, gluconeogenetic, glycogenetic, glycogenolysis, histogenetic,
+   # homogenetic, hydrogenolysis, hypnogenetic, immunogenetics, ontogenetic, orogenetic,
+   # parthenogenetic, pathogenetic, quadragenarian, quinquagenarian, schizogenetic,
+   # septuagenarian, thermogenetic, xenogenetic, zygogenetic, ecarte, immortelle, parterre,
+   # Parthenope, tartare, theretofore, inglenook, christiania, dessiatine, dishabille, misoneism›:
+   # PhonEng should win
+   # ‹bourgeois, cha, christian, grandma, grandpa, overslaugh, Quebec, Fitzroy›: RP should win
+   # ‹cushaw, da, na, ca, Sta, conquest, wonk›: original spelling should remain
+   # Custom spellings (note: better specify /pronunciation/ instead of resulting spelling):
+   # pshaw -> shaw, brough -> brok, cushaw: cu'shaw, duomo: dwoamo, foh: faw, amain: a'main
+   # kakemono: caake'moano, Charleroi: Shauleroy, branchiopod: brankiapod, false: faulss,
+   # formidable: /f'O:rmId@b@l/, askari: /'ask@`i:/, voltameter: /vQlt'amIt@`/
+   # Delete (foreign words or names): Artois, Borodino, trois, Valoi, Condorcet, Attlee,
+   # Beauharnais, Beaumarchais, Buonaparte, Cimabue, Courbet, Delaunay, dele, Dubuffet, Duse,
+   # Farnese, Firenze, Fiume, Foucquet, Giorgione, conversazione, improvvisatore, jefe, jeu,
+   # jeux, Jorge, Jose, Labe, Lyautey, madre, Manolete, Monteux, mozzette, Piemonte, Quesnay,
+   # religieux, Tevere, Teyde, ubique, veloce, di, gi, Leopoldo, moi, Pareto, Delacroix, est,
+   # Francoise, Goncourt, Castiglione, Descartes, Msgr, Sturmabteilung, Magritte, Dessalines
+   # TODO Continue README from l.366: Disambiguating multigraphs
+   # TODO Insert hyphens were necessary to prevent misreadings, incl.
+   # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
+   # unstressed /a/ after /u:/ e.g. «bivu-ak» ‹bivouac›
     return combine($left, $val);
 }
 
@@ -419,9 +432,9 @@ sub insert_at_start {
     return "'$consonants=";
 }
 
-# insert_in_middle $cons_pair: Insert a stress marker in a middle of a consonant pair (separated
-# by '='). Also restores the final '='.
-sub insert_in_middle {
+# insert_after_first $cons_pair: Insert a stress marker after the first consonant of a sequence.
+# Also restores the final '='.
+sub insert_after_first {
     my ($cons_pair) = @_;
     $cons_pair =~ s/=/='/;
     return "$cons_pair=";
@@ -443,90 +456,96 @@ sub insert_at_end {
     return "$consonants='";
 }
 
-# insert_stress_marker $consonants, $hyphenated: Insert a stress marker in the proper place
-# in the sequence of $consonants before a stressed vowel.
+# hyphenated_contains $hyphenated, $pattern: Return true-ish iff $hyphenated contains
+# $pattern. Also accepts some legacy spellings, e.g. 'ph' instead of 'f', '=c' instead of '=s',
+# and 'ce=' instead of 's='.
+sub hyphenated_contains {
+    my ($hyphenated, $pattern) = @_;
+    $pattern =~ s/[ck](?!h)/(c[hk]?|k)/;  # c|k may be written as any of c|ch|ck|k
+    $pattern =~ s/dh/th/;
+    $pattern =~ s/f/(f|ph)/;
+    $pattern =~ s/j/[gj]/;
+    $pattern =~ s/(n[gn])=/$1?=/;         # 'g' or second 'n' after 'n' is optional
+    $pattern =~ s/([rv])=/$1e?=/;
+    $pattern =~ s/=s/=[sc]/;
+    $pattern =~ s/s=/(s|ce)=/;
+    $pattern =~ s/z(?!h)/[sz]/;
+    return $hyphenated =~ /$pattern/;
+}
+
+# insert_stress_marker $consonants, $hyphenated, $tradspell: Insert a stress marker in the
+# proper place in the sequence of $consonants before a stressed vowel.
 sub insert_stress_marker {
-    my ($consonants, $hyphenated, $word) = @_;  # TODO $word only for debugging
+    my ($consonants, $hyphenated, $tradspell) = @_;
     my $just_consonants = $consonants =~ s/=//gr;
 
     # Move stress marker before whole consonant sequence
     return insert_at_start $consonants if $hyphenated =~ /=$just_consonants/;
 
-    # Break after 'ns', if $hyphenated confirms that
+    # Break after 'ns', if $hyphenated confirms that or $tradspell contains 'trans'
+    # (followed by ca|g|l|n|v)
     return insert_after_second $consonants
-        if $just_consonants =~ /^(ns)(.*)/ && $hyphenated =~ /$1=$2/;
+        if $just_consonants =~ /^(ns)(.*)/
+        && ($hyphenated =~ /$1=$2/ || $tradspell =~ /trans(ca|g|l|n|v)/i);
 
-    $consonants =~ s/=$//;                      # drop final '='
+    $consonants =~ s/=$//;  # drop final '='
     my $sep_count = () = $consonants =~ /=/g;
 
     if ($sep_count > 1) {
-        # TODO x implement (sometimes there are 3 or even 4 consonants)
-        # 3: typically split after 1st
-        # except transvestite, north=west=ern
-        # 4: split before 2nd if it's 's', otherwise in middle
-        # except trans=gression
-        say "Multiple consonants ($sep_count: $consonants): $word <- $hyphenated";
-        return insert_at_end $consonants;
+        # Three or more consonants
+        # TODO Refactor this into separate function
+        my @cons     = split /=/, $consonants;
+        my $left     = '';
+        my $left_sep = '';
+
+        # Check after which consonant the break should occur
+        while (@cons) {
+            my $next = shift @cons;
+            $left .= $next;
+            $left_sep .= "$next=";
+            my $rest = join '', @cons;
+
+            return "$left_sep'" . join('=', @cons) . '='
+                if hyphenated_contains $hyphenated, "$left=$rest";
+        }
+
+        # No break found, so we use suitable defaults:
+        # Break before consonant sequence, e.g. «in'struction, converrsaa'tsyoneh»
+        # ‹instruction, conversazione›
+        return insert_at_start $consonants if $consonants =~ /^(s=t=r|t=s=y)$/;
+
+        # Break after second consonant, e.g. «ump'teen, Pyonj'yang, Burg'soanian, poast'limeni,
+        # Fits'patric» ‹umpteen, Pyongyang, Bergsonian, postliminy, Fitzpatrick›
+        return insert_after_second $consonants
+            if $consonants =~ /^(m=p=t|n=j=y|r=g=s|s=t=l|t=s=[jpr])$/;
+
+        # Otherwise break after first of three consonants, or after second of four
+        return insert_after_first $consonants if $sep_count == 2;
+        return insert_after_second $consonants;
     }
 
-    return insert_in_middle $consonants if $hyphenated =~ /$consonants/;
+    return insert_after_first $consonants if hyphenated_contains $hyphenated, $consonants;
 
     # e.g. «eg'zact, ang'zaieti, lug'zhueriass» ‹exact, anxiety, luxurious›
-    return insert_in_middle $consonants if $consonants =~ /g=z/;
+    return insert_after_first $consonants if $consonants =~ /g=z/;
 
-    # Also accept 're=' in place of 'r='
-    my $mod_cons = $consonants =~ s/r=/re=/r;
-    return insert_in_middle $consonants if $mod_cons ne $consonants && $hyphenated =~ /$mod_cons/;
+    # TODO x implement:
+    # Special cases:
+    # s=...: middle if word starts with 'dis'
+    # c=l: break in middle if word starts with McL or MacL (ignoring case)
+    # p=l: break in middle if word starts with popl
+    # Exception: Ant'arctica
 
-    # Also accept '=c' in place of '=s'
-    $mod_cons = $consonants =~ s/=s/=c/r;
-    return insert_in_middle $consonants if $mod_cons ne $consonants && $hyphenated =~ /$mod_cons/;
+    # Break before both consonants if the first is 's' or if the second is 'l' or 'r'
+    return insert_at_start $consonants if $consonants =~ /^s=|=[lr]$/;
 
-    # TODO x implement
-    say "Don't know how to deal with $consonants $word <- $hyphenated";
+    # TODO x Otherwise break in middle
+    say "Don't know how to deal with $consonants: $tradspell <- $hyphenated";
     return insert_at_end $consonants;
-    # n=s: Middle unless hyp has ns=, e.g. transact
-    # c=r, t=r, s=t: Stress before
 
-    # TODO Cf. his'toric vs. homeo'stasis
-    # «ss» is separated by the marker: as'sault, as'sumption
-    # «nng» may become «n'g»: «en'gaij, in'grain» ‹engage, ingrain›
-
-    # Check
-    # grep ' s=t:' log.txt |shuf|head -15|cut -f10 -d' '
-    #   208 r=s:
-    #   174 c=r:
-    #   152 n=j:
-    #   120 p=r:
-    #   100 z=m:
-    #    95 n=t:
-    #    93 n=d:
-    #    92 b=r:
-    #    89 s=f:
-    #    85 d=r:
-    #    83 r=n:
-    #    83 nng=r:
-    #    83 f=r:
-    #    82 n=y:
-    #    81 c=l:
-    #    78 ng=g:
-    #    77 p=l:
-    #    70 r=t:
-    #    68 b=l:
-    #    66 nn=c:
-    #    66 b=z:
-    #    65 s=p:
-    #    65 r=j:
-    #    63 r=k:
-    #    63 m=f:
-    #    61 r=d:
-    #    59 c=n:
-    #    57 n=sh:
-    #    54 g=l:
-    #    52 r=m:
-    #    50 s=k:
-    #    50 s=c:
-    #    50 n=k:
+    # TODO «ss» is separated by the marker: as'sault, as'sumption
+    # Check whether nn or other double consonants occur after (or before) a stress marker
+    # TODO Also ensure that r-colored vowels before the stressed one are handled
 }
 
 # move_stress_marker $word, $tradspell: Move stress marker before the stressed syllable,
@@ -548,14 +567,17 @@ sub move_stress_marker {
         } elsif ($consonants_before_marker eq 'ss=') {
             # «ss» is separated by the marker, e.g «as'sault, as'sumption»
             $word =~ s/s='/'s=/;
+        } elsif ($consonants_before_marker =~ /^nng/) {
+            # "nng..." becomes "n'g..."
+            $word =~ s/nn(g=.*?)'/n'$1/;
         } elsif ($consonants_before_marker =~ '^[^=]+=$') {
             # Move stress marker before the single consonant
             $word =~ s/$consonants_before_marker'/'$consonants_before_marker/;
         } else {
             # Ask Text::Hyphen
             my $hyphenated = $HYPH->hyphenate($tradspell, '=');
-            # TODO $word only for debugging
-            my $stressed_cons = insert_stress_marker $consonants_before_marker, $hyphenated, $word;
+            my $stressed_cons = insert_stress_marker $consonants_before_marker, $hyphenated,
+                $tradspell;
             $word =~ s/$consonants_before_marker'/$stressed_cons/;
         }
 
@@ -575,7 +597,6 @@ sub restore_capitalization {
     # distinguished from consonant «y»)
     $converted = lc(delsep $converted);
 
-    # TODO Make sure that this also works if the word starts with a stressed vowel
     $converted = ucfirst($converted) if $tradspell =~ /^[A-Z][a-z']*$/;  # Capitalized
 
    # TODO Later fully restore capitalization to match tradspell:
