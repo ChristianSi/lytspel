@@ -4315,7 +4315,6 @@ biosensor,bio=sensor
 biosensors,bio=sensors
 biosis,bio=sis
 biosocial,bio=social
-biosphere,bio=sphere
 biospheres,bio=spheres
 biostatics,bio=statics
 biosynthesis,bio=synthesis
@@ -13628,6 +13627,7 @@ disobey,dis=obey
 disobeyed,dis=obeyed
 disobeying,dis=obeying
 disoblige,dis=oblige
+disoperation,dis=operation
 disorder,dis=order
 disordered,dis=ordered
 disorderedly,disordered=ly
@@ -24518,7 +24518,6 @@ inerrableness,inerrable=ness
 inerrant,in=errant
 inertness,inert=ness
 ines,in=es
-inescapable,ines-capable
 inescutcheon,in=escutcheon
 inessential,in=essential
 inessive,in=essive
@@ -35439,6 +35438,7 @@ phoning,phone=ing
 phonographic,phonograph=ic
 phonographs,phonograph=s
 phonologically,phonological=y
+phonoreception,phono-reception
 phony,phone=y
 phosphates,phosphate=s
 phosphorate,phosphor-ate
@@ -36589,6 +36589,7 @@ postmodern,post=modern
 postnasal,post=nasal
 postnatal,post=natal
 postnuptial,post=nuptial
+postoperative,post=operative
 postorbital,post=orbital
 postpaid,post=paid
 postpone,post=pone
@@ -38220,6 +38221,7 @@ quadratic,quadrat=ic
 quadratics,quadratic=s
 quadrennially,quadrennial=y
 quadrille,quad-rille
+quadrupedal,quadruped=al
 quadrupled,quadruple=ed
 quads,quad=s
 quaggy,quag=y
@@ -45694,7 +45696,7 @@ standfast,stand-fast
 standing,stand=ing
 standings,standing=s
 standish,stand=ish
-standoff,stan-doff
+standoff,stand-off
 standoffish,standoff=ish
 standoffs,standoff=s
 standout,stand-out
