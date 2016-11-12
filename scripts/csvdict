@@ -19,9 +19,10 @@ use File::Basename 'dirname';
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
 
-const my $IN_FILE    => 'phonetic-dict.txt';
-const my $OUT_FILE   => 'phoneng-espeak-dict.csv';
-const my $ESPEAK_TMP => 'espeak-in.tmp';
+const my $IN_FILE     => 'phonetic-dict.txt';
+const my $OUT_FILE    => 'phoneng-espeak-dict.csv';
+const my $EXTRA_WORDS => 'extra-words.txt';
+const my $ESPEAK_TMP  => 'espeak-in.tmp';
 
 my $CSV = new_csv_out;
 
@@ -36,11 +37,27 @@ sub read_dict {
         $line =~ m{^(['\w]+)([:/].*)$} or die "Invalid line: $line\n";
         my $word  = $1;
         my $value = $2;
-        # Only add words with two or more letters as well as 'a'
-        $dict{$word} = $value if length $word > 1 || $word eq 'a';
+        # Only add words with two or more letters as well as 'a' and 'I'
+        $dict{$word} = $value if length $word > 1 || $word =~ /^[aI]$/i;
     }
 
     close $file;
+
+    # Also add words listed in 'extra-words.txt' (relevant entries missing in the other
+    # dictionaries)
+    open my $extra_file, '<', $EXTRA_WORDS or die "Unable to open $EXTRA_WORDS: $!\n";
+
+    while (my $word = <$extra_file>) {
+        chomp $word;
+
+        unless (exists $dict{$word}) {
+            $dict{$word} = ':';  # Add as value-less simple entry
+        } else {
+            warn "Unnecessary entry in $EXTRA_WORDS: $word\n";
+        }
+    }
+
+    close $extra_file;
     return \%dict;
 }
 
@@ -81,7 +98,7 @@ sub prepare_espeak_input {
     my $phonetic        = '';
 
     unless (defined $redirect_target) {  # Skip redirects
-        if ($value =~ /^:\s+(.*)$/) {
+        if ($value =~ /^:\s*(.*)$/) {
             # Simple entry
             say $espeak_fh $word;
         } elsif ($value =~ m{^/(.*)$}) {
@@ -132,7 +149,7 @@ sub write_entry {
         # Redirect
         $CSV->print($outfh, [$word, '', $redirect_target]);
     } else {
-        if ($value =~ /^:\s+(.*)$/) {
+        if ($value =~ /^:\s*(.*)$/) {
             # Simple entry
             my $rp = shift @$rp_pron_ref;
             my $ga = shift @$ga_pron_ref;
