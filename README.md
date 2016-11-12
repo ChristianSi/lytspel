@@ -375,7 +375,7 @@ single sound or an r-colored vowel):
     «co-ope'raition» ‹cooperation›.
   * Multigraphs ending in «r» may be interrupted by a stress marker before
     the final «r» and are still read as multigraphs, e.g. «co-ope'raition,
-    ho'rific» ‹cooperation, horrific›. However, other multigraphs are never
+    hor'rific» ‹cooperation, horrific›. However, other multigraphs are never
     interrupted by a stress marker, hence in such cases a stress marker has
     the same effect as a hyphen: it indicates that the letters to the left
     and to the right of it should be read in isolation, e.g. «co'operait»
@@ -644,6 +644,12 @@ Downloaded and installed knowledge sources:
   * Downloaded the [Moby Pronunciation List by Grady
     Ward](http://www.gutenberg.org/ebooks/3205). Created a `data` subdirectory
     named `moby` and unzipped it there.
+
+Then run `make` from within the `data` directory, that should handle the
+rest. TODO Document PATH requirements.
+
+TODO Or execute the following commands manually (the rest of this section
+is outdated and should be deleted or possibly cleaned up):
 
 Invoked the `dictbuilder` program within the `data` directory. This writes
 a file called `phonetic-dict.txt`.
