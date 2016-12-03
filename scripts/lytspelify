@@ -39,6 +39,9 @@ const my $LYTSPEL_CONSONANT => "(?:(?:[bcdfghjklmnprstvwxyz]h?|nn?g|qu)=?)";
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
 my $HYPH    = new Text::Hyphen min_word => 3, min_prefix => 1, min_suffix => 1;
+# The following two variables are globals for simplicity
+my $SUMMED_DIST = 0;
+my $WORD_COUNT  = 0;
 
 # build_mapping: Create and return a mapping from SAMPA to the standard Lytspel spellings.
 # Also return the length of the longest key in the map.
@@ -71,119 +74,48 @@ sub build_mapping {
     return \%dict, $maxkeylen;
 }
 
-# prepare_pron $pron: Fix the pronunication of a word by normalizing non-standard forms.
-sub prepare_pron {
-    my $pron = shift;
-    # Normalize alternative forms of the r-colored schwa
-    $pron =~ s/(?<![ei])\@r|\@`r|a#r/\@`/g;
-    # If there are multiple stress markers, remove all but the last one
-    $pron =~ s/'(?=.*')//g;
-    return $pron;
+# build_compound_map: Create and return a mapping from compounds and derived forms to their
+# building blocks.
+sub build_compound_map {
+    my %dict;
+    open my $fh, '<', $COMPOUNDS or die "Unable to open $COMPOUNDS: $!\n";
+    my $colref = $CSV_IN->getline($fh);  # Skip header line
+
+    while ($colref = $CSV_IN->getline($fh)) {
+        $dict{$colref->[0]} = $colref->[1];
+    }
+
+    close $fh;
+    return \%dict;
 }
 
-# Unify a sound that may be pronounced differently in two accents. Arguments:
-#
-# * $rp: British pronunciation
-# * $ga: American pronunciation
-# * $phoneng: PhonEng pronunciation (optional)
-# * $alt1: how the vowel is pronounced in RP (treated as a regex)
-# * $alt2: how it is pronounced in GA (treated as a regex)
-# * $winner: the pronouncation that should be used
-# * $tradspell: the traditional spelling (used for debugging/logging)
-# * $suppress_warning: set to a true value to suppresss a warning if unification isn't possible
-#   (useful for unreliable latterns)
-sub unify_sound {
-    my ($rp, $ga, $phoneng, $alt1, $alt2, $winner, $tradspell, $suppress_warning) = @_;
-
-    my $rp_alt1_count = () = $rp =~ /$alt1/g;
-    my $ga_alt2_count = () = $ga =~ /$alt2/g;
-
-    return $rp, $ga, $phoneng unless $rp_alt1_count && $ga_alt2_count;  # Nothing to do
-
-    # Split on either alternative (NOT matching if /`/ as in /@`/ follows)
-    my @rp_split      = split /($alt1|$alt2)(?!`)/, $rp;
-    my @ga_split      = split /($alt1|$alt2)(?!`)/, $ga;
-    my @phoneng_split = split /($alt1|$alt2)(?!`)/, $phoneng;
-    my $rp_elem_count = scalar @rp_split;
-
-    unless ($rp_elem_count == scalar @ga_split) {
-        warn "Cannot unify $tradspell pronouncations re $alt1/$alt2\n" unless $suppress_warning;
-        return $rp, $ga, $phoneng;
-    }
-
-    my $unify_phoneng_too = $rp_elem_count == scalar @phoneng_split;
-
-    for my $i (0 .. $rp_elem_count - 1) {
-        if ($rp_split[$i] =~ /^$alt1$/ && $ga_split[$i] =~ /^$alt2$/) {
-            $rp_split[$i] = $winner;
-            $ga_split[$i] = $winner;
-
-            $phoneng_split[$i] = $winner
-                if $unify_phoneng_too && $phoneng_split[$i] =~ /^($alt1|$alt2)$/;
-        }
-    }
-
-    $rp = join '', @rp_split;
-    $ga = join '', @ga_split;
-
-    $phoneng = join '', @phoneng_split if $unify_phoneng_too;
-
-    return $rp, $ga, $phoneng;
+# gen_key $word, $pos: Combine a word and a optional POS tag into a joint key.
+# If $pos is undefined or empty, $word alone is returned, otherwise "$word/$pos" is returned.
+sub gen_key {
+    my ($word, $pos) = @_;
+    return $pos ? "$word/$pos" : $word;
 }
 
-# Unify the sound used in different pronunciations in cases where a specific vowel
-# pronunciation should "win". Generally, unification is only attempted if RP and GA differ;
-# otherwise the given pronunciations are returned unchanged. Redundant pronunciations
-# (identical to an earlier one) are eliminated in any case.
-sub unify_sounds {
-    my ($rp, $ga, $phoneng, $tradspell) = @_;
-    $rp      = prepare_pron $rp;
-    $ga      = prepare_pron $ga;
-    $phoneng = prepare_pron $phoneng;
+# build_unconverted_dict_and_case_redirects: Returns references to two hashes:
+# 1. From keys (see 'gen_key' function) to the complete $IN_FILE entries describing them
+# 2. From lower-cased forms of words containing capital letters to their cased form
+#    (e.g. 'europe' -> 'Europe')
+sub build_unconverted_dict_and_case_redirects {
+    open my $infh, '<', $IN_FILE or die "Unable to open $IN_FILE: $!\n";
+    my $colref = $CSV_IN->getline($infh);  # Skip header line
+    my %unconverted_dict;
+    my %case_redirect;
 
-    # Discard GA if identical to RP
-    $ga = '' if $ga eq $rp;
-    # Discard PhonEng if identical to RP or GA
-    $phoneng = '' if $phoneng eq $rp || $phoneng eq $ga;
-
-    # If PhonEng has /Nk/ where RP/GA have /nk/, use the former as it's usually correct
-    if ($phoneng =~ /Nk/ && $rp =~ /nk/) {
-        ($rp, $phoneng) = unify_sound $rp, $phoneng, '', 'nk', 'Nk', 'Nk', $tradspell, 0;
-        ($ga, $phoneng) = unify_sound $ga, $phoneng, '', 'nk', 'Nk', 'Nk', $tradspell, 0
-            if $ga;
+    while ($colref = $CSV_IN->getline($infh)) {
+        my $word = $colref->[0];
+        my $pos  = $colref->[1];
+        my $key  = gen_key $word, $pos;
+        $unconverted_dict{$key} = $colref;
+        $case_redirect{lc $word} = $word if $word =~ /[A-Z]/;
     }
 
-    return $rp, $ga, $phoneng unless $ga;  # Nothing more to unify
-
-    # Unify vowels:
-    # pair, share, variation -> «air»
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'e@', 'Er', 'e@', $tradspell, 0;
-    # cheer, year, peculiar -> «eer»
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'i:?@', 'Ir', 'i@', $tradspell, 0;
-    # poor, tour -> «oor»
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'U@', 'Ur', 'Ur', $tradspell, 1;
-    # number, modern -> «er» (schwa vs. r-colored schwa)
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, '(?<![ei])@', '@`', '@`', $tradspell, 1;
-    # port, ignore, keyboard, floral -> «oar»
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'O:r?', 'or', 'or', $tradspell, 1;
-    # sorry, tomorrow -> «orr»
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'Qr', 'O:r', 'Qr', $tradspell, 0;
-    # for, dinosaur -> «or»
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'O:r?', 'O:r', 'O:r', $tradspell, 0;
-    # encourage, current -> «urr»
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'Vr', '3:r?', 'Vr', $tradspell, 0;
-    # due, neutral, tune -> «ue»
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j'u:", "(?<![j])'u:", "'U:",
-        $tradspell, 0;
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "ju:", "(?<![j'])u:", "U:",
-        $tradspell, 0;
-    # during, neural -> «uer» (/ju:r/ or /jUr/ in RP, /Ur/ in GA)
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j'(?:u:|U)r", "(?<![j])'Ur", "'U:r",
-        $tradspell, 0;
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j(?:u:|U)r", "(?<![j'])Ur", "U:r",
-        $tradspell, 0;
-
-    return $rp, $ga, $phoneng;
+    close $infh;
+    return \%unconverted_dict, \%case_redirect;
 }
 
 # delsep $str: Delete any occurrences of '=' (used as separator) from a string.
@@ -379,50 +311,55 @@ sub combine_and_adjust {
 
     }
 
-   # TODO Afterwards delete legacy dir?
-   # TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
-   # TODO ‹worry› should become «wurri» (but first find out why "w'uree" currently wins)
-   # ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
-   # Christianization, Christianize, Christiansand, dewar, superfluous, cairngorm, martingale,
-   # Apure, comte, conge, Cambrai, Campeche, canzone, carabiniere, Cavite, Cetinje, chicalote,
-   # cairngorm, combe, complice, Courtrai, Edirne, esse, estaminet, Este, fettucine, Fiesole,
-   # Frunze, Gliwice, Iquique, irade, Katowice, Kielce, Kure, Lecce, Lidice, Loiret, Marche,
-   # marchese, Marinduque, metage, Montefiascone, Mugabe, Nivernais, Ordzhonikidze, Oriente,
-   # Orjonikidze, Palenque, petuntse, Piave, Que, reflet, Rene, rete, Roubaix, Skopje, Teide,
-   # Udine, Zabrze, Zaporozhye, zaptieh, Quebecer, mozzette, Anschauung, chiaus, kiaugh, Yaounde,
-   # elasmobranch, Gelsenkirchen, nomenclature, abranchial, abranchiate, alencon, Algonquian,
-   # asynchronism, asynchronous, Barranquilla, Bianca, blanquette, charabanc, palanquin,
-   # pancratium, Chinkiang, messieurs, baklava, baklawa, concubinary, Alkmaar, neurosecretion,
-   # Avalokitesvara, Blagoveshchensk, lorgnette, dimenhydrinate, paresthesia, postliminy,
-   # transhumance, uphroe, isoperimetry, Juneteenth, homeostasis, craquelure, erysipelas,
-   # erysipelatous, armipotent, bersaglieri, coparcenary, dolichocephalic, Hanseatic, Miskolc,
-   # leptocephalic, platycephalic, popliteal, popliteus, Vespucci, scleroderma, Tlaxcala,
-   # sexagenary, abiogenetic, anthropogenetic, cytogenetics, digenetic, ectogenetic,
-   # epeirogenetic, gamogenetic, gluconeogenetic, glycogenetic, glycogenolysis, histogenetic,
-   # homogenetic, hydrogenolysis, hypnogenetic, immunogenetics, ontogenetic, orogenetic,
-   # parthenogenetic, pathogenetic, quadragenarian, quinquagenarian, schizogenetic,
-   # septuagenarian, thermogenetic, xenogenetic, zygogenetic, ecarte, immortelle, parterre,
-   # Parthenope, tartare, theretofore, inglenook, christiania, dessiatine, dishabille, misoneism›:
-   # PhonEng should win
-   # ‹bourgeois, cha, christian, grandma, grandpa, overslaugh, Quebec, Fitzroy›: RP should win
-   # ‹cushaw, da, na, ca, Sta, conquest, wonk›: original spelling should remain
-   # Custom spellings (note: better specify /pronunciation/ instead of resulting spelling):
-   # pshaw -> shaw, brough -> brok, cushaw: cu'shaw, duomo: dwoamo, foh: faw, amain: a'main
-   # kakemono: caake'moano, Charleroi: Shauleroy, branchiopod: brankiapod, false: faulss,
-   # formidable: /f'O:rmId@b@l/, askari: /'ask@`i:/, voltameter: /vQlt'amIt@`/
-   # Delete (foreign words or names): Artois, Borodino, trois, Valoi, Condorcet, Attlee,
-   # Beauharnais, Beaumarchais, Buonaparte, Cimabue, Courbet, Delaunay, dele, Dubuffet, Duse,
-   # Farnese, Firenze, Fiume, Foucquet, Giorgione, conversazione, improvvisatore, jefe, jeu,
-   # jeux, Jorge, Jose, Labe, Lyautey, madre, Manolete, Monteux, mozzette, Piemonte, Quesnay,
-   # religieux, Tevere, Teyde, ubique, veloce, di, gi, Leopoldo, moi, Pareto, Delacroix, est,
-   # Francoise, Goncourt, Castiglione, Descartes, Msgr, Sturmabteilung, Magritte, Dessalines,
-   # Lufthansa, ai, bien
-   # Warn if the chosen variant would have been selected anyway or if a listed word is not in the
-   # dict or listed twice
-   # TODO Continue README from l.366: Disambiguating multigraphs
-   # TODO Insert hyphens were necessary to prevent misreadings, incl.
-   # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
-   # unstressed /a/ after /u:/ e.g. «bivu-ak» ‹bivouac›
+    # TODO Afterwards delete legacy dir?
+    # TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
+    # TODO ‹worry› should become «wurri» (but first find out why "w'uree" currently wins)
+    # ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
+    # Christianization, Christianize, Christiansand, dewar, superfluous, cairngorm, martingale,
+    # Apure, comte, conge, Cambrai, Campeche, canzone, carabiniere, Cavite, Cetinje, chicalote,
+    # cairngorm, combe, complice, Courtrai, Edirne, esse, estaminet, Este, fettucine, Fiesole,
+    # Frunze, Gliwice, Iquique, irade, Katowice, Kielce, Kure, Lecce, Lidice, Loiret, Marche,
+    # marchese, Marinduque, metage, Montefiascone, Mugabe, Nivernais, Ordzhonikidze, Oriente,
+    # Orjonikidze, Palenque, petuntse, Piave, Que, reflet, Rene, rete, Roubaix, Skopje, Teide,
+    # Udine, Zabrze, Zaporozhye, zaptieh, Quebecer, mozzette, Anschauung, chiaus, kiaugh, Yaounde,
+    # elasmobranch, Gelsenkirchen, nomenclature, abranchial, abranchiate, alencon, Algonquian,
+    # asynchronism, asynchronous, Barranquilla, Bianca, blanquette, charabanc, palanquin,
+    # pancratium, Chinkiang, messieurs, baklava, baklawa, concubinary, Alkmaar, neurosecretion,
+    # Avalokitesvara, Blagoveshchensk, lorgnette, dimenhydrinate, paresthesia, postliminy,
+    # transhumance, uphroe, isoperimetry, Juneteenth, homeostasis, craquelure, erysipelas,
+    # erysipelatous, armipotent, bersaglieri, coparcenary, dolichocephalic, Hanseatic, Miskolc,
+    # leptocephalic, platycephalic, popliteal, popliteus, Vespucci, scleroderma, Tlaxcala,
+    # sexagenary, abiogenetic, anthropogenetic, cytogenetics, digenetic, ectogenetic,
+    # epeirogenetic, gamogenetic, gluconeogenetic, glycogenetic, glycogenolysis, histogenetic,
+    # homogenetic, hydrogenolysis, hypnogenetic, immunogenetics, ontogenetic, orogenetic,
+    # parthenogenetic, pathogenetic, quadragenarian, quinquagenarian, schizogenetic,
+    # septuagenarian, thermogenetic, xenogenetic, zygogenetic, ecarte, immortelle, parterre,
+    # Parthenope, tartare, theretofore, inglenook, christiania, dessiatine, dishabille, misoneism,
+    # plano, marmot, monseigneur, amine, sitology›:
+    # PhonEng should win
+    # ‹bourgeois, cha, christian, grandma, grandpa, overslaugh, Quebec, Fitzroy, grease
+    # (POS tag shouldn't make a difference), implead, nitro›: RP should win
+    # ‹marcel, marcella›: GE should win
+    # ‹cushaw, da, na, ca, Sta, conquest, wonk›: original spelling should remain
+    # Custom spellings (note: better specify /pronunciation/ instead of resulting spelling):
+    # pshaw -> shaw, brough -> brok, cushaw: cu'shaw, duomo: dwoamo, foh: faw, amain: a'main
+    # kakemono: caake'moano, Charleroi: Shauleroy, branchiopod: brankiapod, false: faulss,
+    # formidable: /f'O:rmId@b@l/, askari: /'ask@`i:/, voltameter: /vQlt'amIt@`/,
+    # zoometry /zoU'om@tri:/ -> zo'ometri; zoography /zoU'ografi:/ -> zo'ografi,
+    # decagon /d'Ek@gQn/ -> dekegon
+    # Delete (foreign words or names): Artois, Borodino, trois, Valoi, Condorcet, Attlee,
+    # Beauharnais, Beaumarchais, Buonaparte, Cimabue, Courbet, Delaunay, dele, Dubuffet, Duse,
+    # Farnese, Firenze, Fiume, Foucquet, Giorgione, conversazione, improvvisatore, jefe, jeu,
+    # jeux, Jorge, Jose, Labe, Lyautey, madre, Manolete, Monteux, mozzette, Piemonte, Quesnay,
+    # religieux, Tevere, Teyde, ubique, veloce, di, gi, Leopoldo, moi, Pareto, Delacroix, est,
+    # Francoise, Goncourt, Castiglione, Descartes, Msgr, Sturmabteilung, Magritte, Dessalines,
+    # Lufthansa, ai, bien
+    # Warn if the chosen variant would have been selected anyway or if a listed word is not in the
+    # dict or listed twice
+    # TODO Continue README from l.366: Disambiguating multigraphs
+    # TODO Insert hyphens were necessary to prevent misreadings, incl.
+    # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
+    # unstressed /a/ after /u:/ e.g. «bivu-ak» ‹bivouac›
     return combine($left, $val);
 }
 
@@ -643,7 +580,6 @@ OUTER: while ($unconverted) {
             }
 
             my $val = $mapref->{$start};
-
             if (defined $val) {  # Match found
                 $converted = combine_and_adjust $val, $converted, $rest, $tradspell;
                 $unconverted = $rest;
@@ -660,6 +596,121 @@ OUTER: while ($unconverted) {
     $converted = move_stress_marker $converted,     $tradspell;
     $converted = restore_capitalization $converted, $tradspell;
     return $converted;
+}
+
+# prepare_pron $pron: Fix the pronunication of a word by normalizing non-standard forms.
+sub prepare_pron {
+    my $pron = shift;
+    # Normalize alternative forms of the r-colored schwa
+    $pron =~ s/(?<![ei])\@r|\@`r|a#r/\@`/g;
+    # If there are multiple stress markers, remove all but the last one
+    $pron =~ s/'(?=.*')//g;
+    return $pron;
+}
+
+# Unify a sound that may be pronounced differently in two accents. Arguments:
+#
+# * $rp: British pronunciation
+# * $ga: American pronunciation
+# * $phoneng: PhonEng pronunciation (optional)
+# * $alt1: how the vowel is pronounced in RP (treated as a regex)
+# * $alt2: how it is pronounced in GA (treated as a regex)
+# * $winner: the pronouncation that should be used
+# * $tradspell: the traditional spelling (used for debugging/logging)
+# * $suppress_warning: set to a true value to suppresss a warning if unification isn't possible
+#   (useful for unreliable latterns)
+sub unify_sound {
+    my ($rp, $ga, $phoneng, $alt1, $alt2, $winner, $tradspell, $suppress_warning) = @_;
+
+    my $rp_alt1_count = () = $rp =~ /$alt1/g;
+    my $ga_alt2_count = () = $ga =~ /$alt2/g;
+
+    return $rp, $ga, $phoneng unless $rp_alt1_count && $ga_alt2_count;  # Nothing to do
+
+    # Split on either alternative (NOT matching if /`/ as in /@`/ follows)
+    my @rp_split      = split /($alt1|$alt2)(?!`)/, $rp;
+    my @ga_split      = split /($alt1|$alt2)(?!`)/, $ga;
+    my @phoneng_split = split /($alt1|$alt2)(?!`)/, $phoneng;
+    my $rp_elem_count = scalar @rp_split;
+
+    unless ($rp_elem_count == scalar @ga_split) {
+        warn "Cannot unify $tradspell pronouncations re $alt1/$alt2\n" unless $suppress_warning;
+        return $rp, $ga, $phoneng;
+    }
+
+    my $unify_phoneng_too = $rp_elem_count == scalar @phoneng_split;
+
+    for my $i (0 .. $rp_elem_count - 1) {
+        if ($rp_split[$i] =~ /^$alt1$/ && $ga_split[$i] =~ /^$alt2$/) {
+            $rp_split[$i] = $winner;
+            $ga_split[$i] = $winner;
+
+            $phoneng_split[$i] = $winner
+                if $unify_phoneng_too && $phoneng_split[$i] =~ /^($alt1|$alt2)$/;
+        }
+    }
+
+    $rp = join '', @rp_split;
+    $ga = join '', @ga_split;
+
+    $phoneng = join '', @phoneng_split if $unify_phoneng_too;
+
+    return $rp, $ga, $phoneng;
+}
+
+# Unify the sound used in different pronunciations in cases where a specific vowel
+# pronunciation should "win". Generally, unification is only attempted if RP and GA differ;
+# otherwise the given pronunciations are returned unchanged. Redundant pronunciations
+# (identical to an earlier one) are eliminated in any case.
+sub unify_sounds {
+    my ($rp, $ga, $phoneng, $tradspell) = @_;
+    $rp      = prepare_pron $rp;
+    $ga      = prepare_pron $ga;
+    $phoneng = prepare_pron $phoneng;
+
+    # Discard GA if identical to RP
+    $ga = '' if $ga eq $rp;
+    # Discard PhonEng if identical to RP or GA
+    $phoneng = '' if $phoneng eq $rp || $phoneng eq $ga;
+
+    # If PhonEng has /Nk/ where RP/GA have /nk/, use the former as it's usually correct
+    if ($phoneng =~ /Nk/ && $rp =~ /nk/) {
+        ($rp, $phoneng) = unify_sound $rp, $phoneng, '', 'nk', 'Nk', 'Nk', $tradspell, 0;
+        ($ga, $phoneng) = unify_sound $ga, $phoneng, '', 'nk', 'Nk', 'Nk', $tradspell, 0
+            if $ga;
+    }
+
+    return $rp, $ga, $phoneng unless $ga;  # Nothing more to unify
+
+    # Unify vowels:
+    # pair, share, variation -> «air»
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'e@', 'Er', 'e@', $tradspell, 0;
+    # cheer, year, peculiar -> «eer»
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'i:?@', 'Ir', 'i@', $tradspell, 0;
+    # poor, tour -> «oor»
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'U@', 'Ur', 'Ur', $tradspell, 1;
+    # number, modern -> «er» (schwa vs. r-colored schwa)
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, '(?<![ei])@', '@`', '@`', $tradspell, 1;
+    # port, ignore, keyboard, floral -> «oar»
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'O:r?', 'or', 'or', $tradspell, 1;
+    # sorry, tomorrow -> «orr»
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'Qr', 'O:r', 'Qr', $tradspell, 0;
+    # for, dinosaur -> «or»
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'O:r?', 'O:r', 'O:r', $tradspell, 0;
+    # encourage, current -> «urr»
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'Vr', '3:r?', 'Vr', $tradspell, 0;
+    # due, neutral, tune -> «ue»
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j'u:", "(?<![j])'u:", "'U:",
+        $tradspell, 0;
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "ju:", "(?<![j'])u:", "U:",
+        $tradspell, 0;
+    # during, neural -> «uer» (/ju:r/ or /jUr/ in RP, /Ur/ in GA)
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j'(?:u:|U)r", "(?<![j])'Ur", "'U:r",
+        $tradspell, 0;
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j(?:u:|U)r", "(?<![j'])Ur", "U:r",
+        $tradspell, 0;
+
+    return $rp, $ga, $phoneng;
 }
 
 # choose_nearer_or_shorter $first, $second, $tradspell: Choose and return $first or $second
@@ -691,35 +742,139 @@ sub select_nearest_and_calc_distance {
     return $choosen, $dist;
 }
 
-# convert_dict: Convert SAMPA spellings to Lytspel.
-sub convert_dict {
-    my ($mapref, $maxkeylen) = build_mapping;
-    open my $infh, '<', $IN_FILE or die "Unable to open $IN_FILE: $!\n";
-    my $colref = $CSV_IN->getline($infh);  # Skip header line
-    my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Traditional POS Redirect Lytspel)];
-    my $summed_dist = 0;
-    my $wordcount   = 0;
+# convert_column $colref, $tradspell, $mapref, $maxkeylen: Convert a column (CSV line)
+# from $IN_FILE style to $OUT_FILE. Any listed pronunciations are converted using the
+# Lytspel rules and the resulting spelling that's nearest to the traditional spelling is
+# selected and appended to the resulting output column. Also updates the global
+# $SUMMED_DIST and WORD_COUNT variables.
+sub convert_column {
+    my ($colref, $tradspell, $mapref, $maxkeylen) = @_;
+    my ($rp, $ga, $phoneng) = unify_sounds $colref->[3], $colref->[4], $colref->[5], $tradspell;
+    my $converted_rp      = convert_pron $rp,      $mapref, $maxkeylen, $tradspell;
+    my $converted_ga      = convert_pron $ga,      $mapref, $maxkeylen, $tradspell;
+    my $converted_phoneng = convert_pron $phoneng, $mapref, $maxkeylen, $tradspell;
 
-    while ($colref = $CSV_IN->getline($infh)) {
-        if (scalar @$colref < 4) {
-            # Nothing to convert, just output line as is
-            $CSV_OUT->print($outfh, $colref);
-            next;
+    # Omit GA if identical to RP
+    $converted_ga = '' if $converted_ga eq $converted_rp;
+    # Omit PhonEng if identical to RP or GA
+    $converted_phoneng = ''
+        if $converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga;
+
+    # Keep only the spelling that's closest to tradspell
+    my ($converted, $dist) = select_nearest_and_calc_distance $converted_rp, $converted_ga,
+        $converted_phoneng, $tradspell;
+    $SUMMED_DIST += $dist;
+    $WORD_COUNT++;
+    my $conv_colref = [@$colref[0 .. 2], $converted];
+    return $conv_colref;
+}
+
+# lookup_part $part, $tradspell, $unconverted_dict_ref, $converted_dict_ref, $case_redirect_ref,
+# $mapref, $maxkeylen: Look up the entry for a word part of a compound, taking case redirects
+# and POS-tagged word parts into account. Returns the converted entry column -- if the word
+# hasn't been processed before, it will be converted.
+sub lookup_part_entry {
+    my ($part, $tradspell, $unconverted_dict_ref, $converted_dict_ref, $case_redirect_ref,
+        $mapref, $maxkeylen)
+        = @_;
+    my $cased         = $case_redirect_ref->{$part};
+    my $key           = $cased ? $cased : $part;
+    my $unconv_colref = $unconverted_dict_ref->{$key};
+
+    unless ($unconv_colref) {
+        # Must be a POS-tagged word -- use some heuristics to pick the correct POS tag
+        my $pos = 'v';  # default POS tag (most frequent)
+        $pos = 'aj' if $part =~ /ate$/;  # e.g. ‹agglutinate›
+        $pos = 'n' if $part =~ /^(house|lead|transfer|transfer|wind)$/ and $tradspell ne 'fairlead';
+        $key = gen_key $part, $pos;
+        $unconv_colref = $unconverted_dict_ref->{$key};
+
+        unless ($unconv_colref) {
+            $key = gen_key $part, 'n';                      # use 'n' as fallback
+            $unconv_colref = $unconverted_dict_ref->{$key};
+            warn "No entry found for $key\n" unless $unconv_colref;
         }
+        # TODO Adapt POS heuristics for prefixed an suffixed forms
+    }
 
-        my $tradspell = $colref->[0];
+    my $conv_colref = $converted_dict_ref->{$key};
+    unless ($conv_colref) {
+        # Convert word now
+        $conv_colref = convert_column $unconv_colref, $cased || $part, $mapref, $maxkeylen;
+        $converted_dict_ref->{$key} = $conv_colref;
+    }
 
-# TODO x First read whole input dict into %unconverted_dict.
-# Also add %case_redirect entry if word isn't in lowercase.
-# As each word is processed, delete it from %unconverted_dict, add a copy to %converted_dict,
-# and print it.
-# If an entry to be processed is already in %unconverted_dict, print if from there instead of
-# converting it again.
-# TODO x Integrate $COMPOUNDS (note that all entries are lower-case):
-# Handle words with two parts ('-'):
-# * Convert individual parts if they haven't been converted yet
-# * Check whether the stressed vowel belongs to the first or second part and add or delete
-#   stress marker accordingly (usually it's the first).
+    return $conv_colref;
+}
+
+# handle_compound $colref, $parts, $tradspell, $unconverted_dict_ref, $converted_dict_ref,
+# $case_redirect_ref, $mapref, $maxkeylen: Handle a compound or derived form.
+# Returns the spelling to use for the compound if the word is one; returns undef otherwise.
+sub handle_compound {
+    my ($colref, $parts, $tradspell, $unconverted_dict_ref, $converted_dict_ref,
+        $case_redirect_ref, $mapref, $maxkeylen)
+        = @_;
+
+    if ($parts =~ /-/) {
+        # It's a compound made of two parts
+        my ($first, $second) = split /-/, $parts;
+        my $first_conv_colref = lookup_part_entry $first, $tradspell, $unconverted_dict_ref,
+            $converted_dict_ref, $case_redirect_ref, $mapref, $maxkeylen;
+        my $second_conv_colref = lookup_part_entry $second, $tradspell, $unconverted_dict_ref,
+            $converted_dict_ref, $case_redirect_ref, $mapref, $maxkeylen;
+        my $first_lytspel  = $first_conv_colref->[3];
+        my $second_lytspel = $second_conv_colref->[3];
+        my $compound       = "$first_lytspel$second_lytspel";
+
+        # If the compound contains two stress markers, we keep just the second one
+        $compound =~ s/'// if $compound =~ /'.*'/;
+
+        # If the compound contains a stress markers, we return it and are done
+        # TODO x Unless 2nd is «a'bout» ‹about›, e.g. «roundabout»
+        return $compound if $compound =~ /'/;
+
+        say "$tradspell should become $compound";
+
+     # TODO x Check how to deal with words containg one stress marker:
+     # How to deal with electro- combinations?
+     # for word in `grep " i'lectro" out6.txt|cut -f3 -d' '`; do grep ^$word, lytspel-dict.csv; done
+     # Start of 2nd part might be stressed in combinations with aero-, ana-, arch-, audio-,
+     # auto, best, beta, carbo-hydrate, chemo-, con- (many false positives?), contra-, crypt-,
+     # crypto-, dynamo-, ego-, ere-, extra-, fibro-, helio-, here-, hetero-, hydro-, hypo-,
+     # infra-.
+     # Possibly combis with bally-.
+     # Definitively combis with -self/-selves/-genesis/-genetic/-air/mon-/-teen/nitro-/-west/
+     # -westward(s)/-east/-eastward(s)/-angular/-genic/-optic/-tropic/peri-/psycho-/pyro-/
+     # -graphic/supra-/-basic/thence-/there-/thio-/ultra-/-ever/where-
+     # Stress varies (depends on listed pronunciation, preferring PE when in doubt): mono-,
+     # para-, photo-, poly-, radio-, retro-
+     # Check how to deal with the majority of words not containing any stress marker:
+     # Stress 2nd part: tetrabranchiate
+     # Start of 2nd part might be stressed: ultramodern, transpire, hypozeuxis
+     # 1st is stressed: therefore, ultrastructure, wherefore
+     # Check whether it's really a compound: mawkin, acockbill, agravic, arcana, arcane.
+     # Not a compound: affair (and other aff- combinations), appall (and other app-
+     # combinations), ashake (and some other ash- combinations), aspasia (and other asp-
+     # combiantions?), assail and some other ass- combis, combis with bam- and probably ban-,
+     # barbaric and some other bar- combis, some car-/man- combis, -sis- combis, most or all cor-
+     # combis, most or all cur-/imp- combis, all dip-/-ure/fib-/-for-/-ill-/ind-/-ara/ken-/kris-/
+     # -faction/-lac-/-lieu-/-mac-/-mari-/-mel-/mor-/-ola-/-nag-/-ana-/-ord-/-ova-/-ira-/-ita-/
+     # -nola-/-anna-/-odic-/-axis-/-rosa-/-mento-/-stamin-/-syn-/-tai-/-tor-/-tran-/-ila-/-edo-/
+     # -ante/-vin-/-with-/-zoom-/-rate/-ron- combis (except birthrate),
+     # various meta- combis (check those where it matters, e.g. because they have a stress
+     # marker)
+     # Not a compound: pantalone, canakin, electrode, tetrode
+    } else {
+        # TODO Implement
+        # Make -tic a suffix instead of a regular compound part (e.g. aromatic),
+        # likewise -ary (e.g. visionary), -ology (e.g. planetology), -arian (e.g. parliamentarian),
+        # make a suffix: tele-
+        # Stress before final consonant(s) of first part (probably treat as suffix): -otic,
+        # e.g. «aci'dotic» ‹acidotic›
+        # Make ‹zoo› a prefix written «zoe» /zoU@/; first or second part may be stressed.
+    }
+
+# TODO When looking up words, consider that they might be POS-tagged (v, n, av, prp)
 # Then handle prefixed ('=' with known prefix) and suffixed entries.
 # TODO Handle prefixes and suffixes correctly («dis, mis; anti, semi» are spelled like that
 # regardless of which letter follows; prefixes «baio, nio» ‹bio, neo›;
@@ -738,23 +893,48 @@ sub convert_dict {
 # biconcavity,bi-concavity
 # Add 'on' as prefix, e.g. ‹oncoming› should be analysed as ‹on=coming›
 
-        my ($rp, $ga, $phoneng) = unify_sounds $colref->[3], $colref->[4], $colref->[5], $tradspell;
-        my $converted_rp      = convert_pron $rp,      $mapref, $maxkeylen, $tradspell;
-        my $converted_ga      = convert_pron $ga,      $mapref, $maxkeylen, $tradspell;
-        my $converted_phoneng = convert_pron $phoneng, $mapref, $maxkeylen, $tradspell;
+    return undef;  # not a compound
+}
 
-        # Omit GA if identical to RP
-        $converted_ga = '' if $converted_ga eq $converted_rp;
-        # Omit PhonEng if identical to RP or GA
-        $converted_phoneng = ''
-            if $converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga;
+# convert_dict: Convert SAMPA spellings to Lytspel.
+sub convert_dict {
+    my ($mapref, $maxkeylen) = build_mapping;
+    my $compound_map_ref = build_compound_map;
+    my ($unconverted_dict_ref, $case_redirect_ref) = build_unconverted_dict_and_case_redirects;
+    my %converted_dict;
+    my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Traditional POS Redirect Lytspel)];
 
-        # Keep only the spelling that's closest to tradspell
-        my ($converted, $dist) = select_nearest_and_calc_distance $converted_rp, $converted_ga,
-            $converted_phoneng, $tradspell;
-        $summed_dist += $dist;
-        $wordcount++;
-        $CSV_OUT->print($outfh, [@$colref[0 .. 2], $converted]);
+    for my $key (sort { lc $a cmp lc $b } keys %$unconverted_dict_ref) {
+        my $colref = $unconverted_dict_ref->{$key};
+
+        if (scalar @$colref < 4) {
+            # Nothing to convert, just output and store line as is
+            $CSV_OUT->print($outfh, $colref);
+            $converted_dict{$key} = $colref;
+            next;
+        }
+
+        my $conv_colref = $converted_dict{$key};
+        if ($conv_colref) {
+            # Word has already been converted
+            $CSV_OUT->print($outfh, $conv_colref);
+            next;
+        }
+
+        my $tradspell = $colref->[0];
+        my $parts     = $compound_map_ref->{lc $tradspell};
+        my $compound  = handle_compound $colref, $parts, $tradspell, $unconverted_dict_ref,
+            \%converted_dict, $case_redirect_ref, $mapref, $maxkeylen
+            if $parts;
+
+        if ($compound) {
+            # TODO x Integrate with code below: use return value instead of calling convert_column
+            say "Compound found: $tradspell should become $compound";
+        }
+
+        $conv_colref = convert_column $colref, $tradspell, $mapref, $maxkeylen;
+        $converted_dict{$key} = $conv_colref;
+        $CSV_OUT->print($outfh, $conv_colref);
 
         # TODO Finally drop POS tag if all variants are written the same, e.g. «mouth»
         # TODO Handle most frequent pre- and suffixes in converter rather than dict
@@ -762,10 +942,9 @@ sub convert_dict {
         # making sure that the converter will indeed lead to the same results)
     }
 
-    my $avg_dist = $summed_dist / $wordcount;
+    my $avg_dist = $SUMMED_DIST / $WORD_COUNT;
     say "Average distance between tradspell and Lytspel: $avg_dist";
 
-    close $infh;
     close $outfh;
 }
 
