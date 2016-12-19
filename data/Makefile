@@ -1,7 +1,7 @@
 lytspel-dict.csv: compounds.csv phonetic-dict.csv phoneme-map.csv
 	lytspelify
 
-compounds.csv: phonetic-dict.csv compounds-manual.csv prefix.list suffix.list
+compounds.csv: phonetic-dict.csv compounds-manual.csv compound-blacklist.csv compound-whitelist.csv prefix.list suffix.list
 	decompose
 
 phonetic-dict.csv: phoneng-espeak-dict.csv phoneme-map.csv

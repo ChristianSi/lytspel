@@ -23,6 +23,14 @@ const my $IN_FILE        => 'phonetic-dict.csv';
 const my $OUT_FILE       => 'compounds.csv';
 const my $MANUAL_ENTRIES => 'compounds-manual.csv';
 
+# A CSV file containing blacklisted word parts that should NOT be considered part of a
+# compound. If the second field is "1" or "2", the part is only blacklisted if it's the
+# first/second element of a compound; otherwise it's blacklisted in either position.
+const my $COMPOUND_BLACKLIST => 'compound-blacklist.csv';
+
+# A whitelist of words that SHOULD be analysed as compounds even if their parts are blacklisted.
+const my $COMPOUND_WHITELIST => 'compound-whitelist.csv';
+
 const my $UNAMBIGUOUS_CONSONANTS => 'bcdfghjklmnpqrstvwxz';  # excluding 'y' (ambiguous)
 const my $SHORT_VOWEL            => 'a#?|E|I#?|Q|V';         # excluding schwa and «oo» /U/
 const my $NON_SCHWA_VOWEL => 'a[#IU]?|A|E|eI|I#?|i:|O[:I]|oU|Q|U|u:|V';
@@ -97,6 +105,43 @@ sub build_manual_entries_dict {
 
     close $file;
     return \%dict;
+}
+
+# Build black and white lists to refine compound detection. Returns references to three sets:
+#
+# 1. A black list of parts that are not allowed as first part of a compound.
+# 2. A black list of parts that are not allowed as second part of a compound.
+# 3. A white list of words that should nevertheless be recognized as compounds, ignoring the
+#    black list.
+sub build_black_and_white_list {
+    # Create blacklists
+    open my $file, '<', $COMPOUND_BLACKLIST or die "Unable to open $COMPOUND_BLACKLIST: $!\n";
+    my $colref = $CSV_IN->getline($file);  # skip header line
+    my %blacklist1;
+    my %blacklist2;
+
+    while ($colref = $CSV_IN->getline($file)) {
+        my $word = $colref->[0];
+        my $pos = $colref->[1] // '';
+        die "Blacklist entry '$word' has invalid position '$pos'\n" unless $pos =~ /^[12]?$/;
+        $blacklist1{$word} = 1 unless $pos eq 2;
+        $blacklist2{$word} = 1 unless $pos eq 1;
+    }
+
+    close $file;
+
+    # Create whitelist
+    open $file, '<', $COMPOUND_WHITELIST or die "Unable to open $COMPOUND_WHITELIST: $!\n";
+    $colref = $CSV_IN->getline($file);  # skip header line
+    my %whitelist;
+
+    while ($colref = $CSV_IN->getline($file)) {
+        my $word = $colref->[0];
+        $whitelist{$word} = 1;
+    }
+
+    close $file;
+    return \%blacklist1, \%blacklist2, \%whitelist;
 }
 
 # discard_empty_elements_and_normalize $arr_ref: Discard empty, undefined, or duplicate elements
@@ -296,6 +341,7 @@ sub check_for_better_match {
     my $new_first = substr $word, 0, $length_of_first_part;
     my $new_second = substr $word, $length_of_first_part;
 
+    # TODO Integrate compound-blacklist|whitelist
     # Check whether parts are known
     if (exists $dict_ref->{$new_first} && exists $dict_ref->{$new_second} && prons_match $new_first,
         $new_second, $word, $dict_ref)
@@ -370,7 +416,10 @@ sub decompose {
     my ($prefix_set_ref, $min_prefix_len, $max_prefix_len) = build_affix_set 'prefix.list';
     my ($suffix_set_ref, $min_suffix_len, $max_suffix_len) = build_affix_set 'suffix.list';
     my $manual_entries_ref = build_manual_entries_dict;
+    my ($blacklist1_ref, $blacklist2_ref, $whitelist_ref) = build_black_and_white_list;
+    # TODO x Check that output is correct
     my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Word Parts)];
+    # TODO Use black and whitelists
     find_parts $outfh, $_, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len,
         $suffix_set_ref, $min_suffix_len, $max_suffix_len, $manual_entries_ref
         for sort { lc $a cmp lc $b } keys %$dict_ref;
