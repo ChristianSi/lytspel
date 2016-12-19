@@ -38,7 +38,7 @@ const my $LYTSPEL_CONSONANT => "(?:(?:[bcdfghjklmnprstvwxyz]h?|nn?g|qu)=?)";
 
 # Stress the second part of a compound if the first part is listed here
 my %STRESS_AFTER = map { $_ => 1 } qw/arch best chemo con crypt crypto dynamo ego ere
-    extra fibro helio here hetero hydro hypo mon nitro peri psycho pyro supra thence
+    extra fibro helio here hetero hydro hypo infra mon nitro peri psycho pyro supra thence
     there thio ultra where/;
 
 # Stress the second part of a compound if listed here
@@ -48,12 +48,22 @@ my %STRESS_IF_SECOND = map { $_ => 1 } qw/air angular basic east eastward eastwa
 
 # If the first part of a compound is listed here, either part may be stressed (we check
 # the pronunciation to find out).
-my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/auto contra electro mono para photo poly
-    radio retro/;
+my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/auto contra electro meta mono para photo
+    poly radio retro/;
+
+# If a compound is listed here, its 1st part is stressed (used only in cases where our
+# rules indicate that the 2nd part should be stressed).
+my %STRESS_FIRST_PART = map { $_ => 1 } qw/archlute archway heterodyne heterograft
+    heterophil hypoblast hypogene hyponasty hypostyle infrasound infrastructure therefore
+    ultrastructure wherefore/;
+
+# If a compound is listed here, its 2nd part is stressed.
+my %STRESS_SECOND_PART = map { $_ => 1 } qw/aeromedical tetrabranchiate/;
 
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
 my $HYPH    = new Text::Hyphen min_word => 3, min_prefix => 1, min_suffix => 1;
+
 # The following two variables are globals for simplicity
 my $SUMMED_DIST = 0;
 my $WORD_COUNT  = 0;
@@ -350,7 +360,7 @@ sub combine_and_adjust {
     # parthenogenetic, pathogenetic, quadragenarian, quinquagenarian, schizogenetic,
     # septuagenarian, thermogenetic, xenogenetic, zygogenetic, ecarte, immortelle, parterre,
     # Parthenope, tartare, theretofore, inglenook, christiania, dessiatine, dishabille, misoneism,
-    # plano, marmot, monseigneur, amine, sitology, choplogic, archenteric, Betamax›:
+    # plano, marmot, monseigneur, amine, sitology, choplogic, archenteric, Betamax, acock, Carnot›:
     # PhonEng should win
     # ‹bourgeois, cha, christian, grandma, grandpa, overslaugh, Quebec, Fitzroy, grease
     # (POS tag shouldn't make a difference), implead, nitro›: RP should win
@@ -852,9 +862,14 @@ sub handle_compound {
             return $compound unless $first eq 'electro';
         }
 
+        # If this word is listed as a special case, we return it and are done
+        return $compound if exists($STRESS_FIRST_PART{$tradspell});
+
         # Insert stress marker before second part if appropriate
         $compound = "$first_lytspel'$second_lytspel"
-            if exists($STRESS_AFTER{$first}) || exists($STRESS_IF_SECOND{$second});
+            if exists($STRESS_AFTER{$first})
+            || exists($STRESS_IF_SECOND{$second})
+            || exists($STRESS_SECOND_PART{$tradspell});
 
         if (exists($STRESS_VARIES_IF_FIRST{$first})) {
             # Check pronunciation to find out which part to stress
@@ -875,25 +890,7 @@ sub handle_compound {
 
         say "$tradspell should become $compound";
 
-     # TODO x
-     # Stress 2nd part: aeromedical, tetrabranchiate
-     # Start of 2nd part might be stressed: ultramodern, transpire, hypozeuxis
-     # Exceptions where 1st is stressed: therefore, ultrastructure, wherefore, archlute, archway,
-     # -sphere combis (e.g. biosphere, chemosphere), hereabout, heterophil, heterodyne, heterograft,
-     # hypoblast, hypogene, hyponasty, hypostyle, infrasound, infrastructure
-     # Check whether it's really a compound: mawkin, acockbill, agravic, arcana, arcane.
-     # Not a compound: affair (and other aff- combinations), appall (and other app-
-     # combinations), ashake (and some other ash- combinations), aspasia (and other asp-
-     # combiantions?), assail and some other ass- combis, combis with bam- and probably ban-,
-     # barbaric and some other bar- combis, some car-/man- combis, -sis- combis, most or all cor-
-     # combis, most or all cur-/imp- combis, all dip-/-ure/fib-/-for-/-ill-/ind-/-ara/ken-/kris-/
-     # -faction/-lac-/-lieu-/-mac-/-mari-/-mel-/mor-/-ola-/-nag-/-ana-/-ord-/-ova-/-ira-/-ita-/
-     # -nola-/-anna-/-odic-/-axis-/-rosa-/-mento-/-stamin-/-syn-/-tai-/-tor-/-tran-/-ila-/-edo-/
-     # -ante/-vin-/-with-/-zoom-/-rate/-ron-/-lojic-/-con-/-dos-/-bally- combis (except birthrate),
-     # various meta- combis (check those where it matters, e.g. because they have a stress
-     # marker)
-     # Not a compound: pantalone, canakin, electrode, tetrode, archenteron, archenteric,
-     # autogamy, autolysis, autotrophy, carbohydrate, cryptogam
+     # TODO x See decompose
     } else {
         # TODO Implement
         # Make -tic a suffix instead of a regular compound part (e.g. aromatic),
@@ -902,6 +899,7 @@ sub handle_compound {
         # Stress before final consonant(s) of first part (probably treat as suffix): -otic,
         # e.g. «aci'dotic» ‹acidotic›
         # Make ‹zoo› a prefix written «zoe» /zoU@/; first or second part may be stressed.
+        # Exceptions where 1st is stressed: all [-=]sphere combis (e.g. biosphere, chemosphere)
     }
 
 # TODO When looking up words, consider that they might be POS-tagged (v, n, av, prp)
