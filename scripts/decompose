@@ -328,7 +328,7 @@ sub prefer_new_match {
     }
 }
 
-# check_for_better_match $length_of_first_part, $word, $prev_first, $prev_second, $dict_ref:
+# check_for_better_match $length_of_first_part, $word, $prev_first, $prev_second, $dict_ref ...:
 # Splits word into a compound pair according to $length_of_first_part.
 # If both parts of the pair exist in $dict_ref and if their joined pronunciation matches that
 # of $word, then the new pair is returned if it seems to be a better match than the previously
@@ -337,14 +337,22 @@ sub prefer_new_match {
 # If the old pair is empty (= none found yet), the new pair is returned.
 # Otherwise the algorithm documented in 'prefer_new_match' is used.
 sub check_for_better_match {
-    my ($length_of_first_part, $word, $first, $second, $dict_ref) = @_;
+    my ($length_of_first_part, $word, $first, $second, $dict_ref, $blacklist1_ref,
+        $blacklist2_ref, $whitelist_ref)
+        = @_;
     my $new_first = substr $word, 0, $length_of_first_part;
     my $new_second = substr $word, $length_of_first_part;
 
-    # TODO Integrate compound-blacklist|whitelist
-    # Check whether parts are known
-    if (exists $dict_ref->{$new_first} && exists $dict_ref->{$new_second} && prons_match $new_first,
-        $new_second, $word, $dict_ref)
+    if (
+           exists $dict_ref->{$new_first}
+        && exists $dict_ref->{$new_second}
+        && (exists $whitelist_ref->{$word}
+            || (!exists $blacklist1_ref->{$new_first} && !exists $blacklist2_ref->{$new_second}))
+        && prons_match $new_first,
+        $new_second,
+        $word,
+        $dict_ref
+        )
     {
         if ($first) {
             if (prefer_new_match $first, $second, $new_first, $new_second) {
@@ -369,9 +377,10 @@ sub check_for_better_match {
 # * '=' after a prefix and before a suffix
 sub find_parts {
     my (
-        $outfh,          $word,           $dict_ref,       $prefix_set_ref,
-        $min_prefix_len, $max_prefix_len, $suffix_set_ref, $min_suffix_len,
-        $max_suffix_len, $manual_entries_ref
+        $outfh,          $word,               $dict_ref,       $prefix_set_ref,
+        $min_prefix_len, $max_prefix_len,     $suffix_set_ref, $min_suffix_len,
+        $max_suffix_len, $manual_entries_ref, $blacklist1_ref, $blacklist2_ref,
+        $whitelist_ref
     ) = @_;
     my $len = length $word;
 
@@ -402,7 +411,8 @@ sub find_parts {
 
     # Check whether it's a compound of two words
     for my $i (3 .. $len - 3) {
-        ($first, $second) = check_for_better_match $i, $word, $first, $second, $dict_ref;
+        ($first, $second) = check_for_better_match $i, $word, $first, $second, $dict_ref,
+            $blacklist1_ref, $blacklist2_ref, $whitelist_ref;
     }
 
     if ($first) {
@@ -417,11 +427,10 @@ sub decompose {
     my ($suffix_set_ref, $min_suffix_len, $max_suffix_len) = build_affix_set 'suffix.list';
     my $manual_entries_ref = build_manual_entries_dict;
     my ($blacklist1_ref, $blacklist2_ref, $whitelist_ref) = build_black_and_white_list;
-    # TODO x Check that output is correct
     my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Word Parts)];
-    # TODO Use black and whitelists
     find_parts $outfh, $_, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len,
-        $suffix_set_ref, $min_suffix_len, $max_suffix_len, $manual_entries_ref
+        $suffix_set_ref, $min_suffix_len, $max_suffix_len, $manual_entries_ref,
+        $blacklist1_ref, $blacklist2_ref, $whitelist_ref
         for sort { lc $a cmp lc $b } keys %$dict_ref;
     close $outfh;
 }
