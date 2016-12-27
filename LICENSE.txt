@@ -1,4 +1,4 @@
-Copyright (c) 2014-2015 Christian Siefkes
+Copyright (c) 2014-2017 Christian Siefkes
 
 All rights reserved.
 
