@@ -53,12 +53,15 @@ my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/auto contra electro meta mono pa
 
 # If a compound is listed here, its 1st part is stressed (used only in cases where our
 # rules indicate that the 2nd part should be stressed).
-my %STRESS_FIRST_PART = map { $_ => 1 } qw/archlute archway heterodyne heterograft
-    heterophil hypoblast hypogene hyponasty hypostyle infrasound infrastructure therefore
-    ultrastructure wherefore/;
+my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation archlute archway
+    heterodyne heterograft heterophil hypoblast hypogene hyponasty hypostyle infrasound
+    infrastructure therefore ultrastructure wherefore/;
 
 # If a compound is listed here, its 2nd part is stressed.
-my %STRESS_SECOND_PART = map { $_ => 1 } qw/aeromedical tetrabranchiate/;
+# TODO x Check that it works for capitalized words
+my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedical aerostation
+    Allhallowmas Allhallows altocumulus antarctic anteprandial anteversion anymore arsenopyrite
+    Australasia tetrabranchiate/;
 
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
@@ -956,21 +959,17 @@ sub convert_dict {
             if $parts;
 
         if ($compound) {
-# TODO x Check udiff lytspel-dict.csv.old lytspel-dict.csv from altocumulus
+# TODO x Check udiff lytspel-dict.csv.old lytspel-dict.csv from backblocks
 # for word in `grep -- -centric$ compounds.csv|cut -f1 -d,`; do grep -i ^$word, lytspel-dict.csv.old; grep -i ^$word, lytspel-dict.csv; done
-# Not a compound: abacist, Abbasid, Abelard, abelmosk, abelard, siderotic, alabaster,
-# alanine, alastrim, Alberich, aldohexose, almagest, aloetic, alphabet, alternate;
-# -alkali-, -nate-
-# Custom compounds: italianate,italian-ate
-# Stress 1st part: aftereffect, aftersensation
-# Stress 2nd part: absentminded, acetylcholine, aerostation, Allhallowmas, Allhallows;
-# -logic (e.g. aerologic), -centric (e.g. Afrocentric)
+# Stress 2nd part: ;
+# -logic (e.g. aerologic), -centric (e.g. Afrocentric), -therapy (e.g. aromatherapy)
 # Stress last syllable of 1st part: -meter (e.g. aerometer, electrometer,
 # alkalimeter), -tropism (e.g. aerotropism, stereotropism)
+# «sm» should be divided in the middle, e.g. «antas'matic» ‹antasthmatic›
 # Add prefixes: ab- (e.g. abampere, 2nd part stressed)
 # Add suffix: -otic (stressed before suffix), -ology (ditto)
 # Custom spellings: agate /'agIt/ «agit»
-# PE should win: albumin, alkalimeter, alkyl
+# PE should win: albumin, alkalimeter, alkyl, vitae
 
             # Use return value instead of calling convert_column
             $conv_colref = [@$colref[0 .. 2], $compound];
