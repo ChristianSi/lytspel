@@ -968,7 +968,7 @@ sub convert_dict {
             if $parts;
 
         if ($compound) {
-# TODO x Check udiff lytspel-dict.csv.old lytspel-dict.csv from poetaster
+# TODO x Check udiff lytspel-dict.csv.old lytspel-dict.csv from sulfaguanidine
 # for word in `grep -- -centric$ compounds.csv|cut -f1 -d,`; do grep -i ^$word, lytspel-dict.csv.old; grep -i ^$word, lytspel-dict.csv; done
 # Not a compound: backsheesh, Badarian, Bahrain, balboa, Balfour, Balkhash, balmoral, balneology,
 # Bannockburn, barcarole, barracoon, Barrera, Bashkir, bateau, Bathsheba, battuta, Beaufort,
@@ -1004,33 +1004,50 @@ sub convert_dict {
 # malcontent, Maldives, malefactor, malemute, malkin, mallard, mallenders, manakin, mandarin,
 # Mandingo, mangold, Manitoulin, mantic, marinate, Marlborough, marocain, Matabele, matelot,
 # matelote, Maulmain, maulstick, mawkish, mayday, mayhem, Maynard, mediatory, melamed, melanoma,
-# messaline, Messapian, Michelangelo, microbe, mildew, minorca, moderate, monolater, Monroe,
+# Messapian, Michelangelo, microbe, mildew, minorca, moderate, monolater, Monroe,
 # muscadel, muscatel, Muskogee, neckerchief, niblick, Ninevite, noetic, Normand, Norplant,
 # Norway, Oglethorpe, oldwife, olefin, olefine, omentum, organon, organzine, oxymoron, paddymelon,
 # parterre, Pasquale, pastrami, Patmos, pawpaw, paynim, pearmain, Pegasian, Pehlevi, Peiping,
 # pellagra, pennoncel, pensee, Perdido, perdue, perfume, perjure, perkin, Perlis, perlite, permit,
 # permutate, permute, Pernod, persevere, Pescara, peseta, petaurist, pettitoes, phagedena
-# picrite, pignora, Pillsbury, Pindaric
-# rainbow, rickshaw, symbiosis, symbiotic, weepie, Picard
-# -ace-, -boo-, -bis-, -bro-, -cal-, can-, -cara-, -cris-, com-, -comp-, -doo-, -dore-, -ella-,
-# -etta-, eau-, -gue-, -hey-, hoo-, -inf-, -lon-, -mar-, -mas-, -mira-, ole-, -pas-, -ree-,
-# -tin, -tina-
+# Picard, picrite, pignora, Pillsbury, Pindaric, Poitiers, polariscope, pontlevis, portend,
+# portfolio, portray, powwow, primavera, propagate, prostheses, prosthetic, protocol,
+# protonotary, Pulaski, purport, pustule, Quemoy, quinella, quintet, quintile, rainbow,
+# Ramakrishna, Rameau, rapscallion, rasbora, rascal, ratafee, ratline, Rayburn, Rayleigh,
+# rectangle, rectum, redintegrate, Rickover, rickshaw, ridotto, Rimbaud, Rodrick, Rollins,
+# runagate, Ruskin, sacring, Saipan, salami, Samaria, samsara, Santana, sapsago, sarcoma,
+# Sardis, saveloy, sayyid, scaffold, schizogenesis, schizogenic, secundine, Selkirk, senarius,
+# September, serpula, serrate, servile, sextet, shagreen, shampoo, sharia, Shenyang, churchward,
+# shoreward, Shulamite, siglos, Simeon, sincere, sinecure, snickersnee, Soleure, solidary,
+# Spartacist, spicate, Spillane, spirometric, stagnation, stampede, Starkey, stavesacre,
+# Stelazine, stellate, stephanotis, stigmasterol
+# symbiosis, symbiotic, weepie
+# -ace-, -aline-, -boo-, -bis-, -bro-, -cal-, can-, -cara-, -cris-, com-, -comp-, -doo-,
+# -dore-, -ella-, -etta-, eau-, -gue-, -hey-, hoo-, -inf-, -lon-, -mar-, -mas-, -mira-,
+# ole-, -pas-, -psych-, -ree-, -tin, -tina-
 # Custom compound: bitterender,bitter-ender; buckling,buckle=ing; cannot,can-not;
 # chuckling,chuckle=ing; contrabass,contra-base; crackling,crackle=ing; forever,for-ever
 # cardinalate,cardinal-ate; doctrinal,doctrine=al; heckling,heckle=ing; keckling,keckle=ing;
-# megarad,mega-rad; minimax,mini-max; narcotic,narco=tic; pickling,pickle=ing
+# megarad,mega-rad; minimax,mini-max; narcotic,narco=tic; pickling,pickle=ing;
+# puritanisms,puritanism=s; rankling,rankle=ing; salesman,sales-man; shootout,shoot-out;
+# sparkling,sparkle=ing; statesman,states-man; strickling,strickle=ing; suckling,suckle=ing
 # Stress 1st part: breakaway, castaway, cutaway, flyaway, foldaway, getaway, giveaway, Greenaway,
-# Hathaway, hideaway, huntaway, layaway (probably -away in general);
-# counterattack, counterreply, countersubject, heterocycle, lookalike, minicomputer, pinafore
-# -amine (calamine, Dramamine, hexamine, histamine)
+# Hathaway, hideaway, huntaway, layaway, rockaway, rollaway, runaway, soakaway, stowaway,
+# straightaway (-away in general);
+# counterattack, counterreply, countersubject, heterocycle, lookalike, minicomputer, pinafore,
+# slugabed, standalone
+# servocontrol/n
+# -amine (calamine, Dramamine, hexamine, histamine), -around
 # Stress 2nd part: aerologic only, not choplogic; benediction, binocular,
 # bronchiectasis, commonsense, dextrocardia, diacetylmorphine, diazomethane, duecento,
 # echocardiogram, eftsoon, everlasting, farewell, forever, forevermore, goodbye, hemelytron,
-# hendecagon, hereinafter, boohoo, lambaste, magnetochemistry, mercaptopurine, methacrylate,
+# hereinafter, boohoo, lambaste, magnetochemistry, mercaptopurine, methacrylate,
 # methylbenzene, methylnaphthalene, moreover, nymphomaniac, oleomargarine, penannular,
-# penultimate, penultima, petrochemical, petrochemistry, phenylalanine, philhellene
-# -aldehyde, -eastern, -metric, -phonic, -sexual, -western
+# penultimate, penultima, petrochemical, petrochemistry, phenylalanine, philhellene,
+# Rockhampton, saltpeter, sardonyx, statampere
+# -aldehyde, -decagon, -eastern, -forward, -metric, -phonic, -sexual, -western
 # magneto-, mal- (except malware)
+# PE determines stress: proto-, stereo-
 # «sm» should be divided in the middle, e.g. «antas'matic» ‹antasthmatic›;
 # ditto «rl», e.g. «bur'leta» ‹burletta›
 # and «st»
@@ -1043,7 +1060,9 @@ sub convert_dict {
 # emir: /@m'i:r/ -> e'meer; heathenry: /h'i:D@nri:/ -> heedhenri; Hippomenes: /hIp'Qm@ni:z/
 # -> Hi'pomenees; hypophysis: /haIp'QfIsIs/ -> hy'poficiss; hypothecate: /haIp'QT@keIt/ ->
 # hy'pothecait; imam: /Im'Am/ -> i'maam; rikisha: /r'IkSO:/ -> ricshaw; Markoff: m'ArkQf ->
-# Marcof; melamed: /mElam'Ed/ -> mela'med; biosis: /baI'oUsIs/ -> bai'oaciss
+# Marcof; melamed: /mElam'Ed/ -> mela'med; biosis: /baI'oUsIs/ -> bai'oaciss; pontlevis:
+# /pQntl'EvIs/ -> pont'leviss; protonotary: /proUt'Qn@tEri/ -> proa'toneterri; churchward:
+# /tS'3:tSw@`d/ -> churchwerd
 # Remains unchanged: cabalism because of «ca'bal» ‹cabal›)
 # PE should win: bethink, bollard, Bradbury, ectasis, canterbury, carbonyl, cardon, Carnot,
 # Cartagena, Charcot, Chilon, chitin, clearstory, clerestory, cognominal, Comintern, compost,
@@ -1052,14 +1071,18 @@ sub convert_dict {
 # goosander, wacke, gravure, amine, triethyl, hydracid, hydrazine, xanthine, June, katydid,
 # kerygma, kinetin, kirpan, Lacedaemon, Legree, Marlon, Meyer, paddymelon, heliacal, parhelic,
 # parhelion, parterre, pascal, Patmos, pennoncel, pensee, perdue, permute, cranium, onychia,
-# peseta, alanine, telegraphy, Picard, plano
+# peseta, alanine, telegraphy, Picard, plano, polariscope, prognoses, Ramakrishna, roentgen,
+# Sardis, sayyid, decillion, siglos, silkaline, Simeon, barye, spicate, stavesacre, stigmasterol
 # GP should win: Christian, pedal, women, convolution, worthy, cyano, dengue, thermal, zine,
-# cha, novella, November
+# cha, novella, November, telephony, estate, Selkirk, serrate
 # Make -ary -> erri a suffix (reactionary, customary)
-# make -ate a suffix spoken either «ait» or «et|it» (e.g. «dy'recteret» ‹directorate›)
+# make -ate a suffix spoken either «ait» or «et|it» (e.g. «dy'recteret» ‹directorate›;
+# sometimes it depends on the POS tag, e.g. ‹proportionate›)
 # Add centralist (should become central=ist and centralists: centralist=s)
 # Distinguish live/v: liv vs aj: lyv; livelong should become livlong
 # ‹planoconvex› should be come «planocon'vex» (from the aj)
+# Unify /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter, e.g.
+# ‹solidary, temporary, voluntary›
 
             # Use return value instead of calling convert_column
             $conv_colref = [@$colref[0 .. 2], $compound];
