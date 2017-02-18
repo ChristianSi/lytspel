@@ -1,8 +1,8 @@
 #!/usr/bin/perl -CA
 # Convert phonetic SAMPA spellings into Lytspel.
 #
-# Copyright (c) 2016 Christian Siefkes
-# See accompanying LICENSE file for licensing information.
+# Copyright (c) 2016-17 Christian Siefkes
+# See accompanying LICENSE.txt file for licensing information.
 #
 # Required modules: Const::Fast, Text::Hyphen, Text::LevenshteinXS, and those listed in PhonEng.pm.
 
@@ -340,7 +340,7 @@ sub combine_and_adjust {
 
     # TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
     # TODO ‹worry› should become «wurri» (but first find out why "w'uree" currently wins)
-    # ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
+    # TODO ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
     # Christianization, Christianize, Christiansand, dewar, superfluous, cairngorm, martingale,
     # Apure, comte, conge, Cambrai, Campeche, canzone, carabiniere, Cavite, Cetinje, chicalote,
     # cairngorm, combe, complice, Courtrai, Edirne, esse, estaminet, Este, fettucine, Fiesole,
@@ -355,25 +355,48 @@ sub combine_and_adjust {
     # transhumance, uphroe, isoperimetry, Juneteenth, homeostasis, craquelure, erysipelas,
     # erysipelatous, armipotent, bersaglieri, coparcenary, dolichocephalic, Hanseatic, Miskolc,
     # leptocephalic, platycephalic, popliteal, popliteus, Vespucci, scleroderma, Tlaxcala,
-    # sexagenary, abiogenetic, anthropogenetic, cytogenetics, digenetic, ectogenetic,
-    # epeirogenetic, gamogenetic, gluconeogenetic, glycogenetic, glycogenolysis, histogenetic,
-    # homogenetic, hydrogenolysis, hypnogenetic, immunogenetics, ontogenetic, orogenetic,
-    # parthenogenetic, pathogenetic, quadragenarian, quinquagenarian, schizogenetic,
-    # septuagenarian, thermogenetic, xenogenetic, zygogenetic, ecarte, immortelle, parterre,
-    # Parthenope, tartare, theretofore, inglenook, christiania, dessiatine, dishabille, misoneism,
-    # plano, marmot, monseigneur, amine, sitology, choplogic, archenteric, Betamax, acock, Carnot,
-    # albumin, alkalimeter, alkyl, vitae›:
+    # sexagenary, abiogenetic, anthropogenetic, cytogenetics, digenetic, ectogenetic, epeirogenetic,
+    # gamogenetic, gluconeogenetic, glycogenetic, glycogenolysis, histogenetic, homogenetic,
+    # hydrogenolysis, hypnogenetic, immunogenetics, ontogenetic, orogenetic, parthenogenetic,
+    # pathogenetic, quadragenarian, quinquagenarian, schizogenetic, septuagenarian, thermogenetic,
+    # xenogenetic, zygogenetic, ecarte, immortelle, parterre, Parthenope, tartare, theretofore,
+    # inglenook, christiania, dessiatine, dishabille, misoneism, plano, marmot, monseigneur, amine,
+    # sitology, choplogic, archenteric, Betamax, acock, Carnot, albumin, alkalimeter, alkyl, vitae,
+    # bethink, bollard, Bradbury, ectasis, canterbury, carbonyl, cardon, Carnot, Cartagena, Charcot,
+    # Chilon, chitin, clearstory, clerestory, cognominal, Comintern, compost, Cornwallis, Couperin,
+    # Courtrai, cyanamid, cyanamid, dactyl, diacetyl, amine, diphenyl, hydantoin, picrite, hoodoo,
+    # dotard, duramen, dialysis, ordinaire, factum, Finisterre, glengarry, goosander, wacke,
+    # gravure, amine, triethyl, hydracid, hydrazine, xanthine, June, katydid, kerygma, kinetin,
+    # kirpan, Lacedaemon, Legree, Marlon, Meyer, paddymelon, heliacal, parhelic, parhelion,
+    # parterre, pascal, Patmos, pennoncel, pensee, perdue, permute, cranium, onychia, peseta,
+    # alanine, telegraphy, Picard, plano, polariscope, prognoses, Ramakrishna, roentgen, Sardis,
+    # sayyid, decillion, siglos, silkaline, Simeon, barye, spicate, stavesacre, stigmasterol,
+    # suppletory, tara, cine, tenace, hydroxy, anent, tilbury, tomnoddy, topiary, tricuspid,
+    # triethyl, triumvir, verein, twi, twibill, Veracruz, vitamin, Walgreen, Walpole, wangun,
+    # wiseacre, Woodrow, yean, zoetrope›:
     # PhonEng should win
     # ‹bourgeois, cha, christian, grandma, grandpa, overslaugh, Quebec, Fitzroy, grease
-    # (POS tag shouldn't make a difference), implead, nitro›: RP should win
-    # ‹marcel, marcella›: GE should win
-    # ‹cushaw, da, na, ca, Sta, conquest, wonk›: original spelling should remain
+    # (POS tag shouldn't make a difference), implead, nitro, Christian, pedal, women,
+    # convolution, worthy, cyano, dengue, thermal, zine, cha, novella, November, telephony,
+    # estate, Selkirk, serrate, Swazi, vice, viscount›: RP should win
+    # ‹marcel, marcella, vesicatory, war›: GA should win
+    # ‹cushaw, da, na, ca, Sta, conquest, wonk›: original spelling should remain; likewise
+    # cabalism (because of «ca'bal» ‹cabal›)
     # Custom spellings (note: better specify /pronunciation/ instead of resulting spelling):
     # pshaw -> shaw, brough -> brok, cushaw: cu'shaw, duomo: dwoamo, foh: faw, amain: a'main
     # kakemono: caake'moano, Charleroi: Shauleroy, branchiopod: brankiapod, false: faulss,
     # formidable: /f'O:rmId@b@l/, askari: /'ask@`i:/, voltameter: /vQlt'amIt@`/,
     # zoometry /zoU'om@tri:/ -> zo'ometri; zoography /zoU'ografi:/ -> zo'ografi,
-    # decagon /d'Ek@gQn/ -> dekegon, agate /'agIt/ -> agit
+    # decagon /d'Ek@gQn/ -> dekegon, agate /'agIt/ -> agit,
+    # basalt /b@s'O:lt/ -> bas'sault, Bracknell /br'akn@l/ -> Bracnel,
+    # carbonylate /kArb'QnIleIt/ -> car'bonilait; complicate,aj /k'QmplIkIt/ -> complikit;
+    # cyan: /s'aIan/ -> saian; Eckhart: /'EkArt/ -> Ecart; metallurgy: /m'Etal3:dZi:/ -> metalurji;
+    # emir: /@m'i:r/ -> e'meer; heathenry: /h'i:D@nri:/ -> heedhenri; Hippomenes: /hIp'Qm@ni:z/
+    # -> Hi'pomenees; hypophysis: /haIp'QfIsIs/ -> hy'poficiss; hypothecate: /haIp'QT@keIt/ ->
+    # hy'pothecait; imam: /Im'Am/ -> i'maam; rikisha: /r'IkSO:/ -> ricshaw; Markoff: m'ArkQf ->
+    # Marcof; melamed: /mElam'Ed/ -> mela'med; biosis: /baI'oUsIs/ -> bai'oaciss; pontlevis:
+    # /pQntl'EvIs/ -> pont'leviss; protonotary: /proUt'Qn@tEri/ -> proa'toneterri; churchward:
+    # /tS'3:tSw@`d/ -> churchwerd; tearaway: /t'e@raweI/ -> tairaway; wan: /w'Qn/ -> won
     # Delete (foreign words or names): Artois, Borodino, trois, Valoi, Condorcet, Attlee,
     # Beauharnais, Beaumarchais, Buonaparte, Cimabue, Courbet, Delaunay, dele, Dubuffet, Duse,
     # Farnese, Firenze, Fiume, Foucquet, Giorgione, conversazione, improvvisatore, jefe, jeu,
@@ -821,7 +844,12 @@ sub lookup_part_entry {
             $unconv_colref = $unconverted_dict_ref->{$key};
             warn "No entry found for $key\n" unless $unconv_colref;
         }
-        # TODO Adapt POS heuristics for prefixed and suffixed forms
+        # TODO x Adapt POS heuristics for prefixed and suffixed forms
+        # Replace prefix.list by prefix.csv: Trad,Pron,Stress (1: prefix, 2: main word, A:
+        # ask PE)
+        # for word in `grep =able$ compounds.csv|cut -f1 -d,`; do grep -i ^$word, phonetic-dict.csv; done|egrep -v "@b@l(,|$)"
+        # |egrep -c "(,|$)"
+        # Handle prefix/suffix combis correctly (e.g. antis)
         # Add prefixes: ab- (e.g. abampere, 2nd part stressed)
         # Add suffix: -otic (stressed before suffix), -ology (ditto)
         # Stress last syllable of 1st part: -meter (e.g. aerometer, electrometer,
@@ -829,9 +857,53 @@ sub lookup_part_entry {
         # Add prefix per- «per»: stress 2nd part; but keep a few manual entries for ‹per›
         # «pur» (likewise stressed on 2nd part): percutaneous,per-cutaneous;
         # peroxidic,per-oxidic; peroxide,per-oxide
-        # Add prefixes: -ine «in» or maybe «yn» (e.g. petaline, phialine;
+        # Add suffixes: -ine «in» or maybe «yn» (e.g. petaline, phialine;
         # ensure that no -line words are accidentally excluded),
         # -oid (e.g. petaloid), -ous «uss» (e.g. petalous)
+        # Add prefixes: ‹tele› «tele»; ‹zoo› /zoU@/ «zoa» (PE determines stress)
+        # 1st stressed: dealate, nonsense, wherewithal
+        # Not a compound: antimony, Antioch, Antipater, biotic, bios, biosis, biota, deal, debit,
+        # Debora, debouche, debruise, decade, deco, decoy, decrease, deed, deer, dees, deify,
+        # deil, deism, deist, deity, delegacy, deli, Deming, demo, demode, denary, Deneb,
+        # denegation, denim, deposition, derelict, Derick, derogation, descant, despot, detour,
+        # Devin, dewitt, detail, decane, demesne, devel, disco, discord, discount, discourse,
+        # disease, dissect, enami, enclave, encore, ending, endrin, Enfield, Enoch, enology,
+        # enounce, Enovid, enow, ensign, entrail, enzyme, Hyperion, inter, interment, miser,
+        # miss, missa, Misti, preposition, presage, Prescott, probit, produce, product, profit,
+        # profluent, prognosis, proposition, prorate, prorogation, prorogue, prostate, proverb,
+        # province, real, recoil, recommend, reconciliation, reconciliatory, record, recreation,
+        # regula, Reich, reif, Reilly, rein, REIT, relay, renovation, repetition, replicate,
+        # represent, research, resource, respite, revenue, revolution, Seminole, seminary,
+        # Semitic, submerge, submiss, submission, submissive, submit, subscribe, subside,
+        # subversion, subvert, transfer, transit, transport, ungula, unit, unto, anneal, baal,
+        # cabal, coal, deal, feal, foal, goal, heal, Jamal, kraal, meal, neal, seal, taal, teal,
+        # Waal, weal, anal, brutal, halal, oral, amman, bean, Bhutan, Chaoan, gean, groan, Joan,
+        # koan, Koran, loan, mean, Milan, moan, sampan, tarpan, tolan, trapan, wean, yulan,
+        # colophonian, hainan, leman, lyman, mandan, saurian,
+        # Custom compounds: deadman,dead-man; decreases,decrease=s; delegates,delegates;
+        # delegation,delegate=ion; demonism,demon=ism; demos,demo=s; depositions,deposition=s;
+        # deprecative,deprecate=ive; deprecatory,deprecate=ory; detailer,detail=er;
+        # detoured,detour=ed; detours,detour=s; discountable,discount=able,
+        # discounter,discount=er; discounting,discount=ing; diseased,disease=ed;
+        # diseases,disease=s; dissection,dissect=ion; dissections,dissection=s;
+        # dissects,dissect=s; dissing,dis=ing; encores,encore=s; endings,ending=s;
+        # Enochs,Enoch=s; entrails,entrail=s; internee,intern=ee; interrogation,interrogate=ion;
+        # interrogatory,interrogate=ory; missing,miss=ing; prejudicial,prejudice=ial; 
+        # products,product=s; profits,profit=s; profs,prof=s; propositioned,proposition=ed;
+        # propositions,proposition=s; prorated,prorate=ed; proverbs,proverb=s;
+        # recommendatory,recommend=atory; recommended,recommend=ed; recommending,recommend=ing;
+        # recommends,recommend=s; recorded,record=ed; recorder,record=er; recording,record=ing;
+        # records,record=s; reins,rein=s; relaying,relay=ing; relays,relay=s;
+        # repetitions,repetition=s; representative,represent=ative; represented,represent=ed;
+        # representing,represent=ing; represents,represent=s; researched,research=ed;
+        # researcher,research=er; researchers,research=ers; researches,research=es;
+        # researching,research=ing; resources,resource=s; resting,rest=ing; revenues,revenue=s;
+        # Semitics,Semitic=s; submerged,submerge=ed; submissions,submission=s;
+        # subscriber,subscribe=er; subscribes,subscribe=s; subsided,subside=ed; subsides,subside=s;
+        # subsiding,subside=ing; transits,transit=s; units,unit=s; withal,with-all;
+        # therewithal,there-withal; wherewithal,where-withal; Goan,Goa=n; tampan,tampa=n
+
+
     }
 
     my $conv_colref = $converted_dict_ref->{$key};
@@ -911,6 +983,7 @@ sub handle_compound {
         # Make ‹zoo› a prefix written «zoe» /zoU@/; first or second part may be stressed.
         # Make suffix: ate (spoken «ait» /eIt/ or sometimes «it» /It/ -- dicts sometimes have
         # /@t/ instead)
+        # Suffix stress rules win over prefix stress rules, e.g. ‹biotic› «bai'otic»
         # Exceptions where 1st is stressed: all [-=]sphere combis (e.g. biosphere, chemosphere)
     }
 
@@ -968,120 +1041,106 @@ sub convert_dict {
             if $parts;
 
         if ($compound) {
-# TODO x Check udiff lytspel-dict.csv.old lytspel-dict.csv from sulfaguanidine
-# for word in `grep -- -centric$ compounds.csv|cut -f1 -d,`; do grep -i ^$word, lytspel-dict.csv.old; grep -i ^$word, lytspel-dict.csv; done
-# Not a compound: backsheesh, Badarian, Bahrain, balboa, Balfour, Balkhash, balmoral, balneology,
-# Bannockburn, barcarole, barracoon, Barrera, Bashkir, bateau, Bathsheba, battuta, Beaufort,
-# Beaumont, Beauregard, Beersheba, benedick, benefactor, benefit, Benelux, Benghazi, bentonite,
-# benzine, Berkshire, Bernard, Bernbach, Bessarabia, bethink, Beyrouth, bicarb, biznaga,
+# TODO Not a compound: backsheesh, Badarian, Bahrain, balboa, Balfour, Balkhash, balmoral,
+# balneology, Bannockburn, barcarole, barracoon, Barrera, Bashkir, bateau, Bathsheba, battuta,
+# Beaufort, Beaumont, Beauregard, Beersheba, benedick, benefactor, benefit, Benelux, Benghazi,
+# bentonite, benzine, Berkshire, Bernard, Bernbach, Bessarabia, bethink, Beyrouth, bicarb, biznaga,
 # Bloomsbury, bollard, boracite, Bornholm, boscage, Bothwell, Bowditch, boycott, Bracknell,
 # Bradbury, Brasilia, brigalow, brigand, buckram, buhrstone, bungee, buntline, Burkina, Burleigh,
 # bushido, buskin, cadastral, cadaver, caliche, camcorder, campanile, campodeiform, canterbury,
-# capelin, capeline, capriccio, carbonylate, carbuncle, cardon, carline, Carlisle, carmine,
-# Carnot, Carolina, carritch, Cartagena, cartouche, caruncle, castrato, catamount, centavo,
-# centurial, Chadwick, Charcot, Chefoo, chewink, chiropractic, cineole, cisterna,
-# citrange, Clackmannan, clandestine, clarabella, claymore, claytonia, clearstory, cognation,
-# cognominal, cohobate, collard, collate, columbarium, conchology, contraband, cooncan, cordate,
-# cordoba, cordwain, cornute, Cornwallis, Cosgrave, costate, costmary, coteau, Couperin,
-# Courtrai, creepie, croceate, cuspate, dagoba, Damascus, darkey, Darnell, decagram, Delaware,
-# Deleon, denarius, dengue, desmid, Dessau, differentia, discobolus, dissertate, dolerite,
-# dornick, dotard, dramamine, dundee, dunkirk, dupleix, duplex, durability, duracell, duramen,
-# electrotonus, emendate, Emmenthaler, ensorcell, entertain, eristic, Erskine, farthermost,
-# Fashoda, fertile, filagree, filaria, filemot, fillagree, finesse, finisterre, fluoride,
-# fogbow, fortalice, foulard, francisco, francolin, franklin, frantic, fredrick, freytag,
-# frithstool, furbelow, furfurole, furlana, Gagarin, Gainsborough, Galcha, Galloway, Galsworthy,
-# gambetta, gamelan, gantelope, Gaskell, gaskin, gasking, Gaspar, gavelock, gelatinate, gelignite,
-# Genseric, Gerard, Gibeon, Gideon, Gilchrist, Glendower, glengarry, Godzilla, goosander,
-# Gorgonzola, grammatical, greegree, grindelia, griskin, Gropius, grosbeak, Gustavo, Halcion,
-# Hamelin, Hancock, Hanyang, haphazard, haptic, hawkey, hawkshaw, hawkweed, Hellespont,
-# Hellespontine, Henrietta, herbarium, herdwick, hermetic, herpes, hickwall, Honduran, hornito,
-# hortatory, Howrah, huckaback, humvee, hushaby, hydracid, hydrazine, hypogean, hypophysis,
-# hypothecate, Illyria, incognita, inkling, jambos, jargoon, Jogjakarta, joskin, Justin,
-# Kaifeng, Kamasutra, katydid, kedgeree, kewpie, killdee, kimchi, kincob, kirmess, kirpan,
-# Kopeisk, Lacedaemon, Lammastide, lampoon, lantana, lapides, larghetto, lascar, Lastex,
+# capelin, capeline, capriccio, carbonylate, carbuncle, cardon, carline, Carlisle, carmine, Carnot,
+# Carolina, carritch, Cartagena, cartouche, caruncle, castrato, catamount, centavo, centurial,
+# Chadwick, Charcot, Chefoo, chewink, chiropractic, cineole, cisterna, citrange, Clackmannan,
+# clandestine, clarabella, claymore, claytonia, clearstory, cognation, cognominal, cohobate,
+# collard, collate, columbarium, conchology, contraband, cooncan, cordate, cordoba, cordwain,
+# cornute, Cornwallis, Cosgrave, costate, costmary, coteau, Couperin, Courtrai, creepie, croceate,
+# cuspate, dagoba, Damascus, darkey, Darnell, decagram, Delaware, Deleon, denarius, dengue, desmid,
+# Dessau, differentia, discobolus, dissertate, dolerite, dornick, dotard, dramamine, dundee,
+# dunkirk, dupleix, duplex, durability, duracell, duramen, electrotonus, emendate, Emmenthaler,
+# ensorcell, entertain, eristic, Erskine, farthermost, Fashoda, fertile, filagree, filaria, filemot,
+# fillagree, finesse, finisterre, fluoride, fogbow, fortalice, foulard, francisco, francolin,
+# franklin, frantic, fredrick, freytag, frithstool, furbelow, furfurole, furlana, Gagarin,
+# Gainsborough, Galcha, Galloway, Galsworthy, gambetta, gamelan, gantelope, Gaskell, gaskin,
+# gasking, Gaspar, gavelock, gelatinate, gelignite, Genseric, Gerard, Gibeon, Gideon, Gilchrist,
+# Glendower, glengarry, Godzilla, goosander, Gorgonzola, grammatical, greegree, grindelia, griskin,
+# Gropius, grosbeak, Gustavo, Halcion, Hamelin, Hancock, Hanyang, haphazard, haptic, hawkey,
+# hawkshaw, hawkweed, Hellespont, Hellespontine, Henrietta, herbarium, herdwick, hermetic, herpes,
+# hickwall, Honduran, hornito, hortatory, Howrah, huckaback, humvee, hushaby, hydracid, hydrazine,
+# hypogean, hypophysis, hypothecate, Illyria, incognita, inkling, jambos, jargoon, Jogjakarta,
+# joskin, Justin, Kaifeng, Kamasutra, katydid, kedgeree, kewpie, killdee, kimchi, kincob, kirmess,
+# kirpan, Kopeisk, Lacedaemon, Lammastide, lampoon, lantana, lapides, larghetto, lascar, Lastex,
 # Leakey, legate, Legree, Lemberg, Leucippus, leucite, leucoma, Libava, liberatory, libido,
 # limonene, Loretta, Louvain, Lucknow, lullaby, lunatic, magazine, maintain, Majorca, Malaga,
 # malcontent, Maldives, malefactor, malemute, malkin, mallard, mallenders, manakin, mandarin,
 # Mandingo, mangold, Manitoulin, mantic, marinate, Marlborough, marocain, Matabele, matelot,
 # matelote, Maulmain, maulstick, mawkish, mayday, mayhem, Maynard, mediatory, melamed, melanoma,
-# Messapian, Michelangelo, microbe, mildew, minorca, moderate, monolater, Monroe,
-# muscadel, muscatel, Muskogee, neckerchief, niblick, Ninevite, noetic, Normand, Norplant,
-# Norway, Oglethorpe, oldwife, olefin, olefine, omentum, organon, organzine, oxymoron, paddymelon,
-# parterre, Pasquale, pastrami, Patmos, pawpaw, paynim, pearmain, Pegasian, Pehlevi, Peiping,
-# pellagra, pennoncel, pensee, Perdido, perdue, perfume, perjure, perkin, Perlis, perlite, permit,
-# permutate, permute, Pernod, persevere, Pescara, peseta, petaurist, pettitoes, phagedena
-# Picard, picrite, pignora, Pillsbury, Pindaric, Poitiers, polariscope, pontlevis, portend,
-# portfolio, portray, powwow, primavera, propagate, prostheses, prosthetic, protocol,
-# protonotary, Pulaski, purport, pustule, Quemoy, quinella, quintet, quintile, rainbow,
-# Ramakrishna, Rameau, rapscallion, rasbora, rascal, ratafee, ratline, Rayburn, Rayleigh,
-# rectangle, rectum, redintegrate, Rickover, rickshaw, ridotto, Rimbaud, Rodrick, Rollins,
-# runagate, Ruskin, sacring, Saipan, salami, Samaria, samsara, Santana, sapsago, sarcoma,
-# Sardis, saveloy, sayyid, scaffold, schizogenesis, schizogenic, secundine, Selkirk, senarius,
-# September, serpula, serrate, servile, sextet, shagreen, shampoo, sharia, Shenyang, churchward,
-# shoreward, Shulamite, siglos, Simeon, sincere, sinecure, snickersnee, Soleure, solidary,
-# Spartacist, spicate, Spillane, spirometric, stagnation, stampede, Starkey, stavesacre,
-# Stelazine, stellate, stephanotis, stigmasterol
-# symbiosis, symbiotic, weepie
+# Messapian, Michelangelo, microbe, mildew, minorca, moderate, monolater, Monroe, muscadel,
+# muscatel, Muskogee, neckerchief, niblick, Ninevite, noetic, Normand, Norplant, Norway, Oglethorpe,
+# oldwife, olefin, olefine, omentum, organon, organzine, oxymoron, paddymelon, parterre, Pasquale,
+# pastrami, Patmos, pawpaw, paynim, pearmain, Pegasian, Pehlevi, Peiping, pellagra, pennoncel,
+# pensee, Perdido, perdue, perfume, perjure, perkin, Perlis, perlite, permit, permutate, permute,
+# Pernod, persevere, Pescara, peseta, petaurist, pettitoes, phagedena Picard, picrite, pignora,
+# Pillsbury, Pindaric, Poitiers, polariscope, pontlevis, portend, portfolio, portray, powwow,
+# primavera, propagate, prostheses, prosthetic, protocol, protonotary, Pulaski, purport, pustule,
+# Quemoy, quinella, quintet, quintile, rainbow, Ramakrishna, Rameau, rapscallion, rasbora, rascal,
+# ratafee, ratline, Rayburn, Rayleigh, rectangle, rectum, redintegrate, Rickover, rickshaw, ridotto,
+# Rimbaud, Rodrick, Rollins, runagate, Ruskin, sacring, Saipan, salami, Samaria, samsara, Santana,
+# sapsago, sarcoma, Sardis, saveloy, sayyid, scaffold, schizogenesis, schizogenic, secundine,
+# Selkirk, senarius, September, serpula, serrate, servile, sextet, shagreen, shampoo, sharia,
+# Shenyang, churchward, shoreward, Shulamite, siglos, Simeon, sincere, sinecure, snickersnee,
+# Soleure, solidary, Spartacist, spicate, Spillane, spirometric, stagnation, stampede, Starkey,
+# stavesacre, Stelazine, stellate, stephanotis, stigmasterol, sunbow, sundae, Sungkiang, suppletory,
+# sustentation, sustentative, sylphide, symbiosis, symbiotic, symphonic, sympodium, syncline,
+# taborin, Tallchief, Tallinn, Tanagra, tantalite, tantara, taradiddle, tarpaulin, tartana, tatami,
+# tearaway, template, tenace, tenurial, terramara, tesselate, testudo, tetrabrach, thermoscope,
+# thermostat, Thurgau, tilbury, Tillich, timbale, Tipperary, tomnoddy, topgallant, topiary,
+# tourbillion, towmont, Toyoda, tractarianism, Turkmen, unselfconscious, valeric, vanguard, velamen,
+# venatic, Veracruz, vesicatory, victim, vitamin, Waldorf, Walgreen, wallsend, Walpole, wangun,
+# wardress, warsaw, Warwick, washingtonia, weepie, Wicklow, wiseacre, witloof, Woodrow, Yaobang,
+# zoetrope
 # -ace-, -aline-, -boo-, -bis-, -bro-, -cal-, can-, -cara-, -cris-, com-, -comp-, -doo-,
 # -dore-, -ella-, -etta-, eau-, -gue-, -hey-, hoo-, -inf-, -lon-, -mar-, -mas-, -mira-,
-# ole-, -pas-, -psych-, -ree-, -tin, -tina-
-# Custom compound: bitterender,bitter-ender; buckling,buckle=ing; cannot,can-not;
+# ole-, -pas-, -psych-, -ree-, -tin, -tina-, -twi-, -via-, -vis-
+# TODO Custom compound: bitterender,bitter-ender; buckling,buckle=ing; cannot,can-not;
 # chuckling,chuckle=ing; contrabass,contra-base; crackling,crackle=ing; forever,for-ever
 # cardinalate,cardinal-ate; doctrinal,doctrine=al; heckling,heckle=ing; keckling,keckle=ing;
 # megarad,mega-rad; minimax,mini-max; narcotic,narco=tic; pickling,pickle=ing;
 # puritanisms,puritanism=s; rankling,rankle=ing; salesman,sales-man; shootout,shoot-out;
-# sparkling,sparkle=ing; statesman,states-man; strickling,strickle=ing; suckling,suckle=ing
-# Stress 1st part: breakaway, castaway, cutaway, flyaway, foldaway, getaway, giveaway, Greenaway,
-# Hathaway, hideaway, huntaway, layaway, rockaway, rollaway, runaway, soakaway, stowaway,
-# straightaway (-away in general);
+# sparkling,sparkle=ing; statesman,states-man; strickling,strickle=ing; suckling,suckle=ing,
+# tackling,tackle=ing; tarmacadam,tar-macadam; trickling,trickle=ing; twinkling,twinkle=ing;
+# waterman,water-man
+# TODO Stress 1st part: breakaway, castaway, cutaway, flyaway, foldaway, getaway, giveaway,
+# Greenaway, Hathaway, hideaway, huntaway, layaway, rockaway, rollaway, runaway, soakaway,
+# stowaway, straightaway, throwaway, walkaway (-away in general);
 # counterattack, counterreply, countersubject, heterocycle, lookalike, minicomputer, pinafore,
-# slugabed, standalone
+# slugabed, standalone, tarmacadam, telerecord, turnverein, videocassette, woebegone
 # servocontrol/n
 # -amine (calamine, Dramamine, hexamine, histamine), -around
 # Stress 2nd part: aerologic only, not choplogic; benediction, binocular,
 # bronchiectasis, commonsense, dextrocardia, diacetylmorphine, diazomethane, duecento,
 # echocardiogram, eftsoon, everlasting, farewell, forever, forevermore, goodbye, hemelytron,
-# hereinafter, boohoo, lambaste, magnetochemistry, mercaptopurine, methacrylate,
+# hereinafter, boohoo, lambaste, mercaptopurine, methacrylate,
 # methylbenzene, methylnaphthalene, moreover, nymphomaniac, oleomargarine, penannular,
-# penultimate, penultima, petrochemical, petrochemistry, phenylalanine, philhellene,
-# Rockhampton, saltpeter, sardonyx, statampere
-# -aldehyde, -decagon, -eastern, -forward, -metric, -phonic, -sexual, -western
-# magneto-, mal- (except malware)
+# penultimate, penultima, phenylalanine, philhellene,
+# Rockhampton, saltpeter, sardonyx, statampere, sulfaguanidine, sulfathiazole, sympetalous,
+# synchrocyclotron, tetraethyl, throughout, uniaxial, without
+# -aldehyde, -chemical, -chemistry, -decagon, -eastern, -forward, -metric, -phonic, -sexual,
+# -western, magneto-, mal- (except malware)
 # PE determines stress: proto-, stereo-
-# «sm» should be divided in the middle, e.g. «antas'matic» ‹antasthmatic›;
+# TODO «sm» should be divided in the middle, e.g. «antas'matic» ‹antasthmatic›;
 # ditto «rl», e.g. «bur'leta» ‹burletta›
 # and «st»
-# Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
+# TODO Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
 # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
 # ‹monosyllabicity›
-# Custom spellings: basalt /b@s'O:lt/ -> bas'sault, Bracknell /br'akn@l/ -> Bracnel,
-# carbonylate /kArb'QnIleIt/ -> car'bonilait; complicate,aj /k'QmplIkIt/ -> complikit;
-# cyan: /s'aIan/ -> saian; Eckhart: /'EkArt/ -> Ecart; metallurgy: /m'Etal3:dZi:/ -> metalurji;
-# emir: /@m'i:r/ -> e'meer; heathenry: /h'i:D@nri:/ -> heedhenri; Hippomenes: /hIp'Qm@ni:z/
-# -> Hi'pomenees; hypophysis: /haIp'QfIsIs/ -> hy'poficiss; hypothecate: /haIp'QT@keIt/ ->
-# hy'pothecait; imam: /Im'Am/ -> i'maam; rikisha: /r'IkSO:/ -> ricshaw; Markoff: m'ArkQf ->
-# Marcof; melamed: /mElam'Ed/ -> mela'med; biosis: /baI'oUsIs/ -> bai'oaciss; pontlevis:
-# /pQntl'EvIs/ -> pont'leviss; protonotary: /proUt'Qn@tEri/ -> proa'toneterri; churchward:
-# /tS'3:tSw@`d/ -> churchwerd
-# Remains unchanged: cabalism because of «ca'bal» ‹cabal›)
-# PE should win: bethink, bollard, Bradbury, ectasis, canterbury, carbonyl, cardon, Carnot,
-# Cartagena, Charcot, Chilon, chitin, clearstory, clerestory, cognominal, Comintern, compost,
-# Cornwallis, Couperin, Courtrai, cyanamid, cyanamid, dactyl, diacetyl, amine, diphenyl,
-# hydantoin, picrite, hoodoo, dotard, duramen, dialysis, ordinaire, factum, Finisterre, glengarry,
-# goosander, wacke, gravure, amine, triethyl, hydracid, hydrazine, xanthine, June, katydid,
-# kerygma, kinetin, kirpan, Lacedaemon, Legree, Marlon, Meyer, paddymelon, heliacal, parhelic,
-# parhelion, parterre, pascal, Patmos, pennoncel, pensee, perdue, permute, cranium, onychia,
-# peseta, alanine, telegraphy, Picard, plano, polariscope, prognoses, Ramakrishna, roentgen,
-# Sardis, sayyid, decillion, siglos, silkaline, Simeon, barye, spicate, stavesacre, stigmasterol
-# GP should win: Christian, pedal, women, convolution, worthy, cyano, dengue, thermal, zine,
-# cha, novella, November, telephony, estate, Selkirk, serrate
-# Make -ary -> erri a suffix (reactionary, customary)
+# TODO Make -ary -> erri a suffix (reactionary, customary)
 # make -ate a suffix spoken either «ait» or «et|it» (e.g. «dy'recteret» ‹directorate›;
 # sometimes it depends on the POS tag, e.g. ‹proportionate›)
-# Add centralist (should become central=ist and centralists: centralist=s)
-# Distinguish live/v: liv vs aj: lyv; livelong should become livlong
+# TODO Add centralist (should become central=ist and centralists: centralist=s)
+# TODO Distinguish live/v: liv vs aj: lyv; livelong should become livlong; warehouse/v should
+# become «wairhous»
 # ‹planoconvex› should be come «planocon'vex» (from the aj)
-# Unify /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter, e.g.
+# TODO Unify /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter, e.g.
 # ‹solidary, temporary, voluntary›
 
             # Use return value instead of calling convert_column
