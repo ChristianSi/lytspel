@@ -1,8 +1,8 @@
 #!/usr/bin/perl -CA
 # Recognize compounds and derived forms.
 #
-# Copyright (c) 2016 Christian Siefkes
-# See accompanying LICENSE file for licensing information.
+# Copyright (c) 2016-17 Christian Siefkes
+# See accompanying LICENSE.txt file for licensing information.
 #
 # Required modules: Const::Fast and those listed in PhonEng.pm.
 

@@ -1,7 +1,7 @@
 # Shared code for the phoneng scripts.
 #
-# Copyright (c) 2015 Christian Siefkes
-# See accompanying LICENSE file for licensing information.
+# Copyright (c) 2016-17 Christian Siefkes
+# See accompanying LICENSE.txt file for licensing information.
 #
 # Required modules: Text::CSV_XS.
 
