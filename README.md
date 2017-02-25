@@ -610,14 +610,33 @@ breaks.
 TODO Update this section.
 
   * `cmudict-phonemes.txt`: key-value file containing a mapping from the
-    phonemes used in cmudict to the corresponding Phonetic English phonemes.
-    Used by the `dictbuilder` program.
+    phonemes used in cmudict to the corresponding Phonetic English
+    phonemes. Used by the `dictbuilder` program.
+
+  * `custom.csv`: CSV file listing those words for which a specific
+    pronunciation should be used. The case of the words listed in the
+    first field is ignored. The second field may contain the following
+    values:
+
+      * B: use British (RP) pronunciation
+      * A: use American (GA) pronunciation
+      * P: use the PhonEng pronunciation
+      * D: don't add the word to the output dictionary (used for rare
+        foreign words or names)
+      * O: leave the spelling of the word unchanged
+      * Alternatively, a custom pronunciation may be given which is then
+        used to generate the final spelling
+
+    Manually created file; used by `lytspelify`.
+
   * `moby-phonemes.txt`: key-value file containing a mapping from the phonemes
     used in Moby to the corresponding Phonetic English phonemes. Used by the
     `dictbuilder` program.
+
   * `words-not-in-scowl.txt`: Line file containing words that aren't listed in
     SCOWL but should become part of the pronunciation dictionary. Used by the
     `dictbuilder` program.
+
   * `phonetic-dict.txt`: Line file containing a mapping from words to their
     pronunciations. If there is just a single pronunciations, the entry is
     written as `word: pron`. If the pronunciation of a word depends on which
