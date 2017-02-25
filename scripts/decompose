@@ -296,10 +296,22 @@ sub analyze_as_suffixed_form {
             # (run=ing), ‹judgment› (judge=ment), and ‹happiness› (happy=ness) into account
             my $alternative_base = find_alternative_base $stem;
 
-            return "$alternative_base=$suffix"
-                if $alternative_base
+            if (   $alternative_base
                 && exists $dict_ref->{$alternative_base}
-                && prons_match $alternative_base, '', $word, $dict_ref;
+                && prons_match $alternative_base,
+                '', $word, $dict_ref)
+            {
+
+                if (length($alternative_base) < length($stem)) {
+                    # If the alternative stem is shorter, check whether the rest of the
+                    # word forms a more suitable suffix (preferring e.g. "ly" over "y",
+                    # "less/ness" over "ess"
+                    my $alt_suffix = substr $word, length($alternative_base);
+                    return "$alternative_base=$alt_suffix" if exists $suffix_set_ref->{$alt_suffix};
+                }
+
+                return "$alternative_base=$suffix";
+            }
         }
     }
 
