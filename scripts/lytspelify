@@ -24,6 +24,7 @@ use PhonEng;
 const my $IN_FILE     => 'phonetic-dict.csv';
 const my $OUT_FILE    => 'lytspel-dict.csv';
 const my $COMPOUNDS   => 'compounds.csv';
+const my $CUSTOM      => 'custom.csv';
 const my $PHONEME_MAP => 'phoneme-map.csv';
 
 # Vowel letters in SAMPA and Lytspel
@@ -66,9 +67,37 @@ my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
 my $HYPH    = new Text::Hyphen min_word => 3, min_prefix => 1, min_suffix => 1;
 
-# The following two variables are globals for simplicity
-my $SUMMED_DIST = 0;
-my $WORD_COUNT  = 0;
+# The following variables are globals for simplicity
+my $SUMMED_DIST     = 0;
+my $WORD_COUNT      = 0;
+my $CUSTOM_DICT_REF = build_lc_map($CUSTOM);
+
+# Set to which all processed custom entries are added.
+my %PROCESSED_CUSTOM_SET;
+
+# Mapping from prefixes to their Lytspel spellings and stress hints (1: stress prefix;
+# 2: stress main word; 'A': let PhonEng determine stress). Values are two-element
+# array references.
+my %PREFIXES;
+
+# build_lc_map $filename: Create and return a mapping from a simple CSV file containing
+# two columns (keys and values). All keys are converted to lower-case, while values are
+# used as is. Warns if there are duplicate keys.
+sub build_lc_map {
+    my ($filename) = @_;
+    my %dict;
+    open my $fh, '<', $filename or die "Unable to open $filename: $!\n";
+    my $colref = $CSV_IN->getline($fh);  # Skip header line
+
+    while ($colref = $CSV_IN->getline($fh)) {
+        my $key = lc($colref->[0]);
+        warn "Duplicate key '$key' in $filename\n" if exists($dict{$key});
+        $dict{$key} = $colref->[1];
+    }
+
+    close $fh;
+    return \%dict;
+}
 
 # build_mapping: Create and return a mapping from SAMPA to the standard Lytspel spellings.
 # Also return the length of the longest key in the map.
@@ -99,21 +128,6 @@ sub build_mapping {
 
     close $fh;
     return \%dict, $maxkeylen;
-}
-
-# build_compound_map: Create and return a mapping from compounds and derived forms to their
-# building blocks.
-sub build_compound_map {
-    my %dict;
-    open my $fh, '<', $COMPOUNDS or die "Unable to open $COMPOUNDS: $!\n";
-    my $colref = $CSV_IN->getline($fh);  # Skip header line
-
-    while ($colref = $CSV_IN->getline($fh)) {
-        $dict{$colref->[0]} = $colref->[1];
-    }
-
-    close $fh;
-    return \%dict;
 }
 
 # gen_key $word, $pos: Combine a word and a optional POS tag into a joint key.
@@ -340,72 +354,8 @@ sub combine_and_adjust {
 
     # TODO Integrate list of irregular words: «hi, shi, wi, mi» ‹he, she, we, me›
     # TODO ‹worry› should become «wurri» (but first find out why "w'uree" currently wins)
-    # TODO ‹Christchurch, christcross, christen, Christendom, Christhood, Christianity,
-    # Christianization, Christianize, Christiansand, dewar, superfluous, cairngorm, martingale,
-    # Apure, comte, conge, Cambrai, Campeche, canzone, carabiniere, Cavite, Cetinje, chicalote,
-    # cairngorm, combe, complice, Courtrai, Edirne, esse, estaminet, Este, fettucine, Fiesole,
-    # Frunze, Gliwice, Iquique, irade, Katowice, Kielce, Kure, Lecce, Lidice, Loiret, Marche,
-    # marchese, Marinduque, metage, Montefiascone, Mugabe, Nivernais, Ordzhonikidze, Oriente,
-    # Orjonikidze, Palenque, petuntse, Piave, Que, reflet, Rene, rete, Roubaix, Skopje, Teide,
-    # Udine, Zabrze, Zaporozhye, zaptieh, Quebecer, mozzette, Anschauung, chiaus, kiaugh, Yaounde,
-    # elasmobranch, Gelsenkirchen, nomenclature, abranchial, abranchiate, alencon, Algonquian,
-    # asynchronism, asynchronous, Barranquilla, Bianca, blanquette, charabanc, palanquin,
-    # pancratium, Chinkiang, messieurs, baklava, baklawa, concubinary, Alkmaar, neurosecretion,
-    # Avalokitesvara, Blagoveshchensk, lorgnette, dimenhydrinate, paresthesia, postliminy,
-    # transhumance, uphroe, isoperimetry, Juneteenth, homeostasis, craquelure, erysipelas,
-    # erysipelatous, armipotent, bersaglieri, coparcenary, dolichocephalic, Hanseatic, Miskolc,
-    # leptocephalic, platycephalic, popliteal, popliteus, Vespucci, scleroderma, Tlaxcala,
-    # sexagenary, abiogenetic, anthropogenetic, cytogenetics, digenetic, ectogenetic, epeirogenetic,
-    # gamogenetic, gluconeogenetic, glycogenetic, glycogenolysis, histogenetic, homogenetic,
-    # hydrogenolysis, hypnogenetic, immunogenetics, ontogenetic, orogenetic, parthenogenetic,
-    # pathogenetic, quadragenarian, quinquagenarian, schizogenetic, septuagenarian, thermogenetic,
-    # xenogenetic, zygogenetic, ecarte, immortelle, parterre, Parthenope, tartare, theretofore,
-    # inglenook, christiania, dessiatine, dishabille, misoneism, plano, marmot, monseigneur, amine,
-    # sitology, choplogic, archenteric, Betamax, acock, Carnot, albumin, alkalimeter, alkyl, vitae,
-    # bethink, bollard, Bradbury, ectasis, canterbury, carbonyl, cardon, Carnot, Cartagena, Charcot,
-    # Chilon, chitin, clearstory, clerestory, cognominal, Comintern, compost, Cornwallis, Couperin,
-    # Courtrai, cyanamid, cyanamid, dactyl, diacetyl, amine, diphenyl, hydantoin, picrite, hoodoo,
-    # dotard, duramen, dialysis, ordinaire, factum, Finisterre, glengarry, goosander, wacke,
-    # gravure, amine, triethyl, hydracid, hydrazine, xanthine, June, katydid, kerygma, kinetin,
-    # kirpan, Lacedaemon, Legree, Marlon, Meyer, paddymelon, heliacal, parhelic, parhelion,
-    # parterre, pascal, Patmos, pennoncel, pensee, perdue, permute, cranium, onychia, peseta,
-    # alanine, telegraphy, Picard, plano, polariscope, prognoses, Ramakrishna, roentgen, Sardis,
-    # sayyid, decillion, siglos, silkaline, Simeon, barye, spicate, stavesacre, stigmasterol,
-    # suppletory, tara, cine, tenace, hydroxy, anent, tilbury, tomnoddy, topiary, tricuspid,
-    # triethyl, triumvir, verein, twi, twibill, Veracruz, vitamin, Walgreen, Walpole, wangun,
-    # wiseacre, Woodrow, yean, zoetrope›:
-    # PhonEng should win
-    # ‹bourgeois, cha, christian, grandma, grandpa, overslaugh, Quebec, Fitzroy, grease
-    # (POS tag shouldn't make a difference), implead, nitro, Christian, pedal, women,
-    # convolution, worthy, cyano, dengue, thermal, zine, cha, novella, November, telephony,
-    # estate, Selkirk, serrate, Swazi, vice, viscount›: RP should win
-    # ‹marcel, marcella, vesicatory, war›: GA should win
-    # ‹cushaw, da, na, ca, Sta, conquest, wonk›: original spelling should remain; likewise
-    # cabalism (because of «ca'bal» ‹cabal›)
-    # Custom spellings (note: better specify /pronunciation/ instead of resulting spelling):
-    # pshaw -> shaw, brough -> brok, cushaw: cu'shaw, duomo: dwoamo, foh: faw, amain: a'main
-    # kakemono: caake'moano, Charleroi: Shauleroy, branchiopod: brankiapod, false: faulss,
-    # formidable: /f'O:rmId@b@l/, askari: /'ask@`i:/, voltameter: /vQlt'amIt@`/,
-    # zoometry /zoU'om@tri:/ -> zo'ometri; zoography /zoU'ografi:/ -> zo'ografi,
-    # decagon /d'Ek@gQn/ -> dekegon, agate /'agIt/ -> agit,
-    # basalt /b@s'O:lt/ -> bas'sault, Bracknell /br'akn@l/ -> Bracnel,
-    # carbonylate /kArb'QnIleIt/ -> car'bonilait; complicate,aj /k'QmplIkIt/ -> complikit;
-    # cyan: /s'aIan/ -> saian; Eckhart: /'EkArt/ -> Ecart; metallurgy: /m'Etal3:dZi:/ -> metalurji;
-    # emir: /@m'i:r/ -> e'meer; heathenry: /h'i:D@nri:/ -> heedhenri; Hippomenes: /hIp'Qm@ni:z/
-    # -> Hi'pomenees; hypophysis: /haIp'QfIsIs/ -> hy'poficiss; hypothecate: /haIp'QT@keIt/ ->
-    # hy'pothecait; imam: /Im'Am/ -> i'maam; rikisha: /r'IkSO:/ -> ricshaw; Markoff: m'ArkQf ->
-    # Marcof; melamed: /mElam'Ed/ -> mela'med; biosis: /baI'oUsIs/ -> bai'oaciss; pontlevis:
-    # /pQntl'EvIs/ -> pont'leviss; protonotary: /proUt'Qn@tEri/ -> proa'toneterri; churchward:
-    # /tS'3:tSw@`d/ -> churchwerd; tearaway: /t'e@raweI/ -> tairaway; wan: /w'Qn/ -> won
-    # Delete (foreign words or names): Artois, Borodino, trois, Valoi, Condorcet, Attlee,
-    # Beauharnais, Beaumarchais, Buonaparte, Cimabue, Courbet, Delaunay, dele, Dubuffet, Duse,
-    # Farnese, Firenze, Fiume, Foucquet, Giorgione, conversazione, improvvisatore, jefe, jeu,
-    # jeux, Jorge, Jose, Labe, Lyautey, madre, Manolete, Monteux, mozzette, Piemonte, Quesnay,
-    # religieux, Tevere, Teyde, ubique, veloce, di, gi, Leopoldo, moi, Pareto, Delacroix, est,
-    # Francoise, Goncourt, Castiglione, Descartes, Msgr, Sturmabteilung, Magritte, Dessalines,
-    # Lufthansa, ai, bien
-    # Warn if the chosen variant would have been selected anyway or if a listed word is not in the
-    # dict or listed twice
+    # TODO Add to custom.csv and handle correctly: complicate/aj,k'QmplIkIt
+    # TODO 1st stressed: dealate, nonsense, wherewithal, guardee, thankee, whoopee, spiritual
     # TODO Continue README from l.366: Disambiguating multigraphs
     # TODO Insert hyphens were necessary to prevent misreadings, incl.
     # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
@@ -608,7 +558,7 @@ sub restore_capitalization {
 
 # convert_pron $pron, $mapref, $maxkeylen, $tradspell: Convert a pronunciation using a given
 # mapping alphabet (dictionary reference).
-# $maxkeylen is the maximumg length of keys that may occur in $mapref.
+# $maxkeylen is the maximum length of keys that may occur in $mapref.
 sub convert_pron {
     my ($pron, $mapref, $maxkeylen, $tradspell) = @_;
     return '' unless $pron;  # Empty input
@@ -648,6 +598,73 @@ OUTER: while ($unconverted) {
     return $converted;
 }
 
+# build_prefix_dict $mapref, $maxkeylen: Populate the prefix dictionary.
+sub build_prefix_dict {
+    my ($mapref, $maxkeylen) = @_;
+    my $filename = 'prefix.csv';
+
+    open my $fh, '<', $filename or die "Unable to open $filename: $!\n";
+
+    my $colref = $CSV_IN->getline($fh);  # Skip header line
+
+    while ($colref = $CSV_IN->getline($fh)) {
+        my $word        = $colref->[0];
+        my $pron        = $colref->[1];
+        my $stress_hint = $colref->[2];
+
+        warn "Duplicate key '$word' in $filename\n" if exists($PREFIXES{$word});
+        warn "Unexpected stress hint for prefix $word: '$stress_hint'\n"
+            unless $stress_hint =~ /^[12A]$/;
+
+        my $converted = convert_pron $pron, $mapref, $maxkeylen, $word;
+        $PREFIXES{$word} = [$converted, $stress_hint];
+
+        # TODO x To check conversion results step by step
+        warn "Adding prefix: $word -> $converted, $stress_hint\n";
+        last if scalar(keys %PREFIXES) >= 3;
+    }
+
+    close $fh;
+}
+
+# handle_custom_entry $custom_entry, $colref, $tradspell, $mapref, $maxkeylen: Handle a
+# word listed in the custom.csv file. The $custom_entry may have one of the following values:
+#
+# * B: use British (RP) pronunciation
+# * A: use American (GA) pronunciation
+# * P: use the PhonEng pronunciation
+# * D: don't add the word to the output dictionary (used for rare foreign words or names)
+# * O: leave the spelling of the word unchanged
+#
+# Alternatively, a custom pronunciation may be given which is then used to generate the
+# final spelling (assumed to have at least two characters, otherwise a warning is printed
+# and the entry is ignored).
+sub handle_custom_entry {
+    my ($custom_entry, $colref, $tradspell, $mapref, $maxkeylen) = @_;
+    $PROCESSED_CUSTOM_SET{lc $tradspell} = 1;
+
+    return $tradspell if $custom_entry eq 'O';  # Leave word unchanged
+    return '' if $custom_entry eq 'D';          # Skip word altogether
+
+    my $pron = '';
+
+    if ($custom_entry eq 'B') {
+        $pron = $colref->[3];
+    } elsif ($custom_entry eq 'A') {
+        $pron = $colref->[4];
+    } elsif ($custom_entry eq 'P') {
+        $pron = $colref->[5];
+    } elsif (length($custom_entry) > 1) {
+        $pron = $custom_entry;
+    }
+
+    if ($pron) {
+        return convert_pron $pron, $mapref, $maxkeylen, $tradspell;
+    } else {
+        warn "Unexpected custom entry for $tradspell: $custom_entry\n";
+    }
+}
+
 # prepare_pron $pron: Fix the pronunication of a word by normalizing non-standard forms.
 sub prepare_pron {
     my $pron = shift;
@@ -684,7 +701,8 @@ sub unify_sound {
     my $rp_elem_count = scalar @rp_split;
 
     unless ($rp_elem_count == scalar @ga_split) {
-        warn "Cannot unify $tradspell pronouncations re $alt1/$alt2\n" unless $suppress_warning;
+        warn "Note: Cannot unify $tradspell pronouncations re $alt1/$alt2\n"
+            unless $suppress_warning;
         return $rp, $ga, $phoneng;
     }
 
@@ -780,40 +798,45 @@ sub choose_nearer_or_shorter {
     return ($comp <= 0) ? $first : $second;
 }
 
-# select_nearest_and_calc_distance: Select among the three converted spellings the one that's
-# closest to $tradspell and return it. Also returns the edit distance between the selected
-# spelling and $tradspell as a second value.
-# $converted_ga and $converted_phoneng may be empty.
-sub select_nearest_and_calc_distance {
+# select_nearest: Select among the three converted spellings the one that's closest to
+# $tradspell and return it. $converted_ga and $converted_phoneng may be empty.
+sub select_nearest {
     my ($converted_rp, $converted_ga, $converted_phoneng, $tradspell) = @_;
     my $choosen = choose_nearer_or_shorter $converted_rp, $converted_ga, $tradspell;
-    $choosen = choose_nearer_or_shorter $choosen, $converted_phoneng, $tradspell;
-    my $dist = dist $choosen, $tradspell;
-    return $choosen, $dist;
+    return choose_nearer_or_shorter $choosen, $converted_phoneng, $tradspell;
 }
 
-# convert_column $colref, $tradspell, $mapref, $maxkeylen: Convert a column (CSV line)
+# convert_row $colref, $tradspell, $mapref, $maxkeylen: Convert a row (CSV line)
 # from $IN_FILE style to $OUT_FILE. Any listed pronunciations are converted using the
 # Lytspel rules and the resulting spelling that's nearest to the traditional spelling is
-# selected and appended to the resulting output column. Also updates the global
+# selected and appended to the resulting output row. Also updates the global
 # $SUMMED_DIST and WORD_COUNT variables.
-sub convert_column {
+sub convert_row {
     my ($colref, $tradspell, $mapref, $maxkeylen) = @_;
-    my ($rp, $ga, $phoneng) = unify_sounds $colref->[3], $colref->[4], $colref->[5], $tradspell;
-    my $converted_rp      = convert_pron $rp,      $mapref, $maxkeylen, $tradspell;
-    my $converted_ga      = convert_pron $ga,      $mapref, $maxkeylen, $tradspell;
-    my $converted_phoneng = convert_pron $phoneng, $mapref, $maxkeylen, $tradspell;
+    my $custom_entry = $CUSTOM_DICT_REF->{lc $tradspell} // '';
+    my $converted;
 
-    # Omit GA if identical to RP
-    $converted_ga = '' if $converted_ga eq $converted_rp;
-    # Omit PhonEng if identical to RP or GA
-    $converted_phoneng = ''
-        if $converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga;
+    if ($custom_entry) {
+        $converted = handle_custom_entry $custom_entry, $colref, $tradspell, $mapref, $maxkeylen;
+    } else {
+        my ($rp, $ga, $phoneng) = unify_sounds $colref->[3], $colref->[4], $colref->[5], $tradspell;
+        my $converted_rp      = convert_pron $rp,      $mapref, $maxkeylen, $tradspell;
+        my $converted_ga      = convert_pron $ga,      $mapref, $maxkeylen, $tradspell;
+        my $converted_phoneng = convert_pron $phoneng, $mapref, $maxkeylen, $tradspell;
 
-    # Keep only the spelling that's closest to tradspell
-    my ($converted, $dist) = select_nearest_and_calc_distance $converted_rp, $converted_ga,
-        $converted_phoneng, $tradspell;
-    $SUMMED_DIST += $dist;
+        # Omit GA if identical to RP
+        $converted_ga = '' if $converted_ga eq $converted_rp;
+        # Omit PhonEng if identical to RP or GA
+        $converted_phoneng = ''
+            if $converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga;
+
+        # Keep only the spelling that's closest to tradspell
+        $converted = select_nearest $converted_rp, $converted_ga, $converted_phoneng, $tradspell;
+    }
+
+    return '' unless $converted;  # Skip word if handle_custom_entry returned empty result
+
+    $SUMMED_DIST += dist $converted, $tradspell;
     $WORD_COUNT++;
     my $conv_colref = [@$colref[0 .. 2], $converted];
     return $conv_colref;
@@ -821,7 +844,7 @@ sub convert_column {
 
 # lookup_part $part, $tradspell, $unconverted_dict_ref, $converted_dict_ref, $case_redirect_ref,
 # $mapref, $maxkeylen: Look up the entry for a word part of a compound, taking case redirects
-# and POS-tagged word parts into account. Returns the converted entry column -- if the word
+# and POS-tagged word parts into account. Returns the converted entry row -- if the word
 # hasn't been processed before, it will be converted.
 sub lookup_part_entry {
     my ($part, $tradspell, $unconverted_dict_ref, $converted_dict_ref, $case_redirect_ref,
@@ -844,72 +867,12 @@ sub lookup_part_entry {
             $unconv_colref = $unconverted_dict_ref->{$key};
             warn "No entry found for $key\n" unless $unconv_colref;
         }
-        # TODO x Adapt POS heuristics for prefixed and suffixed forms
-        # Replace prefix.list by prefix.csv: Trad,Pron,Stress (1: prefix, 2: main word, A:
-        # ask PE)
-        # for word in `grep =able$ compounds.csv|cut -f1 -d,`; do grep -i ^$word, phonetic-dict.csv; done|egrep -v "@b@l(,|$)"
-        # |egrep -c "(,|$)"
-        # Handle prefix/suffix combis correctly (e.g. antis)
-        # Add prefixes: ab- (e.g. abampere, 2nd part stressed)
-        # Add suffix: -otic (stressed before suffix), -ology (ditto)
-        # Stress last syllable of 1st part: -meter (e.g. aerometer, electrometer,
-        # alkalimeter), -tropism (e.g. aerotropism, stereotropism)
-        # Add prefix per- «per»: stress 2nd part; but keep a few manual entries for ‹per›
-        # «pur» (likewise stressed on 2nd part): percutaneous,per-cutaneous;
-        # peroxidic,per-oxidic; peroxide,per-oxide
-        # Add suffixes: -ine «in» or maybe «yn» (e.g. petaline, phialine;
-        # ensure that no -line words are accidentally excluded),
-        # -oid (e.g. petaloid), -ous «uss» (e.g. petalous)
-        # Add prefixes: ‹tele› «tele»; ‹zoo› /zoU@/ «zoa» (PE determines stress)
-        # 1st stressed: dealate, nonsense, wherewithal
-        # Not a compound: antimony, Antioch, Antipater, biotic, bios, biosis, biota, deal, debit,
-        # Debora, debouche, debruise, decade, deco, decoy, decrease, deed, deer, dees, deify,
-        # deil, deism, deist, deity, delegacy, deli, Deming, demo, demode, denary, Deneb,
-        # denegation, denim, deposition, derelict, Derick, derogation, descant, despot, detour,
-        # Devin, dewitt, detail, decane, demesne, devel, disco, discord, discount, discourse,
-        # disease, dissect, enami, enclave, encore, ending, endrin, Enfield, Enoch, enology,
-        # enounce, Enovid, enow, ensign, entrail, enzyme, Hyperion, inter, interment, miser,
-        # miss, missa, Misti, preposition, presage, Prescott, probit, produce, product, profit,
-        # profluent, prognosis, proposition, prorate, prorogation, prorogue, prostate, proverb,
-        # province, real, recoil, recommend, reconciliation, reconciliatory, record, recreation,
-        # regula, Reich, reif, Reilly, rein, REIT, relay, renovation, repetition, replicate,
-        # represent, research, resource, respite, revenue, revolution, Seminole, seminary,
-        # Semitic, submerge, submiss, submission, submissive, submit, subscribe, subside,
-        # subversion, subvert, transfer, transit, transport, ungula, unit, unto, anneal, baal,
-        # cabal, coal, deal, feal, foal, goal, heal, Jamal, kraal, meal, neal, seal, taal, teal,
-        # Waal, weal, anal, brutal, halal, oral, amman, bean, Bhutan, Chaoan, gean, groan, Joan,
-        # koan, Koran, loan, mean, Milan, moan, sampan, tarpan, tolan, trapan, wean, yulan,
-        # colophonian, hainan, leman, lyman, mandan, saurian,
-        # Custom compounds: deadman,dead-man; decreases,decrease=s; delegates,delegates;
-        # delegation,delegate=ion; demonism,demon=ism; demos,demo=s; depositions,deposition=s;
-        # deprecative,deprecate=ive; deprecatory,deprecate=ory; detailer,detail=er;
-        # detoured,detour=ed; detours,detour=s; discountable,discount=able,
-        # discounter,discount=er; discounting,discount=ing; diseased,disease=ed;
-        # diseases,disease=s; dissection,dissect=ion; dissections,dissection=s;
-        # dissects,dissect=s; dissing,dis=ing; encores,encore=s; endings,ending=s;
-        # Enochs,Enoch=s; entrails,entrail=s; internee,intern=ee; interrogation,interrogate=ion;
-        # interrogatory,interrogate=ory; missing,miss=ing; prejudicial,prejudice=ial; 
-        # products,product=s; profits,profit=s; profs,prof=s; propositioned,proposition=ed;
-        # propositions,proposition=s; prorated,prorate=ed; proverbs,proverb=s;
-        # recommendatory,recommend=atory; recommended,recommend=ed; recommending,recommend=ing;
-        # recommends,recommend=s; recorded,record=ed; recorder,record=er; recording,record=ing;
-        # records,record=s; reins,rein=s; relaying,relay=ing; relays,relay=s;
-        # repetitions,repetition=s; representative,represent=ative; represented,represent=ed;
-        # representing,represent=ing; represents,represent=s; researched,research=ed;
-        # researcher,research=er; researchers,research=ers; researches,research=es;
-        # researching,research=ing; resources,resource=s; resting,rest=ing; revenues,revenue=s;
-        # Semitics,Semitic=s; submerged,submerge=ed; submissions,submission=s;
-        # subscriber,subscribe=er; subscribes,subscribe=s; subsided,subside=ed; subsides,subside=s;
-        # subsiding,subside=ing; transits,transit=s; units,unit=s; withal,with-all;
-        # therewithal,there-withal; wherewithal,where-withal; Goan,Goa=n; tampan,tampa=n
-
-
     }
 
     my $conv_colref = $converted_dict_ref->{$key};
     unless ($conv_colref) {
         # Convert word now
-        $conv_colref = convert_column $unconv_colref, $cased || $part, $mapref, $maxkeylen;
+        $conv_colref = convert_row $unconv_colref, $cased || $part, $mapref, $maxkeylen;
         $converted_dict_ref->{$key} = $conv_colref;
     }
 
@@ -973,8 +936,58 @@ sub handle_compound {
         }
 
         return $compound;
-    } else {
-        # TODO Implement
+    } elsif ($parts =~ /=/) {
+        # It's a prefixed or suffixed word
+        my ($first, $second) = split /=/, $parts;
+        my $compound;
+
+        if (exists $PREFIXES{$first}) {
+            # TODO x Main part may itself be a compound, e.g. clockwise, takeover
+            return undef if $second eq 's';  # TODO x special case: prefix-suffix combi
+            my $conv_prefix        = restore_capitalization $PREFIXES{$first}->[0], $tradspell;
+            my $stress_hint        = $PREFIXES{$first}->[0];
+            my $second_conv_colref = lookup_part_entry $second, $tradspell, $unconverted_dict_ref,
+                $converted_dict_ref, $case_redirect_ref, $mapref, $maxkeylen;
+            my $second_lytspel = lc $second_conv_colref->[3];
+
+            if ($stress_hint eq '2' && $second_lytspel != /'/) {
+                # Insert stress marker before main word
+                $compound = "$conv_prefix'$second_lytspel";
+            } else {
+                $compound = "$conv_prefix$second_lytspel";
+            }
+            # TODO x Take 'A' hint into account
+
+            return $compound;
+        } else {
+            # TODO x Implement
+            return undef;
+        }
+
+        # TODO x Adapt POS heuristics for prefixed and suffixed forms; document pre|suffix.csv
+        # Replace prefix.list by prefix.csv: Trad,Pron,Stress (1: first part, 2: second part, A:
+        # ask PE; L: last syllable of first part)
+        # for word in ; do grep -i ^$word, lytspel-dict.csv; done
+        # Suffixes ed/es/s need special treatment
+        # -ial after «t» merges to /tS@l/
+        # -ion after «st» merges to /tS@n/ (currently written «chen»), after «t» to /S@n/
+        # (written «tion»)
+        # -ual after «t» merges to /tSu:@l/
+        # Note: if stress changes, a schwa might become a short vowel--in that case, use it
+        # also for the base form, e.g. «telson» due to «tel'sonic» ‹telsonic›
+        # Handle prefix/suffix combis correctly (e.g. antis)
+        # Add prefixes: ab- (e.g. abampere, 2nd part stressed)
+        # Add suffix: -otic (stressed before suffix), -ology (ditto)
+        # Stress last syllable of 1st part: -meter (e.g. aerometer, electrometer,
+        # alkalimeter), -tropism (e.g. aerotropism, stereotropism)
+        # Add prefix per- «per»: stress 2nd part; but keep a few manual entries for ‹per›
+        # «pur» (likewise stressed on 2nd part): percutaneous,per-cutaneous;
+        # peroxidic,per-oxidic; peroxide,per-oxide
+        # Add suffixes: -ine «in» or maybe «yn» (e.g. petaline, phialine;
+        # ensure that no -line words are accidentally excluded),
+        # -oid (e.g. petaloid), -ous «uss» (e.g. petalous)
+        # Add prefixes: ‹tele› «tele»; ‹zoo› /zoU@/ «zoa» (PE determines stress);
+        # neuro- (make sure it's used for ‹neurosecretion›)
         # Make -tic a suffix instead of a regular compound part (e.g. aromatic),
         # likewise -ary (e.g. visionary), -ology (e.g. planetology), -arian (e.g. parliamentarian),
         # make a suffix: tele-
@@ -985,6 +998,7 @@ sub handle_compound {
         # /@t/ instead)
         # Suffix stress rules win over prefix stress rules, e.g. ‹biotic› «bai'otic»
         # Exceptions where 1st is stressed: all [-=]sphere combis (e.g. biosphere, chemosphere)
+        # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
     }
 
 # TODO When looking up words, consider that they might be POS-tagged (v, n, av, prp)
@@ -1009,10 +1023,21 @@ sub handle_compound {
     return undef;  # not a compound
 }
 
+# warn_unprocessed_custom_entries: Warn if there are entries in the custom.csv file not
+# in the dictionary.
+sub warn_unprocessed_custom_entries {
+    # TODO Add a similar checks for compounds-manual.csv and compound-black|blacklist.csv
+    # (also warn if there are duplicate entries)
+    for my $key (sort keys %$CUSTOM_DICT_REF) {
+        warn "Unused $CUSTOM entry: $key\n" unless exists $PROCESSED_CUSTOM_SET{$key};
+    }
+}
+
 # convert_dict: Convert SAMPA spellings to Lytspel.
 sub convert_dict {
     my ($mapref, $maxkeylen) = build_mapping;
-    my $compound_map_ref = build_compound_map;
+    my $compound_map_ref = build_lc_map $COMPOUNDS;
+    build_prefix_dict $mapref, $maxkeylen;
     my ($unconverted_dict_ref, $case_redirect_ref) = build_unconverted_dict_and_case_redirects;
     my %converted_dict;
     my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Traditional POS Redirect Lytspel)];
@@ -1041,116 +1066,52 @@ sub convert_dict {
             if $parts;
 
         if ($compound) {
-# TODO Not a compound: backsheesh, Badarian, Bahrain, balboa, Balfour, Balkhash, balmoral,
-# balneology, Bannockburn, barcarole, barracoon, Barrera, Bashkir, bateau, Bathsheba, battuta,
-# Beaufort, Beaumont, Beauregard, Beersheba, benedick, benefactor, benefit, Benelux, Benghazi,
-# bentonite, benzine, Berkshire, Bernard, Bernbach, Bessarabia, bethink, Beyrouth, bicarb, biznaga,
-# Bloomsbury, bollard, boracite, Bornholm, boscage, Bothwell, Bowditch, boycott, Bracknell,
-# Bradbury, Brasilia, brigalow, brigand, buckram, buhrstone, bungee, buntline, Burkina, Burleigh,
-# bushido, buskin, cadastral, cadaver, caliche, camcorder, campanile, campodeiform, canterbury,
-# capelin, capeline, capriccio, carbonylate, carbuncle, cardon, carline, Carlisle, carmine, Carnot,
-# Carolina, carritch, Cartagena, cartouche, caruncle, castrato, catamount, centavo, centurial,
-# Chadwick, Charcot, Chefoo, chewink, chiropractic, cineole, cisterna, citrange, Clackmannan,
-# clandestine, clarabella, claymore, claytonia, clearstory, cognation, cognominal, cohobate,
-# collard, collate, columbarium, conchology, contraband, cooncan, cordate, cordoba, cordwain,
-# cornute, Cornwallis, Cosgrave, costate, costmary, coteau, Couperin, Courtrai, creepie, croceate,
-# cuspate, dagoba, Damascus, darkey, Darnell, decagram, Delaware, Deleon, denarius, dengue, desmid,
-# Dessau, differentia, discobolus, dissertate, dolerite, dornick, dotard, dramamine, dundee,
-# dunkirk, dupleix, duplex, durability, duracell, duramen, electrotonus, emendate, Emmenthaler,
-# ensorcell, entertain, eristic, Erskine, farthermost, Fashoda, fertile, filagree, filaria, filemot,
-# fillagree, finesse, finisterre, fluoride, fogbow, fortalice, foulard, francisco, francolin,
-# franklin, frantic, fredrick, freytag, frithstool, furbelow, furfurole, furlana, Gagarin,
-# Gainsborough, Galcha, Galloway, Galsworthy, gambetta, gamelan, gantelope, Gaskell, gaskin,
-# gasking, Gaspar, gavelock, gelatinate, gelignite, Genseric, Gerard, Gibeon, Gideon, Gilchrist,
-# Glendower, glengarry, Godzilla, goosander, Gorgonzola, grammatical, greegree, grindelia, griskin,
-# Gropius, grosbeak, Gustavo, Halcion, Hamelin, Hancock, Hanyang, haphazard, haptic, hawkey,
-# hawkshaw, hawkweed, Hellespont, Hellespontine, Henrietta, herbarium, herdwick, hermetic, herpes,
-# hickwall, Honduran, hornito, hortatory, Howrah, huckaback, humvee, hushaby, hydracid, hydrazine,
-# hypogean, hypophysis, hypothecate, Illyria, incognita, inkling, jambos, jargoon, Jogjakarta,
-# joskin, Justin, Kaifeng, Kamasutra, katydid, kedgeree, kewpie, killdee, kimchi, kincob, kirmess,
-# kirpan, Kopeisk, Lacedaemon, Lammastide, lampoon, lantana, lapides, larghetto, lascar, Lastex,
-# Leakey, legate, Legree, Lemberg, Leucippus, leucite, leucoma, Libava, liberatory, libido,
-# limonene, Loretta, Louvain, Lucknow, lullaby, lunatic, magazine, maintain, Majorca, Malaga,
-# malcontent, Maldives, malefactor, malemute, malkin, mallard, mallenders, manakin, mandarin,
-# Mandingo, mangold, Manitoulin, mantic, marinate, Marlborough, marocain, Matabele, matelot,
-# matelote, Maulmain, maulstick, mawkish, mayday, mayhem, Maynard, mediatory, melamed, melanoma,
-# Messapian, Michelangelo, microbe, mildew, minorca, moderate, monolater, Monroe, muscadel,
-# muscatel, Muskogee, neckerchief, niblick, Ninevite, noetic, Normand, Norplant, Norway, Oglethorpe,
-# oldwife, olefin, olefine, omentum, organon, organzine, oxymoron, paddymelon, parterre, Pasquale,
-# pastrami, Patmos, pawpaw, paynim, pearmain, Pegasian, Pehlevi, Peiping, pellagra, pennoncel,
-# pensee, Perdido, perdue, perfume, perjure, perkin, Perlis, perlite, permit, permutate, permute,
-# Pernod, persevere, Pescara, peseta, petaurist, pettitoes, phagedena Picard, picrite, pignora,
-# Pillsbury, Pindaric, Poitiers, polariscope, pontlevis, portend, portfolio, portray, powwow,
-# primavera, propagate, prostheses, prosthetic, protocol, protonotary, Pulaski, purport, pustule,
-# Quemoy, quinella, quintet, quintile, rainbow, Ramakrishna, Rameau, rapscallion, rasbora, rascal,
-# ratafee, ratline, Rayburn, Rayleigh, rectangle, rectum, redintegrate, Rickover, rickshaw, ridotto,
-# Rimbaud, Rodrick, Rollins, runagate, Ruskin, sacring, Saipan, salami, Samaria, samsara, Santana,
-# sapsago, sarcoma, Sardis, saveloy, sayyid, scaffold, schizogenesis, schizogenic, secundine,
-# Selkirk, senarius, September, serpula, serrate, servile, sextet, shagreen, shampoo, sharia,
-# Shenyang, churchward, shoreward, Shulamite, siglos, Simeon, sincere, sinecure, snickersnee,
-# Soleure, solidary, Spartacist, spicate, Spillane, spirometric, stagnation, stampede, Starkey,
-# stavesacre, Stelazine, stellate, stephanotis, stigmasterol, sunbow, sundae, Sungkiang, suppletory,
-# sustentation, sustentative, sylphide, symbiosis, symbiotic, symphonic, sympodium, syncline,
-# taborin, Tallchief, Tallinn, Tanagra, tantalite, tantara, taradiddle, tarpaulin, tartana, tatami,
-# tearaway, template, tenace, tenurial, terramara, tesselate, testudo, tetrabrach, thermoscope,
-# thermostat, Thurgau, tilbury, Tillich, timbale, Tipperary, tomnoddy, topgallant, topiary,
-# tourbillion, towmont, Toyoda, tractarianism, Turkmen, unselfconscious, valeric, vanguard, velamen,
-# venatic, Veracruz, vesicatory, victim, vitamin, Waldorf, Walgreen, wallsend, Walpole, wangun,
-# wardress, warsaw, Warwick, washingtonia, weepie, Wicklow, wiseacre, witloof, Woodrow, Yaobang,
-# zoetrope
-# -ace-, -aline-, -boo-, -bis-, -bro-, -cal-, can-, -cara-, -cris-, com-, -comp-, -doo-,
-# -dore-, -ella-, -etta-, eau-, -gue-, -hey-, hoo-, -inf-, -lon-, -mar-, -mas-, -mira-,
-# ole-, -pas-, -psych-, -ree-, -tin, -tina-, -twi-, -via-, -vis-
-# TODO Custom compound: bitterender,bitter-ender; buckling,buckle=ing; cannot,can-not;
-# chuckling,chuckle=ing; contrabass,contra-base; crackling,crackle=ing; forever,for-ever
-# cardinalate,cardinal-ate; doctrinal,doctrine=al; heckling,heckle=ing; keckling,keckle=ing;
-# megarad,mega-rad; minimax,mini-max; narcotic,narco=tic; pickling,pickle=ing;
-# puritanisms,puritanism=s; rankling,rankle=ing; salesman,sales-man; shootout,shoot-out;
-# sparkling,sparkle=ing; statesman,states-man; strickling,strickle=ing; suckling,suckle=ing,
-# tackling,tackle=ing; tarmacadam,tar-macadam; trickling,trickle=ing; twinkling,twinkle=ing;
-# waterman,water-man
-# TODO Stress 1st part: breakaway, castaway, cutaway, flyaway, foldaway, getaway, giveaway,
-# Greenaway, Hathaway, hideaway, huntaway, layaway, rockaway, rollaway, runaway, soakaway,
-# stowaway, straightaway, throwaway, walkaway (-away in general);
-# counterattack, counterreply, countersubject, heterocycle, lookalike, minicomputer, pinafore,
-# slugabed, standalone, tarmacadam, telerecord, turnverein, videocassette, woebegone
-# servocontrol/n
-# -amine (calamine, Dramamine, hexamine, histamine), -around
-# Stress 2nd part: aerologic only, not choplogic; benediction, binocular,
-# bronchiectasis, commonsense, dextrocardia, diacetylmorphine, diazomethane, duecento,
-# echocardiogram, eftsoon, everlasting, farewell, forever, forevermore, goodbye, hemelytron,
-# hereinafter, boohoo, lambaste, mercaptopurine, methacrylate,
-# methylbenzene, methylnaphthalene, moreover, nymphomaniac, oleomargarine, penannular,
-# penultimate, penultima, phenylalanine, philhellene,
-# Rockhampton, saltpeter, sardonyx, statampere, sulfaguanidine, sulfathiazole, sympetalous,
-# synchrocyclotron, tetraethyl, throughout, uniaxial, without
-# -aldehyde, -chemical, -chemistry, -decagon, -eastern, -forward, -metric, -phonic, -sexual,
-# -western, magneto-, mal- (except malware)
-# PE determines stress: proto-, stereo-
-# TODO «sm» should be divided in the middle, e.g. «antas'matic» ‹antasthmatic›;
-# ditto «rl», e.g. «bur'leta» ‹burletta›
-# and «st»
-# TODO Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
-# (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
-# ‹monosyllabicity›
-# TODO Make -ary -> erri a suffix (reactionary, customary)
-# make -ate a suffix spoken either «ait» or «et|it» (e.g. «dy'recteret» ‹directorate›;
-# sometimes it depends on the POS tag, e.g. ‹proportionate›)
-# TODO Add centralist (should become central=ist and centralists: centralist=s)
-# TODO Distinguish live/v: liv vs aj: lyv; livelong should become livlong; warehouse/v should
-# become «wairhous»
-# ‹planoconvex› should be come «planocon'vex» (from the aj)
-# TODO Unify /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter, e.g.
-# ‹solidary, temporary, voluntary›
+ # TODO Stress 1st part: breakaway, castaway, cutaway, flyaway, foldaway, getaway, giveaway,
+ # Greenaway, Hathaway, hideaway, huntaway, layaway, rockaway, rollaway, runaway, soakaway,
+ # stowaway, straightaway, throwaway, walkaway (-away in general);
+ # counterattack, counterreply, countersubject, heterocycle, lookalike, minicomputer, pinafore,
+ # slugabed, standalone, tarmacadam, telerecord, turnverein, videocassette, woebegone
+ # servocontrol/n
+ # -amine (calamine, Dramamine, hexamine, histamine), -around
+ # Stress 2nd part: aerologic only, not choplogic; benediction, binocular,
+ # bronchiectasis, commonsense, dextrocardia, diacetylmorphine, diazomethane, duecento,
+ # echocardiogram, eftsoon, everlasting, farewell, forever, forevermore, goodbye, hemelytron,
+ # hereinafter, boohoo, lambaste, mercaptopurine, methacrylate,
+ # methylbenzene, methylnaphthalene, moreover, nymphomaniac, oleomargarine, penannular,
+ # penultimate, penultima, phenylalanine, philhellene,
+ # Rockhampton, saltpeter, sardonyx, statampere, sulfaguanidine, sulfathiazole, sympetalous,
+ # synchrocyclotron, tetraethyl, throughout, uniaxial, without
+ # -aldehyde, -chemical, -chemistry, -decagon, -eastern, -forward, -metric, -phonic, -sexual,
+ # -western, magneto-, mal- (except malware)
+ # PE determines stress: proto-, stereo-
+ # TODO «sm» should be divided in the middle, e.g. «antas'matic» ‹antasthmatic›;
+ # ditto «rl», e.g. «bur'leta» ‹burletta›
+ # and «st»
+ # Fix stress marker: Chinnky'ang -> Chinn'kyang ('y' before a vowel is a consonant);
+ # find out why the marker is «Sheen'ing» ‹Sining› is misplaced; ‹pontlevis› should become
+ # «pont'leviss», not pon'tleviss
+ # TODO Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
+ # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
+ # ‹monosyllabicity›
+ # TODO Make -ary -> erri a suffix (reactionary, customary)
+ # make -ate a suffix spoken either «ait» or «et|it» (e.g. «dy'recteret» ‹directorate›;
+ # sometimes it depends on the POS tag, e.g. ‹proportionate›)
+ # TODO Add centralist (should become central=ist and centralists: centralist=s)
+ # TODO Distinguish live/v: liv vs aj: lyv; livelong should become livlong; warehouse/v should
+ # become «wairhous»
+ # ‹planoconvex› should be come «planocon'vex» (from the aj)
+ # TODO Unify /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter, e.g.
+ # ‹solidary, temporary, voluntary›
+ # TODO ‹quad› should probably always become «quod» rather than «quaad»
 
-            # Use return value instead of calling convert_column
+            # Use return value instead of calling convert_row
             $conv_colref = [@$colref[0 .. 2], $compound];
         } else {
-            $conv_colref = convert_column $colref, $tradspell, $mapref, $maxkeylen;
+            $conv_colref = convert_row $colref, $tradspell, $mapref, $maxkeylen;
         }
 
         $converted_dict{$key} = $conv_colref;
-        $CSV_OUT->print($outfh, $conv_colref);
+        $CSV_OUT->print($outfh, $conv_colref) if $conv_colref;
 
         # TODO Finally drop POS tag if all variants are written the same, e.g. «mouth»
         # TODO Handle most frequent pre- and suffixes in converter rather than dict
@@ -1158,10 +1119,11 @@ sub convert_dict {
         # making sure that the converter will indeed lead to the same results)
     }
 
+    close $outfh;
+
+    warn_unprocessed_custom_entries;
     my $avg_dist = $SUMMED_DIST / $WORD_COUNT;
     say "Average distance between tradspell and Lytspel: $avg_dist";
-
-    close $outfh;
 }
 
 # Main block
