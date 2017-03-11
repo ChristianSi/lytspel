@@ -276,18 +276,25 @@ vowels:
     sounds to use anyway.
   * This spelling is also used in the personal pronouns ending in /i:/ (as
     these are often less stressed than other words in a sentence): «hi,
-    shi, wi, mi» ‹he, she, we, me›. And it's used in the prefixes «anti,
-    semi» (spoken with /i:/ by many speakers, with /aI/ by others), e.g.
-    «anti'aircraft, anti'soashel; semi'fynel, semiauto'matic»
-    ‹antiaircraft, antisocial; semifinal, semiautomatic›.
+    shi, wi, mi» ‹he, she, we, me›. And it's used at the end of prefixes
+    such as «anti, semi» (spoken with /i:/ by many speakers, with /aI/ by
+    others) as well as «di, pri, ri» ‹de, pre, re› (even if the prefix is
+    stressed), e.g. «anti'aircraft, anti'soashel; semi'fynel,
+    semiauto'matic; di'graid, di'bug; prima'choor, pri'requisit; ri'act,
+    ripro'duess» ‹antiaircraft, antisocial; semifinal, semiautomatic;
+    degrade, debug; premature, prerequisite; react, reproduce›.
   * /oU/ is spelled «o» at the end of words and before other vowels
     (instead of «oa»), e.g. «yelo, zeero, co'operait, po'etic, sho»
     ‹yellow, zero, cooperate, poetic, show›. This poses little risk of
     confusion, as /Q/ (as in «dog») occurs rarely or never before other
-    vowels. (Final /Q/ could be written «oh», but in practice it never seems
-    to occur.)
-  * This spelling is also used in the prefixes «baio, nio» ‹bio, neo›, e.g.
-    «baio'kemistri, nio'classic» ‹biochemistry, neoclassic›.
+    vowels. (Final /Q/ could be written «oh», but in practice it never
+    seems to occur.)
+  * This spelling is also used at the end of prefixes such as «baio, jio,
+    macro, mycro, nio, pro, suudo» ‹bio, geo, macro, micro, neo, pro,
+    pseudo› (even if the prefix is stressed), e.g. «baio'kemistri,
+    jio'grafic, macroico'nomic, mycrowaiv, nio'classic, pro'activ,
+    suudosaienss» ‹biochemistry, geographic, macroeconomic, microwave,
+    neoclassic, proactive, pseudoscience›.
   * /OI/ is spelled «oy» at the end of words and before other vowels
     (instead of «oi»), e.g. «boy, en'joy, em'ployi» ‹...enjoy, employee›.
   * /aU/ is spelled «ow» at the end of words and before other vowels
