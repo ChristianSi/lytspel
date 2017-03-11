@@ -91,16 +91,16 @@ sub build_affix_set {
 }
 
 # Build a list of manual entries from the $MANUAL_ENTRIES CSV file. All entries in this
-# file will be used as is; or, if the second field is empty, they will be skipped altogether
-# (not considered as compounds).
+# file will be used as is, except that both keys and values are converted to lower case.
+# If the second field is empty, they will be skipped altogether (not considered as compounds).
 sub build_manual_entries_dict {
     open my $file, '<', $MANUAL_ENTRIES or die "Unable to open $MANUAL_ENTRIES: $!\n";
     my $colref = $CSV_IN->getline($file);  # skip header line
     my %dict;
 
     while ($colref = $CSV_IN->getline($file)) {
-        my $word = $colref->[0];
-        $dict{$word} = $colref->[1] // '';
+        my $word = lc $colref->[0];
+        $dict{$word} = lc($colref->[1] // '');
     }
 
     close $file;
