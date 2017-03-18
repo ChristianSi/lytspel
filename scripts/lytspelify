@@ -84,6 +84,11 @@ my %PROCESSED_CUSTOM_SET;
 # array references.
 my %PREFIXES;
 
+# Mapping from suffixes to their Lytspel spellings and stress hints (1: stress main word;
+# 2: stress suffix; 'L': stress last syllable of main word). Values are two-element
+# array references.
+my %SUFFIXES;
+
 # build_lc_map $filename: Create and return a mapping from a simple CSV file containing
 # two columns (keys and values). All keys are converted to lower-case, while values are
 # used as is. Warns if there are duplicate keys.
@@ -250,7 +255,7 @@ sub combine_and_adjust {
         } elsif ($val eq 'er' && $left =~ /Y$/) {
             # Final /aI@`/ is written «yr», e.g. «fyr, in'spyr» ‹fire, inspire›
             $val = 'r';
-        } elsif ($val eq 'k' && $left =~ /[^'aeou]i$/) {
+        } elsif ($val eq 'k' && $left =~ /(?<!['aeou])i$/) {
             # «c» is used at the end of words ending in unstressed /Ik/
             $val = 'c';
         } elsif ($val eq 'l' && $left =~ /au$/) {
@@ -267,6 +272,7 @@ sub combine_and_adjust {
     }
 
     if ($val eq '@' && $right eq 'l' && $left =~ /[bpdtfgksz]$/) {
+        # TODO Add 'c'?
         # Schwa is omitted between any of /b, p, d, t, f, g, k/ and final /l/
         $val = '';
 
@@ -363,8 +369,8 @@ sub combine_and_adjust {
     # guardee, thankee, whoopee, spiritual, noncom, nonsense, overseer
     # 2nd stressed: withal, overdraw, overreach, oversee, overseen
     # TODO Add with 2nd stressed: outshot/v, overcharge/v, overcharges/v
-    # TODO Continue README from l.366: Disambiguating multigraphs
-    # TODO Insert hyphens were necessary to prevent misreadings, incl.
+    # TODO Continue README from l.374: Disambiguating multigraphs
+    # TODO x Insert hyphens were necessary to prevent misreadings, incl.
     # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
     # unstressed /a/ after /u:/ e.g. «bivu-ak» ‹bivouac›
     return combine($left, $val);
@@ -605,14 +611,19 @@ OUTER: while ($unconverted) {
     return $converted;
 }
 
-# build_prefix_dict $mapref, $maxkeylen: Populate the prefix dictionary.
-sub build_prefix_dict {
-    my ($mapref, $maxkeylen) = @_;
-    my $filename = 'prefix.csv';
+# build_affix_dict $affixtype, $mapref, $maxkeylen: Populate the prefix or suffix dictionary.
+# $affixtype must be 'prefix' or 'suffix'.
+sub build_affix_dict {
+    my ($affixtype, $mapref, $maxkeylen) = @_;
+    my $filename = "$affixtype.csv";
+    my %dict;
+
+    die "build_affix_dict: Unexpected affix type: $affixtype\n"
+        unless $affixtype =~ /^(prefix|suffix)$/;
 
     open my $fh, '<', $filename or die "Unable to open $filename: $!\n";
-
     my $colref = $CSV_IN->getline($fh);  # Skip header line
+    my $stress_pattern = $affixtype eq 'prefix' ? qr/^[12A]$/ : qr/^[12L]$/;
 
     while ($colref = $CSV_IN->getline($fh)) {
         unless (scalar @$colref == 3) {
@@ -622,82 +633,60 @@ sub build_prefix_dict {
 
         my ($word, $pron, $stress_hint) = @$colref[0 .. 2];
 
-        warn "Duplicate key '$word' in $filename\n" if exists($PREFIXES{$word});
-        warn "Unexpected stress hint for prefix $word: '$stress_hint'\n"
-            unless $stress_hint =~ /^[12A]$/;
-        # TODO X For suffixes, stress hints may be 1/2/L
+        warn "Duplicate key '$word' in $filename\n" if exists($dict{$word});
+        warn "Unexpected stress hint for $affixtype $word: '$stress_hint'\n"
+            unless $stress_hint =~ $stress_pattern;
 
         my $converted = convert_pron $pron, $mapref, $maxkeylen, $word;
-        $converted =~ s/ss$/s/;  # Final «ss» becomes just «s», e.g. «dis»
-        $PREFIXES{$word} = [$converted, $stress_hint];
 
-        # TODO x To check conversion results step by step
-        # TODO x Check udiff lytspel-dict.csv.old lytspel-dict.csv from Reni
-        # rebate
-        # rebated,rebate=ed
-        # rebates,rebate=s
-        # rebeck
-        # rebel
-        # rebop
-        # recede
-        # receded,recede=ed
-        # recedes,recede=s
-        # receding,recede=ing
-        # recess
-        # recession,recess=ion
-        # recessionary,recession-ary
-        # recollect
-        # recollected,recollect=ed
-        # recollecting,recollect=ing
-        # recollection,recollect=ion
-        # recollections,recollection=s
-        # recollects,recollect=s
-        # recon
-        # recourse
-        # rede
-        # redeem
-        # redeemed,redeem=ed
-        # redeems,redeem=s
-        # reding,rede=ing
-        # redon
-        # redux
-        # reed
-        # reeking,reek=ing
-        # rees,ree=s
-        # reeve
-        # reeves,reeve=s
-        # refuse
-        # refused,refuse=ed
-        # refuses,refuse=s
-        # refusing,refuse=ing
-        # regenerate
-        # regenerated,regenerate=ed
-        # regenerating,regenerat=eing
-        # regeneration,regenerat=eion
-        # regenerative,regenerat=eive
-        # regie
-        # Regin
-        # regina
-        # rego
-        # relier,rely=er
-        # remanent
-        # remex
-        # remora
+        # Final «ss» becomes just «s», e.g. «dis»
+        $converted =~ s/ss$/s/ if $affixtype eq 'prefix';
+
+        $dict{$word} = [$converted, $stress_hint];
+
+        # TODO To check conversion results step by step:
+        last if $affixtype eq 'suffix' && scalar(keys %dict) >= 3;
+        # TODO x decompose: Use =ean specific code only if that suffix is defined
+        # TODO x For ‹al, an› let PhonEng determine the stressed syllable (/@/ becomes /E/)
+        # TODO x Check udiff lytspel-dict.csv.old lytspel-dict.csv from autumnal
+        # (frequent suffixes: al: 684, ed: 4077, er: 2203, es: 955, ic: 561, ing: 3834,
+        # ism: 516, ly: 2810, ment: 248, ness: 1560, s: 11018, y: 1577)
+        # Custom compounds:
+        # abecedarian
+        # adversarial
+        # agricultural
+        # ammonal,ammon-al
+        # amoral
+        # anticlinal
+        # fungal
+        # antinomian
+        # antipodean
+        # antiquarian
+        # Aral
+        # architectural
+        # Aryan
+        #
         # Custom:
-        # rebop,r'i:bQp
-        # recon,rIk'Qn  # ri'con
-        # distribute,P
-        # redon,D
-        # redux,B
-        # education,P
-        # regie,D
-        # Add stress-shifted (1st syllable): redial/n, redo/n, remit/n
-        # Add stress-shifted (2nd part): reflex/v
-        # reincarnate: split in v+aj
-        last if scalar(keys %PREFIXES) >= 24;
+        # ament,'eIm@nt  # aiment
+        # antiquary,A  # antiquerri
+        # Aral,D
+        # archetypal,A  # arki'typl
+        # armiger,A  # armijer
+        #
+        # 2nd vowel becoming stressed: annelidan, antipodal, argental, armigeral
+        # L (/@/ becomes /E/): accidental, amental, apartmental
+        # L with final vowel becoming stronger (i -> y): ablatival
     }
 
     close $fh;
+
+    # Populate global dictionary
+    if ($affixtype eq 'prefix') {
+        %PREFIXES = %dict;
+    } else {
+        %SUFFIXES = %dict;
+    }
+
 }
 
 # handle_custom_entry $custom_entry, $colref, $tradspell, $mapref, $maxkeylen: Handle a
@@ -948,10 +937,21 @@ sub lookup_part_entry {
         $key = gen_key $part, $pos;
         $unconv_colref = $UNCONVERTED_DICT_REF->{$key};
 
+        # TODO Simplify this code
         unless ($unconv_colref) {
-            $key = gen_key $part, 'n';                      # use 'n' as fallback
+            # Use 'n' or else 'aj' as fallback
+            $key = gen_key $part, 'n';
             $unconv_colref = $UNCONVERTED_DICT_REF->{$key};
-            warn "No entry found for $key\n" unless $unconv_colref;
+
+            unless ($unconv_colref) {
+                $key = gen_key $part, 'aj';
+                $unconv_colref = $UNCONVERTED_DICT_REF->{$key};
+
+                unless ($unconv_colref) {
+                    warn "No entry found for $key\n";
+                    return;
+                }
+            }
         }
     }
 
@@ -969,17 +969,19 @@ sub lookup_part_entry {
 # derived form. Returns the spelling to use for the compound if the word is one;
 # returns undef otherwise.
 sub handle_compound {
+    # TODO Refactor this function into shorter ones
     my ($colref, $parts, $tradspell, $mapref, $maxkeylen) = @_;
     my $pos = $colref->[1];
+    my ($first_lytspel, $second_lytspel, $compound);
 
     if ($parts =~ /-/) {
         # It's a compound made of two parts (separated by '-')
         my ($first, $second) = split /-/, $parts;
         my $first_conv_colref  = lookup_part_entry $first,  $tradspell, $pos, $mapref, $maxkeylen;
         my $second_conv_colref = lookup_part_entry $second, $tradspell, $pos, $mapref, $maxkeylen;
-        my $first_lytspel  = restore_capitalization $first_conv_colref->[3], $tradspell;
-        my $second_lytspel = lc $second_conv_colref->[3];
-        my $compound       = "$first_lytspel$second_lytspel";
+        $first_lytspel  = restore_capitalization $first_conv_colref->[3], $tradspell;
+        $second_lytspel = lc $second_conv_colref->[3];
+        $compound       = "$first_lytspel$second_lytspel";
 
         # If the compound contains two stress markers, we keep just the second one
         $compound =~ s/'// if $compound =~ /'.*'/;
@@ -1022,59 +1024,99 @@ sub handle_compound {
     } else {
         # Otherwise it should be a prefixed or suffixed word (separated by '=')
         my ($first, $second) = split /=/, $parts;
+        my $stress_hint;
+        my $suffixed = 0;
 
         unless ($second) {
             warn "Invalid compound definition for $tradspell: $parts\n";
             return undef;
         }
 
-        if (exists $PREFIXES{$first}) {
-            return undef if $second =~ '^(s|ly|ist)$';  # TODO x special case: prefix-suffix combi
-            my $first_lytspel      = restore_capitalization $PREFIXES{$first}->[0], $tradspell;
-            my $stress_hint        = $PREFIXES{$first}->[1];
-            my $second_conv_colref = lookup_part_entry $second, $tradspell, $pos, $mapref,
-                $maxkeylen;
-            my $second_lytspel = lc $second_conv_colref->[3];
-            my $compound       = "$first_lytspel$second_lytspel";
-
-            if ($stress_hint eq '2') {
-                # Insert stress marker before 2nd part (unless it already contains one)
-                $compound = "$first_lytspel'$second_lytspel" unless $second_lytspel =~ /'/;
-            } elsif ($stress_hint eq 'A') {
-                # Check pronunciation to find out which part to stress
-                my $pron = $colref->[5] || $colref->[3];  # prefer PhonEng, use RP as fallback
-
-                if ($pron =~ /[$SAMPA_VOWELS].*'/) {
-                    # If a vowel occurs before the stress marker, we assume that the 2nd part is
-                    # stressed
-                    $compound = "$first_lytspel'$second_lytspel" unless $second_lytspel =~ /'/;
-                } else {
-                    $second_lytspel =~ s/'//;  # delete stress marker from 2nd part, if any
-                    $compound = "$first_lytspel$second_lytspel";
-                }
-                # TODO X For suffixes, add 'L' case
-            } else {
-                warn "Using default hint ($stress_hint) for $tradspell\n";  # TODO
-            }
-
-            # TODO Convert next three compounds
-
-            return $compound;
+        # Second may be a suffix and/or first may be a prefix
+        if (exists $SUFFIXES{$second}) {
+            # TODO Set both at once
+            $second_lytspel = $SUFFIXES{$second}->[0];
+            $stress_hint    = $SUFFIXES{$second}->[1];
+            $suffixed       = 1;
         }
 
+        if (exists $PREFIXES{$first}) {
+            $first_lytspel = restore_capitalization $PREFIXES{$first}->[0], $tradspell;
+            # If both are affixes, we use the stress hint of the suffix (e.g. ‹overly›)
+            $stress_hint   = $PREFIXES{$first}->[1] unless $stress_hint;
+        }
+
+        # The part not yet defined must be a regular entry
+        unless ($first_lytspel) {
+            my $first_conv_colref = lookup_part_entry $first, $tradspell, $pos, $mapref,
+                $maxkeylen;
+            $first_lytspel = restore_capitalization $first_conv_colref->[3], $tradspell;
+        }
+
+        if ($second =~ /^(ant|ation|ative|atory|dom|ed|ee|en|ent|er|es|ess|est|ful|ial|ian|ible|ic|ical|ify|ing|ion|ise|ish|ism|ist|ity|ive|ize|less|ly|ment|n|ness|or|ory|ous|s|ual|up|y|tic|ary|ean)$/) {
+            return undef;  # TODO x Only necessary while adding suffixes
+        }
+
+        unless ($second_lytspel) {
+            my $second_conv_colref = lookup_part_entry $second, $tradspell, $pos, $mapref,
+                $maxkeylen;
+            $second_lytspel = lc $second_conv_colref->[3];
+        }
+
+        if ($suffixed) {
+            # Suffix «el» ‹al› becomes just «l» after any of «bcdfgkpstz»
+            $second_lytspel = 'l' if $second_lytspel eq 'el' && $first_lytspel =~ /[bcdfgkpstz]$/;
+
+            # TODO x Suffixes ed/es/s need special treatment
+            # -ial after «t» merges to /tS@l/
+            # -ion after «st» merges to /tS@n/ (currently written «chen»), after «t» to /S@n/
+            # (written «tion»)
+            # -ual after «t» merges to /tSu:@l/
+
+            if ($second_lytspel =~ /^[eiy]/ && $first_lytspel =~ /c$/) {
+                # Before suffixes starting with e/i/y, final «c» becomes «k» (e.g. «trafiking»)
+                chop $first_lytspel;
+                $first_lytspel .= 'k';
+            }
+        }
+
+        $compound       = "$first_lytspel$second_lytspel";
+
+        if ($stress_hint eq '1') {
+            $second_lytspel =~ s/'//;  # delete stress marker from 2nd part, if any
+            $compound = "$first_lytspel$second_lytspel";
+        } elsif ($stress_hint eq '2') {
+            # Insert stress marker before 2nd part (unless it already contains one)
+            $compound = "$first_lytspel'$second_lytspel" unless $second_lytspel =~ /'/;
+        } elsif ($stress_hint eq 'A') {
+            # Check pronunciation to find out which part to stress
+            my $pron = $colref->[5] || $colref->[3];  # prefer PhonEng, use RP as fallback
+
+            if ($pron =~ /[$SAMPA_VOWELS].*'/) {
+                # If a vowel occurs before the stress marker, we assume that the 2nd part is
+                # stressed
+                $compound = "$first_lytspel'$second_lytspel" unless $second_lytspel =~ /'/;
+            } else {
+                $second_lytspel =~ s/'//;  # delete stress marker from 2nd part, if any
+                $compound = "$first_lytspel$second_lytspel";
+            }
+            # TODO X Add support 'L' case
+            # (ordered by frequency: 1, A, L, 2 -- at first only '1' is needed)
+            # Note: if stress changes, a schwa might become a short vowel--in that case, use it
+            # also for the base form, e.g. «telson» due to «tel'sonic» ‹telsonic›
+            # TODO x Check that prefix/suffix combis are converted correctly (no stress marker
+            # should be set, 2nd may be ‹ist, ly, s›): antis, micros, outs, overly, overs,
+            # posts, pres, semis, subs, supers
+        } else {
+            warn "Using default hint ($stress_hint) for $tradspell\n";  # TODO
+        }
+
+        return $compound;
+
         # TODO x Adapt POS heuristics for prefixed and suffixed forms; document pre|suffix.csv
-        # Replace prefix.list by prefix.csv: Trad,Pron,Stress (1: first part, 2: second part, A:
-        # ask PE; L: last syllable of first part)
-        # for word in ; do grep -i ^$word, lytspel-dict.csv; done
-        # Suffixes ed/es/s need special treatment
-        # -ial after «t» merges to /tS@l/
-        # -ion after «st» merges to /tS@n/ (currently written «chen»), after «t» to /S@n/
-        # (written «tion»)
-        # -ual after «t» merges to /tSu:@l/
-        # Note: if stress changes, a schwa might become a short vowel--in that case, use it
-        # also for the base form, e.g. «telson» due to «tel'sonic» ‹telsonic›
-        # Handle prefix/suffix combis correctly (e.g. antis)
-        # Add prefixes: ab- (e.g. abampere, 2nd part stressed)
+        # (1: first part, 2: second part, A: ask PE; L: last syllable of first part)
+        # TODO Adapt decompose to use prefix/suffix.csv instead of .list by
+        # TODO x Add prefixes: ab- (e.g. abampere, 2nd part stressed)
         # Add suffix: -otic (stressed before suffix), -ology (ditto)
         # Stress last syllable of 1st part: -meter (e.g. aerometer, electrometer, hypermeter,
         # alkalimeter), -tropism (e.g. aerotropism, geotropism, stereotropism)
@@ -1119,8 +1161,6 @@ sub handle_compound {
 # biconcave,bi-concave
 # biconcavity,bi-concavity
 # Add 'on' as prefix, e.g. ‹oncoming› should be analysed as ‹on=coming›
-
-    return undef;  # not a compound
 }
 
 # warn_unprocessed_custom_entries: Warn if there are entries in the custom.csv file not
@@ -1136,7 +1176,8 @@ sub warn_unprocessed_custom_entries {
 # convert_dict: Convert SAMPA spellings to Lytspel.
 sub convert_dict {
     my ($mapref, $maxkeylen) = build_mapping;
-    build_prefix_dict $mapref, $maxkeylen;
+    build_affix_dict 'prefix', $mapref, $maxkeylen;
+    build_affix_dict 'suffix', $mapref, $maxkeylen;
     ($UNCONVERTED_DICT_REF, $CASE_REDIRECT_REF) = build_unconverted_dict_and_case_redirects;
     my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Traditional POS Redirect Lytspel)];
 
@@ -1163,16 +1204,19 @@ sub convert_dict {
  # counterattack, counterreply, countersubject, heterocycle, lookalike, minicomputer, pinafore,
  # slugabed, standalone, tarmacadam, telerecord, turnverein, videocassette, woebegone
  # servocontrol/n, antimatter, bioscience (and derivs), inbreeding,  microchip, microprogram,
- # microreader, Microsoft, prefix
+ # microreader, Microsoft, prefix, semilegendary, subchapter, subnotebook, subroutine,
+ # supercalender, superfund, supergiant, superhero, superpower, superstar, underwriting,
+ # underwrote
  # -amine (calamine, Dramamine, hexamine, histamine), -around
  # Stress 2nd part: aerologic only, not choplogic; benediction, binocular,
  # bronchiectasis, commonsense, dextrocardia, diacetylmorphine, diazomethane, duecento,
  # echocardiogram, eftsoon, everlasting, farewell, forever, forevermore, goodbye, hemelytron,
  # hereinafter, boohoo, lambaste, mercaptopurine, methacrylate, multiparty
  # methylbenzene, methylnaphthalene, moreover, nymphomaniac, oleomargarine, penannular,
- # penultimate, penultima, phenylalanine, philhellene,
+ # penultimate, penultima, phenylalanine, philhellene, prolapse, semidemisemiquaver,
  # Rockhampton, saltpeter, sardonyx, statampere, sulfaguanidine, sulfathiazole, sympetalous,
- # synchrocyclotron, tetraethyl, throughout, uniaxial, without
+ # synchrocyclotron, tetraethyl, throughout, uniaxial, without, superconducting, superconductor,
+ # superminicomputer, underutilize
  # -aldehyde, -chemical, -chemistry, -decagon, -eastern, -forward, -metric, -phonic, -sexual,
  # -western, magneto-, mal- (except malware)
  # PE determines stress: proto-, stereo-
@@ -1189,18 +1233,26 @@ sub convert_dict {
  # make -ate a suffix spoken either «ait» or «et|it» (e.g. «dy'recteret» ‹directorate›;
  # sometimes it depends on the POS tag, e.g. ‹proportionate›)
  # TODO Add centralist (should become central=ist and centralists: centralist=s)
- # TODO Distinguish live/v: liv vs aj: lyv; livelong should become livlong; overlive: oaver'liv
+ # TODO Distinguish live/v: liv vs aj: lyv (used for livelong, overlive, unlive);
  # ‹planoconvex› should be come «planocon'vex» (from the aj)
  # TODO Unify /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter, e.g.
  # ‹solidary, temporary, voluntary›
  # TODO Add custom: involute/n, InvQlu:t (involuut), ally/v,al'aI (a'ly; should also be used in
- # ‹misally›)
+ # ‹misally›), record/n,A  (rekerd)
  # TODO Derive from intern/n: internship
  # TODO ‹quad› should probably always become «quod» rather than «quaad»
  # TODO Add stress-shifted variants (2nd/last vowel stressed): content/aj+v, concert/v,
- # preconcert/v;
- # add with 1st stressed: misfire/n
+ # preconcert/v, reflex/v, resaw/v, survey/v (also for resurvey/v), semipro/n, sublease/v,
+ # understeer/v
+ # add with 1st stressed: misfire/n, redial/n, redo/n, remit/n, replay/n
+ # TODO reincarnate: split in v+aj;
+ # Add desert/n,dez@rt  # desert (use for semidesert, desertic);
+ # subordinate/v should end in «ait» instead of «et»
+ # supersaturate: derive from saturate/v; ungallant: derive from gallant/aj;
+ # unwind: derive from wind/v
  # TODO Probably eliminate /@`/ altogether, using /@r/ instead
+ # TODO Add end-of-word spellings such as «eh» to see whether they occur
+ # TODO Document cases where the dictionary is insufficient, e.g. ‹drawer, read, subsequence›
 
         $conv_colref = convert_row $colref, $colref->[0], $mapref, $maxkeylen;
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
