@@ -288,9 +288,15 @@ sub analyze_as_suffixed_form {
         my $suffix       = substr $word, $suffix_start;
 
         if (exists $suffix_set_ref->{$suffix}) {
-            return "$stem=$suffix"
-                if exists $dict_ref->{$stem}
-                && prons_match $stem, '', $word, $dict_ref;
+            if (exists $dict_ref->{$stem} && prons_match $stem, '', $word, $dict_ref) {
+                if ($suffix eq 'an' && $stem =~ /[^e]e$/) {
+                    # Prefer 'ean' over 'an' if the stem ends in silent 'e',
+                    # e.g. ‹argentinean› become 'argentine=ean'
+                    return "$stem=ean";
+                } else {
+                    return "$stem=$suffix";
+                }
+            }
 
             # Check whether a match can be found by taking stem changes such as ‹running›
             # (run=ing), ‹judgment› (judge=ment), and ‹happiness› (happy=ness) into account
