@@ -225,19 +225,42 @@ sub prons_match {
     return $first_check_ok && $second_check_ok;
 }
 
-# analyze_as_prefixed_form $word, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len:
-# Check whether $word is the prefixed form of another word in $dict_ref.
-# Returns a result of the form "prefix=stem" if a match was found, undef otherwise.
+# valid_entry ...: Check whether an entry is valid. If checking for prefixed or suffixed
+# words, $first or $second (respectively) should be set to an empty string, otherwise
+# both should be set.
+sub valid_entry {
+    my ($word, $first, $second, $dict_ref, $blacklist1_ref, $blacklist2_ref, $whitelist_ref) = @_;
+    # Check that $first and $second (if specified) are listed in the dictionary
+    my $valid = !$first || exists $dict_ref->{$first};
+    $valid &&= !$second || $dict_ref->{$second};
+
+    unless (exists $whitelist_ref->{$word}) {
+        # Unless the whole word is whitelisted, check that none of the specified parts
+        # is blacklisted
+        $valid &&= !($first  && exists $blacklist1_ref->{$first});
+        $valid &&= !($second && exists $blacklist2_ref->{$second});
+    }
+
+    # Check that pronunciations match
+    $valid &&= prons_match $first, $second, $word, $dict_ref;
+    return $valid;
+}
+
+# analyze_as_prefixed_form ...: Check whether $word is the prefixed form of another word in
+# $dict_ref. Returns a result of the form "prefix=stem" if a match was found, undef otherwise.
 # When in doubt, longer prefixes are preferred over shorter ones.
 sub analyze_as_prefixed_form {
-    my ($word, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len) = @_;
+    my (
+        $word,           $dict_ref,       $prefix_set_ref, $min_prefix_len,
+        $max_prefix_len, $blacklist1_ref, $blacklist2_ref, $whitelist_ref
+    ) = @_;
 
     for (my $i = min($max_prefix_len, length($word) - 2) ; $i >= $min_prefix_len ; $i--) {
         my $prefix = substr $word, 0, $i;
         my $stem = substr $word, $i;
 
-        if (exists $prefix_set_ref->{$prefix} && exists $dict_ref->{$stem} && prons_match '',
-            $stem, $word, $dict_ref)
+        if (exists $prefix_set_ref->{$prefix} && valid_entry $word,
+            '', $stem, $dict_ref, $blacklist1_ref, $blacklist2_ref, $whitelist_ref)
         {
             return "$prefix=$stem";
         }
@@ -271,14 +294,16 @@ sub find_alternative_base {
     }
 }
 
-# analyze_as_suffixed_form $word, $dict_ref, $suffix_set_ref, $min_suffix_len, $max_suffix_len:
-# Check whether $word is the suffixed form of another word in $dict_ref.
-# Returns a result of the form "stem=suffix" if a match was found, undef otherwise.
+# analyze_as_suffixed_form ...: Check whether $word is the suffixed form of another word in
+# $dict_ref. Returns a result of the form "stem=suffix" if a match was found, undef otherwise.
 # When in doubt, shorter suffixes are preferred over longer ones.
 # Stem changes in words such as ‹running› (run=ing) and ‹happiness› (happy=ness) are taken into
 # account.
 sub analyze_as_suffixed_form {
-    my ($word, $dict_ref, $suffix_set_ref, $min_suffix_len, $max_suffix_len) = @_;
+    my (
+        $word,           $dict_ref,       $suffix_set_ref, $min_suffix_len,
+        $max_suffix_len, $blacklist1_ref, $blacklist2_ref, $whitelist_ref
+    ) = @_;
     my $len = length $word;
     my $max_len = min($max_suffix_len, $len - 2);
 
@@ -288,9 +313,11 @@ sub analyze_as_suffixed_form {
         my $suffix       = substr $word, $suffix_start;
 
         if (exists $suffix_set_ref->{$suffix}) {
-            if (exists $dict_ref->{$stem} && prons_match $stem, '', $word, $dict_ref) {
-                if ($suffix eq 'an' && $stem =~ /[^e]e$/) {
-                    # Prefer 'ean' over 'an' if the stem ends in silent 'e',
+            if (valid_entry $word,
+                $stem, '', $dict_ref, $blacklist1_ref, $blacklist2_ref, $whitelist_ref)
+            {
+                if ($suffix eq 'an' && $stem =~ /[^e]e$/ && exists $suffix_set_ref->{'ean'}) {
+                    # Prefer 'ean' (if listed) over 'an' if the stem ends in silent 'e',
                     # e.g. ‹argentinean› become 'argentine=ean'
                     return "$stem=ean";
                 } else {
@@ -302,10 +329,8 @@ sub analyze_as_suffixed_form {
             # (run=ing), ‹judgment› (judge=ment), and ‹happiness› (happy=ness) into account
             my $alternative_base = find_alternative_base $stem;
 
-            if (   $alternative_base
-                && exists $dict_ref->{$alternative_base}
-                && prons_match $alternative_base,
-                '', $word, $dict_ref)
+            if ($alternative_base && valid_entry $word,
+                $alternative_base, '', $dict_ref, $blacklist1_ref, $blacklist2_ref, $whitelist_ref)
             {
 
                 if (length($alternative_base) < length($stem)) {
@@ -361,16 +386,8 @@ sub check_for_better_match {
     my $new_first = substr $word, 0, $length_of_first_part;
     my $new_second = substr $word, $length_of_first_part;
 
-    if (
-           exists $dict_ref->{$new_first}
-        && exists $dict_ref->{$new_second}
-        && (exists $whitelist_ref->{$word}
-            || (!exists $blacklist1_ref->{$new_first} && !exists $blacklist2_ref->{$new_second}))
-        && prons_match $new_first,
-        $new_second,
-        $word,
-        $dict_ref
-        )
+    if (valid_entry $word,
+        $new_first, $new_second, $dict_ref, $blacklist1_ref, $blacklist2_ref, $whitelist_ref)
     {
         if ($first) {
             if (prefer_new_match $first, $second, $new_first, $new_second) {
@@ -414,9 +431,9 @@ sub find_parts {
 
     # Check whether it's a prefixed or suffixed form
     my $result = analyze_as_prefixed_form $word, $dict_ref, $prefix_set_ref, $min_prefix_len,
-        $max_prefix_len;
+        $max_prefix_len, $blacklist1_ref, $blacklist2_ref, $whitelist_ref;
     $result = analyze_as_suffixed_form $word, $dict_ref, $suffix_set_ref, $min_suffix_len,
-        $max_suffix_len
+        $max_suffix_len, $blacklist1_ref, $blacklist2_ref, $whitelist_ref
         unless $result;
 
     if ($result) {
