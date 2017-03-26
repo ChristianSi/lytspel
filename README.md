@@ -237,7 +237,7 @@ Before «r», the vowels are spelled as follows:
     speakers pronounce this in the same way as the «oar» /or/ in «board»,
     but the two sounds are distinguished in GA.
   * «orr» /Qr/ as in «sorri, to'morro» ‹sorry, tomorrow›. Note: Most GA
-    speakers pronounce this in the same way as the «or» /Or/ in «north»,
+    speakers pronounce this in the same way as the «or» /O:r/ in «north»,
     but the two sounds are distinguished in RP.
   * «oor» /Ur/ as in «poor, toor, in'shoorenss» ‹...tour, insurance›
   * «iur» /jUr/ as in «Iurep, piur, ob'skiur» ‹Europe, pure, obscure›
@@ -291,11 +291,10 @@ vowels:
     vowels. (Final /Q/ could be written «oh», but in practice it never
     seems to occur.)
   * This spelling is also used at the end of prefixes such as «baio, jio,
-    macro, mycro, nio, pro, suudo» ‹bio, geo, macro, micro, neo, pro,
-    pseudo› (even if the prefix is stressed), e.g. «baio'kemistri,
-    jio'grafic, macroico'nomic, mycrowaiv, nio'classic, pro'activ,
+    macro, mycro, nio, suudo» ‹bio, geo, macro, micro, neo, pseudo›, e.g.
+    «baio'kemistri, jio'grafic, macroico'nomic, mycrowaiv, nio'classic,
     suudosaienss» ‹biochemistry, geographic, macroeconomic, microwave,
-    neoclassic, proactive, pseudoscience›.
+    neoclassic, pseudoscience›.
   * /OI/ is spelled «oy» at the end of words and before other vowels
     (instead of «oi»), e.g. «boy, en'joy, em'ployi» ‹...enjoy, employee›.
   * /aU/ is spelled «ow» at the end of words and before other vowels
@@ -377,7 +376,7 @@ single sound or an r-colored vowel):
   * Spellings involving digraphs (such as «ch, sh, ss, ai, oa, oy, ur») and
     trigraphs (such as «arr, eer») are read from left to right: the first
     letter sequence that *can* be read as a multigraph *should* be read as
-    such, e.g. «reeel» ‹real› is read as «r-ee-e-l» /ri:@l/.
+    such, e.g. «layer» is read as «l-ay-er» /l'eI@`/.
   * In cases where the previous rule would lead to a misreading, Lytspel
     recommends inserting a hyphen to indicate the correct reading, e.g.
     «co-ope'raition» ‹cooperation›.
