@@ -852,7 +852,7 @@ sub select_nearest {
 # ‹...traditional, emotionality›.
 sub postprocess_suffixed {
     my ($converted, $base, $suffix, $pos_hint, $tradspell, $mapref, $maxkeylen) = @_;
-    # TODO x Lookup all bases, e.g. ‹emotionality› is direct from ‹emotional› which is
+    # TODO x Lookup all bases, e.g. ‹emotionality› is derived from ‹emotional› which is
     # derived from ‹emotion›.
     # To match: use List::Util 'any'; if( any { /tion$/ } @strings ) {
     my $conv_base_colref = lookup_part_entry($base, $tradspell, $pos_hint, $mapref, $maxkeylen);
@@ -873,14 +873,14 @@ sub postprocess_suffixed {
     # Otherwise define: workstations,work-stations
 
     if ($suffix =~ '^(able|ant|ative|atory)$') {
-        # For suffixes where that's possible, simply append suffix to the converted base word
+        # For suffixes where that's possible, simply append the suffix to the converted base word
         my $conv_suffix = $SUFFIXES{$suffix};
 
         # Before suffixes starting with e/i/y, final «c» becomes «k»
         # (e.g. «practikebl» ‹practicable›)
         $conv_base =~ s/c$/k/ if $conv_suffix =~ /^[eiy]/;
 
-        # If the base word ends in «ment»
+        # If the base word ends in «ment», that syllable becomes the stressed one
         if ($conv_base =~ /ment$/) {
             $conv_base =~ s/'//;
             $conv_base =~ s/ment$/'ment/;
@@ -928,7 +928,7 @@ sub postprocess_suffixed {
     #
     # Special rules:
     # * /ks/ doesn't become «x» if the /s/ starts the suffix
-    # * Likewise other combis such as «ia» in ‹agreeable›
+    # * But the second letter does change in other combis such as «ia» in ‹agreeable›
     # * «tion» and «sion» aren't used in -n/-en suffixed words,
     #   e.g «ashen, freshen, Rushan, Purzhan»
     # * Suffix «ful» remains unchanged (not "fl")
@@ -939,7 +939,7 @@ sub postprocess_suffixed {
     # * «el» ‹al› becomes just «l» after any of «bcdfgkpstz»
     # * ed/es/s
     # * -ial after «t» merges to /tS@l/
-    # * -ion after «st» merges to /tS@n/ (currently written «chen»), after «t» to /S@n/
+    # * -ion after «st» merges to /tS@n/ (written «chen»), after «t» to /S@n/
     #   (written «tion»)
     # * -ual after «t» merges to /tSu:@l/
     #
@@ -948,8 +948,8 @@ sub postprocess_suffixed {
     # * if stress changes, a schwa might become a short vowel--in that case, use it
     #   also for the base form, e.g. «telson» due to «tel'sonic» ‹telsonic›
     #
-    # TODO x Document main word+suffix combis such as: ‹doable› «duebl» (not duabl),
-    # ‹pitiable› «pitieble» (not pitiabl)
+    # TODO x Document (if/when applicable) main word+suffix combis such as:
+    # ‹doable› «duebl» (not duabl), ‹pitiable› «pitieble» (not pitiabl)
 
     return $converted;
 }
@@ -1003,7 +1003,7 @@ sub convert_row {
         my $base     = $1;
         my $suffix   = $2;
         my $pos_hint = $colref->[1];
-        $converted = postprocess_suffixed $converted, $base, $suffix, $pos_hint, $tradspell,
+        $converted   = postprocess_suffixed $converted, $base, $suffix, $pos_hint, $tradspell,
             $mapref, $maxkeylen;
     }
 
