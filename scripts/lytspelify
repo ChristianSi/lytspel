@@ -44,7 +44,7 @@ my %STRESS_AFTER = map { $_ => 1 } qw/arch best chemo con crypt crypto dynamo eg
 
 # Stress the second part of a compound if listed here
 my %STRESS_IF_SECOND = map { $_ => 1 } qw/air angular basic centric east eastward eastwards ever
-    genesis genic graphic logic metric optic phobia phobic self selves therapy teen tropic west
+    genesis genic graphic logic metric optic phobia phobic self selves therapy tropic west
     westward westwards/;
 
 # If the first part of a compound is listed here, either part may be stressed (we check
@@ -453,10 +453,11 @@ sub insert_stress_marker_among_multiple_consonants {
     # ‹instruction, conversazione›
     return insert_at_start $consonants if $consonants =~ /^(s=t=r|t=s=y)$/;
 
-    # Break after second consonant, e.g. «ump'teen, Pyonj'yang, Burg'soanian, poast'limeni,
-    # Fits'patric» ‹umpteen, Pyongyang, Bergsonian, postliminy, Fitzpatrick›
+    # Break after second consonant, e.g. «temp'taition, Pyonj'yang, pont'leviss,
+    # Burg'soanian, poast'limeni, Fits'patric» ‹temptation, Pyongyang, pontlevis,
+    # Bergsonian, postliminy, Fitzpatrick›
     return insert_after_second $consonants
-        if $consonants =~ /^(m=p=t|n=j=y|r=g=s|s=t=l|t=s=[jpr])$/;
+        if $consonants =~ /^(m=p=t|n=j=y|n=t=l|r=g=s|s=t=l|t=s=[jpr])$/;
 
     # Otherwise break after first of three consonants, or after second of four
     return insert_after_first $consonants if $sep_count == 2;
@@ -497,8 +498,9 @@ sub insert_stress_marker {
         || ($consonants eq 'c=l' && $tradspell =~ /^Ma?cL/i)
         || ($consonants eq 'p=l' && $tradspell =~ /^popl/i);
 
-    # Break before both consonants if the first is 's' or if the second is 'l' or 'r'
-    return insert_at_start $consonants if $consonants =~ /^s=|=[lr]$/;
+    # Break before both consonants if the first is 's' (not followed by 'm')
+    # or if the second is 'l' or 'r' (not preceded by 'r')
+    return insert_at_start $consonants if $consonants =~ /^s=[^m]|[^r]=[lr]$/;
 
     # Otherwise break in middle
     return insert_after_first $consonants;
@@ -510,6 +512,9 @@ sub move_stress_marker {
     my ($word, $tradspell) = @_;
 
     return $word unless $word =~ /'/;  # Nothing to do
+
+    # If the compound contains two stress markers, we keep just the first one
+    $word =~ s/('.*)'/$1/ if $word =~ /'.*'/;
 
     if ($word =~ /(.*?)($LYTSPEL_CONSONANT*)'/) {
         my $pre_match                = $1;
@@ -742,6 +747,7 @@ sub unify_sound {
     my $rp_elem_count = scalar @rp_split;
 
     unless ($rp_elem_count == scalar @ga_split) {
+        # TODO Disable this warning for the handful of known cases
         warn "Note: Cannot unify $tradspell pronouncations re $alt1/$alt2\n"
             unless $suppress_warning;
         return $rp, $ga, $phoneng;
@@ -852,27 +858,31 @@ sub select_nearest {
 # ‹...traditional, emotionality›.
 sub postprocess_suffixed {
     my ($converted, $base, $suffix, $pos_hint, $tradspell, $mapref, $maxkeylen) = @_;
+    # Some suffixes are always derived from verbs
+    $pos_hint ||= 'v' if $suffix =~ /^(able|ing)$/;
     # TODO x Lookup all bases, e.g. ‹emotionality› is derived from ‹emotional› which is
     # derived from ‹emotion›.
     # To match: use List::Util 'any'; if( any { /tion$/ } @strings ) {
     my $conv_base_colref = lookup_part_entry($base, $tradspell, $pos_hint, $mapref, $maxkeylen);
     my $conv_base = restore_capitalization $conv_base_colref->[3], $tradspell;
 
-    # TODO x udiff lytspel-dict.csv.old lytspel-dict.csv from emendatory
-    # NC: condemnatory, damnatory, donatory
+    # TODO x udiff lytspel-dict.csv.old lytspel-dict.csv from carpeting
+    # Blacklist brut
 
-    # consolatory,console=atory
-    # crematory,cremate=ory
+    # assured,assure=ed
+    # assuring,assure=ing
 
-    # Stress-shifted: console (also basis for consolatory)
+    # assure,P
+    # brut,P
+
+    # addict/v: use P
 
     # TODO x Try for which suffixes it's possible to simply append the converted suffix to the
-    # converted base; candidates: atory, dom, ed, en, ent, er, ess,
-    # est, es, ful, ing, ise, ish, ism, ist, ive, ize, less, ly, ment, ness, n, or, ory, ous,
-    # s, up, y; maybe also ation, ee (stressed)
+    # converted base; candidates: ed, es, ise, ish, ism, ist, ive, ize, less, ly, ment,
+    # ness, n, or, ory, ous, s, up, y; maybe also ation, ee (stressed)
     # Otherwise define: workstations,work-stations
 
-    if ($suffix =~ '^(able|ant|ative|atory)$') {
+    if ($suffix =~ /^(able|ant|ative|atory|dom|en|ent|er|ess|est|ful|ing)$/) {
         # For suffixes where that's possible, simply append the suffix to the converted base word
         my $conv_suffix = $SUFFIXES{$suffix};
 
@@ -880,15 +890,21 @@ sub postprocess_suffixed {
         # (e.g. «practikebl» ‹practicable›)
         $conv_base =~ s/c$/k/ if $conv_suffix =~ /^[eiy]/;
 
-        # If the base word ends in «ment», that syllable becomes the stressed one
-        if ($conv_base =~ /ment$/) {
+        # Final «ment» becomes stressed before some suffixes
+        if ($conv_base =~ /ment$/ && $suffix =~ /^(able|ative)$/) {
             $conv_base =~ s/'//;
             $conv_base =~ s/ment$/'ment/;
         }
 
+        # An additional /g/ might become audible between final /N/ and some suffixes
+        # (e.g. «longger, stronggest» ‹longer, strongest›)
+        if ($suffix =~ /^(er|est)$/ && $conv_base =~ /ng$/ && $converted =~ /ngg$conv_suffix$/) {
+            $conv_suffix = "g$conv_suffix";
+        }
+
         return "$conv_base$conv_suffix";
 
-        # TODO Implement and document: «e» /@/ at start of suffixes after certain vowels
+        # TODO Possibly implement and document: «e» /@/ at start of suffixes after certain vowels
         # becomes «a», otherwise suffixed and basic words would be spelled inconsistently
         # (e.g. ‹variant› vs. ‹euphoriant›)
     }
@@ -950,6 +966,8 @@ sub postprocess_suffixed {
     #
     # TODO x Document (if/when applicable) main word+suffix combis such as:
     # ‹doable› «duebl» (not duabl), ‹pitiable› «pitieble» (not pitiabl)
+    # TODO Probably restore omitted pre-final schwa before suffixes starting with a vowel, e.g
+    # «lybeler» ‹libeler› from «lybl» ‹libel›
 
     return $converted;
 }
@@ -1003,7 +1021,7 @@ sub convert_row {
         my $base     = $1;
         my $suffix   = $2;
         my $pos_hint = $colref->[1];
-        $converted   = postprocess_suffixed $converted, $base, $suffix, $pos_hint, $tradspell,
+        $converted = postprocess_suffixed $converted, $base, $suffix, $pos_hint, $tradspell,
             $mapref, $maxkeylen;
     }
 
@@ -1024,15 +1042,24 @@ sub lookup_part_entry {
     my $unconv_colref = $UNCONVERTED_DICT_REF->{$key};
 
     unless ($unconv_colref) {
-        # Must be a POS-tagged word -- use the provided $pos_hint or else some heuristics to pick
-        # the correct POS tag use. We 'v' as default POS tag, since it's the most frequent one.
+        # Must be a POS-tagged word -- use the provided $pos_hint or else 'v', since it's the
+        # most frequent POS tag
         my $pos = $pos_hint || 'v';
-        # Most words ending in -ate are adjectives (e.g. ‹agglutinate›)
-        $pos = 'aj' if $part =~ /ate$/ && !$pos_hint && $tradspell !~ /(able|^predesignate)$/;
-        $pos = 'n'
-            if $part =~ /^(house|lead|transfer|transfer|wind)$/
-            && !$pos_hint
-            && $tradspell !~ /(able|^fairlead|^mislead)$/;
+
+        # Some heuristics to pick the correct POS tag use
+        unless ($pos_hint) {
+            # TODO Remove unnecessary parts (such as able, ing)
+            # Most words ending in -ate are adjectives (e.g. ‹agglutinate›).
+            # Most ‹close...› combinations use the adjective.
+            $pos = 'aj'
+                if ($part =~ /ate$/ && $tradspell !~ /(able|^predesignate)$/)
+                || ($part eq 'close' && $tradspell !~ /^close(down|out|ing|d|s)$|.close$/);
+            $pos = 'n'
+                if ($part =~ /^(house|lead|transfer|transfer|wind)$/
+                && $tradspell !~ /(able|^${part}e?r|^fairlead|^mislead)$/)
+                || $tradspell eq 'rebeldom';
+        }
+
         $key = gen_key $part, $pos;
         $unconv_colref = $UNCONVERTED_DICT_REF->{$key};
 
@@ -1148,6 +1175,7 @@ sub handle_compound {
         # The part not yet defined must be a regular entry
         unless ($first_lytspel) {
             my $first_conv_colref = lookup_part_entry $first, $tradspell, $pos, $mapref, $maxkeylen;
+            die "Part $first not found while processing $tradspell\n" unless $first_conv_colref;
             $first_lytspel = restore_capitalization $first_conv_colref->[3], $tradspell;
         }
 
@@ -1156,6 +1184,7 @@ sub handle_compound {
             # of prefix='able' combinations such as 'unable'
             my $second_conv_colref = lookup_part_entry $second, $tradspell, $pos, $mapref,
                 $maxkeylen;
+            die "Part $second not found while processing $tradspell\n" unless $second_conv_colref;
             $second_lytspel = lc $second_conv_colref->[3];
         }
 
@@ -1301,12 +1330,6 @@ sub convert_dict {
  # -aldehyde, -chemical, -chemistry, -decagon, -eastern, -forward, -metric, -phonic, -sexual,
  # -western, magneto-, mal- (except malware)
  # PE determines stress: proto-, stereo-
- # TODO «sm» should be divided in the middle, e.g. «antas'matic» ‹antasthmatic›;
- # ditto «rl», e.g. «bur'leta» ‹burletta›
- # and «st»
- # Fix stress marker: Chinnky'ang -> Chinn'kyang ('y' before a vowel is a consonant);
- # find out why the marker is «Sheen'ing» ‹Sining› is misplaced; ‹pontlevis› should become
- # «pont'leviss», not pon'tleviss
  # TODO Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
  # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
  # ‹monosyllabicity›
@@ -1325,16 +1348,22 @@ sub convert_dict {
  # TODO ‹quad› should probably always become «quod» rather than «quaad»
  # TODO Add stress-shifted variants (2nd/last vowel stressed): content/aj+v, concert/v,
  # preconcert/v, reflex/v, resaw/v, survey/v (also for resurvey/v), semipro/n, sublease/v,
- # understeer/v, ferment/v
+ # understeer/v, ferment/v, console/v (also basis for consolatory),
+ # interupt/v (also for interrupter)
  # add with 1st stressed: misfire/n, redial/n, redo/n, remit/n, replay/n
  # TODO reincarnate: split in v+aj;
- # Add desert/n,dez@rt  # desert (use for semidesert, desertic);
+ # Add desert/n,dez@rt  # desert (use for semidesert, desertic),
+ # mouse/v: m'aUz (also use for mouser), mouth/v: use P (also for mouther)
  # subordinate/v should end in «ait» instead of «et»
  # supersaturate: derive from saturate/v; ungallant: derive from gallant/aj;
  # unwind: derive from wind/v
+ # TODO Maybe try switching «or» and «oar» (check whether that improves visual similarity)
+ # TODO Maybe eliminate «c» spelling for /s/ (using «ss» instead), since it causes
+ # inconsistencies with suffixes starting with a schwa after final /s/
  # TODO Probably eliminate /@`/ altogether, using /@r/ instead
  # TODO Add end-of-word spellings such as «eh» to see whether they occur
- # TODO Document cases where the dictionary is insufficient, e.g. ‹drawer, read, subsequence›
+ # TODO Document cases where the dictionary is insufficient, e.g. ‹drawer, read, subsequence,
+ # tier, berlin, closer›
 
         $conv_colref = convert_row $colref, $colref->[0], $mapref, $maxkeylen;
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
@@ -1344,7 +1373,10 @@ sub convert_dict {
         # TODO Handle most frequent pre- and suffixes in converter rather than dict
         # (also creating a compact version of the dict where they are dropped, after
         # making sure that the converter will indeed lead to the same results)
-        # TODO decompose: make some of the most frequently used variables global
+        # TODO Use objects instead of anyonymous arrays; use a global object instead of global
+        # variables (also for decompose and maybe elsewhere)
+        # TODO switch to a single populate_dict_from_csv method with create_key and create_value
+        # callbacks (all files)
     }
 
     close $outfh;
