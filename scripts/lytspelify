@@ -858,31 +858,109 @@ sub select_nearest {
 # ‹...traditional, emotionality›.
 sub postprocess_suffixed {
     my ($converted, $base, $suffix, $pos_hint, $tradspell, $mapref, $maxkeylen) = @_;
-    # Some suffixes are always derived from verbs
-    $pos_hint ||= 'v' if $suffix =~ /^(able|ing)$/;
+    # Some suffixes are usually derived from a certain POS tag
+    $pos_hint ||= 'aj' if $suffix =~ /^(ize|ly)$/;
+    $pos_hint ||= 'n'  if $tradspell =~ /^(internist|presentist|progressist)$/ || $suffix eq 'less';
+    $pos_hint ||= 'v'  if $suffix =~ /^(able|ing)$/;
     # TODO x Lookup all bases, e.g. ‹emotionality› is derived from ‹emotional› which is
     # derived from ‹emotion›.
     # To match: use List::Util 'any'; if( any { /tion$/ } @strings ) {
     my $conv_base_colref = lookup_part_entry($base, $tradspell, $pos_hint, $mapref, $maxkeylen);
     my $conv_base = restore_capitalization $conv_base_colref->[3], $tradspell;
 
-    # TODO x udiff lytspel-dict.csv.old lytspel-dict.csv from carpeting
-    # Blacklist brut
+    # TODO x udiff lytspel-dict.csv.old lytspel-dict.csv from Sabbatically
+    # Generally derive -ly from aj
+    # cleanly,aj should remain clenli
+    # compassionate/aj as basis for compassionately (not v)
+    # inversely from v (not n)
 
-    # assured,assure=ed
-    # assuring,assure=ing
+    # Bailly
+    # beautiful,beauty=ful
+    # bountiful,bounty=ful
+    # dutiful,duty=ful
+    # fanciful,fancy=ful
+    # merciful,mercy=ful
+    # plentiful,plenty=ful
+    # sprightful,sprite=ful
+    # bialy
+    # crumbly,crumble=y
+    # daffodilly
+    # dally
+    # dillydally
+    # Lely
+    # loathful,loathe=ful
+    # loathing,loathe=ing
+    # loathsome,loathe-some
+    # Philly
+    # polly
+    # rally
 
-    # assure,P
-    # brut,P
-
-    # addict/v: use P
+    # abstracted,A
+    # adequate,'ad@kwIt
+    # angulate,'aNgjUleIt  # anggyulait
+    # ungulate,'VNgjUleIt  # unggyulait
+    # auroral,O:r'or@l  # o'roarel
+    # Bailly,D
+    # barbarous,P
+    # bialy,P
+    # biannual,B  # bai'aniuel
+    # bifurcate,B
+    # bronchial,br'QNki:@l  # bronkial
+    # centrifugal,sEntr'Ifj@g@l  # sen'trifyugl
+    # centripetal,P  # sen'tripitl
+    # coeval,P
+    # comatose,P  # coamatoass
+    # compartmental,kQmpArtm'Ent@l  # compart'mentl
+    # connotative,P
+    # consequential,B  # conse'quenshel
+    # contracted,A  # con'tracted
+    # corporal,P  # corperel
+    # deuce,d'U:s  # duess
+    # dialectal,P
+    # directorial,dIrIkt'orI@l  # direc'toarial
+    # diurnal,P
+    # doctrinal,d'QktrIn@l  # doctrenel
+    # educational,P  # ejoo'caitionel
+    # effusive,B
+    # epochal,'EpQk@l  # epokl
+    # ethology,B  # ee'tholeji
+    # ethological,B  # eetho'lojicl
+    # exalt,P
+    # farcical,A
+    # fulsome,P
+    # imbecile,'Imb@sIl  # imbecil
+    # immaculate,Im'akj@lIt  # i'makyulit
+    # impious,P
+    # imprecise,B  # impri'cyss
+    # adequate,'ad@kwIt  # adequit
+    # insouciant,Ins'u:si:@nt  # in'soosiant
+    # larcenous,A
+    # leisure,A
+    # Lely,D
+    # miraculous,mIr'akj@l@s  # mi'rakyuluss
+    # pachydermatous,P
+    # penetrate,B  # penitrait
+    # pharmacological,fAmra#k@l'QdZIk@l  # farmaco'lojicli
+    # phraseological,P  # fraisi'lojiclli
+    # phraseology,freIzi:'Ql@dZi  # fraisi'soleji
+    # phytogeographical,P  # fytoajio'graficl
+    # phytogeography,P     # fytoaji'ogrefi
+    # piratical,P
+    # presumptive,prIz'VmptIv  # pri'sumptiv
+    # promiscuous,B
+    # rascal,B
+    # recessive,B
+    # reflexive,B
 
     # TODO x Try for which suffixes it's possible to simply append the converted suffix to the
-    # converted base; candidates: ed, es, ise, ish, ism, ist, ive, ize, less, ly, ment,
+    # converted base; candidates: ed, es, , ment,
     # ness, n, or, ory, ous, s, up, y; maybe also ation, ee (stressed)
     # Otherwise define: workstations,work-stations
 
-    if ($suffix =~ /^(able|ant|ative|atory|dom|en|ent|er|ess|est|ful|ing)$/) {
+    # TODO Eliminate regex
+    if ($suffix =~
+        /^(able|ant|ative|atory|dom|en|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly)$/)
+    {
         # For suffixes where that's possible, simply append the suffix to the converted base word
         my $conv_suffix = $SUFFIXES{$suffix};
 
@@ -898,7 +976,10 @@ sub postprocess_suffixed {
 
         # An additional /g/ might become audible between final /N/ and some suffixes
         # (e.g. «longger, stronggest» ‹longer, strongest›)
-        if ($suffix =~ /^(er|est)$/ && $conv_base =~ /ng$/ && $converted =~ /ngg$conv_suffix$/) {
+        if (   $suffix =~ /^(er|est|ish)$/
+            && $conv_base =~ /ng$/
+            && $converted =~ /ngg$conv_suffix$/)
+        {
             $conv_suffix = "g$conv_suffix";
         }
 
@@ -1057,7 +1138,7 @@ sub lookup_part_entry {
             $pos = 'n'
                 if ($part =~ /^(house|lead|transfer|transfer|wind)$/
                 && $tradspell !~ /(able|^${part}e?r|^fairlead|^mislead)$/)
-                || $tradspell eq 'rebeldom';
+                || $tradspell =~ /^(internship|rebeldom)$/;
         }
 
         $key = gen_key $part, $pos;
@@ -1326,7 +1407,8 @@ sub convert_dict {
  # penultimate, penultima, phenylalanine, philhellene, prolapse, semidemisemiquaver,
  # Rockhampton, saltpeter, sardonyx, statampere, sulfaguanidine, sulfathiazole, sympetalous,
  # synchrocyclotron, tetraethyl, throughout, uniaxial, without, superconducting, superconductor,
- # superminicomputer, underutilize, methylal
+ # superminicomputer, underutilize, methylal, counteract, counterbalance/v
+ # (also counterbalancing etc.)
  # -aldehyde, -chemical, -chemistry, -decagon, -eastern, -forward, -metric, -phonic, -sexual,
  # -western, magneto-, mal- (except malware)
  # PE determines stress: proto-, stereo-
@@ -1349,11 +1431,12 @@ sub convert_dict {
  # TODO Add stress-shifted variants (2nd/last vowel stressed): content/aj+v, concert/v,
  # preconcert/v, reflex/v, resaw/v, survey/v (also for resurvey/v), semipro/n, sublease/v,
  # understeer/v, ferment/v, console/v (also basis for consolatory),
- # interupt/v (also for interrupter)
+ # interupt/v (also for interrupter etc.), collect/v (also for collecting etc.)
  # add with 1st stressed: misfire/n, redial/n, redo/n, remit/n, replay/n
  # TODO reincarnate: split in v+aj;
  # Add desert/n,dez@rt  # desert (use for semidesert, desertic),
- # mouse/v: m'aUz (also use for mouser), mouth/v: use P (also for mouther)
+ # mouse/v: m'aUz (also use for mouser), mouth/v: use P (also for mouther),
+ # addict/v, commune/v, insult/v: use P
  # subordinate/v should end in «ait» instead of «et»
  # supersaturate: derive from saturate/v; ungallant: derive from gallant/aj;
  # unwind: derive from wind/v
@@ -1362,8 +1445,8 @@ sub convert_dict {
  # inconsistencies with suffixes starting with a schwa after final /s/
  # TODO Probably eliminate /@`/ altogether, using /@r/ instead
  # TODO Add end-of-word spellings such as «eh» to see whether they occur
- # TODO Document cases where the dictionary is insufficient, e.g. ‹drawer, read, subsequence,
- # tier, berlin, closer›
+ # TODO Document cases where the dictionary is insufficient, e.g. ‹bass, drawer, read,
+ # subsequence, tier, berlin, closer›
 
         $conv_colref = convert_row $colref, $colref->[0], $mapref, $maxkeylen;
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
