@@ -376,14 +376,16 @@ single sound or an r-colored vowel):
   * Spellings involving digraphs (such as «ch, sh, ss, ai, oa, oy, ur») and
     trigraphs (such as «arr, eer») are read from left to right: the first
     letter sequence that *can* be read as a multigraph *should* be read as
-    such, e.g. «layer» is read as «l-ay-er» /l'eI@`/.
+    such; e.g. «dueel» ‹dual *or* duel› is read as «d-ue-e-l» (/dj'u:@l/ or
+    /d'u:@l/), «layer» is read as «l-ay-er» (/l'eI@`/).
   * In cases where the previous rule would lead to a misreading, Lytspel
     recommends inserting a hyphen to indicate the correct reading, e.g.
     «co-ope'raition» ‹cooperation›.
   * Multigraphs ending in «r» may be interrupted by a stress marker before
     the final «r» and are still read as multigraphs, e.g. «co-ope'raition,
-    hor'rific» ‹cooperation, horrific›. However, other multigraphs are never
-    interrupted by a stress marker, hence in such cases a stress marker has
+    hor'rific» ‹cooperation, horrific›. The multigraph «ss» is broken in
+    the middle, e.g. «as'sumption» ‹assumption›. Other multigraphs are
+    never interrupted by a stress marker, hence in such cases a marker has
     the same effect as a hyphen: it indicates that the letters to the left
     and to the right of it should be read in isolation, e.g. «co'operait»
     ‹cooperate›.
