@@ -269,6 +269,13 @@ sub analyze_as_prefixed_form {
     return undef;
 }
 
+# valid_suffix $stem, $suffix: Check whether a suffix is valid. It's not if it has just a
+# single letter and would split a final double letter (such as ‹nn› or ‹ss›) in half.
+sub valid_suffix {
+    my ($stem, $suffix) = @_;
+    return length($suffix) != 1 || substr($stem, -1) ne $suffix;
+}
+
 # find_alternative_base $stem: Return an alternative base form of $stem. Generates one of the
 # following alternatives:
 #
@@ -313,8 +320,13 @@ sub analyze_as_suffixed_form {
         my $suffix       = substr $word, $suffix_start;
 
         if (exists $suffix_set_ref->{$suffix}) {
-            if (valid_entry $word,
-                $stem, '', $dict_ref, $blacklist1_ref, $blacklist2_ref, $whitelist_ref)
+            if (
+                valid_entry(
+                    $word,           $stem,           '', $dict_ref,
+                    $blacklist1_ref, $blacklist2_ref, $whitelist_ref
+                )
+                && valid_suffix($stem, $suffix)
+                )
             {
                 if ($suffix eq 'an' && $stem =~ /[^e]e$/ && exists $suffix_set_ref->{'ean'}) {
                     # Prefer 'ean' (if listed) over 'an' if the stem ends in silent 'e',
