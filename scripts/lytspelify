@@ -471,8 +471,11 @@ sub insert_stress_marker {
     my ($consonants, $hyphenated, $tradspell) = @_;
     my $just_consonants = $consonants =~ s/=//gr;
 
-    # Move stress marker before whole consonant sequence
-    return insert_at_start $consonants if $hyphenated =~ /=$just_consonants/;
+    # Move stress marker before whole consonant sequence (second is a special case, for
+    # consistency with ‹respire›)
+    return insert_at_start $consonants
+        if $hyphenated =~ /=$just_consonants/
+        || $tradspell =~ '^respir';
 
     # Break after 'ns', if $hyphenated confirms that or $tradspell contains 'trans'
     # (followed by ca|g|l|n|v)
@@ -860,242 +863,34 @@ sub select_nearest {
 sub postprocess_suffixed {
     my ($converted, $base, $suffix, $pos_hint, $tradspell, $mapref, $maxkeylen) = @_;
     # Some suffixes are usually derived from a certain POS tag
-    $pos_hint ||= 'v' if $tradspell eq 'inversely' || $suffix =~ /^(able|ing|or)$/;
+    $pos_hint ||= 'v' if $tradspell eq 'inversely' || $suffix =~ /^(able|ed|ing|or)$/;
     $pos_hint ||= 'aj' if $suffix =~ /^(ize|ly)$/;
     $pos_hint ||= 'n'
         if $tradspell =~ /^(internist|presentist|progressist)$/
         || $suffix =~ /^(ful|less)$/;
     # TODO x Lookup all bases, e.g. ‹emotionality› is derived from ‹emotional› which is
-    # derived from ‹emotion›.
+    # derived from ‹emotion›, or ‹expression=ist=ic› (the former is autoconverted, but not
+    # the latter).
     # To match: use List::Util 'any'; if( any { /tion$/ } @strings ) {
     my $conv_base_colref = lookup_part_entry($base, $tradspell, $pos_hint, $mapref, $maxkeylen);
     my $conv_base = restore_capitalization $conv_base_colref->[3], $tradspell;
 
-    # TODO x [udiff lytspel-dict.csv.old lytspel-dict.csv from ]
-    # accentor
-    # adorn
-    # agon
-    # altern
-    # appellor
-    # Arian
-    # ashen,ash=en
-    # atman
-    # alternate,altern-ate
-    # Auden
-    # Audion
-    # Bangor
-    # barretor
-    # banian
-    # Biden
-    # Bingen
-    # thorn
-    # born
-    # Brahman
-    # brawn
-    # Brendan
-    # brown
-    # Bunyan
-    # callan
-    # capitan
-    # censor
-    # Chian
-    # clown
-    # colon
-    # coon
-    # cozen
-    # crampoon
-    # poon
-    # cruor
-    # cursor
-    # Darlan
-    # dawn
-    # Deccan
-    # modulate
-    # dogman,dog-man
-    # drawn
-    # Duran
-    # durgan
-    # Eden
-    # motor
-    # environ
-    # fawn
-    # fellate
-    # firn
-    # flawn
-    # flown
-    # fossor
-    # Friedan
-    # frown
-    # Galen
-    # gladiator
-    # goon
-    # moon
-    # Hansen
-    # Hathor
-    # Hellen
-    # Herman
-    # ichor
-    # kain
-    # Kansan
-    # kirn
-    # kronor
-    # Lauren
-    # lawn
-    # legator
-    # coleopteran
-    # hymenopteran
-    # lepidopteran
-    # lessor
-    # livor
-    # loden
-    # longan
-    # loon
-    # lorn
-    # lown
-    # Lucian
-    # Luxor
-    # malayan,malay=an
-    # Marian
-    # mirror
-    # Moran
-    # norman
-    # Ossian
-    # Owen
-    # paten
-    # patrician
-    # pawn
-    # pean
-    # receptor
-    # platen
-    # poon
-    # porn
-    # prior
-    # Pryor
-    # quintan
-    # ratan
-    # receptor
-    # roman
-    # rouen
-    # rowen
-    # Ruben
-    # scorn
-    # serran
-    # shawn
-    # solan
-    # solen
-    # sorn
-    # Staten
-    # strontian
-    # successor
-    # Sumerian
-    # Susan
-    # sylvan
-    # tertian
-    # toon
-    # trudgen
-    # vegan
-    # warrantor
-    # yawn
-    # zaman
+    # TODO x udiff lytspel-dict.csv.old lytspel-dict.csv from jellied
+    # TODO «es» after sibilants: ([jsz]|[csz]h)$
 
-    # accentor,P
-    # agon,P
-    # altern,'O:lt@`n
-    # Auden,D
-    # Austronesia,P
-    # barretor,P  # nc
-    # banian,P
-    # Biden,D
-    # Boeotia,P
-    # Bunyan,D
-    # carburet,P
-    # Chechnya,P
-    # Circassian,P
-    # coleoptera,koUli:'Qpt@`@
-    # contribute,P
-    # Crimea,P
-    # Darlan,D
-    # Deccan,P
-    # modulate,m'Qj@leIt  # mojulait
-    # Duran,D
-    # Durga,P
-    # fellate,f@l'eIt
-    # firn,f'i:rn
-    # Francisca,P
-    # Friedan,D
-    # dictate,d'IkteIt
-    # Gargantua,P
-    # Hansen,P
-    # hymenoptera,P
-    # impropriate,P
-    # infusoria,B  # infius'soaria
-    # Kansan,P
-    # krone,P
-    # kronor,kr'oUnO:r  # croanor
-    # Laodicea,leIQdIs'i:@
-    # lepidoptera,P
-    # orthopteran,O:rT'Qpt@`@n
-    # homopteran,P
-    # neurilemma,nU:r@l'Em@  # nueri'lema
-    # neuropteran,nU:r'Qpt@r@n  # nue'ropteren
-    # Lycian,P
-    # maya,P
-    # Moldova,mO:ld'oUv@  # Maul'doava
-    # Nicaragua,P
-    # ossia,P
-    # Phoenicia,P
-    # Phrygia,P
-    # select,B
-    # prosecute,B
-    # Pryor,D
-    # purvey,P
-    # Quechua,P
-    # quinta,k'i:ntA  # keentaa
-    # ratan,P
-    # receptor,A
-    # recuperate,rIk'U:p@`reIt
-    # rosaria,roUz'e@i:@
-    # rosarium,P
-    # rouen,P
-    # roue,P
-    # rowe,D
-    # Rwanda,rU'And@
-    # Sarmatia,P
-    # sequestrate,P
-    # serran,D
-    # solan,P
-    # Sonora,s@n'O:r@
-    # strontian,P
-    # sumatra,P
-    # Sumeria,D
-    # vegan,B
-    # Zama,P
-    # zaman,P
-
-  # Use -en for d/j/l/th: ‹laden, largen, widen›, wreathen; otherwise:
-  # stolen,stole=en
-  # sweden,swede=en
-  # Final «o» should become «oa» before the suffix «n» (and others?), e.g. «soan» ‹sewn›
-  # from «so» ‹sew›; maybe likewise «uu» etc.
-  # 1st stressed: infiltrate, insufflate
-  # 2nd stressed: protozoa, subaltern
-  # defect/v: P
-  # 2nd stressed: adduct/v (also for adductor)
-  # curate/n: kj'UrIt, v: kjUr'eIt (also for curator)
-
-    # alternate/aj+n: 'O:lt@`nIt, v: 'O:lt@`neIt
-    # appropriate/aj: a#pr'oUpri:It, v: a#pr'oUpri:eIt (also for appropriator)
-    # Document that marker-free variant is preferred in doubt, e.g. «dictaiter» ‹dictator›
-    # instead of "dic'taiter"
+    # TODO Maybe try the rule: final «ss» after consonant (except /f, k, p, t, T/) is changed
+    # back to «s», while final «s» is changed to «z» in this case (probably only before
+    # vowels or before vowel-only suffixes such as ‹y›, or maybe just in those cases where
+    # confusion is possible).
 
     # TODO x Try for which suffixes it's possible to simply append the converted suffix to the
-    # converted base; candidates: ed, es, ory, ous, s, up, y
+    # converted base; candidates: es, s
     # Otherwise define: workstations,work-stations
 
     # TODO Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if ($suffix =~
-/^(able|ant|ative|atory|dom|en|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|n|or)$/
+/^(able|ant|ative|atory|dom|en|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|n|or|up|y|ed)$/
         )
     {
         my $conv_suffix = $SUFFIXES{$suffix};
@@ -1103,6 +898,9 @@ sub postprocess_suffixed {
         # Before suffixes starting with e/i/y, final «c» becomes «k»
         # (e.g. «practikebl» ‹practicable›)
         $conv_base =~ s/c$/k/ if $conv_suffix =~ /^[eiy]/;
+
+        # «d» (past tense) becomes «ed» after «d, t»
+        $conv_suffix = 'ed' if $conv_suffix eq 'd' && $conv_base =~ /[dt]$/;
 
         # Final «ment» becomes stressed before some suffixes
         if ($conv_base =~ /ment$/ && $suffix =~ /^(able|ative)$/) {
@@ -1126,8 +924,28 @@ sub postprocess_suffixed {
             $conv_base =~ s/tys$/'tys/;
         }
 
-        # Suffix «n» becomes «en» after some consonants
-        $conv_suffix = 'en' if $conv_suffix eq 'n' && $conv_base =~ /[kpstv]$/;
+        if ($conv_suffix eq 'n') {
+            # Suffix «n» becomes «en» after some consonants
+            $conv_suffix = 'en' if $conv_base =~ /[djkhlpstv]$/;
+        # TODO Maybe use these spellings also before «d/s», cf. below
+        # TODO x (cf. also above) likewise
+        # «oa» ([^o]o), e.g. «bi'stoad» ‹bestowed›; and «uu» ([^i]u), e.g. «buud, bruud»
+        # ‹booed, brewed›; likewise before «s/es» and possibly «n»
+        # To prevent confusion, final «o» /oU/ is restored to «oa» before «n»
+            $conv_base .= 'a' if $conv_base =~ /[^o]o$/;
+            # Likewise, final «u» /u:/ is restored to «uu» in this position
+            $conv_base .= 'u' if $conv_base =~ /[^i]u$/;
+        }
+
+        if ($conv_suffix =~ /^[^$LYTSPEL_VOWELS]$/) {
+            # Before a single-consonant suffix such as «d» or «s», final «i» becomes
+            # «ie» to prevent misreadings
+            $conv_base .= 'e' if $conv_base =~ /i$/;
+            # TODO x Document with examples: Before a single-consonant suffix such as
+            # «d» or «s», final «i» becomes «ie» to mark it as long, e.g. «studied»
+            # from «studi» ‹study›, «vairies» ‹varies› from «vairi» ‹vary›
+            # (otherwise «*studid» would look like «splendid», but be spoken quite differently)
+        }
 
         return "$conv_base$conv_suffix";
 
@@ -1195,7 +1013,7 @@ sub postprocess_suffixed {
     # but never into the prefix or across word boundaries in a compound)
     # TODO x Document (if/when applicable) main word+suffix combis such as:
     # ‹doable› «duebl» (not duabl), ‹pitiable› «pitieble» (not pitiabl)
-    # TODO Probably restore omitted pre-final schwa before suffixes starting with a vowel, e.g
+    # TODO Possibly restore omitted pre-final schwa before suffixes starting with a vowel, e.g
     # «lybeler» ‹libeler› from «lybl» ‹libel›
 
     return $converted;
@@ -1546,7 +1364,7 @@ sub convert_dict {
  # servocontrol/n, antimatter, bioscience (and derivs), inbreeding,  microchip, microprogram,
  # microreader, Microsoft, prefix, semilegendary, subchapter, subnotebook, subroutine,
  # supercalender, superfund, supergiant, superhero, superpower, superstar, underwriting,
- # underwrote
+ # underwrote,  infiltrate, insufflate, slugabed, dealate
  # -amine (calamine, Dramamine, hexamine, histamine), -around
  # Stress 2nd part: aerologic only, not choplogic; benediction, binocular,
  # bronchiectasis, commonsense, dextrocardia, diacetylmorphine, diazomethane, duecento,
@@ -1557,7 +1375,8 @@ sub convert_dict {
  # Rockhampton, saltpeter, sardonyx, statampere, sulfaguanidine, sulfathiazole, sympetalous,
  # synchrocyclotron, tetraethyl, throughout, uniaxial, without, superconducting, superconductor,
  # superminicomputer, underutilize, methylal, counteract, counterbalance/v
- # (also counterbalancing etc.), straightforward, maltreat, malodorous, upstanding
+ # (also counterbalancing etc.), straightforward, maltreat, malodorous, upstanding, protozoa,
+ # subaltern, malfunction
  # -aldehyde, -chemical, -chemistry, -decagon, -eastern, -forward, -metric, -phonic, -sexual,
  # -western, magneto-, mal- (except malware)
  # PE determines stress: proto-, stereo-
@@ -1581,28 +1400,34 @@ sub convert_dict {
  # ‹errable› (from ‹err›, for ‹inerrable›)
  # TODO Derive from intern/n: internship
  # TODO ‹quad› should probably always become «quod» rather than «quaad»
- # TODO Add stress-shifted variants (2nd/last vowel stressed): content/aj+v (also for contentment),
+ # TODO Add stress-shifted variants (2nd/last vowel stressed): content/aj+v (also contentment etc.),
  # concert/v, preconcert/v, reflex/v, resaw/v, survey/v (also for resurvey/v), semipro/n,
  # sublease/v, understeer/v, ferment/v, console/v (also basis for consolatory),
  # interupt/v (also for interrupter etc.), collect/v (also for collecting, collector etc.),
- # compact/aj+v (also for compactness, compactor)
+ # compact/aj+v (also for compactness, compactor etc.), adduct/v (also for adductor)
  # add with 1st stressed: misfire/n, redial/n, redo/n, remit/n, replay/n
  # TODO reincarnate: split in v+aj;
- # Add desert/n,dez@rt  # desert (use for semidesert, desertic),
- # mouse/v: m'aUz (also use for mouser), mouth/v: use P (also for mouther),
- # addict/v, commune/v, insult/v: use P
+ # Add desert/n,dez@rt  # desert (use for semidesert, desertic), mouse/v: m'aUz (also use
+ # for mouser), mouth/v: use P (also for mouther and the various -mouthed combis),
+ # addict/v (also for addicted), commune/v, insult/v, defect/v: use P
  # subordinate/v should end in «ait» instead of «et»
  # supersaturate: derive from saturate/v; ungallant: derive from gallant/aj;
  # unwind: derive from wind/v; uncleanly: split in aj+av; add bifurcate/aj: ...It
  # toward/aj: tw'ord, /prp: use P (if needed; delete old custom entry)
+ # curate/n: kj'UrIt, v: kjUr'eIt (also for curator)
+ # alternate/aj+n: 'O:lt@`nIt, v: 'O:lt@`neIt
+ # appropriate/aj: a#pr'oUpri:It, v: a#pr'oUpri:eIt (also for appropriator)
+ # subalternate should be derived from aj
+ # graduate: use -it for aj+n, -ait for v (also graduated|ing)
  # TODO tridimensional should use «tion» spelling (even though it's not a compound)
+ # TODO If a word has n+v, generate the same for «=es|s», e.g. ‹overlaps›
  # TODO Maybe try switching «or» and «oar» (check whether that improves visual similarity)
  # TODO Maybe eliminate «c» spelling for /s/ (using «ss» instead), since it causes
  # inconsistencies with suffixes starting with a schwa after final /s/
  # TODO Warn if derived words use a different letter case and fix such cases
  # TODO Add end-of-word spellings such as «eh» to see whether they occur
  # TODO Document cases where the dictionary is insufficient, e.g. ‹bass, drawer, read,
- # subsequence, tier, berlin, closer›
+ # subsequence, tier, berlin, closer, moped›
 
         $conv_colref = convert_row $colref, $colref->[0], $mapref, $maxkeylen;
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
@@ -1616,13 +1441,16 @@ sub convert_dict {
         # in decompose script
         # TODO Switch to a single populate_dict_from_csv method with create_key and create_value
         # callbacks (all files); probably switch to Text::xSV
-        # TODO Switch to fields (pragma) or restricted hashes (Hash::Util) or maybe to
-        # something else (?) instead of fixed-size lists
+        # TODO Switch to restricted hashes (Hash::Util) or maybe the fields (pragma) or Moo
+        # instead of fixed-size lists
+        # use Hash::Util 'lock_keys'; my $name = {first => 'Christian', last => 'Siefkes'}
+        # lock_keys %$name; $name->{first} (OK); $name->{firs} (runtime error)
         # TODO Switch to "use 5.018" and "use autodie" (no need to check success of open and any
         # other commands) or "use autodie qw(:all)" (also checks system, exec)
         # TODO Maybe switch to experimental::signatures (or Function::Parameters)
         # TODO Switch to Dir::Self to locate PhonEng.pm
-        # TODO Preferably use and/or instead of &&/|| to minimize the need for parenthesis
+        # TODO Preferably use and/or instead of &&/|| to minimize the need for parentheses
+        # TODO Use Switch::Plain if/where reasonable
     }
 
     close $outfh;
