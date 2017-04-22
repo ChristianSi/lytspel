@@ -51,7 +51,7 @@ of English.
 > furst su'xeeded in maiking dhe traveler taik his cloak of shood bee
 > con'siderd strongger dhan dhe udher. Dhen dhe North Wind blu as hard as
 > hi cood, but dhe mor hi blu dhe mor cloassli did dhe traveler foald his
-> cloak a'round him; and at last dhe North Wind gaiv up dhe a'tempt. Dhen
+> cloak e'round him; and at last dhe North Wind gaiv up dhe a'tempt. Dhen
 > dhe Sun shynd out wormli, and i'meedietli dhe traveler took of his cloak.
 > And so dhe North Wind wos o'blyjd to con'fess dhat dhe Sun wos dhe
 > strongger ov dhe tu.
@@ -404,6 +404,10 @@ Rules for derived and related words:
   * Final «c» remains unchanged in front of such suffixes if its
     pronunciation changes from /k/ to /s/, e.g. «publicist, publicys»
     ‹...publicize› from «public».
+  * Before the single-letter suffix «n», «o» /oU/ is changed back to «oa»
+    to prevent confusion, e.g. «throan» ‹thrown› from «thro» ‹throw›.
+    Likewise, «u» /u:/ is changed back to «uu», e.g. «struun» ‹strewn› from
+    «stru» ‹strew›.
   * Otherwise, end-of-word spellings are preserved in all derived forms as
     long as of the base word doesn't change (except for possible shifts of
     stress), e.g.
@@ -421,9 +425,8 @@ Rules for derived and related words:
       * «i» representing unstressed /i:/: «sitis» ‹cities› from «siti»
         ‹city›; «fansiful, fansiing» ‹fanciful, fancying› from «fansi»
         ‹fancy›; «hapiness» ‹happiness› from «hapi» ‹happy›
-      * «o» representing unstressed /oU/: «yeloer, yeloest» ‹yellower,
-        yellowest› from «yelo» ‹yellow›; «vurchus» ‹virtues› from «vurchu»
-        ‹virtue›
+      * «o» representing /oU/: «yeloer, yeloest» ‹yellower, yellowest› from
+        «yelo» ‹yellow›; «vurchus» ‹virtues› from «vurchu» ‹virtue›
       * «oy» representing /OI/: «de'stroys, de'stroyd, de'stroyer»
         ‹destroys, destroyed, destroyer› from «de'stroy» ‹destroy›
       * «y» representing /aI/ (unchanged even before vowels): «hyer»
@@ -465,6 +468,9 @@ Irregular words:
     ‹I› and for easier recognition in compounds such as «fishey» ‹fisheye›.
   * «noa» ‹know› is written somewhat irregularly to distinguish it from
     «no».
+  * «oa» ‹owe› is written somewhat irregularly since a verb with just one
+    letter could be confusing (and also to distinguish it from the
+    interjection «o» ‹oh›).
   * «soa» ‹sew *or* sow› is written somewhat irregularly to distinguish it
     from «so».
   * «to» remains irregular to distinguish it from «tu» ‹too *or* two›.
@@ -565,6 +571,9 @@ XXX Describe additional compromise decisions, e.g.
     traditional spelling includes ‹rr› (e.g. «current»), otherwise «ur» is
     used (e.g. «curij» ‹courage›)?
   * «er» is used if RP has /@/ and GA has /y@`/, e.g. «figer» ‹figure›?
+  * Document that stress marker--free variant is preferred in doubt, e.g.
+    «to dictate» ‹to dictait› rather than «to *dic'tate», «sabetaazh»
+    ‹sabotage› rather than  «*sabo'taazh».
 
 
 ## Overview
