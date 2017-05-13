@@ -1,32 +1,14 @@
 # Lytspel, a Simple Phonetic Respelling for the English Language
 
-The following formatting conventions are used in this document:
-
-  * «double guillemets» for Lytspel (and spellings that haven't changed)
-  * ‹single guillemets› for traditional spellings
-  * /slashes/ for phonetics, written in the
-    [SAMPA](https://en.wikipedia.org/wiki/Speech_Assessment_Methods_Phonetic_Alphabet_chart_for_English)
-    alphabet (which some slight modifications to make it more suitable for
-    English)
-
-Abbreviations used:
-
-  * RP: [Received
-    Pronunciation](https://en.wikipedia.org/wiki/Received_Pronunciation),
-    the standard form of English spoken in the United Kingdom, especially
-    in England and Wales
-  * GA: [General American](https://en.wikipedia.org/wiki/General_American),
-    English as typically spoken in the United States
-
 The idea: Spelling should be fun, not a burden. The traditional English
 spelling system is afflicted with exceptions and conflicting rules, making
 writing and reading texts unnecessary hard.
 
-Lytspel reforms the English spelling to make it strictly follow the
-alphabetic principle. The alphabetic principle means that there is a
-predictable relationship between written letters and spoken sounds. When
-you see a written word, you know how to pronounce it (even if you don't
-know the word itself), and vice versa.
+Lytspel is a proposal for reforming the English spelling in order to make
+it strictly follow the alphabetic principle. The alphabetic principle means
+that there is a predictable relationship between written letters and spoken
+sounds. When you see a written word, you know how to pronounce it (even if
+you don't know the word itself), and vice versa.
 
 Traditional English spelling (tradspell) deviates from the alphabetic
 principle in many ways. The mapping between written and spoken words is
@@ -38,6 +20,10 @@ possible.
 Lytspel not only creates an unambiguous mapping between the sounds used in
 English and their written representations, it also indicates which syllable
 in each word is the stressed one.
+
+In addition to the reform proposal, there will be a full dictionary and a
+converter that translates traditional spelling into Lytspel. Both are
+currently work in progress.
 
 Here are two example paragraphs written in Lytspel. The first is [The North
 Wind and the
@@ -79,6 +65,27 @@ it out aloud and you'll soon get the hang of it.
 > chaos.
 
 
+## Conventions and Abbreviations
+
+The following formatting conventions are used in this document:
+
+  * «double guillemets» for Lytspel (and spellings that haven't changed)
+  * ‹single guillemets› for traditional spellings
+  * /slashes/ for phonetics, written in the
+    [SAMPA](https://en.wikipedia.org/wiki/Speech_Assessment_Methods_Phonetic_Alphabet_chart_for_English)
+    alphabet (with some slight modifications to make it more suitable for
+    English)
+
+Abbreviations used:
+
+  * RP: [Received
+    Pronunciation](https://en.wikipedia.org/wiki/Received_Pronunciation),
+    the standard form of English spoken in the United Kingdom, especially
+    in England and Wales
+  * GA: [General American](https://en.wikipedia.org/wiki/General_American),
+    English as typically spoken in the United States
+
+
 ## The Rules of Lytspel
 
 The syllable that carries the primary stress in a word is preceded by an
@@ -99,7 +106,7 @@ The short vowels are written as follows:
 The long vowels and diphthongs are written as follows:
 
   * «aa» /A/ as in «paam, faadher» ‹palm, father›
-  * «ai» /eI/ as in «aim, saint, fais» ‹...face›
+  * «ai» /eI/ as in «aim, saint, faiss» ‹...face›
   * «au» /O:/ as in «auther, paus» ‹author, pause›
   * «ee» /i:/ as in «tree, teem» ‹...team›
   * «oa» /oU/ as in «boat, hoam» ‹...home›
@@ -219,8 +226,8 @@ The schwa /@/:
 Before «r», the vowels are spelled as follows:
 
   * «air» /e@/ as in «pair, shair, vairi'aition» ‹...share, variation›
-  * «ar» /Ar/ as in «dark, argiument» ‹...argument›
-  * «arr» /ar/ as in «carry, em'barress» ‹...embarrass›
+  * «ar» /Ar/ as in «dark, argyument» ‹...argument›
+  * «arr» /ar/ as in «carri, em'barress» ‹...embarrass›
   * «eer» /i@/ as in «cheer, yeer» ‹...year›. Note: GA speakers often
     pronounce this in the same way as the «ir» /Ir/ in «mirer» ‹mirror›
     ([mirror–mere
@@ -404,10 +411,25 @@ Rules for derived and related words:
   * Final «c» remains unchanged in front of such suffixes if its
     pronunciation changes from /k/ to /s/, e.g. «publicist, publicys»
     ‹...publicize› from «public».
-  * Before the single-letter suffix «n», «o» /oU/ is changed back to «oa»
-    to prevent confusion, e.g. «throan» ‹thrown› from «thro» ‹throw›.
-    Likewise, «u» /u:/ is changed back to «uu», e.g. «struun» ‹strewn› from
-    «stru» ‹strew›.
+  * In front of suffixes consisting in a single consonant («d, n, s»),
+    final «i» (unstressed /i:/) becomes «ie» to mark it as long, e.g.
+    «studied» from «studi» ‹study›, «vairies» ‹varies› from «vairi» ‹vary›.
+    Otherwise forms such as «*studid» would look like «splendid», but be
+    spoken quite differently.
+  * To prevent misreadings, final «o» /oU/ is changed back to «oa» and
+    final «u» /u:/ to «uu» in front of the same suffixes, e.g. «foload»
+    ‹followed› from «folo» ‹follow›, «chuud» ‹chewed› from «chu» ‹chew›,
+    «throan» ‹thrown› from «thro» ‹throw›, «struun» ‹strewn› from «stru»
+    ‹strew›, «po'taitoas» ‹potatoes› from «po'taito» ‹potato›, «shuus»
+    ‹shoes› from «shu» ‹shoe›.
+  * A schwa /@/ at the start of suffixes is written as «a» if the base word
+    ends in /i:/ or /u:/, e.g. «eesiast» ‹easiest› from «eesi» ‹easy›,
+    «vairiabl» ‹variable› from «vairi» ‹vary›, «duabl» ‹doable› from «du»
+    ‹do›, «a'greeabl» ‹agreeable› from «a'gree» ‹agree›. This ensures
+    consistency with the combined spellings «ia» and «ua» used elsewhere
+    (see above) and prevents confusion with «ie» in words such as
+    «studied». But note that R-colored schwa remains «er», e.g. «eesier»
+    ‹easier›.
   * Otherwise, end-of-word spellings are preserved in all derived forms as
     long as of the base word doesn't change (except for possible shifts of
     stress), e.g.
@@ -572,8 +594,8 @@ XXX Describe additional compromise decisions, e.g.
     used (e.g. «curij» ‹courage›)?
   * «er» is used if RP has /@/ and GA has /y@`/, e.g. «figer» ‹figure›?
   * Document that stress marker--free variant is preferred in doubt, e.g.
-    «to dictate» ‹to dictait› rather than «to *dic'tate», «sabetaazh»
-    ‹sabotage› rather than  «*sabo'taazh».
+    «adult» rather than «*a'dult», «to dictait» ‹to dictate› rather than «to
+    *dic'tate», «sabetaazh» ‹sabotage› rather than «*sabo'taazh».
 
 
 ## Overview
