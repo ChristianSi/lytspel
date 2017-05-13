@@ -35,8 +35,13 @@ const my $UNAMBIGUOUS_CONSONANTS => 'bcdfghjklmnpqrstvwxz';  # excluding 'y' (am
 const my $SHORT_VOWEL            => 'a#?|E|I#?|Q|V';         # excluding schwa and «oo» /U/
 const my $NON_SCHWA_VOWEL => 'a[#IU]?|A|E|eI|I#?|i:|O[:I]|oU|Q|U|u:|V';
 
+# File-scoped variables
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
+my $Dict_Ref;
+my $Blacklist1_Ref;
+my $Blacklist2_Ref;
+my $Whitelist_Ref;
 
 # build_dict: Return a reference to a list of all words in the dict. Words (keys) are converted
 # to lower-case; values are set to an array of references of the three pronunciatons.
@@ -188,7 +193,7 @@ sub build_combined_pattern {
     return "$first_pattern$second_pattern";
 }
 
-# prons_match $first, $second, $word, $dict_ref: Return true (1) if at least one of the
+# prons_match $first, $second, $word: Return true (1) if at least one of the
 # pronunciations of $word starts with one of the pronunciations of $first and ends with one of the
 # pronunciations of $second. Returns false (0) otherwise.
 # This filters out apparent compounds and derived forms which aren't pronounced as an actual
@@ -196,21 +201,21 @@ sub build_combined_pattern {
 # If $first or $second is empty, only the other part is checked -- that's useful for affixes
 # (which aren't always listed in the dict and may be spoken differently in some cases).
 sub prons_match {
-    my ($first, $second, $word, $dict_ref) = @_;
-    my @word_prons = discard_empty_elements_and_normalize $dict_ref->{$word};
+    my ($first, $second, $word) = @_;
+    my @word_prons = discard_empty_elements_and_normalize $Dict_Ref->{$word};
     my @first_prons;
     my @second_prons;
     my $first_check_ok  = 1;
     my $second_check_ok = 1;
 
     if ($first) {
-        @first_prons = discard_empty_elements_and_normalize $dict_ref->{$first};
+        @first_prons = discard_empty_elements_and_normalize $Dict_Ref->{$first};
         my $first_pattern = '^(' . join('|', @first_prons) . ')';
         $first_check_ok = any { /$first_pattern/ } @word_prons;
     }
 
     if ($first_check_ok && $second) {
-        @second_prons = discard_empty_elements_and_normalize $dict_ref->{$second};
+        @second_prons = discard_empty_elements_and_normalize $Dict_Ref->{$second};
         my $second_pattern = '(' . join('|', @second_prons) . ')$';
 
         if ($first) {
@@ -229,39 +234,34 @@ sub prons_match {
 # words, $first or $second (respectively) should be set to an empty string, otherwise
 # both should be set.
 sub valid_entry {
-    my ($word, $first, $second, $dict_ref, $blacklist1_ref, $blacklist2_ref, $whitelist_ref) = @_;
+    my ($word, $first, $second) = @_;
     # Check that $first and $second (if specified) are listed in the dictionary
-    my $valid = !$first || exists $dict_ref->{$first};
-    $valid &&= !$second || $dict_ref->{$second};
+    my $valid = !$first || exists $Dict_Ref->{$first};
+    $valid &&= !$second || $Dict_Ref->{$second};
 
-    unless (exists $whitelist_ref->{$word}) {
+    unless (exists $Whitelist_Ref->{$word}) {
         # Unless the whole word is whitelisted, check that none of the specified parts
         # is blacklisted
-        $valid &&= !($first  && exists $blacklist1_ref->{$first});
-        $valid &&= !($second && exists $blacklist2_ref->{$second});
+        $valid &&= !($first  && exists $Blacklist1_Ref->{$first});
+        $valid &&= !($second && exists $Blacklist2_Ref->{$second});
     }
 
     # Check that pronunciations match
-    $valid &&= prons_match $first, $second, $word, $dict_ref;
+    $valid &&= prons_match $first, $second, $word;
     return $valid;
 }
 
 # analyze_as_prefixed_form ...: Check whether $word is the prefixed form of another word in
-# $dict_ref. Returns a result of the form "prefix=stem" if a match was found, undef otherwise.
+# $Dict_Ref. Returns a result of the form "prefix=stem" if a match was found, undef otherwise.
 # When in doubt, longer prefixes are preferred over shorter ones.
 sub analyze_as_prefixed_form {
-    my (
-        $word,           $dict_ref,       $prefix_set_ref, $min_prefix_len,
-        $max_prefix_len, $blacklist1_ref, $blacklist2_ref, $whitelist_ref
-    ) = @_;
+    my ($word, $prefix_set_ref, $min_prefix_len, $max_prefix_len) = @_;
 
     for (my $i = min($max_prefix_len, length($word) - 2) ; $i >= $min_prefix_len ; $i--) {
         my $prefix = substr $word, 0, $i;
         my $stem = substr $word, $i;
 
-        if (exists $prefix_set_ref->{$prefix} && valid_entry $word,
-            '', $stem, $dict_ref, $blacklist1_ref, $blacklist2_ref, $whitelist_ref)
-        {
+        if (exists $prefix_set_ref->{$prefix} && valid_entry $word, '', $stem) {
             return "$prefix=$stem";
         }
     }
@@ -302,15 +302,12 @@ sub find_alternative_base {
 }
 
 # analyze_as_suffixed_form ...: Check whether $word is the suffixed form of another word in
-# $dict_ref. Returns a result of the form "stem=suffix" if a match was found, undef otherwise.
+# $Dict_Ref. Returns a result of the form "stem=suffix" if a match was found, undef otherwise.
 # When in doubt, shorter suffixes are preferred over longer ones.
 # Stem changes in words such as ‹running› (run=ing) and ‹happiness› (happy=ness) are taken into
 # account.
 sub analyze_as_suffixed_form {
-    my (
-        $word,           $dict_ref,       $suffix_set_ref, $min_suffix_len,
-        $max_suffix_len, $blacklist1_ref, $blacklist2_ref, $whitelist_ref
-    ) = @_;
+    my ($word, $suffix_set_ref, $min_suffix_len, $max_suffix_len) = @_;
     my $len = length $word;
     my $max_len = min($max_suffix_len, $len - 2);
 
@@ -320,14 +317,7 @@ sub analyze_as_suffixed_form {
         my $suffix       = substr $word, $suffix_start;
 
         if (exists $suffix_set_ref->{$suffix}) {
-            if (
-                valid_entry(
-                    $word,           $stem,           '', $dict_ref,
-                    $blacklist1_ref, $blacklist2_ref, $whitelist_ref
-                )
-                && valid_suffix($stem, $suffix)
-                )
-            {
+            if (valid_entry($word, $stem, '') && valid_suffix($stem, $suffix)) {
                 if ($suffix eq 'an' && $stem =~ /[^e]e$/ && exists $suffix_set_ref->{'ean'}) {
                     # Prefer 'ean' (if listed) over 'an' if the stem ends in silent 'e',
                     # e.g. ‹argentinean› become 'argentine=ean'
@@ -341,9 +331,7 @@ sub analyze_as_suffixed_form {
             # (run=ing), ‹judgment› (judge=ment), and ‹happiness› (happy=ness) into account
             my $alternative_base = find_alternative_base $stem;
 
-            if ($alternative_base && valid_entry $word,
-                $alternative_base, '', $dict_ref, $blacklist1_ref, $blacklist2_ref, $whitelist_ref)
-            {
+            if ($alternative_base && valid_entry $word, $alternative_base, '') {
 
                 if (length($alternative_base) < length($stem)) {
                     # If the alternative stem is shorter, check whether the rest of the
@@ -383,24 +371,20 @@ sub prefer_new_match {
     }
 }
 
-# check_for_better_match $length_of_first_part, $word, $prev_first, $prev_second, $dict_ref ...:
+# check_for_better_match $length_of_first_part, $word, $prev_first, $prev_second:
 # Splits word into a compound pair according to $length_of_first_part.
-# If both parts of the pair exist in $dict_ref and if their joined pronunciation matches that
+# If both parts of the pair exist in $Dict_Ref and if their joined pronunciation matches that
 # of $word, then the new pair is returned if it seems to be a better match than the previously
 # best pair specified by $prev_first, $prev_second.
 # If there is no new pair, the old pair is returned.
 # If the old pair is empty (= none found yet), the new pair is returned.
 # Otherwise the algorithm documented in 'prefer_new_match' is used.
 sub check_for_better_match {
-    my ($length_of_first_part, $word, $first, $second, $dict_ref, $blacklist1_ref,
-        $blacklist2_ref, $whitelist_ref)
-        = @_;
+    my ($length_of_first_part, $word, $first, $second) = @_;
     my $new_first = substr $word, 0, $length_of_first_part;
     my $new_second = substr $word, $length_of_first_part;
 
-    if (valid_entry $word,
-        $new_first, $new_second, $dict_ref, $blacklist1_ref, $blacklist2_ref, $whitelist_ref)
-    {
+    if (valid_entry $word, $new_first, $new_second) {
         if ($first) {
             if (prefer_new_match $first, $second, $new_first, $new_second) {
                 $first  = $new_first;
@@ -424,10 +408,9 @@ sub check_for_better_match {
 # * '=' after a prefix and before a suffix
 sub find_parts {
     my (
-        $outfh,          $word,               $dict_ref,       $prefix_set_ref,
-        $min_prefix_len, $max_prefix_len,     $suffix_set_ref, $min_suffix_len,
-        $max_suffix_len, $manual_entries_ref, $blacklist1_ref, $blacklist2_ref,
-        $whitelist_ref
+        $outfh,          $word,           $prefix_set_ref,
+        $min_prefix_len, $max_prefix_len, $suffix_set_ref,
+        $min_suffix_len, $max_suffix_len, $manual_entries_ref
     ) = @_;
     my $len = length $word;
 
@@ -442,10 +425,8 @@ sub find_parts {
     return if $len < 4;  # too short to be a compound
 
     # Check whether it's a prefixed or suffixed form
-    my $result = analyze_as_prefixed_form $word, $dict_ref, $prefix_set_ref, $min_prefix_len,
-        $max_prefix_len, $blacklist1_ref, $blacklist2_ref, $whitelist_ref;
-    $result = analyze_as_suffixed_form $word, $dict_ref, $suffix_set_ref, $min_suffix_len,
-        $max_suffix_len, $blacklist1_ref, $blacklist2_ref, $whitelist_ref
+    my $result = analyze_as_prefixed_form $word, $prefix_set_ref, $min_prefix_len, $max_prefix_len;
+    $result = analyze_as_suffixed_form $word, $suffix_set_ref, $min_suffix_len, $max_suffix_len
         unless $result;
 
     if ($result) {
@@ -453,32 +434,25 @@ sub find_parts {
         return;
     }
 
-    my $first  = '';
-    my $second = '';
+    my ($first, $second) = ('') x 2;
 
     # Check whether it's a compound of two words
-    for my $i (3 .. $len - 3) {
-        ($first, $second) = check_for_better_match $i, $word, $first, $second, $dict_ref,
-            $blacklist1_ref, $blacklist2_ref, $whitelist_ref;
-    }
+    ($first, $second) = check_for_better_match $_, $word, $first, $second for 3 .. $len - 3;
 
-    if ($first) {
-        $CSV_OUT->print($outfh, [$word, "$first-$second"]);
-    }
+    $CSV_OUT->print($outfh, [$word, "$first-$second"]) if ($first);
 }
 
 # decompose: Recognize compounds and derived forms.
 sub decompose {
-    my $dict_ref = build_dict;
+    $Dict_Ref = build_dict;
     my ($prefix_set_ref, $min_prefix_len, $max_prefix_len) = build_affix_set 'prefix.list';
     my ($suffix_set_ref, $min_suffix_len, $max_suffix_len) = build_affix_set 'suffix.list';
     my $manual_entries_ref = build_manual_entries_dict;
-    my ($blacklist1_ref, $blacklist2_ref, $whitelist_ref) = build_black_and_white_list;
+    ($Blacklist1_Ref, $Blacklist2_Ref, $Whitelist_Ref) = build_black_and_white_list;
     my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Word Parts)];
-    find_parts $outfh, $_, $dict_ref, $prefix_set_ref, $min_prefix_len, $max_prefix_len,
+    find_parts $outfh, $_, $prefix_set_ref, $min_prefix_len, $max_prefix_len,
         $suffix_set_ref, $min_suffix_len, $max_suffix_len, $manual_entries_ref,
-        $blacklist1_ref, $blacklist2_ref, $whitelist_ref
-        for sort { lc $a cmp lc $b } keys %$dict_ref;
+        for sort { lc $a cmp lc $b } keys %$Dict_Ref;
     close $outfh;
 }
 
