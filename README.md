@@ -463,7 +463,8 @@ Rules for derived and related words:
     creecher» ‹creation, creature› from «cri'ait» ‹create›; «dis'cution»
     ‹discussion› from «dis'cuss» ‹discuss›; «con'cluusion» ‹conclusion›
     from «con'cluud» ‹conclude›; «acchual» ‹actual› from «act»;
-    «as'sumption» ‹assumption› from «as'suum» ‹assume›.
+    «as'sumption» ‹assumption› from «as'suum» ‹assume›; «men'taliti»
+    ‹mentality› from  «mentl» ‹mental›.
   * The past tense of regular verbs is formed by appending «ed» if /@d/ is
     spoken (e.g. «se'lected, waisted» ‹selected, wasted›), «d» if /d/ or
     /t/ is spoken (e.g. «ri'veeld, con'siderd, payd, fixd, con'vinssd»
