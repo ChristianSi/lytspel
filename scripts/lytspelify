@@ -878,6 +878,7 @@ sub postprocess_suffixed {
     # To match: use List::Util 'any'; if( any { /tion$/ } @strings ) {
     my $conv_base_colref = lookup_part_entry($base, $tradspell, $pos_hint, $mapref, $maxkeylen);
     my $conv_base = restore_capitalization $conv_base_colref->[3], $tradspell;
+    my $conv_suffix = $SUFFIXES{$suffix};
 
     # TODO Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
@@ -885,8 +886,6 @@ sub postprocess_suffixed {
 /^(able|ant|ative|atory|dom|ed|en|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|n|or|up|s|y)$/
         )
     {
-        my $conv_suffix = $SUFFIXES{$suffix};
-
         # Before suffixes starting with e/i/y, final «c» becomes «k»
         # (e.g. «practikebl» ‹practicable›)
         $conv_base =~ s/c$/k/ if $conv_suffix =~ /^[eiy]/;
@@ -940,90 +939,85 @@ sub postprocess_suffixed {
         return "$conv_base$conv_suffix";
     }
 
-    # Restore «tion» (shen) and «sion» (zhen), e.g.
-    # «ri'laitionship, tra'ditionel, o'caisionel» ‹relationship, traditional, occasional›
+    # Restore end-of-word spellings in potentially irregular suffixed forms.
+    # Note: Some cases seem never to occur with these suffixes (or only in irregular words
+    # that don't allow restoration) and hence haven't been added.
     if ($conv_base =~ /tion$/) {
-        $converted =~ s/(.*)shen/$1tion/;
-        $converted =~ s/(.*)sho'n/$1tio'n/;
+        # Restore «tion» (shen), e.g. «tra'ditionel» ‹traditional›
+        $converted =~ s/(.*)shen/$1tion/
+            || $converted =~ s/(.*)sho'n/$1tio'n/
+            || say "No match: $converted ($tradspell) from $conv_base";
     } elsif ($conv_base =~ /sion$/) {
-        $converted =~ s/(.*)zhen/$1sion/;
-        $converted =~ s/(.*)zho'n/$1sio'n/;
-        # TODO x
-        #} elsif ($conv_base =~ /aul$/) {
-        #    $converted =~ s/(.*)aul/$1all/;
-        #    $converted =~ s/(.*)au'l/$1al'l/;
+        # Restore «sion» (zhen), e.g. «o'caisionel» ‹occasional›
+        $converted =~ s/(.*)[zs]hen/$1sion/
+            || $converted =~ s/(.*)zho'n/$1sio'n/
+            || say "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /k$/ && ($conv_suffix !~ /^[eiY]/ || $suffix eq 'al')) {
+        # Restore «k», e.g. «embar'kaition« ‹embarkation›
+        $converted =~ s/(.*)c/$1k/ || say "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /ss$/) {
+        # Restore «ss», e.g «ri'sponssebl, puls'saition» ‹responsible, pulsation›
+        if ($converted !~ /ss|tion$|shel$/) {
+            my $suffix_start = $1;
+            $converted =~ s/(.*)[cs]([eiY])/$1ss$2/
+                || say "No match: $converted ($tradspell) from $conv_base";
+            $converted =~ s/'ss/s's/;  # Fix stress marker, if needed
+        } elsif ($converted =~ /[^s]'saition$/) {
+            $converted =~ s/'saition$/s'saition/;
+        }
+        ##} elsif ($conv_base =~ /u$/) {
+        ### TODO Restore «», e.g. «» ‹›
+        ##say "$converted ($tradspell) from $conv_base+$conv_suffix ($suffix)";
     }
 
-    # Note: Some cases seem never to occur with these suffixes and hence haven't been added:
-    # all» (aul)
-
-# TODO x Suffix handling:
-# Preserved:
-# *
-# * (needed) Omitted schwa between some consonants and «l» and «m», e.g. ‹singles, legalizing,
-# legally, algorithms, statistically, rhythms, hospitalization, simplest›
-# * «c» /k/: «publicli, publi'caition»
-# * But «c» becomes «k» before «e, i, y»: «trafiking»
-# * «k» /k/: «weeks, weekli»
-# * «ss» /s/: «classic, con'vinssd, con'vinssing, a'nounssment»
-# * «a» /@/: «extras, A'merrican»
-# * «aw» /O:/: derivs of «law, draw» (only relevant if a consonant follows)
-# * «ay» /eI/: derivs of «play, holiday, layer, cayoss» (only relevant if a consonant
-#   follows)
-# * «eh» /E/
-# * unstressed «i» /i:/: derivs of ‹fancy, necessity, video, creation› (only relevant if
-# a consonant follows)
-# * unstressed «o» /oU/: «yeloer, yeloest, vurchus» (only relevant if a consonant follows)
-# * «ow» /aU/: derivs of ‹now, allow› (only relevant if a consonant follows)
-# * «oy» /OI/: «de'stroys, de'stroyd, de'stroyer» (only relevant if a consonant follows)
-# * «u» /u:/: derivs of ‹clue, issue› (only relevant if a consonant follows)
-# * «uh» /V/
-# * «y» /aI/ (even before vowels): «hyer»
-# * «yr» /aI@`/: «in'spyrd»
-# * Any other special end-of-word spellings
-# * «t» ‹ed› becomes «d»: «fixd, con'vinssd»
-# * Double consonants may occur, e.g. «toatlli» ‹totally›
-#
-# Special rules:
-# * /ks/ doesn't become «x» if the /s/ starts the suffix
-# * But the second letter does change in other combis such as «ia» in ‹agreeable›
-# * «tion» and «sion» aren't used in -n/-en suffixed words,
-#   e.g «ashen, freshen, Rushan, Purzhan»
-# * Suffix «ful» remains unchanged (not "fl")
-# * If the derived word starts with «e» and the base word with another short vowel,
-#   use the latter (e.g. ‹communication, configuration›).
-#
-# Some suffixes need special treatment:
-# * «el» ‹al› becomes just «l» after any of «bcdfgkpstz»
-# * ed/es/s
-# * -ial after «t» merges to /tS@l/
-# * -ion after «st» merges to /tS@n/ (written «chen»), after «t» to /S@n/
-#   (written «tion»)
-# * -ual after «t» merges to /tSu:@l/
-#
-# Notes:
-# * consonants commonly occurring at the start of suffixes are /d/t/f/l/m/n/s/z/
-# * if stress changes, a schwa might become a short vowel--in that case, use it
-#   also for the base form, e.g. «telson» due to «tel'sonic» ‹telsonic›
-#
-# TODO Recognise a= /eI/ suffix just before /s, z/, e.g. ‹asymmetry›
-# TODO Debug whether remaining changes between base and derived words are OK
-# TODO Explain that stress markers may move into the main word (e.g. before -ation, -ee),
-# but never into the prefix or across word boundaries in a compound)
-# TODO x Document (if/when applicable) main word+suffix combis such as:
-# ‹doable› «duebl» (not duabl), ‹pitiable› «pitieble» (not pitiabl)
-# TODO Possibly restore omitted pre-final schwa before suffixes starting with a vowel, e.g
-# «lybeler» ‹libeler› from «lybl» ‹libel› -- but probably once before «ism, ist»
-# [and maybe «ize»] to prevent misreadings, e.g. «capitelist, funda'mentelist, voakelist»
-# ‹capitalist, fundamentalist, vocalist› (rather than
-# «*capitlist, funda'mentlist, voaclist»)
-# TODO Maybe try the rule: final «ss» after consonant (except /f, k, p, t, T/) is changed
-# back to «s», while final «s» is changed to «z» in this case (probably only before
-# vowels or just in those cases where confusion is possible, e.g. (sometimes?) before
-# «i, er»).
-# TODO ‹humanistic› should use «e» for the schwa, like ‹humanist› (generally)
-# TODO gondolier,gQnd@#l'i@  # should become gonde'leer, not gondo'leer
-# TODO Correct c->k: ‹workaholic› (special case, not a suffix because it's so rare)
+    # TODO x Suffix handling:
+    # Preserved:
+    # * «y» /aI/ (even before vowels): «hyer»
+    # * «yr» /aI@`/: «in'spyrd»
+    # * «t» ‹ed› becomes «d»: «fixd, con'vinssd»
+    # Schwa at the start of suffixes is written «a» if the base word ends in /i:/ or /u:/
+    # * Double consonants may occur, e.g. «toatlli» ‹totally›
+    #
+    # Special rules:
+    # * /ks/ doesn't become «x» if the /s/ starts the suffix
+    # * But the second letter does change in other combis such as «ia» in ‹agreeable›
+    # * «tion» and «sion» aren't used in -n/-en suffixed words,
+    #   e.g «ashen, freshen, Rushan, Purzhan»
+    # * Suffix «ful» remains unchanged (not "fl")
+    # * If the derived word starts with «e» and the base word with another short vowel,
+    #   use the latter (e.g. ‹communication, configuration›).
+    #
+    # Some suffixes need special treatment:
+    # * «el» ‹al› becomes just «l» after any of «bcdfgkpstz»
+    # * ed/es/s
+    # * -ial after «t» merges to /tS@l/
+    # * -ion after «st» merges to /tS@n/ (written «chen»), after «t» to /S@n/
+    #   (written «tion»)
+    # * -ual after «t» merges to /tSu:@l/
+    #
+    # Notes:
+    # * consonants commonly occurring at the start of suffixes are /d/t/f/l/m/n/s/z/
+    # * if stress changes, a schwa might become a short vowel--in that case, use it
+    #   also for the base form, e.g. «telson» due to «tel'sonic» ‹telsonic›
+    #
+    # TODO Recognise a= /eI/ suffix just before /s, z/, e.g. ‹asymmetry›
+    # TODO Debug whether remaining changes between base and derived words are OK
+    # TODO Explain that stress markers may move into the main word (e.g. before -ation, -ee),
+    # but never into the prefix or across word boundaries in a compound)
+    # TODO x Document (if/when applicable) main word+suffix combis such as:
+    # ‹doable› «duebl» (not duabl), ‹pitiable› «pitieble» (not pitiabl)
+    # TODO To prevent misreadings, restore omitted schwa between consonants and final «l, m»
+    # before suffixes starting with a vowel, e.g «lybeler» ‹libeler› and «lybeluss»
+    # ‹libelous› from «lybl» ‹libel›, «canse'laition» ‹cancellation› from «canssl»
+    # ‹cancel›, «nikeluss» ‹nickelous› from «nicl» ‹nickel› -- that's already the
+    # case for irregular suffixes
+    # TODO Maybe try the rule: final «ss» after consonant (except /f, k, p, t, T/) is changed
+    # back to «s», while final «s» is changed to «z» in this case (probably only before
+    # vowels or just in those cases where confusion is possible, e.g. (sometimes?) before
+    # «i, er»).
+    # TODO ‹humanistic› should use «e» for the schwa, like ‹humanist› (generally)
+    # TODO gondolier,gQnd@#l'i@  # should become gonde'leer, not gondo'leer
+    # TODO Correct c->k: ‹workaholic› (special case, not a suffix because it's so rare)
 
     return $converted;
 }
@@ -1290,11 +1284,11 @@ sub handle_compound {
         # peroxidic,per-oxidic; peroxide,per-oxide
         # Add suffixes: -ine «in» or maybe «yn» (e.g. petaline, phialine;
         # ensure that no -line words are accidentally excluded),
-        # -oid (e.g. petaloid), -ous «uss» (e.g. petalous)
+        # -oid (e.g. petaloid)
         # Add prefixes: ‹tele› «tele»; ‹zoo› /zoU@/ «zoa» (PE determines stress);
         # neuro- (make sure it's used for ‹neurosecretion›)
         # neo-
-        # Make -tic a suffix instead of a regular compound part (e.g. aromatic;
+        # Make -tic «tic» a suffix instead of a regular compound part (e.g. aromatic;
         # also change compounds-manual entries accordingly),
         # likewise -ary /Eri:/ (e.g. insectary, visionary; also change compounds-manual entries
         # accordingly), -ology (e.g. planetology), -arian (e.g. parliamentarian),
@@ -1446,7 +1440,8 @@ sub convert_dict {
  # TODO Document cases where the dictionary is insufficient, e.g. ‹bass, drawer, read,
  # subsequence, tier, berlin, closer, moped, taxis, simas, viola, viva›
  # TODO Shift stress marker: «lorn'yet» ‹lorgnette›, not «*lor'nyet»;
- # «may'iutic» ‹maieutic›, not «*ma'yiutic»
+ # «may'iutic» ‹maieutic›, not «*ma'yiutic»; «pay'ee» ‹payee› not «*pa'yee»;
+ # «Iuru'gwayen» ‹Uruguayan› not «*Iurug'wayen»
  # TODO Custom heuristics (case insensitive): aero- becomes airo- (not airoa-)
 
         $conv_colref = convert_row $colref, $colref->[0], $mapref, $maxkeylen;
