@@ -818,7 +818,6 @@ agatize,agate=ize
 aged,age=ed
 agedly,aged=ly
 agedness,aged=ness
-agee,age=ee
 ageism,age=ism
 ageless,age=less
 agelessness,ageless=ness
@@ -866,7 +865,6 @@ agitators,agitator=s
 agly,ag=ly
 agnostics,agnostic=s
 agones,agone=s
-agonic,agon=ic
 agonies,agony=es
 agonistic,agonist=ic
 agonists,agonist=s
@@ -1031,6 +1029,7 @@ alcoholics,alcoholic=s
 alcoholize,alcohol=ize
 alcoves,alcove=s
 alderfly,alder-fly
+alderman,alder-man
 aldermanic,alderman=ic
 aldermen,alder-men
 aldershot,alder-shot
@@ -1078,7 +1077,6 @@ alikeness,alike=ness
 alimentation,aliment=ation
 alimentative,aliment=ative
 alist,al=ist
-alive,al=ive
 alkalies,alkali=es
 alkalinity,alkaline=ity
 alkaloidal,alkaloid=al
@@ -2399,7 +2397,6 @@ atomy,atom=y
 atonality,atonal=ity
 atonally,atonal=ly
 atonement,atone=ment
-atonic,aton=ic
 atrabiliousness,atrabilious=ness
 atrociously,atrocious=ly
 atrocities,atrocity=es
@@ -2560,7 +2557,7 @@ authors,author=s
 authorship,author-ship
 autobiographer,auto-biographer
 autobiographic,auto-biographic
-autobiographical,autobiographic=al
+autobiographical,auto-biographical
 autobiographically,autobiographical=ly
 autobiographies,autobiography=es
 autobiography,auto-biography
@@ -2587,6 +2584,7 @@ autogenetic,auto-genetic
 autogenously,autogenous=ly
 autogiro,auto-giro
 autograft,auto-graft
+autograph,auto-graph
 autographed,autograph=ed
 autographic,autograph=ic
 autographs,autograph=s
@@ -2628,7 +2626,7 @@ autotoxemia,auto-toxemia
 autotoxic,auto-toxic
 autotoxin,auto-toxin
 autotransformer,auto-transformer
-autotrophic,autotroph=ic
+autotrophic,auto-trophic
 autotruck,auto-truck
 autotype,auto-type
 autotypy,autotype=y
@@ -2669,9 +2667,7 @@ aviator,aviate=or
 aviators,aviator=s
 avidity,avid=ity
 avidly,avid=ly
-avionic,avion=ic
 avionics,avionic=s
-avions,avion=s
 avocados,avocado=s
 avoidable,avoid=able
 avoided,avoid=ed
@@ -2979,7 +2975,6 @@ baleful,bale=ful
 baler,bale=er
 bales,bale=s
 baling,bale=ing
-balkan,balk=an
 balkanization,balkanize=ation
 balkanize,balkan=ize
 balkanized,balkanize=ed
@@ -3251,7 +3246,6 @@ basements,basement=s
 baseplate,base-plate
 baser,base=er
 bases,base=s
-bashan,bash=an
 bashed,bash=ed
 basher,bash=er
 bashers,basher=s
@@ -3769,7 +3763,6 @@ besotted,besot=ed
 bespeaks,bespeak=s
 bespoken,bespoke=n
 bested,best=ed
-bestial,best=ial
 bestiality,bestial=ity
 bestialize,bestial=ize
 bestially,bestial=ly
@@ -5561,7 +5554,6 @@ bullishness,bullish=ness
 bullnose,bull-nose
 bullocks,bullock=s
 bullocky,bullock=y
-bullous,bull=ous
 bullpen,bull-pen
 bullpout,bull-pout
 bullpup,bull-pup
@@ -6366,9 +6358,7 @@ carnivorousness,carnivorous=ness
 carnose,car-nose
 carns,carn=s
 carny,carn=y
-carolean,carole=ean
 carolinas,carolina=s
-carolinian,caroline=ian
 carolinians,carolinian=s
 carols,carol=s
 carotenes,carotene=s
@@ -6453,7 +6443,6 @@ caseloads,caseload=s
 casemaker,case-maker
 casemate,case-mate
 casement,case=ment
-caseous,case=ous
 cases,case=s
 casework,case-work
 caseworker,casework=er
@@ -6566,7 +6555,6 @@ catfight,cat-fight
 catfish,cat-fish
 catgut,cat-gut
 catharist,cathar=ist
-cathartic,cathar-tic
 cathead,cat-head
 cathedrals,cathedral=s
 catheterize,catheter=ize
@@ -6629,7 +6617,6 @@ cautiously,cautious=ly
 cautiousness,cautious=ness
 cavalierly,cavalier=ly
 cavaliers,cavalier=s
-cavan,cave=an
 caveats,caveat=s
 caved,cave=ed
 cavefish,cave-fish
@@ -6734,26 +6721,18 @@ centripetally,centripetal=ly
 centrists,centrist=s
 cents,cent=s
 centuries,century=es
-ceramal,ceram=al
-ceramic,ceram=ic
 ceramics,ceramic=s
-ceramist,ceram=ist
 cerated,cerate=ed
-cereal,cere=al
 cereals,cereal=s
 cerebrally,cerebral=ly
 cerecloth,cere-cloth
-cerement,cere=ment
 ceremonial,ceremony=al
 ceremonially,ceremonial=ly
 ceremonies,ceremony=es
 ceremonious,ceremony=ous
 ceremoniously,ceremonious=ly
 ceremoniousness,ceremonious=ness
-cereous,cere=ous
-ceric,cere=ic
 cerographist,cerograph=ist
-cerous,cere=ous
 certainly,certain=ly
 certainties,certainty=es
 certes,cert=es
@@ -6915,7 +6894,6 @@ charmingly,charming=ly
 charmless,charm=less
 charms,charm=s
 charonic,charon=ic
-charpie,char-pie
 charquid,char-quid
 charred,charr=ed
 charrier,charry=er
@@ -7295,7 +7273,8 @@ chromatograms,chromatogram=s
 chromatographic,chromatograph=ic
 chromic,chrome=ic
 chromogenic,chromogen=ic
-chromolithographic,chromolithograph=ic
+chromolithograph,chromo-lithograph
+chromolithographic,chromo-lithographic
 chromolithography,chromo-lithography
 chromophobic,chromophobe=ic
 chromophoric,chromophore=ic
@@ -7901,9 +7880,11 @@ codpiece,cod-piece
 cods,cod=s
 cody,code=y
 coeds,coed=s
-coeducational,coeducation=al
+coeducation,co-education
+coeducational,co-educational
 coefficients,coefficient=s
-coequality,coequal=ity
+coequal,co-equal
+coequality,co-equality
 coequally,coequal=ly
 coerced,coerce=ed
 coercing,coerce=ing
@@ -8325,7 +8306,8 @@ compassionate,compassion-ate
 compassionately,compassionate=ly
 compatibleness,compatible=ness
 compatibles,compatible=s
-compatriotic,compatriot=ic
+compatriot,com-patriot
+compatriotic,com-patriotic
 compatriots,compatriot=s
 compelled,compel=ed
 compelling,compel=ing
@@ -8465,7 +8447,6 @@ comrades,comrade=s
 coms,com=s
 comtes,comte=s
 conan,cone=an
-conation,cone=ation
 concatenated,concatenate=ed
 concatenates,concatenate=s
 concatenating,concatenate=ing
@@ -9493,6 +9474,7 @@ coughing,cough=ing
 coughs,cough=s
 couloirs,couloir=s
 coulombmeter,coulomb-meter
+councilman,council-man
 councilmanic,councilman=ic
 councilmen,council-men
 councilor,council=or
@@ -9900,7 +9882,6 @@ creatural,creature=al
 creaturely,creature=ly
 creatures,creature=s
 creches,creche=s
-credential,credent=ial
 credentialed,credential=ed
 credentials,credential=s
 credibleness,credible=ness
@@ -9924,7 +9905,6 @@ creeps,creep=s
 creepy,creep=y
 crees,cree=s
 cremated,cremate=ed
-cremation,creme=ation
 cremationist,cremation=ist
 cremator,cremate=or
 crematory,cremate=ory
@@ -9951,7 +9931,6 @@ crests,crest=s
 cresylic,cresyl=ic
 cretaceously,cretaceous=ly
 cretan,crete=an
-cretic,crete=ic
 cretinism,cretin=ism
 crevices,crevice=s
 crewelwork,crewel-work
@@ -11278,7 +11257,6 @@ delightsomely,de=lightsomely
 delimit,de=limit
 delimitate,delimit-ate
 delimitation,de=limitation
-delineate,de=lineate
 delineated,delineate=ed
 delineates,delineate=s
 delineating,delineate=ing
@@ -11310,7 +11288,6 @@ delmarva,del-marva
 delocalize,de=localize
 delouse,de=louse
 deloused,de=loused
-delphi,del-phi
 delphian,delph=ian
 delphic,delph=ic
 deltas,delta=s
@@ -11424,7 +11401,7 @@ demurring,demur=ing
 demurs,demur=s
 demystify,de=mystify
 demythologize,de=mythologize
-denationalization,denationalize=ation
+denationalization,de=nationalization
 denationalizations,denationalization=s
 denationalize,de=nationalize
 denationalized,de=nationalized
@@ -12049,7 +12026,6 @@ diaphanousness,diaphanous=ness
 diaries,diary=es
 diarrheas,diarrhea=s
 diastasic,diastase=ic
-diatomic,diatom=ic
 diatoms,diatom=s
 diatribes,diatribe=s
 diazomethane,diazo-methane
@@ -13270,6 +13246,7 @@ dolman,dolma=n
 dolmen,dol-men
 dolmenic,dolmen=ic
 dolomites,dolomite=s
+dolomitic,dolomite=ic
 dolomitization,dolomitize=ation
 dolomitize,dolomite=ize
 dolor,dol=or
@@ -13361,7 +13338,6 @@ doped,dope=ed
 dopey,dope=y
 dorbeetle,dor-beetle
 dorchester,dor-chester
-dorian,dory=an
 dorians,dorian=s
 doric,dor=ic
 dorking,dor-king
@@ -13679,7 +13655,6 @@ drippy,drip=y
 drips,drip=s
 dripstone,drip-stone
 drivable,drive=able
-drive,dr=ive
 driver,drive=er
 driverless,driver=less
 drivers,driver=s
@@ -14351,7 +14326,7 @@ electrojet,electro-jet
 electrokinetics,electro-kinetics
 electroluminescence,electro-luminescence
 electromagnet,electro-magnet
-electromagnetic,electromagnet=ic
+electromagnetic,electro-magnetic
 electromagnetism,electromagnet=ism
 electromagnets,electromagnet=s
 electromechanical,electro-mechanical
@@ -14551,7 +14526,6 @@ emigrants,emigrant=s
 emigrated,emigrate=ed
 emigrates,emigrate=s
 emigrating,emigrate=ing
-emigration,emigre=ation
 emigrations,emigration=s
 emigres,emigre=s
 emily,emil=y
@@ -14571,7 +14545,6 @@ emmen,em=en
 emmer,em=er
 emmy,em=y
 emmys,emmy=s
-emory,em=ory
 emotional,emotion=al
 emotionalism,emotional=ism
 emotionalist,emotional=ist
@@ -15225,7 +15198,6 @@ ergographic,ergograph=ic
 ergonomics,ergonomic=s
 ergotism,ergot=ism
 ergots,ergot=s
-eric,ere=ic
 eritrean,eritrea=n
 eritreans,eritrean=s
 ermined,ermine=ed
@@ -15616,6 +15588,7 @@ exclusives,exclusive=s
 exclusivism,exclusive=ism
 exclusivity,exclusive=ity
 excommunicated,excommunicate=ed
+excommunication,ex-communication
 excommunicative,excommunicate=ive
 excoriated,excoriate=ed
 excoriating,excoriate=ing
@@ -15850,7 +15823,6 @@ exposedness,exposed=ness
 exposes,expose=s
 exposing,expose=ing
 expositions,exposition=s
-expository,expositor=y
 expostulative,expostulate=ive
 expostulatory,expostulate=ory
 exposures,exposure=s
@@ -15978,7 +15950,7 @@ extrasystole,extra-systole
 extraterrestrial,extra-terrestrial
 extraterrestrials,extraterrestrial=s
 extraterritorial,extra-territorial
-extraterritoriality,extraterritorial=ity
+extraterritoriality,extra-territoriality
 extraterritorially,extraterritorial=ly
 extrauterine,extra-uterine
 extravagancy,extravagance=y
@@ -16012,7 +15984,8 @@ exultantly,exultant=ly
 exulted,exult=ed
 exulting,exult=ing
 exults,exult=s
-exurban,exurb=an
+exurban,ex-urban
+exurbanite,ex-urbanite
 eyeball,eye-ball
 eyeballs,eyeball=s
 eyebar,eye-bar
@@ -16752,7 +16725,6 @@ fijian,fiji=an
 fijians,fijian=s
 filamentous,filament=ous
 filaments,filament=s
-filarial,filar=ial
 filberts,filbert=s
 filched,filch=ed
 filed,file=ed
@@ -16806,7 +16778,6 @@ filtering,filter=ing
 filters,filter=s
 filthy,filth=y
 finable,fine=able
-final,fine=al
 finalism,final=ism
 finalist,final=ist
 finalists,finalist=s
@@ -16856,7 +16827,6 @@ fingers,finger=s
 fingerstall,finger-stall
 fingertip,finger-tip
 fingertips,fingertip=s
-finial,fini=al
 finical,fin=ical
 finically,finical=ly
 finicalness,finical=ness
@@ -17477,7 +17447,7 @@ foliated,foliate=ed
 folkish,folk=ish
 folklore,folk-lore
 folkmoot,folk-moot
-folkmot,folk-mot
+folkmot,folk-moat
 folkright,folk-right
 folks,folk=s
 folksy,folks=y
@@ -18215,7 +18185,6 @@ frowningly,frowning=ly
 frowns,frown=s
 frozen,froze=n
 frozenly,frozen=ly
-frugal,frug=al
 frugality,frugal=ity
 frugally,frugal=ly
 frugalness,frugal=ness
@@ -18673,7 +18642,6 @@ gaussian,gauss=ian
 gaussmeter,gauss-meter
 gauzy,gauze=y
 gavelkind,gavel-kind
-gavial,gave=ial
 gawker,gawk=er
 gawkers,gawker=s
 gawking,gawk=ing
@@ -18725,7 +18693,6 @@ genealogically,genealogical=ly
 generalist,general=ist
 generalists,generalist=s
 generalities,generality=es
-generality,generale=ity
 generalization,generalize=ation
 generalizations,generalization=s
 generalize,general=ize
@@ -19410,7 +19377,6 @@ gradienter,gradient=er
 gradients,gradient=s
 grading,grade=ing
 grads,grad=s
-gradual,grad=ual
 gradualism,gradual=ism
 gradualist,gradual=ist
 gradually,gradual=ly
@@ -19639,6 +19605,7 @@ greenhouses,greenhouse=s
 greening,green=ing
 greenish,green=ish
 greenkeeper,green-keeper
+greenland,green-land
 greenlandic,greenland=ic
 greenling,green-ling
 greenly,green=ly
@@ -19667,7 +19634,6 @@ greetings,greeting=s
 greets,greet=s
 gregariously,gregarious=ly
 gregariousness,gregarious=ness
-gregory,greg=ory
 gremlins,gremlin=s
 grenades,grenade=s
 grenadines,grenadine=s
@@ -19876,7 +19842,6 @@ guardedly,guarded=ly
 guardedness,guarded=ness
 guardee,guard=ee
 guardhouse,guard-house
-guardian,guardi=an
 guardians,guardian=s
 guardianship,guardian-ship
 guarding,guard=ing
@@ -21088,7 +21053,7 @@ heterophonic,hetero-phonic
 heteroplastic,hetero-plastic
 heteropolar,hetero-polar
 heterosexual,hetero-sexual
-heterosexuality,heterosexual=ity
+heterosexuality,hetero-sexuality
 heterosexuals,heterosexual=s
 heterostyled,hetero-styled
 heterotactic,hetero-tactic
@@ -21134,7 +21099,6 @@ hierarchically,hierarchical=ly
 hierarchism,hierarch=ism
 hierarchize,hierarch=ize
 hierarchy,hierarch=y
-hieratic,hiera-tic
 hieroglyphic,hieroglyph=ic
 hieroglyphics,hieroglyphic=s
 hieroglyphist,hieroglyph=ist
@@ -21268,7 +21232,6 @@ historical,historic=al
 historically,historical=ly
 historied,history=ed
 histories,history=es
-history,hist=ory
 histrionics,histrionic=s
 hitchcock,hitch-cock
 hitched,hitch=ed
@@ -21474,6 +21437,7 @@ homogenization,homogenize=ation
 homogenized,homogenize=ed
 homographic,homograph=ic
 homoiothermal,homoiotherm=al
+homolecithal,homo-lecithal
 homologically,homological=ly
 homonymous,homonym=ous
 homonymously,homonymous=ly
@@ -21481,9 +21445,9 @@ homonyms,homonym=s
 homonymy,homonym=y
 homophone,homo-phone
 homophones,homophone=s
-homopolarity,homopolar=ity
+homopolarity,homo-polarity
 homosexual,homo-sexual
-homosexuality,homosexual=ity
+homosexuality,homo-sexuality
 homosexuals,homosexual=s
 homozygote,homo-zygote
 honan,hone=an
@@ -21915,7 +21879,6 @@ hurdles,hurdle=s
 hurled,hurl=ed
 hurling,hurl=ing
 hurly,hurl=y
-hurrian,hurry=an
 hurricanes,hurricane=s
 hurried,hurry=ed
 hurriedly,hurried=ly
@@ -23019,7 +22982,6 @@ indianian,indian=ian
 indianians,indianian=s
 indianize,indian=ize
 indians,indian=s
-indican,indic=an
 indicant,indic=ant
 indicate,indic-ate
 indicated,indicate=ed
@@ -23208,6 +23170,7 @@ inestimable,in=estimable
 inestimableness,in=estimableness
 inevitable,in=evitable
 inevitableness,inevitable=ness
+inevitably,inevitable=y
 inexact,in=exact
 inexactitude,in=exactitude
 inexactly,in=exactly
@@ -23369,7 +23332,7 @@ informally,in=formally
 informant,in=formant
 informants,in=formants
 informational,information=al
-informations,in=formations
+informations,information=s
 informative,in=formative
 informatively,in=formatively
 informativeness,informative=ness
@@ -24505,7 +24468,7 @@ invites,invite=s
 inviting,invite=ing
 invitingly,inviting=ly
 invitingness,inviting=ness
-invocation,invocate=ion
+invocation,invoke=ation
 invocative,invocate=ive
 invoice,in=voice
 invoices,in=voices
@@ -24653,6 +24616,8 @@ irruptively,irruptive=ly
 isagogics,isagogic=s
 ishtar,ish-tar
 islamic,islam=ic
+islamism,islam=ism
+islamist,islam=ist
 islamists,islamist=s
 islamization,islamize=ation
 islander,island=er
@@ -24674,6 +24639,7 @@ isolatable,isolate=able
 isolated,isolate=ed
 isolates,isolate=s
 isolating,isolate=ing
+isolation,isolate=ion
 isolationism,isolation=ism
 isolationist,isolation=ist
 isolationists,isolationist=s
@@ -25582,7 +25548,6 @@ lakewood,lake-wood
 laking,lake=ing
 lakotas,lakota=s
 laky,lake=y
-lallan,lall=an
 lallans,lallan=s
 lallation,lall=ation
 lamaism,lama=ism
@@ -26071,7 +26036,6 @@ legalized,legalize=ed
 legalizing,legalize=ing
 legally,legal=ly
 legals,legal=s
-legatee,legate=ee
 legates,legate=s
 legation,leg=ation
 legationary,legation-ary
@@ -26228,6 +26192,7 @@ lexicons,lexicon=s
 leys,ley=s
 liabilities,liability=es
 liaisons,liaison=s
+liar,lie=er
 liards,liard=s
 liars,liar=s
 liassic,lias=ic
@@ -26394,9 +26359,7 @@ lilacs,lilac=s
 lilian,lilia=n
 lilied,lily=ed
 lilies,lily=es
-lillian,lilly=an
 lilly,lill=y
-liman,lime=an
 limas,lima=s
 limbed,limb=ed
 limberneck,limber-neck
@@ -26446,7 +26409,6 @@ linden,lind=en
 lindy,lind=y
 lineages,lineage=s
 lineally,lineal=ly
-linear,lin-ear
 linearity,linear=ity
 linearize,linear=ize
 linearly,linear=ly
@@ -27086,7 +27048,6 @@ lustrousness,lustrous=ness
 lusty,lust=y
 luteal,lute=al
 luteinizing,luteinize=ing
-luteous,lute=ous
 luter,lute=er
 lutes,lute=s
 lutestring,lute-string
@@ -27352,7 +27313,6 @@ malines,maline=s
 malis,mali=s
 malism,male=ism
 mallards,mallard=s
-mallory,mall=ory
 mallows,mallow=s
 malls,mall=s
 malnourished,mal-nourished
@@ -27402,7 +27362,6 @@ mandates,mandate=s
 mandating,mandate=ing
 mandatory,mande=atory
 mandean,mande=ean
-mandible,mande=ible
 mandrake,man-drake
 mandrill,man-drill
 mandy,mande=y
@@ -27494,7 +27453,6 @@ manteltree,mantel-tree
 mantinea,man-tinea
 mantles,mantle=s
 mantrap,man-trap
-manual,man=ual
 manually,manual=ly
 manuals,manual=s
 manufactured,manufacture=ed
@@ -27976,7 +27934,6 @@ megavolt,mega-volt
 megawatt,mega-watt
 megawatts,megawatt=s
 megohm,meg-ohm
-megrim,meg-rim
 meiny,mein=y
 meisters,meister=s
 meistersinger,meister-singer
@@ -28022,7 +27979,6 @@ memories,memory=es
 memorized,memorize=ed
 memorizes,memorize=s
 memorizing,memorize=ing
-memory,mem=ory
 memos,memo=s
 menaced,menace=ed
 menaces,menace=s
@@ -28391,7 +28347,6 @@ midgard,mid-gard
 midges,midge=s
 midgets,midget=s
 midgut,mid-gut
-midian,midi=an
 midiron,mid-iron
 midland,mid-land
 midlands,midland=s
@@ -29171,7 +29126,6 @@ mongolic,mongol=ic
 mongols,mongol=s
 mongooses,mongoose=s
 mongrelize,mongrel=ize
-monial,mony=al
 monies,mony=es
 monikers,moniker=s
 monism,mon=ism
@@ -29195,7 +29149,7 @@ monobasicity,mono-basicity
 monochloride,mono-chloride
 monochord,mono-chord
 monochromate,mono-chromate
-monochromatic,monochromat=ic
+monochromatic,mono-chromatic
 monochromaticity,mono-chromaticity
 monochromatism,mono-chromatism
 monochrome,mono-chrome
@@ -29260,7 +29214,6 @@ monorail,mono-rail
 monorails,monorail=s
 monosaccharide,mono-saccharide
 monosomic,monosome=ic
-monostich,mono-stich
 monostichous,monostich=ous
 monostrophic,monostrophe=ic
 monosyllabic,mono-syllabic
@@ -29458,9 +29411,7 @@ motivation,motive=ation
 motivational,motivation=al
 motivations,motivation=s
 motivator,motivate=or
-motive,mot=ive
 motives,motive=s
-motmot,mot-mot
 motorable,motor=able
 motorbike,motor-bike
 motorbikes,motorbike=s
@@ -29483,7 +29434,6 @@ motorized,motorize=ed
 motors,motor=s
 motortruck,motor-truck
 motorway,motor-way
-motrin,mot-rin
 mots,mot=s
 mottled,mottle=ed
 mottling,mottle=ing
@@ -29822,7 +29772,6 @@ mutterings,muttering=s
 mutters,mutter=s
 muttonchops,mutton-chops
 mutts,mutt=s
-mutual,mute=ual
 mutualism,mutual=ism
 mutuality,mutual=ity
 mutualize,mutual=ize
@@ -30664,7 +30613,6 @@ normalized,normalize=ed
 normalizes,normalize=s
 normalizing,normalize=ing
 normally,normal=ly
-normandy,normand=y
 normative,norm=ative
 normatively,normative=ly
 normativeness,normative=ness
@@ -30701,7 +30649,7 @@ nosebag,nose-bag
 noseband,nose-band
 nosebleed,nose-bleed
 nosed,nose=ed
-nosedive,nosed=ive
+nosedive,nose-dive
 nosedived,nosedive=ed
 nosegay,nose-gay
 nosepiece,nose-piece
@@ -31175,7 +31123,6 @@ oneal,one=al
 onefold,one-fold
 oneness,one=ness
 oner,one=er
-onerous,oner=ous
 ones,one=s
 oneself,one-self
 onetime,one-time
@@ -31280,7 +31227,6 @@ oranges,orange=s
 orangewood,orange-wood
 orangutans,orangutan=s
 orangy,orang=y
-oration,or=ation
 orations,oration=s
 oratorian,oratory=an
 oratorical,orator=ical
@@ -32398,7 +32344,7 @@ pairs,pair=s
 pajamas,pajama=s
 pakistanis,pakistani=s
 palaces,palace=s
-palatable,palate=able
+palatability,palatable=ity
 palatableness,palatable=ness
 palatal,palate=al
 palates,palate=s
@@ -32417,11 +32363,9 @@ paling,pale=ing
 palisades,palisade=s
 palish,pal=ish
 pallets,pallet=s
-pallial,pally=al
 palliative,palliate=ive
 palliatives,palliative=s
 pallor,pal=or
-pally,pal=ly
 palmary,palmar=y
 palmate,pal-mate
 palmation,palm=ation
@@ -33080,6 +33024,8 @@ penfold,pen-fold
 penguins,penguin=s
 penholder,pen-holder
 penicillins,penicillin=s
+peninsula,pen-insula
+peninsular,pen-insular
 peninsularity,peninsular=ity
 penises,penis=es
 penitentiaries,penitentiary=es
@@ -33150,7 +33096,6 @@ peppery,pepper=y
 peppy,pep=y
 pepsin,pep-sin
 pepsinate,pepsin-ate
-peptic,pep-tic
 peptide,pep-tide
 peptides,peptide=s
 peptone,pep-tone
@@ -33317,6 +33262,7 @@ personableness,personable=ness
 personal,person=al
 personalism,personal=ism
 personalities,personality=es
+personality,personal=ity
 personalization,personalize=ation
 personalize,personal=ize
 personalized,personalize=ed
@@ -33476,7 +33422,6 @@ phenylamine,phenyl-amine
 phenylketonuria,phenyl-ketonuria
 phenylthiourea,phenyl-thiourea
 pheromones,pheromone=s
-phial,phi=al
 philadelphian,philadelphia=n
 philadelphians,philadelphian=s
 philandering,philander=ing
@@ -33503,7 +33448,6 @@ phobias,phobia=s
 phoenician,phoenicia=n
 phoenicians,phoenician=s
 phonasthenia,phon-asthenia
-phonate,phon-ate
 phonation,phone=ation
 phonatory,phon=atory
 phonecard,phone-card
@@ -33597,7 +33541,7 @@ photomural,photo-mural
 photoneutron,photo-neutron
 photons,photon=s
 photoperiod,photo-period
-photoperiodic,photoperiod=ic
+photoperiodic,photo-periodic
 photoperiodism,photoperiod=ism
 photophobia,photo-phobia
 photoplay,photo-play
@@ -33647,7 +33591,6 @@ physicky,physic=y
 physicochemically,physicochemical=ly
 physics,physic=s
 phytogeographically,phytogeographical=ly
-pial,pi=al
 pianists,pianist=s
 pianos,piano=s
 picas,pica=s
@@ -33769,7 +33712,6 @@ pillars,pillar=s
 pillbox,pill-box
 pilling,pill=ing
 pilloried,pillory=ed
-pillory,pill=ory
 pillowcase,pillow-case
 pillows,pillow=s
 pillowslip,pillow-slip
@@ -33860,7 +33802,6 @@ pioneered,pioneer=ed
 pioneering,pioneer=ing
 pioneers,pioneer=s
 pionic,pion=ic
-pious,pi=ous
 piously,pious=ly
 pipeclay,pipe-clay
 piped,pipe=ed
@@ -34649,7 +34590,6 @@ potable,pote=able
 potableness,potable=ness
 potash,pot-ash
 potassic,potass=ic
-potation,pote=ation
 potatoes,potato=es
 potbellied,potbelly=ed
 potbelly,pot-belly
@@ -35310,7 +35250,6 @@ privacies,privacy=es
 privately,private=ly
 privates,private=s
 privations,privation=s
-privative,private=ive
 privatively,privative=ly
 privatization,privatize=ation
 privatizations,privatization=s
@@ -35473,7 +35412,6 @@ projective,project=ive
 projector,project=or
 projectors,projector=s
 projects,project=s
-prolan,prole=an
 prolately,prolate=ly
 prolateness,prolate=ness
 prolation,prole=ation
@@ -35605,8 +35543,6 @@ proselytism,proselyte=ism
 proselytized,proselytize=ed
 proselytizing,proselytize=ing
 proser,pros=er
-proserpine,proser-pine
-prosify,pros=ify
 proslavery,pro-slavery
 prospecting,prospect=ing
 prospectively,prospective=ly
@@ -35784,14 +35720,16 @@ psychodynamics,psychodynamic=s
 psychogenesis,psycho-genesis
 psychogenetic,psycho-genetic
 psychogenic,psycho-genic
-psychographic,psychograph=ic
+psychograph,psycho-graph
+psychographic,psycho-graphic
 psycholinguistics,psycho-linguistics
 psychologists,psychologist=s
 psychometrics,psycho-metrics
 psychomotor,psycho-motor
 psychoneurosis,psycho-neurosis
 psychoneurotic,psycho-neurotic
-psychopathic,psychopath=ic
+psychopath,psycho-path
+psychopathic,psycho-pathic
 psychopathological,psycho-pathological
 psychopathology,psycho-pathology
 psychopaths,psychopath=s
@@ -36138,7 +36076,6 @@ quarreled,quarrel=ed
 quarreling,quarrel=ing
 quarrels,quarrel=s
 quarrelsome,quarrel-some
-quarrian,quarry=an
 quarrier,quarry=er
 quarries,quarry=es
 quarrying,quarry=ing
@@ -36362,7 +36299,7 @@ radiofrequency,radio-frequency
 radiogenic,radio-genic
 radiogram,radio-gram
 radiograph,radio-graph
-radiographic,radiograph=ic
+radiographic,radio-graphic
 radioisotope,radio-isotope
 radioisotopic,radio-isotopic
 radiolocation,radio-location
@@ -36637,7 +36574,6 @@ rations,ration=s
 ratios,ratio=s
 rats,rat=s
 ratsbane,rats-bane
-rattan,rat=an
 ratten,rat=en
 rattening,ratten=ing
 ratter,rat=er
@@ -36956,7 +36892,6 @@ receptacles,receptacle=s
 receptionist,reception=ist
 receptionists,receptionist=s
 receptions,reception=s
-receptive,recept=ive
 receptors,receptor=s
 recertification,re=certification
 recertified,re=certified
@@ -36993,10 +36928,9 @@ recital,recite=al
 recitals,recital=s
 recitations,recitation=s
 recitatives,recitative=s
-recite,re=cite
-recited,re=cited
-recites,re=cites
-reciting,re=citing
+recited,recite=ed
+recites,recite=s
+reciting,recite=ing
 reckless,reck=less
 recklessly,reckless=ly
 recklessness,reckless=ness
@@ -37521,8 +37455,8 @@ regattas,regatta=s
 regency,regence=y
 regenerated,regenerate=ed
 regenerating,regenerate=ing
-regeneration,regenerate=ion
-regenerative,regenerate=ive
+regeneration,re=generation
+regenerative,re=generative
 regeneratively,regenerative=ly
 regenerator,re=generator
 regents,regent=s
@@ -37920,7 +37854,7 @@ remuneratively,remunerative=ly
 rename,re=name
 renamed,re=named
 renaming,re=naming
-renationalization,renationalize=ation
+renationalization,re=nationalization
 renationalize,re=nationalize
 render,rend=er
 rendered,render=ed
@@ -38592,7 +38526,7 @@ retrofitted,retrofit=ed
 retrofitting,retrofit=ing
 retroflex,retro-flex
 retroflexion,retro-flexion
-retrogradation,retrograde=ation
+retrogradation,retro-gradation
 retrograde,retro-grade
 retrogradely,retrograde=ly
 retrogressive,retrogress=ive
@@ -38786,7 +38720,6 @@ rhetorical,rhetoric=al
 rhetoricians,rhetorician=s
 rheumatics,rheumatic=s
 rheumy,rheum=y
-rhinal,rhine=al
 rhineland,rhine-land
 rhinelander,rhineland=er
 rhines,rhine=s
@@ -38982,7 +38915,6 @@ ritually,ritual=ly
 rituals,ritual=s
 ritziest,ritzy=est
 ritzy,ritz=y
-rival,rive=al
 rivaled,rival=ed
 rivaling,rival=ing
 rivalries,rivalry=es
@@ -39630,7 +39562,6 @@ salmonberry,salmon-berry
 salmons,salmon=s
 salons,salon=s
 saloons,saloon=s
-saltation,salt=ation
 saltatorial,saltatory=al
 saltbox,salt-box
 saltbush,salt-bush
@@ -40705,12 +40636,11 @@ sequined,sequin=ed
 sequins,sequin=s
 sequiturs,sequitur=s
 sequoias,sequoia=s
-seral,ser=al
+seral,sere=al
 seraphic,seraph=ic
 serbian,serbia=n
 serbians,serbian=s
 serbs,serb=s
-serdab,ser-dab
 serenaded,serenade=ed
 serenading,serenade=ing
 serenely,serene=ly
@@ -40721,12 +40651,10 @@ serfs,serf=s
 sergeantfish,sergeant-fish
 sergeants,sergeant=s
 sergeanty,sergeant=y
-serial,ser=ial
 serialist,serial=ist
 serialize,serial=ize
 serialized,serialize=ed
 serials,serial=s
-seric,sere=ic
 seriously,serious=ly
 seriousness,serious=ness
 serjeanty,serjeant=y
@@ -40734,7 +40662,6 @@ sermonize,sermon=ize
 sermons,sermon=s
 serological,serologic=al
 serotinal,serotine=al
-serous,ser=ous
 serpentinization,serpentinize=ation
 serpents,serpent=s
 serrated,serrate=ed
@@ -40762,7 +40689,6 @@ servileness,servile=ness
 servility,servile=ity
 serving,serve=ing
 servings,serving=s
-servite,ser-vite
 servocontrol,servo-control
 servomechanical,servo-mechanical
 servomechanism,servo-mechanism
@@ -41168,7 +41094,6 @@ shopwalker,shop-walker
 shopwindow,shop-window
 shopwoman,shop-woman
 shopworn,shop-worn
-shoran,shore=an
 shorebird,shore-bird
 shored,shore=ed
 shoreline,shore-line
@@ -41503,10 +41428,8 @@ silverweed,silver-weed
 silverwork,silver-work
 silvery,silver=y
 simas,sima=s
-simian,simi=an
 similarities,similarity=es
 similarly,similar=ly
-simious,simi=ous
 simkin,sim-kin
 simkins,simkin=s
 simmer,sim=er
@@ -41592,7 +41515,6 @@ sipper,sip=er
 sipping,sip=ing
 sips,sip=s
 sircar,sir-car
-siree,sire=ee
 sirenic,siren=ic
 sirens,siren=s
 sires,sire=s
@@ -41660,7 +41582,6 @@ skeets,skeet=s
 skeins,skein=s
 skeletons,skeleton=s
 skepful,skep=ful
-skeptic,skep-tic
 skeptical,skeptic=al
 skeptically,skeptical=ly
 skeptics,skeptic=s
@@ -43411,6 +43332,7 @@ statues,statue=s
 statuettes,statuette=s
 statutable,statute=able
 statutes,statute=s
+statutorily,statutory=ly
 statutory,statute=ory
 statvolt,stat-volt
 staunchest,staunch=est
@@ -43543,7 +43465,7 @@ stereochrome,stereo-chrome
 stereochromy,stereochrome=y
 stereogram,stereo-gram
 stereograph,stereo-graph
-stereographic,stereograph=ic
+stereographic,stereo-graphic
 stereoisomer,stereo-isomer
 stereoisomeric,stereo-isomeric
 stereoisomerism,stereoisomer=ism
@@ -44108,6 +44030,8 @@ stylite,sty-lite
 stylites,stylite=s
 stylize,style=ize
 stylized,stylize=ed
+stylobate,stylo-bate
+stylograph,stylo-graph
 stylographic,stylograph=ic
 stymies,stymie=s
 styrax,sty-rax
@@ -44294,7 +44218,6 @@ suborbital,sub=orbital
 suborder,sub=order
 subordinal,sub=ordinal
 subordinary,sub=ordinary
-subordinate,sub=ordinate
 subordinated,subordinate=ed
 subordinates,subordinate=s
 subordinating,subordinate=ing
@@ -45847,7 +45770,6 @@ terraces,terrace=s
 terracing,terrace=ing
 terracotta,terra-cotta
 terrains,terrain=s
-terrapin,terra-pin
 terrier,terri=er
 terriers,terrier=s
 terrified,terrify=ed
@@ -46882,7 +46804,6 @@ transfinite,trans=finite
 transfix,trans=fix
 transfixed,trans=fixed
 transform,trans=form
-transformation,trans=formation
 transformational,transformation=al
 transformations,trans=formations
 transformed,trans=formed
@@ -46920,6 +46841,7 @@ transitions,transition=s
 transitive,transit=ive
 transitively,transitive=ly
 transitiveness,transitive=ness
+transitorily,transitory=ly
 transitory,transit=ory
 transits,transit=s
 translatable,translate=able
@@ -47099,7 +47021,6 @@ tressy,tress=y
 triable,try=able
 triableness,triable=ness
 triads,triad=s
-trial,try=al
 trialist,trial=ist
 trials,trial=s
 triangles,triangle=s
@@ -47187,7 +47108,6 @@ trippers,tripper=s
 tripping,trip=ing
 trips,trip=s
 triremes,trireme=s
-tristan,triste=an
 tristful,triste=ful
 tristfully,tristful=ly
 tristfulness,tristful=ness
@@ -47204,7 +47124,6 @@ trivialize,trivial=ize
 trivialized,trivialize=ed
 trivializes,trivialize=s
 trivializing,trivialize=ing
-trochal,troche=al
 trochanteric,trochanter=ic
 trodden,trod=en
 trojans,trojan=s
@@ -47535,7 +47454,6 @@ tyrannies,tyranny=es
 tyrannously,tyrannous=ly
 tyrant,tyre=ant
 tyrants,tyrant=s
-tyree,tyre=ee
 tyrian,tyre=ian
 ubiquitarian,ubiquitary=an
 ugandan,uganda=n
@@ -49602,6 +49520,7 @@ vacationer,vacation=er
 vacationers,vacationer=s
 vacationing,vacation=ing
 vacationist,vacation=ist
+vacationland,vacation-land
 vacations,vacation=s
 vaccinated,vaccinate=ed
 vaccinations,vaccination=s
@@ -49798,10 +49717,9 @@ venousness,venous=ness
 vented,vent=ed
 venter,vent=er
 venters,venter=s
-ventilate,ventil-ate
 ventilated,ventilate=ed
 ventilating,ventilate=ing
-ventilation,ventil=ation
+ventilation,ventilate=ion
 ventilative,ventilate=ive
 ventilator,ventilate=or
 venting,vent=ing
@@ -49856,7 +49774,6 @@ vernacularize,vernacular=ize
 vernal,vern=al
 vernalization,vernalize=ation
 vernalize,vernal=ize
-vernation,vern=ation
 versant,vers=ant
 versatilely,versatile=ly
 versatileness,versatile=ness
@@ -50017,7 +49934,7 @@ violas,viola=s
 violated,violate=ed
 violates,violate=s
 violating,violate=ing
-violation,viol=ation
+violation,violate=ion
 violations,violation=s
 violative,violate=ive
 violator,violate=or
@@ -50340,7 +50257,6 @@ wanes,wane=s
 waney,wane=y
 wangled,wangle=ed
 waning,wane=ing
-wanion,wan=ion
 wanker,wank=er
 wannabees,wannabee=s
 wannabes,wannabe=s
@@ -51608,7 +51524,6 @@ xerophytism,xerophyte=ism
 xeroxed,xerox=ed
 xeroxes,xerox=es
 xeroxing,xerox=ing
-xian,xi=an
 xylographic,xylograph=ic
 xyster,xyst=er
 yachter,yacht=er
