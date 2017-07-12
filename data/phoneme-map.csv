@@ -3,6 +3,7 @@ SAMPA,IPA-UK,IPA-US,PhonEng,Lytspel,Sample,Notes
 -,ˌ,,-,,,Secondary stress marker (ignored)
 -,ʲ,,-,,,Rarely used palatization marker (ignored)
 @,ə,,',@,lemon,
+@#,,,,@#,,Schwa variant used in some custom spellings to indicate that the tradspell vowel should be retained (for consistency with related words)
 @`,-,ɚ,'r,er,number,RP doesn’t have this sound
 3:,ɜː,,ér,ur,turn,
 E,-,,é,,danseuse,Occasionally used in foreign words
