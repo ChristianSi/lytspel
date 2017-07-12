@@ -430,6 +430,16 @@ Rules for derived and related words:
     (see above) and prevents confusion with «ie» in words such as
     «studied». But note that R-colored schwa remains «er», e.g. «eesier»
     ‹easier›.
+  * As noted above, the schwa is omitted between certain consonants and
+    final «l» or «m». To prevent misreadings, the omitted schwa is restored
+    as «e» in front of the suffixes «ism, ist, uss, ys» ‹..., ous, ise/ize›
+    as well as before stressed «ee», e.g. «vandelism» ‹vandalism› from
+    «vandl» ‹vandal›, «iuni'vurselism» ‹universalism› from «iuni'vurssl»
+    ‹universal›, «voakelist» ‹vocalist› from «voacl» ‹vocal›, «cristelys»
+    ‹crystallize› from «cristl» ‹crystal›, «lybeluss» ‹libelous› and
+    «lybe'lee» ‹libelee› from «lybl» ‹libel›. The obvious exception are
+    derived words where no schwa is spoken, e.g. «syclys» ‹cyclize› from
+    «sycl» ‹cycle›, «simplism» from «simpl» ‹simple›.
   * Otherwise, end-of-word spellings are preserved in all derived forms as
     long as of the base word doesn't change (except for possible shifts of
     stress), e.g.
@@ -597,6 +607,11 @@ XXX Describe additional compromise decisions, e.g.
   * Document that stress marker--free variant is preferred in doubt, e.g.
     «adult» rather than «*a'dult», «to dictait» ‹to dictate› rather than «to
     *dic'tate», «sabetaazh» ‹sabotage› rather than «*sabo'taazh».
+
+Cf. [American and British English pronunciation
+differences](https://en.wikipedia.org/wiki/American_and_British_English_pronunciation_differences)
+and [Different spellings for different
+pronunciations](https://en.wikipedia.org/wiki/American_and_British_English_spelling_differences#Different_spellings_for_different_pronunciations).
 
 
 ## Overview
