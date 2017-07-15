@@ -329,6 +329,8 @@ Spellings involving several sounds:
     zoadi-ak» ‹amnesiac, zodiac›.
   * The R-colored vowel combination /i:@`/ is written «ier», e.g. «thieri»
     ‹theory›.
+  * The vowel combination /oU@/ is written «oe», e.g. «boe, coe'lition,
+    ys'socroess» ‹boa, coalition, isochroous›.
   * The vowel combination /u:@/ is written «ua», e.g. «acchual,
     indi'vijual, influanss, soo'purfluass, crual» ‹actual, individual,
     influence, superfluous, cruel›.  In the very rare cases where
