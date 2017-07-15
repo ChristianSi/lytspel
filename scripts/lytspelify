@@ -42,8 +42,9 @@ const my $LYTSPEL_CONSONANT => '(?:(?:[bcdfghjklmnprstvwxyz]h?|nn?g|qu)=?)';
 # Ditto, after original casing has been restored: «y» is only considered a consonant if a
 # vowel follows (use with /i flag)
 const my $LYTSPEL_CONSONANT_POST_PROC => '(?:(?:[bcdfghjklmnprstvwxz]h?|y(?=[aeiou])|nn?g|qu))';
-# Pattern fragment matching the vowel «e» (excluding «er» and digraphs such as «ee, ue»)
-const my $PLAIN_E => "(?<![eu])e(?!(e|'?r))";
+# Pattern fragment matching the vowel «e» (excluding «er» and digraphs such as «ee, ue»,
+# but accepting «e» after the digraphs «iu, qu»)
+const my $PLAIN_E => "(?:[iq]ue|(?<![eu])e)(?!(e|'?r))";
 
 # Stress the second part of a compound if the first part is listed here
 my %STRESS_AFTER = map { $_ => 1 } qw/arch best chemo chromo co com con crypt crypto dynamo ego
@@ -80,8 +81,9 @@ my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acro
     civility colonic councilmanic criminality cryptogamous cryptonymous ctenophoran demonic
     diaphaneity external fibrinogenous frivolity gnomonic halogenous homonymous matrimonial
     Miltonic monomeric monomerous monostrophic nebulosity originality partiality pseudonymity
-    planktonic prebendal puritanical reclusive renewal satanic shamanic sinistrality Solomonic
-    sultanic sycophantic synonymous talismanic testimonial tribadic tympanic/;
+    planktonic prebendal puritanical quadrantal quadrupedal reclusive
+    renewal satanic shamanic sinistrality sultanic sycophantic synonymous
+    talismanic testimonial tribadic tympanic/;
 
 # TODO Switch to Upper_Camel_Case for file-scoped variables (in all files)
 my $CSV_IN  = new_csv_in;
@@ -569,6 +571,10 @@ sub move_stress_marker {
             $word =~ s/$consonants_before_marker'/$stressed_cons/;
         }
 
+        # TODO Move stress marker before vowel: e'nacteri (enactory), exurb, inordinacy,
+        # subordinate, subordinative
+        # Move stress marker between the two consonants: Pavlovian
+        # t's: move stress marker before both consonants
     } else {
         # This shouldn't happen
         warn "Don't know how to move stress in '$word' ($tradspell)\n";
@@ -883,6 +889,7 @@ sub select_nearest {
 # (e.g. final "tion" in derived words such as «options, tra'ditionel, imoatio'naliti»
 # ‹...traditional, emotionality›.
 sub postprocess_suffixed {
+    # TODO Split function into shorter parts
     my ($converted, $base, $suffix, $pos_hint, $tradspell, $mapref, $maxkeylen) = @_;
     # Some suffixes are usually derived from a certain POS tag
     $pos_hint = 'n' if $tradspell eq 'contractor';
@@ -981,9 +988,15 @@ sub postprocess_suffixed {
             || warn "No match: $converted ($tradspell) from $conv_base";
     }
 
-    if ($conv_base =~ /k$/ && ($conv_suffix !~ /^[eiY]/ || $suffix eq 'al')) {
+    if ($conv_base =~ /all$/) {
+        # Restore «all», e.g. «spal'laition» ‹spallation› from «spall»
+        $converted =~ s/(.*)aa('?)l/$1al$2l/;
+    } elsif ($conv_base =~ /k$/ && ($conv_suffix !~ /^[eiY]/ || $suffix eq 'al')) {
         # Restore «k», e.g. «embar'kaition« ‹embarkation›
         $converted =~ s/(.*)c/$1k/ || warn "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /s$/ && $converted =~ /zian$/) {
+        # Restore «s», e.g. «Hobsian» ‹Hobbesian›
+        $converted =~ s/zian$/sian/;
     } elsif ($conv_base =~ /ss$/) {
         # Restore «ss», e.g «ri'sponssebl, puls'saition» ‹responsible, pulsation›
         if ($converted !~ /ss|tion$|shel$/) {
@@ -994,12 +1007,12 @@ sub postprocess_suffixed {
         } elsif ($converted =~ /[^s]'saition$/) {
             $converted =~ s/'saition$/s'saition/;
         }
-    } elsif ($conv_base =~ /[^ao]y$/) {
-        # Restore «y», e.g. «di'nyel» ‹denial›
-        $converted =~ s/(.*)ai/$1y/ || warn "No match: $converted ($tradspell) from $conv_base";
     } elsif ($conv_base =~ /ssl$/ && $suffix eq 'ation') {
         # Restore «ssl», e.g. «canss'laition» ‹cancellation›
         $converted =~ s/se'laition/ss'laition/;
+    } elsif ($conv_base =~ /[^ao]y$/) {
+        # Restore «y», e.g. «di'nyel» ‹denial›
+        $converted =~ s/(.*)ai/$1y/ || warn "No match: $converted ($tradspell) from $conv_base";
     }
 
     # If the derived word starts with «e» (not «er») and the base word with another short
@@ -1021,46 +1034,49 @@ sub postprocess_suffixed {
     # Schwa before stressed vowel may be represented by any short vowel, but if it's written
     # «e» in the base word, it shouldn't become a different vowel in a stress-shifted
     # derived form, hence we correct such cases (except for blacklisted words)
-    if (   $converted =~ /(ss|c)?(?<![aiou])([aiou])((?!'?r)$LYTSPEL_CONSONANT_POST_PROC*')/
+    if (   $converted =~ /(ss|c|qu|[$LYTSPEL_VOWELS]{1,2})? ([aiou]) ((?!'?r)
+                          $LYTSPEL_CONSONANT_POST_PROC*')/x
         && !exists($DONT_CONVERT_E_BEFORE_STRESS{$tradspell})
         && $tradspell !~ /ographic$/)
     {
         my $pre_vowel    = $1 || '';
-        my $vowel        = $2;
-        my $post_vowel   = $3;
-        my $conv_e_count = () = $converted =~ /$PLAIN_E/g;
-        my $base_e_count = () = $conv_base =~ /$PLAIN_E/g;
 
-        # Subtract 1 'e' if occurs in the suffix
-        --$conv_e_count if $conv_suffix =~ /$PLAIN_E/ && $converted =~ /$conv_suffix$/;
+        # Skip if the vowel is just the second letter of a digraph
+        unless ($pre_vowel =~ /^[$LYTSPEL_VOWELS]$/) {
+            my $vowel        = $2;
+            my $post_vowel   = $3;
+            my $conv_e_count = () = $converted =~ /$PLAIN_E/g;
+            my $base_e_count = () = $conv_base =~ /$PLAIN_E/g;
 
-        if ($base_e_count > $conv_e_count) {
-            my $pre_mod = '';
-            # «ss» before «a/o/u» becomes «c» before «e», while «c» becomes «k»
-            $pre_mod = $pre_vowel eq 'ss' ? 'c' : 'k' if $pre_vowel && $vowel ne 'i';
-            # Replace the short vowel by «e»
-            $converted =~ s/$pre_vowel$vowel$post_vowel/${pre_mod}e$post_vowel/
-                || warn "Cannot normalize schwa before stressed vowel in $converted ($tradspell)";
+            # Subtract 1 'e' if occurs in the suffix
+            --$conv_e_count if $conv_suffix =~ /$PLAIN_E/ && $converted =~ /$conv_suffix$/;
+
+            if ($base_e_count > $conv_e_count) {
+                my $pre_mod = $pre_vowel;
+
+                # «ss» before «a/o/u» becomes «c» before «e», while «c» becomes «k»
+                unless ($vowel eq 'i') {
+                    $pre_mod = 'c' if $pre_vowel eq 'ss';
+                    $pre_mod = 'k' if $pre_vowel eq 'c';
+                }
+
+                # Replace the short vowel by «e»
+                $converted =~ s/$pre_vowel$vowel$post_vowel/${pre_mod}e$post_vowel/
+                    || warn
+                        "Cannot normalize schwa before stressed vowel in $converted ($tradspell)";
+            }
         }
     }
 
     # TODO x
-    # Pre-stressed vowel didn't become e:
-    # a should become e: emanation, paradisiac
-    # o should become e: Solomonic,violation
-    # i should become e: coordination, flexibility, inquiline
-    # z should become s: Hobbesian, Keynesian
-    # a'l should become l'l: spallation,P  # spal'laition (from spall)
-    # Stress marker should move before vowel: inordinacy
-    # t's: move stress marker before both consonants
-    # theoretic,A : should become thie'retic, not thia'retic! (@r must become
-    # @`?); isochroous should become sys'socroaass, not ys'socrouss (@ after oU).
     # Add affricate/v: -kit (n) becomes cait
     # Add shamanists (from shaman, basis for shamanists), shama (basis for
     # shamas).
     # Use «ac» for final unstressed /ak/ (for consistency with «acl» /ak@l/)?
     # Otherwise ensure that «acl/akl» spellings are consistent.
     # ‹micro-› should become «mycro» instead of mycre/mycroa, e.g. ‹microdont›
+    # ‹electro› should become «ilectro» rather than «...oa»
+    # ‹-genesis›: always «jeneciss», not "jeniciss"
     # (?); ditto ‹mono› -> «mono» (?)
     # ‹hypo-› should remain unchanged, not "hype"; ‹homo› should become «hoamo»,
     # not "hoame"; macro should remain unchanged, not macre or macroa.
@@ -1095,8 +1111,7 @@ sub postprocess_suffixed {
     # expressivity: should start with e (not i) and written with s's (not 'c)
     # councilmanic: replace 'sil' by 'ssl'
     # «z« should become «s»: Hoamzian (Holmesian), Jaimzian (Jamesian)
-    # «a'» should become «e'»: daia'baissic (diabasic), daia'lectl (dialectal),
-    # daia'lectic (dialectic), duea'listic (dualistic)
+    # «a'» should become «e'»: duea'listic (dualistic)
     # ns should become nss: nonsensi'caliti (nonsensicality)
     # 'qu should become k'w: Pickwickian
     # tion should become shen: Salishan
@@ -1105,9 +1120,7 @@ sub postprocess_suffixed {
     # Add with 2nd stressed: arsenic/aj
     # diffuse/aj, effuse/aj, separate/n: use P (seperit)
     # produce/n,: pr'QdU:s  (produess)
-    # Add prefix spectro /spEktroU/
-    # Move stress marker before vowel: e'nacteri (enactory), exurb, subordinate, subordinative
-    # Move stress marker between the two consonants: Pavlovian
+    # Add prefixes spectro /spEktroU/, paleo /peIli:oU/, zoo /zoU@/
 
     return $converted;
 }
@@ -1549,6 +1562,8 @@ sub convert_dict {
  # vowels or just in those cases where confusion is possible, e.g. (sometimes?) before
  # «i, er»).
  # TODO Correct c->k: ‹workaholic› (special case, not a suffix because it's so rare)
+ # TODO Warn if pre-stressed schwa immediately after a vowel becomes anything except «e», as the
+ # resulting combination could be ambiguous
 
         $conv_colref = convert_row $colref, $colref->[0], $mapref, $maxkeylen;
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
