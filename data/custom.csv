@@ -67,6 +67,9 @@ allele,B
 alleviative,P
 Allier,P
 alliterative,P
+almanac,'O:lm@nak
+almandine,P
+almandite,P
 alt,'alt
 alteration,O:lt@`'eIS@n
 alternation,O:lt@`n'eIS@n
@@ -85,7 +88,7 @@ amusive,P
 amylose,'amIloUs
 amylum,'amIl@m
 anaerobe,'an@`oUb
-anaerobic,P
+anaerobic,an@`'oUbIk
 Andre,A
 anecdote,B
 anent,P
@@ -379,6 +382,7 @@ Circassian,P
 Circassia,P
 circulatory,s'3:kj@l@tori:
 civilian,P
+classicism,O
 clavicular,kl@v'Ikj@l@`
 clearstory,P
 clerestory,P
@@ -532,6 +536,7 @@ Debussyan,P
 Debussy,dEbju:s'i:
 debye,P
 decagon,d'Ek@gQn
+decantation,dIkant'eIS@n
 Deccan,P
 decillion,P
 decor,P
@@ -570,7 +575,7 @@ depletory,P
 deploration,P
 deportee,dIport'i:
 depository,dIp'QzI#tori:
-depredation,dEprI#d'eIS@n
+depredation,dEprId'eIS@n
 derate,P
 deray,P
 dereism,P
@@ -746,6 +751,7 @@ evangelistic,Iv'andZ@lIstIk
 evaporative,P
 evaporator,Iv'ap@`eIt@`
 evasive,B
+evincive,P
 eviscerate,A
 exacerbate,P
 exacerbation,P
@@ -758,6 +764,7 @@ exaggerative,P
 exaggeratory,P
 exaltation,EgzO:lt'eIS@n
 exalt,Igz'O:lt
+examination,P
 examine,P
 example,P
 excise,'EksaIz
@@ -788,6 +795,7 @@ exertion,P
 exert,P
 exfoliative,P
 exhaustion,P
+exhaustive,P
 exhaust,P
 exhibitive,P
 exhibitory,P
@@ -803,15 +811,18 @@ exist,P
 exosporal,P
 expand,P
 expanse,P
+expansible,P
 expansile,P
 expansion,P
 expansive,P
 expert,B
 expire,P
 exploit,Ikspl'OIt
+exploitive,P
 explore,Ikspl'or
 explosion,P
 explosive,P
+exposal,P
 expose,P
 expositive,Iksp'QzItIv
 expositor,Iksp'QzIt@`
@@ -825,6 +836,7 @@ expound,P
 expressage,P
 expressionistic,P
 expression,P
+expressive,P
 express,P
 expurgatory,P
 exquisite,Ikskw'IzIt
@@ -837,6 +849,7 @@ extemporize,P
 extend,P
 exterior,P
 exterminative,Ikst'3:mI#neItIv
+externalization,P
 external,P
 extinguish,P
 extravagance,Ikstr'av@g@ns
@@ -981,6 +994,8 @@ gondola,g'Qnd@l@
 gondolier,gQndEl'i@
 goosander,P
 Goren,D
+gorgeous,P
+gorge,P
 gorget,P
 Goshen,g'oUS@n
 graben,gr'Ab@n
@@ -1081,6 +1096,7 @@ hydantoin,P
 hydracid,P
 hydrazine,P
 hydrogenolysis,P
+hydroxyl,P
 hydroxy,P
 hymenopteran,P
 hymenoptera,P
@@ -1093,6 +1109,7 @@ hypophysis,haIp'QfIsIs
 hypopnea,haIp'Qpni:@
 hypothecate,haIp'QT@keIt
 ichorous,P
+ichthyic,P
 ideate,P
 ideation,P
 ideogram,P
@@ -1229,6 +1246,7 @@ kean,D
 keister,k'i:st@`
 Keogh,D
 kerygma,P
+ketonuria,ki:toUn'U:ri:@
 Keynesian,P
 Keynes,P
 Khayyam,P
@@ -1643,7 +1661,7 @@ perdue,P
 perdure,p@`d'U:r
 pere,p'e@
 perilous,P
-periodical,pIri:'QdIk@l
+periodical,pi:ri:'QdIk@l
 periodic,pi:ri:'QdIk
 permute,P
 persecution,B
@@ -1654,10 +1672,13 @@ phaeomelanin,P
 pharmacological,fArma#k@l'QdZIk@l
 phenomenal,fIn'Qm@n@l
 phenomenon,fIn'Qm@nQn
+phenyl,P
 Phoenicia,P
+phonasthenia,P
 phonate,P
 phonation,P
 phonatory,P
+phonautograph,foUn'O:t@graf
 phonographic,P
 phosphoric,B
 phraseological,P
@@ -1857,13 +1878,18 @@ recon,rIk'Qn
 recourse,rIk'O:rs
 recuperate,rIk'U:p@`reIt
 redon,D
+reducible,rId'U:s@b@l
 redux,B
 reflet,P
 reflexive,B
+refractive,B
+refractivity,B
 refusal,rIfj'u:z@l
 refusenik,P
 reges,r'i:dZi:z
 regie,D
+regression,B
+regressive,B
 regulable,P
 regula,r'Egj@l@
 regularity,rEgj@l'arIti:
@@ -1931,6 +1957,9 @@ Sagan,D
 said,B
 salal,P
 salinas,P
+Salisbury,s'O:lzbEri:
+Salishan,P
+Salish,P
 saltire,s'altaI@`
 salt,s'O:lt
 saluki,P
@@ -1966,6 +1995,7 @@ seignior,P
 seigniory,si:nj@`i:
 select,B
 selection,B
+selective,B
 Selkirk,B
 seminary,A
 senesce,P
@@ -2305,6 +2335,7 @@ watch,B
 watt,B
 Watteau,D
 wattle,B
+wejack,P
 whap,w'Qp
 what,A
 whoopee,P
