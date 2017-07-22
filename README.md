@@ -149,8 +149,8 @@ The consonants are written as follows:
       * «k» is used before «e, i, y», e.g. «keep, king, kynd,
         calkyu'laition» ‹...kind, calculation›
       * «c» is used before any other letter, e.g. «cat, cost, crisp»
-      * «c» is also used at the end of words ending in unstressed /Ik/,
-        e.g. «public, majic» ‹...magic›
+      * «c» is also used at the end of words ending in unstressed /ak/ or
+        /Ik/, e.g. «mainiac, majic, public» ‹maniac, magic...›
       * «k» is used at the end of other words ending in /k/, e.g. «book,
         drink, quik, speek, naimsaik» ‹...quick, speak, namesake›
   * The sound /s/ is written as «c», «s», or «ss», depending on context:
@@ -272,6 +272,8 @@ vowels:
     the consonant /j/ (as in «yet») which is also spelled «y» but only
     occurs before vowels. There is also no risk of confusion with /eI/ (as
     in «aim, layer») which is always spelled «ay» in this position.
+  * The same spelling is used if /aI/ occurs after a vowel at the end of a
+    word, e.g. «raidiai» ‹radii›.
   * /O:/ is spelled «aw» at the end of words and before other vowels
     (instead of «au»), e.g. «law, drawing».
   * Final /E/ is spelled «eh» (instead of «e»), e.g. «eh».
