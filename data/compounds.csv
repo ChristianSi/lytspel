@@ -1354,7 +1354,6 @@ amply,amp=ly
 amputated,amputate=ed
 amputations,amputation=s
 amputees,amputee=s
-amtrack,amt-rack
 amulets,amulet=s
 amused,amuse=ed
 amusedly,amused=ly
@@ -4004,7 +4003,7 @@ bioplasm,bio=plasm
 biopsies,biopsy=es
 biosafety,bio=safety
 bioscience,bio=science
-biosciences,bio=sciences
+biosciences,bioscience=s
 bioscope,bio=scope
 biosensor,bio=sensor
 biosensors,bio=sensors
@@ -7469,6 +7468,7 @@ classes,class=es
 classic,class=ic
 classical,classic=al
 classicalist,classical=ist
+classically,classical=ly
 classicistic,classicist=ic
 classics,classic=s
 classier,classy=er
@@ -15668,7 +15668,6 @@ exhibitive,exhibit=ive
 exhibitively,exhibitive=ly
 exhibitor,exhibit=or
 exhibitors,exhibitor=s
-exhibitory,exhibitor=y
 exhibits,exhibit=s
 exhilarated,exhilarate=ed
 exhilarating,exhilarate=ing
@@ -19304,7 +19303,6 @@ gored,gor=ed
 gores,gore=s
 gorey,gore=y
 gorged,gorge=ed
-gorgeous,gorge=ous
 gorgeously,gorgeous=ly
 gorgeousness,gorgeous=ness
 gorges,gorge=s
@@ -33452,9 +33450,7 @@ phlegmy,phlegm=y
 phobias,phobia=s
 phoenician,phoenicia=n
 phoenicians,phoenician=s
-phonasthenia,phon-asthenia
 phonation,phone=ation
-phonatory,phon=atory
 phonecard,phone-card
 phoned,phone=ed
 phonemes,phoneme=s
@@ -39556,7 +39552,6 @@ saleswomen,sales-women
 salian,sale=ian
 salic,sal=ic
 salify,sal=ify
-salish,sal=ish
 salishan,salish=an
 salivated,salivate=ed
 salivating,salivate=ing
@@ -43548,6 +43543,7 @@ stickup,stick=up
 stickweed,stick-weed
 stickwork,stick-work
 sticky,stick=y
+stickybeak,sticky-beak
 stiffed,stiff=ed
 stiffen,stiff=en
 stiffened,stiffen=ed
@@ -50774,6 +50770,7 @@ whimpering,whimper=ing
 whims,whim=s
 whimsical,whims=ical
 whimsicality,whimsical=ity
+whimsically,whimsical=ly
 whimsy,whims=y
 whinchat,whin-chat
 whiner,whine=er
