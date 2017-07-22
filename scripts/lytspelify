@@ -43,18 +43,22 @@ const my $LYTSPEL_CONSONANT => '(?:(?:[bcdfghjklmnprstvwxyz]h?|nn?g|qu)=?)';
 # vowel follows (use with /i flag)
 const my $LYTSPEL_CONSONANT_POST_PROC => '(?:(?:[bcdfghjklmnprstvwxz]h?|y(?=[aeiou])|nn?g|qu))';
 # Pattern fragment matching the vowel «e» (excluding «er» and digraphs such as «ee, ue»,
-# but accepting «e» after the digraphs «iu, qu»)
-const my $PLAIN_E => "(?:[iq]ue|(?<![eu])e)(?!(e|'?r))";
+# but accepting «e» after digraphs such as «ee, oe, ue, iu, qu»)
+const my $PLAIN_E => "(?:[eou]ee|[iq]ue|(?<![eu])e)(?!(e|'?r))";
 
-# Stress the second part of a compound if the first part is listed here
+# Stress the second part of a compound if the first part is listed here.
 my %STRESS_AFTER = map { $_ => 1 } qw/arch best chemo chromo co com con crypt crypto dynamo ego
     ere ex extra fibro helio here hetero hydro hypo infra mon nitro peri psycho pyro supra
     thence there thio ultra where/;
 
-# Stress the second part of a compound if listed here
+# Stress the second part of a compound if listed here.
 my %STRESS_IF_SECOND = map { $_ => 1 } qw/air angular basic centric east eastward eastwards ever
     genesis genic graphic logic metric optic phobia phobic self selves therapy tropic west
     westward westwards/;
+
+# Stress the first part of a compound if the second part is listed here. Entries here are
+# only needed if the second part contains its own stress marker (which will be stripped).
+my %STRESS_BEFORE = map { $_ => 1 } qw/about around away/;
 
 # If the first part of a compound is listed here, either part may be stressed (we check
 # the pronunciation to find out).
@@ -62,17 +66,38 @@ my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/auto contra electro homo meta mo
     poly pro radio retro tetra/;
 
 # If a compound is listed here, its 1st part is stressed (used only in cases where our
-# rules indicate that the 2nd part should be stressed).
-my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation archlute archway
-    heterodyne heterograft heterophil hypoblast hypogene hyponasty hypostyle infrasound
-    infrastructure therefore ultrastructure wherefore/;
+# rules indicate that the 2nd part should be stressed or where it contains a stress marker).
+my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation antimatter archlute
+    archway bioscience counterproposal countersubject dealate heterodyne heterocycle
+    heterograft heterophil hexamine histamine hypoblast hypogene hyponasty hypostyle inbreeding
+    infiltrate infrasound infrastructure insufflate lookalike microchip microprogram
+    microreader Microsoft minicomputer newsmagazine pinafore prefix semilegendary slugabed
+    standalone subchapter subnotebook subroutine supercalender superfund supergiant superhero
+    superpower superstar tarmacadam telerecord therefore triethylamine turnverein underwriting
+    underwrote ultrastructure videocassette wherefore woebegone/;
 
 # If a compound is listed here, its 2nd part is stressed.
 my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedical aerostation
     Alamein Allhallowmas Allhallows altocumulus antarctic anteprandial anteversion anymore
     arsenopyrite Australasia peninsula peninsular/;
 
-# TODO Move list into external file?
+# TODO x
+# Stress 2nd part: aerologic only, not choplogic; benediction, binocular,
+# bronchiectasis, commonsense, dextrocardia, diacetylmorphine, diazomethane, duecento,
+# echocardiogram, eftsoon, everlasting, farewell, forever, forevermore, goodbye, hemelytron,
+# hereinafter, boohoo, lambaste, mercaptopurine, methacrylate, multiparty
+# methylbenzene, methylnaphthalene, moreover, nymphomaniac, oleomargarine, penannular,
+# penultimate, penultima, phenylalanine, philhellene, prolapse, semidemisemiquaver,
+# Rockhampton, saltpeter, sardonyx, statampere, sulfaguanidine, sulfathiazole, sympetalous,
+# synchrocyclotron, tetraethyl, throughout, uniaxial, without, superconducting, superconductor,
+# superminicomputer, underutilize, methylal, counteract, counterbalance/v
+# (also counterbalancing etc.), straightforward, maltreat, malodorous, upstanding, protozoa,
+# subaltern, malfunction, eftsoon, magnetooptics, paramedic, petrochemical, petrochemistry,
+# portcullis
+# -aldehyde, -chemical, -chemistry, -decagon, -eastern, -forward, -metric, -phonic, -sexual,
+# -western, magneto-, mal- (except malware)
+# PE determines stress: proto-, stereo-, probably after- (e.g. afternoon)
+
 # If a derived word is listed here, a short vowel preceding the stress
 # marker won't be converted to «e».
 my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acronymous
@@ -276,8 +301,8 @@ sub combine_and_adjust {
         } elsif ($val eq 'er' && $left =~ /Y$/) {
             # Final /aI@`/ is written «yr», e.g. «fyr, in'spyr» ‹fire, inspire›
             $val = 'r';
-        } elsif ($val eq 'k' && $left =~ /(?<!['aeou])i$/) {
-            # «c» is used at the end of words ending in unstressed /Ik/
+        } elsif ($val eq 'k' && $left =~ /(?<!['aeiou])[ai]$/) {
+            # «c» is used at the end of words ending in unstressed /ak/ or /Ik/
             $val = 'c';
         } elsif ($val eq 'l' && $left =~ /au$/) {
             # Final /O:l/ is written «all», e.g. «ball»
@@ -324,8 +349,14 @@ sub combine_and_adjust {
         # some custom spellings use '@#' to request this (for consistency with related words)
         $val = any_short_vowel $left, $right, $tradspell;
     } elsif ($val eq '@') {
-        # /@/ becomes «e/u» depending on what's more similar to tradspell (in preference order)
-        $val = e_or_u_or_other('', $left, $right, $tradspell);
+        if ($right eq 's' && $tradspell =~ /eous$/) {
+            # Final ‹eous› becomes «uss» for consistency with other words ending in ‹ous›
+            $val = 'u';
+        } else {
+            # /@/ becomes «e/u» depending on what's more similar to tradspell
+            # (in preference order)
+            $val = e_or_u_or_other('', $left, $right, $tradspell);
+        }
     } elsif ($val eq 'a#') {
         # /a#/ becomes «a/e/u» depending on what's more similar to tradspell (in preference order)
         $val = e_or_u_or_other('a', $left, $right, $tradspell);
@@ -344,8 +375,13 @@ sub combine_and_adjust {
     } elsif ($val eq 'oa' && $right !~ /^$SAMPA_CONSONANT_CLS/) {
         # «oa» /oU/ becomes «o» at the end of words and before other vowels
         $val = 'o';
-    } elsif ($val eq 'Y' && $right && $right !~ /^($SAMPA_CONSONANT_CLS|@`$)/) {
-        # «y» /aI/ becomes «ai» before other vowels
+    } elsif (
+        $val eq 'Y'
+        && (   ($right && $right !~ /^($SAMPA_CONSONANT_CLS|@`$)/)
+            || ($right eq '' && $left =~ /[$LYTSPEL_VOWELS]$/))
+        )
+    {
+        # «y» /aI/ becomes «ai» before and (at the end of words) after other vowels
         # (except before final /@`/ -- that combination becomes «yr»)
         $val = 'ai';
     } elsif ($val eq 'oi' && $right !~ /^$SAMPA_CONSONANT_CLS/) {
@@ -392,6 +428,11 @@ sub combine_and_adjust {
     # guardee, thankee, whoopee, spiritual, noncom, nonsense, overseer
     # 2nd stressed: withal, overdraw, overreach, oversee, overseen
     # TODO Add with 2nd stressed: outshot/v, overcharge/v, overcharges/v
+    # Add with 2nd stressed: arsenic/aj
+    # diffuse/aj, effuse/aj, separate/n: use P (seperit)
+    # produce/n,: pr'QdU:s  (produess)
+    # Add affricate/v: -kit (n) becomes cait
+    # subordinate/n: s@b'O:rdI#neIt (sub'ordinit), v: s@b'O:rdI#neIt (sub'ordinait)
     # TODO Continue README from l.457: Irregular words
     # TODO Insert hyphens were necessary to prevent misreadings, incl.
     # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
@@ -989,16 +1030,19 @@ sub postprocess_suffixed {
     }
 
     if ($conv_base =~ /all$/) {
-        # Restore «all», e.g. «spal'laition» ‹spallation› from «spall»
+        # Restore final «all», e.g. «spal'laition» ‹spallation› from «spall»
         $converted =~ s/(.*)aa('?)l/$1al$2l/;
     } elsif ($conv_base =~ /k$/ && ($conv_suffix !~ /^[eiY]/ || $suffix eq 'al')) {
-        # Restore «k», e.g. «embar'kaition« ‹embarkation›
+        # Restore final «k», e.g. «embar'kaition« ‹embarkation›
         $converted =~ s/(.*)c/$1k/ || warn "No match: $converted ($tradspell) from $conv_base";
-    } elsif ($conv_base =~ /s$/ && $converted =~ /zian$/) {
-        # Restore «s», e.g. «Hobsian» ‹Hobbesian›
-        $converted =~ s/zian$/sian/;
+    } elsif ($conv_base =~ /s$/ && $converted =~ /z(ian|icl)$/) {
+        # Restore final «s», e.g. «Hobsian» ‹Hobbesian›
+        $converted =~ s/(.*)z/$1s/;
+    } elsif ($conv_base =~ /sh$/ && $converted =~ /tion$/) {
+        # Restore final «sh»: «Sailishen» ‹Salishan›
+        $converted =~ s/tion$/shen/;
     } elsif ($conv_base =~ /ss$/) {
-        # Restore «ss», e.g «ri'sponssebl, puls'saition» ‹responsible, pulsation›
+        # Restore final «ss», e.g «ri'sponssebl, puls'saition» ‹responsible, pulsation›
         if ($converted !~ /ss|tion$|shel$/) {
             my $suffix_start = $1;
             $converted =~ s/(.*)[cs]([eiY])/$1ss$2/
@@ -1008,20 +1052,33 @@ sub postprocess_suffixed {
             $converted =~ s/'saition$/s'saition/;
         }
     } elsif ($conv_base =~ /ssl$/ && $suffix eq 'ation') {
-        # Restore «ssl», e.g. «canss'laition» ‹cancellation›
+        # Restore final «ssl», e.g. «canss'laition» ‹cancellation›
         $converted =~ s/se'laition/ss'laition/;
     } elsif ($conv_base =~ /[^ao]y$/) {
-        # Restore «y», e.g. «di'nyel» ‹denial›
+        # Restore final «y», e.g. «di'nyel» ‹denial›
         $converted =~ s/(.*)ai/$1y/ || warn "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /s'?s/ && $converted !~ /s'?s/) {
+        # Restore «ss» in the middle of words (including some special cases), e.g.
+        # «classicl» ‹classical›
+               $converted =~ s/('?)c([eiY])/s$1s$2/
+            || $converted =~ s/counsil/counssl/
+            || $converted =~ s/Ys/Yss/
+            || $converted =~ s/n('?)si/ns$1si/;
+    } elsif ($conv_base =~ /kw/ && $converted !~ /k'?w/) {
+        # Restore «kw» in the middle of words: «Pik'wikian» ‹Pickwickian›
+        $converted =~ s/(')qu/k$1w/ || warn "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /msi/ && $converted !~ /m'?si/) {
+        # Restore «msi» in the middle of words: «wimsi'caliti» ‹whimsicality›
+        $converted =~ s/mzi/msi/ || warn "No match: $converted ($tradspell) from $conv_base";
     }
-
     # If the derived word starts with «e» (not «er») and the base word with another short
-    # vowel, use the latter, e.g. «conside'raition» ‹consideration› from «con'sider»
+    # vowel (except «i»), use the latter, e.g. «conside'raition» ‹consideration› from
+    # «con'sider»
     if ($converted =~ /^$LYTSPEL_CONSONANT_POST_PROC*e(?!'?[er])/i) {
         my ($pre_cons, $first_base_vowel) =
             $conv_base =~ /^($LYTSPEL_CONSONANT*)([$LYTSPEL_VOWELS]+)/i;
 
-        if (lc $first_base_vowel ne 'e') {
+        if ($first_base_vowel !~ /^[ei]$/i) {
             if ($pre_cons =~ /c$/) {
                 # Also change «k» preceding the vowel back to «c»
                 $converted =~ s/ke/c$first_base_vowel/;
@@ -1034,12 +1091,14 @@ sub postprocess_suffixed {
     # Schwa before stressed vowel may be represented by any short vowel, but if it's written
     # «e» in the base word, it shouldn't become a different vowel in a stress-shifted
     # derived form, hence we correct such cases (except for blacklisted words)
-    if (   $converted =~ /(ss|c|qu|[$LYTSPEL_VOWELS]{1,2})? ([aiou]) ((?!'?r)
+    if (
+        $converted =~ /(ss|c|qu|[$LYTSPEL_VOWELS]{1,2})? ([aiou]) ((?!'?r)
                           $LYTSPEL_CONSONANT_POST_PROC*')/x
         && !exists($DONT_CONVERT_E_BEFORE_STRESS{$tradspell})
-        && $tradspell !~ /ographic$/)
+        && $tradspell !~ /ographic$/
+        )
     {
-        my $pre_vowel    = $1 || '';
+        my $pre_vowel = $1 || '';
 
         # Skip if the vowel is just the second letter of a digraph
         unless ($pre_vowel =~ /^[$LYTSPEL_VOWELS]$/) {
@@ -1063,64 +1122,10 @@ sub postprocess_suffixed {
                 # Replace the short vowel by «e»
                 $converted =~ s/$pre_vowel$vowel$post_vowel/${pre_mod}e$post_vowel/
                     || warn
-                        "Cannot normalize schwa before stressed vowel in $converted ($tradspell)";
+                    "Cannot normalize schwa before stressed vowel in $converted ($tradspell)";
             }
         }
     }
-
-    # TODO x
-    # Add affricate/v: -kit (n) becomes cait
-    # Add shamanists (from shaman, basis for shamanists), shama (basis for
-    # shamas).
-    # Use «ac» for final unstressed /ak/ (for consistency with «acl» /ak@l/)?
-    # Otherwise ensure that «acl/akl» spellings are consistent.
-    # ‹micro-› should become «mycro» instead of mycre/mycroa, e.g. ‹microdont›
-    # ‹electro› should become «ilectro» rather than «...oa»
-    # ‹-genesis›: always «jeneciss», not "jeniciss"
-    # (?); ditto ‹mono› -> «mono» (?)
-    # ‹hypo-› should remain unchanged, not "hype"; ‹homo› should become «hoamo»,
-    # not "hoame"; macro should remain unchanged, not macre or macroa.
-    # /aI/ should become «ai» after vowels to prevent misreadings, e.g. «raidiai,
-    # arkiais» ‹radii, archaize›.
-    # subordinate/n: s@b'O:rdI#neIt (sub'ordinit), v: s@b'O:rdI#neIt (sub'ordinait)
-    # Check (no change?):
-    # anaerobic,P
-    # deploration,P
-    # depredation,dEprI#d'eIS@n  # depri'daition
-    # designee,P  # desig'nee
-    # excoriate,,Iksk'O:ri:eIt  # ix'coariait
-    # exhibitory,P
-    # ichthyic,P
-    # intraabdominal,P
-    # mediatize,P
-    # periodical,pIri:'QdIk@l  # peeri'odicl
-    # phonatory,P
-    # pleonal,P
-    # propyl,P
-    # puerperal,P
-    # rhetorical,rIt'QrIk@l  # ri'torricl
-    # seric,B
-    # whoopee,P
-    # zakuska,P
-    # Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
-    # vowel as /aI/, GA as /I/ or /@/)
-    # Final c should become ss: aggressivity, classical, dicee'see (disseizee)
-    # 's should become s's: expansivity
-    # s should become ss: Ys'landic (Icelandic)
-    # z should become s: wimzicl (whimsical), whimsicality
-    # expressivity: should start with e (not i) and written with s's (not 'c)
-    # councilmanic: replace 'sil' by 'ssl'
-    # «z« should become «s»: Hoamzian (Holmesian), Jaimzian (Jamesian)
-    # «a'» should become «e'»: duea'listic (dualistic)
-    # ns should become nss: nonsensi'caliti (nonsensicality)
-    # 'qu should become k'w: Pickwickian
-    # tion should become shen: Salishan
-    # Fix‹demiurgeous› should become «demi'urjuss» instead of -ess, ditto ‹gorgeous›
-    # tymess (timeous) should be written with u, not e
-    # Add with 2nd stressed: arsenic/aj
-    # diffuse/aj, effuse/aj, separate/n: use P (seperit)
-    # produce/n,: pr'QdU:s  (produess)
-    # Add prefixes spectro /spEktroU/, paleo /peIli:oU/, zoo /zoU@/
 
     return $converted;
 }
@@ -1267,12 +1272,16 @@ sub handle_compound {
         # If the compound contains two stress markers, we keep just the second one
         $compound =~ s/'// if $compound =~ /'.*'/;
 
-        # If the compound contains a stress markers, we retain it (unless the second part is
-        # «a'bout» ‹about›, e.g. «roundabout») and are done (unless the first part is
-        # «i'lectro» ‹electro› -- then we'll check below which part carries the main stress)
+        # If the compound contains a stress marker, we retain it (unless it should be stripped
+        # from the second part) and are done (unless the first part is «i'lectro» ‹electro› --
+        # then we'll check below which part carries the main stress)
         if ($compound =~ /'/) {
-            $compound =~ s/'// if $second eq 'about';
-            return $compound unless $first eq 'electro';
+            if (exists($STRESS_FIRST_PART{$tradspell}) || exists($STRESS_BEFORE{$second})) {
+                $second_lytspel =~ s/'//;
+                return "$first_lytspel$second_lytspel";
+            } else {
+                return $compound unless $first eq 'electro';
+            }
         }
 
         # If this word is listed as a special case, we return it and are done
@@ -1352,10 +1361,10 @@ sub handle_compound {
 
         $compound = "$first_lytspel$second_lytspel";
 
-        if ($stress_hint eq '1') {
+        if ($stress_hint eq '1' || exists($STRESS_FIRST_PART{$tradspell})) {
             $second_lytspel =~ s/'//;  # delete stress marker from 2nd part, if any
             $compound = "$first_lytspel$second_lytspel";
-        } elsif ($stress_hint eq '2') {
+        } elsif ($stress_hint eq '2' || exists($STRESS_SECOND_PART{$tradspell})) {
             # Insert stress marker before 2nd part (unless it already contains one)
             $compound = "$first_lytspel'$second_lytspel" unless $second_lytspel =~ /'/;
         } elsif ($stress_hint eq 'A') {
@@ -1376,7 +1385,7 @@ sub handle_compound {
 
         return $compound;
 
-        # TODO Adapt decompose to use prefix/suffix.csv instead of .list by
+        # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
         # TODO Add prefixes: ab- (e.g. abampere, 2nd part stressed)
         # Add suffix: -otic (stressed before suffix), -ology (ditto)
         # Stress last syllable of 1st part: -meter (e.g. aerometer, electrometer, hypermeter,
@@ -1401,12 +1410,13 @@ sub handle_compound {
         # Stress before final consonant(s) of first part (probably treat as suffix): -otic,
         # e.g. «aci'dotic» ‹acidotic›
         # Make ‹zoo› a prefix written «zoe» /zoU@/; first or second part may be stressed.
+        # TODO Add prefixes spectro /spEktroU/, paleo /peIli:oU/, intra /Intr@/
+        # (e.g. intraabdominal)
         # Make suffix: ate (spoken «ait» /eIt/ or sometimes «it» /It/ -- dicts sometimes have
         # /@t/ instead; should also be used for ‹affectionate›)
         # Add -ible as suffix (or check+fix -ibl spellings)
         # Add =eer suffix (e.g. auctioneer, conventioneer, electioneer, fictioneer)
         # Exceptions where 1st is stressed: all [-=]sphere combis (e.g. biosphere, chemosphere)
-        # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
         # TODO Write initial /dI#/ as «di» (for consistency with the «di» ‹de› prefix)
     }
 
@@ -1425,8 +1435,7 @@ sub handle_compound {
 # «en», e.g. «ashen, freshen, Rushan, Purzhan»
 # TODO Add -ance, -ence as suffixes
 # TODO Add 'bi' as prefix, otherwise add manual entries:
-# biconcave,bi-concave
-# biconcavity,bi-concavity
+# biconcave,bi-concave; biconcavity,bi-concavity; bipack
 # Add 'on' as prefix, e.g. ‹oncoming› should be analysed as ‹on=coming›
 }
 
@@ -1465,32 +1474,6 @@ sub convert_dict {
             next;
         }
 
- # TODO Stress 1st part: breakaway, castaway, cutaway, flyaway, foldaway, getaway, giveaway,
- # Greenaway, Hathaway, hideaway, huntaway, layaway, rockaway, rollaway, runaway, soakaway,
- # stowaway, straightaway, throwaway, walkaway (-away in general);
- # counterattack, counterreply, counterproposal, countersubject, heterocycle, lookalike,
- # minicomputer, pinafore, newsmagazine, turnaround,
- # slugabed, standalone, tarmacadam, telerecord, turnverein, videocassette, woebegone
- # servocontrol/n, antimatter, bioscience (and derivs), inbreeding,  microchip, microprogram,
- # microreader, Microsoft, prefix, semilegendary, subchapter, subnotebook, subroutine,
- # supercalender, superfund, supergiant, superhero, superpower, superstar, underwriting,
- # underwrote,  infiltrate, insufflate, slugabed, dealate
- # -amine (calamine, Dramamine, hexamine, histamine), -around
- # Stress 2nd part: aerologic only, not choplogic; benediction, binocular,
- # bronchiectasis, commonsense, dextrocardia, diacetylmorphine, diazomethane, duecento,
- # echocardiogram, eftsoon, everlasting, farewell, forever, forevermore, goodbye, hemelytron,
- # hereinafter, boohoo, lambaste, mercaptopurine, methacrylate, multiparty
- # methylbenzene, methylnaphthalene, moreover, nymphomaniac, oleomargarine, penannular,
- # penultimate, penultima, phenylalanine, philhellene, prolapse, semidemisemiquaver,
- # Rockhampton, saltpeter, sardonyx, statampere, sulfaguanidine, sulfathiazole, sympetalous,
- # synchrocyclotron, tetraethyl, throughout, uniaxial, without, superconducting, superconductor,
- # superminicomputer, underutilize, methylal, counteract, counterbalance/v
- # (also counterbalancing etc.), straightforward, maltreat, malodorous, upstanding, protozoa,
- # subaltern, malfunction, eftsoon, magnetooptics, paramedic, petrochemical, petrochemistry,
- # portcullis
- # -aldehyde, -chemical, -chemistry, -decagon, -eastern, -forward, -metric, -phonic, -sexual,
- # -western, magneto-, mal- (except malware)
- # PE determines stress: proto-, stereo-, probably after- (e.g. afternoon)
  # TODO Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
  # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
  # ‹monosyllabicity›
@@ -1521,6 +1504,8 @@ sub convert_dict {
  # interupt/v (also for interrupter etc.), collect/v (also for collecting, collector etc.),
  # compact/aj+v (also for compactness, compactor etc.), adduct/v (also for adductor)
  # add with 1st stressed: misfire/n, redial/n, redo/n, remit/n, replay/n, remake/n, invalid/n+v
+ # TODO Add shamanists (from shaman, basis for shamanists), shama (basis for
+ # shamas), cracka (basis for crackajack)
  # TODO reincarnate: split in v+aj; Split ‹overestimate, reexport, warehouse› into n+v
  # Add desert/n,dez@rt  # desert (use for semidesert, desertic), mouse/v: m'aUz (also use
  # for mouser), mouth/v: use P (also for mouther and the various -mouthed combis),
@@ -1564,6 +1549,14 @@ sub convert_dict {
  # TODO Correct c->k: ‹workaholic› (special case, not a suffix because it's so rare)
  # TODO Warn if pre-stressed schwa immediately after a vowel becomes anything except «e», as the
  # resulting combination could be ambiguous
+ # ‹micro-› should become «mycro» instead of mycre/mycroa, e.g. ‹microdont›
+ # ‹electro› should become «ilectro» rather than «...oa»
+ # ‹-genesis›: always «jeneciss», not "jeniciss"; ditto ‹mono› -> «mono» (?)
+ # ‹hypo-› should remain unchanged, not "hype"; ‹homo› should become «hoamo»,
+ # not "hoame"; macro should remain unchanged, not macre or macroa.
+ # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
+ # vowel as /aI/, GA as /I/ or /@/)
+ # TODO Stress 1st part: counterattack/n, counterreply/n, servocontrol/n
 
         $conv_colref = convert_row $colref, $colref->[0], $mapref, $maxkeylen;
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
