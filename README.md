@@ -537,8 +537,9 @@ Uses of the apostrophe:
     «n» is omitted: «can't» from «can not». In a few cases, the first word
     may be further contracted: «ain't» for one of «am/is/ar/has/hav not»
     ‹am/is/are/has/have not›, «han't» for «has/hav not» ‹has/have not›,
-    «shan't» for «shal not» ‹shall not›, «woan't» ‹won't» for «wil not»
-    ‹will not›.
+    «shan't» for «shal not» ‹shall not›, «woan't» ‹won't» for «wil not».
+    The pronunciations of «doan't» ‹don't› and «musn't» ‹mustn't› differ
+    from the uncontracted forms, and the spelling reflects this.
   * In all these cases, the genitive or contraction marker is inserted
     after the last vowel and hence cannot be confused with a stress marker.
   * In other cases, a traditional contraction marker doubles as a stress
@@ -548,9 +549,9 @@ Uses of the apostrophe:
     O'Neel» ‹O'Connor, O'Neil›. The capitalized «O'» is spoken /oU/ (as in
     «boat»). Of course, proper names can be spelled as they please, so many
     names won't be regularized according to the Lytspel rules.
-  * In the nonstandard expression «y'aul» ‹y'all›, short for «iu aul» ‹you
-    all›, Lytspel recommends placing the contraction marker in front of the
-    stressed vowel, thus also marking the original word boundary.
+  * In the nonstandard expression ‹y'all›, short for «iu all» ‹you all›,
+    the contraction marker is placed in front of the stressed vowel,
+    marking the original word boundary.
   * In a few cases, words are contracted by eliminating a syllable or a
     sound for brevity or for literary effect. In these cases, Lytspel
     recommends placing a contraction marker before the final consonant in
@@ -560,6 +561,18 @@ Uses of the apostrophe:
     regular stress marker otherwise («wair'air, wairso'air, nor'eester»
     ‹where'er, wheresoe'er, nor'easter› from «wair'ever, wair'soever,
     north'eester» ‹wherever, wheresoever, northeaster›).
+
+Inner capitalization instead of stress marker:
+
+  * Various Scottish and Irish names start with ‹Mc› or ‹Mac› /m@k/
+    followed by a capitalized and stressed second syllable. Lytspel
+    recommends writing these names with «Mc» and omitting the stress
+    marker, e.g. «McAdem, McDonel» ‹McAdam, McDonnell›. If the stressed
+    syllable starts with a /k/ sound, that letter is capitalized (and
+    repeated after the initial «Mc»), e.g. «McCarti, McKee, McQueen»
+    ‹McCarty...›. If any other syllable is stressed, Lytspel recommend
+    writing the word regularly without inner capitalization, e.g.
+    «Makintosh» ‹Macintosh *or* McIntosh›.
 
 
 ## English as an International Language
