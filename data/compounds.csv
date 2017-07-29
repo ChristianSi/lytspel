@@ -762,7 +762,6 @@ africanized,africanize=ed
 africans,african=s
 afrikaners,afrikaner=s
 afrocentric,afro-centric
-after,aft=er
 afterbirth,after-birth
 afterbody,after-body
 afterbrain,after-brain
@@ -10419,6 +10418,7 @@ cyanamide,cyan-amide
 cyanate,cyan-ate
 cyanic,cyan=ic
 cyanide,cyan-ide
+cyanobacterium,cyano-bacterium
 cyanogenetic,cyano-genetic
 cyanogenic,cyano-genic
 cyanotic,cyan-otic
@@ -10578,7 +10578,6 @@ daredevils,daredevil=s
 daredeviltry,dare-deviltry
 dares,dare=s
 daresay,dare-say
-darfur,dar-fur
 daring,dare=ing
 daringly,daring=ly
 daringness,daring=ness
@@ -10594,11 +10593,9 @@ darkness,dark=ness
 darkroom,dark-room
 darksome,dark-some
 darky,dark=y
-darling,dar-ling
 darlingly,darling=ly
 darlingness,darling=ness
 darlings,darling=s
-darn,dar=n
 darned,darn=ed
 darnedest,darned=est
 darner,darn=er
@@ -10610,8 +10607,6 @@ darter,dart=er
 darting,dart=ing
 dartmoor,dart-moor
 darts,dart=s
-darvon,dar-von
-darwin,dar-win
 darwinian,darwin=ian
 darwinism,darwin=ism
 dashboard,dash-board
@@ -18651,7 +18646,6 @@ gawkers,gawker=s
 gawking,gawk=ing
 gawkish,gawk=ish
 gawky,gawk=y
-gaydar,gay-dar
 gayer,gay=er
 gayness,gay=ness
 gays,gay=s
@@ -20983,6 +20977,7 @@ herdsmen,herds-men
 hereabout,here-about
 hereabouts,hereabout=s
 hereafter,here-after
+herein,here-in
 hereinafter,herein-after
 hereinbefore,herein-before
 hereinto,here-into
@@ -20997,7 +20992,6 @@ heritages,heritage=s
 herling,herl=ing
 hermaphroditism,hermaphrodite=ism
 hermeneutics,hermeneutic=s
-hermit,her-mit
 hermite,her-mite
 hermits,hermit=s
 herms,herm=s
@@ -21012,7 +21006,6 @@ heroines,heroine=s
 heroize,hero=ize
 heroized,heroize=ed
 herons,heron=s
-heronsew,heron-sew
 herren,herr=en
 herrenvolk,herren-volk
 herringbone,herring-bone
@@ -24121,7 +24114,6 @@ intermingling,inter=mingling
 intermission,inter=mission
 intermissions,inter=missions
 intermissive,inter=missive
-intermit,inter=mit
 intermittent,intermit=ent
 intermittently,intermittent=ly
 intermix,inter=mix
@@ -24293,7 +24285,6 @@ intimidated,intimidate=ed
 intimidates,intimidate=s
 intimidating,intimidate=ing
 intitle,in=title
-into,in=to
 intoed,in=toed
 intolerable,in=tolerable
 intolerableness,in=tolerableness
@@ -25597,15 +25588,12 @@ lampreys,lamprey=s
 lamps,lamp=s
 lampshade,lamp-shade
 lampworking,lamp-working
-lanate,lan-ate
-lancaster,lan-caster
 lanceolately,lanceolate=ly
 lancer,lance=er
 lancers,lancer=s
 lanceted,lancet=ed
 lancets,lancet=s
 lancewood,lance-wood
-lanchow,lan-chow
 lancinating,lancinate=ing
 lancing,lance=ing
 landed,land=ed
@@ -25665,7 +25653,6 @@ landsteiner,land-steiner
 landtag,land-tag
 landwaiter,land-waiter
 lanes,lane=s
-lanfranc,lan-franc
 langer,lang=er
 langlaufer,langlauf=er
 langmuir,lang-muir
@@ -25682,16 +25669,11 @@ languishment,languish=ment
 languorous,languor=ous
 languorously,languorous=ly
 lanky,lank=y
-lanner,lan=er
 lanners,lanner=s
-lanny,lan=y
-lanolin,lan-olin
-lansing,lan-sing
 lanternfish,lantern-fish
 lanternist,lantern=ist
 lanterns,lantern=s
 lanthorn,lant-horn
-lanyard,lan-yard
 laodicean,laodicea=n
 lapboard,lap-board
 lapdog,lap-dog
@@ -27143,7 +27125,6 @@ madrone,mad-rone
 madtom,mad-tom
 madwoman,mad-woman
 madwort,mad-wort
-maenad,mae-nad
 maes,mae=s
 mafias,mafia=s
 magazines,magazine=s
@@ -27307,7 +27288,6 @@ malfunction,mal-function
 malfunctioned,malfunction=ed
 malfunctioning,malfunction=ing
 malfunctions,malfunction=s
-malic,mal=ic
 maliciously,malicious=ly
 maliciousness,malicious=ness
 malignancies,malignancy=es
@@ -27582,7 +27562,6 @@ marveling,marvel=ing
 marvelous,marvel=ous
 marvelously,marvelous=ly
 marvels,marvel=s
-marver,marv=er
 marxian,marx=ian
 marxism,marx=ism
 marxist,marx=ist
@@ -31050,7 +31029,6 @@ offtake,off-take
 oftener,often=er
 oftentimes,often-times
 ofttimes,oft-times
-ogive,og=ive
 ogled,ogle=ed
 ogles,ogle=s
 ohioan,ohio=an
@@ -31368,10 +31346,8 @@ otherwhile,other-while
 otherwise,other-wise
 otherworld,other-world
 otherworldly,otherworld=ly
-otic,ot=ic
 otocystic,otocyst=ic
 otologies,otology=es
-otter,ot=er
 otterburn,otter-burn
 otters,otter=s
 ounces,ounce=s
@@ -34545,7 +34521,6 @@ postholes,post=holes
 posthumous,post=humous
 posthumously,posthumous=ly
 posthypnotic,post=hypnotic
-postil,post=il
 postindustrial,post=industrial
 posting,post=ing
 postings,posting=s
@@ -36332,7 +36307,6 @@ radiotracer,radio-tracer
 radiotransparent,radio-transparent
 radish,rad=ish
 radishes,radish=es
-rafale,raf-ale
 raffish,raff=ish
 raffishly,raffish=ly
 raffishness,raffish=ness
@@ -36667,7 +36641,7 @@ readjusted,re=adjusted
 readjusting,re=adjusting
 readjustment,re=adjustment
 readjustments,re=adjustments
-readmit,read-mit
+readmit,re=admit
 readmitted,readmit=ed
 readopt,re=adopt
 readout,read-out
@@ -37812,7 +37786,6 @@ remiss,re=miss
 remissible,remiss=ible
 remission,re=mission
 remissions,re=missions
-remit,re=mit
 remittable,remit=able
 remittal,remit=al
 remittances,remittance=s
@@ -39722,7 +39695,6 @@ sarcode,sar-code
 sardian,sard=ian
 sardines,sardine=s
 sardinian,sardinia=n
-sardonyx,sard-onyx
 sardou,sar-dou
 sargent,sarge=ent
 sarky,sark=y
@@ -42532,7 +42504,6 @@ sovrans,sovran=s
 sowback,sow-back
 sowbelly,sow-belly
 sowbread,sow-bread
-sowcar,sow-car
 sowed,sow=ed
 sower,sow=er
 sowers,sower=s
@@ -43665,7 +43636,6 @@ stoker,stoke=er
 stokes,stoke=s
 stoking,stoke=ing
 stolen,stole=n
-stollen,stol=en
 stolonic,stolon=ic
 stomacher,stomach=er
 stomachic,stomach=ic
@@ -46868,7 +46838,6 @@ transmissions,trans=missions
 transmissive,trans=missive
 transmissively,transmissive=ly
 transmissiveness,transmissive=ness
-transmit,trans=mit
 transmits,transmit=s
 transmittable,transmit=able
 transmittal,transmit=al
@@ -49661,7 +49630,6 @@ vaunted,vaunt=ed
 vaunting,vaunt=ing
 vauntingly,vaunting=ly
 vaunty,vaunt=y
-vaxes,vax=es
 vealer,veal=er
 veals,veal=s
 vectorially,vectorial=ly
