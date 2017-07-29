@@ -107,6 +107,7 @@ antimonous,'antI#m@n@s
 antimony,'antI#moUni:
 antipodes,P
 antiquary,A
+a,O
 apochromat,ap@kr'oUmat
 Appalachia,ap@l'eItSi:@
 appetite,B
@@ -248,6 +249,7 @@ bodhisattva,boUdI#s'atv@
 Boeotia,P
 bollard,P
 bonnet,B
+boohoo,P
 bordereau,P
 Borgerhout,P
 Borges,D
@@ -427,6 +429,7 @@ composite,kQmp'QzIt
 compost,P
 compotatory,k@mp'oUt@tori:
 compressible,B
+CompuServe,D
 comte,k'O:nt
 concentrative,P
 conceptualization,B
@@ -510,10 +513,15 @@ cullis,P
 curacao,kjUr@s'oU
 curacoa,kjUr@s'oU
 cushaw,k@S'O:
-cyano,B
+cyanocobalamin,P
+cyanogen,P
+cyanohydrin,P
+cyano,P
+cyanotype,P
 cyan,s'aIan
 cyclonal,P
 cytogenetics,P
+d'accord,D
 dactyl,P
 dae,D
 dali,D
@@ -521,8 +529,10 @@ dalis,D
 dalton,d'O:lt@n
 Daltonian,dO:lt'oUni:@n,
 daltonic,dO:lt'QnIk
+D'Annunzio,D
 da,O
 Darlan,D
+Darvon,d'ArvQn
 davies,D
 Dawes,D
 Dayan,P
@@ -545,6 +555,7 @@ dedicative,d'EdI#keItIv
 defamatory,A
 definite,d'EfI#nIt
 deformity,P
+DeGeneres,D
 dehisce,P
 dehumanization,dIhju:m@n@z'eIS@n
 deism,P
@@ -587,6 +598,7 @@ desert,P
 designee,P
 Dessalines,D
 dessiatine,P
+d'Estaing,D
 desultory,d'Es@ltori:
 detainee,dIteIn'i:
 deteriorate,dIt'i@i:@`eIt
@@ -602,6 +614,7 @@ dialecticism,daI@:l'EktIsIz@m
 dialysis,P
 diastasic,P
 diazotize,P
+DiCaprio,D
 dictate,d'IkteIt
 di,D
 dieses,d'aI@si:z
@@ -616,7 +629,9 @@ dilatory,d'Il@tori:
 dilettante,d'IlItAnt
 dilute,B
 dilutee,D
+DiMaggio,D
 dimenhydrinate,P
+d'Indy,D
 diocese,P
 diphase,P
 diphasic,P
@@ -640,6 +655,7 @@ diversification,dIv3:sI#fIk'eIS@n
 diversiform,P
 diversify,dIv'3:sI#faI
 DMZ,D
+DNAse,D
 doctrinal,d'QktrIn@l
 dodecagon,doUd'Ek@gQn
 dolichocephalic,P
@@ -658,6 +674,7 @@ ductile,d'VktI#l
 duer,D
 Dulles,D
 duomo,dw'oUmoU
+DuPont,D
 duramen,P
 Duran,D
 dur,D
@@ -713,6 +730,7 @@ enormous,P
 ensemble,A
 enthronization,P
 entourage,P
+entr'acte,P
 entree,A
 enumerative,In'U:m@`eItIv
 eosinophil,P
@@ -958,6 +976,7 @@ gateau,P
 gau,B
 gavial,P
 gayal,P
+gaydar,O
 geanticlinal,P
 geanticline,P
 ge,D
@@ -1018,6 +1037,8 @@ gula,g'U:l@
 guru,g'Uru:
 gymnospermous,P
 gyronny,P
+halfpence,P
+halfpenny,P
 halloa,P
 hallucinative,h@l'u:sI#neItIv
 halt,h'O:lt
@@ -1026,6 +1047,7 @@ Hamas,hAm'As
 Hanseatic,P
 Hansen,D
 Hanukkah,P
+ha'penny,h'eIp@ni:
 hartmann,D
 haver,A
 heathenry,h'i:D@nri:
@@ -1186,6 +1208,7 @@ involute,P
 ionization,aI@#naIz'eIS@n
 Iquique,P
 irade,P
+IRAs,D
 irisation,P
 irrigative,'IrI#geItIv
 Islamabad,B
@@ -1278,6 +1301,7 @@ Lacedaemon,P
 lacerative,P
 lall,P
 Lally,D
+L'Amour,D
 lancet,B
 lanose,P
 Laodicea,leIQdIs'i:@
@@ -1297,6 +1321,7 @@ legislative,P
 Legree,D
 leisure,A
 Lely,D
+L'Enfant,D
 Leopoldo,D
 lepidolite,P
 lepidoptera,P
@@ -1329,6 +1354,7 @@ loess,P
 Loiret,P
 lollapalooza,P
 loos,D
+L'Oreal,D
 lorgnette,P
 Lorient,lO:rj'An
 LP,D
@@ -1344,6 +1370,7 @@ lxi,D
 Lyautey,D
 Lycian,P
 Lycia,P
+ma'am,P
 macaque,m@k'ak
 macaw,m@k'O:
 machicolate,m@tS'IkQleIt
@@ -1397,6 +1424,8 @@ matronal,P
 maturity,B
 maya,P
 mazurka,P
+McIntosh,m'akIntQS
+McNamara,P
 mediative,P
 mediatize,P
 mediatory,P
@@ -1488,11 +1517,12 @@ muppet,B
 musicale,P
 myelencephalon,P
 myelin,m'aI@lIn
-na,O
+na,B
 naos,n'eIQs
 naphthenic,P
 Navajo,n'av@hoU
 Nazism,n'AtsIz@m
+N'Djamena,@ndZAm'eInA
 nebulize,P
 nebulosity,nEbj@l'QsIti:
 necessitous,P
@@ -1512,6 +1542,7 @@ Newcomen,D
 Nicaragua,P
 Nicolas,P
 nihil,D
+n'importe,D
 nitro,B
 nitrogenous,P
 Nivernais,P
@@ -1526,6 +1557,7 @@ nomenclature,P
 nonagon,n'Qn@gQn
 nonary,n'Qn@ri:
 nonet,P
+nor'easter,nO:r'i:st@`
 normalcy,P
 normality,P
 normalization,P
@@ -1552,6 +1584,7 @@ ochs,D
 octantal,P
 octavalent,P
 octaval,P
+ODed,O
 ohm,P
 oleaginous,P
 olen,D
@@ -1643,6 +1676,7 @@ paviser,D
 Pavlovian,P
 pavone,P
 Pavo,p'eIvoU
+PCs,O
 pecan,B
 pedal,B
 Pelasgian,P
@@ -1743,6 +1777,7 @@ posterior,pQst'i@ri:@`
 postliminy,P
 postulation,pQstS@l'eIS@n
 potation,P
+PowerPC,O
 precentorial,prIsEnt'ori:@l
 predatory,A
 preempt,B
@@ -1904,6 +1939,7 @@ reit,D
 relativistic,P
 religieux,D
 remediable,rIm'i:dIEb@l
+remit,rIm'It
 Rene,P
 Reni,D
 Renoir,D
@@ -1969,6 +2005,8 @@ sanitary,P
 Saracen,s'ara#s@n
 sardine,A
 Sardis,P
+sardonically,sArd'QnIklli:
+sardonyx,P
 Sarmatia,P
 saturn,P
 satyriasis,P
@@ -2029,12 +2067,14 @@ setaceous,P
 setose,P
 sexagenarian,P
 sexagenary,P
+sha,D
 shaman,S'Am@n
 shanti,S'Anti:
 Shavian,P
 shavie,P
 shuln,P
 shul,P
+sids,D
 sieger,D
 Sienkiewicz,D
 sierra,A
@@ -2135,9 +2175,11 @@ swallow,B
 Swazi,B
 Swed,B
 symmetry,s'ImItri:,
+ta'en,P
 tagmemic,P
 Taiyuan,t'aIjAn
 Talmud,P
+T'ang,t'AN
 tara,P
 taras,D
 tartare,P
@@ -2199,6 +2241,7 @@ Tlaxcala,P
 Tobey,D
 Tob,P
 tomnoddy,P
+to,O
 topiary,P
 torchere,P
 Torquemada,tO:rk@m'AD@
@@ -2271,6 +2314,7 @@ Valois,D
 varietal,v@`'aI@t@l
 vasectomy,P
 vase,v'eIz
+VAXes,D
 Veda,P
 vegan,B
 vegetative,P
@@ -2338,6 +2382,8 @@ wattle,B
 wejack,P
 whap,w'Qp
 what,A
+where'er,P
+wheresoe'er,P
 whoopee,P
 whorl,w'3:l
 wicked,B
