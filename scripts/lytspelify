@@ -39,7 +39,7 @@ const my $SAMPA_CONSONANT_CLS => "(?:[`bdDfghklmnNprsStTvwzZ]|j(?!'?(?:u:|Ur)))"
 const my $OPT_STRESS_MARKER => "(?:=')?";
 
 # Pattern fragment matching a Lytspel consonant
-const my $LYTSPEL_CONSONANT => '(?:(?:[bcdfghjklmnprstvwxyz]h?|nn?g|qu)=?)';
+const my $LYTSPEL_CONSONANT => '(?:(?:[bcdfghjklmnprstvwxz]h?|(?<![ao])y|nn?g|qu)=?)';
 # Ditto, after original casing has been restored: «y» is only considered a consonant if a
 # vowel follows (use with /i flag)
 const my $LYTSPEL_CONSONANT_POST_PROC => '(?:(?:[bcdfghjklmnprstvwxz]h?|y(?=[aeiou])|nn?g|qu))';
@@ -177,6 +177,13 @@ sub build_mapping {
         $dict{$sampa}          = $lytspel;
         $Lytspel_Set{$lytspel} = 1;
 
+        if ($lytspel =~ /r$/) {
+            # If the spellings ends in «r», add a variant with a stress marker before the
+            # final «r» to %Lytspel_Set
+            my $stress_marked = substr($lytspel, 0, -1) . "'" . substr($lytspel, -1);
+            $Lytspel_Set{$stress_marked} = 1;
+        }
+
         # Add stressed variant if phoneme is a consonant followed by a vowel
         if ($sampa =~ /^${SAMPA_SIMPLE_CONSONANT_CLS}[$SAMPA_VOWELS]/) {
             my $stressed_key = substr($sampa, 0, 1) . "'" . substr($sampa, 1);
@@ -189,7 +196,7 @@ sub build_mapping {
     close $fh;
 
     # Add context-specific spellings to %Lytspel_Set
-    $Lytspel_Set{$_} = 1 for qw/c/;
+    $Lytspel_Set{$_} = 1 for qw/al aw ay c eh n'g nn ow oy si ss s's ti uh/;
     return \%dict, $maxkeylen;
 }
 
@@ -222,18 +229,20 @@ sub build_unconverted_dict_and_case_redirects {
     return \%unconverted_dict, \%case_redirect;
 }
 
-# delsep $str: Delete any occurrences of '=' (used as separator) from a string.
+# delsep $str, $hyphens_too: Delete any occurrences of '=' (used as separator) from a string.
+# If the second argument is true, hyphens ('-') are deleted as well.
 sub delsep {
-    my $str = shift;
+    my ($str, $hyphens_too) = @_;
     $str =~ s/=//g;
+    $str =~ s/-//g if $hyphens_too;
     return $str;
 }
 
 # dist $str1, $str2: Calculate the Levenshtein edit distance between two strings, ignoring case.
-# Separators are deleted from both strings before doing the conversion:
+# Separators and hyphens are deleted from both strings before doing the conversion:
 sub dist {
     my ($str1, $str2) = @_;
-    return distance(lc(delsep $str1), lc(delsep $str2));
+    return distance(lc(delsep $str1, 1), lc(delsep $str2, 1));
 }
 
 # e_or_u_or_other $other, $left, $right, $tradspell: Return 'e', 'u', or $other depending on which
@@ -428,8 +437,8 @@ sub combine_and_adjust {
         $left =~ s/([$LYTSPEL_VOWELS]=)s($OPT_STRESS_MARKER)$/$1c$2/;
     }
 
-    if ($val !~ /^['eiYy]/) {
-        # Non-final /k/ becomes «c» unless followed by any of «e, i, y»
+    if ($val !~ /^['eiYyh]/) {
+        # Non-final /k/ becomes «c» unless followed by any of «e, i, y» or «h»
         $left =~ s/k($OPT_STRESS_MARKER)$/c$1/;
     }
 
@@ -611,6 +620,7 @@ sub move_stress_marker {
         # subordinate, subordinative
         # Move stress marker between the two consonants: Pavlovian
         # t's: move stress marker before both consonants
+        # transhumance: insert marker before «h» (removing the need for a hyphen)
     } else {
         # This shouldn't happen
         warn "Don't know how to move stress in '$word' ($tradspell)\n";
@@ -620,56 +630,84 @@ sub move_stress_marker {
 }
 
 # insert_hyphens_as_needed $converted, $tradspell: Insert hyphens where necessary to prevent
-# misreadings in words such as «am'neesi-ak» ‹amnesiac›. Returns the converted word with
-# hyphens added as needed.
+# misreadings in words such as «co-orde'naition» ‹coordination›. Returns the converted word
+# with hyphens added as needed.
 sub insert_hyphens_as_needed {
     my ($converted, $tradspell) = @_;
 
-    # TODO x Insert hyphens were necessary to prevent misreadings, incl.
-    # unstressed /a/ after /i:/ or /I/:  «am'neesi-ak, zoadi-ak» ‹amnesiac, zodiac›.
-    # unstressed /a/ after /u:/ e.g. «bivu-ak» ‹bivouac›;
-    # «co-ope'raition» ‹cooperation›
-    # Multigraphs ending in «r» may be interrupted by a stress marker before the final «r» and
-    # are still read as multigraphs, e.g. «co-ope'raition, hor'rific»
-    # Elsewhere, stress markers interrupt potential multigraphs, «co'operait» ‹cooperate›
-    # Cf. restore_capitalization (move delsep out of that function and also handle compounds
-    # such as «short-hand» ‹shorthand›)
-    # (cf. "Disambiguating multigraphs")
-    # amnesiac: a=m='n=ee=s=i=a=c
-    # Check %Lytspel_Set (up to three letters)
-    # Apostrophe may be inserted before final r and within «ss»
-    if ($tradspell =~ /^(amnesiac|cooperation|zodiac|bivouac)$/) {
+    # Skip words from which separators have already been stripped (or which don't contain any)
+    return $converted if $converted !~ /=/;
 
-        my $rest          = delsep $converted;
-        my $reconstructed = '';
+    # Eliminate repeated separators
+    $converted =~ s/==/=/g;
 
-        # Insert separators after each possible longest multigraph
-    OUTER: while ($rest) {
-            my $charcount = min 3, length $rest;
+    my $rest          = delsep $converted;
+    my $rest_with_sep = $converted;
+    my $reconstructed = '';
 
-            while ($charcount) {
-                my $start = substr $rest, 0, $charcount;
-                my $inner_rest = substr $rest, $charcount;
-
-                if (exists $Lytspel_Set{$start}) {
-                    $reconstructed = $reconstructed ? "$reconstructed=$start" : $start;
-                    $rest = $inner_rest;
-                    next OUTER;
-                }
-
-                $charcount--;
-            }
-
-            die "Unexpected multigraph sequence found in '$converted' ($tradspell), "
-                . "unexpected rest: '$rest'\n";
+    # Try placing separators after each possible longest multigraph
+OUTER: while ($rest && $rest_with_sep) {
+        if ($rest =~ /^'/ && $rest_with_sep =~ /^'/) {
+            # Stress marker encountered
+            $reconstructed .= "'";
+            $rest          = substr $rest,          1;
+            $rest_with_sep = substr $rest_with_sep, 1;
+            next OUTER;
         }
 
-        # TODO x Replace /'=/ by /'/ and check if both are identical, replacing /=/ by /-/
-        # otherwise (probably do this immediately)
-        say "+++$tradspell: $converted | $reconstructed +++";
+        my $charcount = min 4, length $rest;
+        # Which char sequence do we expected (until first separator)?
+        (my $expected, $rest_with_sep) = split /=/, $rest_with_sep, 2;
+
+        while ($charcount) {
+            my $start = substr $rest, 0, $charcount;
+            my $inner_rest = substr $rest, $charcount;
+
+            if (exists $Lytspel_Set{$start}) {
+
+                if ($charcount > length $expected) {
+                    # Match was too long, insert hyphen for disambiguation
+                    $reconstructed .= "$expected-";
+                    die "Sanity check failed multigraph disambiguation of '$converted' "
+                        . "($tradspell): $expected... != $rest"
+                        if $expected ne substr($rest, 0, length $expected);
+                    $rest = substr $rest, length $expected;
+                    next OUTER;
+                } elsif ($start eq $expected) {
+                    # Correct sequence matched
+                    $reconstructed .= "$expected=";
+                    $rest = $inner_rest;
+                    next OUTER;
+                } else {
+                    die "Divergent matches during multigraph disambiguation of '$converted' "
+                        . "($tradspell): $start+$inner_rest vs. $expected+$rest_with_sep\n";
+                }
+            }
+
+            $charcount--;
+        }
+
+        die "Unexpected multigraph sequence found in '$converted' ($tradspell), "
+            . "unexpected rest: '$rest'\n";
     }
 
-    return $converted;
+    # Check that both have been consumed
+    die "Unexpected rest '$rest' after multigraph disambiguation of
+        . '$converted' ($tradspell)\n"
+        if $rest;
+    die "Unexpected separated rest '$rest_with_sep' after multigraph disambiguation of "
+        . "'$converted' ($tradspell)\n"
+        if $rest_with_sep;
+
+    # TODO x Strip trailing separator and remove unnecessary hyphens
+    $reconstructed =~ s/=$//;
+    $reconstructed =~ s/-('?r)/=$1/g;     # not needed before «r»
+    $reconstructed =~ s/a-l/a=l/g;        # not needed for «al»
+    $reconstructed =~ s/e-h/e=h/g;        # not needed for «eh»
+    $reconstructed =~ s/o-e(?!e)/o=e/g;   # not needed for «o-e»
+    $reconstructed =~ s/([st])-i/$1=i/g;  # not needed for «si, ti»
+    $reconstructed =~ s/([iu])-a/$1=a/g;  # not used for «ia, iai, ua, uai»
+    return $reconstructed;
 }
 
 # restore_capitalization $converted, $tradspell: Restore the proper capitalization of a converted
