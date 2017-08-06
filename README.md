@@ -148,6 +148,8 @@ The consonants are written as follows:
   * The sound /k/ is written as «c» or «k», depending on context:
       * «k» is used before «e, i, y», e.g. «keep, king, kynd,
         calkyu'laition» ‹...kind, calculation›
+      * «k» is also used before «h» to prevent confusion with the digraph
+        «ch» /tS/, e.g. «lunkhed» ‹lunkhead›
       * «c» is used before any other letter, e.g. «cat, cost, crisp»
       * «c» is also used at the end of words ending in unstressed /ak/ or
         /Ik/, e.g. «mainiac, majic, public» ‹maniac, magic...›
@@ -327,8 +329,8 @@ Spellings involving several sounds:
     «mis'teeriass, ma'teerial, meediam, obviass, vairiabl, airia,
     i'meediat» ‹mysterious, material, medium, obvious, variable, area,
     immediate›. In the rare cases where unstressed /a/ occurs after /i:/ or
-    /I/, a hyphen is inserted for disambiguation, e.g. «am'neesi-ak,
-    zoadi-ak» ‹amnesiac, zodiac›.
+    /I/, a hyphen is inserted for disambiguation, e.g. «am'neesi-ac,
+    zoadi-ac» ‹amnesiac, zodiac›.
   * The R-colored vowel combination /i:@`/ is written «ier», e.g. «thieri»
     ‹theory›.
   * The vowel combination /oU@/ is written «oe», e.g. «boe, coe'lition,
