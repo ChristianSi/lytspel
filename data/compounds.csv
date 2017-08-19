@@ -1,8 +1,6 @@
 Word,Parts
 aaronic,aaron=ic
 aaronical,aaronic=al
-abalone,aba-lone
-abampere,abamp-ere
 abandoned,abandon=ed
 abandonedly,abandoned=ly
 abandonee,abandon=ee
@@ -65,7 +63,6 @@ ablation,ablate=ion
 ablatival,ablative=al
 ablative,ablate=ive
 abled,able=ed
-ablegate,able-gate
 ables,able=s
 ably,abe=ly
 abnormalities,abnormality=es
@@ -1220,6 +1217,7 @@ alternatively,alternative=ly
 alternatives,alternative=s
 alternator,alternate=or
 alters,alter=s
+althorn,alt-horn
 altitudes,altitude=s
 altocumulus,alto-cumulus
 altos,alto=s
@@ -4461,6 +4459,7 @@ bluenose,blue-nose
 bluepoint,blue-point
 blueprint,blue-print
 blueprints,blueprint=s
+bluer,blue=er
 blues,blue=s
 bluestem,blue-stem
 bluestocking,blue-stocking
@@ -13557,6 +13556,7 @@ drawboy,draw-boy
 drawbridge,draw-bridge
 drawdown,draw-down
 drawdowns,drawdown=s
+drawee,draw=ee
 drawers,drawer=s
 drawing,draw=ing
 drawings,drawing=s
@@ -22057,7 +22057,7 @@ hypnotists,hypnotist=s
 hypnotized,hypnotize=ed
 hypnotizes,hypnotize=s
 hypoacid,hypo-acid
-hypoacidity,hypoacid=ity
+hypoacidity,hypo-acidity
 hypobaric,hypo-baric
 hypoblast,hypo-blast
 hypochlorite,hypo-chlorite
@@ -24652,6 +24652,7 @@ israelis,israeli=s
 israelites,israelite=s
 issuances,issuance=s
 issueless,issue=less
+issuer,issue=er
 issuers,issuer=s
 issues,issue=s
 italianate,italian-ate
@@ -36261,7 +36262,7 @@ radicals,radical=s
 radioactinium,radio-actinium
 radioactivate,radio-activate
 radioactive,radio-active
-radioactivity,radioactive=ity
+radioactivity,radio-activity
 radioautography,radio-autography
 radiobiological,radio-biological
 radiobiology,radio-biology
@@ -38489,7 +38490,7 @@ retroact,retro-act
 retroaction,retro-action
 retroactive,retroact=ive
 retroactively,retroactive=ly
-retroactivity,retroactive=ity
+retroactivity,retro-activity
 retrobulbar,retro-bulbar
 retrocede,retro-cede
 retrocession,retro-cession
@@ -41150,6 +41151,7 @@ showery,shower=y
 showgirl,show-girl
 showgirls,showgirl=s
 showiest,showy=est
+showily,showy=ly
 showiness,showy=ness
 showing,show=ing
 showings,showing=s
@@ -47152,6 +47154,7 @@ truehearted,true-hearted
 trueheartedness,truehearted=ness
 truelove,true-love
 truepenny,true-penny
+truer,true=er
 truffles,truffle=s
 trumped,trump=ed
 trumpeted,trumpet=ed
