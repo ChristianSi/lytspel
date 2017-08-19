@@ -98,12 +98,12 @@ my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedic
 my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acronymous
     albuminous allonymous ammonic ammonify animality antinomian antonymous apostrophic
     appositive atomic bacchantic balladic basophilic bestiality bitonality canonic catastrophic
-    civility colonic councilmanic criminality cryptogamous cryptonymous ctenophoran demonic
-    diaphaneity external fibrinogenous frivolity gnomonic halogenous homonymous matrimonial
-    Miltonic monomeric monomerous monostrophic nebulosity originality partiality pseudonymity
-    planktonic prebendal puritanical quadrantal quadrupedal reclusive
-    renewal satanic shamanic sinistrality sultanic sycophantic synonymous
-    talismanic testimonial tribadic tympanic/;
+    civility coevality colonic councilmanic criminality cryptogamous cryptonymous ctenophoran
+    demonic diaphaneity external fibrinogenous frivolity gnomonic halogenous homonymous
+    matrimonial Miltonic monomeric monomerous monostrophic nebulosity originality partiality
+    pseudonymity planktonic prebendal puritanical quadrantal quadrupedal reclusive renewal
+    satanic shamanic sinistrality subordinative sultanic sycophantic synonymous talismanic
+    testimonial tribadic tympanic/;
 
 # TODO Switch to Upper_Camel_Case for file-scoped variables (in all files)
 my $CSV_IN  = new_csv_in;
@@ -196,7 +196,7 @@ sub build_mapping {
     close $fh;
 
     # Add context-specific spellings to %Lytspel_Set
-    $Lytspel_Set{$_} = 1 for qw/al aw ay c eh n'g nn ow oy si ss s's ti uh/;
+    $Lytspel_Set{$_} = 1 for qw/al aw a'w ay c eh n'g nn ow oy si ss s's ti uh/;
     return \%dict, $maxkeylen;
 }
 
@@ -507,6 +507,9 @@ sub insert_stress_marker_among_multiple_consonants {
     my $left     = '';
     my $left_sep = '';
 
+    # Discard hyphenated sequence in this case since it's misleading
+    $hyphenated = '' if $tradspell eq 'transhumance';
+
     # Check after which consonant the break should occur
     while (@cons) {
         my $next = shift @cons;
@@ -527,7 +530,7 @@ sub insert_stress_marker_among_multiple_consonants {
     # Burg'soanian, poast'limeni, Fits'patric» ‹temptation, Pyongyang, pontlevis,
     # Bergsonian, postliminy, Fitzpatrick›
     return insert_after_second $consonants
-        if $consonants =~ /^(m=p=t|n=j=y|n=t=l|r=g=s|s=t=l|t=s=[jpr])$/;
+        if $consonants =~ /^(m=p=t|n=j=y|n=s=h|n=t=l|r=g=s|s=t=l|t=s=[jpr])$/;
 
     # Otherwise break after first of three consonants, or after second of four
     return insert_after_first $consonants if $sep_count == 2;
@@ -572,8 +575,8 @@ sub insert_stress_marker {
         || ($consonants eq 'p=l' && $tradspell =~ /^popl/i);
 
     # Break before both consonants if the first is 's' (not followed by 'm')
-    # or if the second is 'l' or 'r' (not preceded by 'r')
-    return insert_at_start $consonants if $consonants =~ /^s=[^m]|[^r]=[lr]$/;
+    # or if the second is 'l' or 'r' (not preceded by 'r' or 'v')
+    return insert_at_start $consonants if $consonants =~ /^s=[^m]|[^rv]=[lr]$/;
 
     # Otherwise break in middle
     return insert_after_first $consonants;
@@ -584,7 +587,11 @@ sub insert_stress_marker {
 sub move_stress_marker {
     my ($word, $tradspell) = @_;
 
-    return $word unless $word =~ /'/;  # Nothing to do
+    # Return word unchanged if it doesn't contain a stress marker and in a handful of
+    # quasi-compounds where the marker is aready properly placed before the vowel,
+    # e.g. «sub'ordinaitiv» ‹subordinative›
+    return $word if $word !~ /'/ || $tradspell =~
+        /^(abampere$|abaxial$|abirrita|abohm$|aboral$|enactory$|inordinacy$|subordinat)/;
 
     # If the compound contains two stress markers, we keep just the first one
     $word =~ s/('.*)'/$1/ if $word =~ /'.*'/;
@@ -615,12 +622,6 @@ sub move_stress_marker {
                 $tradspell;
             $word =~ s/$consonants_before_marker'/$stressed_cons/;
         }
-
-        # TODO x Move stress marker before vowel: e'nacteri (enactory), exurb, inordinacy,
-        # subordinate, subordinative
-        # Move stress marker between the two consonants: Pavlovian
-        # t's: move stress marker before both consonants
-        # transhumance: insert marker before «h» (removing the need for a hyphen)
     } else {
         # This shouldn't happen
         warn "Don't know how to move stress in '$word' ($tradspell)\n";
@@ -699,14 +700,21 @@ OUTER: while ($rest && $rest_with_sep) {
         . "'$converted' ($tradspell)\n"
         if $rest_with_sep;
 
-    # TODO x Strip trailing separator and remove unnecessary hyphens
+    # Strip trailing separator and remove unnecessary hyphens
     $reconstructed =~ s/=$//;
     $reconstructed =~ s/-('?r)/=$1/g;     # not needed before «r»
-    $reconstructed =~ s/a-l/a=l/g;        # not needed for «al»
+    $reconstructed =~ s/a-([lw])/a=$1/g;  # not needed for «al, aw»
     $reconstructed =~ s/e-h/e=h/g;        # not needed for «eh»
-    $reconstructed =~ s/o-e(?!e)/o=e/g;   # not needed for «o-e»
+    $reconstructed =~ s/i-er/i=er/g;      # not needed for «ier»
+    $reconstructed =~ s/s-sh/s=sh/g;      # not needed for «ssh» (rarely in foreign words)
+    $reconstructed =~ s/o-e(?!e)/o=e/g;   # not used for «oe»
     $reconstructed =~ s/([st])-i/$1=i/g;  # not needed for «si, ti»
     $reconstructed =~ s/([iu])-a/$1=a/g;  # not used for «ia, iai, ua, uai»
+    $reconstructed =~ s/-'/'/g;           # not needed before stress marker
+
+    # Treat ‹micro...› as compound, even if the 2nd part isn't listed
+    $reconstructed =~ s/o-a/o=a/ if $tradspell =~ /^micro/;
+
     return $reconstructed;
 }
 
@@ -937,7 +945,6 @@ sub unify_sound {
     my $rp_elem_count = scalar @rp_split;
 
     unless ($rp_elem_count == scalar @ga_split) {
-        # TODO Disable this warning for the handful of known cases
         warn "Note: Cannot unify $tradspell pronouncations re $alt1/$alt2\n"
             unless $suppress_warning;
         return $rp, $ga, $phoneng;
@@ -1020,8 +1027,8 @@ sub unify_sounds {
 
 # choose_nearer_or_shorter $first, $second, $tradspell: Choose and return $first or $second
 # depending on which one is more similar to $tradspell.
-# If both are equally similar, the shorter one is returned
-# If there is still a tie, $first is returned.
+# If both are equally similar, the shorter one is returned.
+# If there is still a tie, $second is returned.
 # If $second is undefined or empty, $first is returned without further checks.
 sub choose_nearer_or_shorter {
     my ($first, $second, $tradspell) = @_;
@@ -1029,10 +1036,7 @@ sub choose_nearer_or_shorter {
 
     my $comp = dist($first, $tradspell) <=> dist($second, $tradspell);
     $comp = length($first) <=> length($second) unless $comp;
-    # TODO Find out how to disambiguate these cases
-    #warn "$first and $second have equal distance to $tradspell and equal length\n" unless $comp;
-
-    return ($comp <= 0) ? $first : $second;
+    return ($comp < 0) ? $first : $second;
 }
 
 # select_nearest: Select among the three converted spellings the one that's closest to
@@ -1546,7 +1550,7 @@ sub handle_compound {
         return $compound;
 
         # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
-        # TODO Add prefixes: ab- (e.g. abampere, 2nd part stressed)
+        # TODO x
         # Add suffix: -otic (stressed before suffix), -ology (ditto)
         # Stress last syllable of 1st part: -meter (e.g. aerometer, electrometer, hypermeter,
         # alkalimeter), -tropism (e.g. aerotropism, geotropism, stereotropism)
