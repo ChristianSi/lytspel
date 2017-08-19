@@ -328,18 +328,20 @@ Spellings involving several sounds:
   * The vowel combination /i:@/ or /I@/ is written «ia», e.g.
     «mis'teeriass, ma'teerial, meediam, obviass, vairiabl, airia,
     i'meediat» ‹mysterious, material, medium, obvious, variable, area,
-    immediate›. In the rare cases where unstressed /a/ occurs after /i:/ or
-    /I/, a hyphen is inserted for disambiguation, e.g. «am'neesi-ac,
-    zoadi-ac» ‹amnesiac, zodiac›.
+    immediate›. In a few words, «ia» instead represents /i:a/, e.g.
+    «en'thuesiasm, zoadiac» ‹enthusiasm, zodiac› (this distinction is not
+    represented in writing).
   * The R-colored vowel combination /i:@`/ is written «ier», e.g. «thieri»
     ‹theory›.
   * The vowel combination /oU@/ is written «oe», e.g. «boe, coe'lition,
-    ys'socroess» ‹boa, coalition, isochroous›.
+    ys'socroess» ‹boa, coalition, isochroous›. In a few words, «oe» instead
+    represents /oUE/, e.g. «floem» ‹phloem› (this distinction is not
+    represented in writing).
   * The vowel combination /u:@/ is written «ua», e.g. «acchual,
     indi'vijual, influanss, soo'purfluass, crual» ‹actual, individual,
-    influence, superfluous, cruel›.  In the very rare cases where
-    unstressed /a/ occurs after /u:/, a hyphen is inserted for
-    disambiguation, e.g. «bivu-ak» ‹bivouac›.
+    influence, superfluous, cruel›. In a few words, «ua» instead represents
+    /u:a/, e.g. «bivuac» ‹bivouac› (this distinction is not represented in
+    writing).
   * The consonant combination /kw/ is written «qu», e.g. «quit, ri'quest»
     ‹...request›; the letter «q» only occurs in this combination.
   * The sound combination /ks/ is written «x», e.g. «mix, next, ex'plicit,
@@ -389,13 +391,21 @@ Disambiguating multigraphs (sequences of multiple characters representing a
 single sound or an r-colored vowel):
 
   * Spellings involving digraphs (such as «ch, sh, ss, ai, oa, oy, ur») and
-    trigraphs (such as «arr, eer») are read from left to right: the first
-    letter sequence that *can* be read as a multigraph *should* be read as
-    such; e.g. «dueel» ‹dual *or* duel› is read as «d-ue-e-l» (/dj'u:@l/ or
-    /d'u:@l/), «layer» is read as «l-ay-er» (/l'eI@`/).
-  * In cases where the previous rule would lead to a misreading, Lytspel
+    trigraphs (such as «arr, eer») are generally read from left to right:
+    the first letter sequence that *can* be read as a multigraph *should*
+    be read as such; e.g. «dueel» ‹dual *or* duel› is read as «d-ue-e-l»
+    (/dj'u:@l/ or /d'u:@l/), «layer» is read as «l-ay-er» (/l'eI@`/).
+  * But the trigraphs «iai, uai» are read as «i» /i:/ or «u» /u:/ followed
+    by «ai» (spoken /aI/ at the end of words, /eI/ otherwise), e.g.
+    «a'preeshiait, flucchuait, raidiai» ‹appreciate, fluctuate, radii›.
+  * In cases where the previous rules would lead to a misreading, Lytspel
     recommends inserting a hyphen to indicate the correct reading, e.g.
-    «co-ope'raition» ‹cooperation›.
+    «Cro-at, po-it, co-in'syd, co-ope'raition, acchu-eri, Lu-eesi'ana,
+    Aalts-hymer, sheeps-hed» ‹Croat, poet, coincide, cooperation, actuary,
+    Louisiana, Alzheimer, sheepshead›.
+  * Those who prefer a more classical form may omit the hyphen between two
+    vowels and place a diaeresis over the second vowel, e.g. «Croät, poït,
+    coïn'syd, coöpe'raition, acchuëri, Luëesi'ana».
   * Multigraphs ending in «r» may be interrupted by a stress marker before
     the final «r» and are still read as multigraphs, e.g. «co-ope'raition,
     hor'rific» ‹cooperation, horrific›. The multigraph «ss» is broken in
@@ -404,11 +414,13 @@ single sound or an r-colored vowel):
     the same effect as a hyphen: it indicates that the letters to the left
     and to the right of it should be read in isolation, e.g. «co'operait»
     ‹cooperate›.
-  * If letters that could be misread as a multigraph belong to different
-    parts of a compound and the individual parts are easy to recognize, no
-    hyphen may be needed; e.g. «shorthand» can be written without a hyphen
-    and little risk that people will try to speak /T/ (as in «thin») in the
-    middle of the word. (Though writing «short-hand» isn't wrong either.)
+  * Hyphens are generally not inserted between a base word and a suffix or
+    prefix, e.g. «truer» from «tru» ‹true›, «duer» ‹doer› from «du» ‹do›,
+    «baioastre'nautics» ‹bioastronautics› from «astre'nautics»
+    ‹astronautics›, «mycroa'naleciss» ‹microanalysis› from «a'naleciss»
+    ‹analysis›. Neither are they inserted between the parts of a compound,
+    e.g. «shorthand». If writers feel that confusion might result, they
+    may, of course, insert a hyphen (or a diaeresis).
 
 Rules for derived and related words:
 
