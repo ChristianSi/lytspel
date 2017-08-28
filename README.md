@@ -398,6 +398,8 @@ single sound or an r-colored vowel):
   * But the trigraphs «iai, uai» are read as «i» /i:/ or «u» /u:/ followed
     by «ai» (spoken /aI/ at the end of words, /eI/ otherwise), e.g.
     «a'preeshiait, flucchuait, raidiai» ‹appreciate, fluctuate, radii›.
+  * «oic» at the end of words is always spoken /oUIk/ (two separate
+    vowels), e.g. «hi'roic, stoic» ‹heroic...›.
   * In cases where the previous rules would lead to a misreading, Lytspel
     recommends inserting a hyphen to indicate the correct reading, e.g.
     «Cro-at, po-it, co-in'syd, co-ope'raition, acchu-eri, Lu-eesi'ana,
