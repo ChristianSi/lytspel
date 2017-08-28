@@ -527,10 +527,10 @@ sub insert_stress_marker_among_multiple_consonants {
     return insert_at_start $consonants if $consonants =~ /^(s=t=r|t=s=y)$/;
 
     # Break after second consonant, e.g. «temp'taition, Pyonj'yang, pont'leviss,
-    # Burg'soanian, poast'limeni, Fits'patric» ‹temptation, Pyongyang, pontlevis,
-    # Bergsonian, postliminy, Fitzpatrick›
+    # Burg'soanian, disp'noic, poast'limeni, Fits'patric» ‹temptation, Pyongyang, pontlevis,
+    # Bergsonian, dyspnoic, postliminy, Fitzpatrick›
     return insert_after_second $consonants
-        if $consonants =~ /^(m=p=t|n=j=y|n=s=h|n=t=l|r=g=s|s=t=l|t=s=[jpr])$/;
+        if $consonants =~ /^(m=p=t|n=j=y|n=s=h|n=t=l|r=g=s|s=p=n|s=t=l|t=s=[jpr])$/;
 
     # Otherwise break after first of three consonants, or after second of four
     return insert_after_first $consonants if $sep_count == 2;
@@ -543,11 +543,10 @@ sub insert_stress_marker {
     my ($consonants, $hyphenated, $tradspell) = @_;
     my $just_consonants = $consonants =~ s/=//gr;
 
-    # Move stress marker before whole consonant sequence (second is a special case, for
-    # consistency with ‹respire›)
+    # Move stress marker before whole consonant sequence (second fixes a few special cases)
     return insert_at_start $consonants
         if $hyphenated =~ /=$just_consonants/
-        || $tradspell =~ '^respir';
+        || $tradspell =~ '^(respir|Samothracian$)';
 
     # Break after 'ns', if $hyphenated confirms that or $tradspell contains 'trans'
     # (followed by ca|g|l|n|v)
@@ -590,7 +589,9 @@ sub move_stress_marker {
     # Return word unchanged if it doesn't contain a stress marker and in a handful of
     # quasi-compounds where the marker is aready properly placed before the vowel,
     # e.g. «sub'ordinaitiv» ‹subordinative›
-    return $word if $word !~ /'/ || $tradspell =~
+    return $word
+        if $word !~ /'/
+        || $tradspell =~
         /^(abampere$|abaxial$|abirrita|abohm$|aboral$|enactory$|inordinacy$|subordinat)/;
 
     # If the compound contains two stress markers, we keep just the first one
@@ -708,6 +709,7 @@ OUTER: while ($rest && $rest_with_sep) {
     $reconstructed =~ s/i-er/i=er/g;      # not needed for «ier»
     $reconstructed =~ s/s-sh/s=sh/g;      # not needed for «ssh» (rarely in foreign words)
     $reconstructed =~ s/o-e(?!e)/o=e/g;   # not used for «oe»
+    $reconstructed =~ s/o-i=c$/o=i=c/;    # not used for final «oic»
     $reconstructed =~ s/([st])-i/$1=i/g;  # not needed for «si, ti»
     $reconstructed =~ s/([iu])-a/$1=a/g;  # not used for «ia, iai, ua, uai»
     $reconstructed =~ s/-'/'/g;           # not needed before stress marker
@@ -1188,6 +1190,9 @@ sub postprocess_suffixed {
     } elsif ($conv_base =~ /kw/ && $converted !~ /k'?w/) {
         # Restore «kw» in the middle of words: «Pik'wikian» ‹Pickwickian›
         $converted =~ s/(')qu/k$1w/ || warn "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /oic/ && $converted =~ /o-i/) {
+        # Restore «oic», e.g. «stoicl« ‹stoical›
+        $converted =~ s/(.*)o-i/$1oi/;
     } elsif ($conv_base =~ /msi/ && $converted !~ /m'?si/) {
         # Restore «msi» in the middle of words: «wimsi'caliti» ‹whimsicality›
         $converted =~ s/mzi/msi/ || warn "No match: $converted ($tradspell) from $conv_base";
@@ -1551,9 +1556,8 @@ sub handle_compound {
 
         # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
         # TODO x
-        # Add suffix: -otic (stressed before suffix), -ology (ditto)
         # Stress last syllable of 1st part: -meter (e.g. aerometer, electrometer, hypermeter,
-        # alkalimeter), -tropism (e.g. aerotropism, geotropism, stereotropism)
+        # alkalimeter), -tropism (e.g. aerotropism, geotropism, stereotropism, cf. heliotropism)
         # Add prefix per- «per»: stress 2nd part; but keep a few manual entries for ‹per›
         # «pur» (likewise stressed on 2nd part): percutaneous,per-cutaneous;
         # peroxidic,per-oxidic; peroxide,per-oxide
@@ -1673,7 +1677,7 @@ sub convert_dict {
  # TODO reincarnate: split in v+aj; Split ‹overestimate, reexport, warehouse› into n+v
  # Add desert/n,dez@rt  # desert (use for semidesert, desertic), mouse/v: m'aUz (also use
  # for mouser), mouth/v: use P (also for mouther and the various -mouthed combis),
- # addict/v (also for addicted), commune/v, insult/v, defect/v: use P
+ # addict/v (also for addicted), commune/v, insult/v, defect/v, decrease/v: use P
  # subordinate/v should end in «ait» instead of «et»
  # supersaturate: derive from saturate/v; ungallant: derive from gallant/aj;
  # unwind: derive from wind/v; uncleanly: split in aj+av; add bifurcate/aj: ...It
@@ -1721,6 +1725,11 @@ sub convert_dict {
  # not "hoame"; macro should remain unchanged, not macre or macroa.
  # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
  # vowel as /aI/, GA as /I/ or /@/)
+ # -morphic: probably always morfic instead of moarfic
+ # -meter: standardize (if possible)
+ # -metry: standardize
+ # -centenary: always [sc]en'teneri
+ # -[t]ed: probably standardize to -ed rather than -id
  # TODO Stress 1st part: counterattack/n, counterreply/n, servocontrol/n
  # TODO Stress 2st part: counterbalance/v (also counterbalancing etc.)
  # TODO Add with 2nd stressed: outshot/v, overcharge/v, overcharges/v, afternoon/n, arsenic/aj
@@ -1729,6 +1738,9 @@ sub convert_dict {
  # Add affricate/v: -kit (n) becomes cait
  # subordinate/n: s@b'O:rdI#neIt (sub'ordinit), v: s@b'O:rdI#neIt (sub'ordinait)
  # TODO Add to custom.csv and handle correctly: complicate/aj,k'QmplIkIt
+ # TODO ‹a› before /s/ or /z/ should be treated as prefix in words such as ‹asymmetric› ->
+ # «aisi'metric», not "aici..."
+ # TODO Maybe write /O:l/ always as «all»?
 
         $conv_colref = convert_row $colref, $colref->[0];
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
