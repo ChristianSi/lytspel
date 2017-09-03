@@ -71,14 +71,14 @@ my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/auto contra electro homo meta mo
 # If a compound is listed here, its 1st part is stressed (used only in cases where our
 # rules indicate that the 2nd part should be stressed or where it contains a stress marker).
 my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation antimatter archlute
-    archway bioscience choplogic counterproposal countersubject dealate heterocycle heterodyne
-    heterograft heterophil hexamine histamine hypoblast hypogene hyponasty hypostyle inbreeding
-    infiltrate infrasound infrastructure insufflate lookalike malware microchip microprogram
-    microreader Microsoft minicomputer newsmagazine noncom nonsense overseer pinafore prefix
-    semilegendary slugabed standalone subchapter subnotebook subroutine supercalender superfund
-    supergiant superhero superpower superstar tarmacadam telerecord therefore thereupon
-    triethylamine turnverein ultrastructure underwriting underwrote videocassette wherefore
-    wherewithal woebegone/;
+    archway bioscience choplogic cofunction counterproposal countersubject dealate heterocycle
+    heterodyne heterograft heterophil hexamine histamine hypoblast hypogene hyponasty hypostyle
+    inbreeding infiltrate infrasound infrastructure insufflate lookalike malware microchip
+    microprogram microreader Microsoft minicomputer newsmagazine noncom nonsense overseer
+    pinafore prefix semilegendary slugabed standalone subchapter subnotebook subroutine
+    supercalender superfund supergiant superhero superpower superstar tarmacadam telerecord
+    therefore thereupon triethylamine turnverein ultrastructure underwriting underwrote
+    videocassette wherefore wherewithal woebegone/;
 
 # If a compound is listed here, its 2nd part is stressed.
 my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedical aerostation
@@ -99,11 +99,11 @@ my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acro
     albuminous allonymous ammonic ammonify animality antinomian antonymous apostrophic
     appositive atomic bacchantic balladic basophilic bestiality bitonality canonic catastrophic
     civility coevality colonic councilmanic criminality cryptogamous cryptonymous ctenophoran
-    demonic diaphaneity external fibrinogenous frivolity gnomonic halogenous homonymous
-    matrimonial Miltonic monomeric monomerous monostrophic nebulosity originality partiality
-    pseudonymity planktonic prebendal puritanical quadrantal quadrupedal reclusive renewal
-    satanic shamanic sinistrality subordinative sultanic sycophantic synonymous talismanic
-    testimonial tribadic tympanic/;
+    demonic diaphaneity equality external fibrinogenous frivolity gnomonic halogenous
+    homonymous matrimonial Miltonic monomeric monomerous monostrophic nebulosity originality
+    partiality pseudonymity planktonic prebendal puritanical quadrantal quadrupedal reclusive
+    renewal satanic shamanic sinistrality subordinative sultanic sycophantic synonymous
+    talismanic testimonial tribadic tympanic/;
 
 # TODO Switch to Upper_Camel_Case for file-scoped variables (in all files)
 my $CSV_IN  = new_csv_in;
@@ -432,7 +432,7 @@ sub combine_and_adjust {
     if ($val =~ /^[aou]/) {
         # /s/ becomes «ss» between any vowel and a vowel starting with «a, o, u»
         $left =~ s/([$LYTSPEL_VOWELS]=)s($OPT_STRESS_MARKER)$/$1ss$2/;
-    } elsif ($val =~ /^[eiY]/) {
+    } elsif ($val =~ /^'?[eiY]/) {
         # /s/ becomes «c» between any vowel and a vowel starting with «e, i, y»
         $left =~ s/([$LYTSPEL_VOWELS]=)s($OPT_STRESS_MARKER)$/$1c$2/;
     }
@@ -522,9 +522,11 @@ sub insert_stress_marker_among_multiple_consonants {
     }
 
     # No break found, so we use suitable defaults:
-    # Break before consonant sequence, e.g. «in'struction, converrsaa'tsyoneh»
+    # Break before last three consonants, e.g. «in'struction, converrsaa'tsyoneh»
     # ‹instruction, conversazione›
-    return insert_at_start $consonants if $consonants =~ /^(s=t=r|t=s=y)$/;
+    if ($consonants =~ /(s=t=r|t=s=y)$/) {
+        return $sep_count == 2 ? insert_at_start $consonants : insert_after_first $consonants;
+    }
 
     # Break after second consonant, e.g. «temp'taition, Pyonj'yang, pont'leviss,
     # Burg'soanian, disp'noic, poast'limeni, Fits'patric» ‹temptation, Pyongyang, pontlevis,
@@ -556,6 +558,10 @@ sub insert_stress_marker {
 
     $consonants =~ s/=$//;  # drop final '='
     my $sep_count = () = $consonants =~ /=/g;
+
+    # Usually discard hyphenated sequence after 'tr' since it sometimes wrongly indicates that
+    # this sequence should be separated
+    $hyphenated = '' if $consonants =~ /t=r$/ && $tradspell !~ /^outr/;
 
     # Three or more consonants
     return insert_stress_marker_among_multiple_consonants $consonants, $hyphenated, $tradspell,
@@ -1556,8 +1562,8 @@ sub handle_compound {
 
         # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
         # TODO x
-        # Stress last syllable of 1st part: -meter (e.g. aerometer, electrometer, hypermeter,
-        # alkalimeter), -tropism (e.g. aerotropism, geotropism, stereotropism, cf. heliotropism)
+        # Stress last syllable of 1st part:
+        # -tropism (e.g. aerotropism, geotropism, stereotropism, cf. heliotropism)
         # Add prefix per- «per»: stress 2nd part; but keep a few manual entries for ‹per›
         # «pur» (likewise stressed on 2nd part): percutaneous,per-cutaneous;
         # peroxidic,per-oxidic; peroxide,per-oxide
@@ -1725,11 +1731,12 @@ sub convert_dict {
  # not "hoame"; macro should remain unchanged, not macre or macroa.
  # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
  # vowel as /aI/, GA as /I/ or /@/)
+ # standardize -meter: -meter should become -miter (-meeter is OK)
  # -morphic: probably always morfic instead of moarfic
- # -meter: standardize (if possible)
  # -metry: standardize
  # -centenary: always [sc]en'teneri
  # -[t]ed: probably standardize to -ed rather than -id
+ # -ysis: probably standardize to iciss
  # TODO Stress 1st part: counterattack/n, counterreply/n, servocontrol/n
  # TODO Stress 2st part: counterbalance/v (also counterbalancing etc.)
  # TODO Add with 2nd stressed: outshot/v, overcharge/v, overcharges/v, afternoon/n, arsenic/aj
@@ -1740,7 +1747,16 @@ sub convert_dict {
  # TODO Add to custom.csv and handle correctly: complicate/aj,k'QmplIkIt
  # TODO ‹a› before /s/ or /z/ should be treated as prefix in words such as ‹asymmetric› ->
  # «aisi'metric», not "aici..."
+ # TODO liturgics, meteoritics etc.: use cs, not x
+ # TODO micrometre: treat as compound micro-meter rather than redirect (stressed on first
+ # syllable), ditto micrometres.
+ # Ambigous (would need two different entries): micrometer
  # TODO Maybe write /O:l/ always as «all»?
+ # TODO All -ally entries for which corresponding -al entries exist should be derived from
+ # the latter; the rest should probably still be written «clli» rather than "keli", e.g.
+ # ‹electronically›
+ # TODO Possibly drop Text::Hyphen dependency, instead refining heuristics to fit all cases
+ # (e.g. s't should probably always become 'st, except in compounds)
 
         $conv_colref = convert_row $colref, $colref->[0];
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
