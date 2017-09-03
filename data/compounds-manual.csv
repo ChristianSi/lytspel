@@ -309,6 +309,7 @@ cadaver
 caliche
 callan
 callant
+camaron
 camcorder
 campanile
 campeche
@@ -402,6 +403,7 @@ claytonia
 cleanly
 clearstory
 clown
+clumsily,clumsy=ly
 coal
 coed
 coeducational,co-educational
@@ -409,6 +411,7 @@ coeducation,co-education
 coequal,co-equal
 coequality,co-equality
 coffee
+cofunction,co-function
 cognation
 cognominal
 cohobate
@@ -426,6 +429,7 @@ columnist
 commandant
 comment
 committee
+committeeman,committee-man
 communion
 communize
 compatriot,com-patriot
@@ -569,6 +573,7 @@ declare
 decline
 declines,decline=s
 deco
+decollate
 decor
 decoy
 decrease
@@ -680,6 +685,7 @@ differentia
 diffuse
 dillydally,dilly-dally
 dilutee
+dimeter
 dingey
 dingy
 dior
@@ -719,6 +725,10 @@ dissing
 distally,distal=ly
 distensile
 distillate
+distrain
+distrait
+distress
+distresses,distress=es
 distributary,distribute-ary
 distribute
 distributes,distribute=s
@@ -948,6 +958,7 @@ gaskell
 gaskin
 gasking
 gaspar
+gaussmeter,gauss-meter
 gavelock
 gavial
 gayal
@@ -1090,6 +1101,7 @@ hymnist
 hyperbaton
 hyperbolism
 hyperion
+hypermeter
 hypoacidity,hypo-acidity
 hypogean
 hypophysis
@@ -1436,6 +1448,8 @@ methylal,methyl-al
 michelangelo
 microbe
 microchips,microchip=s
+micrometer
+micrometers,micrometer=s
 micropolis
 Midian
 mien
@@ -1458,6 +1472,7 @@ missa
 missing,miss=ing
 missive
 misti
+mistresses,mistress=es
 moan
 mobility,mobile=ity
 mobilize,mobile=ize
@@ -1475,6 +1490,7 @@ monroe
 monsanto
 monsoon
 montane
+Montcalm
 montes
 moon
 moped
@@ -1491,6 +1507,7 @@ motor
 Motrin
 moutonnee
 mullion
+multimeter
 multipara
 multiplicate
 multivocal
@@ -1603,6 +1620,7 @@ palearctic
 Pallas
 pallial
 pally
+Palmolive
 pampean
 pandora
 pandore
@@ -1737,6 +1755,8 @@ polly
 polycrates
 polygenism
 polygraphist
+polymerism
+polymerize
 polymorphism
 polyunsaturated,poly-unsaturated
 pommee
@@ -2456,6 +2476,7 @@ trial
 trickling,trickle=ing
 trifoliated
 trillion
+trimeter
 triskelion
 Tristan
 triumphant
@@ -2582,6 +2603,7 @@ wretched
 Xian
 yankee
 yaobang
+yawmeter,yaw-meter
 yawn
 yean
 yuan
