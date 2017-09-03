@@ -662,7 +662,7 @@ aeromechanic,aero-mechanic
 aeromechanics,aeromechanic=s
 aeromedical,aero-medical
 aerometeorograph,aero-meteorograph
-aerometer,aero-meter
+aerometer,aero=meter
 aeronautic,aeronaut=ic
 aeronautical,aeronautic=al
 aeronautics,aeronautic=s
@@ -1306,6 +1306,7 @@ amigos,amigo=s
 aminity,amin=ity
 amis,ami=s
 amity,am=ity
+ammeter,am=meter
 ammeters,ammeter=s
 ammonal,ammon-al
 ammonate,ammon-ate
@@ -5986,7 +5987,6 @@ calvinist,calvin=ist
 calycinal,calycine=al
 calypsos,calypso=s
 caman,cam=an
-camaron,cam-aron
 cambodian,cambodia=n
 cambodians,cambodian=s
 cambrian,cambria=n
@@ -7720,6 +7720,7 @@ clues,clue=s
 clumping,clump=ing
 clumps,clump=s
 clumpy,clump=y
+clumsily,clumsy=ly
 clumsiness,clumsy=ness
 clunker,clunk=er
 clunkers,clunker=s
@@ -7910,6 +7911,7 @@ coffered,coffer=ed
 coffers,coffer=s
 coffing,coff=ing
 coffins,coffin=s
+cofunction,co-function
 cogenerators,cogenerator=s
 cogently,cogent=ly
 cogitative,cogitate=ive
@@ -8223,6 +8225,7 @@ commitments,commitment=s
 commits,commit=s
 committal,commit=al
 committed,commit=ed
+committeeman,committee-man
 committees,committee=s
 committeewoman,committee-woman
 committing,commit=ing
@@ -10903,7 +10906,6 @@ decoder,de=coder
 decoders,decoder=s
 decodes,de=codes
 decoding,de=coding
-decollate,de=collate
 decollation,de=collation
 decolonize,de=colonize
 decolor,de=color
@@ -13000,11 +13002,8 @@ distractive,dis=tractive
 distractively,distractive=ly
 distracts,dis=tracts
 distrail,dis=trail
-distrain,dis=train
-distrait,dis=trait
-distress,dis=tress
 distressed,distress=ed
-distresses,dis=tresses
+distresses,distress=es
 distressful,distress=ful
 distressfully,distressful=ly
 distressfulness,distressful=ness
@@ -14328,7 +14327,7 @@ electromagnetism,electromagnet=ism
 electromagnets,electromagnet=s
 electromechanical,electro-mechanical
 electrometallurgy,electro-metallurgy
-electrometer,electro-meter
+electrometer,electro=meter
 electrometric,electro-metric
 electromotive,electro-motive
 electromotor,electro-motor
@@ -16253,7 +16252,7 @@ fanzine,fan-zine
 faradic,farad=ic
 faradism,farad=ism
 faradize,farad=ize
-faradmeter,farad-meter
+faradmeter,farad=meter
 farandole,farand-ole
 faraway,far-away
 farawayness,faraway=ness
@@ -17393,7 +17392,7 @@ flutters,flutter=s
 fluttery,flutter=y
 fluty,flute=y
 fluxional,fluxion=al
-fluxmeter,flux-meter
+fluxmeter,flux=meter
 flyaway,fly-away
 flyback,fly-back
 flybelt,fly-belt
@@ -22011,7 +22010,6 @@ hyperlinks,hyper=links
 hyperlipemia,hyper=lipemia
 hypermarket,hyper=market
 hypermarkets,hyper=markets
-hypermeter,hyper=meter
 hypermetric,hyper=metric
 hyperon,hyper=on
 hyperope,hyper=ope
@@ -27090,7 +27088,7 @@ machines,machine=s
 machining,machine=ing
 machinist,machine=ist
 machinists,machinist=s
-machmeter,mach-meter
+machmeter,mach=meter
 macled,macle=ed
 macrobiotic,macro=biotic
 macrobiotics,macrobiotic=s
@@ -28258,8 +28256,7 @@ micromanaging,micro=managing
 micromesh,micro=mesh
 micrometeorite,micro=meteorite
 micrometeorology,micro=meteorology
-micrometer,micro=meter
-micrometers,micro=meters
+micrometers,micrometer=s
 micrometrical,micro=metrical
 micrometrically,micro=metrically
 micromillimeter,micro=millimeter
@@ -29224,7 +29221,6 @@ monsoons,monsoon=s
 monsters,monster=s
 montanan,montana=n
 montanans,montanan=s
-montcalm,mont-calm
 montfort,mont-fort
 monthlong,month-long
 monthly,month=ly
@@ -29600,7 +29596,6 @@ multiline,multi=line
 multilingual,multi=lingual
 multilobular,multi=lobular
 multimedia,multi=media
-multimeter,multi=meter
 multimillion,multi=million
 multimillionaire,multi=millionaire
 multimillionaires,multi=millionaires
@@ -32363,7 +32358,6 @@ palmer,palm=er
 palmerworm,palmer-worm
 palmist,palm=ist
 palmists,palmist=s
-palmolive,palm-olive
 palms,palm=s
 palmy,palm=y
 palpable,palp=able
@@ -34284,9 +34278,7 @@ polyhydroxy,poly-hydroxy
 polymath,poly-math
 polymathic,polymath=ic
 polymeric,polymer=ic
-polymerism,polymer=ism
 polymerization,polymerize=ation
-polymerize,polymer=ize
 polymerized,polymerize=ed
 polymerizes,polymerize=s
 polymerous,polymer=ous
@@ -45576,7 +45568,7 @@ telemarketing,tele-marketing
 telematics,telematic=s
 telemechanics,tele-mechanics
 telemedicine,tele-medicine
-telemeter,tele-meter
+telemeter,tele=meter
 telemotor,tele-motor
 telencephalic,tel-encephalic
 telencephalon,tel-encephalon
@@ -45819,6 +45811,7 @@ tetragram,tetra-gram
 tetrahedrally,tetrahedral=ly
 tetrahydroxy,tetra-hydroxy
 tetramerous,tetramer=ous
+tetrameter,tetra=meter
 tetrapod,tetra-pod
 tetrapodic,tetrapod=ic
 tetrapodous,tetrapod=ous
@@ -50048,7 +50041,7 @@ volleys,volley=s
 voltages,voltage=s
 voltairean,voltaire=ean
 voltammeter,volt-ammeter
-voltmeter,volt-meter
+voltmeter,volt=meter
 volts,volt=s
 volumed,volume=ed
 volumes,volume=s
@@ -50462,14 +50455,14 @@ watery,water=y
 wattled,wattle=ed
 wattles,wattle=s
 wattless,watt=less
-wattmeter,watt-meter
+wattmeter,watt=meter
 watts,watt=s
 waveband,wave-band
 waved,wave=ed
 waveguide,wave-guide
 wavelength,wave-length
 wavelengths,wavelength=s
-wavemeter,wave-meter
+wavemeter,wave=meter
 waver,wave=er
 wavered,waver=ed
 wavering,waver=ing
