@@ -76,9 +76,10 @@ my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation antimatter
     inbreeding infiltrate infrasound infrastructure insufflate lookalike malware microchip
     microprogram microreader Microsoft minicomputer newsmagazine noncom nonsense overseer
     pinafore prefix semilegendary slugabed standalone subchapter subnotebook subroutine
-    supercalender superfund supergiant superhero superpower superstar tarmacadam telerecord
-    therefore thereupon triethylamine turnverein ultrastructure underwriting underwrote
-    videocassette wherefore wherewithal woebegone/;
+    supercalender superfund supergiant superhero superpower superstar tarmacadam teleconference
+    telemarketer telemarketing teleport telerecord telesoftware teletext therefore thereupon
+    triethylamine turnverein ultrastructure underwriting underwrote videocassette wherefore
+    wherewithal woebegone/;
 
 # If a compound is listed here, its 2nd part is stressed.
 my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedical aerostation
@@ -97,13 +98,13 @@ my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedic
 # marker won't be converted to «e».
 my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acronymous
     albuminous allonymous ammonic ammonify animality antinomian antonymous apostrophic
-    appositive atomic bacchantic balladic basophilic bestiality bitonality canonic catastrophic
-    civility coevality colonic councilmanic criminality cryptogamous cryptonymous ctenophoran
-    demonic diaphaneity equality external fibrinogenous frivolity gnomonic halogenous
-    homonymous matrimonial Miltonic monomeric monomerous monostrophic nebulosity originality
-    partiality pseudonymity planktonic prebendal puritanical quadrantal quadrupedal reclusive
-    renewal satanic shamanic sinistrality subordinative sultanic sycophantic synonymous
-    talismanic testimonial tribadic tympanic/;
+    appositive atomic bacchantic balladic basophilic bestiality bitonality Brabantine canonic
+    catastrophic civility coevality colonic councilmanic criminality cryptogamous cryptonymous
+    ctenophoran demonic diaphaneity equality external fibrinogenous frivolity gnomonic
+    halogenous homonymous matrimonial Miltonic monomeric monomerous monostrophic nebulosity
+    originality partiality pseudonymity planktonic prebendal puritanical quadrantal quadrupedal
+    reclusive renewal satanic shamanic sinistrality subordinative sultanic sycophantic
+    synonymous talismanic testimonial tribadic tympanic/;
 
 # TODO Switch to Upper_Camel_Case for file-scoped variables (in all files)
 my $CSV_IN  = new_csv_in;
@@ -559,9 +560,9 @@ sub insert_stress_marker {
     $consonants =~ s/=$//;  # drop final '='
     my $sep_count = () = $consonants =~ /=/g;
 
-    # Usually discard hyphenated sequence after 'tr' since it sometimes wrongly indicates that
-    # this sequence should be separated
-    $hyphenated = '' if $consonants =~ /t=r$/ && $tradspell !~ /^outr/;
+    # Usually discard hyphenated sequence after 'dr, tr' since it sometimes wrongly indicates
+    # that these sequences should be separated
+    $hyphenated = '' if $consonants =~ /[dt]=r$/ && $tradspell !~ /^outr/;
 
     # Three or more consonants
     return insert_stress_marker_among_multiple_consonants $consonants, $hyphenated, $tradspell,
@@ -598,7 +599,8 @@ sub move_stress_marker {
     return $word
         if $word !~ /'/
         || $tradspell =~
-        /^(abampere$|abaxial$|abirrita|abohm$|aboral$|enactory$|inordinacy$|subordinat)/;
+        /^(abampere$|abaxial$|abirrita|abohm$|aboral$|enactory$|Finsteraarhorn$|inordinacy$|
+           subordinat)/x;
 
     # If the compound contains two stress markers, we keep just the first one
     $word =~ s/('.*)'/$1/ if $word =~ /'.*'/;
@@ -852,6 +854,9 @@ sub build_prefix_dict {
 
         # Final «ss» becomes just «s», e.g. «dis»
         $converted =~ s/ss$/s/;
+        # Final schwa should be «e» rather than «a» because other letters will follow
+        $converted =~ s/(?<![a])a$/e/;
+
         $PREFIXES{$word} = [$converted, $stress_hint];
     }
 
@@ -1075,7 +1080,7 @@ sub postprocess_suffixed {
     # TODO Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if ($suffix =~
-/^(able|ant|ative|atory|dom|ed|en|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|n|or|up|s|y)$/
+/^(able|ant|ative|atory|dom|ed|en|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|n|oid|or|up|s|y)$/
         )
     {
         # Before suffixes starting with e/i/y, final «c» becomes «k»
@@ -1093,7 +1098,7 @@ sub postprocess_suffixed {
 
         # An additional /g/ might become audible between final /N/ and some suffixes
         # (e.g. «longger, stronggest» ‹longer, strongest›)
-        if (   $suffix =~ /^(er|est|ish)$/
+        if (   $suffix =~ /^(er|est|ish|oid)$/
             && $conv_base =~ /ng$/
             && $converted =~ /ngg$conv_suffix$/)
         {
@@ -1113,13 +1118,13 @@ sub postprocess_suffixed {
         # Suffix «n» becomes «en» after some consonants
         $conv_suffix = 'en' if $conv_suffix eq 'n' && $conv_base =~ /[djkhlpstv]$/;
 
-        # Omitted schwa before final «l» or «m» is restored in front of «ism, ist, ys»
+        # Omitted schwa before final «l» or «m» is restored in front of «ism, ist, oid, ys»
         # ‹..., ise/ize› (as well as some irregular suffixes, cf. below),
         # unless the schwa is not spoken
         $conv_base =~ s/(${LYTSPEL_CONSONANT})ssl$/$1sel/
             || $conv_base =~ s/cl$/kel/
             || $conv_base =~ s/(.)$/e$1/
-            if $conv_suffix =~ /^(ism|ist|ys)$/
+            if $conv_suffix =~ /^(ism|ist|oid|ys)$/
             && $conv_base =~ /([bpdtfgcksz]l|(dh|s)m)$/
             && $base !~ /^(cycle|simple)$/;
 
@@ -1561,17 +1566,7 @@ sub handle_compound {
         return $compound;
 
         # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
-        # TODO x
-        # Stress last syllable of 1st part:
-        # -tropism (e.g. aerotropism, geotropism, stereotropism, cf. heliotropism)
-        # Add prefix per- «per»: stress 2nd part; but keep a few manual entries for ‹per›
-        # «pur» (likewise stressed on 2nd part): percutaneous,per-cutaneous;
-        # peroxidic,per-oxidic; peroxide,per-oxide
-        # Add suffixes: -ine «in» or maybe «yn» (e.g. petaline, phialine;
-        # ensure that no -line words are accidentally excluded),
-        # -oid (e.g. petaloid)
-        # Add prefixes: ‹tele› «tele»; ‹zoo› /zoU@/ «zoa» (PE determines stress);
-        # neuro- (make sure it's used for ‹neurosecretion›)
+        # TODO x Add prefixes:
         # neo-
         # Make -tic «tic» a suffix instead of a regular compound part (e.g. aromatic;
         # also change compounds-manual entries accordingly),
@@ -1581,9 +1576,9 @@ sub handle_compound {
         # make a suffix: tele-
         # Add -nik /nIk/ suffix (e.g. refusenik)
         # Add suffix -taxis /taksIs/ and use instead of compound part (e.g. ‹chemotaxis›)
+        # Add -ication suffix, e.g. falsification
         # Stress before final consonant(s) of first part (probably treat as suffix): -otic,
         # e.g. «aci'dotic» ‹acidotic›
-        # Make ‹zoo› a prefix written «zoe» /zoU@/; first or second part may be stressed.
         # TODO Add prefixes spectro /spEktroU/, paleo /peIli:oU/, intra /Intr@/
         # (e.g. intraabdominal)
         # Make suffix: ate (spoken «ait» /eIt/ or sometimes «it» /It/ -- dicts sometimes have
@@ -1683,7 +1678,8 @@ sub convert_dict {
  # TODO reincarnate: split in v+aj; Split ‹overestimate, reexport, warehouse› into n+v
  # Add desert/n,dez@rt  # desert (use for semidesert, desertic), mouse/v: m'aUz (also use
  # for mouser), mouth/v: use P (also for mouther and the various -mouthed combis),
- # addict/v (also for addicted), commune/v, insult/v, defect/v, decrease/v: use P
+ # addict/v (also for addicted), commune/v, insult/v, defect/v, decrease/v, perfume/v:
+ # use P (also for =ed/=ing; =s should exist both variants)
  # subordinate/v should end in «ait» instead of «et»
  # supersaturate: derive from saturate/v; ungallant: derive from gallant/aj;
  # unwind: derive from wind/v; uncleanly: split in aj+av; add bifurcate/aj: ...It
@@ -1694,7 +1690,9 @@ sub convert_dict {
  # subalternate should be derived from aj
  # graduate: use -it for aj+n, -ait for v (also graduated|ing)
  # congress/n should use default pron (conggress), only congress/v should use P
- # costume/v: kQst'U:m (co'stuem); estimate/n: 'EstImIt (estimet); proceed/n: P; commune/v: P
+ # costume/v: kQst'U:m (co'stuem); estimate/n: 'EstImIt (estimet); proceed/n: P; commune/v: P;
+ # enucleate/aj: In'U:klIeIt (unchanged: i'nuecliit), /v: In'U:klIeIt (i'nuecliait);
+ # excerpt/v: Iks'3:pt (i'xurpta)
  # TODO tridimensional should use «tion» spelling (even though it's not a compound)
  # TODO If a word has n+v, generate the same for «=es|s», e.g. ‹overlaps›
  # TODO Maybe try switching «or» and «oar» (check whether that improves visual similarity)
@@ -1726,7 +1724,9 @@ sub convert_dict {
  # ‹cyanoco-› should become «saieno», not «oa» (but leave other spellings alone)
  # ‹micro-› should become «mycro» instead of mycre/mycroa, e.g. ‹microdont›
  # ‹electro› should become «ilectro» rather than «...oa»
- # ‹-genesis›: always «jeneciss», not "jeniciss"; ditto ‹mono› -> «mono» (?)
+ # ‹-genesis›: always «jeneciss», not "jeniciss";
+ # -olysis: always «oleciss», not "oliciss"
+ # ditto ‹mono› -> «mono» (?)
  # ‹hypo-› should remain unchanged, not "hype"; ‹homo› should become «hoamo»,
  # not "hoame"; macro should remain unchanged, not macre or macroa.
  # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
@@ -1752,6 +1752,7 @@ sub convert_dict {
  # syllable), ditto micrometres.
  # Ambigous (would need two different entries): micrometer
  # TODO Maybe write /O:l/ always as «all»?
+ # TODO Use «iu» also for /yU/?
  # TODO All -ally entries for which corresponding -al entries exist should be derived from
  # the latter; the rest should probably still be written «clli» rather than "keli", e.g.
  # ‹electronically›
