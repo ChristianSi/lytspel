@@ -85,7 +85,8 @@ alienage,P
 alienation,eIlj@n'eIS@n
 alien,'eIlj@n
 alienor,P
-alimentation,P
+aliment,'alI#m@nt
+alimentation,alI#mEnt'eIS@n
 alkalimeter,alk@l'ImIt@`
 Alkmaar,P
 alkyl,P
@@ -160,6 +161,7 @@ antilogy,P
 antimonious,P
 antimonous,'antI#m@n@s
 antimony,'antI#moUni:
+antiphonary,ant'If@#nEri:
 antipodes,P
 antiquary,A
 antonymous,B
@@ -258,6 +260,7 @@ Avalokitesvara,P
 aver,@v'3:
 avion,D
 avions,D
+aweary,@w'i:ri:
 ayatollah,Aj@t'oUl@
 azoic,P
 babel,B
@@ -295,6 +298,7 @@ bandeau,P
 Bangladeshi,B
 banian,P
 barbarous,P
+Barbuda,bArb'U:d@
 Barcelona,P
 barometrical,bar@m'EtrIk@l
 Barranquilla,P
@@ -618,6 +622,7 @@ cobaltine,D
 cobaltite,koUb'O:ltaIt
 cobalt,k'oUbO:lt,
 cobaltous,koUb'O:lt@s
+codicillary,P
 coeval,P
 cognominal,P
 coleoptera,koUli:'Qpt@`@
@@ -647,6 +652,8 @@ compatibility,kQmpat@b'IlIti:
 compensative,P
 competence,B
 competent,B
+complementarity,kQmpl@mEnt'arIti:
+complementary,kQmpl@m'Ent@`i:
 complice,P
 compone,P
 compony,P
@@ -665,7 +672,7 @@ conchoidal,P
 conch,P
 conciliative,P
 conciliatory,A
-concubinary,P
+concubinary,kQnkj'u:bI#nEri:
 Condorcet,D
 conductible,B
 confabulatory,k@nf'abj@l@tori:
@@ -1311,6 +1318,8 @@ exterminative,Ikst'3:mI#neItIv
 externalization,P
 external,P
 extinguish,P
+extort,Ikst'O:rt
+extortion,Ikst'O:rS@n
 extravagance,Ikstr'av@g@ns
 extravagant,Ikstr'av@g@nt
 extravaganza,Ikstrav@g'anz@
@@ -1343,6 +1352,8 @@ feist,P
 Felice,P
 felicity,P
 fellate,f@l'eIt
+feodary,P
+ferritin,P
 fertilization,P
 fettucine,P
 feuilleton,P
@@ -1357,8 +1368,22 @@ fibrillose,f'aIbrI#loUs
 fibrinogenic,faIbrI#noUdZ'EnIk
 fibrinogenous,P
 fibrinogen,P
+fibrinolysin,P
+fibrinolysis,P
+fibrinolytic,faIbrI#noUl'ItIk
+fibrinous,f'aIbrI#n@s
 fibrin,P
+fibroid,P
+fibroin,P
+fibrolite,P
 fibroma,P
+fibromatous,P
+fibro,P
+fibroplasia,P
+fibrosis,P
+fibrositis,P
+fibrotic,P
+fibrous,P
 Fichte,P
 Fiesole,P
 fifteen,P
@@ -1477,6 +1502,7 @@ Goshen,g'oUS@n
 graben,gr'Ab@n
 graduate,P
 Grahame,D
+granary,P
 grandma,B
 grandpa,B
 granulation,P
@@ -1510,6 +1536,8 @@ hartmann,D
 haver,A
 Haworth,D
 heathenry,h'i:D@nri:
+hebdomadal,P
+hebdomadary,P
 Hebraism,P
 Hebraistic,P
 Hebraist,P
@@ -1595,6 +1623,7 @@ hoodoo,P
 hoof,h'Uf
 hoos,D
 hormone,P
+hormonic,P
 Horowitz,h'O:r@wIts
 hosey,P
 hosier,P
@@ -1620,7 +1649,8 @@ hypochondriacal,haIpQkQndr'aI@k@l
 hypoderm,h'aIpQd3:m
 hypophysis,haIp'QfIsIs
 hypopnea,haIp'Qpni:@
-hypothecate,haIp'QT@keIt
+hypothecate,haIp'QTIkeIt
+hypothec,haIp'QTIk
 ichorous,P
 ichthyic,P
 ideate,P
@@ -1674,6 +1704,7 @@ insolation,P
 insouciant,Ins'u:si:@nt
 instanter,P
 integrate,B
+integument,P
 interest,'Int@`@st
 interferon,Int@`f'i@Qn
 interior,P
@@ -1725,6 +1756,7 @@ Italian,P
 iterative,P
 itinerary,P
 Iulus,P
+janissary,P
 Jassy,P
 jawan,P
 Jaycee,B
@@ -1911,6 +1943,7 @@ malt,m'O:lt
 maltose,P
 managerial,manIdZ'i:ri:@l
 manatee,P
+mandatary,P
 mandate,m'andeIt
 manganate,P
 mange,P
@@ -2066,6 +2099,7 @@ naive,P
 naivete,P
 naos,n'eIQs
 naphthenic,P
+narcotic,nArk'QtIk
 Navajo,n'av@hoU
 nawab,P
 Nazism,n'AtsIz@m
@@ -2480,8 +2514,11 @@ Quechua,P
 Que,P
 Quesnay,D
 quetzal,B
+quinary,P
+quinate,P
 quinoa,ki:nwA
 quinquagenarian,P
+quintain,P
 quinta,k'i:ntA
 qu,kw
 quorate,B
@@ -2610,6 +2647,7 @@ Salish,P
 saltire,s'altaI@`
 salt,s'O:lt
 saluki,P
+salutary,s'alj@tEri:
 samadhi,P
 Samoyedic,P
 samurai,P
@@ -2629,6 +2667,7 @@ satyr,P
 saute,P
 sayyid,P
 schedule,S'EdZu:l
+schemata,sk'i:mat@
 schistose,P
 schizogenetic,P
 schizogenous,skIz'QdZ@n@s
@@ -2645,6 +2684,10 @@ scrupulous,skr'u:pj@l@s
 seasonality,B
 seclude,B
 secretary,P
+secretin,P
+secretion,B
+secretive,s'i:krItIv
+secret,P
 segregate,B
 seigneurial,P
 seigneur,si:nj'3:
@@ -2778,6 +2821,7 @@ strangulation,straNgj@l'eIS@n
 strangury,P
 strata,B
 stratum,B
+stromatic,P
 strontian,P
 strontia,P
 Sturmabteilung,D
@@ -2795,6 +2839,7 @@ subornation,sVbO:rn'eIS@n
 suborn,s@b'O:rn
 subpoena,B
 subsequence,s'VbsIkw@ns
+subsidiary,P
 substantiation,B
 substantival,P
 subtile,P
@@ -2955,6 +3000,8 @@ Udine,P
 ulcerative,P
 unctuous,'VNktSu:@s
 unde,D
+unguent,P
+unguentum,P
 ungulate,'VNgj@leIt
 uniformitarian,ju:nI#fO:rmIt'e@i:@n
 uniformity,ju:nIf'O:rmIti:
@@ -3011,8 +3058,11 @@ vitamin,P
 viva,B
 vocal,B
 volant,P
+volition,P
 voltameter,vQlt'amIt@`
 vomitory,v'QmItori:
+votaress,v'oUt@`@s
+votary,P
 voyeuristic,P
 voyeur,vOIj'3:
 vulcanological,vVlk@n@l'QdZIk@l
@@ -3096,6 +3146,8 @@ zincify,z'INkIfaI
 zine,B
 zodiacal,P
 zoetrope,P
+zonary,P
+zonate,P
 zonation,P
 zoography,zoU'Qgrafi:
 zoolatry,zoU'Ql@tri:
