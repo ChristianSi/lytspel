@@ -71,15 +71,15 @@ my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/auto contra electro homo meta mo
 # If a compound is listed here, its 1st part is stressed (used only in cases where our
 # rules indicate that the 2nd part should be stressed or where it contains a stress marker).
 my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation antimatter archlute
-    archway bioscience choplogic cofunction counterproposal countersubject dealate heterocycle
-    heterodyne heterograft heterophil hexamine histamine hypoblast hypogene hyponasty hypostyle
-    inbreeding infiltrate infrasound infrastructure insufflate lookalike malware microchip
-    microprogram microreader Microsoft minicomputer newsmagazine noncom nonsense overseer
-    pinafore prefix semilegendary slugabed standalone subchapter subnotebook subroutine
-    supercalender superfund supergiant superhero superpower superstar tarmacadam teleconference
-    telemarketer telemarketing teleport telerecord telesoftware teletext therefore thereupon
-    triethylamine turnverein ultrastructure underwriting underwrote videocassette wherefore
-    wherewithal woebegone/;
+    archway bioscience choplogic cofunction counterproposal countersubject dealate fibroblast
+    heterocycle heterodyne heterograft heterophil hexamine histamine hypoblast hypogene
+    hyponasty hypostyle inbreeding infiltrate infrasound infrastructure insufflate lookalike
+    malware microchip microprogram microreader Microsoft minicomputer newsmagazine noncom
+    nonsense overseer pinafore prefix semilegendary slugabed standalone subchapter subnotebook
+    subroutine supercalender superfund supergiant superhero superpower superstar tarmacadam
+    teleconference telemarketer telemarketing teleport telerecord telesoftware teletext
+    therefore thereupon triethylamine turnverein ultrastructure underwriting underwrote
+    videocassette wherefore wherewithal woebegone/;
 
 # If a compound is listed here, its 2nd part is stressed.
 my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedical aerostation
@@ -87,12 +87,13 @@ my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedic
     arsenopyrite Australasia binocular bronchiectasis commonsense counteract dextrocardia
     diacetylmorphine diazomethane duecento echocardiogram eftsoon everlasting farewell forevermore
     goodbye hemelytron hereinafter lambaste malfunction malodorous maltreat mercaptopurine
-    methacrylate methylal methylbenzene methylnaphthalene moreover multiparty nymphomaniac
-    oleomargarine overdraw overreach oversee overseen paramedic penannular peninsula peninsular
-    penultima penultimate petrochemical petrochemistry phenylalanine philhellene portcullis protozoa
-    Rockhampton saltpeter semidemisemiquaver statampere straightforward subaltern sulfaguanidine
-    sulfathiazole superconducting superconductor superminicomputer sympetalous synchrocyclotron
-    throughout underutilize uniaxial upstanding withal without/;
+    methacrylate methylal methylbenzene methylnaphthalene moreover multiparty neuroscientist
+    neurotransmitter nymphomaniac oleomargarine overdraw overreach oversee overseen paramedic
+    penannular peninsula peninsular penultima penultimate petrochemical petrochemistry
+    phenylalanine philhellene portcullis protozoa Rockhampton saltpeter semidemisemiquaver
+    statampere straightforward subaltern sulfaguanidine sulfathiazole superconducting
+    superconductor superminicomputer sympetalous synchrocyclotron throughout underutilize
+    uniaxial upstanding withal without/;
 
 # If a derived word is listed here, a short vowel preceding the stress
 # marker won't be converted to «e».
@@ -1080,7 +1081,7 @@ sub postprocess_suffixed {
     # TODO Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if ($suffix =~
-/^(able|ant|ative|atory|dom|ed|en|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|n|oid|or|up|s|y)$/
+/^(able|ant|ary|ative|atory|dom|ed|en|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|n|oid|or|up|s|y)$/
         )
     {
         # Before suffixes starting with e/i/y, final «c» becomes «k»
@@ -1566,12 +1567,8 @@ sub handle_compound {
         return $compound;
 
         # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
-        # TODO x Add prefixes:
-        # neo-
-        # Make -tic «tic» a suffix instead of a regular compound part (e.g. aromatic;
-        # also change compounds-manual entries accordingly),
-        # likewise -ary /Eri:/ (e.g. insectary, visionary; also change compounds-manual entries
-        # accordingly, add if needed: ligamentary,ligament=ary); -ology (e.g. planetology),
+        # TODO x Make suffix instead of a regular compound part:
+        # -ology (e.g. planetology),
         # -arian (e.g. parliamentarian),
         # make a suffix: tele-
         # Add -nik /nIk/ suffix (e.g. refusenik)
