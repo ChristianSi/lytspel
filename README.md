@@ -302,10 +302,10 @@ vowels:
     vowels. (Final /Q/ could be written «oh», but in practice it never
     seems to occur.)
   * This spelling is also used at the end of prefixes such as «baio, jio,
-    macro, mycro, nio, suudo» ‹bio, geo, macro, micro, neo, pseudo›, e.g.
-    «baio'kemistri, jio'grafic, macroico'nomic, mycrowaiv, nio'classic,
-    suudosaienss» ‹biochemistry, geographic, macroeconomic, microwave,
-    neoclassic, pseudoscience›.
+    macro, mycro, nio, nuero, suudo» ‹bio, geo, macro, micro, neo, neuro,
+    pseudo›, e.g. «baio'kemistri, jio'grafic, macroico'nomic, mycrowaiv,
+    nio'classic, nuero'surjeri, suudosaienss» ‹biochemistry, geographic,
+    macroeconomic, microwave, neoclassic, neurosurgery, pseudoscience›.
   * /OI/ is spelled «oy» at the end of words and before other vowels
     (instead of «oi»), e.g. «boy, en'joy, em'ployi» ‹...enjoy, employee›.
   * /aU/ is spelled «ow» at the end of words and before other vowels
