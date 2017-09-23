@@ -31,10 +31,10 @@ const my $PHONEME_MAP => 'phoneme-map.csv';
 const my $SAMPA_VOWELS   => '@:#3aAeEiIoOQuUV';
 const my $LYTSPEL_VOWELS => 'aeiouY';
 # Class of consonant letters, with /j/ always a consonant
-const my $SAMPA_SIMPLE_CONSONANT_CLS => '[`bdDfghklmnNprsStTvwzZj]';
+const my $SAMPA_SIMPLE_CONSONANT_CLS => '[`bdDfghklmnNprsStTvwzZj#]';
 # Class of consonant letters, with /j/ only considered a consonant if it's not followed
 # by /u:/ or /Ur/ («iu, iur» spellings)
-const my $SAMPA_CONSONANT_CLS => "(?:[`bdDfghklmnNprsStTvwzZ]|j(?!'?(?:u:|Ur)))";
+const my $SAMPA_CONSONANT_CLS => "(?:[`bdDfghklmnNprStTvwzZ]|s#?|j(?!'?(?:u:|Ur)))";
 # Pattern fragment matching an optional stress marker
 const my $OPT_STRESS_MARKER => "(?:=')?";
 
@@ -73,13 +73,13 @@ my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/auto contra electro homo meta mo
 my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation antimatter archlute
     archway bioscience choplogic cofunction counterproposal countersubject dealate fibroblast
     heterocycle heterodyne heterograft heterophil hexamine histamine hypoblast hypogene
-    hyponasty hypostyle inbreeding infiltrate infrasound infrastructure insufflate lookalike
-    malware microchip microprogram microreader Microsoft minicomputer newsmagazine noncom
-    nonsense overseer pinafore prefix semilegendary slugabed standalone subchapter subnotebook
-    subroutine supercalender superfund supergiant superhero superpower superstar tarmacadam
-    teleconference telemarketer telemarketing teleport telerecord telesoftware teletext
-    therefore thereupon triethylamine turnverein ultrastructure underwriting underwrote
-    videocassette wherefore wherewithal woebegone/;
+    hyponasty hypostyle inbreeding infiltrate infrasound infrastructure insufflate intraday
+    lookalike malware microchip microprogram microreader Microsoft minicomputer newsmagazine
+    noncom nonsense overseer pinafore prefix semilegendary slugabed standalone subchapter
+    subnotebook subroutine supercalender superfund supergiant superhero superpower superstar
+    tarmacadam teleconference telemarketer telemarketing teleport telerecord telesoftware
+    teletext therefore thereupon triethylamine turnverein ultrastructure underwriting
+    underwrote videocassette wherefore wherewithal woebegone/;
 
 # If a compound is listed here, its 2nd part is stressed.
 my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedical aerostation
@@ -103,9 +103,9 @@ my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acro
     catastrophic civility coevality colonic councilmanic criminality cryptogamous cryptonymous
     ctenophoran demonic diaphaneity equality external fibrinogenous frivolity gnomonic
     halogenous homonymous matrimonial Miltonic monomeric monomerous monostrophic nebulosity
-    originality partiality pseudonymity planktonic prebendal puritanical quadrantal quadrupedal
-    reclusive renewal satanic shamanic sinistrality subordinative sultanic sycophantic
-    synonymous talismanic testimonial tribadic tympanic/;
+    originality partiality personification pseudonymity planktonic prebendal puritanical
+    quadrantal quadrupedal reclusive renewal satanic shamanic sinistrality subordinative
+    sultanic sycophantic synonymous talismanic testimonial tribadic tympanic/;
 
 # TODO Switch to Upper_Camel_Case for file-scoped variables (in all files)
 my $CSV_IN  = new_csv_in;
@@ -1081,9 +1081,12 @@ sub postprocess_suffixed {
     # TODO Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if ($suffix =~
-/^(able|ant|ary|ative|atory|dom|ed|en|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|n|oid|or|up|s|y)$/
+/^(able|ant|ary|ative|ate|atory|dom|ed|en|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|nik|n|oid|or|up|s|y)$/
         )
     {
+        # ‹ate› is spoken in two different ways (/eIt/ or /It/) so we check which one to use
+        $conv_suffix = 'ait' if $suffix eq 'ate' && $converted =~ /ait$/;
+
         # Before suffixes starting with e/i/y, final «c» becomes «k»
         # (e.g. «practikebl» ‹practicable›)
         $conv_base =~ s/c$/k/ if $conv_suffix =~ /^[eiy]/;
@@ -1119,13 +1122,13 @@ sub postprocess_suffixed {
         # Suffix «n» becomes «en» after some consonants
         $conv_suffix = 'en' if $conv_suffix eq 'n' && $conv_base =~ /[djkhlpstv]$/;
 
-        # Omitted schwa before final «l» or «m» is restored in front of «ism, ist, oid, ys»
-        # ‹..., ise/ize› (as well as some irregular suffixes, cf. below),
+        # Omitted schwa before final «l» or «m» is restored in front of «erri, ism, ist,
+        # oid, ys» ‹ary, ..., ise/ize› (as well as some irregular suffixes, cf. below),
         # unless the schwa is not spoken
         $conv_base =~ s/(${LYTSPEL_CONSONANT})ssl$/$1sel/
             || $conv_base =~ s/cl$/kel/
             || $conv_base =~ s/(.)$/e$1/
-            if $conv_suffix =~ /^(ism|ist|oid|ys)$/
+            if $conv_suffix =~ /^(erri|ism|ist|oid|ys)$/
             && $conv_base =~ /([bpdtfgcksz]l|(dh|s)m)$/
             && $base !~ /^(cycle|simple)$/;
 
@@ -1143,6 +1146,11 @@ sub postprocess_suffixed {
         substr $conv_suffix, 0, 1, 'a'
             if $conv_suffix =~ /^e[^er]/
             && $conv_base =~ /(ee|i|[^i]u)$/;
+
+        # The suffix ‹ary› is spoken «eri» /s@`i/ in some words (most of them are listed as
+        # non-compounds, but after final «ss» they must be treated as compounds to ensure
+        # proper conversion)
+        $conv_suffix = 'eri' if $tradspell =~ /^(dispensary|glossary)$/;
 
         return "$conv_base$conv_suffix";
     }
@@ -1170,6 +1178,9 @@ sub postprocess_suffixed {
     } elsif ($conv_base =~ /k$/ && ($conv_suffix !~ /^[eiY]/ || $suffix eq 'al')) {
         # Restore final «k», e.g. «embar'kaition« ‹embarkation›
         $converted =~ s/(.*)c/$1k/ || warn "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /[^o]o$/ && $conv_base !~ /oa/ && $suffix ne 'an') {
+        # Restore final «o» /oU/, e.g. «heelio'taxiss» ‹heliotaxis›
+        $converted =~ s/(.*)oa/$1o/;
     } elsif ($conv_base =~ /s$/ && $converted =~ /z(ian|icl)$/) {
         # Restore final «s», e.g. «Hobsian» ‹Hobbesian›
         $converted =~ s/(.*)z/$1s/;
@@ -1178,7 +1189,7 @@ sub postprocess_suffixed {
         $converted =~ s/tion$/shen/;
     } elsif ($conv_base =~ /ss$/) {
         # Restore final «ss», e.g «ri'sponssebl, puls'saition» ‹responsible, pulsation›
-        if ($converted !~ /ss|tion$|shel$/) {
+        if ($converted !~ /ss|tion$|shel$/ || $converted =~ /caition$/) {
             my $suffix_start = $1;
             $converted =~ s/(.*)[cs]([eiY])/$1ss$2/
                 || warn "No match: $converted ($tradspell) from $conv_base";
@@ -1567,27 +1578,13 @@ sub handle_compound {
         return $compound;
 
         # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
-        # TODO x Make suffix instead of a regular compound part:
-        # -ology (e.g. planetology),
-        # -arian (e.g. parliamentarian),
-        # make a suffix: tele-
-        # Add -nik /nIk/ suffix (e.g. refusenik)
-        # Add suffix -taxis /taksIs/ and use instead of compound part (e.g. ‹chemotaxis›)
-        # Add -ication suffix, e.g. falsification
-        # Stress before final consonant(s) of first part (probably treat as suffix): -otic,
-        # e.g. «aci'dotic» ‹acidotic›
-        # TODO Add prefixes spectro /spEktroU/, paleo /peIli:oU/, intra /Intr@/
-        # (e.g. intraabdominal)
-        # Make suffix: ate (spoken «ait» /eIt/ or sometimes «it» /It/ -- dicts sometimes have
-        # /@t/ instead; should also be used for ‹affectionate›)
+        # TODO x
         # Add -ible as suffix (or check+fix -ibl spellings)
         # Add =eer suffix (e.g. auctioneer, conventioneer, electioneer, fictioneer)
         # Exceptions where 1st is stressed: all [-=]sphere combis (e.g. biosphere, chemosphere)
         # TODO Write initial /dI#/ as «di» (for consistency with the «di» ‹de› prefix)
     }
 
-# TODO When looking up words, consider that they might be POS-tagged (v, n, av, prp)
-# Then handle prefixed ('=' with known prefix) and suffixed entries.
 # TODO Handle prefixes and suffixes correctly («dis, mis; anti, semi» are spelled like that
 # regardless of which letter follows; prefixes «baio, nio» ‹bio, neo›;
 # suffix «ful» is preserved; «-est» remains as is (never "ast"))
@@ -1599,7 +1596,7 @@ sub handle_compound {
 # Ensure that «obzur'vaition» ‹observation› is converted correctly (from «ob'zurv» ‹observe›)
 # Ensure that the «tion» and «sion» spellings aren't used in words derived by appending «n» or
 # «en», e.g. «ashen, freshen, Rushan, Purzhan»
-# TODO Add -ance, -ence as suffixes
+# TODO Maybe add -ance, -ence as suffixes
 # TODO Add 'bi' as prefix, otherwise add manual entries:
 # biconcave,bi-concave; biconcavity,bi-concavity; bipack
 # Add 'on' as prefix, e.g. ‹oncoming› should be analysed as ‹on=coming›
@@ -1671,7 +1668,8 @@ sub convert_dict {
  # compact/aj+v (also for compactness, compactor etc.), adduct/v (also for adductor)
  # add with 1st stressed: misfire/n, redial/n, redo/n, remit/n, replay/n, remake/n, invalid/n+v
  # TODO Add shamanists (from shaman, basis for shamanists), shama (basis for
- # shamas), cracka (basis for crackajack)
+ # shamas), cracka (basis for crackajack), suppressive (from suppress, basis for
+ # immunosuppressive), helioscopic (from helioscope, basis for spectrohelioscopic)
  # TODO reincarnate: split in v+aj; Split ‹overestimate, reexport, warehouse› into n+v
  # Add desert/n,dez@rt  # desert (use for semidesert, desertic), mouse/v: m'aUz (also use
  # for mouser), mouth/v: use P (also for mouther and the various -mouthed combis),
@@ -1729,11 +1727,13 @@ sub convert_dict {
  # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
  # vowel as /aI/, GA as /I/ or /@/)
  # standardize -meter: -meter should become -miter (-meeter is OK)
- # -morphic: probably always morfic instead of moarfic
+ # -morphic: always morfic instead of moarfic
+ # -morphism: always morfism instead of moarfism
  # -metry: standardize
  # -centenary: always [sc]en'teneri
  # -[t]ed: probably standardize to -ed rather than -id
  # -ysis: probably standardize to iciss
+ # hypo-: probably standardize to hypo even if not recognized as compound
  # TODO Stress 1st part: counterattack/n, counterreply/n, servocontrol/n
  # TODO Stress 2st part: counterbalance/v (also counterbalancing etc.)
  # TODO Add with 2nd stressed: outshot/v, overcharge/v, overcharges/v, afternoon/n, arsenic/aj
@@ -1746,10 +1746,12 @@ sub convert_dict {
  # «aisi'metric», not "aici..."
  # TODO liturgics, meteoritics etc.: use cs, not x
  # TODO micrometre: treat as compound micro-meter rather than redirect (stressed on first
- # syllable), ditto micrometres.
+ # syllable), ditto micrometres;
+ # strobilae: should become stroUb'aIli: (stroa'byli) instead of redirect;
+ # ditto foveolae: foUv'i:@li: (foa'vialee)
  # Ambigous (would need two different entries): micrometer
  # TODO Maybe write /O:l/ always as «all»?
- # TODO Use «iu» also for /yU/?
+ # TODO Maybe use «iu» also for /yU/ and «ue» also for /U, yU/?
  # TODO All -ally entries for which corresponding -al entries exist should be derived from
  # the latter; the rest should probably still be written «clli» rather than "keli", e.g.
  # ‹electronically›
