@@ -301,11 +301,14 @@ vowels:
     confusion, as /Q/ (as in «dog») occurs rarely or never before other
     vowels. (Final /Q/ could be written «oh», but in practice it never
     seems to occur.)
-  * This spelling is also used at the end of prefixes such as «baio, jio,
-    macro, mycro, nio, nuero, suudo» ‹bio, geo, macro, micro, neo, neuro,
-    pseudo›, e.g. «baio'kemistri, jio'grafic, macroico'nomic, mycrowaiv,
-    nio'classic, nuero'surjeri, suudosaienss» ‹biochemistry, geographic,
-    macroeconomic, microwave, neoclassic, neurosurgery, pseudoscience›.
+  * This spelling is also used at the end of prefixes such as «baio,
+    imyuno, jio, macro, mycro, nio, nuero, pailio, spectro, suudo» ‹bio,
+    immuno, geo, macro, micro, neo, neuro, paleo, spectro, pseudo›, e.g.
+    «baio'kemistri, imyunodi'fishenssi, jio'grafic, macroico'nomic,
+    mycrowaiv, nio'classic, nuero'surjeri, pailioji'ogrefi,
+    spectrofoa'tomiter, suudosaienss» ‹biochemistry, immunodeficiency,
+    geographic, macroeconomic, microwave, neoclassic, neurosurgery,
+    paleogeography, spectrophotometer, pseudoscience›.
   * /OI/ is spelled «oy» at the end of words and before other vowels
     (instead of «oi»), e.g. «boy, en'joy, em'ployi» ‹...enjoy, employee›.
   * /aU/ is spelled «ow» at the end of words and before other vowels
@@ -452,15 +455,16 @@ Rules for derived and related words:
     ‹easier›.
   * As noted above, the schwa is omitted between certain consonants and
     final «l» or «m». To prevent misreadings, the omitted schwa is restored
-    as «e» in front of the suffixes «ism, ist, oid, uss, ys» ‹..., ous,
-    ise/ize› as well as before stressed «ee», e.g. «vandelism» ‹vandalism›
-    from «vandl» ‹vandal›, «iuni'vurselism» ‹universalism› from
-    «iuni'vurssl» ‹universal›, «voakelist» ‹vocalist› from «voacl» ‹vocal›,
-    «cristelys, cristeloid» ‹crystallize, crystalloid› from «cristl»
-    ‹crystal›, «lybeluss» ‹libelous› and «lybe'lee» ‹libelee› from «lybl»
-    ‹libel›. The obvious exception are derived words where no schwa is
-    spoken, e.g. «syclys» ‹cyclize› from «sycl» ‹cycle›, «simplism» from
-    «simpl» ‹simple›.
+    as «e» in front of the suffixes «erri, ism, ist, oid, uss, ys» ‹ary,
+    ..., ous, ise/ize› as well as before stressed «ee», e.g. «piupelerri»
+    ‹pupillary› from «piupl» ‹pupil›, «vandelism» ‹vandalism› from «vandl»
+    ‹vandal›, «iuni'vurselism» ‹universalism› from «iuni'vurssl»
+    ‹universal›, «voakelist» ‹vocalist› from «voacl» ‹vocal›, «cristelys,
+    cristeloid» ‹crystallize, crystalloid› from «cristl» ‹crystal›,
+    «lybeluss» ‹libelous› and «lybe'lee» ‹libelee› from «lybl» ‹libel›. The
+    obvious exception are derived words where no schwa is spoken, e.g.
+    «syclys» ‹cyclize› from «sycl» ‹cycle›, «simplism» from «simpl»
+    ‹simple›.
   * Otherwise, end-of-word spellings are preserved in all derived forms as
     long as of the base word doesn't change (except for possible shifts of
     stress), e.g.
@@ -634,13 +638,16 @@ tradspell:
 
 XXX Describe additional compromise decisions, e.g.
 
+  * The one that's more similar to the traditionel spelling is preferred.
+  * A short vowel such as /@, E, I/ is preferred over a long one such as
+    /aI, i:/.
   * If one variety speaks /Vr/ and the other /3:/, «urr» is used if the
     traditional spelling includes ‹rr› (e.g. «current»), otherwise «ur» is
     used (e.g. «curij» ‹courage›)?
   * «er» is used if RP has /@/ and GA has /y@`/, e.g. «figer» ‹figure›?
   * Document that stress marker--free variant is preferred in doubt, e.g.
-    «adult» rather than «*a'dult», «to dictait» ‹to dictate› rather than «to
-    *dic'tate», «sabetaazh» ‹sabotage› rather than «*sabo'taazh».
+    «adult» rather than «*a'dult», «to dictait» ‹to dictate› rather than
+    «to *dic'tate», «sabetaazh» ‹sabotage› rather than «*sabo'taazh».
 
 Cf. [American and British English pronunciation
 differences](https://en.wikipedia.org/wiki/American_and_British_English_pronunciation_differences)
