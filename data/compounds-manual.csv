@@ -54,13 +54,14 @@ alphabet
 alter
 altern
 alternate
-alternate,altern-ate
+alternate,altern=ate
 althorn,alt-horn
 ambulatory
 ament
 amiable
 amman
 ammonal,ammon-al
+ammonification
 amoral
 amortize
 ampere
@@ -242,6 +243,7 @@ billion
 binary
 Bingen
 biology
+biolysis
 bios
 biosciences,bioscience=s
 biosis
@@ -338,7 +340,7 @@ capriccio
 carbohydrate
 carbonylate
 carbuncle
-cardinalate,cardinal-ate
+cardinalate,cardinal=ate
 cardon
 carline
 carlisle
@@ -410,7 +412,9 @@ citrange
 clackmannan
 clandestine
 clarabella
+clarification
 classically,classical=ly
+classman,class-man
 claymore
 claytonia
 cleanly
@@ -972,6 +976,7 @@ furfural,furfur-al
 furfurole
 furlana
 fustian
+gadoid
 gagarin
 gainsborough
 galaxy
@@ -998,6 +1003,7 @@ gean
 geelong
 geest
 gelatinate
+gelatinoid
 gelee
 gelignite
 Geller
@@ -1018,6 +1024,8 @@ gilchrist
 gladiator
 glendower
 glengarry
+glenoid
+globoid,globe=oid
 glossology
 goal
 goan,goa=n
@@ -1047,6 +1055,7 @@ grizzly,grizzle=y
 groan
 gropius
 grosbeak
+guaranteed,guarantee=ed
 guardian
 guinness
 gussy
@@ -1056,6 +1065,7 @@ hades
 hainan
 halal
 halcion
+halophytic,halophyte=ic
 Hamas
 hamelin
 hancock
@@ -1084,6 +1094,7 @@ heliotropism,helio=tropism
 Hellen
 hellespont
 hellespontine
+helminthoid
 hemispheroid
 henrietta
 herbarium
@@ -1121,7 +1132,10 @@ homopolarity,homo-polarity
 homosexual,homo-sexual
 homosexuality,homo-sexuality
 honduran
+hooghly
 hornito
+horologic,horologe=ic
+horoscopic,horoscope=ic
 hortatory
 hosey
 howrah
@@ -1178,6 +1192,7 @@ Indore
 Ines
 inescapable
 inevitably,inevitable=y
+inextricably,inextricable=y
 infinity
 infirmary
 informations,information=s
@@ -1235,7 +1250,7 @@ isolation,isolate=ion
 isomerism
 issuer,issue=er
 italian
-italianate,italian-ate
+italianate,italian=ate
 itself,it-self
 jackal
 jamal
@@ -1309,6 +1324,7 @@ lascar
 Lassen
 lastex
 lathee
+laureate
 Lauren
 laurent
 Lawes
@@ -1391,6 +1407,7 @@ Lucy
 lullaby
 lunatic
 lungee
+Lunik
 luny
 luteous
 Luther
@@ -1669,6 +1686,10 @@ paddymelon
 palatability,palatable=ity
 palatable
 palearctic
+Paleogene
+paleographic
+paleolith
+paleolithic,paleolith=ic
 Pallas
 pallial
 pally
@@ -1769,6 +1790,7 @@ permutations,permutation=s
 permute
 pern
 pernancy
+Pernik
 pernod
 peron
 peroxidase
@@ -1905,7 +1927,7 @@ probit
 procarp
 process
 proclaim
-proconsulate,proconsul-ate
+proconsulate,proconsul=ate
 proctoscopy
 produce
 product
@@ -2079,6 +2101,7 @@ reeve
 reeves,reeve=s
 refuse
 refused,refuse=ed
+refusenik,refuse=nik
 refuses,refuse=s
 refusing,refuse=ing
 regenerate
@@ -2186,6 +2209,7 @@ retrogradation,retro-gradation
 Reval
 revenue
 revenues,revenue=s
+reversedly,reversed=ly
 revolute
 revolution
 rheotropism
@@ -2349,6 +2373,10 @@ sowcar
 sparkling,sparkle=ing
 spartacist
 species
+spectrogram
+spectrograph
+spectroscope
+spectroscopic,spectroscope=ic
 spencer
 spermary
 spicate
@@ -2636,6 +2664,8 @@ ventilation,ventilate=ion
 veracruz
 verdin
 vernation
+versant
+versine
 vertical
 vesicatory
 vibratory
