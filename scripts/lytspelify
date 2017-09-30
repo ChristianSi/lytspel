@@ -71,29 +71,29 @@ my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/auto contra electro homo meta mo
 # If a compound is listed here, its 1st part is stressed (used only in cases where our
 # rules indicate that the 2nd part should be stressed or where it contains a stress marker).
 my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation antimatter archlute
-    archway bioscience choplogic cofunction counterproposal countersubject dealate fibroblast
-    heterocycle heterodyne heterograft heterophil hexamine histamine hypoblast hypogene
-    hyponasty hypostyle inbreeding infiltrate infrasound infrastructure insufflate intraday
-    lookalike malware microchip microprogram microreader Microsoft minicomputer newsmagazine
-    noncom nonsense overseer pinafore prefix semilegendary slugabed standalone subchapter
-    subnotebook subroutine supercalender superfund supergiant superhero superpower superstar
-    tarmacadam teleconference telemarketer telemarketing teleport telerecord telesoftware
-    teletext therefore thereupon triethylamine turnverein ultrastructure underwriting
-    underwrote videocassette wherefore wherewithal woebegone/;
+    archway bioscience chemosphere choplogic cofunction counterproposal countersubject dealate
+    fibroblast heterocycle heterodyne heterograft heterophil hexamine histamine hypoblast
+    hypogene hyponasty hypostyle inbreeding infiltrate infrasound infrastructure insufflate
+    intraday lookalike malware microchip microprogram microreader Microsoft minicomputer
+    newsmagazine noncom nonsense overseer pinafore prefix semilegendary slugabed standalone
+    subchapter subnotebook subroutine supercalender superfund supergiant superhero superpower
+    superstar tarmacadam teleconference telemarketer telemarketing teleport telerecord
+    telesoftware teletext therefore thereupon triethylamine turnverein ultrastructure
+    underwriting underwrote videocassette wherefore wherewithal woebegone/;
 
 # If a compound is listed here, its 2nd part is stressed.
 my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedical aerostation
     Alamein Allhallowmas Allhallows altocumulus antarctic anteprandial anteversion anymore
-    arsenopyrite Australasia binocular bronchiectasis commonsense counteract dextrocardia
-    diacetylmorphine diazomethane duecento echocardiogram eftsoon everlasting farewell forevermore
-    goodbye hemelytron hereinafter lambaste malfunction malodorous maltreat mercaptopurine
-    methacrylate methylal methylbenzene methylnaphthalene moreover multiparty neuroscientist
-    neurotransmitter nymphomaniac oleomargarine overdraw overreach oversee overseen paramedic
-    penannular peninsula peninsular penultima penultimate petrochemical petrochemistry
-    phenylalanine philhellene portcullis protozoa Rockhampton saltpeter semidemisemiquaver
-    statampere straightforward subaltern sulfaguanidine sulfathiazole superconducting
-    superconductor superminicomputer sympetalous synchrocyclotron throughout underutilize
-    uniaxial upstanding withal without/;
+    arsenopyrite Australasia binocular bronchiectasis commonsense counteract
+    dextrocardia diacetylmorphine diazomethane duecento echocardiogram eftsoon everlasting
+    farewell forevermore goodbye hemelytron hereinafter lambaste malfunction malodorous
+    maltreat mercaptopurine methacrylate methylal methylbenzene methylnaphthalene moreover
+    multiparty neuroscientist neurotransmitter nymphomaniac oleomargarine overdraw overate
+    overeat overreach overreliance oversee overseen paramedic penannular peninsula peninsular
+    penultima penultimate petrochemical petrochemistry phenylalanine philhellene portcullis
+    protozoa Rockhampton saltpeter semidemisemiquaver statampere straightforward subaltern
+    sulfaguanidine sulfathiazole superconducting superconductor superminicomputer sympetalous
+    synchrocyclotron throughout underutilize uniaxial upstanding withal without/;
 
 # If a derived word is listed here, a short vowel preceding the stress
 # marker won't be converted to «e».
@@ -364,6 +364,9 @@ sub combine_and_adjust {
         $val = 'o';
         $left =~ s/sh$/ti/;
         $left =~ s/zh$/si/;
+    } elsif ($val eq 'I#' && $left eq 'd') {
+        # Initial /dI#/ is written «di» (for consistency with the «di» ‹de› prefix)
+        $val = 'i';
     } elsif (($val =~ /^(@|a#|I#)$/ && $right =~ /^$SAMPA_SIMPLE_CONSONANT_CLS*'/)
         || $val eq '@#')
     {
@@ -723,8 +726,8 @@ OUTER: while ($rest && $rest_with_sep) {
     $reconstructed =~ s/([iu])-a/$1=a/g;  # not used for «ia, iai, ua, uai»
     $reconstructed =~ s/-'/'/g;           # not needed before stress marker
 
-    # Treat ‹micro...› as compound, even if the 2nd part isn't listed
-    $reconstructed =~ s/o-a/o=a/ if $tradspell =~ /^micro/;
+    # Treat ‹bio..., micro...› as compound, even if the 2nd part isn't listed
+    $reconstructed =~ s/o-a/o=a/ if $tradspell =~ /^(bio|micro)/;
 
     return $reconstructed;
 }
@@ -1081,7 +1084,7 @@ sub postprocess_suffixed {
     # TODO Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if ($suffix =~
-/^(able|ant|ary|ative|ate|atory|dom|ed|en|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|nik|n|oid|or|up|s|y)$/
+/^(able|ance|ant|ary|ative|ate|atory|dom|ed|en|ence|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|nik|n|oid|or|up|s|y)$/
         )
     {
         # ‹ate› is spoken in two different ways (/eIt/ or /It/) so we check which one to use
@@ -1102,7 +1105,7 @@ sub postprocess_suffixed {
 
         # An additional /g/ might become audible between final /N/ and some suffixes
         # (e.g. «longger, stronggest» ‹longer, strongest›)
-        if (   $suffix =~ /^(er|est|ish|oid)$/
+        if (   $suffix =~ /^(ate|er|est|ish|oid)$/
             && $conv_base =~ /ng$/
             && $converted =~ /ngg$conv_suffix$/)
         {
@@ -1122,13 +1125,13 @@ sub postprocess_suffixed {
         # Suffix «n» becomes «en» after some consonants
         $conv_suffix = 'en' if $conv_suffix eq 'n' && $conv_base =~ /[djkhlpstv]$/;
 
-        # Omitted schwa before final «l» or «m» is restored in front of «erri, ism, ist,
-        # oid, ys» ‹ary, ..., ise/ize› (as well as some irregular suffixes, cf. below),
-        # unless the schwa is not spoken
+        # Omitted schwa before final «l» or «m» is restored in front of «ait/it, erri, ism,
+        # ist, oid, ys» ‹ate, ary, ..., ise/ize› (as well as some irregular suffixes,
+        # cf. below), unless the schwa is not spoken
         $conv_base =~ s/(${LYTSPEL_CONSONANT})ssl$/$1sel/
             || $conv_base =~ s/cl$/kel/
             || $conv_base =~ s/(.)$/e$1/
-            if $conv_suffix =~ /^(erri|ism|ist|oid|ys)$/
+            if $conv_suffix =~ /^(a?it|erri|ism|ist|oid|ys)$/
             && $conv_base =~ /([bpdtfgcksz]l|(dh|s)m)$/
             && $base !~ /^(cycle|simple)$/;
 
@@ -1576,30 +1579,12 @@ sub handle_compound {
         }
 
         return $compound;
-
-        # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
-        # TODO x
-        # Add -ible as suffix (or check+fix -ibl spellings)
-        # Add =eer suffix (e.g. auctioneer, conventioneer, electioneer, fictioneer)
-        # Exceptions where 1st is stressed: all [-=]sphere combis (e.g. biosphere, chemosphere)
-        # TODO Write initial /dI#/ as «di» (for consistency with the «di» ‹de› prefix)
     }
 
-# TODO Handle prefixes and suffixes correctly («dis, mis; anti, semi» are spelled like that
-# regardless of which letter follows; prefixes «baio, nio» ‹bio, neo›;
-# suffix «ful» is preserved; «-est» remains as is (never "ast"))
-# Test that is also works if the case of the original word is different.
-# Correct and use the result for each prefix/suffixes; also handle and
-# document schwa/single-letter short changes such as «hexagen» ‹hexagon› due to «he'xagenel»
-# ‹hexagonal›; deal with «nationel» ‹national› from «naition» ‹nation› as a special case
-# (the derived form is irregular).
-# Ensure that «obzur'vaition» ‹observation› is converted correctly (from «ob'zurv» ‹observe›)
-# Ensure that the «tion» and «sion» spellings aren't used in words derived by appending «n» or
-# «en», e.g. «ashen, freshen, Rushan, Purzhan»
-# TODO Maybe add -ance, -ence as suffixes
-# TODO Add 'bi' as prefix, otherwise add manual entries:
-# biconcave,bi-concave; biconcavity,bi-concavity; bipack
-# Add 'on' as prefix, e.g. ‹oncoming› should be analysed as ‹on=coming›
+    # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
+    # TODO x Add 'bi' as prefix, otherwise add manual entries:
+    # biconcave,bi-concave; biconcavity,bi-concavity; bipack
+    # Add 'on' as prefix, e.g. ‹oncoming› should be analysed as ‹on=coming›
 }
 
 # warn_unprocessed_custom_entries: Warn if there are entries in the custom.csv file not
@@ -1740,7 +1725,8 @@ sub convert_dict {
  # diffuse/aj, effuse/aj, separate/n: use P (seperit)
  # produce/n,: pr'QdU:s  (produess)
  # Add affricate/v: -kit (n) becomes cait
- # subordinate/n: s@b'O:rdI#neIt (sub'ordinit), v: s@b'O:rdI#neIt (sub'ordinait)
+ # subordinate/n: s@b'O:rdI#neIt (sub'ordinit), v: s@b'O:rdI#neIt (sub'ordinait);
+ # acerbate/aj: use P; animate/aj: 'anI#mIt (animit)
  # TODO Add to custom.csv and handle correctly: complicate/aj,k'QmplIkIt
  # TODO ‹a› before /s/ or /z/ should be treated as prefix in words such as ‹asymmetric› ->
  # «aisi'metric», not "aici..."
