@@ -455,8 +455,9 @@ Rules for derived and related words:
     ‹easier›.
   * As noted above, the schwa is omitted between certain consonants and
     final «l» or «m». To prevent misreadings, the omitted schwa is restored
-    as «e» in front of the suffixes «erri, ism, ist, oid, uss, ys» ‹ary,
-    ..., ous, ise/ize› as well as before stressed «ee», e.g. «piupelerri»
+    as «e» in front of the suffixes «ait/it, erri, ism, ist, oid, uss, ys»
+    ‹ate, ary, ..., ous, ise/ize› as well as before stressed «ee», e.g.
+    «en'capselait» ‹encapsulate› from «capssl» ‹capsule›, «piupelerri»
     ‹pupillary› from «piupl» ‹pupil›, «vandelism» ‹vandalism› from «vandl»
     ‹vandal›, «iuni'vurselism» ‹universalism› from «iuni'vurssl»
     ‹universal›, «voakelist» ‹vocalist› from «voacl» ‹vocal›, «cristelys,
