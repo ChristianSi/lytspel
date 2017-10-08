@@ -1,5 +1,6 @@
 Trad,Pron,Stress
 anti,anti:,A
+bi,baI,A
 bio,baIoU,A
 de,di:,2
 dis,dIs,A
@@ -32,6 +33,7 @@ sub,sVb,A
 super,su:p@`,A
 tele,tEl@,A
 trans,trans,A
+tri,traI,A
 under,Vnd@`,A
 un,Vn,2
 zoo,zoU@,A
