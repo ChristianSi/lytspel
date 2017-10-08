@@ -78,13 +78,13 @@ my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation antimatter
     newsmagazine noncom nonsense overseer pinafore prefix semilegendary slugabed standalone
     subchapter subnotebook subroutine supercalender superfund supergiant superhero superpower
     superstar tarmacadam teleconference telemarketer telemarketing teleport telerecord
-    telesoftware teletext therefore thereupon triethylamine turnverein ultrastructure
-    underwriting underwrote videocassette wherefore wherewithal woebegone/;
+    telesoftware teletext therefore thereupon tricornered triethylamine turnverein
+    ultrastructure underwriting underwrote videocassette wherefore wherewithal woebegone/;
 
 # If a compound is listed here, its 2nd part is stressed.
 my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedical aerostation
     Alamein Allhallowmas Allhallows altocumulus antarctic anteprandial anteversion anymore
-    arsenopyrite Australasia binocular bronchiectasis commonsense counteract
+    arsenopyrite Australasia biliteral binocular bronchiectasis commonsense counteract
     dextrocardia diacetylmorphine diazomethane duecento echocardiogram eftsoon everlasting
     farewell forevermore goodbye hemelytron hereinafter lambaste malfunction malodorous
     maltreat mercaptopurine methacrylate methylal methylbenzene methylnaphthalene moreover
@@ -1544,6 +1544,13 @@ sub handle_compound {
             $second_lytspel = lc $second_conv_colref->[3];
         }
 
+        # /aI/ is written «ai» before vowels: adjust at the end of prefixes such as
+        # «by» ‹bi›
+        $first_lytspel =~ s/y/ai/
+            if $stress_hint
+            && $first_lytspel =~ /[^ao]y$/
+            && $second_lytspel !~ /^$LYTSPEL_CONSONANT_POST_PROC/;
+
         if ($stress_hint && $suffixed && $first =~ /^(out|post)$/) {
             # Combination of "out" or "post" with a suffix are converted like non-compounds
             return undef;
@@ -1581,10 +1588,6 @@ sub handle_compound {
         return $compound;
     }
 
-    # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
-    # TODO x Add 'bi' as prefix, otherwise add manual entries:
-    # biconcave,bi-concave; biconcavity,bi-concavity; bipack
-    # Add 'on' as prefix, e.g. ‹oncoming› should be analysed as ‹on=coming›
 }
 
 # warn_unprocessed_custom_entries: Warn if there are entries in the custom.csv file not
@@ -1622,13 +1625,8 @@ sub convert_dict {
             next;
         }
 
- # TODO Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
- # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
- # ‹monosyllabicity›
- # TODO Make -ary -> erri a suffix (reactionary, customary)
- # make -ate a suffix spoken either «ait» or «et|it» (e.g. «dy'recteret» ‹directorate›;
- # sometimes it depends on the POS tag, e.g. ‹proportionate›)
- # TODO Add missing entries: centralist (should become central=ist and centralists: centralist=s),
+ # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
+ # TODO x Add missing entries: centralist (should become central=ist and centralists: centralist=s),
  # Melanesia (base word for Melanesian), grassing (base for grassings, from grass),
  # vivisectionism (base for antivivisectionism, from vivisection), mentionable (base for
  # unmentionable, from mention)
@@ -1651,7 +1649,8 @@ sub convert_dict {
  # sublease/v, understeer/v, ferment/v, console/v (also basis for consolatory),
  # interupt/v (also for interrupter etc.), collect/v (also for collecting, collector etc.),
  # compact/aj+v (also for compactness, compactor etc.), adduct/v (also for adductor)
- # add with 1st stressed: misfire/n, redial/n, redo/n, remit/n, replay/n, remake/n, invalid/n+v
+ # add with 1st stressed: misfire/n, redial/n, redo/n, remit/n, replay/n, remake/n, invalid/n+v,
+ # concave/n (use as basis for biconcave)
  # TODO Add shamanists (from shaman, basis for shamanists), shama (basis for
  # shamas), cracka (basis for crackajack), suppressive (from suppress, basis for
  # immunosuppressive), helioscopic (from helioscope, basis for spectrohelioscopic)
@@ -1719,6 +1718,9 @@ sub convert_dict {
  # -[t]ed: probably standardize to -ed rather than -id
  # -ysis: probably standardize to iciss
  # hypo-: probably standardize to hypo even if not recognized as compound
+ # Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
+ # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
+ # ‹monosyllabicity›
  # TODO Stress 1st part: counterattack/n, counterreply/n, servocontrol/n
  # TODO Stress 2st part: counterbalance/v (also counterbalancing etc.)
  # TODO Add with 2nd stressed: outshot/v, overcharge/v, overcharges/v, afternoon/n, arsenic/aj
