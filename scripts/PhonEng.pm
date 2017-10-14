@@ -18,6 +18,7 @@ use Text::CSV_XS;
 our @EXPORT = qw(
     new_csv_in
     new_csv_out
+    build_lc_map
     write_csv_line
     rename_to_backup_file_if_exists
     open_outfile_and_write_header
@@ -36,7 +37,40 @@ sub new_csv_out : {
     return Text::CSV_XS->new({eol => "\n", auto_diag => 1});
 }
 
-my $CSV_OUT = new_csv_out;
+# File-scoped to allow re-use
+my $Csv_In  = new_csv_in;
+my $Csv_Out = new_csv_out;
+
+# build_lc_map $filename, $pos_tagged: Create and return a mapping from a simple CSV file
+# containing two or three columns (keys and values). If $pos_tagged is true, the 2nd column
+# contains an optional POS tag which becomes part of the key per the 'gen_key' function.
+#
+# All keys are converted to lower-case, while values are used as is. Warns if there are
+# duplicate keys.
+sub build_lc_map {
+    my ($filename, $pos_tagged) = @_;
+    my %dict;
+    open my $fh, '<', $filename or die "Unable to open $filename: $!\n";
+    my $colref = $Csv_In->getline($fh);  # Skip header line
+
+    while ($colref = $Csv_In->getline($fh)) {
+        my $key = lc($colref->[0]);
+        my $value;
+
+        if ($pos_tagged) {
+            $key = gen_key($key, $colref->[1]);
+            $value = $colref->[2];
+        } else {
+            $value = $colref->[1];
+        }
+
+        warn "Duplicate key '$key' in $filename\n" if exists($dict{$key});
+        $dict{$key} = $value;
+    }
+
+    close $fh;
+    return \%dict;
+}
 
 # rename_to_backup_file_if_exists $filename: Rename a file into a backup
 # file by appending '.bak' to its name. A previously existing backup file
@@ -54,7 +88,7 @@ sub open_outfile_and_write_header {
     my ($filename, $headers) = @_;
     rename_to_backup_file_if_exists $filename;
     open my $outfh, '>', $filename or die "Unable to open $filename for writing: $!\n";
-    $CSV_OUT->print($outfh, $headers);
+    $Csv_Out->print($outfh, $headers);
     return $outfh;
 }
 
