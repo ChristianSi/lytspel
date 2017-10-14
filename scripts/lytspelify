@@ -85,15 +85,16 @@ my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation antimatter
 my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedical aerostation
     Alamein Allhallowmas Allhallows altocumulus antarctic anteprandial anteversion anymore
     arsenopyrite Australasia biliteral binocular bronchiectasis commonsense counteract
-    dextrocardia diacetylmorphine diazomethane duecento echocardiogram eftsoon everlasting
-    farewell forevermore goodbye hemelytron hereinafter lambaste malfunction malodorous
-    maltreat mercaptopurine methacrylate methylal methylbenzene methylnaphthalene moreover
-    multiparty neuroscientist neurotransmitter nymphomaniac oleomargarine overdraw overate
-    overeat overreach overreliance oversee overseen paramedic penannular peninsula peninsular
-    penultima penultimate petrochemical petrochemistry phenylalanine philhellene portcullis
-    protozoa Rockhampton saltpeter semidemisemiquaver statampere straightforward subaltern
-    sulfaguanidine sulfathiazole superconducting superconductor superminicomputer sympetalous
-    synchrocyclotron throughout underutilize uniaxial upstanding withal without/;
+    dextrocardia diacetylmorphine diazomethane duecento echocardiogram eftsoon Eurocommunism
+    everlasting farewell forevermore goodbye hemelytron hereinafter lambaste malfunction
+    malodorous maltreat mercaptopurine methacrylate methylal methylbenzene methylnaphthalene
+    moreover multiparty neuroscientist neurotransmitter nymphomaniac oleomargarine overdraw
+    overate overeat overreach overreliance oversee overseen paramedic penannular peninsula
+    peninsular penultima penultimate petrochemical petrochemistry phenylalanine philhellene
+    planoconvex portcullis protozoa Rockhampton saltpeter semidemisemiquaver statampere
+    straightforward subaltern sulfaguanidine sulfathiazole superconducting superconductor
+    superminicomputer sympetalous synchrocyclotron throughout underutilize uniaxial upstanding
+    withal without/;
 
 # If a derived word is listed here, a short vowel preceding the stress
 # marker won't be converted to «e».
@@ -115,8 +116,8 @@ my $HYPH    = new Text::Hyphen min_word => 3, min_prefix => 1, min_suffix => 1;
 # The following variables are globals for simplicity
 my $SUMMED_DIST       = 0;
 my $WORD_COUNT        = 0;
-my $COMPOUND_DICT_REF = build_lc_map($COMPOUNDS);
-my $CUSTOM_DICT_REF   = build_lc_map($CUSTOM);
+my $COMPOUND_DICT_REF = build_lc_map($COMPOUNDS, 0);
+my $CUSTOM_DICT_REF   = build_lc_map($CUSTOM, 1);
 my $UNCONVERTED_DICT_REF;
 my $CONVERTED_DICT_REF;
 my $CASE_REDIRECT_REF;
@@ -130,7 +131,8 @@ my $Max_Key_Len;
 # Set of Lytspel spellings.
 my %Lytspel_Set;
 
-# Set to which all processed custom entries are added.
+# Set to which all processed custom entries are added (entries are lower-case and may be
+# POS-tagged as per the 'gen_key' function).
 my %PROCESSED_CUSTOM_SET;
 
 # Mapping from prefixes to their Lytspel spellings and stress hints (1: stress prefix;
@@ -140,25 +142,6 @@ my %PREFIXES;
 
 # Mapping from suffixes to their Lytspel spellings.
 my %SUFFIXES;
-
-# build_lc_map $filename: Create and return a mapping from a simple CSV file containing
-# two columns (keys and values). All keys are converted to lower-case, while values are
-# used as is. Warns if there are duplicate keys.
-sub build_lc_map {
-    my ($filename) = @_;
-    my %dict;
-    open my $fh, '<', $filename or die "Unable to open $filename: $!\n";
-    my $colref = $CSV_IN->getline($fh);  # Skip header line
-
-    while ($colref = $CSV_IN->getline($fh)) {
-        my $key = lc($colref->[0]);
-        warn "Duplicate key '$key' in $filename\n" if exists($dict{$key});
-        $dict{$key} = $colref->[1];
-    }
-
-    close $fh;
-    return \%dict;
-}
 
 # build_mapping: Create and return a mapping from SAMPA to the standard Lytspel spellings.
 # Also returns the length of the longest key in the map and populates %Lytspel_Set.
@@ -604,7 +587,7 @@ sub move_stress_marker {
         if $word !~ /'/
         || $tradspell =~
         /^(abampere$|abaxial$|abirrita|abohm$|aboral$|enactory$|Finsteraarhorn$|inordinacy$|
-           subordinat)/x;
+           Oberammergau$|subordinat)/x;
 
     # If the compound contains two stress markers, we keep just the first one
     $word =~ s/('.*)'/$1/ if $word =~ /'.*'/;
@@ -728,6 +711,8 @@ OUTER: while ($rest && $rest_with_sep) {
 
     # Treat ‹bio..., micro...› as compound, even if the 2nd part isn't listed
     $reconstructed =~ s/o-a/o=a/ if $tradspell =~ /^(bio|micro)/;
+    # Likewise words ending in «ism» after «o»
+    $reconstructed =~ s/o-i=s=m$/o=i=s=m/;
 
     return $reconstructed;
 }
@@ -888,8 +873,8 @@ sub build_suffix_dict {
     close $fh;
 }
 
-# handle_custom_entry $custom_entry, $colref, $tradspell: Handle a word listed in the
-# custom.csv file. The $custom_entry may have one of the following values:
+# handle_custom_entry $custom_entry, $colref, $tradspell, $pos: Handle a word listed in
+# the custom.csv file. The $custom_entry may have one of the following values:
 #
 # * B: use British (RP) pronunciation
 # * A: use American (GA) pronunciation
@@ -901,8 +886,8 @@ sub build_suffix_dict {
 # final spelling (assumed to have at least two characters, otherwise a warning is printed
 # and the entry is ignored).
 sub handle_custom_entry {
-    my ($custom_entry, $colref, $tradspell) = @_;
-    $PROCESSED_CUSTOM_SET{lc $tradspell} = 1;
+    my ($custom_entry, $colref, $tradspell, $pos) = @_;
+    $PROCESSED_CUSTOM_SET{gen_key(lc $tradspell, $pos)} = 1;
 
     return $tradspell if $custom_entry eq 'O';  # Leave word unchanged
     return '' if $custom_entry eq 'D';          # Skip word altogether
@@ -1071,7 +1056,8 @@ sub postprocess_suffixed {
     # TODO Split function into shorter parts
     my ($converted, $base, $suffix, $pos_hint, $tradspell) = @_;
     # Some suffixes are usually derived from a certain POS tag
-    $pos_hint = 'n' if $tradspell eq 'contractor';
+    $pos_hint = 'n'  if $tradspell eq 'contractor';
+    $pos_hint = 'aj' if $tradspell eq 'frequented';
     $pos_hint ||= 'v' if $tradspell eq 'inversely' || $suffix =~ /^(able|ed|e?s|ing|or)$/;
     $pos_hint ||= 'aj' if $suffix =~ /^(ize|ly)$/;
     $pos_hint ||= 'n'
@@ -1290,6 +1276,7 @@ sub postprocess_suffixed {
 sub convert_row {
     my ($colref, $tradspell) = @_;
     my $parts = $COMPOUND_DICT_REF->{lc $tradspell};
+    my $pos   = $colref->[1];
     my $converted;
 
     # First check if it's a compound
@@ -1297,10 +1284,11 @@ sub convert_row {
 
     if (!$compound || $compound =~ /^!/) {
         # It's a base or a suffixed word (the latter requires postprocessing)
-        my $custom_entry = $CUSTOM_DICT_REF->{lc $tradspell} // '';
+        my $custom_entry = $CUSTOM_DICT_REF->{gen_key(lc $tradspell, $pos)}
+            // $CUSTOM_DICT_REF->{lc $tradspell} // '';
 
         if ($custom_entry) {
-            $converted = handle_custom_entry $custom_entry, $colref, $tradspell;
+            $converted = handle_custom_entry $custom_entry, $colref, $tradspell, $pos;
         } elsif ($tradspell =~ /^[A-Z]+$/
             && $tradspell !~ /^(COBOL|FORTRAN|IMAX|UNESCO|UNICEF)$/)
         {
@@ -1330,10 +1318,9 @@ sub convert_row {
 
     if ($compound && $compound =~ /^!(.*)=(.*)/) {
         # Postprocess suffixed word
-        my $base     = $1;
-        my $suffix   = $2;
-        my $pos_hint = $colref->[1];
-        $converted = postprocess_suffixed $converted, $base, $suffix, $pos_hint, $tradspell;
+        my $base   = $1;
+        my $suffix = $2;
+        $converted = postprocess_suffixed $converted, $base, $suffix, $pos, $tradspell;
     }
 
     $SUMMED_DIST += dist $converted, $tradspell;
@@ -1363,7 +1350,8 @@ sub lookup_part_entry {
             # Most ‹close...› combinations use the adjective.
             $pos = 'aj'
                 if ($part =~ /ate$/ && $tradspell !~ /(able|^predesignate)$/)
-                || ($part eq 'close' && $tradspell !~ /^close(down|out|ing|d|s)$|.close$/);
+                || ($part eq 'close' && $tradspell !~ /^close(down|out|ing|d|s)$|.close$/)
+                || $tradspell eq 'infrequent';
             $pos = 'n'
                 if ($part =~ /^(congress|house|lead|transfer|transfer|wind)$/
                 && $tradspell !~ /(able|^(${part}e?r|fairlead|mislead|leadoff))$/)
@@ -1596,7 +1584,10 @@ sub warn_unprocessed_custom_entries {
     # TODO Add a similar checks for compounds-manual.csv and compound-black|blacklist.csv
     # (also warn if there are duplicate entries)
     for my $key (sort keys %$CUSTOM_DICT_REF) {
-        warn "Unused $CUSTOM entry: $key\n" unless exists $PROCESSED_CUSTOM_SET{$key};
+        warn "Unused $CUSTOM entry: $key\n"
+            unless exists $PROCESSED_CUSTOM_SET{$key}
+            || exists $PROCESSED_CUSTOM_SET{gen_key($key, 'v')}
+            || exists $PROCESSED_CUSTOM_SET{gen_key($key, 'aj')};
     }
 }
 
@@ -1625,126 +1616,104 @@ sub convert_dict {
             next;
         }
 
- # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
- # TODO x Add missing entries: centralist (should become central=ist and centralists: centralist=s),
- # Melanesia (base word for Melanesian), grassing (base for grassings, from grass),
- # vivisectionism (base for antivivisectionism, from vivisection), mentionable (base for
- # unmentionable, from mention)
- # TODO Possibly integrate additional POS-tagged variants (see below) into extra-words.txt
- # and rename it to .csv (otherwise rename it to .list)
- # TODO Distinguish live/v: liv vs aj: lyv (used for livelong, overlive, unlive);
- # ‹planoconvex› should be come «planocon'vex» (from the aj)
- # TODO Unify /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter, e.g.
- # ‹solidary, temporary, voluntary›
- # TODO Add custom: involute/n, InvQlu:t (involuut), ally/v,al'aI (a'ly; should also be used in
- # ‹misally›), record/n,A  (rekerd), discord/v,P (also base for discordant), frequent/v,P  (also
- # for frequentative), minute/aj: maIn'U:t (my'nuet),
- # intimate/aj: 'IntImI#t -> intimit (incl. derived variant of ‹intimates›)
- # TODO extra-words: Add ‹controvertible› (should be used for ‹incontrovertible›);
- # ‹errable› (from ‹err›, for ‹inerrable›)
- # TODO Derive from intern/n: internship; presentation, presentee: from present/n
- # TODO ‹quad› should probably always become «quod» rather than «quaad»
- # TODO Add stress-shifted variants (2nd/last vowel stressed): content/aj+v (also contentment etc.),
- # concert/v, preconcert/v, reflex/v, resaw/v, survey/v (also for resurvey/v), semipro/n,
- # sublease/v, understeer/v, ferment/v, console/v (also basis for consolatory),
- # interupt/v (also for interrupter etc.), collect/v (also for collecting, collector etc.),
- # compact/aj+v (also for compactness, compactor etc.), adduct/v (also for adductor)
- # add with 1st stressed: misfire/n, redial/n, redo/n, remit/n, replay/n, remake/n, invalid/n+v,
- # concave/n (use as basis for biconcave)
- # TODO Add shamanists (from shaman, basis for shamanists), shama (basis for
- # shamas), cracka (basis for crackajack), suppressive (from suppress, basis for
- # immunosuppressive), helioscopic (from helioscope, basis for spectrohelioscopic)
- # TODO reincarnate: split in v+aj; Split ‹overestimate, reexport, warehouse› into n+v
- # Add desert/n,dez@rt  # desert (use for semidesert, desertic), mouse/v: m'aUz (also use
- # for mouser), mouth/v: use P (also for mouther and the various -mouthed combis),
- # addict/v (also for addicted), commune/v, insult/v, defect/v, decrease/v, perfume/v:
- # use P (also for =ed/=ing; =s should exist both variants)
- # subordinate/v should end in «ait» instead of «et»
- # supersaturate: derive from saturate/v; ungallant: derive from gallant/aj;
- # unwind: derive from wind/v; uncleanly: split in aj+av; add bifurcate/aj: ...It
- # toward/aj: tw'ord, /prp: use P (if needed; delete old custom entry)
- # curate/n: kj'UrIt, v: kjUr'eIt (also for curator)
- # alternate/aj+n: 'O:lt@`nIt, v: 'O:lt@`neIt
- # appropriate/aj: a#pr'oUpri:It, v: a#pr'oUpri:eIt (also for appropriator)
- # subalternate should be derived from aj
- # graduate: use -it for aj+n, -ait for v (also graduated|ing)
- # congress/n should use default pron (conggress), only congress/v should use P
- # costume/v: kQst'U:m (co'stuem); estimate/n: 'EstImIt (estimet); proceed/n: P; commune/v: P;
- # enucleate/aj: In'U:klIeIt (unchanged: i'nuecliit), /v: In'U:klIeIt (i'nuecliait);
- # excerpt/v: Iks'3:pt (i'xurpta)
- # TODO tridimensional should use «tion» spelling (even though it's not a compound)
- # TODO If a word has n+v, generate the same for «=es|s», e.g. ‹overlaps›
- # TODO Maybe try switching «or» and «oar» (check whether that improves visual similarity)
- # TODO Possibly eliminate «c» spelling for /s/ (using «ss» instead), since it causes
- # inconsistencies with suffixes starting with a schwa after final /s/
- # TODO Warn if derived words use a different letter case and fix such cases
- # TODO Add end-of-word spellings such as «eh» to see whether they occur
- # TODO Document cases where the dictionary is insufficient, e.g. ‹bass, drawer, read,
- # subsequence, tier, berlin, closer, moped, taxis, simas, viola, viva›
- # TODO Shift stress marker: «lorn'yet» ‹lorgnette›, not «*lor'nyet»;
- # «may'iutic» ‹maieutic›, not «*ma'yiutic»; «pay'ee» ‹payee› not «*pa'yee»;
- # «Iuru'gwayen» ‹Uruguayan› not «*Iurug'wayen»
- # TODO Custom heuristics (case insensitive): aero- becomes airo- (not airoa-)
- # TODO Convert final ‹tional› to «tionel» even in words not recognized as compounds
- # (bidirectional, bifunctional, binational, intranational, irrational, irrotational,
- # omnidirectional, progestational, suprarational, ultranationalist, unidirectional --
- # should also fix irrationality)
- # TODO Maybe generally write final /k/ after unstressed vowels as «c» (not just after /I/)?
- # TODO Recognise a= /eI/ suffix just before /s, z/, e.g. ‹asymmetry›
- # TODO Explain that stress markers may move into the main word (e.g. before -ation, -ee),
- # but never into the prefix or across word boundaries in a compound)
- # TODO Maybe try the rule: final «ss» after consonant (except /f, k, p, t, T/) is changed
- # back to «s», while final «s» is changed to «z» in this case (probably only before
- # vowels or just in those cases where confusion is possible, e.g. (sometimes?) before
- # «i, er»).
- # TODO Correct c->k: ‹workaholic› (special case, not a suffix because it's so rare)
- # TODO Warn if pre-stressed schwa immediately after a vowel becomes anything except «e», as the
- # resulting combination could be ambiguous
- # ‹cyanoco-› should become «saieno», not «oa» (but leave other spellings alone)
- # ‹micro-› should become «mycro» instead of mycre/mycroa, e.g. ‹microdont›
- # ‹electro› should become «ilectro» rather than «...oa»
- # ‹-genesis›: always «jeneciss», not "jeniciss";
- # -olysis: always «oleciss», not "oliciss"
- # ditto ‹mono› -> «mono» (?)
- # ‹hypo-› should remain unchanged, not "hype"; ‹homo› should become «hoamo»,
- # not "hoame"; macro should remain unchanged, not macre or macroa.
- # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
- # vowel as /aI/, GA as /I/ or /@/)
- # standardize -meter: -meter should become -miter (-meeter is OK)
- # -morphic: always morfic instead of moarfic
- # -morphism: always morfism instead of moarfism
- # -metry: standardize
- # -centenary: always [sc]en'teneri
- # -[t]ed: probably standardize to -ed rather than -id
- # -ysis: probably standardize to iciss
- # hypo-: probably standardize to hypo even if not recognized as compound
- # Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
- # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
- # ‹monosyllabicity›
- # TODO Stress 1st part: counterattack/n, counterreply/n, servocontrol/n
- # TODO Stress 2st part: counterbalance/v (also counterbalancing etc.)
- # TODO Add with 2nd stressed: outshot/v, overcharge/v, overcharges/v, afternoon/n, arsenic/aj
- # diffuse/aj, effuse/aj, separate/n: use P (seperit)
- # produce/n,: pr'QdU:s  (produess)
- # Add affricate/v: -kit (n) becomes cait
- # subordinate/n: s@b'O:rdI#neIt (sub'ordinit), v: s@b'O:rdI#neIt (sub'ordinait);
- # acerbate/aj: use P; animate/aj: 'anI#mIt (animit)
- # TODO Add to custom.csv and handle correctly: complicate/aj,k'QmplIkIt
- # TODO ‹a› before /s/ or /z/ should be treated as prefix in words such as ‹asymmetric› ->
- # «aisi'metric», not "aici..."
- # TODO liturgics, meteoritics etc.: use cs, not x
- # TODO micrometre: treat as compound micro-meter rather than redirect (stressed on first
- # syllable), ditto micrometres;
- # strobilae: should become stroUb'aIli: (stroa'byli) instead of redirect;
- # ditto foveolae: foUv'i:@li: (foa'vialee)
- # Ambigous (would need two different entries): micrometer
- # TODO Maybe write /O:l/ always as «all»?
- # TODO Maybe use «iu» also for /yU/ and «ue» also for /U, yU/?
- # TODO All -ally entries for which corresponding -al entries exist should be derived from
- # the latter; the rest should probably still be written «clli» rather than "keli", e.g.
- # ‹electronically›
- # TODO Possibly drop Text::Hyphen dependency, instead refining heuristics to fit all cases
- # (e.g. s't should probably always become 'st, except in compounds)
+   # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
+   # TODO Possibly integrate additional POS-tagged variants (see below) into extra-words.txt
+   # and rename it to .csv (otherwise rename it to .list)
+   # TODO x Unify /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter, e.g.
+   # ‹solidary, temporary, voluntary›
+   # TODO Derive from intern/n: internship; presentation, presentee: from present/n
+   # TODO ‹quad› should probably always become «quod» rather than «quaad»
+   # TODO Add shamanists (from shaman, basis for shamanists), shama (basis for
+   # shamas), cracka (basis for crackajack), suppressive (from suppress, basis for
+   # immunosuppressive), helioscopic (from helioscope, basis for spectrohelioscopic)
+   # TODO reincarnate: split in v+aj; Split ‹overestimate, reexport, warehouse› into n+v
+   # Add desert/n,dez@rt  # desert (use for semidesert, desertic), mouse/v: m'aUz (also use
+   # for mouser), mouth/v: use P (also for mouther and the various -mouthed combis),
+   # addict/v (also for addicted), commune/v, insult/v, defect/v, decrease/v, perfume/v:
+   # use P (also for =ed/=ing; =s should exist both variants)
+   # subordinate/v should end in «ait» instead of «et»
+   # supersaturate: derive from saturate/v; ungallant: derive from gallant/aj;
+   # unwind: derive from wind/v; uncleanly: split in aj+av; add bifurcate/aj: ...It
+   # toward/aj: tw'ord, /prp: use P (if needed; delete old custom entry)
+   # curate/n: kj'UrIt, v: kjUr'eIt (also for curator)
+   # alternate/aj+n: 'O:lt@`nIt, v: 'O:lt@`neIt
+   # appropriate/aj: a#pr'oUpri:It, v: a#pr'oUpri:eIt (also for appropriator)
+   # subalternate should be derived from aj
+   # graduate: use -it for aj+n, -ait for v (also graduated|ing)
+   # congress/n should use default pron (conggress), only congress/v should use P
+   # TODO tridimensional should use «tion» spelling (even though it's not a compound)
+   # TODO If a word has n+v, generate the same for «=es|s», e.g. ‹overlaps›
+   # TODO Maybe try switching «or» and «oar» (check whether that improves visual similarity)
+   # TODO Possibly eliminate «c» spelling for /s/ (using «ss» instead), since it causes
+   # inconsistencies with suffixes starting with a schwa after final /s/
+   # TODO Warn if derived words use a different letter case and fix such cases
+   # TODO Add end-of-word spellings such as «eh» to see whether they occur
+   # TODO Document cases where the dictionary is insufficient, e.g. ‹bass, drawer, read,
+   # subsequence, tier, berlin, closer, moped, taxis, simas, viola, viva›
+   # TODO Shift stress marker: «lorn'yet» ‹lorgnette›, not «*lor'nyet»;
+   # «may'iutic» ‹maieutic›, not «*ma'yiutic»; «pay'ee» ‹payee› not «*pa'yee»;
+   # «Iuru'gwayen» ‹Uruguayan› not «*Iurug'wayen»
+   # TODO Custom heuristics (case insensitive): aero- becomes airo- (not airoa-)
+   # TODO Convert final ‹tional› to «tionel» even in words not recognized as compounds
+   # (bidirectional, bifunctional, binational, intranational, irrational, irrotational,
+   # omnidirectional, progestational, suprarational, ultranationalist, unidirectional --
+   # should also fix irrationality)
+   # TODO Maybe generally write final /k/ after unstressed vowels as «c» (not just after /I/)?
+   # TODO Recognise a= /eI/ suffix just before /s, z/, e.g. ‹asymmetry›
+   # TODO Explain that stress markers may move into the main word (e.g. before -ation, -ee),
+   # but never into the prefix or across word boundaries in a compound)
+   # TODO Maybe try the rule: final «ss» after consonant (except /f, k, p, t, T/) is changed
+   # back to «s», while final «s» is changed to «z» in this case (probably only before
+   # vowels or just in those cases where confusion is possible, e.g. (sometimes?) before
+   # «i, er»).
+   # TODO Correct c->k: ‹workaholic› (special case, not a suffix because it's so rare)
+   # TODO Warn if pre-stressed schwa immediately after a vowel becomes anything except «e», as the
+   # resulting combination could be ambiguous
+   # ‹cyanoco-› should become «saieno», not «oa» (but leave other spellings alone)
+   # ‹micro-› should become «mycro» instead of mycre/mycroa, e.g. ‹microdont›
+   # ‹electro› should become «ilectro» rather than «...oa»
+   # ‹-genesis›: always «jeneciss», not "jeniciss";
+   # -olysis: always «oleciss», not "oliciss"
+   # ditto ‹mono› -> «mono» (?)
+   # psycho-: syco, not syco
+   # ‹hypo-› should remain unchanged, not "hype"; ‹homo› should become «hoamo»,
+   # not "hoame"; macro should remain unchanged, not macre or macroa.
+   # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
+   # vowel as /aI/, GA as /I/ or /@/)
+   # standardize -meter: -meter should become -miter (-meeter is OK)
+   # -morphic: always morfic instead of moarfic
+   # -morphism: always morfism instead of moarfism
+   # -metry: standardize
+   # -centenary: always [sc]en'teneri
+   # -[t]ed: probably standardize to -ed rather than -id
+   # -ysis: probably standardize to iciss
+   # hypo-: probably standardize to hypo even if not recognized as compound
+   # Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
+   # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
+   # ‹monosyllabicity›
+   # TODO Stress 1st part: counterattack/n, counterreply/n, servocontrol/n
+   # TODO Stress 2st part: counterbalance/v (also counterbalancing etc.)
+   # TODO Add with 2nd stressed: outshot/v, overcharge/v, overcharges/v, afternoon/n, arsenic/aj
+   # diffuse/aj, effuse/aj, separate/n: use P (seperit)
+   # produce/n,: pr'QdU:s  (produess)
+   # Add affricate/v: -kit (n) becomes cait
+   # subordinate/n: s@b'O:rdI#neIt (sub'ordinit), v: s@b'O:rdI#neIt (sub'ordinait);
+   # acerbate/aj: use P; animate/aj: 'anI#mIt (animit)
+   # TODO ‹a› before /s/ or /z/ should be treated as prefix in words such as ‹asymmetric› ->
+   # «aisi'metric», not "aici..."
+   # TODO liturgics, meteoritics etc.: use cs, not x
+   # TODO micrometre: treat as compound micro-meter rather than redirect (stressed on first
+   # syllable), ditto micrometres;
+   # strobilae: should become stroUb'aIli: (stroa'byli) instead of redirect;
+   # ditto foveolae: foUv'i:@li: (foa'vialee)
+   # Ambigous (would need two different entries): micrometer
+   # TODO Maybe write /O:l/ always as «all»?
+   # TODO Maybe use «iu» also for /yU/ and «ue» also for /U, yU/?
+   # TODO All -ally entries for which corresponding -al entries exist should be derived from
+   # the latter; the rest should probably still be written «clli» rather than "keli", e.g.
+   # ‹electronically›
+   # TODO Possibly drop Text::Hyphen dependency, instead refining heuristics to fit all cases
+   # (e.g. s't should probably always become 'st, except in compounds)
 
         $conv_colref = convert_row $colref, $colref->[0];
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
