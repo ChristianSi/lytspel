@@ -7,7 +7,7 @@ compounds.csv: phonetic-dict.csv compounds-manual.csv compound-blacklist.csv com
 phonetic-dict.csv: phoneng-espeak-dict.csv phoneme-map.csv
 	mergeprons
 
-phoneng-espeak-dict.csv: phonetic-dict.txt extra-words.txt
+phoneng-espeak-dict.csv: phonetic-dict.txt extra-words.txt tagify.csv
 	csvdict
 
 phonetic-dict.txt: cmudict-phonemes.txt moby-phonemes.txt words-not-in-scowl.txt cmudict/cmudict.0.7a moby/mpron.txt varcon/varcon.txt
