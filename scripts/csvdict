@@ -22,9 +22,12 @@ use PhonEng;
 const my $IN_FILE     => 'phonetic-dict.txt';
 const my $OUT_FILE    => 'phoneng-espeak-dict.csv';
 const my $EXTRA_WORDS => 'extra-words.txt';
+const my $TAGIFY_FILE => 'tagify.csv';
 const my $ESPEAK_TMP  => 'espeak-in.tmp';
 
-my $CSV = new_csv_out;
+# File-scoped for convenient access
+my $Csv_Out = new_csv_out;
+my $Tagify_Dict_Ref = build_lc_map $TAGIFY_FILE, 0;
 
 # read_dict: Reads the original phonetic dict into a hash. Returns a mapping
 # from words (e.g. 'yeld', 'hectometre', 'detail') to the corresponding raw
@@ -95,13 +98,14 @@ sub prepare_espeak_input {
     my ($espeak_fh, $word, $dict) = @_;
     my $value           = $dict->{$word};
     my $redirect_target = redirect_target $value;
-    my $phonetic        = '';
+    # TODO Delete entry
+    my $tags     = $Tagify_Dict_Ref->{lc $word};
+    my $phonetic = '';
 
     unless (defined $redirect_target) {  # Skip redirects
-        if ($value =~ /^:\s*(.*)$/) {
-            # Simple entry
-            say $espeak_fh $word;
-        } elsif ($value =~ m{^/(.*)$}) {
+        if ($value =~ m{^/(.*)$} || $tags) {
+            # TODO Suitably modify entry if listed in Tagify_Dict_Ref;
+            # validate list of tags to ensure that all are valid and none is duplicate
             # Tagged entries
             for my $tagged_pron (split /;\s*/, $1) {
                 if ($tagged_pron =~ /^(.*):\s*(.*)$/) {
@@ -110,6 +114,9 @@ sub prepare_espeak_input {
                     die "Invalid line: $word$value\n";
                 }
             }
+        } elsif ($value =~ /^:\s*(.*)$/) {
+            # Simple entry
+            say $espeak_fh $word;
         } else {
             die "Invalid line: $word$value\n";
         }
@@ -147,26 +154,26 @@ sub write_entry {
 
     if (defined $redirect_target) {
         # Redirect
-        $CSV->print($outfh, [$word, '', $redirect_target]);
+        $Csv_Out->print($outfh, [$word, '', $redirect_target]);
     } else {
-        if ($value =~ /^:\s*(.*)$/) {
-            # Simple entry
-            my $rp = shift @$rp_pron_ref;
-            my $ga = shift @$ga_pron_ref;
-            $ga = '' if $ga eq $rp;  # Only print GA if different from RP
-            $CSV->print($outfh, [$word, '', '', $1, $rp, $ga]);
-        } elsif ($value =~ m{^/(.*)$}) {
+        if ($value =~ m{^/(.*)$} || $tags) {
             # Tagged entries
             for my $tagged_pron (split /;\s*/, $1) {
                 if ($tagged_pron =~ /^(.*):\s*(.*)$/) {
                     my $rp = untag_espeak_output(shift @$rp_pron_ref);
                     my $ga = untag_espeak_output(shift @$ga_pron_ref);
                     $ga = '' if $ga eq $rp;  # Only print GA if different from RP
-                    $CSV->print($outfh, [$word, $1, '', $2, $rp, $ga]);
+                    $Csv_Out->print($outfh, [$word, $1, '', $2, $rp, $ga]);
                 } else {
                     die "Invalid line: $word$value\n";
                 }
             }
+        } elsif ($value =~ /^:\s*(.*)$/) {
+            # Simple entry
+            my $rp = shift @$rp_pron_ref;
+            my $ga = shift @$ga_pron_ref;
+            $ga = '' if $ga eq $rp;          # Only print GA if different from RP
+            $Csv_Out->print($outfh, [$word, '', '', $1, $rp, $ga]);
         } else {
             die "Invalid line: $word$value\n";
         }
@@ -193,4 +200,5 @@ my $ga_pron_ref = [split /\s*\n\s*/, strip_spaces $ga_prons];
 ($rp_pron_ref, $ga_pron_ref) = write_entry $outfh, $_, $rp_pron_ref, $ga_pron_ref, $dict
     for sort { lc $a cmp lc $b } keys %$dict;
 close $outfh;
+# TODO Warn if Tagify_Dict_Ref is not empty, cf. warn_unprocessed_custom_entries
 say 'Done';
