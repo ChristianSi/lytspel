@@ -1123,7 +1123,8 @@ Addressograph,,,a#dr'Es@graf,,@dr'Es@graf
 adds,,,'adz,,
 adduce,,,a#dj'u:s,a#d'u:s,@d'u:s
 adducent,,,a#dj'u:s@nt,a#d'u:s@nt,@d'u:s@nt
-adduct,,,a#d'Vkt,,'ad@kt
+adduct,n,,a#d'Vkt,,'ad@kt
+adduct,v,,a#d'Vkt,,'ad@kt
 adduction,,,a#d'VkS@n,,@d'VkS@n
 adductor,,,a#d'Vkt@,a#d'Vkt@`,@d'Vkt@`
 Adela,,,a#d'El@,,@d'El@
@@ -18807,7 +18808,8 @@ collative,,,k@l'atIv,,kQl'eItIv
 collator,,,k@l'eIt@,k@l'eIt@`,kQl'eIt@`
 colleague,,,k'Qli:g,k'Ali:g,
 colleagues,,,k'Qli:gz,k'Ali:gz,
-collect,,,k@l'Ekt,,k'QlEkt
+collect,n,,k@l'Ekt,,k'QlEkt
+collect,v,,k@l'Ekt,,k'QlEkt
 collectable,,collectible
 collectables,,collectibles
 collectanea,,,k@lIkt'eIni:@,,kQlEkt'eIni:@
@@ -19375,7 +19377,8 @@ Comorin,,,k@m'O:rIn,k@m'orIn,k'Qm@`In
 Comoros,,,k@m'O:roUz,k@m'oroUz,kO:m'O:roUs
 comose,,,k@m'oUz,,k'oUmoUs
 comp,,,k'Qmp,k'Amp,
-compact,,,k@mp'akt,,k'Qmpakt
+compact,n,,k@mp'akt,,k'Qmpakt
+compact,v,,k@mp'akt,,k'Qmpakt
 compacted,,,k@mp'aktId,k@mp'aktI#d,
 compactification,,,k@mpaktIfIk'eIS@n,,k@mpakt@f@k'eIS@n
 compaction,,,k@mp'akS@n,,
@@ -19697,7 +19700,8 @@ concatenated,,,k@nk'at@neItId,k@nk'at@neItI#d,k@nk'at@neIt@d
 concatenates,,,k@nk'at@neIts,,
 concatenating,,,k@nk'at@neItIN,,
 concatenation,,,k@nkat@n'eIS@n,,
-concave,,,kQnk'eIv,kAnk'eIv,
+concave,n,,kQnk'eIv,kAnk'eIv,
+concave,v,,kQnk'eIv,kAnk'eIv,
 concavity,,,k@nk'avIti:,,kAnk'avIti:
 conceal,,,k@ns'i:l,,
 concealed,,,k@ns'i:ld,,
@@ -19754,7 +19758,8 @@ concerning,,,k@ns'3:nIN,,
 concernment,,,k@ns'3:nm@nt,,
 concerns,,,k@ns'3:nz,,
 concert,aj,,k'Qns3:t,k'Ans3:t,k@ns'3:t
-concert,n,,k'Qns3:t,k'Ans3:t,
+concert,n,,k'Qns3:t,k'Ans3:t,k@ns'3:t
+concert,v,,k@ns'3:t,,
 concertante,,,kQns@t'AnteI,kAns@`t'AnteI,kQns@`t'Anti:
 concerted,,,k@ns'3:tId,k@ns'3:tI#d,
 concertedly,,,k@ns'3:tIdlI,k@ns'3:tIdli:,
@@ -20392,7 +20397,8 @@ consolable,,,k'QnsoUl@b@l,k'AnsoUl@b@l,k@ns'oUl@b@l
 consolation,,,kQns@l'eIS@n,kAns@l'eIS@n,
 consolations,,,kQns@l'eIS@nz,kAns@l'eIS@nz,
 consolatory,,,k@ns'Ql@t@ri:,k@ns'Al@tori:,
-console,,,k'QnsoUl,k'AnsoUl,
+console,n,,k'QnsoUl,k'AnsoUl,
+console,v,,k'QnsoUl,k'AnsoUl,
 consoled,,,k'QnsoUld,k'AnsoUld,k@ns'oUld
 consoles,,,k'QnsoUlz,k'AnsoUlz,k@ns'oUlz
 consolidate,,,k@ns'QlIdeIt,k@ns'AlI#deIt,
@@ -20625,7 +20631,8 @@ contender,,,k@nt'End@,k@nt'End@`,
 contenders,,,k@nt'End@z,k@nt'End@`z,
 contending,,,k@nt'EndIN,,
 contends,,,k@nt'Endz,,
-content,,,k'QntEnt,k'AntEnt,k@nt'Ent
+content,n,,k'QntEnt,k'AntEnt,k@nt'Ent
+content,v,,k@nt'Ent,,
 contented,,,k@nt'EntId,k@nt'EntI#d,
 contentedly,,,k@nt'EntIdlI,k@nt'EntIdli:,k@nt'Ent@dli:
 contention,,,k@nt'EnS@n,,
@@ -35395,7 +35402,8 @@ ferm,,,f'3:m,,
 Fermanagh,,,f'3:ma#nAg,,f@`m'an@
 Fermat,,,f'3:mat,,fErm'a
 fermata,,,f3:m'At@,,fErm'At@
-ferment,,,f3:m'Ent,,f'3:mEnt
+ferment,n,,f3:m'Ent,,f'3:mEnt
+ferment,v,,f3:m'Ent,,f'3:mEnt
 fermentation,,,f3:mInt'eIS@n,,f3:mEnt'eIS@n
 fermentative,,,f3:m'Ent@tIv,,f@`m'Ent@tIv
 fermented,,,f3:m'EntId,f3:m'EntI#d,f@`m'Ent@d
@@ -50010,7 +50018,8 @@ interrogatories,,,IntIr'Qg@t@ri:z,IntIr'Ag@tori:z,IntEr'Qg@tO:ri:z
 interrogatorily,,,IntEr@g'at@r@li:,Int'Er@gator@li:,Int@`'Qg@tor@li:
 interrogators,,,Int'Er@geIt@z,Int'Er@geIt@`z,
 interrogatory,,,IntIr'Qg@t@ri:,IntIr'Ag@tori:,IntEr'Qg@tO:ri:
-interrupt,,,'Int@rVpt,'Int@`rVpt,Int@`'Vpt
+interrupt,n,,'Int@rVpt,'Int@`rVpt,Int@`'Vpt
+interrupt,v,,Int@r'Vpt,Int@`r'Vpt,Int@`'Vpt
 interrupted,,,Int@r'VptId,Int@`r'VptI#d,Int@`'VptId
 interrupter,,,Int@r'Vpt@,Int@`r'Vpt@`,Int@`'Vpt@`
 interruptible,,,Int@r'Vpt@b@l,Int@`r'Vpt@b@l,Int@`'VptIb@l
@@ -50107,7 +50116,8 @@ intifada,,,IntIf'Ad@,,IntIf'Qd@
 intima,,,'IntIm@,,'Int@m@
 intimacy,,,'IntIm@si:,,'Int@m@si:
 intimae,,intime
-intimate,,,'IntIm@t,'IntI#m@t,'Int@meIt
+intimate,aj,,'IntIm@t,'IntI#m@t,'Int@meIt
+intimate,v,,'IntIm@t,'IntI#m@t,'Int@meIt
 intimated,,,'IntImeItId,'IntImeItI#d,'Int@meItId
 intimately,,,'IntIm@tli:,'IntI#m@tli:,'Int@m@tli:
 intimateness,,,'IntIm@tn@s,'IntI#m@tn@s,'Int@mItnEs
@@ -50298,7 +50308,8 @@ invades,,,Inv'eIdz,,
 invading,,,Inv'eIdIN,,
 invaginate,,,Inv'adZIneIt,Inv'adZI#neIt,Inv'adZ@neIt
 invagination,,,InvadZIn'eIS@n,InvadZI#n'eIS@n,InvadZ@n'eIS@n
-invalid,,,Inv'alId,,'Inv@lId
+invalid,aj,,Inv'alId,,'Inv@lId
+invalid,n,,Inv'alId,,'Inv@lId
 invalidate,,,Inv'alIdeIt,Inv'alI#deIt,
 invalidated,,,Inv'alIdeItId,Inv'alI#deItI#d,
 invalidating,,,Inv'alIdeItIN,Inv'alI#deItIN,Inv'al@deItIN
@@ -55988,7 +55999,8 @@ lituus,,,l'ItV@s,,l'Itju:@s
 Litvak,,,l'Itvak,,l'Itv@k
 livable,,,l'Iv@b@l,,
 livableness,,,l'Iv@b@ln@s,,l'Iv@b@lnEs
-live,,,l'aIv,,
+live,aj,,l'aIv,,
+live,v,,l'Iv,,l'aIv
 liveable,,livable
 livebearer,,,l'aIvbe@r@,l'aIvbEr@`,l'aIvbe@@`
 lived,,,l'Ivd,,
@@ -60695,7 +60707,8 @@ minus,,,m'aIn@s,,
 minuscular,,,mIn'VskjUl@,mIn'VskjUl@`,
 minuscule,,,m'In@skju:l,,
 minuses,,,m'aIn@sIz,m'aIn@sI#z,
-minute,,,m'InIt,,maIn'u:t
+minute,aj,,m'InIt,,maIn'u:t
+minute,n,,m'InIt,,maIn'u:t
 minutely,,,maInj'u:tli:,,m'In@tli:
 minuteman,,,m'InItm@n,,m'In@tman
 minutemen,,,m'InItmEn,,m'In@tmEn
@@ -60900,7 +60913,8 @@ misfeasor,,,mIsf'i:s@,mIsf'i:s@`,mIsf'i:z@`
 misfeature,,,mIsf'i:tS@,mIsf'i:tS@`,
 misfield,,,m'Isfi:ld,,mIsf'i:ld
 misfile,,,m'IsfaIl,,
-misfire,,,m'IsfaI@,m'IsfaI@`,mIsf'aI@`
+misfire,n,,m'IsfaI@,m'IsfaI@`,mIsf'aI@`
+misfire,v,,m'IsfaI@,m'IsfaI@`,mIsf'aI@`
 misfit,,,m'IsfIt,,
 misfits,,,m'IsfIts,,
 misfortune,,,mIsf'O:tSu:n,mIsf'O:rtS@n,
@@ -73666,7 +73680,8 @@ preconceive,,,pri:k@ns'i:v,,
 preconceived,,,pri:k@ns'i:vd,,
 preconception,,,pri:k@ns'EpS@n,,
 preconceptions,,,pri:k@ns'EpS@nz,,
-preconcert,,,pri:k@ns'3:t,,
+preconcert,aj,,pri:k@ns'3:t,,
+preconcert,v,,pri:k@ns'3:t,,
 precondemn,,,pri:k@nd'Em,,
 precondition,,,pri:k@nd'IS@n,,
 preconditions,,,pri:k@nd'IS@nz,,
@@ -78044,7 +78059,8 @@ redhead,,,r'EdhEd,,
 redheaded,,,r'EdhEdId,r'EdhEdI#d,
 redheads,,,r'EdhEdz,,r'Edh'Edz
 redhorse,,,r'EdhO:s,r'EdhO:rs,
-redial,,,r'i:daI@l,,ri:d'aI@l
+redial,n,,r'i:daI@l,,ri:d'aI@l
+redial,v,,r'i:daI@l,,ri:d'aI@l
 redid,,,rId'Id,,ri:d'Id
 reding,,,rId'EIN,,r'i:dIN
 redingote,,,rId'INgoUt,,r'EdINgoUt
@@ -78075,7 +78091,8 @@ Redmond,,,r'Edm@nd,,
 redneck,,,r'EdnEk,,
 rednecks,,,r'EdnEks,,
 redness,,,r'Edn@s,,
-redo,,,r'i:du:,,ri:d'u:
+redo,n,,r'i:du:,,ri:d'u:
+redo,v,,r'i:du:,,ri:d'u:
 redoing,,,r'i:du:IN,,ri:d'u:IN
 redolent,,,r'Ed@l@nt,,
 redolently,,,r'Ed@l@ntli:,,
@@ -78274,7 +78291,9 @@ reflectorize,,,rIfl'Ekt@raIz,rIfl'Ekt@`raIz,rIfl'Ekt@`aIz
 reflectors,,,rIfl'Ekt@z,rIfl'Ekt@`z,
 reflects,,,rIfl'Ekts,,
 reflet,,,rIfl'Et,,r@fl'E
-reflex,,,r'i:flEks,,
+reflex,aj,,r'i:flEks,,
+reflex,n,,r'i:flEks,,
+reflex,v,,r'i:flEks,,
 reflexed,,,r'i:flEkst,,ri:fl'Ekst
 reflexes,,,r'i:flEksIz,r'i:flEksI#z,r'i:flEks@z
 reflexible,,,r'i:flEks@b@l,,ri:fl'EksIb@l
@@ -78838,7 +78857,8 @@ remainder,,,rIm'eInd@,rIm'eInd@`,
 remained,,,rIm'eInd,,ri:m'eInd
 remaining,,,rIm'eInIN,,ri:m'eInIN
 remains,,,rIm'eInz,,ri:m'eInz
-remake,,,rIm'eIk,,r'i:m'eIk
+remake,n,,rIm'eIk,,r'i:m'eIk
+remake,v,,rIm'eIk,,r'i:m'eIk
 remakes,,,rIm'eIks,,r'i:m'eIks
 remaking,,,rIm'eIkIN,,r'i:m'eIkIN
 reman,,,rIm'an,,ri:m'an
@@ -79195,7 +79215,8 @@ replan,,,rIpl'an,,ri:pl'an
 replant,,,rIpl'ant,,ri:pl'ant
 replanted,,,rIpl'antId,rIpl'antI#d,ri:pl'antId
 replanting,,,rIpl'antIN,,ri:pl'antIN
-replay,,,r'i:pleI,,ri:pl'eI
+replay,n,,r'i:pleI,,ri:pl'eI
+replay,v,,r'i:pleI,,ri:pl'eI
 replayed,,,r'i:pleId,,ri:pl'eId
 replaying,,,r'i:pleIIN,,ri:pl'eIIN
 replays,,,r'i:pleIz,,ri:pl'eIz
@@ -79404,7 +79425,8 @@ resail,,,rIs'eIl,,ri:s'eIl
 resalable,,,r'i:seIl@b@l,,ri:s'eIl@b@l
 resale,,,r'i:seIl,,
 resales,,,r'i:seIlz,,
-resaw,,,rIs'O:,,r'i:sQ
+resaw,n,,rIs'O:,,r'i:sQ
+resaw,v,,rIs'O:,,r'i:sQ
 reschedule,,,rIstS'Edju:l,rIsk'EdZu:l,ri:sk'EdZu:l
 rescheduled,,,rIstS'Edju:ld,rIsk'EdZu:ld,ri:sk'EdZu:ld
 rescheduling,,,rIstS'Edju:lIN,rIsk'EdZu:lIN,ri:sk'EdZu:lIN
@@ -84144,7 +84166,8 @@ semiporcelain,,,sEmIp'O:sIlIn,sEmIp'orsIlIn,sEmIp'ors@lIn
 semipostal,,,sEmIp'oUst@l,,s'Emi:pr'ES@s
 semiprecious,,,sEmIpr'ES@s,,
 semiprivate,,,sEmIpr'aIv@t,,sEmIpr'aIvIt
-semipro,,,sEm'IproU,,s'Emi:proU
+semipro,aj,,sEm'IproU,,s'Emi:proU
+semipro,n,,sEm'IproU,,s'Emi:proU
 semiprofessional,,,sEmIpr@f'ES@n@l,,
 semipublic,,,sEmIp'VblIk,,
 semiquaver,,,sEmIkw'eIv@,sEmIkw'eIv@`,s'Emi:kweIv@`
@@ -90814,7 +90837,8 @@ subjunction,,,sVbdZ'VNkS@n,,s@bdZ'VNkS@n
 subjunctive,,,s'VbdZ@NktIv,,s@bdZ'VNktIv
 subkingdom,,,s'VbkINd@m,,s@bk'INd@m
 sublapsarianism,,,sVbla#ps'e@ri:@nIz@m,sVbla#ps'Eri:@nIz@m,sVblaps'e@i:@nIz@m
-sublease,,,s'Vbli:s,,
+sublease,n,,s'Vbli:s,,
+sublease,v,,s'Vbli:s,,
 subleasing,,,s'Vbli:sIN,,s@bl'i:sIN
 sublessee,,,s'Vbl@si:,,sVblEs'i:
 sublessor,,,s'Vbl@s@,s'Vbl@s@`,s@bl'EsO:r
@@ -91873,7 +91897,8 @@ surveil,,,s@v'eIl,s@`v'eIl,
 surveillance,,,s@v'eIl@ns,s@`v'eIl@ns,
 surveillant,,,s@v'eIl@nt,s@`v'eIl@nt,
 surveilling,,,s@v'eIlIN,s@`v'eIlIN,
-survey,,,s'3:veI,,s'VrveI
+survey,n,,s'3:veI,,s'VrveI
+survey,v,,s@v'eI,s@`v'eI,s'VrveI
 surveyed,,,s@v'eId,s@`v'eId,
 surveying,,,s@v'eIIN,s@`v'eIIN,
 surveyor,,,s@v'eI@,s@`v'eI@`,
@@ -98611,7 +98636,8 @@ understated,,,Vnd@st'eItId,Vnd@`st'eItI#d,'Vnd@`steItId
 understatement,,,Vnd@st'eItm@nt,Vnd@`st'eItm@nt,'Vnd@`steItm@nt
 understates,,,Vnd@st'eIts,Vnd@`st'eIts,'Vnd@`steIts
 understating,,,Vnd@st'eItIN,Vnd@`st'eItIN,'Vnd@`steItIN
-understeer,,,Vnd@st'i:@,Vnd@`st'Ir,'Vnd@sti:@`
+understeer,n,,Vnd@st'i:@,Vnd@`st'Ir,'Vnd@sti:@`
+understeer,v,,Vnd@st'i:@,Vnd@`st'Ir,'Vnd@sti:@`
 understock,n,,Vnd@st'Qk,Vnd@`st'Ak,'Vnd@`stQk
 understock,v,,Vnd@st'Qk,Vnd@`st'Ak,Vnd@`st'Qk
 understood,,,Vnd@st'Ud,Vnd@`st'Ud,

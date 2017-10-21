@@ -9680,7 +9680,6 @@ costliest,costly=est
 costly,cost=ly
 costs,cost=s
 costumed,costume=ed
-costumer,costume=er
 costumers,costumer=s
 costumes,costume=s
 costumiers,costumier=s
@@ -26968,8 +26967,10 @@ littles,little=s
 littlest,little=est
 littlish,little=ish
 liturgiology,liturgy=ology
+livable,live=able
 livableness,livable=ness
 livebearer,live-bearer
+lived,live=ed
 livelier,lively=er
 liveliest,lively=est
 livelihoods,livelihood=s
@@ -26978,6 +26979,7 @@ livelong,live-long
 lively,live=ly
 liven,live=n
 livened,liven=ed
+liver,live=er
 liveried,livery=ed
 liverish,liver=ish
 liverishness,liverish=ness
@@ -26991,9 +26993,11 @@ livery,liver=y
 lives,live=s
 livestock,live-stock
 lividity,livid=ity
+living,live=ing
 livingroom,living-room
 livings,living=s
 livingstone,living-stone
+livy,live=y
 lizardfish,lizard-fish
 lizards,lizard=s
 lizzy,liz=y
@@ -32030,6 +32034,7 @@ outline,out=line
 outlined,out=lined
 outlines,out=lines
 outlining,out=lining
+outlive,out=live
 outlived,out=lived
 outlives,outlive=s
 outliving,out=living
@@ -37945,9 +37950,8 @@ reflector,reflect=or
 reflectorize,reflector=ize
 reflectors,reflector=s
 reflects,reflect=s
-reflex,re=flex
-reflexed,re=flexed
-reflexes,re=flexes
+reflexed,reflex=ed
+reflexes,reflex=es
 reflexible,re=flexible
 reflexively,reflexive=ly
 reflexiveness,reflexive=ness
@@ -38340,6 +38344,7 @@ relinquishing,relinquish=ing
 relished,relish=ed
 relishes,relish=es
 relishing,relish=ing
+relive,re=live
 relived,re=lived
 reliving,re=living
 reload,re=load
@@ -45503,6 +45508,9 @@ surtout,sur-tout
 surveillance,surveil=ance
 surveillant,surveil=ant
 surveilling,surveil=ing
+surveyed,survey=ed
+surveying,survey=ing
+surveyor,survey=or
 surveyors,surveyor=s
 surveys,survey=s
 survivable,survive=able
