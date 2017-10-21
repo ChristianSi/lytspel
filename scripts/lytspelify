@@ -21,11 +21,12 @@ use Text::LevenshteinXS 'distance';
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
 
-const my $IN_FILE     => 'phonetic-dict.csv';
-const my $OUT_FILE    => 'lytspel-dict.csv';
-const my $COMPOUNDS   => 'compounds.csv';
-const my $CUSTOM      => 'custom.csv';
-const my $PHONEME_MAP => 'phoneme-map.csv';
+const my $IN_FILE         => 'phonetic-dict.csv';
+const my $OUT_FILE        => 'lytspel-dict.csv';
+const my $COMPOUNDS       => 'compounds.csv';
+const my $CUSTOM          => 'custom.csv';
+const my $COMPOUND_STRESS => 'compound-stress.csv';
+const my $PHONEME_MAP     => 'phoneme-map.csv';
 
 # Vowel letters in SAMPA and Lytspel
 const my $SAMPA_VOWELS   => '@:#3aAeEiIoOQuUV';
@@ -47,7 +48,6 @@ const my $LYTSPEL_CONSONANT_POST_PROC => '(?:(?:[bcdfghjklmnprstvwxz]h?|y(?=[aei
 # but accepting «e» after digraphs such as «ee, oe, ue, iu, qu»)
 const my $PLAIN_E => "(?:[eou]ee|[iq]ue|(?<![eu])e)(?!(e|'?r))";
 
-# TODO Move all these lists into external CSV files (and add them to the Makefile)
 # Stress the second part of a compound if the first part is listed here.
 my %STRESS_AFTER = map { $_ => 1 } qw/arch best chemo chromo co com con crypt crypto dynamo ego
     ere ex extra fibro helio here hetero hydro hypo infra magneto mal mon nitro peri psycho
@@ -68,34 +68,7 @@ my %STRESS_BEFORE = map { $_ => 1 } qw/about around away/;
 my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/auto contra electro homo meta mono para photo
     poly pro proto radio retro stereo tetra/;
 
-# If a compound is listed here, its 1st part is stressed (used only in cases where our
-# rules indicate that the 2nd part should be stressed or where it contains a stress marker).
-my %STRESS_FIRST_PART = map { $_ => 1 } qw/aftereffect aftersensation antimatter archlute
-    archway bioscience chemosphere choplogic cofunction counterproposal countersubject dealate
-    fibroblast heterocycle heterodyne heterograft heterophil hexamine histamine hypoblast
-    hypogene hyponasty hypostyle inbreeding infiltrate infrasound infrastructure insufflate
-    intraday lookalike malware microchip microprogram microreader Microsoft minicomputer
-    newsmagazine noncom nonsense overseer pinafore prefix semilegendary slugabed standalone
-    subchapter subnotebook subroutine supercalender superfund supergiant superhero superpower
-    superstar tarmacadam teleconference telemarketer telemarketing teleport telerecord
-    telesoftware teletext therefore thereupon tricornered triethylamine turnverein
-    ultrastructure underwriting underwrote videocassette wherefore wherewithal woebegone/;
-
-# If a compound is listed here, its 2nd part is stressed.
-my %STRESS_SECOND_PART = map { $_ => 1 } qw/absentminded acetylcholine aeromedical aerostation
-    Alamein Allhallowmas Allhallows altocumulus antarctic anteprandial anteversion anymore
-    arsenopyrite Australasia biliteral binocular bronchiectasis commonsense counteract
-    dextrocardia diacetylmorphine diazomethane duecento echocardiogram eftsoon Eurocommunism
-    everlasting farewell forevermore goodbye hemelytron hereinafter lambaste malfunction
-    malodorous maltreat mercaptopurine methacrylate methylal methylbenzene methylnaphthalene
-    moreover multiparty neuroscientist neurotransmitter nymphomaniac oleomargarine overdraw
-    overate overeat overreach overreliance oversee overseen paramedic penannular peninsula
-    peninsular penultima penultimate petrochemical petrochemistry phenylalanine philhellene
-    planoconvex portcullis protozoa Rockhampton saltpeter semidemisemiquaver statampere
-    straightforward subaltern sulfaguanidine sulfathiazole superconducting superconductor
-    superminicomputer sympetalous synchrocyclotron throughout underutilize uniaxial upstanding
-    withal without/;
-
+# TODO Move list into external CSV file (and add it to the Makefile).
 # If a derived word is listed here, a short vowel preceding the stress
 # marker won't be converted to «e».
 my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acronymous
@@ -118,6 +91,11 @@ my $SUMMED_DIST       = 0;
 my $WORD_COUNT        = 0;
 my $COMPOUND_DICT_REF = build_lc_map($COMPOUNDS, 0);
 my $CUSTOM_DICT_REF   = build_lc_map($CUSTOM, 1);
+
+# List of compounds which are stressed differently from our regular rules.
+# Values indicate which part is the stressed one ('1' or '2').
+my $Compound_Stress_Dict_Ref = build_lc_map($COMPOUND_STRESS, 1);
+
 my $UNCONVERTED_DICT_REF;
 my $CONVERTED_DICT_REF;
 my $CASE_REDIRECT_REF;
@@ -134,6 +112,9 @@ my %Lytspel_Set;
 # Set to which all processed custom entries are added (entries are lower-case and may be
 # POS-tagged as per the 'gen_key' function).
 my %PROCESSED_CUSTOM_SET;
+
+# Ditto, for compounds.
+my %PROCESSED_COMPOUND_SET;
 
 # Mapping from prefixes to their Lytspel spellings and stress hints (1: stress prefix;
 # 2: stress main word; 'A': let PhonEng determine stress). Values are two-element
@@ -183,13 +164,6 @@ sub build_mapping {
     # Add context-specific spellings to %Lytspel_Set
     $Lytspel_Set{$_} = 1 for qw/al aw a'w ay c eh n'g nn ow oy si ss s's ti uh/;
     return \%dict, $maxkeylen;
-}
-
-# gen_key $word, $pos: Combine a word and a optional POS tag into a joint key.
-# If $pos is undefined or empty, $word alone is returned, otherwise "$word/$pos" is returned.
-sub gen_key {
-    my ($word, $pos) = @_;
-    return $pos ? "$word/$pos" : $word;
 }
 
 # build_unconverted_dict_and_case_redirects: Returns references to two hashes:
@@ -565,6 +539,7 @@ sub insert_stress_marker {
     return insert_after_first $consonants
         if ($consonants =~ /^s=/ && $tradspell =~ /^dis/i)
         || ($consonants eq 'c=l' && $tradspell =~ /^Ma?cL/i)
+        || ($consonants eq 'n=s' && $tradspell =~ /^cons/i)
         || ($consonants eq 'p=l' && $tradspell =~ /^popl/i);
 
     # Break before both consonants if the first is 's' (not followed by 'm')
@@ -1057,8 +1032,10 @@ sub postprocess_suffixed {
     my ($converted, $base, $suffix, $pos_hint, $tradspell) = @_;
     # Some suffixes are usually derived from a certain POS tag
     $pos_hint = 'n'  if $tradspell eq 'contractor';
-    $pos_hint = 'aj' if $tradspell eq 'frequented';
-    $pos_hint ||= 'v' if $tradspell eq 'inversely' || $suffix =~ /^(able|ed|e?s|ing|or)$/;
+    $pos_hint = 'aj' if $tradspell =~ /^(frequented|liven|lives)$/;
+    $pos_hint ||= 'v'
+        if $tradspell =~ /^(contently|inversely)$/
+        || $suffix =~ /^(able|ed|e?s|ing|or)$/;
     $pos_hint ||= 'aj' if $suffix =~ /^(ize|ly)$/;
     $pos_hint ||= 'n'
         if $tradspell =~ /^(internist|presentist|progressist)$/
@@ -1351,11 +1328,12 @@ sub lookup_part_entry {
             $pos = 'aj'
                 if ($part =~ /ate$/ && $tradspell !~ /(able|^predesignate)$/)
                 || ($part eq 'close' && $tradspell !~ /^close(down|out|ing|d|s)$|.close$/)
-                || $tradspell eq 'infrequent';
+                || $tradspell =~ /^(infrequent|livebearer|livestock)$/;
             $pos = 'n'
-                if ($part =~ /^(congress|house|lead|transfer|transfer|wind)$/
+                if ($part =~ /^(concave|congress|house|lead|transfer|transfer|wind)$/
                 && $tradspell !~ /(able|^(${part}e?r|fairlead|mislead|leadoff))$/)
-                || $tradspell =~ /^(internship|rebeldom)$/;
+                || ($part eq 'concert' && $tradspell =~ /er$/)
+                || $tradspell =~ /^(internship|rebeldom|subcompact)$/;
         }
 
         $key = gen_key $part, $pos;
@@ -1402,7 +1380,19 @@ sub handle_compound {
     # TODO Refactor this function into shorter ones
     my ($colref, $parts, $tradspell) = @_;
     my $pos = $colref->[1];
+    $PROCESSED_COMPOUND_SET{gen_key(lc $tradspell, $pos)} = 1;
     my ($first_lytspel, $second_lytspel, $compound);
+
+    # Check whether compound should stressed irregularly
+    my $compound_stress = $Compound_Stress_Dict_Ref->{gen_key(lc $tradspell, $pos)}
+        // $Compound_Stress_Dict_Ref->{lc $tradspell};
+
+    if (defined $compound_stress) {
+        warn "Invalid stress '$compound_stress' defined in $COMPOUND_STRESS for $tradspell"
+            if $compound_stress !~ /^[12]$/;
+    } else {
+        $compound_stress = '';
+    }
 
     if ($tradspell =~ /^(.*)('(d|ll|re|ve)|n't)$/ || $tradspell =~ /^(I)('m)$/) {
         # Handle regular contractions (and a few irregular ones)
@@ -1447,11 +1437,11 @@ sub handle_compound {
         if ($compound =~ /'/) {
             # Compound already contains a stress marker
 
-            if (exists($STRESS_FIRST_PART{$tradspell}) || exists($STRESS_BEFORE{$second})) {
+            if ($compound_stress eq '1' || exists($STRESS_BEFORE{$second})) {
                 # Strip stress marker from 2nd part
                 $second_lytspel =~ s/'//;
                 return "$first_lytspel$second_lytspel";
-            } elsif (exists($STRESS_SECOND_PART{$tradspell})
+            } elsif ($compound_stress eq '2'
                 || exists($STRESS_IF_SECOND{$second})
                 || exists($STRESS_AFTER{$first}))
             {
@@ -1469,13 +1459,13 @@ sub handle_compound {
         }
 
         # If this word is listed as a special case, we return it and are done
-        return $compound if exists($STRESS_FIRST_PART{$tradspell});
+        return $compound if $compound_stress eq '1';
 
         # Insert stress marker before second part if appropriate
         $compound = "$first_lytspel'$second_lytspel"
             if exists($STRESS_AFTER{$first})
             || exists($STRESS_IF_SECOND{$second})
-            || exists($STRESS_SECOND_PART{$tradspell});
+            || $compound_stress eq '2';
 
         if (exists($STRESS_VARIES_IF_FIRST{$first})) {
             # Check pronunciation to find out which part to stress
@@ -1551,10 +1541,10 @@ sub handle_compound {
 
         $compound = "$first_lytspel$second_lytspel";
 
-        if ($stress_hint eq '1' || exists($STRESS_FIRST_PART{$tradspell})) {
+        if ($stress_hint eq '1' || $compound_stress eq '1') {
             $second_lytspel =~ s/'//;  # delete stress marker from 2nd part, if any
             $compound = "$first_lytspel$second_lytspel";
-        } elsif ($stress_hint eq '2' || exists($STRESS_SECOND_PART{$tradspell})) {
+        } elsif ($stress_hint eq '2' || $compound_stress eq '2') {
             # Insert stress marker before 2nd part (unless it already contains one)
             $compound = "$first_lytspel'$second_lytspel" unless $second_lytspel =~ /'/;
         } elsif ($stress_hint eq 'A') {
@@ -1578,16 +1568,16 @@ sub handle_compound {
 
 }
 
-# warn_unprocessed_custom_entries: Warn if there are entries in the custom.csv file not
-# in the dictionary.
-sub warn_unprocessed_custom_entries {
-    # TODO Add a similar checks for compounds-manual.csv and compound-black|blacklist.csv
-    # (also warn if there are duplicate entries)
-    for my $key (sort keys %$CUSTOM_DICT_REF) {
-        warn "Unused $CUSTOM entry: $key\n"
-            unless exists $PROCESSED_CUSTOM_SET{$key}
-            || exists $PROCESSED_CUSTOM_SET{gen_key($key, 'v')}
-            || exists $PROCESSED_CUSTOM_SET{gen_key($key, 'aj')};
+# warn_unprocessed_entries $filename, $dict_ref, $processed_set_ref:
+# Warn if $dictref contains any entries not listed in $processed_dictref (the latter may
+# also be POS-tagged).
+sub warn_unprocessed_entries {
+    my ($filename, $dictref, $processed_dictref) = @_;
+    for my $key (sort keys %$dictref) {
+        warn "Unused $filename entry: $key\n"
+            unless exists $processed_dictref->{$key}
+            || exists $processed_dictref->{gen_key($key, 'v')}
+            || exists $processed_dictref->{gen_key($key, 'aj')};
     }
 }
 
@@ -1619,30 +1609,7 @@ sub convert_dict {
    # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
    # TODO Possibly integrate additional POS-tagged variants (see below) into extra-words.txt
    # and rename it to .csv (otherwise rename it to .list)
-   # TODO x Unify /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter, e.g.
-   # ‹solidary, temporary, voluntary›
-   # TODO Derive from intern/n: internship; presentation, presentee: from present/n
-   # TODO ‹quad› should probably always become «quod» rather than «quaad»
-   # TODO Add shamanists (from shaman, basis for shamanists), shama (basis for
-   # shamas), cracka (basis for crackajack), suppressive (from suppress, basis for
-   # immunosuppressive), helioscopic (from helioscope, basis for spectrohelioscopic)
-   # TODO reincarnate: split in v+aj; Split ‹overestimate, reexport, warehouse› into n+v
-   # Add desert/n,dez@rt  # desert (use for semidesert, desertic), mouse/v: m'aUz (also use
-   # for mouser), mouth/v: use P (also for mouther and the various -mouthed combis),
-   # addict/v (also for addicted), commune/v, insult/v, defect/v, decrease/v, perfume/v:
-   # use P (also for =ed/=ing; =s should exist both variants)
-   # subordinate/v should end in «ait» instead of «et»
-   # supersaturate: derive from saturate/v; ungallant: derive from gallant/aj;
-   # unwind: derive from wind/v; uncleanly: split in aj+av; add bifurcate/aj: ...It
-   # toward/aj: tw'ord, /prp: use P (if needed; delete old custom entry)
-   # curate/n: kj'UrIt, v: kjUr'eIt (also for curator)
-   # alternate/aj+n: 'O:lt@`nIt, v: 'O:lt@`neIt
-   # appropriate/aj: a#pr'oUpri:It, v: a#pr'oUpri:eIt (also for appropriator)
-   # subalternate should be derived from aj
-   # graduate: use -it for aj+n, -ait for v (also graduated|ing)
-   # congress/n should use default pron (conggress), only congress/v should use P
-   # TODO tridimensional should use «tion» spelling (even though it's not a compound)
-   # TODO If a word has n+v, generate the same for «=es|s», e.g. ‹overlaps›
+   # TODO x If a word has n+v, generate the same for «=es|s», e.g. ‹overlaps›
    # TODO Maybe try switching «or» and «oar» (check whether that improves visual similarity)
    # TODO Possibly eliminate «c» spelling for /s/ (using «ss» instead), since it causes
    # inconsistencies with suffixes starting with a schwa after final /s/
@@ -1688,6 +1655,8 @@ sub convert_dict {
    # -[t]ed: probably standardize to -ed rather than -id
    # -ysis: probably standardize to iciss
    # hypo-: probably standardize to hypo even if not recognized as compound
+   # probably standardize /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter,
+   # e.g. ‹solidary, temporary, voluntary›
    # Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
    # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
    # ‹monosyllabicity›
@@ -1739,7 +1708,11 @@ sub convert_dict {
 
     close $outfh;
 
-    warn_unprocessed_custom_entries;
+    # TODO Add similar checks for compounds-manual.csv and compound-black|blacklist.csv
+    # (also warn if there are duplicate entries in them)
+    warn_unprocessed_entries $CUSTOM,          $CUSTOM_DICT_REF,          \%PROCESSED_CUSTOM_SET;
+    warn_unprocessed_entries $COMPOUND_STRESS, $Compound_Stress_Dict_Ref, \%PROCESSED_COMPOUND_SET;
+
     my $avg_dist = $SUMMED_DIST / $WORD_COUNT;
     say "Average distance between tradspell and Lytspel: $avg_dist";
 }
