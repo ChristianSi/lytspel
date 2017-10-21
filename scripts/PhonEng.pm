@@ -16,13 +16,14 @@ use Exporter 'import';
 use Text::CSV_XS;
 
 our @EXPORT = qw(
+    build_lc_map
+    gen_key
     new_csv_in
     new_csv_out
-    build_lc_map
-    write_csv_line
-    rename_to_backup_file_if_exists
     open_outfile_and_write_header
+    rename_to_backup_file_if_exists
     valid_key
+    write_csv_line
 );
 
 # new_csv_in: Create an instance of Text::CSV_XS suitable for reading.
@@ -40,6 +41,13 @@ sub new_csv_out : {
 # File-scoped to allow re-use
 my $Csv_In  = new_csv_in;
 my $Csv_Out = new_csv_out;
+
+# gen_key $word, $pos: Combine a word and a optional POS tag into a joint key.
+# If $pos is undefined or empty, $word alone is returned, otherwise "$word/$pos" is returned.
+sub gen_key {
+    my ($word, $pos) = @_;
+    return $pos ? "$word/$pos" : $word;
+}
 
 # build_lc_map $filename, $pos_tagged: Create and return a mapping from a simple CSV file
 # containing two or three columns (keys and values). If $pos_tagged is true, the 2nd column
