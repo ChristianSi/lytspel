@@ -4,7 +4,7 @@
 # Copyright (c) 2016-17 Christian Siefkes
 # See accompanying LICENSE.txt file for licensing information.
 #
-# Required modules: Const::Fast and those listed in PhonEng.pm.
+# Required modules: Const::Fast, List::MoreUtils, and those listed in PhonEng.pm.
 # Required external programs (must be in path): espeak.
 
 use 5.014;
@@ -15,6 +15,7 @@ use warnings;
 use Const::Fast;
 use Cwd 'abs_path';
 use File::Basename 'dirname';
+use List::MoreUtils 'uniq';
 
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
@@ -22,6 +23,10 @@ use PhonEng;
 const my $IN_FILE     => 'phonetic-dict.txt';
 const my $OUT_FILE    => 'phoneng-espeak-dict.csv';
 const my $EXTRA_WORDS => 'extra-words.txt';
+
+# A listing of words for which multiple POS-tagged entries should be created.
+# The first column contains the word (case-insensitive); the second the list
+# of POS tags, '+'-separated (e.g. 'n+v').
 const my $TAGIFY_FILE => 'tagify.csv';
 const my $ESPEAK_TMP  => 'espeak-in.tmp';
 
@@ -29,7 +34,7 @@ const my $ESPEAK_TMP  => 'espeak-in.tmp';
 my $Csv_Out = new_csv_out;
 my $Tagify_Dict_Ref = build_lc_map $TAGIFY_FILE, 0;
 
-# read_dict: Reads the original phonetic dict into a hash. Returns a mapping
+# read_dict: Read the original phonetic dict into a hash. Returns a mapping
 # from words (e.g. 'yeld', 'hectometre', 'detail') to the corresponding raw
 # values (e.g. ': ye°ld', ':> hectometer', '/n: di°täl; v: ditä°l').
 sub read_dict {
@@ -64,7 +69,7 @@ sub read_dict {
     return \%dict;
 }
 
-# redirect_target $value: Resolves the redirect if $value is a redirect.
+# redirect_target $value: Resolve the redirect if $value is a redirect.
 # Returns undef otherwise.
 sub redirect_target {
     my ($value) = @_;
@@ -91,27 +96,59 @@ sub generate_tagged_espeak_input {
     }
 }
 
-# prepare_espeak_input $espeak_fh, $word, $dict: Writes input to be pronounced by espeak.
+# prepare_espeak_input $espeak_fh, $word, $dict: Write input to be pronounced by espeak.
 # If the pronunciation of the word depends on its POS tag, several lines will be written,
 # otherwise just one.
 sub prepare_espeak_input {
     my ($espeak_fh, $word, $dict) = @_;
     my $value           = $dict->{$word};
     my $redirect_target = redirect_target $value;
-    # TODO Delete entry
-    my $tags     = $Tagify_Dict_Ref->{lc $word};
-    my $phonetic = '';
+    my $tags            = delete $Tagify_Dict_Ref->{lc $word};
+    my $phonetic        = '';
 
     unless (defined $redirect_target) {  # Skip redirects
-        if ($value =~ m{^/(.*)$} || $tags) {
-            # TODO Suitably modify entry if listed in Tagify_Dict_Ref;
-            # validate list of tags to ensure that all are valid and none is duplicate
-            # Tagged entries
-            for my $tagged_pron (split /;\s*/, $1) {
+        if ($value =~ m{^/(.*)$} || defined $tags) {
+            # A tagged entries exists or should be created
+            my (@taglist, $tagged_prons);
+
+            if ($tags) {
+                # We should create multiple POS-tagged entries for the word
+                @taglist = sort(split /\+/, $tags);
+                # The second word (excluding a trailing semicolon) is the (first) pronunciation
+                # which we'll re-use for all tags; if the original entry was already tagged,
+                # there will be additional pronunciations which we ignore
+                my ($pron) = $value =~ /^\S+\s+([^\s;]+)/;
+                my $new_value = '/';
+
+                # Sanity check
+                die "Line: $word$value cannot be tagified since it's not a valid entry"
+                    unless $pron;
+                die "No POS tags listed for $word in $TAGIFY_FILE: " unless @taglist;
+                die "Duplicate POS tags listed for $word in $TAGIFY_FILE: "
+                    unless uniq(@taglist) == @taglist;
+
+                # Modify value (from ': PRON' to e.g. '/n: PRON; v: PRON')
+                for my $tag (@taglist) {
+                    if ($tag =~ /^(aj|av|n|prp|v)$/) {
+                        $new_value .= "$tag: $pron; ";
+                    } else {
+                        die "Unexpected POS tag listed for $word in $TAGIFY_FILE: $tag";
+                    }
+                }
+
+                # Update $value (omitting trailing '; ')
+                $new_value = substr $new_value, 0, -2;
+                $dict->{$word} = $new_value;
+                $tagged_prons = substr $new_value, 1;
+            } else {
+                $tagged_prons = substr $value, 1;
+            }
+
+            for my $tagged_pron (split /;\s*/, $tagged_prons) {
                 if ($tagged_pron =~ /^(.*):\s*(.*)$/) {
                     generate_tagged_espeak_input $espeak_fh, $word, $1;
                 } else {
-                    die "Invalid line: $word$value\n";
+                    die "Invalid line: $word$value";
                 }
             }
         } elsif ($value =~ /^:\s*(.*)$/) {
@@ -123,7 +160,7 @@ sub prepare_espeak_input {
     }
 }
 
-# strip_spaces $str: Removes whitespace from start and end of $str.
+# strip_spaces $str: Remove whitespace from start and end of $str.
 sub strip_spaces {
     my $str = shift // '';
     $str =~ s/^\s+//;
@@ -141,7 +178,7 @@ sub untag_espeak_output {
     return $line;
 }
 
-# write_entry $outfh, $word, $rp_pron_ref, $ga_pron_ref, $dict: Writes CSV entries for a word.
+# write_entry $outfh, $word, $rp_pron_ref, $ga_pron_ref, $dict: Write CSV entries for a word.
 # If the pronunciation of the word depends on its POS tag, several CSV entries will
 # be written, otherwise just one. $rp_pron_ref and $ga_pron_ref are array references to the British
 # and American pronunciations of all remaining words as generated by espeak; the first entry or
@@ -156,7 +193,7 @@ sub write_entry {
         # Redirect
         $Csv_Out->print($outfh, [$word, '', $redirect_target]);
     } else {
-        if ($value =~ m{^/(.*)$} || $tags) {
+        if ($value =~ m{^/(.*)$}) {
             # Tagged entries
             for my $tagged_pron (split /;\s*/, $1) {
                 if ($tagged_pron =~ /^(.*):\s*(.*)$/) {
@@ -182,23 +219,32 @@ sub write_entry {
     return $rp_pron_ref, $ga_pron_ref;
 }
 
+# build_csv_dict: Convert 'phonetic-dict.txt' into CSV format, also adding pronunciations
+# generated by espeak.
+sub build_csv_dict {
+    say 'Preparing input for espeak';
+    my $dict = read_dict;
+    open my $espeak_fh, '>', $ESPEAK_TMP or die "Unable to open $ESPEAK_TMP for writing: $!\n";
+    prepare_espeak_input $espeak_fh, $_, $dict for sort { lc $a cmp lc $b } keys %$dict;
+    close $espeak_fh;
+    say 'Invoking espeak to generate British pronunciations';
+    my $rp_prons = `espeak -q --ipa < $ESPEAK_TMP`;
+    say 'Invoking espeak to generate American pronunciations';
+    my $ga_prons = `espeak -q --ipa -v en-us < $ESPEAK_TMP`;
+    unlink $ESPEAK_TMP;
+    say 'Generating final dictionary';
+    my $outfh = open_outfile_and_write_header $OUT_FILE,
+        [qw(Traditional POS Redirect PhonEng RP GA)];
+    my $rp_pron_ref = [split /\s*\n\s*/, strip_spaces $rp_prons];
+    my $ga_pron_ref = [split /\s*\n\s*/, strip_spaces $ga_prons];
+    ($rp_pron_ref, $ga_pron_ref) = write_entry $outfh, $_, $rp_pron_ref, $ga_pron_ref, $dict
+        for sort { lc $a cmp lc $b } keys %$dict;
+    close $outfh;
+
+    # Warn if there are any Tagify_Dict_Ref entries left
+    warn "Unused $TAGIFY_FILE entry: $_\n" for sort keys %$Tagify_Dict_Ref;
+    say 'Done';
+}
+
 # Main block
-say 'Preparing input for espeak';
-my $dict = read_dict;
-open my $espeak_fh, '>', $ESPEAK_TMP or die "Unable to open $ESPEAK_TMP for writing: $!\n";
-prepare_espeak_input $espeak_fh, $_, $dict for sort { lc $a cmp lc $b } keys %$dict;
-close $espeak_fh;
-say 'Invoking espeak to generate British pronunciations';
-my $rp_prons = `espeak -q --ipa < $ESPEAK_TMP`;
-say 'Invoking espeak to generate American pronunciations';
-my $ga_prons = `espeak -q --ipa -v en-us < $ESPEAK_TMP`;
-unlink $ESPEAK_TMP;
-say 'Generating final dictionary';
-my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Traditional POS Redirect PhonEng RP GA)];
-my $rp_pron_ref = [split /\s*\n\s*/, strip_spaces $rp_prons];
-my $ga_pron_ref = [split /\s*\n\s*/, strip_spaces $ga_prons];
-($rp_pron_ref, $ga_pron_ref) = write_entry $outfh, $_, $rp_pron_ref, $ga_pron_ref, $dict
-    for sort { lc $a cmp lc $b } keys %$dict;
-close $outfh;
-# TODO Warn if Tagify_Dict_Ref is not empty, cf. warn_unprocessed_custom_entries
-say 'Done';
+build_csv_dict
