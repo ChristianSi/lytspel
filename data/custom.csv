@@ -59,6 +59,7 @@ actinotherapy,,aktInoUT'Er@pi:
 actinouranium,,aktInoUjUr'eIni:@m
 actinozoan,,aktIn@z'oU@n
 Adan,,D
+adduct,v,B
 adequate,,'ad@kwIt
 adjunct,,P
 administrative,,P
@@ -684,8 +685,8 @@ collaborative,,P
 collagen,,k'Ql@dZ@n
 collate,,P
 collative,,P
-collect,,B
 collectible,,B
+collect,v,B
 collier,,P
 colonic,,P
 comanchean,,k@m'antSi:@n
@@ -701,6 +702,7 @@ communicative,,k@mj'u:nIkeItIv
 communique,,kQmju:nIk'eI
 communitarian,,k@#mju:nIt'e@i:@n
 commutate,,k'Qmj@teIt
+compact,v,B
 compartmental,,kQmpArtm'Ent@l
 compassionate,,P
 compatibility,,kQmpat@b'IlIti:
@@ -722,6 +724,7 @@ compressible,,B
 CompuServe,,D
 computation,,B
 comte,,k'O:nt
+concave,n,k'QnkeIv
 concentrative,,P
 conceptualization,,B
 conchoidal,,P
@@ -758,6 +761,7 @@ conquest,,O
 consequence,,B
 consequent,,B
 consequential,,B
+console,v,kQns'oUl
 consonantal,,P
 constantan,,P
 consuetude,,k'QnswItU:d
@@ -799,6 +803,7 @@ corymbose,,P
 cosey,,P
 cosmetologist,,B
 cosmetology,,B
+costume,v,kQst'U:m
 costumier,,kQst'U:mi:@`
 cotehardie,,P
 cotwal,,P
@@ -1465,6 +1470,7 @@ felicity,,P
 fellate,,f@l'eIt
 feodary,,P
 feria,,B
+ferment,v,B
 ferritin,,P
 fertilization,,P
 fettuccine,,fEtVtS'i:ni:
@@ -1927,6 +1933,7 @@ interrogatory,,IntEr'Qg@tori:
 interruptible,,A
 interviewee,,A
 intimate,,P
+intimate,v,'IntI#mIt
 intine,,P
 intonate,,P
 intonation,,P
@@ -2353,6 +2360,7 @@ ministeria,,mInIst'i@i:@
 minivet,,m'InI#vEt
 mino,,D
 Minotaur,,m'In@tO:r
+minute,aj,maIn'U:t
 miosis,,P
 miotic,,maI'QtIk
 miraculous,,mIr'akj@l@s
@@ -3109,6 +3117,7 @@ reflectometer,,rIflEkt'QmIt@`
 reflet,,P
 reflexive,,B
 reflexivity,,rIflEks'IvIti:
+reflex,v,rIfl'Eks
 refractive,,B
 refractivity,,B
 refractometric,,rIfrakt@m'EtrIk
@@ -3431,6 +3440,7 @@ superfluous,,P
 superiority,,s@pi:ri:'QrIti:
 superior,,s@p'i:ri:@`
 suppletory,,P
+survey,v,A
 swallow,,B
 Swazi,,B
 Swed,,B
