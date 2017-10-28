@@ -78,8 +78,8 @@ my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acro
     ctenophoran demonic diaphaneity equality external fibrinogenous frivolity gnomonic
     halogenous homonymous matrimonial Miltonic monomeric monomerous monostrophic nebulosity
     originality partiality personification pseudonymity planktonic prebendal puritanical
-    quadrantal quadrupedal reclusive renewal satanic shamanic sinistrality subordinative
-    sultanic sycophantic synonymous talismanic testimonial tribadic tympanic/;
+    quadrantal quadrupedal reclusive renewal sabbatical satanic shamanic sinistrality
+    subordinative sultanic sycophantic synonymous talismanic testimonial tribadic tympanic/;
 
 # TODO Switch to Upper_Camel_Case for file-scoped variables (in all files)
 my $CSV_IN  = new_csv_in;
@@ -848,6 +848,16 @@ sub build_suffix_dict {
     close $fh;
 }
 
+# prepare_pron $pron: Fix the pronunication of a word by normalizing non-standard forms.
+sub prepare_pron {
+    my $pron = shift;
+    # Normalize alternative forms of the r-colored schwa
+    $pron =~ s/(?<![ei])\@r|\@`r|a#r/\@`/g;
+    # If there are multiple stress markers, remove all but the last one
+    $pron =~ s/'(?=.*')//g;
+    return $pron;
+}
+
 # handle_custom_entry $custom_entry, $colref, $tradspell, $pos: Handle a word listed in
 # the custom.csv file. The $custom_entry may have one of the following values:
 #
@@ -880,20 +890,11 @@ sub handle_custom_entry {
     }
 
     if ($pron) {
+        $pron = prepare_pron $pron;
         return convert_pron $pron, $tradspell;
     } else {
         warn "Unexpected custom entry for $tradspell: $custom_entry\n";
     }
-}
-
-# prepare_pron $pron: Fix the pronunication of a word by normalizing non-standard forms.
-sub prepare_pron {
-    my $pron = shift;
-    # Normalize alternative forms of the r-colored schwa
-    $pron =~ s/(?<![ei])\@r|\@`r|a#r/\@`/g;
-    # If there are multiple stress markers, remove all but the last one
-    $pron =~ s/'(?=.*')//g;
-    return $pron;
 }
 
 # Unify a sound that may be pronounced differently in two accents. Arguments:
@@ -1038,7 +1039,7 @@ sub postprocess_suffixed {
         || $suffix =~ /^(able|ed|e?s|ing|or)$/;
     $pos_hint ||= 'aj' if $suffix =~ /^(ize|ly)$/;
     $pos_hint ||= 'n'
-        if $tradspell =~ /^(internist|presentist|progressist)$/
+        if $tradspell =~ /^(internist|presentist|progressist|teary)$/
         || $suffix =~ /^(ful|less)$/;
     my $conv_base_colref = lookup_part_entry($base, $tradspell, $pos_hint);
     my $conv_base = restore_capitalization $conv_base_colref->[3], $tradspell;
@@ -1333,7 +1334,7 @@ sub lookup_part_entry {
                 if ($part =~ /^(concave|congress|house|lead|transfer|transfer|wind)$/
                 && $tradspell !~ /(able|^(${part}e?r|fairlead|mislead|leadoff))$/)
                 || ($part eq 'concert' && $tradspell =~ /er$/)
-                || $tradspell =~ /^(internship|rebeldom|subcompact)$/;
+                || $tradspell =~ /^(internship|rebeldom|subcompact|teardrop)$/;
         }
 
         $key = gen_key $part, $pos;
@@ -1568,7 +1569,7 @@ sub handle_compound {
 
 }
 
-# warn_unprocessed_entries $filename, $dict_ref, $processed_set_ref:
+# warn_unprocessed_entries $filename, $dictref, $processed_dictref
 # Warn if $dictref contains any entries not listed in $processed_dictref (the latter may
 # also be POS-tagged).
 sub warn_unprocessed_entries {
