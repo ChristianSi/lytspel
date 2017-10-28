@@ -9990,6 +9990,7 @@ crabs,crab=s
 crabstick,crab-stick
 crabwise,crab-wise
 crabwood,crab-wood
+crackajack,cracka-jack
 crackbrain,crack-brain
 crackbrained,crackbrain=ed
 crackdown,crack-down
@@ -22713,6 +22714,7 @@ immunology,immune=ology
 immunoreaction,immuno=reaction
 immunosuppressed,immuno=suppressed
 immunosuppression,immuno=suppression
+immunosuppressive,immuno=suppressive
 immunotherapy,immuno=therapy
 immuration,immure=ation
 immutableness,immutable=ness
@@ -26997,7 +26999,6 @@ living,live=ing
 livingroom,living-room
 livings,living=s
 livingstone,living-stone
-livy,live=y
 lizardfish,lizard-fish
 lizards,lizard=s
 lizzy,liz=y
@@ -40099,8 +40100,6 @@ saddlesore,saddle-sore
 saddletree,saddle-tree
 saddling,saddle=ing
 sadiron,sad-iron
-sadism,sade=ism
-sadist,sade=ist
 sadly,sad=ly
 sadness,sad=ness
 safeguard,safe-guard
@@ -40978,6 +40977,7 @@ sedating,sedate=ing
 sedged,sedge=ed
 sedgemoor,sedge-moor
 sedgy,sedge=y
+sedimentarily,sedimentary=ly
 sedimentation,sediment=ation
 sedimentology,sediment=ology
 sediments,sediment=s
@@ -41446,7 +41446,10 @@ shallowness,shallow=ness
 shaman,sham=an
 shamanic,shaman=ic
 shamanism,shaman=ism
+shamanist,shaman=ist
+shamanists,shamanist=s
 shamans,shaman=s
+shamas,shama=s
 shambles,shamble=s
 shamed,shame=ed
 shamefaced,shame-faced
@@ -41561,6 +41564,7 @@ sheerness,sheer=ness
 sheers,sheer=s
 sheeting,sheet=ing
 sheets,sheet=s
+sheikdom,sheikh-dom
 sheikdoms,sheikdom=s
 shekels,shekel=s
 shellacking,shellac=ing
@@ -43327,6 +43331,7 @@ spectrographic,spectro=graphic
 spectroheliograph,spectro=heliograph
 spectroheliographic,spectro=heliographic
 spectrohelioscope,spectro=helioscope
+spectrohelioscopic,spectro=helioscopic
 spectrological,spectro=logical
 spectrologically,spectro=logically
 spectrometric,spectro=metric
@@ -44295,7 +44300,6 @@ stockbroking,stock-broking
 stocked,stock=ed
 stocker,stock=er
 stockfish,stock-fish
-stockhausen,stock-hausen
 stockholder,stock-holder
 stockholders,stockholder=s
 stockholding,stock-holding
@@ -44733,6 +44737,7 @@ subassemblies,sub=assemblies
 subassembly,sub=assembly
 subastral,sub=astral
 subatomic,sub=atomic
+subaudition,sub=audition
 subauricular,sub=auricular
 subaxillary,sub=axillary
 subbase,sub=base
@@ -45424,6 +45429,7 @@ suppressants,suppressant=s
 suppressed,suppress=ed
 suppresses,suppress=es
 suppressing,suppress=ing
+suppressive,suppress=ive
 suppressor,suppress=or
 suppurative,suppurate=ive
 supralapsarianism,supralapsarian=ism
@@ -45433,6 +45439,8 @@ supramundane,supra-mundane
 supranational,supra-national
 supranatural,supra-natural
 supraorbital,supra-orbital
+suprarational,supra-rational
+suprarenal,supra-renal
 suprasegmental,supra-segmental
 supratemporal,supra-temporal
 supremacists,supremacist=s
@@ -45748,6 +45756,7 @@ symbolizes,symbolize=s
 symbolizing,symbolize=ing
 symbols,symbol=s
 symmetrical,symmetric=al
+symmetrically,symmetrical=ly
 symmetricalness,symmetrical=ness
 sympathetic,sym-pathetic
 sympathetically,sym-pathetically
@@ -45793,11 +45802,9 @@ synodal,synod=al
 synodic,synod=ic
 synodical,synodic=al
 synonymity,synonym=ity
-synonymize,synonym=ize
 synonymous,synonym=ous
 synonymously,synonymous=ly
 synonymousness,synonymous=ness
-synonymy,synonym=y
 synoptics,synoptic=s
 syntactics,syntactic=s
 synthesized,synthesize=ed
@@ -45945,6 +45952,7 @@ talking,talk=ing
 talks,talk=s
 talky,talk=y
 tallboy,tall-boy
+tallchief,tall-chief
 taller,tall=er
 tallest,tall=est
 tallied,tally=ed
@@ -46179,6 +46187,7 @@ teams,team=s
 teamsters,teamster=s
 teamwork,team-work
 teapot,tea-pot
+tearaway,tear-away
 teardown,tear-down
 teardrop,tear-drop
 tearful,tear=ful

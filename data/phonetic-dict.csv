@@ -22136,6 +22136,7 @@ crabstick,,,kr'abstIk,,
 crabwise,,,kr'abwaIz,,
 crabwood,,,kr'abwUd,,
 crack,,,kr'ak,,
+cracka,,,kr'ak@,,
 crackajack,,,kr'aka#dZak,,kr'ak@dZak
 crackbrain,,,kr'akbreIn,,
 crackbrained,,,kr'akbreInd,,
@@ -23227,7 +23228,8 @@ curarine,,,kj'UrAri:n,,kj'U@`@`i:n
 curarise,,curarize
 curarize,,,kj'Ur@raIz,kj'Ur@`raIz,kj'Ur@`aIz
 curassow,,,kj'Ura#soU,,kj'Ur@soU
-curate,,,kj'UreIt,kj'UrreIt,kj'Ur@t
+curate,n,,kj'UreIt,kj'UrreIt,kj'Ur@t
+curate,v,,kj'UreIt,kj'UrreIt,kj'Ur@t
 curative,,,kj'Ur@tIv,,
 curatively,,,kj'Ur@tIvli:,,
 curativeness,,,kj'Ur@tIvn@s,,kj'Ur@tIvnEs
@@ -25898,7 +25900,9 @@ desensitising,,desensitizing
 desensitize,,,di:s'EnsItaIz,,
 desensitized,,,di:s'EnsItaIzd,,dIs'Ens@taIzd
 desensitizing,,,di:s'EnsItaIzIN,,dIs'Ens@taIzIN
-desert,,,d'Es@t,d'Es@`t,dIz'3:t
+desert,aj,,d'Es@t,d'Es@`t,dIz'3:t
+desert,n,,d'Es@t,d'Es@`t,dIz'3:t
+desert,v,,dIz'3:t,,
 deserted,,,dIz'3:tId,dIz'3:tI#d,
 deserter,,,dIz'3:t@,dIz'3:t@`,d'Ez@`t@`
 deserters,,,dIz'3:t@z,dIz'3:t@`z,d'Ez@`t@`z
@@ -41052,7 +41056,8 @@ gradualist,,,gr'adZu:@lIst,,gr'adZ@w@lIst
 gradually,,,gr'adZu:@li:,,
 graduand,,,gr'adju:and,gr'adu:and,gr'adjUand
 graduate,aj,,gr'adju:@t,gr'adZu:@t,gr'adZu:eIt
-graduate,n,,gr'adju:@t,gr'adZu:@t,gr'adZu:It
+graduate,n,,gr'adju:@t,gr'adZu:@t,gr'adZu:eIt
+graduate,v,,gr'adju:eIt,,gr'adZu:eIt
 graduated,,,gr'adju:eItId,gr'adju:eItI#d,gr'adZu:eItId
 graduates,,,gr'adju:@ts,gr'adZu:@ts,gr'adZu:eIts
 graduating,,,gr'adju:eItIN,,gr'adZu:eItIN
@@ -43860,6 +43865,7 @@ heliometric,,,hElIoUm'EtrIk,,hi:li:@m'EtrIk
 Heliopolis,,,hElI'Qp@li:z,hElI'Ap@li:z,hi:li:'Qp@l@s
 helios,,,h'ElIoUz,,h'i:li:Qs
 helioscope,,,h'ElIQskoUp,h'ElIAskoUp,h'i:li:@skoUp
+helioscopic,,,hElI@sk'QpIk,hElI@sk'ApIk,
 heliosis,,,hElI'oUsIs,,hi:lI'oUsIs
 heliostat,,,h'ElIQstat,h'ElIAstat,h'i:li:@stat
 heliotactic,,,hElI@t'aktIk,,hi:li:oUt'aktIk
@@ -62284,7 +62290,8 @@ mourners,,,m'O:n@z,m'orn@`z,m'O:rn@`z
 mournful,,,m'O:nf@l,m'ornf@l,m'ornfUl
 mourning,,,m'O:nIN,m'ornIN,m'O:rnIN
 mourns,,,m'O:nz,m'ornz,m'O:rnz
-mouse,,,m'aUs,,
+mouse,n,,m'aUs,,
+mouse,v,,m'aUs,,
 mousebird,,,m'aUsIb3:d,,m'aUsb3:d
 mousehole,,,m'aUsIhoUl,,m'aUshoUl
 mousepad,,,m'aUsIpad,,m'aUspad
@@ -67329,7 +67336,8 @@ overemphasized,,,oUv@r'Emfa#saIzd,oUv@`r'Emfa#saIzd,'oUv@`'Emf@saIzd
 overemphasizes,,,oUv@r'Emfa#saIzIz,oUv@`r'Emfa#saIzIz,'oUv@`'Emf@saIzIz
 overemphasizing,,,oUv@r'Emfa#saIzIN,oUv@`r'Emfa#saIzIN,'oUv@`'Emf@saIzIN
 overenthusiasm,,,oUv@rEnTj'u:zIaz@m,oUv@`rEnT'u:zIaz@m,oUv@`i:nTj'u:zIaz@m
-overestimate,,,oUv@r'EstIm@t,oUv@`r'EstI#m@t,oUv@`'Est@meIt
+overestimate,n,,oUv@r'EstIm@t,oUv@`r'EstI#m@t,oUv@`'Est@meIt
+overestimate,v,,oUv@r'EstImeIt,oUv@`r'EstImeIt,oUv@`'Est@meIt
 overestimated,,,oUv@r'EstImeItId,oUv@`r'EstI#meItI#d,oUv@`'Est@meItId
 overestimates,,,oUv@r'EstIm@ts,oUv@`r'EstI#m@ts,oUv@`'Est@meIts
 overestimating,,,oUv@r'EstImeItIN,oUv@`r'EstI#meItIN,oUv@`'Est@meItIN
@@ -78218,7 +78226,8 @@ reexamination,,,ri:EgzamIn'eIS@n,ri:EgzamI#n'eIS@n,ri:Igzam@n'eIS@n
 reexamine,,,ri:Egz'amIn,,ri:Egz'am@n
 reexamined,,,ri:Egz'amInd,,ri:Igz'am@nd
 reexamining,,,ri:Egz'amInIN,,ri:Igz'am@nIN
-reexport,,,ri:Eksp'O:t,ri:Eksp'ort,ri:'EkspO:rt
+reexport,n,,ri:Eksp'O:t,ri:Eksp'ort,ri:'EkspO:rt
+reexport,v,,ri:Eksp'O:t,ri:Eksp'ort,ri:'EkspO:rt
 reexports,,,ri:'EkspO:ts,ri:'Eksports,ri:'EkspO:rts
 ref,,,r'Ef,,
 reface,,,rIf'eIs,,ri:f'eIs
@@ -78603,7 +78612,8 @@ reimpression,,,ri:Impr'ES@n,,
 Reims,,,r'aImz,,r'i:mz
 rein,,,r'eIn,,
 Reinaldo,,,ri:In'O:ldoU,,reIn'QldoU
-reincarnate,,,ri:Ink'AneIt,ri:Ink'ArneIt,ri:Ink'QrneIt
+reincarnate,aj,,ri:Ink'AneIt,ri:Ink'ArneIt,ri:Ink'QrneIt
+reincarnate,v,,ri:Ink'AneIt,ri:Ink'ArneIt,ri:Ink'QrneIt
 reincarnated,,,ri:Ink'AneItId,ri:Ink'ArneItI#d,ri:Ink'QrneItId
 reincarnation,,,ri:InkAn'eIS@n,ri:InkArn'eIS@n,
 reincorporate,,,ri:Ink'O:p@reIt,ri:Ink'orp@`reIt,ri:Ink'O:rp@`eIt
@@ -84827,9 +84837,11 @@ shalom,,,S'al@m,,SAl'oUm
 shalt,,,S'alt,,
 shalwar,,,S'alwO:,S'alwO:r,S'VlwAr
 sham,,,S'am,,
+shama,,,S'Am@,,
 shaman,,,S'am@n,,S'eIm@n
 shamanic,,,Sam'anIk,,S@m'anIk
 shamanism,,,S'am@nIz@m,,S'eIm@nIzm
+shamanist,,,S'ama#nIst,,
 shamanists,,,S'ama#nIsts,,S'eIm@nIsts
 shamans,,,S'am@nz,,S'eIm@nz
 shamas,,,S'Am@z,,S'am@s
@@ -90905,8 +90917,9 @@ suborbital,,,s'VbO:bIt@l,s'VborbIt@l,s@b'O:rbIt@l
 suborder,,,s'VbO:d@,s'Vbord@`,s'VbO:rd@`
 subordinal,,,s'VbO:dIn@l,s'VbordIn@l,s@b'O:rd@n@l
 subordinary,,,s'VbO:dIn@ri:,s'VbordInEri:,s@b'O:rd@nEri:
+subordinate,aj,,sVb'O:dIn@t,sVb'ordI#n@t,s@b'O:rd@neIt
 subordinate,n,,sVb'O:dIn@t,sVb'ordI#n@t,s@b'O:rd@neIt
-subordinate,v,,sVb'O:dIn@t,sVb'ordI#n@t,s@bO:rd@n'eIt
+subordinate,v,,sVb'O:dIn@t,sVb'ordI#n@t,s@b'O:rd@neIt
 subordinated,,,sVb'O:dIn@tId,sVb'ordI#n@tI#d,s@b'O:rd@neItId
 subordinates,,,sVb'O:dIn@ts,sVb'ordI#n@ts,s@b'O:rd@neIts
 subordinating,,,sVb'O:dIn@tIN,sVb'ordI#n@tIN,s@b'O:rd@neItIN
@@ -91758,6 +91771,7 @@ suppressed,,,s@pr'Est,,
 suppresses,,,s@pr'EsIz,s@pr'EsI#z,
 suppressing,,,s@pr'EsIN,,
 suppression,,,s@pr'ES@n,,
+suppressive,,,s@pr'EsIv,,
 suppressor,,,s@pr'Es@,s@pr'Es@`,
 suppurate,,,s'VpjUreIt,,s'Vpj@`eIt
 suppuration,,,sVpjUr'eIS@n,,sVpj@`'eIS@n
@@ -93424,7 +93438,8 @@ teamsters,,,t'i:mst@z,t'i:mst@`z,
 teamwork,,,t'i:mw3:k,,
 teapot,,,t'i:pQt,t'i:pAt,
 teapoy,,,t'i:pOI,,t'i:pQi:
-tear,,,t'i:@,t'Ir,t'Er
+tear,n,,t'i:@,t'Ir,t'Er
+tear,v,,t'e@,t'Er,
 tearaway,,,t'e@r@weI,t'Er@weI,t'e@@weI
 teardown,,,t'i:@daUn,t'IrdaUn,t'e@daUn
 teardrop,,,t'i:@drQp,t'IrdrAp,t'i:rdr@p
@@ -98264,7 +98279,8 @@ unclassifiable,,,Vnkl'asIfaI@b@l,,
 unclassified,,,Vnkl'asIfaId,,
 uncle,,,'VNk@l,,
 unclean,,,Vnkl'i:n,,
-uncleanly,,,Vnkl'i:nli:,,Vnkl'Enli:
+uncleanly,aj,,Vnkl'i:nli:,,Vnkl'Enli:
+uncleanly,av,,Vnkl'i:nli:,,Vnkl'Enli:
 unclear,,,Vnkl'i:@,Vnkl'Ir,Vnkl'i:@`
 unclench,,,Vnkl'EntS,,
 uncles,,,'VNk@lz,,
