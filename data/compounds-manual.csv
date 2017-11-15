@@ -4,6 +4,7 @@ abalone
 abampere
 abate
 abbasid
+abbey
 abed
 abelard
 abelmosk
@@ -15,19 +16,24 @@ academy
 accentor
 accessory
 accordion
+accusatival,accusative=al
 acerbate
 achromatize
 acoustician,acoustic=ian
 Adan
 Adeline
+adiposity,adipose=ity
 adorn
 advertise
 aerometeorograph,aero-meteorograph
+afrikanerdom,afrikaner=dom
 after
 agee
+aggravation,aggravate=ion
 agon
 agonic
 agravic
+aintab
 alabaster
 alamein
 alan
@@ -66,6 +72,7 @@ amate
 ambulatory
 ament
 amiable
+amicability
 amman
 ammonal,ammon-al
 ammonification
@@ -754,7 +761,7 @@ dessau
 detaches,detach=s
 detail
 detailed,detail=ed
-detailer,detail=er
+detailer
 detailing,detail=ing
 details,detail=s
 detour
@@ -784,6 +791,7 @@ disco
 discobolus
 disconcert
 discontent
+discontents,discontent=s
 discord
 discount
 discountable,discount=able
@@ -1180,6 +1188,7 @@ herring
 herry
 Hersey
 heterosexuality,hetero-sexuality
+hexagram
 hiccup
 hickory
 hickwall
@@ -1319,6 +1328,12 @@ invocative,invocate=ive
 involute
 iran
 irate
+irish
+ironside,iron-side
+irresponsibly,irresponsible=y
+irreversibly,irreversible=y
+Irvine
+Irwin
 Islamism
 islamism,islam=ism
 Islamist
@@ -1437,6 +1452,7 @@ leucoma
 levee
 leviable,levy=able
 lexical
+liability
 liable
 liar,lie=er
 libava
@@ -1730,6 +1746,9 @@ oldwife
 olefin
 olefine
 omentum
+omnibuses,omnibus=es
+omnipotence
+omnipotent
 oner,one=er
 onerous
 onto
@@ -1862,6 +1881,7 @@ peninsula,pen-insula
 peninsular,pen-insular
 pennoncel
 pensee
+pentagram
 peptic
 peracid
 perambulate
@@ -1892,6 +1912,7 @@ perkin
 perking,perk=ing
 perlis
 perlite
+permalloy
 permit
 permutate
 permutated,permutate=ed
@@ -1987,6 +2008,7 @@ portend
 portfolio
 portrait
 portray
+possibility
 possible
 postil
 postilion
@@ -2059,6 +2081,7 @@ profit
 profits,profit=s
 profluent
 profs,prof=s
+progestational,pro-gestational
 prognoses
 prognosis
 program
@@ -2117,10 +2140,13 @@ pyrolysis
 pyrosis
 quadrantes
 quadrupedal,quadruped=al
+quahog
+quamash
 quant
 quantize
 quarrian
 quarryman,quarry-man
+quatrain
 quean
 quemoy
 quesnay
@@ -2148,6 +2174,7 @@ rally
 ramakrishna
 rameau
 ramee
+rampage
 rampion
 random
 rankling,rankle=ing
@@ -2159,6 +2186,7 @@ ras,ra=s
 ratafee
 ratan
 ratify
+rationality,rational=ity
 ratline
 rattan
 rawinsonde,rawin-sonde
@@ -2173,6 +2201,7 @@ rebated,rebate=ed
 rebates,rebate=s
 rebeck
 rebel
+rebels,rebel=s
 rebop
 recede
 receded,recede=ed
@@ -2250,6 +2279,7 @@ Regin
 regina
 rego
 regula
+regularity,regular=ity
 regulatory
 reich
 reif
@@ -2317,6 +2347,7 @@ resinous,resin=ous
 resolubleness,resoluble=ness
 resource
 resources,resource=s
+respirable
 respite
 resting,rest=ing
 restrain
@@ -2344,7 +2375,6 @@ retrogradation,retro-gradation
 Reval
 revenue
 revenues,revenue=s
-reversedly,reversed=ly
 revolute
 revolution
 rheotropism
@@ -2704,7 +2734,10 @@ thereanent,there-anent
 therewithal,there-withal
 thermion,therm-ion
 thermoscope
+thermoscope,thermo=scope
 thermostat
+thermostat,thermo=stat
+thermotropism
 thorn
 thorndike
 thuggee
@@ -2715,6 +2748,7 @@ tilbury
 tillich
 timbale
 tipperary
+titlark,tit-lark
 Tobey
 toby
 toffee
@@ -2736,8 +2770,10 @@ torques
 Torrance
 torrent
 Torres
+torsibility
 tory
 tourbillion
+tourmalinic,tourmaline=ic
 tower
 towmont
 toyoda
@@ -2808,6 +2844,7 @@ tropology
 truckee
 trudgen
 truer,true=er
+truest,true=est
 turkmen
 tushy
 twinkling,twinkle=ing
@@ -2816,13 +2853,18 @@ tympany
 Tyree
 ultracentrifugal,ultra-centrifugal
 ultramicrometer,ultra-micrometer
+ultranationalist,ultra-nationalist
 unary
 unco
 unctuously,unctuous=ly
 unde
+undergraduates,undergraduate=s
 underutilized,underutilize=ed
 ungula
+unijugate
+unipotent
 unit
+uniting,unite=ing
 units,unit=s
 university
 unless
@@ -2891,6 +2933,7 @@ weal
 wean
 wearish
 weary
+weatherperson,weather-person
 weed
 weepie
 weer,wee=er
@@ -2900,6 +2943,7 @@ whencesoever,whence-soever
 wherewithal,where-withal
 whimsically,whimsical=ly
 whoremonger,whore-monger
+whoreson,whore-son
 wicked
 Wickes
 wicklow
