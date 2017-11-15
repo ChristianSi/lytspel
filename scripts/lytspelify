@@ -162,7 +162,7 @@ sub build_mapping {
     close $fh;
 
     # Add context-specific spellings to %Lytspel_Set
-    $Lytspel_Set{$_} = 1 for qw/al aw a'w ay c eh n'g nn ow oy si ss s's ti uh/;
+    $Lytspel_Set{$_} = 1 for qw/al aw a'w ay c eh n'g nn ow oy si ss s's ti uh ah oh/;
     return \%dict, $maxkeylen;
 }
 
@@ -268,6 +268,9 @@ sub combine_and_adjust {
             # Final schwa becomes «er» if tradspell ends in ‹r› (typical for non-rhotic RP),
             # otherwise «a» (except in the article 'the')
             $val = $tradspell =~ /r$/ ? 'er' : 'a';
+        } elsif ($val eq 'a') {
+            # Final /a/ may be spelled «ah» (but shoudn't usually occur)
+            $val = 'ah';
         } elsif ($val eq 'e') {
             # Final «e» /E/ becomes «eh»
             $val = 'eh';
@@ -277,6 +280,9 @@ sub combine_and_adjust {
         } elsif ($val eq 'er' && $left =~ /Y$/) {
             # Final /aI@`/ is written «yr», e.g. «fyr, in'spyr» ‹fire, inspire›
             $val = 'r';
+        } elsif ($val eq 'o') {
+            # Final /Q/ may be spelled «oh» (but shoudn't usually occur)
+            $val = 'oh';
         } elsif ($val eq 'u') {
             # Final /V/ is spelled «uh»
             $val = 'uh';
@@ -494,7 +500,7 @@ sub insert_stress_marker_among_multiple_consonants {
     # Burg'soanian, disp'noic, poast'limeni, Fits'patric» ‹temptation, Pyongyang, pontlevis,
     # Bergsonian, dyspnoic, postliminy, Fitzpatrick›
     return insert_after_second $consonants
-        if $consonants =~ /^(m=p=t|n=j=y|n=s=h|n=t=l|r=g=s|s=p=n|s=t=l|t=s=[jpr])$/;
+        if $consonants =~ /^(m=p=t|n=j=y|n=s=h|n=t=l|r=g=s|r=n=y|s=p=n|s=t=l|t=s=[jpr])$/;
 
     # Otherwise break after first of three consonants, or after second of four
     return insert_after_first $consonants if $sep_count == 2;
@@ -507,6 +513,13 @@ sub insert_stress_marker {
     my ($consonants, $hyphenated, $tradspell) = @_;
     my $just_consonants = $consonants =~ s/=//gr;
 
+    $consonants =~ s/=$//;  # drop final '='
+    my $sep_count = () = $consonants =~ /=/g;
+
+    # Usually discard hyphenated sequence ending in 'dl, dr, tr, jm' since it's sometimes
+    # misleading
+    $hyphenated = '' if $consonants =~ /(d=l|[dt]=r|j=m)$/ && $tradspell !~ /^outr/;
+
     # Move stress marker before whole consonant sequence (second fixes a few special cases)
     return insert_at_start $consonants
         if $hyphenated =~ /=$just_consonants/
@@ -517,13 +530,6 @@ sub insert_stress_marker {
     return insert_after_second $consonants
         if $just_consonants =~ /^(ns)(.*)/
         && ($hyphenated =~ /$1=$2/ || $tradspell =~ /trans(ca|g|l|n|v)/i);
-
-    $consonants =~ s/=$//;  # drop final '='
-    my $sep_count = () = $consonants =~ /=/g;
-
-    # Usually discard hyphenated sequence after 'dr, tr' since it sometimes wrongly indicates
-    # that these sequences should be separated
-    $hyphenated = '' if $consonants =~ /[dt]=r$/ && $tradspell !~ /^outr/;
 
     # Three or more consonants
     return insert_stress_marker_among_multiple_consonants $consonants, $hyphenated, $tradspell,
@@ -542,9 +548,9 @@ sub insert_stress_marker {
         || ($consonants eq 'n=s' && $tradspell =~ /^cons/i)
         || ($consonants eq 'p=l' && $tradspell =~ /^popl/i);
 
-    # Break before both consonants if the first is 's' (not followed by 'm')
-    # or if the second is 'l' or 'r' (not preceded by 'r' or 'v')
-    return insert_at_start $consonants if $consonants =~ /^s=[^m]|[^rv]=[lr]$/;
+    # Break before both consonants if the first is 's' (not followed by 'm'), if the second
+    # is 'l' or 'r' (not preceded by 'd', 'r', or 'v'), and in case of 'dr', 'gw', 'gy', 'my'
+    return insert_at_start $consonants if $consonants =~ /^s=[^m]|[^drv]=[lr]|d=r|g=[wy]|m=y$/;
 
     # Otherwise break in middle
     return insert_after_first $consonants;
@@ -562,7 +568,7 @@ sub move_stress_marker {
         if $word !~ /'/
         || $tradspell =~
         /^(abampere$|abaxial$|abirrita|abohm$|aboral$|enactory$|Finsteraarhorn$|inordinacy$|
-           Oberammergau$|subordinat)/x;
+           permalloy$|Oberammergau$|subordinat)/x;
 
     # If the compound contains two stress markers, we keep just the first one
     $word =~ s/('.*)'/$1/ if $word =~ /'.*'/;
@@ -673,16 +679,16 @@ OUTER: while ($rest && $rest_with_sep) {
 
     # Strip trailing separator and remove unnecessary hyphens
     $reconstructed =~ s/=$//;
-    $reconstructed =~ s/-('?r)/=$1/g;     # not needed before «r»
-    $reconstructed =~ s/a-([lw])/a=$1/g;  # not needed for «al, aw»
-    $reconstructed =~ s/e-h/e=h/g;        # not needed for «eh»
-    $reconstructed =~ s/i-er/i=er/g;      # not needed for «ier»
-    $reconstructed =~ s/s-sh/s=sh/g;      # not needed for «ssh» (rarely in foreign words)
-    $reconstructed =~ s/o-e(?!e)/o=e/g;   # not used for «oe»
-    $reconstructed =~ s/o-i=c$/o=i=c/;    # not used for final «oic»
-    $reconstructed =~ s/([st])-i/$1=i/g;  # not needed for «si, ti»
-    $reconstructed =~ s/([iu])-a/$1=a/g;  # not used for «ia, iai, ua, uai»
-    $reconstructed =~ s/-'/'/g;           # not needed before stress marker
+    $reconstructed =~ s/-('?r)/=$1/g;       # not needed before «r»
+    $reconstructed =~ s/a-([lw])/a=$1/g;    # not needed for «al, aw»
+    $reconstructed =~ s/([aeou])-h/$1=h/g;  # not needed for «ah, eh, oh, uh»
+    $reconstructed =~ s/i-er/i=er/g;        # not needed for «ier»
+    $reconstructed =~ s/s-sh/s=sh/g;        # not needed for «ssh» (rarely in foreign words)
+    $reconstructed =~ s/o-e(?!e)/o=e/g;     # not used for «oe»
+    $reconstructed =~ s/o-i=c$/o=i=c/;      # not used for final «oic»
+    $reconstructed =~ s/([st])-i/$1=i/g;    # not needed for «si, ti»
+    $reconstructed =~ s/([iu])-a/$1=a/g;    # not used for «ia, iai, ua, uai»
+    $reconstructed =~ s/-'/'/g;             # not needed before stress marker
 
     # Treat ‹bio..., micro...› as compound, even if the 2nd part isn't listed
     $reconstructed =~ s/o-a/o=a/ if $tradspell =~ /^(bio|micro)/;
@@ -1033,13 +1039,13 @@ sub postprocess_suffixed {
     my ($converted, $base, $suffix, $pos_hint, $tradspell) = @_;
     # Some suffixes are usually derived from a certain POS tag
     $pos_hint = 'n'  if $tradspell eq 'contractor';
-    $pos_hint = 'aj' if $tradspell =~ /^(frequented|liven|lives)$/;
+    $pos_hint = 'aj' if $tradspell =~ /^(frequented|live[ns])$/;
     $pos_hint ||= 'v'
         if $tradspell =~ /^(contently|inversely)$/
         || $suffix =~ /^(able|ed|e?s|ing|or)$/;
     $pos_hint ||= 'aj' if $suffix =~ /^(ize|ly)$/;
     $pos_hint ||= 'n'
-        if $tradspell =~ /^(internist|presentist|progressist|teary)$/
+        if $tradspell =~ /^(essayist|internist|presentist|progressist|teary)$/
         || $suffix =~ /^(ful|less)$/;
     my $conv_base_colref = lookup_part_entry($base, $tradspell, $pos_hint);
     my $conv_base = restore_capitalization $conv_base_colref->[3], $tradspell;
@@ -1048,7 +1054,7 @@ sub postprocess_suffixed {
     # TODO Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if ($suffix =~
-/^(able|ance|ant|ary|ative|ate|atory|dom|ed|en|ence|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|nik|n|oid|or|up|s|y)$/
+/^(.bility|able|ance|ant|ary|ative|ate|atory|dom|ed|en|ence|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|less|ly|ment|ness|nik|n|oid|or|up|s|y)$/
         )
     {
         # ‹ate› is spoken in two different ways (/eIt/ or /It/) so we check which one to use
@@ -1118,6 +1124,9 @@ sub postprocess_suffixed {
         # non-compounds, but after final «ss» they must be treated as compounds to ensure
         # proper conversion)
         $conv_suffix = 'eri' if $tradspell =~ /^(dispensary|glossary)$/;
+
+        # Strip stress marker from base word if the suffix contains another one
+        $conv_base =~ s/'// if $conv_suffix =~ /'/;
 
         return "$conv_base$conv_suffix";
     }
@@ -1327,14 +1336,17 @@ sub lookup_part_entry {
             # Most words ending in -ate are adjectives (e.g. ‹agglutinate›).
             # Most ‹close...› combinations use the adjective.
             $pos = 'aj'
-                if ($part =~ /ate$/ && $tradspell !~ /(able|^predesignate)$/)
+                if ($part =~ /ate$/
+                && $tradspell !~ /(able|^predesignate|^supersaturate|agglutinate)$/)
                 || ($part eq 'close' && $tradspell !~ /^close(down|out|ing|d|s)$|.close$/)
-                || $tradspell =~ /^(infrequent|livebearer|livestock)$/;
+                || $tradspell =~ /^(infrequent|live(bearer|stock)|ungallant)$/;
             $pos = 'n'
                 if ($part =~ /^(concave|congress|house|lead|transfer|transfer|wind)$/
-                && $tradspell !~ /(able|^(${part}e?r|fairlead|mislead|leadoff))$/)
+                && $tradspell !~ /(able|^(${part}e?r|fairlead|mislead|leadoff|unwind))$/)
                 || ($part eq 'concert' && $tradspell =~ /er$/)
-                || $tradspell =~ /^(internship|rebeldom|subcompact|teardrop)$/;
+                || ($part =~ /^mou(se|th)$/ && $tradspell !~ /^$part(ed|e?r|ing|y)$/)
+                || $tradspell =~
+                /^(internship|rebeldom|omnipresent|subcompact|teardrop|semidesert)$/;
         }
 
         $key = gen_key $part, $pos;
@@ -1530,6 +1542,9 @@ sub handle_compound {
             && $first_lytspel =~ /[^ao]y$/
             && $second_lytspel !~ /^$LYTSPEL_CONSONANT_POST_PROC/;
 
+        # The Prefix «ir» becomes just «i» before another «r»
+        $first_lytspel = 'i' if $first_lytspel eq 'ir' && $second_lytspel =~ /^r/ && $stress_hint;
+
         if ($stress_hint && $suffixed && $first =~ /^(out|post)$/) {
             # Combination of "out" or "post" with a suffix are converted like non-compounds
             return undef;
@@ -1608,26 +1623,7 @@ sub convert_dict {
         }
 
    # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
-   # TODO Possibly integrate additional POS-tagged variants (see below) into extra-words.txt
-   # and rename it to .csv (otherwise rename it to .list)
-   # TODO x If a word has n+v, generate the same for «=es|s», e.g. ‹overlaps›
-   # TODO Maybe try switching «or» and «oar» (check whether that improves visual similarity)
-   # TODO Possibly eliminate «c» spelling for /s/ (using «ss» instead), since it causes
-   # inconsistencies with suffixes starting with a schwa after final /s/
-   # TODO Warn if derived words use a different letter case and fix such cases
-   # TODO Add end-of-word spellings such as «eh» to see whether they occur
-   # TODO Document cases where the dictionary is insufficient, e.g. ‹bass, drawer, read,
-   # subsequence, tier, berlin, closer, moped, taxis, simas, viola, viva›
-   # TODO Shift stress marker: «lorn'yet» ‹lorgnette›, not «*lor'nyet»;
-   # «may'iutic» ‹maieutic›, not «*ma'yiutic»; «pay'ee» ‹payee› not «*pa'yee»;
-   # «Iuru'gwayen» ‹Uruguayan› not «*Iurug'wayen»
-   # TODO Custom heuristics (case insensitive): aero- becomes airo- (not airoa-)
-   # TODO Convert final ‹tional› to «tionel» even in words not recognized as compounds
-   # (bidirectional, bifunctional, binational, intranational, irrational, irrotational,
-   # omnidirectional, progestational, suprarational, ultranationalist, unidirectional --
-   # should also fix irrationality)
-   # TODO Maybe generally write final /k/ after unstressed vowels as «c» (not just after /I/)?
-   # TODO Recognise a= /eI/ suffix just before /s, z/, e.g. ‹asymmetry›
+   # TODO x Recognise a= /eI/ suffix just before /s, z/, e.g. ‹asymmetry›
    # TODO Explain that stress markers may move into the main word (e.g. before -ation, -ee),
    # but never into the prefix or across word boundaries in a compound)
    # TODO Maybe try the rule: final «ss» after consonant (except /f, k, p, t, T/) is changed
@@ -1648,6 +1644,7 @@ sub convert_dict {
    # not "hoame"; macro should remain unchanged, not macre or macroa.
    # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
    # vowel as /aI/, GA as /I/ or /@/)
+   # aero- becomes airo- (not airoa-, case insensitive)
    # standardize -meter: -meter should become -miter (-meeter is OK)
    # -morphic: always morfic instead of moarfic
    # -morphism: always morfism instead of moarfism
@@ -1658,6 +1655,7 @@ sub convert_dict {
    # hypo-: probably standardize to hypo even if not recognized as compound
    # probably standardize /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter,
    # e.g. ‹solidary, temporary, voluntary›
+   # -iform: standardize to -iform or maybe -eform
    # Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
    # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
    # ‹monosyllabicity›
@@ -1684,6 +1682,8 @@ sub convert_dict {
    # ‹electronically›
    # TODO Possibly drop Text::Hyphen dependency, instead refining heuristics to fit all cases
    # (e.g. s't should probably always become 'st, except in compounds)
+   # TODO x Document cases where the dictionary is insufficient, e.g. ‹bass, drawer, read,
+   # subsequence, tier, berlin, closer, moped, taxis, simas, viola, viva›
 
         $conv_colref = convert_row $colref, $colref->[0];
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
@@ -1705,6 +1705,7 @@ sub convert_dict {
         # TODO Preferably use and/or instead of &&/|| to minimize the need for parentheses
         # TODO Use Switch::Plain if/where reasonable
         # TODO Run code through Perl::Critic::Freenode
+        # TODO Check whether final «ah, oh» occurs and documents if it does
     }
 
     close $outfh;
