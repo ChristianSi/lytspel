@@ -934,7 +934,8 @@ sub unify_sound {
         return $rp, $ga, $phoneng;
     }
 
-    my $unify_phoneng_too = $rp_elem_count == scalar @phoneng_split;
+    # PhonEng handles «er» /@`/ correctly hence we don't modify it
+    my $unify_phoneng_too = $rp_elem_count == scalar @phoneng_split && $winner ne '@`';
 
     for my $i (0 .. $rp_elem_count - 1) {
         if ($rp_split[$i] =~ /^$alt1$/ && $ga_split[$i] =~ /^$alt2$/) {
@@ -966,8 +967,6 @@ sub unify_sounds {
 
     # Discard GA if identical to RP
     $ga = '' if $ga eq $rp;
-    # Discard PhonEng if identical to RP or GA
-    $phoneng = '' if $phoneng eq $rp || $phoneng eq $ga;
 
     # If PhonEng has /Nk/ where RP/GA have /nk/, use the former as it's usually correct
     if ($phoneng =~ /Nk/ && $rp =~ /nk/) {
@@ -1023,12 +1022,55 @@ sub choose_nearer_or_shorter {
     return ($comp < 0) ? $first : $second;
 }
 
-# select_nearest: Select among the three converted spellings the one that's closest to
-# $tradspell and return it. $converted_ga and $converted_phoneng may be empty.
-sub select_nearest {
-    my ($converted_rp, $converted_ga, $converted_phoneng, $tradspell) = @_;
-    my $choosen = choose_nearer_or_shorter $converted_rp, $converted_ga, $tradspell;
-    return choose_nearer_or_shorter $choosen, $converted_phoneng, $tradspell;
+# select_best: Select the best among the three converted spellings the and return it.
+# $converted_ga and $ga may be empty. Generally PhonEng is preferred, unless it contains
+# vowels where it's know to be unreliable.
+sub select_best {
+    my ($converted_rp, $converted_ga, $converted_phoneng, $rp, $ga, $phoneng, $tradspell) = @_;
+
+    # Select the spelling that's nearest to tradspell
+    my $nearest = choose_nearer_or_shorter $converted_rp, $converted_ga, $tradspell;
+    $nearest = choose_nearer_or_shorter $nearest, $converted_phoneng, $tradspell;
+
+    # If PhonEng is the nearest spelling, return it immediately
+    return $converted_phoneng if $converted_phoneng eq $nearest;
+
+    # If the nearest spelling is similar to PhonEng, return it in some cases where it's
+    # clearly preferably
+    if ($tradspell =~ /^a/i && $nearest =~ /^a/i && $converted_phoneng =~ /^e/i) {
+        # Keep initial 'a', e.g. «abreevi'aition» ‹abbreviation›, not «ebreevi'aition»
+        return $nearest if substr($nearest, 0, 1) . substr($converted_phoneng, 1) eq $nearest;
+    }
+    # Except in proper nounds, keep final 'ed' instead of 'id', e.g. «a'cursed« ‹accursed›
+    return $nearest if $converted_phoneng =~ s/id$/ed/r eq $nearest && $tradspell =~ /^[a-z]/;
+    # Keep 'ess' if PhonEng has 'iss' instead, e.g. «sorseress» ‹sorceress›
+    return $nearest if $converted_phoneng =~ s/iss/ess/r eq $nearest;
+    # Keep 'i' if PhonEng has 'e' instead, e.g. «abdicait» ‹abdicate›, not «abdecait»
+    return $nearest if $converted_phoneng =~ s/e(?!'?r)/i/r eq $nearest;
+    # Keep 'i' if PhonEng has 'ee' instead, e.g. TODO
+    return $nearest if $converted_phoneng =~ s/ee/i/r eq $nearest;
+    # Keep 'tion' if PhonEng has 'chen' instead, e.g. «in'tention» ‹intention›
+    return $nearest if $converted_phoneng =~ s/chen/tion/r eq $nearest;
+
+    my $use_phoneng = $converted_phoneng ? 1 : 0;
+
+    # PhonEng often confuses these tree vowels, hence we don't prefer it if has one of them
+    # but the nearest pronunciation hasn't
+    if ($use_phoneng) {
+        # TODO x Improve selection process and remove warning
+        my $nearest_pron = $nearest eq $converted_rp ? $rp : $ga;
+
+        for my $vowel (qw/A O: Q/) {
+            if ($phoneng =~ $vowel && $nearest_pron !~ $vowel) {
+                warn
+"Found doubtful $vowel in PhonEng for $tradspell: $converted_phoneng ($phoneng)\n";
+                $use_phoneng = 0;
+                last;
+            }
+        }
+    }
+
+    return $use_phoneng ? $converted_phoneng : $nearest;
 }
 
 # postprocess_suffixed ...: Postprocess a suffixed words, restoring original end-of-word spellings
@@ -1289,13 +1331,8 @@ sub convert_row {
 
             # Omit GA if identical to RP
             $converted_ga = '' if $converted_ga eq $converted_rp;
-            # Omit PhonEng if identical to RP or GA
-            $converted_phoneng = ''
-                if $converted_phoneng eq $converted_rp || $converted_phoneng eq $converted_ga;
-
-            # Keep only the spelling that's closest to tradspell
-            $converted = select_nearest $converted_rp, $converted_ga, $converted_phoneng,
-                $tradspell;
+            $converted = select_best $converted_rp, $converted_ga, $converted_phoneng,
+                $rp, $ga, $phoneng, $tradspell;
         }
     } else {
         $converted = $compound;
@@ -1650,7 +1687,10 @@ sub convert_dict {
    # -morphism: always morfism instead of moarfism
    # -metry: standardize
    # -centenary: always [sc]en'teneri
-   # -[t]ed: probably standardize to -ed rather than -id
+   # -ed: probably standardize to -ed rather than -id, ditto ‹edly› to ‹edli›
+   # -ification: ifi'caition, not efi'caition
+   # -[ai]bility: e'biliti (not [ai]'bil[ei]ti) -- unless there are no earlier vowels, e.g.
+   # ‹stability›
    # -ysis: probably standardize to iciss
    # hypo-: probably standardize to hypo even if not recognized as compound
    # probably standardize /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter,
