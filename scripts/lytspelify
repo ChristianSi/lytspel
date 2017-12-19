@@ -683,6 +683,7 @@ OUTER: while ($rest && $rest_with_sep) {
     $reconstructed =~ s/a-([lw])/a=$1/g;    # not needed for «al, aw»
     $reconstructed =~ s/([aeou])-h/$1=h/g;  # not needed for «ah, eh, oh, uh»
     $reconstructed =~ s/i-er/i=er/g;        # not needed for «ier»
+    $reconstructed =~ s/u-err/u=err/g;      # not needed for «uerr»
     $reconstructed =~ s/s-sh/s=sh/g;        # not needed for «ssh» (rarely in foreign words)
     $reconstructed =~ s/o-e(?!e)/o=e/g;     # not used for «oe»
     $reconstructed =~ s/o-i=c$/o=i=c/;      # not used for final «oic»
@@ -1043,11 +1044,13 @@ sub select_best {
     }
     # Except in proper nounds, keep final 'ed' instead of 'id', e.g. «a'cursed« ‹accursed›
     return $nearest if $converted_phoneng =~ s/id$/ed/r eq $nearest && $tradspell =~ /^[a-z]/;
+    # Keep 'e' if PhonEng has 'i' instead, e.g. «e'xentric» ‹eccentric›
+    return $nearest if $converted_phoneng =~ s/(?<![ao])i(?![aeu])/e/r eq $nearest;
     # Keep 'ess' if PhonEng has 'iss' instead, e.g. «sorseress» ‹sorceress›
     return $nearest if $converted_phoneng =~ s/iss/ess/r eq $nearest;
     # Keep 'i' if PhonEng has 'e' instead, e.g. «abdicait» ‹abdicate›, not «abdecait»
     return $nearest if $converted_phoneng =~ s/e(?!'?r)/i/r eq $nearest;
-    # Keep 'i' if PhonEng has 'ee' instead, e.g. TODO
+    # Keep 'i' if PhonEng has 'ee' instead, e.g. «is'tablish» ‹establish›
     return $nearest if $converted_phoneng =~ s/ee/i/r eq $nearest;
     # Keep 'tion' if PhonEng has 'chen' instead, e.g. «in'tention» ‹intention›
     return $nearest if $converted_phoneng =~ s/chen/tion/r eq $nearest;
@@ -1383,7 +1386,7 @@ sub lookup_part_entry {
                 || ($part eq 'concert' && $tradspell =~ /er$/)
                 || ($part =~ /^mou(se|th)$/ && $tradspell !~ /^$part(ed|e?r|ing|y)$/)
                 || $tradspell =~
-                /^(internship|rebeldom|omnipresent|subcompact|teardrop|semidesert)$/;
+                /^(fluidextract|internship|rebeldom|omnipresent|subcompact|teardrop|semidesert)$/;
         }
 
         $key = gen_key $part, $pos;
@@ -1682,17 +1685,27 @@ sub convert_dict {
    # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
    # vowel as /aI/, GA as /I/ or /@/)
    # aero- becomes airo- (not airoa-, case insensitive)
+   # -edly: edli, not idli
    # standardize -meter: -meter should become -miter (-meeter is OK)
+   # -morph: always morf
    # -morphic: always morfic instead of moarfic
    # -morphism: always morfism instead of moarfism
+   # (ditto in derivs such as anamorphoscope)
    # -metry: standardize
    # -centenary: always [sc]en'teneri
+   # -dactyl: -dactil, not -dactl
    # -ed: probably standardize to -ed rather than -id, ditto ‹edly› to ‹edli›
+   # -epi: standardize to e'?pi rather than i'?pi, epe, or epee (epy, i'py may occur)
    # -ification: ifi'caition, not efi'caition
-   # -[ai]bility: e'biliti (not [ai]'bil[ei]ti) -- unless there are no earlier vowels, e.g.
-   # ‹stability›
+   # -ily: -ili, not -eli
+   # -ity: -iti, not -eti
+   # (subsumed under earlier rule: -[ai]bility: e'biliti (not [ai]'bil[ei]ti) --
+   # unless there are no earlier vowels, e.g. ‹stability›)
+   # -neurosis, -neurotic: always like the base word
    # -ysis: probably standardize to iciss
+   # centi-: senti, not sente
    # hypo-: probably standardize to hypo even if not recognized as compound
+   # legitim-: li'jitim, not li'jitem
    # probably standardize /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter,
    # e.g. ‹solidary, temporary, voluntary›
    # -iform: standardize to -iform or maybe -eform
