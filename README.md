@@ -404,10 +404,12 @@ single sound or an r-colored vowel):
     «a'preeshiait, flucchuait, raidiai» ‹appreciate, fluctuate, radii›.
   * «oic» at the end of words is always spoken /oUIk/ (two separate
     vowels), e.g. «hi'roic, stoic» ‹heroic...›.
+  * Double «rr» always forms a trigraph with the vowel to its left, e.g.
+    «Februerri» ‹February› is read as «F-e-b-r-u-err-i».
   * In cases where the previous rules would lead to a misreading, Lytspel
     recommends inserting a hyphen to indicate the correct reading, e.g.
-    «Cro-at, po-it, co-in'syd, co-ope'raition, acchu-eri, Lu-eesi'ana,
-    Aalts-hymer, sheeps-hed» ‹Croat, poet, coincide, cooperation, actuary,
+    «Cro-at, po-it, co-in'syd, co-ope'raition, su-er, Lu-eesi'ana,
+    Aalts-hymer, sheeps-hed» ‹Croat, poet, coincide, cooperation, sewer,
     Louisiana, Alzheimer, sheepshead›.
   * Those who prefer a more classical form may omit the hyphen between two
     vowels and place a diaeresis over the second vowel, e.g. «Croät, poït,
