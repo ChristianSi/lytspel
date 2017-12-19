@@ -174,7 +174,8 @@ Abkhazians,,,a#bkh'eIzi:@nz,,abk'azi:@nz
 ablate,,,a#bl'eIt,,abl'eIt
 ablation,,,a#bl'eIti:@n,,abl'eIS@n
 ablatival,,,'ableItIv@l,,abl@t'aIv@l
-ablative,,,'abl@tIv,,abl'eItIv
+ablative,aj,,'abl@tIv,,abl'eItIv
+ablative,n,,'abl@tIv,,abl'eItIv
 ablaut,,,'ablaUt,,'AblaUt
 ablaze,,,a#bl'eIz,,@bl'eIz
 able,,,'eIb@l,,
@@ -17632,6 +17633,7 @@ civilized,,,s'Iv@laIzd,,
 civilly,,,s'Iv@li:,,s'IvIli:
 civism,,,s'IvIz@m,,
 civvies,,,s'IvIz,,s'Ivi:z
+civvy,,,s'Ivi:,,
 clabber,,,kl'ab@,kl'ab@`,
 clachan,,,kl'atS@n,,kl'Ak@n
 clack,,,kl'ak,,
@@ -18424,6 +18426,7 @@ coccus,,,k'Qk@s,k'Ak@s,
 coccygeal,,,k'QkaIdZ@l,k'AkaIdZ@l,kQks'IdZi:@l
 coccyx,,,k'QkIks,k'AkIks,k'QksIks
 Cochabamba,,,kQtSa#b'amb@,kAtSa#b'amb@,koUtSAb'AmbA
+cochair,,,koUtS'e@,koUtS'Er,
 cochairman,,,koUtS'e@m@n,koUtS'Erm@n,
 cochin,,,k'QtSIn,k'AtSIn,k'oUtSIn
 cochineal,,,k'QtSIni:@l,k'AtSIni:@l,kQtS@n'i:l
@@ -22230,6 +22233,7 @@ crag,,,kr'ag,,
 cragged,,,kr'agd,,kr'agId
 craggedness,,,kr'agdn@s,,kr'agIdnEs
 craggy,,,kr'agi:,,
+crags,,,kr'agz,,
 cragsman,,,kr'agzm@n,,
 craig,,,kr'eIg,,
 Craigie,,,kr'eIdZi:,,kr'eIgi:
@@ -28050,7 +28054,7 @@ dissipated,,,d'IsIpeItId,d'IsI#peItI#d,d'Is@peItId
 dissipatedly,,,d'IsIpeItIdli:,,d'Is@peItIdli:
 dissipatedness,,,d'IsIpeItIdn@s,,d'Is@peItIdnEs
 dissipates,,,d'IsIpeIts,d'IsI#peIts,d'Is@peIts
-dissipating,,,d'IsIpeItIN,,d'Is@peItIN
+dissipating,,,d'IsIpeItIN,d'IsI#peItIN,d'Is@peItIN
 dissipation,,,dIsIp'eIS@n,,
 dissipative,,,d'IsIp@tIv,,d'Is@peItIv
 dissociable,,,dIs'oUSi:@b@l,,
@@ -62741,6 +62745,7 @@ munch,,,m'VntS,,
 munched,,,m'VntSt,,
 munchies,,,m'VntSIz,,m'VntSi:z
 munching,,,m'VntSIN,,
+munchy,,,m'VntSi:,,
 Munda,,,m'Vnd@,,m'Und@
 mundane,,,mVnd'eIn,,m@nd'eIn
 mundanely,,,mVnd'eInli:,,m@nd'eInli:
@@ -74531,6 +74536,7 @@ privacy,,,pr'Iv@si:,pr'aIv@si:,
 privatdocent,,,pr'aIv@tdoUs@nt,,pri:v'AtdoUts'Ent
 private,,,pr'aIv@t,,
 privateer,,,praIv@t'i:@,praIv@t'Ir,praIv@t'i:@`
+privateers,,,praIv@t'i:@z,praIv@t'Irz,
 privateersman,,,praIv@t'i:@zm@n,praIv@t'Irzm@n,
 privately,,,pr'aIv@tli:,,
 privates,,,pr'aIv@ts,,
