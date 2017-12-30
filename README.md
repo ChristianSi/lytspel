@@ -404,6 +404,9 @@ single sound or an r-colored vowel):
     «a'preeshiait, flucchuait, raidiai» ‹appreciate, fluctuate, radii›.
   * «oic» at the end of words is always spoken /oUIk/ (two separate
     vowels), e.g. «hi'roic, stoic» ‹heroic...›.
+  * Since final /OI/ is spelled «oy», final «oi» unambiguously represents
+    the two vowels /oUi:/. This combination occasionally occurs in derived
+    words, e.g. «shoi» ‹showy› from «sho» ‹show›.
   * Double «rr» always forms a trigraph with the vowel to its left, e.g.
     «Februerri» ‹February› is read as «F-e-b-r-u-err-i».
   * In cases where the previous rules would lead to a misreading, Lytspel
