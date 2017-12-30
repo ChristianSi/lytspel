@@ -1176,6 +1176,7 @@ allots,allot=s
 allotted,allot=ed
 allottee,allot=ee
 allotting,allot=ing
+allotypic,allotype=ic
 allover,all-over
 allowable,allow=able
 allowableness,allowable=ness
@@ -1292,13 +1293,21 @@ amberjack,amber-jack
 amberoid,amber=oid
 ambers,amber=s
 ambery,amber=y
-ambidexterity,ambidexter=ity
+ambidexter,ambi=dexter
+ambidexterity,ambi=dexterity
 ambidextrously,ambidextrous=ly
 ambidextrousness,ambidextrous=ness
+ambiguities,ambiguity=es
 ambiguously,ambiguous=ly
 ambiguousness,ambiguous=ness
+ambilateral,ambi=lateral
+ambisexual,ambi=sexual
+ambisonics,ambi=sonics
+ambitendency,ambi=tendency
 ambitions,ambition=s
 ambitiously,ambitious=ly
+ambiversion,ambi=version
+ambivert,ambi=vert
 ambled,amble=ed
 ambles,amble=s
 ambrosially,ambrosial=ly
@@ -1404,7 +1413,6 @@ amusive,amuse=ive
 amusiveness,amusive=ness
 amylic,amyl=ic
 amyloid,amyl=oid
-amylopsin,amyl-opsin
 anachronisms,anachronism=s
 anachronously,anachronous=ly
 anacreontic,anacreon=tic
@@ -1428,6 +1436,7 @@ analyzes,analyze=s
 analyzing,analyze=ing
 anarchic,anarch=ic
 anarchical,anarchic=al
+anarchically,anarchical=ly
 anarchist,anarch=ist
 anarchists,anarchist=s
 anarchy,anarch=y
@@ -1520,7 +1529,7 @@ animators,animator=s
 animists,animist=s
 animosities,animosity=es
 anionic,anion=ic
-anisic,anis=ic
+anisic,anise=ic
 anklebone,ankle-bone
 ankles,ankle=s
 anklets,anklet=s
@@ -1612,6 +1621,7 @@ antennas,antenna=s
 antenuptial,ante-nuptial
 anteorbital,ante-orbital
 antepenult,ante-penult
+antepenultimate,ante-penultimate
 anteprandial,ante-prandial
 anteriority,anterior=ity
 anteriorly,anterior=ly
@@ -1679,6 +1689,7 @@ antidepressant,anti=depressant
 antidepressants,anti=depressants
 antiderivative,anti=derivative
 antidiscrimination,anti=discrimination
+antidisestablishmentarianism,anti=disestablishmentarianism
 antidote,anti=dote
 antidrug,anti=drug
 antidumping,anti=dumping
@@ -1775,10 +1786,10 @@ antisocially,anti=socially
 antisolar,anti=solar
 antispasmodic,anti=spasmodic
 antistatic,anti=static
-antistrophe,anti=strophe
 antistrophic,anti=strophic
 antisubmarine,anti=submarine
 antisymmetric,anti=symmetric
+antisyphilitic,anti=syphilitic
 antitakeover,anti=takeover
 antitank,anti=tank
 antitax,anti=tax
@@ -1790,10 +1801,10 @@ antitoxin,anti=toxin
 antitoxins,anti=toxins
 antitrade,anti=trade
 antitrades,anti=trades
-antitragus,anti=tragus
 antitrust,anti=trust
 antitype,anti=type
 antiunion,anti=union
+antivenene,anti=venene
 antiviral,anti=viral
 antivivisectionism,anti=vivisectionism
 antivivisectionist,anti=vivisectionist
@@ -1808,7 +1819,6 @@ antrorsely,antrorse=ly
 ants,ant=s
 antsy,ants=y
 antthrush,ant-thrush
-anucleated,anucleate=ed
 anxieties,anxiety=es
 anxiously,anxious=ly
 anybody,any-body
@@ -1848,6 +1858,7 @@ apocarpous,apocarp=ous
 apochromatic,apochromat=ic
 apocryphally,apocryphal=ly
 apocryphalness,apocryphal=ness
+apogean,apogee=an
 apolitically,apolitical=ly
 apologetics,apologetic=s
 apologies,apology=es
@@ -1939,6 +1950,7 @@ appraiser,appraise=er
 appraisers,appraiser=s
 appraises,appraise=s
 appraising,appraise=ing
+appreciably,appreciable=y
 appreciated,appreciate=ed
 appreciates,appreciate=s
 appreciating,appreciate=ing
@@ -2427,7 +2439,6 @@ asynchronously,asynchronous=ly
 ateliers,atelier=s
 aten,ate=n
 ates,ate=s
-athanasian,athanasia=n
 atheistic,atheist=ic
 atheists,atheist=s
 athenian,athene=ian
@@ -2548,7 +2559,6 @@ auditor,audit=or
 auditoriums,auditorium=s
 auditors,auditor=s
 audits,audit=s
-auger,aug=er
 augers,auger=s
 augmentable,augment=able
 augmentation,augment=ation
@@ -2731,6 +2741,7 @@ avoiding,avoid=ing
 avoids,avoid=s
 avowal,avow=al
 avowed,avow=ed
+avulsed,avulse=ed
 awaited,await=ed
 awaiting,await=ing
 awaits,await=s
@@ -2773,6 +2784,7 @@ axles,axle=s
 axletree,axle-tree
 axman,ax-man
 axons,axon=s
+axseed,ax-seed
 ayatollahs,ayatollah=s
 ayers,ayer=s
 ayes,aye=s
@@ -3355,7 +3367,6 @@ basutoland,basuto-land
 batboy,bat-boy
 batboys,batboy=s
 batches,batch=es
-bateaux,bate-aux
 bated,bate=ed
 bates,bate=s
 batfish,bat-fish
@@ -9013,7 +9024,6 @@ connate,conn=ate
 connately,connate=ly
 connaturally,connatural=ly
 connaturalness,connatural=ness
-connaught,conn-aught
 connected,connect=ed
 connectedly,connected=ly
 connectedness,connected=ness
@@ -12900,6 +12910,7 @@ disequilibrium,dis=equilibrium
 disestablish,dis=establish
 disestablishment,dis=establishment
 disestablishmentarian,dis=establishmentarian
+disestablishmentarianism,disestablishmentarian=ism
 disesteem,dis=esteem
 disfavor,dis=favor
 disfavoring,dis=favoring
@@ -33842,7 +33853,6 @@ penthouse,pent-house
 penthouses,penthouse=s
 pentiums,pentium=s
 penultima,pen-ultima
-penultimate,pen-ultimate
 penumbra,pen-umbra
 penwiper,pen-wiper
 peonies,peony=es

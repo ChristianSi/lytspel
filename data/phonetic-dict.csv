@@ -6697,7 +6697,8 @@ augur,,,'O:g@,'O:g@`,
 auguring,,,'O:g@rIN,'O:gj@`rIN,'O:g@`IN
 augurs,,,'O:g@z,'O:g@`z,
 augury,,,'O:gjUri:,,'O:gj@`i:
-august,,,'O:g@st,,O:g'Vst
+august,aj,,'O:g@st,,O:g'Vst
+august,n,,'O:g@st,,O:g'Vst
 Augusta,,,O:g'Vst@,,
 Augustan,,,'O:g@stan,,O:g'Vst@n
 auguste,,,'O:gVst,,'O:g@st
@@ -7108,6 +7109,7 @@ avowal,,,a#v'aU@l,,@v'aU@l
 avowed,,,a#v'aUd,,@v'aUd
 avowedly,,,a#v'aUIdlI,a#v'aUIdli:,@v'aU@dli:
 avowry,,,a#v'aUri:,,@v'aUri:
+avulse,,,'avVls,,
 avulsed,,,'avVlzd,,@v'VlsId
 avulsion,,,'avVlS@n,,@v'VlS@n
 avuncular,,,av'VnkjUl@,av'VnkjUl@`,@v'VNkj@l@`
@@ -25754,7 +25756,7 @@ deprecative,,,d'EprIk@tIv,,d'Epr@keItIv
 deprecatory,,,d'EprIk@t@ri:,d'EprIk@tori:,d'Epr@k@tori:
 depreciable,,,dIpr'i:SI@b@l,,dIpr'i:Si:@b@l
 depreciate,,,dIpr'i:SIeIt,,dIpr'i:Si:eIt
-depreciated,,,dIpr'i:SIeItId,dIpr'i:SIeItI#d,dIpr'i:Si:eItId
+depreciated,,,dIpr'i:SIeItId,,dIpr'i:Si:eItId
 depreciates,,,dIpr'i:SIeIts,,dIpr'i:Si:eIts
 depreciating,,,dIpr'i:SIeItIN,,dIpr'i:Si:eItIN
 depreciation,,,dIpri:SI'eIS@n,,dIpri:Si:'eIS@n
@@ -27614,6 +27616,7 @@ disequilibrium,,,dIsi:kwIl'Ibri:@m,dIsi:kwI#l'Ibri:@m,dIsi:kw@l'Ibri:@m
 disestablish,,,dIsIst'ablIS,,dIsEst'ablIS
 disestablishment,,,dIsIst'ablISm@nt,,
 disestablishmentarian,,,dIsIstablISm@nt'e@ri:@n,dIsIstablISm@nt'Eri:@n,dIsEstablISm@nt'e@i:@n
+disestablishmentarianism,,,dIsIstablISm@nt'e@ri:@nIz@m,dIsIstablISm@nt'Eri:@nIz@m,
 disesteem,,,dIsEst'i:m,,dIs@st'i:m
 diseur,,,dIs'3:,dIs'Ur,di:z'3:
 diseuse,,,dIsj'u:s,,di:Z'Ez
@@ -32633,7 +32636,7 @@ eradicable,,,Ir'adIk@b@l,,Ir'ad@k@b@l
 eradicant,,,Ir'adIk@nt,,Ir'ad@k@nt
 eradicate,,,Ir'adIkeIt,Ir'adI#keIt,Ir'ad@keIt
 eradicated,,,Ir'adIkeItId,Ir'adI#keItI#d,Ir'ad@keItId
-eradicating,,,Ir'adIkeItIN,Ir'adI#keItIN,Ir'ad@keItIN
+eradicating,,,Ir'adIkeItIN,,Ir'ad@keItIN
 eradication,,,IradIk'eIS@n,,Irad@k'eIS@n
 eras,,,'i@@z,,'Ir@z
 erasable,,,Ir'eIz@b@l,Ir'eIs@b@l,'i:reIs@b@l
@@ -92735,6 +92738,7 @@ syphers,,,s'aIf@z,s'aIf@`z,s'If@`z
 syphilis,,,s'If@lIs,s'If@lI#s,
 syphilisation,,syphilization
 syphilise,,syphilize
+syphilitic,,,saIfIl'ItIk,,
 syphilization,,,saIfIlaIz'eIS@n,,sIf@lIz'eIS@n
 syphilize,,,s'aIfIlaIz,,s'If@laIz
 syphiloid,,,s'aIfIlOId,,s'If@lOId
@@ -101193,6 +101197,7 @@ vendue,,,v'Endju:,v'Endu:,vEnd'u:
 veneer,,,vEn'i:@,vEn'Ir,v@n'i:r
 veneering,,,vEn'i@IN,vEn'IrIN,v@n'i:rIN
 veneers,,,vEn'i:@z,vEn'Irz,v@n'Irz
+venene,,,v'Eni:n,,
 venenose,,,v'En@noUz,,v'En@noUs
 venepuncture,,,v'EnIpVNktS@,v'EnIpVNktS@`,v'En@pVNktS@`
 venerable,,,v'En@r@b@l,v'En@`r@b@l,v'En@`@b@l
