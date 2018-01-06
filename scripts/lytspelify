@@ -1,7 +1,7 @@
 #!/usr/bin/perl -CA
 # Convert phonetic SAMPA spellings into Lytspel.
 #
-# Copyright (c) 2016-17 Christian Siefkes
+# Copyright (c) 2016-18 Christian Siefkes
 # See accompanying LICENSE.txt file for licensing information.
 #
 # Required modules: Const::Fast, Text::LevenshteinXS, and those listed in PhonEng.pm.
@@ -456,17 +456,19 @@ sub insert_stress_marker_among_multiple_consonants {
     my $left     = '';
     my $left_sep = '';
 
-    # Break before last three consonants, e.g. «di'scription, in'struction, converrsaa'tsyoneh»
-    # ‹description, instruction, conversazione›
-    if ($consonants =~ /(s=c=r|s=t=r|t=s=y)$/) {
+    # Break before last three consonants, e.g. «di'scription, e'spresso, in'struction,
+    # converrsaa'tsyoneh» ‹description, espresso, instruction, conversazione›
+    if ($consonants =~ /(s=c=r|s=p=[lr]|s=t=r|t=s=y)$/ && $tradspell !~ /^([dm][iy]|juri)sp/) {
         return $sep_count == 2 ? insert_at_start $consonants : insert_after_first $consonants;
     }
 
-    # Break after second consonant, e.g. «temp'taition, Pyonj'yang, pont'leviss,
-    # Burg'soanian, disp'noic, poast'limeni, Fits'patric» ‹temptation, Pyongyang, pontlevis,
-    # Bergsonian, dyspnoic, postliminy, Fitzpatrick›
+    # Break after second consonant, e.g. «temp'taition, punc'tiliass, Pyonj'yang, pont'leviss,
+    # Burg'soanian, disp'noic, poast'limeni, Fits'patric» ‹temptation, punctilious, Pyongyang,
+    # pontlevis, Bergsonian, dyspnoic, postliminy, Fitzpatrick›
     return insert_after_second $consonants
-        if $consonants =~ /^(m=p=t|n=j=y|n=s=h|n=t=l|r=g=s|r=n=y|s=p=n|s=t=l|t=s=[jpr])$/;
+        if $consonants =~
+        /^(l=f=[cw]|m=p=t|n=c=[nt]|n=j=y|n=s=h|n=t=[cglp]|r=g=s|r=n=y|r=p=t|s=p=n|s=t=[ml]|
+        t=s=[jpr])$/x;
 
     # Otherwise break after first of three consonants, or after second of four
     return insert_after_first $consonants if $sep_count == 2;
@@ -482,12 +484,21 @@ sub insert_stress_marker {
     $consonants =~ s/=$//;  # drop final '='
     my $sep_count = () = $consonants =~ /=/g;
 
-    # Move stress marker before whole consonant sequence (fixes a few special cases)
-    return insert_at_start $consonants if $tradspell =~ '^(respir|Samothracian$)';
+    # Move stress marker before whole consonant sequence ...
+    return insert_at_start $consonants
+        # if the «sf» in ‹spher› is stressed
+        if ($consonants =~ /s=f/ && $tradspell =~ /spher/)
+        # e.g. «bi'smurch, bi'spred» ‹besmirch, bespread›
+        || ($consonants =~ /^s=/ && $tradspell =~ /^bes[mp]/)
+        # fixes a few special cases
+        || $tradspell =~ '^(respir|Samothracian$)';
 
-    # Break after 'ns', if $tradspell contains 'trans' (followed by ca|g|l|n|v)
+    # Break after 'ns', if $tradspell contains 'trans' followed by ca|pa|po|pu|g|f|l|m|n|v
+    # (in most cases)
     return insert_after_second $consonants
-        if $just_consonants =~ /^(ns)(.*)/ && $tradspell =~ /trans(ca|g|l|n|v)/i;
+        if $just_consonants =~ /^(ns)(.*)/
+        && $tradspell =~ /trans(ca|p[aou]|[gflmnv])/i
+        && $tradspell ne 'transponder';
 
     # Three or more consonants
     return insert_stress_marker_among_multiple_consonants $consonants, $tradspell, $sep_count
@@ -510,13 +521,14 @@ sub insert_stress_marker {
         || ($consonants eq 's=l' && $tradspell =~ /^([A-BD-X]|cisl|legis|mouss)/)
         || ($consonants eq 'c=l' && $tradspell =~ /^Ma?cL/i)
         || ($consonants eq 'n=s' && $tradspell =~ /^cons/i)
-        || ($consonants eq 'p=l' && $tradspell =~ /^popl/i);
+        || ($consonants eq 'p=l' && $tradspell =~ /^popl/i)
+        || ($consonants eq 'p=r' && $tradspell =~ /^upr/i);
 
-    # Break before both consonants if the first is 's' (not followed by 'ch', 'd', 'm', or 'th'),
-    # if the second is 'l' or 'r' (not preceded by 'd', 'r', or 'v'),
-    # and in case of 'dr', 'gw', 'gy', 'my'
+    # Break before both consonants if the first is 's' (not followed by ch|th|d|f|m),
+    # if the second is 'l' (not preceeded by d|m|n|r|t|v|?h) or 'r' (not preceeded by l|m|n),
+    # and in case of gw|gy|my
     return insert_at_start $consonants
-        if $consonants =~ /^s=(?!ch|d|m|th)|[^drv]=[lr]|d=r|g=[wy]|m=y$/;
+        if $consonants =~ /^s=(?![ct]h|[dfm])|[^dmnrtvh]=l|[^lmn]=r|g=[wy]|m=y$/;
 
     # Otherwise break in middle
     return insert_after_first $consonants;
