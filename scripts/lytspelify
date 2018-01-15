@@ -463,12 +463,15 @@ sub insert_stress_marker_among_multiple_consonants {
     }
 
     # Break after second consonant, e.g. «temp'taition, punc'tiliass, Pyonj'yang, pont'leviss,
-    # Burg'soanian, disp'noic, poast'limeni, Fits'patric» ‹temptation, punctilious, Pyongyang,
-    # pontlevis, Bergsonian, dyspnoic, postliminy, Fitzpatrick›
+    # Burg'soanian, dipart'mentl, disp'noic, poast'limeni, Fits'patric» ‹temptation,
+    # punctilious, Pyongyang, pontlevis, Bergsonian, departmental, dyspnoic, postliminy,
+    # Fitzpatrick›
     return insert_after_second $consonants
         if $consonants =~
-        /^(l=f=[cw]|m=p=t|n=c=[nt]|n=j=y|n=s=h|n=t=[cglp]|r=g=s|r=n=y|r=p=t|s=p=n|s=t=[ml]|
-        t=s=[jpr])$/x;
+        /^( l=c=m | l=f=[cw] | m=p=t | n=c=[nt] | n=j=y | n=s=h | n=t=[cghlp] | r=c=[mt]
+          | r=d=[nv] | r=g=s | r=m=w | r=n=[mwy] | r=p=[nst] | r=s=f | r=t=[fms] | r=th=w
+          | s=p=n | s=t=[ml] | t=s=[jpr] )$/x
+        || $tradspell eq 'Kaiserslautern';
 
     # Otherwise break after first of three consonants, or after second of four
     return insert_after_first $consonants if $sep_count == 2;
@@ -519,16 +522,18 @@ sub insert_stress_marker {
         # Break s'l in the middle of most proper nouns and a few other words,
         # e.g. «Is'laam, lejis'laition» ‹Islam, legislation›
         || ($consonants eq 's=l' && $tradspell =~ /^([A-BD-X]|cisl|legis|mouss)/)
+        || ($consonants eq 'b=r' && $tradspell =~ /^subr/i)
         || ($consonants eq 'c=l' && $tradspell =~ /^Ma?cL/i)
         || ($consonants eq 'n=s' && $tradspell =~ /^cons/i)
         || ($consonants eq 'p=l' && $tradspell =~ /^popl/i)
-        || ($consonants eq 'p=r' && $tradspell =~ /^upr/i);
+        || ($consonants eq 'p=r' && $tradspell =~ /^upr/i)
+        || ($consonants eq 't=r' && $tradspell =~ /^outr/i);
 
-    # Break before both consonants if the first is 's' (not followed by ch|th|d|f|m),
-    # if the second is 'l' (not preceeded by d|m|n|r|t|v|?h) or 'r' (not preceeded by l|m|n),
-    # and in case of gw|gy|my
+    # Break before both consonants if the first is 's' (not followed by ch|th|b|d|f|m|n),
+    # if the second is 'l' (not preceeded by d|m|n|r|t|v|?h) or 'r' (not preceeded by l|m|n|z),
+    # and in case of gw|gy|my|tw
     return insert_at_start $consonants
-        if $consonants =~ /^s=(?![ct]h|[dfm])|[^dmnrtvh]=l|[^lmn]=r|g=[wy]|m=y$/;
+        if $consonants =~ /^s=(?![ct]h|[bdfmn])|[^dmnrtvh]=l|[^lmnz]=r|g=[wy]|m=y|t=w$/;
 
     # Otherwise break in middle
     return insert_after_first $consonants;
@@ -545,8 +550,8 @@ sub move_stress_marker {
     return $word
         if $word !~ /'/
         || $tradspell =~
-        /^(abampere$|abaxial$|abirrita|abohm$|aboral$|enactory$|Finsteraarhorn$|inordinacy$|
-           permalloy$|Oberammergau$|subordinat)/x;
+        /^(abampere$|abaxial$|abirrita|abohm$|aboral$|antalkali$|enactory$|Finsteraarhorn$
+          |inordinacy$|permalloy$|Oberammergau$|subordinat)/x;
 
     # If the compound contains two stress markers, we keep just the first one
     $word =~ s/('.*)'/$1/ if $word =~ /'.*'/;
@@ -1553,10 +1558,16 @@ sub handle_compound {
 
         # /aI/ is written «ai» before vowels: adjust at the end of prefixes such as
         # «by» ‹bi›
-        $first_lytspel =~ s/y/ai/
+        $first_lytspel =~ s/y$/ai/
             if $stress_hint
             && $first_lytspel =~ /[^ao]y$/
             && $second_lytspel !~ /^$LYTSPEL_CONSONANT_POST_PROC/;
+
+        # Prefixes ending in «ay/oy» are written «ai/oi» before consonants, e.g. «ai» ‹a›
+        $first_lytspel =~ s/y$/i/
+            if $stress_hint
+            && $first_lytspel =~ /[ao]y$/
+            && $second_lytspel =~ /^$LYTSPEL_CONSONANT_POST_PROC/;
 
         # The Prefix «ir» becomes just «i» before another «r»
         $first_lytspel = 'i' if $first_lytspel eq 'ir' && $second_lytspel =~ /^r/ && $stress_hint;
@@ -1564,6 +1575,13 @@ sub handle_compound {
         if ($stress_hint && $suffixed && $first =~ /^(out|post)$/) {
             # Combination of "out" or "post" with a suffix are converted like non-compounds
             return undef;
+        }
+
+        if ($stress_hint && $first eq 'a') {
+            # The prefix 'a' may be pronounced /eI/ or /a/ -- we check the pronunciation and
+            # fix if it's the latter
+            my $pron = $colref->[5] || $colref->[3];  # prefer PhonEng, use RP as fallback
+            $first_lytspel = 'a' if $pron =~ /^[a@]/ || $tradspell eq 'asea';
         }
 
         if ($suffixed && !$stress_hint) {
@@ -1574,7 +1592,7 @@ sub handle_compound {
         $compound = "$first_lytspel$second_lytspel";
 
         if ($stress_hint eq '1' || $compound_stress eq '1') {
-            $second_lytspel =~ s/'//;  # delete stress marker from 2nd part, if any
+            $second_lytspel =~ s/'//;                 # delete stress marker from 2nd part, if any
             $compound = "$first_lytspel$second_lytspel";
         } elsif ($stress_hint eq '2' || $compound_stress eq '2') {
             # Insert stress marker before 2nd part (unless it already contains one)
