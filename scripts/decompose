@@ -72,11 +72,12 @@ sub build_dict {
     return \%dict;
 }
 
-# build_affix_set $filename: Build a set of affixes (pre- or suffixes).
+# build_affix_set $filename, $min_length: Build a set of affixes (pre- or suffixes).
+# Affixes with less than $min_length letters are skipped.
 # Returns a reference to a set of affixes (a hash with dummy values).
 # Also returns the minimun and maximum affix length.
 sub build_affix_set {
-    my ($filename) = @_;
+    my ($filename, $min_length) = @_;
     my %prefix_set;
     my $min_prefix_len = 1000;
     my $max_prefix_len = 0;
@@ -85,8 +86,11 @@ sub build_affix_set {
 
     while (my $line = <$file>) {
         chomp $line;
-        $prefix_set{$line} = 1;
         my $len = length $line;
+
+        next if $len < $min_length;
+
+        $prefix_set{$line} = 1;
         $min_prefix_len = min $min_prefix_len, $len;
         $max_prefix_len = max $max_prefix_len, $len;
     }
@@ -445,8 +449,10 @@ sub find_parts {
 # decompose: Recognize compounds and derived forms.
 sub decompose {
     $Dict_Ref = build_dict;
-    my ($prefix_set_ref, $min_prefix_len, $max_prefix_len) = build_affix_set 'prefix.list';
-    my ($suffix_set_ref, $min_suffix_len, $max_suffix_len) = build_affix_set 'suffix.list';
+    # Single-letter prefixes (such as 'a') are skipped -- add suitable entries manually
+    # (when required) to prevent too many detection errors
+    my ($prefix_set_ref, $min_prefix_len, $max_prefix_len) = build_affix_set 'prefix.list', 2;
+    my ($suffix_set_ref, $min_suffix_len, $max_suffix_len) = build_affix_set 'suffix.list', 1;
     my $manual_entries_ref = build_manual_entries_dict;
     ($Blacklist1_Ref, $Blacklist2_Ref, $Whitelist_Ref) = build_black_and_white_list;
     my $outfh = open_outfile_and_write_header $OUT_FILE, [qw(Word Parts)];
