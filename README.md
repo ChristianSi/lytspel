@@ -38,7 +38,7 @@ of English.
 > con'siderd strongger dhan dhe udher. Dhen dhe North Wind blu as hard as
 > hi cood, but dhe mor hi blu dhe mor cloassli did dhe traveler foald his
 > cloak e'round him; and at last dhe North Wind gaiv up dhe a'tempt. Dhen
-> dhe Sun shynd out wormli, and i'meedietli dhe traveler took of his cloak.
+> dhe Sun shynd out wormli, and i'meediatli dhe traveler took of his cloak.
 > And so dhe North Wind wos o'blyjd to con'fess dhat dhe Sun wos dhe
 > strongger ov dhe tu.
 >
