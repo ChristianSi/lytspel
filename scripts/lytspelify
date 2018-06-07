@@ -80,7 +80,7 @@ my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acro
     quadrantal quadrupedal reclusive renewal sabbatical satanic shamanic sinistrality
     subordinative sultanic sycophantic synonymous talismanic testimonial tribadic tympanic/;
 
-# TODO Switch to Upper_Camel_Case for file-scoped variables (in all files)
+# TODO Switch to Upper_Camel_Case for file-scoped variables
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
 
@@ -1382,11 +1382,7 @@ sub lookup_part_entry {
             unless ($unconv_colref) {
                 $key = gen_key $part, 'aj';
                 $unconv_colref = $UNCONVERTED_DICT_REF->{$key};
-
-                unless ($unconv_colref) {
-                    warn "No entry found for $key\n";
-                    return;
-                }
+                die "No entry found for $key\n" unless $unconv_colref;
             }
         }
     }
@@ -1458,6 +1454,8 @@ sub handle_compound {
         my ($first, $second) = split /-/, $parts;
         my $first_conv_colref  = lookup_part_entry $first,  $tradspell, $pos;
         my $second_conv_colref = lookup_part_entry $second, $tradspell, $pos;
+        die "First part $first of compound $tradspell not found\n" unless $first_conv_colref;
+        die "Second part $second of compound $tradspell not found\n" unless $second_conv_colref;
         $first_lytspel = restore_capitalization $first_conv_colref->[3], $tradspell;
         $second_lytspel = lc $second_conv_colref->[3];
 
@@ -1544,7 +1542,8 @@ sub handle_compound {
         # The part not yet defined must be a regular entry
         unless ($first_lytspel) {
             my $first_conv_colref = lookup_part_entry $first, $tradspell, $pos;
-            die "Part $first not found while processing $tradspell\n" unless $first_conv_colref;
+            die "Part $first not found while processing $tradspell\n"
+                unless $first_conv_colref && $first_conv_colref->[3];
             $first_lytspel = restore_capitalization $first_conv_colref->[3], $tradspell;
         }
 
@@ -1552,7 +1551,8 @@ sub handle_compound {
             # Lookup second part in regular dictionary if it's not a suffix or in case
             # of prefix='able' combinations such as 'unable'
             my $second_conv_colref = lookup_part_entry $second, $tradspell, $pos;
-            die "Part $second not found while processing $tradspell\n" unless $second_conv_colref;
+            die "Part $second not found while processing $tradspell\n"
+                unless $second_conv_colref && $second_conv_colref->[3];
             $second_lytspel = lc $second_conv_colref->[3];
         }
 
@@ -1671,13 +1671,14 @@ sub convert_dict {
    # ‹micro-› should become «mycro» instead of mycre/mycroa, e.g. ‹microdont›
    # ‹electro› should become «ilectro» rather than «...oa»
    # ‹-genesis›: always «jeneciss», not "jeniciss";
-   # -olysis: always «oleciss», not "oliciss"
+   # -olysis: probably always «oleciss», not "oliciss"; -alysis likewise
    # ditto ‹mono› -> «mono» (?)
    # psycho-: syco, not syco
    # ‹hypo-› should remain unchanged, not "hype"; ‹homo› should become «hoamo»,
    # not "hoame"; macro should remain unchanged, not macre or macroa.
    # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
    # vowel as /aI/, GA as /I/ or /@/)
+   # -ate: probably always -it instead of -et (or vice versa)
    # aero- becomes airo- (not airoa-, case insensitive)
    # -edly: edli, not idli
    # standardize -meter: -meter should become -miter (-meeter is OK)
@@ -1685,24 +1686,38 @@ sub convert_dict {
    # -morphic: always morfic instead of moarfic
    # -morphism: always morfism instead of moarfism
    # (ditto in derivs such as anamorphoscope)
-   # -metry: standardize
+   # -metry, -etry: standardize
+   # -metropia: always me'troapia, not mi'troapia
    # -centenary: always [sc]en'teneri
-   # -dactyl: -dactil, not -dactl
+   # -esthesia: always es'theezha, not is'theezha or [ei]s'theesia
+   # -esthetic: probably always es'thetic, not is'thetic
+   # -dactyl: probably -dactil, not -dactl; likewise -dactylous (or both vice versa?)
    # -ed: probably standardize to -ed rather than -id, ditto ‹edly› to ‹edli›
    # -epi: standardize to e'?pi rather than i'?pi, epe, or epee (epy, i'py may occur)
+   # -ess: probably ess, not iss
+   # -ficative: -ficaitiv, not -fecaitiv
    # -ification: ifi'caition, not efi'caition
+   # -ify: -ifi, not -efi
    # -ily: -ili, not -eli
-   # -inal: probably -inel, not -enel
+   # -inal: always -inel, not -enel
+   # -inous: inuss, not enuss
    # -ity: -iti, not -eti
    # (subsumed under earlier rule: -[ai]bility: e'biliti (not [ai]'bil[ei]ti) --
-   # unless there are no earlier vowels, e.g. ‹stability›)
+   # unless there are no earlier vowels, e.g. ‹stability›; should use pre-stressed e:
+   # palatability)
+   # unstressed -let: let or lit?
+   # -lecithal: lecithel, not lecethel
    # -neurosis, -neurotic: always like the base word
    # -ysis: probably standardize to iciss
    # centi-: senti, not sente
    # hypo-: probably standardize to hypo even if not recognized as compound
    # legitim-: li'jitim, not li'jitem
+   # -physis: probably ficiss, not feciss (cf. physial which should be OK)
+   # -sclerosis: probably always scle'roaciss, not scli'roaciss
+   # -thesis: standardize to theciss or thiciss (theeciss if stressed?)
    # probably standardize /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter,
    # e.g. ‹solidary, temporary, voluntary›
+   # -ylate: ilait, not elait
    # -iform: standardize to -iform or maybe -eform
    # Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
    # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
