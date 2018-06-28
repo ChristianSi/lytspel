@@ -1697,9 +1697,11 @@ sub convert_dict {
    # -ess: probably ess, not iss
    # -ficative: -ficaitiv, not -fecaitiv
    # -ification: ifi'caition, not efi'caition
+   # -ible: probably always ebl, not ibl (or maybe ibl in non-compounds? consult B dict)
    # -ify: -ifi, not -efi
    # -ily: -ili, not -eli
    # -inal: always -inel, not -enel
+   # -inose: inoass, not enoass
    # -inous: inuss, not enuss
    # -ity: -iti, not -eti
    # (subsumed under earlier rule: -[ai]bility: e'biliti (not [ai]'bil[ei]ti) --
@@ -1707,6 +1709,8 @@ sub convert_dict {
    # palatability)
    # unstressed -let: let or lit?
    # -lecithal: lecithel, not lecethel
+   # -lgia: preferably standardize on either ljia or lya, possibly likewise for other -gia words
+   # -lia etc.: likewise
    # -neurosis, -neurotic: always like the base word
    # -ysis: probably standardize to iciss
    # centi-: senti, not sente
@@ -1714,11 +1718,14 @@ sub convert_dict {
    # legitim-: li'jitim, not li'jitem
    # -physis: probably ficiss, not feciss (cf. physial which should be OK)
    # -sclerosis: probably always scle'roaciss, not scli'roaciss
+   # -tia: pick one of sha/shia/tia if possible
    # -thesis: standardize to theciss or thiciss (theeciss if stressed?)
    # probably standardize /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter,
    # e.g. ‹solidary, temporary, voluntary›
    # -ylate: ilait, not elait
    # -iform: standardize to -iform or maybe -eform
+   # -form: probably always form, not foarm or forrm
+   # -ometric: always o'metric, not oa? («ia» and «oe» for diphtongs are OK)
    # Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
    # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
    # ‹monosyllabicity›
