@@ -85,10 +85,12 @@ my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
 
 # The following variables are globals for simplicity
-my $SUMMED_DIST       = 0;
-my $WORD_COUNT        = 0;
-my $COMPOUND_DICT_REF = build_lc_map($COMPOUNDS, 0);
-my $CUSTOM_DICT_REF   = build_lc_map($CUSTOM, 1);
+my $SUMMED_DIST             = 0;
+my $WORD_COUNT              = 0;
+# TODO build_lc_map should reject entries with a missing value or an invalid POS tag
+my $COMPOUND_DICT_REF       = build_lc_map($COMPOUNDS, 0);
+my $CUSTOM_DICT_REF         = build_lc_map($CUSTOM, 1);
+my $PRE_STRESSED_VOWEL_DREF = build_lc_map('pre-stressed-vowel.csv', 1);
 
 # List of compounds which are stressed differently from our regular rules.
 # Values indicate which part is the stressed one ('1' or '2').
@@ -224,13 +226,35 @@ sub e_or_u_or_other {
     return $result;
 }
 
-# any_short_vowel $left, $right, $tradspell: Return any of the five vowel letters depending on
-# which is most similar to $tradspell. Ties are resolved by preferring the left-most match from
-# the following list: e, u, a, o, i. ('e' and 'u' are generally preferred because their sound
-# is close to a schwa sound, the other vowel letters are ranked by how often they represent a
-# schwa in tradspel.)
+# lookup_tagged_dict_entry $dict_ref, $tradspell, $pos: Look up a potentially POS-tagged
+# word in a dictionary reference. $tradspell is converted to lower case prior to lookup.
+# If no value is found, '' is returned.
+sub lookup_tagged_dict_entry {
+    my ($dict_ref, $tradspell, $pos) = @_;
+    my $lower = lc $tradspell;
+    return $dict_ref->{gen_key($lower, $pos)} // $dict_ref->{$lower} // '';
+}
+
+# any_short_vowel $left, $right, $tradspell, $pos: Return any of the five vowel letters
+# depending on which is most similar to $tradspell. Ties are resolved by preferring the
+# left-most match from the following list: e, u, a, o, i. ('e' and 'u' are generally
+# preferred because their sound is close to a schwa sound, the other vowel letters are
+# ranked by how often they represent a schwa in tradspell.)
+#
+# If a $tradspell/$pos entry exists in $PRE_STRESSED_VOWEL_DREF, the value listed there
+# is always used instead of the above heuristic. This is used to overwrite entries
+# where the Levenshtein similarity score gets it wrong or where a specific value (most
+# often 'e') is required for consistency with related words.
 sub any_short_vowel {
-    my ($left, $right, $tradspell) = @_;
+    my ($left, $right, $tradspell, $pos) = @_;
+    my $specific = lookup_tagged_dict_entry $PRE_STRESSED_VOWEL_DREF, $tradspell, $pos;
+
+    if ($specific) {
+        die "Invalid entry in pre-stressed-vowel.csv for $tradspell($pos): $specific"
+            unless $specific =~ /^[aeiou]$/;
+        return $specific;
+    }
+
     my $chosen  = '';
     my $olddist = 1000;
 
@@ -254,10 +278,10 @@ sub combine {
     return $left =~ /'$/ || !$right || !$left ? "$left$right" : "$left=$right";
 }
 
-# combine_and_adjust $val, $left, $right, $tradspell: Combine $left and $val into a joined
-# string, applying context-specific rules to the resulting spelling as suitable.
+# combine_and_adjust $val, $left, $right, $tradspell, $pos: Combine $left and $val into
+# a joined string, applying context-specific rules to the resulting spelling as suitable.
 sub combine_and_adjust {
-    my ($val, $left, $right, $tradspell) = @_;
+    my ($val, $left, $right, $tradspell, $pos) = @_;
 
     if ($right eq '') {
         # End-of-word spellings
@@ -333,7 +357,7 @@ sub combine_and_adjust {
     {
         # Any schwa followed by a stressed vowel can become «e/u/a/o/i» (in preference order);
         # some custom spellings use '@#' to request this (for consistency with related words)
-        $val = any_short_vowel $left, $right, $tradspell;
+        $val = any_short_vowel $left, $right, $tradspell, $pos;
     } elsif ($val eq '@') {
         if ($right eq 's' && $tradspell =~ /eous$/) {
             # Final ‹eous› becomes «uss» for consistency with other words ending in ‹ous›
@@ -742,10 +766,10 @@ sub restore_capitalization {
     return $converted;
 }
 
-# convert_pron $pron, $tradspell: Convert a pronunciation using a given
+# convert_pron $pron, $tradspell, $pos: Convert a pronunciation using a given
 # mapping alphabet (dictionary reference).
 sub convert_pron {
-    my ($pron, $tradspell) = @_;
+    my ($pron, $tradspell, $pos) = @_;
     return '' unless $pron;  # Empty input
 
     my $unconverted = $pron;
@@ -766,7 +790,7 @@ OUTER: while ($unconverted) {
 
             my $val = $Map_Ref->{$start};
             if (defined $val) {  # Match found
-                $converted = combine_and_adjust $val, $converted, $rest, $tradspell;
+                $converted = combine_and_adjust $val, $converted, $rest, $tradspell, $pos;
                 $unconverted = $rest;
                 next OUTER;
             }
@@ -802,7 +826,7 @@ sub build_prefix_dict {
         warn "Unexpected stress hint for prefix $word: '$stress_hint'\n"
             unless $stress_hint =~ /^[12A]$/;
 
-        my $converted = convert_pron $pron, $word;
+        my $converted = convert_pron $pron, $word, '';
 
         # Final «ss» becomes just «s», e.g. «dis»
         $converted =~ s/ss$/s/;
@@ -830,7 +854,7 @@ sub build_suffix_dict {
 
         my ($word, $pron) = @$colref[0 .. 1];
         warn "Duplicate key '$word' in $filename\n" if exists($SUFFIXES{$word});
-        $SUFFIXES{$word} = convert_pron $pron, $word;
+        $SUFFIXES{$word} = convert_pron $pron, $word, '';
     }
 
     close $fh;
@@ -879,7 +903,7 @@ sub handle_custom_entry {
 
     if ($pron) {
         $pron = prepare_pron $pron;
-        return convert_pron $pron, $tradspell;
+        return convert_pron $pron, $tradspell, $pos;
     } else {
         warn "Unexpected custom entry for $tradspell: $custom_entry\n";
     }
@@ -1309,9 +1333,9 @@ sub convert_row {
         } else {
             my ($rp, $ga, $phoneng) = unify_sounds $colref->[3], $colref->[4], $colref->[5],
                 $tradspell;
-            my $converted_rp      = convert_pron $rp,      $tradspell;
-            my $converted_ga      = convert_pron $ga,      $tradspell;
-            my $converted_phoneng = convert_pron $phoneng, $tradspell;
+            my $converted_rp      = convert_pron $rp,      $tradspell, $pos;
+            my $converted_ga      = convert_pron $ga,      $tradspell, $pos;
+            my $converted_phoneng = convert_pron $phoneng, $tradspell, $pos;
 
             # Omit GA if identical to RP
             $converted_ga = '' if $converted_ga eq $converted_rp;
@@ -1778,8 +1802,10 @@ sub convert_dict {
 
     close $outfh;
 
-    # TODO Add similar checks for compounds-manual.csv and compound-black|blacklist.csv
-    # (also warn if there are duplicate entries in them)
+    # TODO Add similar checks for compounds-manual.csv, compound-black|blacklist.csv,
+    # and pre-stressed-vowel.csv -- better use in-place flags for the purpose, set to
+    # true by lookup_tagged_dict_entry
+    # (also warn if there are duplicate entries in them if not yet checked)
     warn_unprocessed_entries $CUSTOM,          $CUSTOM_DICT_REF,          \%PROCESSED_CUSTOM_SET;
     warn_unprocessed_entries $COMPOUND_STRESS, $Compound_Stress_Dict_Ref, \%PROCESSED_COMPOUND_SET;
 
