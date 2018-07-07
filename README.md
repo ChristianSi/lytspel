@@ -346,6 +346,8 @@ Spellings involving several sounds:
     influence, superfluous, cruel›. In a few words, «ua» instead represents
     /u:a/, e.g. «bivuac» ‹bivouac› (this distinction is not represented in
     writing).
+  * Likewise, /ju:@/ is written «iua», e.g. «am'bigiuass, maniual»
+    ‹ambiguous, manual›.
   * The consonant combination /kw/ is written «qu», e.g. «quit, ri'quest»
     ‹...request›; the letter «q» only occurs in this combination.
   * The sound combination /ks/ is written «x», e.g. «mix, next, ex'plicit,
