@@ -70,26 +70,28 @@ my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/ante auto contra electro homo me
 # TODO Move list into external CSV file (and add it to the Makefile).
 # If a derived word is listed here, a short vowel preceding the stress
 # marker won't be converted to «e».
+
 my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acronymous
     albuminous allonymous ammonic ammonify animality antinomian antonymous apostrophic
-    appositive atomic bacchantic balladic basophilic bestiality bitonality Brabantine canonic
-    catastrophic civility coevality colonic councilmanic criminality cryptogamous cryptonymous
-    ctenophoran demonic diaphaneity equality external fibrinogenous frivolity gnomonic
-    halogenous homonymous matrimonial Miltonic monomeric monomerous monostrophic nebulosity
-    originality partiality personification pseudonymity planktonic prebendal puritanical
-    quadrantal quadrupedal reclusive renewal sabbatical satanic shamanic sinistrality
-    subordinative sultanic sycophantic synonymous talismanic testimonial tribadic tympanic/;
+    appositive atomic bacchantic balladic basophilic bestiality bitonality Brabantine Brythonic
+    canonic catastrophic civility coevality colonic congeniality councilmanic criminality
+    cryptogamous cryptonymous ctenophoran demonic diaphaneity equality external fibrinogenous
+    frivolity geniality gnomonic halogenous homonymous matrimonial Miltonic monomeric
+    monomerous monostrophic nebulosity originality partiality personification pseudonymity
+    planktonic prebendal puritanical quadrantal quadrupedal reclusive renewal sabbatical
+    satanic shamanic sinistrality stomachic subordinative sultanic sycophantic synodic
+    synodical synonymous talismanic testimonial tribadic tympanic/;
 
 # TODO Switch to Upper_Camel_Case for file-scoped variables
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
 
 # The following variables are globals for simplicity
-my $SUMMED_DIST             = 0;
-my $WORD_COUNT              = 0;
+my $SUMMED_DIST = 0;
+my $WORD_COUNT  = 0;
 # TODO build_lc_map should reject entries with a missing value or an invalid POS tag
-my $COMPOUND_DICT_REF       = build_lc_map($COMPOUNDS, 0);
-my $CUSTOM_DICT_REF         = build_lc_map($CUSTOM, 1);
+my $COMPOUND_DICT_REF       = build_lc_map($COMPOUNDS,               0);
+my $CUSTOM_DICT_REF         = build_lc_map($CUSTOM,                  1);
 my $PRE_STRESSED_VOWEL_DREF = build_lc_map('pre-stressed-vowel.csv', 1);
 
 # List of compounds which are stressed differently from our regular rules.
@@ -695,6 +697,7 @@ OUTER: while ($rest && $rest_with_sep) {
     $reconstructed =~ s/([st])-i/$1=i/g;    # not needed for «si, ti»
     $reconstructed =~ s/([iu])-a/$1=a/g;    # not used for «ia, iai, ua, uai»
     $reconstructed =~ s/-'/'/g;             # not needed before stress marker
+    $reconstructed =~ s/a-i$/ai/;           # not needed in final «ai» (only used in an abbrev.)
 
     # Treat ‹bio..., micro...› as compound, even if the 2nd part isn't listed
     $reconstructed =~ s/o-a/o=a/ if $tradspell =~ /^(bio|micro)/;
@@ -1382,16 +1385,17 @@ sub lookup_part_entry {
             # Most ‹close...› combinations use the adjective.
             $pos = 'aj'
                 if ($part =~ /ate$/
-                && $tradspell !~ /(able|^predesignate|^supersaturate|agglutinate)$/)
+                && $tradspell !~ /(able|^de.*minate|^predesignate|^supersaturate|agglutinate)$/)
                 || ($part eq 'close' && $tradspell !~ /^close(down|out|ing|d|s)$|.close$/)
-                || $tradspell =~ /^(infrequent|live(bearer|stock)|ungallant)$/;
+                || $tradspell =~
+                /^(airmobile|infrequent|live(bearer|stock)|ungallant|wordperfect)$/;
             $pos = 'n'
-                if ($part =~ /^(concave|congress|house|lead|transfer|transfer|wind)$/
+                if ($part =~ /^(concave|congress|dove|house|lead|transfer|transfer|wind)$/
                 && $tradspell !~ /(able|^(${part}e?r|fairlead|mislead|leadoff|unwind))$/)
                 || ($part eq 'concert' && $tradspell =~ /er$/)
                 || ($part =~ /^mou(se|th)$/ && $tradspell !~ /^$part(ed|e?r|ing|y)$/)
-                || $tradspell =~
-                /^(fluidextract|internship|rebeldom|omnipresent|subcompact|teardrop|semidesert)$/;
+                || $tradspell =~ /^(discounter|fluidextract|internship|rebeldom|omnipresent|
+                    subcompact|teardrop|semidesert)$/x;
         }
 
         $key = gen_key $part, $pos;
@@ -1478,7 +1482,7 @@ sub handle_compound {
         my ($first, $second) = split /-/, $parts;
         my $first_conv_colref  = lookup_part_entry $first,  $tradspell, $pos;
         my $second_conv_colref = lookup_part_entry $second, $tradspell, $pos;
-        die "First part $first of compound $tradspell not found\n" unless $first_conv_colref;
+        die "First part $first of compound $tradspell not found\n"   unless $first_conv_colref;
         die "Second part $second of compound $tradspell not found\n" unless $second_conv_colref;
         $first_lytspel = restore_capitalization $first_conv_colref->[3], $tradspell;
         $second_lytspel = lc $second_conv_colref->[3];
