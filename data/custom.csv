@@ -326,6 +326,7 @@ agone,,P
 agonic,,eIg'QnIk
 agon,,P
 agoraphobe,,P
+agoraphobia,,ag@`@f'oUbi:@
 agoroth,,D
 agouta,,P
 agouti,,P
@@ -1039,7 +1040,6 @@ blastoporal,,P
 blastula,,B
 blepharospasm,,bl'Ef@`@spaz@m
 blitzkrieg,,P
-bloodmobile,,bl'VdmoUbi:l
 blotch,,B
 blouson,,blaUsQn
 blvd,,D
@@ -1072,6 +1072,7 @@ bonita,,B
 bonnet,,B
 boohoo,,P
 Boolean,,B
+boondoggle,,B
 bordeaux,,P
 Bordelaise,,P
 Bordelais,,P
@@ -1112,6 +1113,7 @@ bourse,,A
 bousy,,P
 bouvier,,b'u:vi:eI
 bowline,,b'oUlIn
+bow,n,B
 bowse,,b'aUs
 bowser,,A
 bracero,,B
@@ -1164,6 +1166,7 @@ Buchner,,D
 buddhi,,b'u:di:
 budgerigar,,P
 bueno,,D
+buffet,v,B
 buhr,,b'3:
 Buitenzorg,,P
 Bukharin,,bu:k'ArIn
@@ -1752,8 +1755,9 @@ convolvulus,,k@nv'Qlvj@l@s
 convoy,v,B
 cony,,P
 cooperative,,B
-coordinate,,P
-coordinative,,P
+coordinate,n,koU'O:rdI#nIt
+coordination,,koUO:rdI#n'eIS@n
+coordinative,,koU'O:rdI#neItIv
 Coors,,D
 coparcenary,,P
 Copernicus,,koUp'3:nIk@s
@@ -2310,6 +2314,7 @@ doucet,,d'u:sIt
 Doukhobor,,P
 douroucouli,,dUr@k'u:li:
 douzeper,,d'u:zpi@
+dove,n,B
 drawee,,drO:'i:
 dreyfuss,,D
 driblet,,B
@@ -2939,6 +2944,7 @@ extinguish,,P
 extol,,P
 extorsive,,P
 extort,,Ikst'O:rt
+extortionate,,Ikst'O:rS@nIt
 extortion,,Ikst'O:rS@n
 extraction,,Ikstr'akS@n
 extractive,,P
@@ -3270,7 +3276,6 @@ Gaza,,B
 geanticlinal,,P
 geanticline,,P
 ge,,D
-Geelong,,dZIl'O:N
 gelatinate,,A
 gelatin,,dZ'El@tIn
 gelatinoid,,dZ@l'atI#nOId
@@ -3309,6 +3314,7 @@ Geraldine,,B
 geraniaceous,,dZ@`eIni:'eIS@s
 Gerard,,dZ@`'Ard
 ger,,D
+gerency,,dZ'i@@nsi:
 gerent,,P
 gerfalcon,,dZ'3:fO:lk@n
 germaine,,dZ@`m'eIn
@@ -3992,7 +3998,6 @@ involute,,'Inv@lU:t
 involutional,,Inv@l'U:S@n@l
 involution,,Inv@l'U:S@n
 iodinate,,P
-ionization,,aI@#naIz'eIS@n
 iPhone,,D
 iPod,,D
 Iquique,,P
@@ -4314,6 +4319,7 @@ Laos,,P
 laparoscopic,,B
 lapidary,,A
 lapis,,l'apIs
+laputa,,lapj'u:t@
 larcenous,,A
 largess,,P
 Larousse,,D
@@ -4843,6 +4849,8 @@ mino,,D
 Minotaur,,m'In@tO:r
 Minot,,m'aIn@t
 minute,aj,maIn'U:t
+minutely,aj,m'InItli:
+minutely,av,maIn'U:tli:
 minute,n,B
 minutiae,,mIn'U:Si:i:
 minutia,,mIn'U:Si:@
@@ -4868,6 +4876,7 @@ mnemic,,P
 mnemon,,P
 mnemotechnics,,P
 mobil,,D
+mobile,n,m'oUbi:l
 mobilization,,P
 Mocambique,,D
 mochila,,moUtS'i:l@
@@ -4961,6 +4970,7 @@ mosaicist,,P
 mosaic,,P
 mosasaur,,m'oUs@sO:r
 mosey,,P
+moslem,,m'Qzl@m
 mot,,P
 Motrin,,m'oUtrIn
 Moulmein,,P
@@ -5318,8 +5328,7 @@ orcinol,,'O:rsInQl
 ordinaire,,P
 ordinarily,,O:rd@n'e@I#li:
 ordinary,,A
-ordinate,,'O:rd@nIt
-ordination,,P
+ordinate,,'O:rdI#nIt
 Ordzhonikidze,,P
 Orebro,,D
 Oregon,,B
@@ -5420,6 +5429,7 @@ palanquin,,P
 palatalized,,P
 palatal,,P
 palate,,P
+Palauan,,pal'aU@n
 Palau,,pal'aU
 Palawan,,P
 palay,,p'alaI
@@ -5627,6 +5637,7 @@ pereira,,p@`'e@@
 pere,,p'e@
 Perez,,p'ErIts
 perfect,,p'3:fIkt
+perfect,v,A
 perfume,v,P
 peribolos,,p@`'Ib@lQs
 periclase,,p'ErIkleIs
@@ -5665,6 +5676,7 @@ peroneal,,P
 perone,,D
 Peron,,p@`'oUn
 peroxidic,,p@`Qks'IdIk
+perpend,n,B
 perpetuance,,P
 Perrin,,D
 persecution,,B
@@ -5815,6 +5827,7 @@ placative,,A
 placatory,,A
 placet,,pl'eIs@t
 plaid,,P
+planarity,,plan'e@Iti:
 planet,,B
 planetesimal,,planIt'EsIm@l
 planigraph,,B
@@ -6278,6 +6291,8 @@ Rafael,,D
 rafale,,r@f'al
 raffinose,,r'afI#noUs
 rai,,B
+rainier,aj,A
+rainier,n,reIn'i@
 Ramakrishna,,P
 Ramayana,,P
 Ramon,,B
@@ -6539,6 +6554,10 @@ salamander,,s'al@mand@`
 salicylate,,s@l'IsIleIt
 salientian,,B
 salinas,,P
+salinate,,s'alI#neIt
+salination,,salI#n'eIS@n
+saline,,B
+salinize,,s'alI#naIz
 Salisbury,,s'O:lzbEri:
 Salishan,,P
 Salish,,P
@@ -6868,6 +6887,7 @@ sillimanite,,s'IlI#m@naIt
 Simeon,,P
 simi,,D
 simoniacal,,sIm@n'aI@k@l
+simpkins,,D
 simplesse,,D
 simulant,,s'Imj@l@nt
 simulatory,,s'Imj@l@tori:
@@ -7128,9 +7148,9 @@ subject,aj,B
 subjectify,,B
 submergible,,P
 submersible,,B
-subordinate,,s@b'O:rd@nIt
-subordinate,v,P
-subordinative,,sVb'O:rdI#neItIv
+subordinate,,sVb'O:rdI#nIt
+subordinate,v,sVb'O:rdI#neIt
+subordinative,,s@b'O:rdI#neItIv
 subornation,,sVbO:rn'eIS@n
 suborn,,s@b'O:rn
 subpoena,,B
@@ -7156,6 +7176,7 @@ suggest,,B
 suggestible,,B
 suggestion,,B
 suggestive,,B
+sui,aj,B
 Suisse,,D
 sukkoth,,sUk'oUt
 sulfapyrazine,,sVlf@p'Ir@zi:n
@@ -7727,6 +7748,7 @@ universality,,ju:nI#v@`s'al@ti:
 universitarian,,ju:nI#v3:sIt'e@i:@n
 univocal,,ju:n'Iv@k@l
 upbraid,,B
+update,n,B
 uphroe,,P
 upside,,B
 upstairs,,B
