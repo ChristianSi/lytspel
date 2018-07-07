@@ -18,6 +18,10 @@ annexes,n+v
 associates,n+v
 attributes,n+v
 august,aj+n
+bows,v+n
+bow,v+n
+buffet,n+v
+buffets,n+v
 certificates,n+v
 closes,n+v
 collect,n+v
@@ -71,6 +75,8 @@ digests,n+v
 discounts,n+v
 discourses,n+v
 documents,n+v
+dove,n+v
+doves,n+v
 effects,n+v
 escorts,n+v
 essays,n+v
@@ -114,7 +120,9 @@ live,aj+v
 mandates,n+v
 matriculates,n+v
 minute,aj+n
+minutely,aj+av
 misfire,n+v
+mobile,aj+n
 moderates,n+v
 mouse,n+v
 mouths,n+v
@@ -123,8 +131,12 @@ offsets,n+v
 ornaments,n+v
 overestimate,n+v
 overlaps,n+v
+perfect,aj+v
+perfects,aj+v
 perfumes,n+v
 permits,n+v
+perpend,n+v
+perpends,n+v
 perverts,n+v
 preconcert,aj+v
 predicates,n+v
@@ -136,6 +148,7 @@ progresses,n+v
 projects,n+v
 protests,n+v
 purports,n+v
+rainier,aj+n
 rampages,n+v
 rebels,n+v
 records,n+v
@@ -158,6 +171,7 @@ subjects,n+v
 sublease,n+v
 subordinate,aj+n+v
 subordinates,n+v
+sui,aj+n
 survey,n+v
 surveys,n+v
 suspects,n+v
@@ -169,6 +183,8 @@ transfers,n+v
 transports,n+v
 uncleanly,aj+av
 understeer,n+v
+update,n+v
+updates,n+v
 upgrades,n+v
 uses,n+v
 warehouses,n+v
