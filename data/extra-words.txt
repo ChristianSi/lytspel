@@ -32,6 +32,7 @@ munchy
 nihilist
 Okinawan
 Palauan
+perimetry
 phonotype
 planarity
 privateers
@@ -46,6 +47,7 @@ salinize
 shama
 shamanist
 singlehanded
+somatism
 spiflicate
 spiflicates
 suppressive
