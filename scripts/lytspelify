@@ -1390,7 +1390,7 @@ sub lookup_part_entry {
                 || $tradspell =~
                 /^(airmobile|infrequent|live(bearer|stock)|ungallant|wordperfect)$/;
             $pos = 'n'
-                if ($part =~ /^(concave|congress|dove|house|lead|transfer|transfer|wind)$/
+                if ($part =~ /^(alloy|concave|congress|dove|house|lead|transfer|transfer|wind)$/
                 && $tradspell !~ /(able|^(${part}e?r|fairlead|mislead|leadoff|unwind))$/)
                 || ($part eq 'concert' && $tradspell =~ /er$/)
                 || ($part =~ /^mou(se|th)$/ && $tradspell !~ /^$part(ed|e?r|ing|y)$/)
@@ -1794,6 +1794,8 @@ sub convert_dict {
         # instead of fixed-size lists
         # use Hash::Util 'lock_keys'; my $name = {first => 'Christian', last => 'Siefkes'}
         # lock_keys %$name; $name->{first} (OK); $name->{firs} (runtime error)
+        # Fix decompose to use prefix|suffix.csv instead of list (note that some prefixes,
+        # e.g. ‹di› are NOT auto-recognized but have been added manually)
         # TODO Switch to "use 5.018" and "use autodie" (no need to check success of open and any
         # other commands) or "use autodie qw(:all)" (also checks system, exec)
         # TODO Maybe switch to experimental::signatures (or Function::Parameters)
