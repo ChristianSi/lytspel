@@ -1827,6 +1827,7 @@ cotoneaster,,k@#toUni:'ast@`
 cotwal,,P
 cotyledon,,P
 coulometric,,ku:l@m'EtrIk
+coumarin,,k'U:m@`In
 couper,,A
 Couperin,,P
 Courbet,,D
@@ -2049,6 +2050,7 @@ demographer,,P
 demography,,P
 demoniacal,,P
 demonolater,,P
+demonstrable,,dIm'Qnstr@b@l
 demulsify,,B
 denarii,,dIn'e@i:aI
 denarius,,dIn'e@i:@s
@@ -2163,8 +2165,6 @@ diastasic,,P
 diazotize,,P
 DiCaprio,,D
 dichroic,,P
-dichromatism,,daIkr'oUm@tIz@m
-dicoumarin,,daIk'U:m@`In
 dicoumarol,,daIk'U:m@`Ql
 dictate,,d'IkteIt
 dictatress,,d'IkteItr@s
@@ -2223,7 +2223,6 @@ direction,,dIr'EkS@n
 directorial,,dIr@kt'orI@l
 directress,,dIr'Ektr@s
 directrices,,P
-disaccharide,,P
 disciplinal,,B
 disciplinary,,A
 discombobulate,,dIsk@mb'Qbj@leIt
@@ -2252,7 +2251,6 @@ distichous,,d'IstIk@s
 distributee,,dIstrIbju:t'i:
 distribute,,P
 distringas,,B
-disubstituted,,dIs'VbstItU:t@d
 Diu,,d'i:u:
 diuresis,,daI@`'i:sIs
 diuretic,,daI@`'EtIk
@@ -2512,13 +2510,16 @@ emunctory,,P
 enamor,,A
 enantiotropy,,B
 encina,,P
-endocrine,,'EndoUkrIn
+endocrine,,'End@krIn
 endodermal,,End@d'3:m@l
-endodermis,,P
-endogen,,B
 endogeny,,P
 endomorphism,,P
+endopodite,,End'Qp@daIt
+endorphin,,P
 endorsee,,P
+endoscope,,'End@skoUp
+endoscopic,,End@sk'QpIk
+endoscopy,,End'Qsk@pI
 engine,,B
 enginery,,'EndZI#nri:
 enginous,,B
@@ -2692,6 +2693,7 @@ eternality,,P
 eternity,,B
 etheric,,IT'ErIk
 Ethiop,,'i:Ti:Qp
+ethnocentrism,,ETn@#s'EntrIz@m
 ethnos,,'ETnQs
 ethological,,B
 ethology,,B
@@ -2749,7 +2751,6 @@ exanimate,,Egz'anI#mIt
 exasperate,,P
 exasperation,,Igzasp@`'eIS@n
 Excalibur,,Eksk'alI#b@`
-excaudate,,P
 Excedrin,,D
 exceed,,P
 excel,,P
@@ -3050,7 +3051,6 @@ Fernando,,D
 ferrel,,B
 ferrimagnetism,,fErIm'agn@tIz@m
 ferritin,,P
-ferroconcrete,,fEroUk'QNkri:t
 Ferrol,,fEr'O:l
 fertilization,,P
 fervidor,,P
@@ -3372,9 +3372,9 @@ gluconeogenetic,,P
 glucosamine,,glu:k'oUs@mi:n
 glunch,,B
 glycerol,,B
-glycogenetic,,P
-glycogenolysis,,glaIk@#dZ@n'QlIsIs
-glycogenolytic,,glaIk@#dZEn@l'ItIk
+glycogenetic,,glaIk@dZ@n'EtIk
+glycogenolysis,,glaIk@dZ@n'QlIsIs
+glycogenolytic,,glaIk@dZEn@l'ItIk
 glycol,,B
 glyconeogenesis,,glaIkoUni:@dZ'EnIsIs
 gneiss,,P
@@ -3638,6 +3638,8 @@ heterodox,,h'Et@`@dQks
 heteromorphism,,hEt@`@m'O:rfIz@m
 heteronymous,,hEt@`'QnI#m@s
 heteroousian,,P
+heteroploid,,h'Etr@plOId
+heterotaxy,,hEtroUt'aksi:
 hexagram,,P
 hexahydrate,,P
 hexameter,,P
@@ -4024,15 +4026,13 @@ Islamic,,B
 Islamism,,P
 Islamite,,B
 Islamization,,Isl@maIz'eIS@n
-isoagglutinative,,aIsoU@gl'u:tI#neItIv
-isoagglutinin,,aIsoU@gl'u:tI#nIn
 isocheimenal,,P
 isochor,,P
 isochroous,,aIs'QkroU@s
 isoclinal,,P
-isogenic,,aIs@dZ'EnIk
 isogon,,'aIs@gQn
 isolative,,P
+Isolde,,Iz'oUld@
 isomerism,,aIs'Qm@`Iz@m
 isoperimetry,,P
 isopropanol,,aIs@pr'oUp@nQl
@@ -4792,8 +4792,8 @@ Messidor,,P
 messieurs,,P
 mestizo,,P
 metage,,P
-metallographically,,mEt@l@gr'afIk@li:
-metallurgy,,m'Etal3:dZi:
+metallographically,,m@tal@gr'afIk@li:
+metallurgy,,m'Et@l3:dZi:
 metameric,,B
 metastasize,,P
 metathesis,,m@t'aT@sIs
@@ -6919,8 +6919,8 @@ Slavic,,B
 Slav,,P
 sloganeer,,P
 slough,,B
-Slovakia,,P
-Slovak,,sl'oUvAk
+Slovakia,,sloUv'aki:@
+Slovak,,sl'oUvak
 smallage,,B
 smorgasbord,,sm'O:rg@sbord
 snark,,A
@@ -8129,6 +8129,7 @@ zingara,,ts'INgArA
 zingaro,,ts'INgAroU
 zizith,,ts'ItsIs
 Zlatoust,,zl@tV'u:st
+Zoan,,z'oU@n
 zodiacal,,P
 zoetrope,,P
 Zollverein,,D
