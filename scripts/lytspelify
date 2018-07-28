@@ -857,7 +857,11 @@ sub build_suffix_dict {
 
         my ($word, $pron) = @$colref[0 .. 1];
         warn "Duplicate key '$word' in $filename\n" if exists($SUFFIXES{$word});
-        $SUFFIXES{$word} = convert_pron $pron, $word, '';
+        my $suffix = convert_pron $pron, $word, '';
+        # If the first vowel of the suffix is stressed, the whole suffix should always
+        # be stressed, hence we prepend a stress marker in such cases
+        $suffix = "'$suffix" if $pron =~ /'/ && $suffix !~ /'/;
+        $SUFFIXES{$word} = $suffix;
     }
 
     close $fh;
@@ -1107,7 +1111,7 @@ sub postprocess_suffixed {
     # TODO Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if ($suffix =~
-/^(.bility|able|ance|ant|ary|ative|ate|atory|dom|ed|en|ence|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|kinesis|l|less|ly|ment|morphism|ness|nik|n|oid|or|up|s|y)$/
+/^(.bility|able|ance|ant|ary|ative|ate|atory|dom|ed|en|ence|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|kinesis|l|less|ly|ment|morphism|ness|nik|n|oid|or|up|ry|s|y)$/
         )
     {
         # ‹ate› is spoken in two different ways (/eIt/ or /It/) so we check which one to use
@@ -1712,6 +1716,7 @@ sub convert_dict {
    # standardize -meter: -meter should become -miter (-meeter is OK)
    # -morph: always morf
    # -morphic: always morfic instead of moarfic
+   # -morphous: ditto
    # -morphism: always morfism instead of moarfism
    # (ditto in derivs such as anamorphoscope)
    # -metry, -etry: standardize
