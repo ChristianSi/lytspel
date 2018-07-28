@@ -87,6 +87,7 @@ allhallowmas
 allhallows
 alliance
 Allier
+allomorphism
 allotypic,allotype=ic
 ally
 almagest
@@ -112,15 +113,19 @@ ammonification
 amoral
 amortize
 ampere
+ampullary
 amtrack
 amylopsin
 anal
 anamorphism
 anarchically,anarchical=ly
 anarchism
+ancillary
 andante
 anelace
 anent
+angary
+anginal,angina=l
 anglesite
 Anglicise
 animate
@@ -137,6 +142,7 @@ antagonize
 antares
 antedate,ante-date
 antelope
+antennary
 antepenultimate,ante-penultimate
 anthemion
 antilogy
@@ -162,6 +168,7 @@ arbitrarily,arbitrary=ly
 arbor
 arbores
 arcane
+archdeaconry,arch-deaconry
 archenteric
 archenteron
 arctic
@@ -169,6 +176,7 @@ areopagitic,areopagite=ic
 Arian
 Aries
 aristides
+armillary
 armorbearer,armor-bearer
 aromatherapy,aroma-therapy
 aromatic
@@ -224,6 +232,8 @@ Audion
 auditory
 auger
 augment
+aural,aura=l
+auroral,aurora=l
 autobiographical,auto-biographical
 autogamy
 autograph,auto-graph
@@ -248,6 +258,7 @@ baccalaureate
 bacillary
 backsheesh
 backswordman,backsword-man
+bacterial,bacteria=l
 badarian
 Baden
 Baffin
@@ -402,6 +413,7 @@ blotchy,blotch=y
 blousy
 bluer,blue=er
 bluesy,blues=y
+blurry,blur=y
 boardman,board-man
 boatman,boat-man
 boatsman,boats-man
@@ -548,6 +560,7 @@ cataplasia
 cataplastic
 catatonia
 catatonic
+catenary
 cathartic
 cation
 catlin
@@ -576,6 +589,7 @@ cesser
 chadwick
 chainman,chain-man
 chairman,chair-man
+chancery
 chaoan
 chapman,chap-man
 charas
@@ -615,12 +629,14 @@ churchman,church-man
 churchward
 churchwarden,church-warden
 churn
+ciliary
 ciliated
 cineole
 circulatory
 cisterna
 citibank,city-bank
 citrange
+citronellal,citronella=l
 city
 clackmannan
 clandestine
@@ -731,6 +747,7 @@ contest
 contraband
 contradictorily,contradictory=ly
 contrariwise,contrary-wise
+contrary
 contributory
 convexity,convex=ity
 cony
@@ -756,6 +773,7 @@ corespondent,co-respondent
 corey
 corn
 corncrake,corn-crake
+corneal,cornea=l
 cornishman,cornish-man
 cornute
 cornwallis
@@ -1159,6 +1177,7 @@ Dulles
 duly,due=ly
 dundee
 dunkirk
+duodenary
 duped,dupe=ed
 duper,dupe=er
 dupion
@@ -1218,6 +1237,7 @@ emmenthaler
 Emory
 enami
 enamor
+enantiomorphism
 enate
 enclave
 encore
@@ -1238,6 +1258,7 @@ endolymph
 endomorph
 endomorphic,endomorph=ic
 endomorphism
+endomorphism,endo=morphism
 endoplasm
 endopodite
 endoscope
@@ -1338,6 +1359,7 @@ fellate
 fenestration,fenestrate=ion
 fenman,fen-man
 feodary
+ferial,feria=l
 ferment
 ferrochrome
 ferrotype
@@ -1348,6 +1370,7 @@ fetor
 fiancee
 fibroblast,fibro-blast
 fieldsman,fields-man
+fiery
 filagree
 filamentary
 filaria
@@ -1366,6 +1389,7 @@ fireman,fire-man
 firmamental,firmament=al
 firman
 firn
+firry,fir=y
 fiscal
 fisherman,fisher-man
 fitchee
@@ -1399,6 +1423,7 @@ forestation,forest=ation
 forever,for-ever
 formal
 formee
+formulary
 fortalice
 fortis
 fossor
@@ -1411,6 +1436,7 @@ frantic
 fredrick
 freedman,freed-man
 freeman,free-man
+freemasonry,free-masonry
 freer,free=er
 freest,free=est
 freshman,fresh-man
@@ -1428,6 +1454,7 @@ furfur
 furfural,furfur-al
 furfurole
 furlana
+furry,fur=y
 fustian
 gadoid
 gagarin
@@ -1488,11 +1515,13 @@ gideon
 gilchrist
 gladiator
 glassman,glass-man
+glauconitic,glauconite=ic
 gleeman,glee-man
 glendower
 glengarry
 glenoid
 globoid,globe=oid
+glossary,gloss=ary
 glossology
 goal
 goan,goa=n
@@ -1502,6 +1531,7 @@ godiva
 godzilla
 goethean
 goethian
+goldilocks,goldy=locks
 goodman,good-man
 goon
 goosander
@@ -1509,6 +1539,7 @@ Goren
 gorgeous
 gorgonzola
 Goshen
+gossipmonger,gossip-monger
 gownsman,gowns-man
 graben
 gradient
@@ -1521,6 +1552,7 @@ granddaughter,grand-daughter
 greedily,greedy=ly
 greegree
 greenland,green-land
+greensward,green-sward
 gregory
 grindelia
 gripman,grip-man
@@ -1644,6 +1676,7 @@ hodman,hod-man
 hogen
 Hollis
 holster
+homeomorphism
 homocyclic,homo-cyclic
 homolecithal,homo-lecithal
 homopolarity,homo-polarity
@@ -1654,6 +1687,7 @@ homozygosis,homo-zygosis
 honduran
 hoodman,hood-man
 hooghly
+horary
 hornito
 horologic,horologe=ic
 horoscopic,horoscope=ic
@@ -1667,6 +1701,7 @@ huckaback
 humidor
 humvee
 Hungary
+hungry
 huntsman,hunts-man
 Hurrian
 huruudinian
@@ -1737,6 +1772,7 @@ indissoluble,in=dissoluble
 indocile
 indocility,indocile=ity
 Indore
+inertial,inertia=l
 Ines
 inescapable
 inevitably,inevitable=y
@@ -1845,6 +1881,7 @@ isoline
 isomerism
 isometrics,isometric=s
 isomorph
+isomorphism,iso=morphism
 isoperimeter,iso=perimeter
 isoperimetry,iso=perimetry
 isopod
@@ -1871,6 +1908,7 @@ jarless,jar-less
 jasper
 Jassy
 jeanine
+jeffry
 jerboa
 jerkin
 jermaine
@@ -1931,10 +1969,12 @@ labor
 labrador
 lacedaemon
 lacey
+lacunal,lacuna=l
 lallan
 Lally
 lambent
 lament
+laminary
 lammastide
 lampion
 lampoon
@@ -1951,6 +1991,7 @@ laputa
 largess
 larghetto
 larn
+larval,larva=l
 laryngectomee,laryngectomy=ee
 laryngoscopic,laryngoscope=ic
 lascar
@@ -2007,6 +2048,7 @@ liar,lie=er
 libava
 liberatory
 libido
+library
 lied,lie=ed
 liegeman,liege-man
 lien
@@ -2040,6 +2082,7 @@ loathful,loathe=ful
 loathing,loathe=ing
 loathsome,loathe-some
 lobsterman,lobster-man
+lochial,lochia=l
 lockman,lock-man
 locksman,locks-man
 lockyer
@@ -2072,6 +2115,7 @@ lucknow
 Lucy
 lullaby
 lumberman,lumber-man
+luminary
 lunatic
 lungee
 Lunik
@@ -2105,8 +2149,10 @@ mallee
 mallenders
 mallorca
 Mallory
+mamillary
 mammalogical
 mammary
+mammillary
 manakin
 manas
 manatee
@@ -2165,6 +2211,7 @@ maulmain
 maulstick
 mawkin
 mawkish
+maxillary
 mayday
 Mayence
 mayhem
@@ -2224,6 +2271,7 @@ midshipman,midship-man
 mien
 milan
 mildew
+miliary
 militarily,military=ly
 militiaman,militia-man
 militiamen,militia-men
@@ -2254,6 +2302,7 @@ momentarily,momentary=ly
 monadnock
 mondale
 monial
+monilial,monilia=l
 monochromate
 monochromatic,mono-chromatic
 monodic
@@ -2289,6 +2338,7 @@ motor
 motorman,motor-man
 Motrin
 moutonnee
+mucosal,mucosa=l
 Muhammadan,Muhammad=an
 mullion
 multimeter
@@ -2370,6 +2420,7 @@ obligatorily,obligatory=ly
 oboist,oboe=ist
 obsequies,obsequy=es
 ocher
+ochry
 ochs
 octavo
 often
@@ -2524,6 +2575,7 @@ pawpaw
 paynim
 pean
 pearmain
+peary
 pedicellate
 peepul
 pegasian
@@ -2604,6 +2656,7 @@ pescara
 peseta
 pessary
 petaurist
+petechial,petechia=l
 peterman,peter-man
 petites,petite=s
 petties,petty=es
@@ -2661,12 +2714,15 @@ pitchman,pitch-man
 pitman,pit-man
 pity
 placeman,place-man
+placentary
 plainclothesman,plainclothes-man
 plainsman,plains-man
 planarian
 platen
 pleiades
+plenary
 plentiful,plenty=ful
+pleural,pleura=l
 plies,ply=s
 plowman,plow-man
 plumbate
@@ -2807,6 +2863,7 @@ prosthetic
 protest
 protocol
 protonotary
+protozoal,protozoa=l
 Provencal
 proverb
 proverbs,proverb=s
@@ -2823,6 +2880,7 @@ psychopathology,psycho-pathology
 psychopath,psycho-path
 psychopomp
 psychosis
+puerperal,puerpera=l
 puffin
 pulaski
 pulpit
@@ -2840,6 +2898,7 @@ pyrology
 pyrolysis
 pyrosis
 pythias
+quadragesimal,quadragesima=l
 quadrantes
 quadrille
 quadrupedal,quadruped=al
@@ -3087,6 +3146,7 @@ retailer,retail=er
 retailing,retail=ing
 retails,retail=s
 rete
+retinal,retina=l
 retiral,retire=al
 retire
 retired,retire=ed
@@ -3157,6 +3217,7 @@ sacrament
 sacring
 sadism
 sadist
+sagittary
 saipan
 salal
 salami
@@ -3249,6 +3310,7 @@ Servite
 severely,severe=ly
 severest,severe=est
 severn
+sexagesimal,sexagesima=l
 sexcentenary,sex-centenary
 sextet
 sexuality,sexual=ity
@@ -3311,6 +3373,7 @@ skyer
 skyey,sky=y
 sleepily,sleepy=ly
 slimsy
+slurry
 snickersnee
 snippety
 snowmobile,snow-mobile
@@ -3334,6 +3397,7 @@ soothing,soothe=ing
 sorn
 sowcar
 sparkling,sparkle=ing
+sparry,spar=y
 spartacist
 spearman,spear-man
 species
@@ -3356,6 +3420,7 @@ spokesman,spokes-man
 sportsman,sports-man
 spousal
 sprightful,sprite=ful
+spurry
 squireen
 stableman,stable-man
 stagnation
@@ -3629,6 +3694,7 @@ towmont
 townsman,towns-man
 toyoda
 Tracey
+tracheal,trachea=l
 trackman,track-man
 tractarianism
 Tracy
@@ -3767,8 +3833,10 @@ verdin
 vernation
 versant
 versine
+vertebral,vertebra=l
 vertical
 verticillate
+vesical,vesica=l
 vesicatory
 vestryman,vestry-man
 viatores
@@ -3784,6 +3852,7 @@ vinic
 vinous
 violate
 violation,violate=ion
+visceral,viscera=l
 visor
 vitamin
 vives
@@ -3845,6 +3914,7 @@ whereto,where-to
 wherewithal,where-withal
 wherryman,wherry-man
 whimsically,whimsical=ly
+whirry,whir=y
 whitener,whiten=er
 whitening,whiten=ing
 whoremonger,whore-monger
