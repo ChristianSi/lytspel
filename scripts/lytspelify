@@ -484,7 +484,8 @@ sub insert_stress_marker_among_multiple_consonants {
 
     # Break before last three consonants, e.g. «di'scription, e'spresso, in'struction,
     # converrsaa'tsyoneh» ‹description, espresso, instruction, conversazione›
-    if ($consonants =~ /(s=c=r|s=p=[lr]|s=t=r|t=s=y)$/ && $tradspell !~ /^([dm][iy]|juri)sp/) {
+    if ($consonants =~ /(f=r=w|s=c=r|s=p=[lr]|s=t=r|t=s=y)$/ 
+        && $tradspell !~ /^([dm][iy]|juri)sp/) {
         return $sep_count == 2 ? insert_at_start $consonants : insert_after_first $consonants;
     }
 
@@ -520,7 +521,7 @@ sub insert_stress_marker {
         # e.g. «bi'smurch, bi'spred» ‹besmirch, bespread›
         || ($consonants =~ /^s=/ && $tradspell =~ /^bes[mp]/)
         # fixes a few special cases
-        || $tradspell =~ '^(respir|Samothracian$)';
+        || $tradspell =~ '^(respir|Samothracian|Venezuela$)';
 
     # Break after 'ns', if $tradspell contains 'trans' followed by ca|pa|po|pu|g|f|l|m|n|v
     # (in most cases)
@@ -540,7 +541,7 @@ sub insert_stress_marker {
         if $consonants =~ /g=z/
         || ($consonants =~ /^s=/
         && $tradspell =~
-        /^(d[iy]s|ascosporous$|casca|chastise$|descant$|extrasystolic$|testosterone$)/i)
+        /^(dis[^ps]|dys|ascosporous$|casca|chastise$|descant$|extrasystolic$|testosterone$)/i)
         # Break s'c, s'k in the middle of most proper nouns, e.g. «Wis'consin» ‹Wisconsin›
         || ($consonants =~ /^s=[ck]$/
         && $tradspell =~ /^[A-Z]/
@@ -557,9 +558,9 @@ sub insert_stress_marker {
 
     # Break before both consonants if the first is 's' (not followed by ch|th|b|d|f|m|n),
     # if the second is 'l' (not preceeded by d|m|n|r|t|v|?h) or 'r' (not preceeded by l|m|n|z),
-    # and in case of gw|gy|my|tw
+    # and in case of a few combinations ending in 'w' or 'y'
     return insert_at_start $consonants
-        if $consonants =~ /^s=(?![ct]h|[bdfmn])|[^dmnrtvh]=l|[^lmnz]=r|g=[wy]|m=y|t=w$/;
+        if $consonants =~ /^s=(?![ct]h|[bdfmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w|[gm]=y$/;
 
     # Otherwise break in middle
     return insert_after_first $consonants;
@@ -577,7 +578,7 @@ sub move_stress_marker {
         if $word !~ /'/
         || $tradspell =~
         /^(abampere$|abaxial$|abirrita|abohm$|aboral$|antalkali$|enactory$|Finsteraarhorn$
-          |inordinacy$|permalloy$|Oberammergau$|subordinat)/x;
+          |inordinacy$|permalloy$|Oberammergau$|subordinat|supererogate$)/x;
 
     # If the compound contains two stress markers, we keep just the first one
     $word =~ s/('.*)'/$1/ if $word =~ /'.*'/;
@@ -1100,7 +1101,7 @@ sub postprocess_suffixed {
     $pos_hint ||= 'v'
         if $tradspell =~ /^(contently|inversely)$/
         || $suffix =~ /^(able|ed|e?s|ing|or)$/;
-    $pos_hint ||= 'aj' if $suffix =~ /^(ize|ly)$/;
+    $pos_hint ||= 'aj' if $suffix =~ /^(ize|[lr]y)$/;
     $pos_hint ||= 'n'
         if $tradspell =~ /^(essayist|internist|presentist|progressist|teary)$/
         || $suffix =~ /^(ful|less)$/;
@@ -1181,6 +1182,10 @@ sub postprocess_suffixed {
         # non-compounds, but after final «ss» they must be treated as compounds to ensure
         # proper conversion)
         $conv_suffix = 'eri' if $tradspell =~ /^(dispensary|glossary)$/;
+
+        # Likewise ‹ry›
+        $conv_suffix = 'eri' if $conv_suffix eq 'ri' && $conv_base =~ /[bdfgjklnprsv]$/
+            && $tradspell =~ /([^g]ery|dgery)$/ && $tradspell !~ /(comradery|enginery|riflery)/;
 
         # Strip stress marker from base word if the suffix contains another one
         $conv_base =~ s/'// if $conv_suffix =~ /'/;
