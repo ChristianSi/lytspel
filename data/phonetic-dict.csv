@@ -4987,6 +4987,7 @@ apperception,,,a#p@s'EpS@n,a#p@`s'EpS@n,ap@`s'EpS@n
 appertain,,,a#p'3:teIn,,ap@`t'eIn
 appetence,,,a#p'Et@ns,,'apIt@ns
 appetency,,,a#p'Et@nsi:,,'apIt@nsi:
+appetent,,,a#p'Et@nt,,
 appetiser,,appetizer
 appetisers,,appetizers
 appetising,,appetizing
@@ -21109,7 +21110,7 @@ coopery,,,koU'Qp@ri:,koU'ApEri:,k'u:p@`i:
 cooptative,,,koU'Qpt@tIv,koU'Apt@tIv,
 coordinate,n,,koU'O:dIn@t,koU'O:rdI#n@t,koU'O:rd@nIt
 coordinate,v,,koU'O:dIneIt,koU'O:rdIneIt,koU'O:rd@neIt
-coordinated,,,koU'O:dIneItId,koU'O:rdI#neItId,koU'O:rd@neItId
+coordinated,,,koU'O:dIneItId,koU'O:rdIneItI#d,koU'O:rd@neItId
 coordinately,,,koU'O:dIn@tli:,koU'O:rdI#n@tli:,koU'O:rd@nItli:
 coordinates,n,,koU'O:dIn@ts,koU'O:rdI#n@ts,koU'O:rd@neIts
 coordinates,v,,koU'O:dIneIts,koU'O:rdIneIts,koU'O:rd@neIts
@@ -39431,6 +39432,7 @@ gaywings,,,g'eIwINz,,g'eIw'INz
 gaz,,,g'az,,
 Gaza,,,g'Az@,,g'AzA
 gazabo,,,gaz'AboU,,g@z'eIboU
+Gazan,,,g'az@n,,
 Gazans,,,g'az@nz,,g'Qz@nz
 gaze,,,g'eIz,,
 gazebo,,,ga#z'i:boU,,g@z'eIboU
@@ -40862,6 +40864,7 @@ gondola,,,g@nd'oUl@,,gQnd'oUl@
 gondolas,,,g@nd'oUl@z,,gQnd'oUl@z
 gondolier,,,g'Qnd@li:@,g'And@li:@`,gQnd@l'Ir
 gondoliers,,,g@nd'oUli:@z,g@nd'oUlIrz,gQnd@l'Irz
+Gondwana,,,g@ndw'An@,,
 Gondwanaland,,,g@ndw'an@la#nd,,gQndw'QnQland
 gone,,,g'Qn,g'O:n,
 goneness,,,g'Qnn@s,g'Ann@s,g'QnIs
@@ -57533,6 +57536,7 @@ magnanimous,,,magn'anIm@s,,magn'an@m@s
 magnate,,,m'agneIt,,
 magnates,,,m'agneIts,,
 magnesia,,,magn'i:zi:@,magn'i:Z@,
+magnesian,,,magn'i:zi:@n,magn'i:Z@n,
 magnesic,,,magn'i:zIk,,magn'i:sIk
 magnesite,,,m'agnIsaIt,,m'agn@saIt
 magnesium,,,magn'i:zi:@m,,
@@ -62970,7 +62974,7 @@ mutant,,,mj'u:t@nt,,
 mutants,,,mj'u:t@nts,,
 mutase,,,mj'u:teIs,,
 mutate,,,mju:t'eIt,,mj'u:teIt
-mutated,,,mj'u:teItId,mju:t'eItI#d,
+mutated,,,mju:t'eItId,mju:t'eItI#d,mj'u:teItId
 mutating,,,mju:t'eItIN,,mj'u:teItIN
 mutation,,,mju:t'eIS@n,,
 mutations,,,mju:t'eIS@nz,,
@@ -70213,6 +70217,8 @@ perfective,,,p@f'EktIv,p@`f'EktIv,
 perfectivity,,,p@fIkt'IvIti:,p@`fIkt'IvIti:,p3:fEkt'IvIti:
 perfectly,,,p'3:fEktlI,p'3:fEktli:,p'3:f@ktli:
 perfecto,,,p@f'EktoU,p@`f'EktoU,
+perfects,aj,,p'3:fEkts,,
+perfects,v,,p@f'Ekts,p@`f'Ekts,
 perfervid,,,p'3:f@vId,p'3:f@`vId,p@`f'3:vId
 perfidious,,,p3:f'IdI@s,,p@`f'Idi:@s
 perfidiously,,,p3:f'IdI@sli:,,p@`f'Idi:@sli:
@@ -70447,6 +70453,8 @@ peroxy,,,p'ErQksi:,p'ErAksi:,p@`'Qksi:
 perpend,n,,p'3:p@nd,,p@`p'End
 perpend,v,,p'3:p@nd,,p@`p'End
 perpendicular,,,p3:p@nd'IkjUl@,p3:p@nd'IkjUl@`,
+perpends,n,,p'3:p@ndz,,
+perpends,v,,p'3:p@ndz,,
 perpent,,,p'3:p@nt,,
 perpetrate,,,p'3:pItreIt,,p'3:p@treIt
 perpetrated,,,p'3:pItreItId,p'3:pItreItI#d,p'3:p@treItId
