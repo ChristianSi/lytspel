@@ -118,11 +118,10 @@ sub prepare_espeak_input {
                 # which we'll re-use for all tags; if the original entry was already tagged,
                 # there will be additional pronunciations which we ignore
                 my ($pron) = $value =~ /^\S+\s+([^\s;]+)/;
+                $pron = '' unless $pron;  # default for extra words
                 my $new_value = '/';
 
                 # Sanity check
-                die "Line: $word$value cannot be tagified since it's not a valid entry"
-                    unless $pron;
                 die "No POS tags listed for $word in $TAGIFY_FILE: " unless @taglist;
                 die "Duplicate POS tags listed for $word in $TAGIFY_FILE: "
                     unless uniq(@taglist) == @taglist;
