@@ -484,20 +484,20 @@ sub insert_stress_marker_among_multiple_consonants {
 
     # Break before last three consonants, e.g. «di'scription, e'spresso, in'struction,
     # converrsaa'tsyoneh» ‹description, espresso, instruction, conversazione›
-    if ($consonants =~ /(f=r=w|s=c=r|s=p=[lr]|s=t=r|t=s=y)$/ 
-        && $tradspell !~ /^([dm][iy]|juri)sp/) {
+    if (   $consonants =~ /(f=r=w|s=c=[^=]+|s=p=[lry]|s=t=r|t=s=y)$/
+        && $tradspell !~ /^(dy|mi|juri)sp/)
+    {
         return $sep_count == 2 ? insert_at_start $consonants : insert_after_first $consonants;
     }
 
-    # Break after second consonant, e.g. «temp'taition, punc'tiliass, Pyonj'yang, pont'leviss,
+    # Break after second consonant, e.g. «temp'taition, punc'tiliass, pont'leviss,
     # Burg'soanian, dipart'mentl, disp'noic, poast'limeni, Fits'patric» ‹temptation,
-    # punctilious, Pyongyang, pontlevis, Bergsonian, departmental, dyspnoic, postliminy,
-    # Fitzpatrick›
+    # punctilious, pontlevis, Bergsonian, departmental, dyspnoic, postliminy, Fitzpatrick›
     return insert_after_second $consonants
         if $consonants =~
-        /^( l=c=m | l=f=[cw] | m=p=t | n=c=[nt] | n=j=y | n=s=h | n=t=[cghlp] | r=c=[mt]
-          | r=d=[nv] | r=g=s | r=m=w | r=n=[mwy] | r=p=[nst] | r=s=f | r=t=[fms] | r=th=w
-          | s=p=n | s=t=[ml] | t=s=[jpr] )$/x
+        /^( l=c=m | l=f=[cw] | m=p=t | n=c=[nt] | n=s=h | n=t=[cghlp] | r=c=[mt] | r=d=[nv]
+          | r=g=s | r=m=w | r=n=[mw] | r=p=[nst] | r=s=f | r=t=[fms] | r=th=w | s=p=n
+          | s=t=[ml] | t=s=[jpr] )$/x
         || $tradspell eq 'Kaiserslautern';
 
     # Otherwise break after first of three consonants, or after second of four
@@ -557,10 +557,15 @@ sub insert_stress_marker {
         || ($consonants eq 't=r' && $tradspell =~ /^outr/i);
 
     # Break before both consonants if the first is 's' (not followed by ch|th|b|d|f|m|n),
-    # if the second is 'l' (not preceeded by d|m|n|r|t|v|?h) or 'r' (not preceeded by l|m|n|z),
+    # if the second is 'l' (not preceeded by d|m|n|r|t|v|?h), 'r' (not preceeded by l|m|n|z),
     # and in case of a few combinations ending in 'w' or 'y'
     return insert_at_start $consonants
-        if $consonants =~ /^s=(?![ct]h|[bdfmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w|[gm]=y$/;
+        if $consonants =~ /^s=(?![ct]h|[bdfmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w$/;
+
+    # Likewise before combinations ending in 'y' (not preceeded by 'r'), though there are
+    # a few exceptions
+    return insert_at_start $consonants
+        if $consonants =~ /[^r]=y$/ && $tradspell !~ /^(goli|pallia)|(iority|yang)$/;
 
     # Otherwise break in middle
     return insert_after_first $consonants;
@@ -1184,8 +1189,11 @@ sub postprocess_suffixed {
         $conv_suffix = 'eri' if $tradspell =~ /^(dispensary|glossary)$/;
 
         # Likewise ‹ry›
-        $conv_suffix = 'eri' if $conv_suffix eq 'ri' && $conv_base =~ /[bdfgjklnprsv]$/
-            && $tradspell =~ /([^g]ery|dgery)$/ && $tradspell !~ /(comradery|enginery|riflery)/;
+        $conv_suffix = 'eri'
+            if $conv_suffix eq 'ri'
+            && $conv_base =~ /[bdfgjklnprsv]$/
+            && $tradspell =~ /([^g]ery|dgery)$/
+            && $tradspell !~ /(comradery|enginery|riflery)/;
 
         # Strip stress marker from base word if the suffix contains another one
         $conv_base =~ s/'// if $conv_suffix =~ /'/;
@@ -1736,6 +1744,7 @@ sub convert_dict {
    # -ficative: -ficaitiv, not -fecaitiv
    # -ification: ifi'caition, not efi'caition
    # -ible: probably always ebl, not ibl (or maybe ibl in non-compounds? consult B dict)
+   # -iere (italian): preferably standardize
    # -ify: -ifi, not -efi
    # -ily: -ili, not -eli
    # -inal: always -inel, not -enel
