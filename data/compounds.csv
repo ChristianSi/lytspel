@@ -12969,22 +12969,20 @@ discreetly,discreet=ly
 discreetness,discreet=ness
 discrepancies,discrepancy=es
 discrepantly,discrepant=ly
-discrete,dis=crete
 discretely,discrete=ly
 discreteness,discrete=ness
 discretional,discretion=al
 discretionally,discretional=ly
 discretionary,discretion=ary
 discretions,discretion=s
-discriminate,dis=criminate
 discriminated,discriminate=ed
 discriminates,discriminate=s
 discriminating,discriminate=ing
 discriminatingly,discriminating=ly
-discriminative,dis=criminative
+discriminative,discriminate=ive
 discriminatively,discriminative=ly
 discriminator,discriminate=or
-discriminatory,dis=criminatory
+discriminatory,discriminate=ory
 discrown,dis=crown
 discs,disc=s
 discursively,dis=cursively
@@ -13428,7 +13426,6 @@ dissolving,dis=solving
 dissonancy,dissonance=y
 dissonantly,dissonant=ly
 dissuaded,dissuade=ed
-dissuasion,dis=suasion
 dissuasively,dissuasive=ly
 dissuasiveness,dissuasive=ness
 dissymmetric,dis=symmetric
@@ -26708,6 +26705,7 @@ launders,launder=s
 laundries,laundry=es
 laundromats,laundromat=s
 laundryman,laundry-man
+laundrywoman,laundry-woman
 laureates,laureate=s
 laurels,laurel=s
 lavages,lavage=s
@@ -28413,6 +28411,7 @@ marchman,march-man
 marchpane,march-pane
 marcos,marco=s
 mares,mare=s
+margaritas,margarita=s
 margent,marge=ent
 marginal,margin=al
 marginalization,marginalize=ation
@@ -28482,6 +28481,8 @@ marrowfat,marrow-fat
 marrying,marry=ing
 marseilles,marseille=s
 marshal,marsh=al
+marshaled,marshal=ed
+marshaling,marshal=ing
 marshalls,marshall=s
 marshals,marshal=s
 marshes,marsh=es
@@ -28987,6 +28988,7 @@ merrier,merry=er
 merrymaker,merry-maker
 merrymaking,merry-making
 merryman,merry-man
+merrythought,merry-thought
 mesalliances,mesalliance=s
 mescaline,mescal=ine
 meseems,me-seems
@@ -29230,6 +29232,7 @@ microns,micron=s
 micronucleus,micro=nucleus
 microorganism,micro=organism
 microorganisms,micro=organisms
+micropaleontological,micro=paleontological
 micropaleontology,micro=paleontology
 microparasite,micro=parasite
 microparasitic,micro=parasitic
@@ -41684,7 +41687,6 @@ segregationist,segregation=ist
 segregationists,segregationist=s
 segregator,segregate=or
 seigneurial,seigneur=ial
-seigneury,seigneur=y
 seiner,seine=er
 seis,sei=s
 seising,seise=ing
