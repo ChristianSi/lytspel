@@ -1,0 +1,20 @@
+{
+
+  "description": "Phonetically respells English-language texts",
+  "manifest_version": 2,
+  "name": "Lytspel",
+  "version": "1.0",
+  "homepage_url": "https://github.com/ChristianSi/lytspel",
+  "icons": {
+    "48": "icons/spellcheck-48.png",
+    "96": "icons/spellcheck-96.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*/*"],
+      "js": ["lytspelify.js"]
+    }
+  ]
+
+}
