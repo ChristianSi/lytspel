@@ -523,11 +523,10 @@ sub insert_stress_marker {
         # fixes a few special cases
         || $tradspell =~ '^(respir|Samothracian|Venezuela$)';
 
-    # Break after 'ns', if $tradspell contains 'trans' followed by ca|pa|po|pu|g|f|l|m|n|v
-    # (in most cases)
+    # Break after 'ns', if $tradspell contains 'trans' followed by certain combinations
     return insert_after_second $consonants
         if $just_consonants =~ /^(ns)(.*)/
-        && $tradspell =~ /trans(ca|p[aou]|[gflmnv])/i
+        && $tradspell =~ /trans(ca|d|p[aou]|[gflmnv])/i
         && $tradspell ne 'transponder';
 
     # Three or more consonants
@@ -556,11 +555,13 @@ sub insert_stress_marker {
         || ($consonants eq 'p=r' && $tradspell =~ /^upr/i)
         || ($consonants eq 't=r' && $tradspell =~ /^outr/i);
 
-    # Break before both consonants if the first is 's' (not followed by ch|th|b|d|f|m|n),
+    # Break before both consonants if the first is 's' (not followed by certain combinations),
     # if the second is 'l' (not preceeded by d|m|n|r|t|v|?h), 'r' (not preceeded by l|m|n|z),
     # and in case of a few combinations ending in 'w' or 'y'
     return insert_at_start $consonants
-        if $consonants =~ /^s=(?![ct]h|[bdfmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w$/;
+        if $consonants =~ /^s=(?![ct]h|[bdfjmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w$/
+        # Likewise in final ‹tlan›, e.g. «Maassaa'tlaan» ‹Mazatlán›
+        || ($consonants =~ /^t=l$/ && $tradspell =~ /tlan$/);
 
     # Likewise before combinations ending in 'y' (not preceeded by 'r'), though there are
     # a few exceptions
@@ -581,9 +582,9 @@ sub move_stress_marker {
     # e.g. «sub'ordinaitiv» ‹subordinative›
     return $word
         if $word !~ /'/
-        || $tradspell =~
-        /^(abampere$|abaxial$|abirrita|abohm$|aboral$|antalkali$|enactory$|Finsteraarhorn$
-          |inordinacy$|permalloy$|Oberammergau$|subordinat|supererogate$)/x;
+        || $tradspell =~ /^( abampere$ | abaxial$ | abirrita | abohm$ | aboral$ | antalkali$
+          | circumamb | enactory$ | Finsteraarhorn$ | inordinacy$ | permalloy$ | Oberammergau$
+          | subordinat | supererogate$ )/x;
 
     # If the compound contains two stress markers, we keep just the first one
     $word =~ s/('.*)'/$1/ if $word =~ /'.*'/;
@@ -1363,6 +1364,9 @@ sub convert_row {
                 $rp, $ga, $phoneng, $tradspell;
         }
     } else {
+        # Return compound after discarding a spurious hyphen that might have been added before
+        # the stress marker
+        $compound =~ s/-'/'/;
         $converted = $compound;
     }
 
@@ -1442,6 +1446,13 @@ sub lookup_part_entry {
     return $conv_colref;
 }
 
+# hyphen_needed $first, $second: Check if a hyphen should be inserted between the parts
+# of a compound to prevent misreading.
+sub hyphen_needed {
+    my ($first, $second) = @_;
+    return ($first =~ /o$/i && $second =~ /^[aiou]/i) || ($first =~ /i$/i && $second =~ /^u/i);
+}
+
 # handle_compound $colref, $parts, $tradspell: Handle a compound or derived form. Contractions
 # derived from another word in a regular fashion (such as ‹it'd, she'll, shouldn't› are handled
 # by this method has well.
@@ -1506,6 +1517,7 @@ sub handle_compound {
 
         # Capitalize second part of words with inner capitalization
         $second_lytspel = ucfirst($second_lytspel) if $tradspell =~ /^[A-Z][a-z]+[A-Z]/;
+        $first_lytspel = "$first_lytspel-" if hyphen_needed($first_lytspel, $second_lytspel);
         $compound = "$first_lytspel$second_lytspel";
 
         # If the compound contains two stress markers, we keep just the second one
@@ -1634,10 +1646,11 @@ sub handle_compound {
             return "!$first=$second";
         }
 
+        $first_lytspel = "$first_lytspel-" if hyphen_needed($first_lytspel, $second_lytspel);
         $compound = "$first_lytspel$second_lytspel";
 
         if ($stress_hint eq '1' || $compound_stress eq '1') {
-            $second_lytspel =~ s/'//;                 # delete stress marker from 2nd part, if any
+            $second_lytspel =~ s/'//;  # delete stress marker from 2nd part, if any
             $compound = "$first_lytspel$second_lytspel";
         } elsif ($stress_hint eq '2' || $compound_stress eq '2') {
             # Insert stress marker before 2nd part (unless it already contains one)
