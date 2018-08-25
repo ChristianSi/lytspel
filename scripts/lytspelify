@@ -67,10 +67,9 @@ my %STRESS_BEFORE = map { $_ => 1 } qw/about around away/;
 my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/ante auto contra electro homo meta mono para
     photo poly pro proto radio retro stereo tetra/;
 
-# TODO Move list into external CSV file (and add it to the Makefile).
+# XXX Move list into external CSV file.
 # If a derived word is listed here, a short vowel preceding the stress
 # marker won't be converted to «e».
-
 my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acronymous
     albuminous allonymous ammonic ammonify animality antinomian antonymous apostrophic
     appositive atomic bacchantic balladic basophilic bestiality bitonality Brabantine Brythonic
@@ -82,16 +81,15 @@ my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acro
     satanic shamanic sinistrality stomachic subordinative sultanic sycophantic synodic
     synodical synonymous talismanic testimonial tribadic tympanic/;
 
-# TODO Switch to Upper_Camel_Case for file-scoped variables
+# XXX Switch to Upper_Camel_Case for file-scoped variables
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
 
 # The following variables are globals for simplicity
-my $SUMMED_DIST = 0;
-my $WORD_COUNT  = 0;
-# TODO build_lc_map should reject entries with a missing value or an invalid POS tag
-my $COMPOUND_DICT_REF       = build_lc_map($COMPOUNDS,               0);
-my $CUSTOM_DICT_REF         = build_lc_map($CUSTOM,                  1);
+my $SUMMED_DIST             = 0;
+my $WORD_COUNT              = 0;
+my $COMPOUND_DICT_REF       = build_lc_map($COMPOUNDS, 0);
+my $CUSTOM_DICT_REF         = build_lc_map($CUSTOM, 1);
 my $PRE_STRESSED_VOWEL_DREF = build_lc_map('pre-stressed-vowel.csv', 1);
 
 # List of compounds which are stressed differently from our regular rules.
@@ -125,6 +123,9 @@ my %PREFIXES;
 
 # Mapping from suffixes to their Lytspel spellings.
 my %SUFFIXES;
+
+# XXX Adapt decompose to use prefix|suffix.csv instead of .list (note that some prefixes,
+# e.g. ‹di›, are NOT auto-recognized but have been added manually in compounds-manual.csv)
 
 # build_mapping: Create and return a mapping from SAMPA to the standard Lytspel spellings.
 # Also returns the length of the longest key in the map and populates %Lytspel_Set.
@@ -561,7 +562,9 @@ sub insert_stress_marker {
     return insert_at_start $consonants
         if $consonants =~ /^s=(?![ct]h|[bdfjmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w$/
         # Likewise in final ‹tlan›, e.g. «Maassaa'tlaan» ‹Mazatlán›
-        || ($consonants =~ /^t=l$/ && $tradspell =~ /tlan$/);
+        || ($consonants =~ /^t=l$/ && $tradspell =~ /tlan$/)
+        # And usually in the rare «ts» combination
+        || ($consonants =~ /^t=s$/ && $tradspell !~ /^(etcetera|Fitzsimmons)$/);
 
     # Likewise before combinations ending in 'y' (not preceeded by 'r'), though there are
     # a few exceptions
@@ -1076,16 +1079,13 @@ sub select_best {
 
     my $use_phoneng = $converted_phoneng ? 1 : 0;
 
-    # PhonEng often confuses these tree vowels, hence we don't prefer it if has one of them
-    # but the nearest pronunciation hasn't
     if ($use_phoneng) {
-        # TODO x Improve selection process and remove warning
         my $nearest_pron = $nearest eq $converted_rp ? $rp : $ga;
 
         for my $vowel (qw/A O: Q/) {
+            # Heuristic: PhonEng often confuses these tree vowels, hence we don't prefer it
+            # if it has one of them but the nearest pronunciation hasn't
             if ($phoneng =~ $vowel && $nearest_pron !~ $vowel) {
-                warn
-"Found doubtful $vowel in PhonEng for $tradspell: $converted_phoneng ($phoneng)\n";
                 $use_phoneng = 0;
                 last;
             }
@@ -1099,7 +1099,7 @@ sub select_best {
 # (e.g. final "tion" in derived words such as «options, tra'ditionel, imoatio'naliti»
 # ‹...traditional, emotionality›.
 sub postprocess_suffixed {
-    # TODO Split function into shorter parts
+    # XXX Split function into shorter parts
     my ($converted, $base, $suffix, $pos_hint, $tradspell) = @_;
     # Some suffixes are usually derived from a certain POS tag
     $pos_hint = 'n'  if $tradspell eq 'contractor';
@@ -1115,10 +1115,12 @@ sub postprocess_suffixed {
     my $conv_base = restore_capitalization $conv_base_colref->[3], $tradspell;
     my $conv_suffix = $SUFFIXES{$suffix};
 
-    # TODO Eliminate regex
+    # XXX Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
-    if ($suffix =~
-/^(.bility|able|ance|ant|ary|ative|ate|atory|dom|ed|en|ence|es|ent|er|ess|est|ful|ing|ise|ish|ism|ist|ize|kinesis|l|less|ly|ment|morphism|ness|nik|n|oid|or|up|ry|s|y)$/
+    if (
+        $suffix =~ /^(.bility|able|ance|ant|ary|ative|ate|atory|dom|ed|en|ence|es|ent|er|ess
+        |est|ful|ing|ise|ish|ism|ist|ize|kinesis|l|less|ly|ment|morphism|ness|nik|n|oid|or
+        |up|ry|s|y)$/x
         )
     {
         # ‹ate› is spoken in two different ways (/eIt/ or /It/) so we check which one to use
@@ -1401,7 +1403,7 @@ sub lookup_part_entry {
 
         # Some heuristics to pick the correct POS tag use
         unless ($pos_hint) {
-            # TODO Remove unnecessary parts (such as able, ing)
+            # XXX Remove unnecessary parts (such as able, ing)
             # Most words ending in -ate are adjectives (e.g. ‹agglutinate›).
             # Most ‹close...› combinations use the adjective.
             $pos = 'aj'
@@ -1422,7 +1424,7 @@ sub lookup_part_entry {
         $key = gen_key $part, $pos;
         $unconv_colref = $UNCONVERTED_DICT_REF->{$key};
 
-        # TODO Simplify this code
+        # XXX Simplify this code
         unless ($unconv_colref) {
             # Use 'n' or else 'aj' as fallback
             $key = gen_key $part, 'n';
@@ -1463,7 +1465,7 @@ sub hyphen_needed {
 # * "!mainword=suffix" if it's a suffixed word (for later postprocessing)
 # * undef otherwise
 sub handle_compound {
-    # TODO Refactor this function into shorter ones
+    # XXX Refactor this function into shorter ones
     my ($colref, $parts, $tradspell) = @_;
     my $pos = $colref->[1];
     $PROCESSED_COMPOUND_SET{gen_key(lc $tradspell, $pos)} = 1;
@@ -1714,136 +1716,14 @@ sub convert_dict {
             next;
         }
 
-   # TODO Adapt decompose (and Makefile) to use prefix|suffix.csv instead of .list
-   # TODO x Recognise a= /eI/ suffix just before /s, z/, e.g. ‹asymmetry›
-   # TODO Explain that stress markers may move into the main word (e.g. before -ation, -ee),
-   # but never into the prefix or across word boundaries in a compound)
-   # TODO Maybe try the rule: final «ss» after consonant (except /f, k, p, t, T/) is changed
-   # back to «s», while final «s» is changed to «z» in this case (probably only before
-   # vowels or just in those cases where confusion is possible, e.g. (sometimes?) before
-   # «i, er»).
-   # TODO Correct c->k: ‹workaholic› (special case, not a suffix because it's so rare)
-   # TODO Warn if pre-stressed schwa immediately after a vowel becomes anything except «e», as the
-   # resulting combination could be ambiguous
-   # ‹cyanoco-› should become «saieno», not «oa» (but leave other spellings alone)
-   # ‹micro-› should become «mycro» instead of mycre/mycroa, e.g. ‹microdont›
-   # ‹electro› should become «ilectro» rather than «...oa»
-   # ‹-genesis›: always «jeneciss», not "jeniciss";
-   # -olysis: probably always «oleciss», not "oliciss"; -alysis likewise
-   # ditto ‹mono› -> «mono» (?)
-   # psycho-: syco, not syco
-   # ‹hypo-› should remain unchanged, not "hype"; ‹homo› should become «hoamo»,
-   # not "hoame"; macro should remain unchanged, not macre or macroa.
-   # TODO Unify ‹ization/isation› spellings to «i'saition» (RP tends to prounounce the first
-   # vowel as /aI/, GA as /I/ or /@/)
-   # -ate: probably always -it instead of -et (or vice versa)
-   # aero- becomes airo- (not airoa-, case insensitive)
-   # -edly: edli, not idli
-   # standardize -meter: -meter should become -miter (-meeter is OK)
-   # -morph: always morf
-   # -morphic: always morfic instead of moarfic
-   # -morphous: ditto
-   # -morphism: always morfism instead of moarfism
-   # (ditto in derivs such as anamorphoscope)
-   # -metry, -etry: standardize
-   # -metropia: always me'troapia, not mi'troapia
-   # -centenary: always [sc]en'teneri
-   # -esthesia: always es'theezha, not is'theezha or [ei]s'theesia
-   # -esthetic: probably always es'thetic, not is'thetic
-   # -dactyl: probably -dactil, not -dactl; likewise -dactylous (or both vice versa?)
-   # -ed: probably standardize to -ed rather than -id, ditto ‹edly› to ‹edli›
-   # -epi: standardize to e'?pi rather than i'?pi, epe, or epee (epy, i'py may occur)
-   # -ess: probably ess, not iss
-   # -ficative: -ficaitiv, not -fecaitiv
-   # -ification: ifi'caition, not efi'caition
-   # -ible: probably always ebl, not ibl (or maybe ibl in non-compounds? consult B dict)
-   # -iere (italian): preferably standardize
-   # -ify: -ifi, not -efi
-   # -ily: -ili, not -eli
-   # -inal: always -inel, not -enel
-   # -inose: inoass, not enoass
-   # -inous: inuss, not enuss
-   # -ity: -iti, not -eti
-   # (subsumed under earlier rule: -[ai]bility: e'biliti (not [ai]'bil[ei]ti) --
-   # unless there are no earlier vowels, e.g. ‹stability›; should use pre-stressed e:
-   # palatability)
-   # unstressed -let: let or lit?
-   # -lecithal: lecithel, not lecethel
-   # -lgia: preferably standardize on either ljia or lya, possibly likewise for other -gia words
-   # -lia etc.: likewise
-   # -neurosis, -neurotic: always like the base word
-   # -ysis: probably standardize to iciss
-   # centi-: senti, not sente
-   # hypo-: probably standardize to hypo even if not recognized as compound
-   # legitim-: li'jitim, not li'jitem
-   # -physis: probably ficiss, not feciss (cf. physial which should be OK)
-   # -sclerosis: probably always scle'roaciss, not scli'roaciss
-   # -tia: pick one of sha/shia/tia if possible
-   # -thesis: standardize to theciss or thiciss (theeciss if stressed?)
-   # probably standardize /@ri:/ (or /@rI/ or /@`ri/) vs. /Eri:/ to the latter,
-   # e.g. ‹solidary, temporary, voluntary›
-   # -ylate: ilait, not elait
-   # -iform: standardize to -iform or maybe -eform
-   # -form: probably always form, not foarm or forrm
-   # -ometric: always o'metric, not oa? («ia» and «oe» for diphtongs are OK)
-   # Treat all words ending in ‹syllable› or ‹syllabic› as compounds even if not listed
-   # (2nd stressed: dissyllable, dodecasyllable), ditto ‹disyllabism› (2nd stressed) and
-   # ‹monosyllabicity›
-   # TODO Stress 1st part: counterattack/n, counterreply/n, servocontrol/n
-   # TODO Stress 2st part: counterbalance/v (also counterbalancing etc.)
-   # TODO Add with 2nd stressed: outshot/v, overcharge/v, overcharges/v, afternoon/n, arsenic/aj
-   # diffuse/aj, effuse/aj, separate/n: use P (seperit)
-   # produce/n,: pr'QdU:s  (produess)
-   # Add affricate/v: -kit (n) becomes cait
-   # subordinate/n: s@b'O:rdI#neIt (sub'ordinit), v: s@b'O:rdI#neIt (sub'ordinait);
-   # acerbate/aj: use P; animate/aj: 'anI#mIt (animit)
-   # TODO ‹a› before /s/ or /z/ should be treated as prefix in words such as ‹asymmetric› ->
-   # «aisi'metric», not "aici..."
-   # TODO liturgics, meteoritics etc.: use cs, not x
-   # TODO micrometre: treat as compound micro-meter rather than redirect (stressed on first
-   # syllable), ditto micrometres;
-   # strobilae: should become stroUb'aIli: (stroa'byli) instead of redirect;
-   # ditto foveolae: foUv'i:@li: (foa'vialee)
-   # Ambigous (would need two different entries): micrometer
-   # TODO Maybe write /O:l/ always as «all»?
-   # TODO Maybe use «iu» also for /yU/ and «ue» also for /U, yU/?
-   # TODO All -ally entries for which corresponding -al entries exist should be derived from
-   # the latter; the rest should probably still be written «clli» rather than "keli", e.g.
-   # ‹electronically›
-   # TODO x Document cases where the dictionary is insufficient, e.g. ‹bass, drawer, read,
-   # subsequence, tier, berlin, closer, moped, taxis, simas, viola, viva›
-
         $conv_colref = convert_row $colref, $colref->[0];
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
         $CSV_OUT->print($outfh, $conv_colref) if $conv_colref;
 
-        # TODO Finally drop POS tag if all variants are written the same, e.g. «mouth»
-        # TODO y Make more frequently-used variables file-scoped (not truly global!);
-        # use Some_Caps style for them -- lytspelify: possibly $consonants (?)
-        # TODO Switch to a single populate_dict_from_csv method with create_key and create_value
-        # callbacks (all files); probably switch to Text::xSV
-        # TODO Switch to Struct::Dumb or maybe restricted hashes (Hash::Util)
-        # instead of fixed-size lists
-        # use Hash::Util 'lock_keys'; my $name = {first => 'Christian', last => 'Siefkes'}
-        # lock_keys %$name; $name->{first} (OK); $name->{firs} (runtime error)
-        # Fix decompose to use prefix|suffix.csv instead of list (note that some prefixes,
-        # e.g. ‹di› are NOT auto-recognized but have been added manually)
-        # TODO Switch to "use 5.018" and "use autodie" (no need to check success of open and any
-        # other commands) or "use autodie qw(:all)" (also checks system, exec)
-        # TODO Maybe switch to experimental::signatures (or Function::Parameters)
-        # TODO Switch to Dir::Self to locate PhonEng.pm
-        # TODO Preferably use and/or instead of &&/|| to minimize the need for parentheses
-        # TODO Use Switch::Plain if/where reasonable
-        # TODO Run code through Perl::Critic::Freenode
-        # TODO Check whether final «ah, oh» occurs and documents if it does
     }
 
     close $outfh;
 
-    # TODO Add similar checks for compounds-manual.csv, compound-black|blacklist.csv,
-    # and pre-stressed-vowel.csv -- better use in-place flags for the purpose, set to
-    # true by lookup_tagged_dict_entry
-    # (also warn if there are duplicate entries in them if not yet checked)
     warn_unprocessed_entries $CUSTOM,          $CUSTOM_DICT_REF,          \%PROCESSED_CUSTOM_SET;
     warn_unprocessed_entries $COMPOUND_STRESS, $Compound_Stress_Dict_Ref, \%PROCESSED_COMPOUND_SET;
 
