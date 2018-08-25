@@ -23,6 +23,7 @@ our @EXPORT = qw(
     open_outfile_and_write_header
     rename_to_backup_file_if_exists
     valid_key
+    valid_pos_tag
     write_csv_line
 );
 
@@ -49,6 +50,12 @@ sub gen_key {
     return $pos ? "$word/$pos" : $word;
 }
 
+# valid_pos_tag $tag: Check whether the argument is a valid POS tag.
+sub valid_pos_tag {
+    my $tag = shift;
+    return $tag =~ /^(aj|av|n|prp|v)$/;
+}
+
 # build_lc_map $filename, $pos_tagged: Create and return a mapping from a simple CSV file
 # containing two or three columns (keys and values). If $pos_tagged is true, the 2nd column
 # contains an optional POS tag which becomes part of the key per the 'gen_key' function.
@@ -66,13 +73,17 @@ sub build_lc_map {
         my $value;
 
         if ($pos_tagged) {
-            $key = gen_key($key, $colref->[1]);
+            my $tag = $colref->[1];
+            die "Invalid POS tag '$tag' for entry '$key' in $filename\n"
+                if $tag && !valid_pos_tag($tag);
+            $key = gen_key($key, $tag);
             $value = $colref->[2];
         } else {
             $value = $colref->[1];
         }
 
         warn "Duplicate key '$key' in $filename\n" if exists($dict{$key});
+        die "Valueless key '$key' in $filename\n" unless $value;
         $dict{$key} = $value;
     }
 

@@ -128,7 +128,7 @@ sub prepare_espeak_input {
 
                 # Modify value (from ': PRON' to e.g. '/n: PRON; v: PRON')
                 for my $tag (@taglist) {
-                    if ($tag =~ /^(aj|av|n|prp|v)$/) {
+                    if (valid_pos_tag $tag) {
                         $new_value .= "$tag: $pron; ";
                     } else {
                         die "Unexpected POS tag listed for $word in $TAGIFY_FILE: $tag";
