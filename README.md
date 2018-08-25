@@ -432,13 +432,18 @@ single sound or an r-colored vowel):
     the same effect as a hyphen: it indicates that the letters to the left
     and to the right of it should be read in isolation, e.g. «co'operait»
     ‹cooperate›.
-  * Hyphens are generally not inserted between a base word and a suffix or
-    prefix, e.g. «truer» from «tru» ‹true›, «duer» ‹doer› from «du» ‹do›,
-    «baioastre'nautics» ‹bioastronautics› from «astre'nautics»
-    ‹astronautics›, «mycroa'naleciss» ‹microanalysis› from «a'naleciss»
-    ‹analysis›. Neither are they inserted between the parts of a compound,
-    e.g. «shorthand». If writers feel that confusion might result, they
-    may, of course, insert a hyphen (or a diaeresis).
+  * Hyphens are generally not inserted between a base word and a suffix,
+    e.g. «truer» from «tru» ‹true›.
+  * After a prefix or the first part of a compound, a hyphen is only
+    inserted if the last letter of the first part and the first letter of
+    the second part would otherwise form one of the combinations «oa, oi,
+    oo, ou, iu» (each of which represents a single vowel), e.g. «thro-away,
+    co-ig'zist, blo-out, poli-un'sacheraited» ‹throwaway, coexist, blowout,
+    polyunsaturated›. In other cases, no hyphens are inserted, e.g.
+    «shorthand».
+  * Writers may, of course, insert a hyphen (or a diaeresis) between the
+    parts of an affixed or compound word whenever they consider such a
+    visual separator helpful to prevent misreadings or confusion.
 
 Rules for derived and related words:
 
