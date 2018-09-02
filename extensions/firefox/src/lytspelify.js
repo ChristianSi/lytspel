@@ -6,13 +6,11 @@
 // if (typeof document !== 'undefined')
 triggerLytspelConversion(document.body, document.title);
 
-// TODO Test whether it works
-
 // Trigger the Lytspel conversion of the current document. Collect all words in the document
 // body and title and send them to the background script for conversion, setting a callback
 // that will do the actual conversion once the background script replies.
 function triggerLytspelConversion() {
-  const wordset = new Set();
+  let wordset = new Set();
   collectWordsFromChildNodes(document.body, wordset);
   collectWords(document.title, wordset);
   // Send wordset to background script and register callback
@@ -28,7 +26,7 @@ function collectWordsFromChildNodes(node, wordset) {
   for (const child of node.childNodes) {
     switch(child.nodeType) {
       case Node.ELEMENT_NODE:
-        collectWordsFromChildNodes(child);
+        collectWordsFromChildNodes(child, wordset);
         break;
       case Node.TEXT_NODE:
         collectWords(child.nodeValue, wordset);
@@ -46,7 +44,7 @@ function collectWords(text, wordset) {
   }
 }
 
-// Callback that convers the current document (including its title) to Lytspel.
+// Callback that converts the current document (including its title) to Lytspel.
 function convertToLytspel(words) {
   convertChildNodes(document.body, words);
   document.title = convertText(document.title, words);
@@ -71,7 +69,7 @@ function convertChildNodes(node, words) {
   for (const child of node.childNodes) {
     switch(child.nodeType) {
       case Node.ELEMENT_NODE:
-        convertChildNodes(child);
+        convertChildNodes(child, words);
         break;
       case Node.TEXT_NODE:
         child.nodeValue = convertText(child.nodeValue, words);
@@ -83,7 +81,7 @@ function convertChildNodes(node, words) {
 // Tokenize `text` and convert all word tokens to Lytspel.
 function convertText(text, words) {
   let tokens = tokenizeText(text);
-  tokens = tokens.map(x => { convertToken(x, words) } );
+  tokens = tokens.map(x => convertToken(x, words) );
   return tokens.join('');
 }
 
