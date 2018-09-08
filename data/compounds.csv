@@ -11729,7 +11729,6 @@ delivers,de=livers
 delivery,de=livery
 deliveryman,delivery-man
 dells,dell=s
-delmarva,del-marva
 delocalize,de=localize
 delouse,de=louse
 deloused,de=loused
@@ -16072,6 +16071,7 @@ examiner,examine=er
 examiners,examiner=s
 examines,examine=s
 examining,examine=ing
+exampled,example=ed
 examples,example=s
 exams,exam=s
 exarchate,exarch=ate
@@ -21108,7 +21108,6 @@ harmonizing,harmonize=ing
 harmony,harmon=y
 harms,harm=s
 harmsworth,harms-worth
-harness,harn=ess
 harnessed,harness=ed
 harnesses,harness=es
 harnessing,harness=ing
@@ -42162,6 +42161,7 @@ sharpening,sharpen=ing
 sharpens,sharpen=s
 sharper,sharp=er
 sharpest,sharp=est
+sharpies,sharpie=s
 sharpish,sharp=ish
 sharply,sharp=ly
 sharpness,sharp=ness
@@ -43297,6 +43297,7 @@ smartened,smarten=ed
 smartening,smarten=ing
 smarter,smart=er
 smartest,smart=est
+smarties,smarty=es
 smarting,smart=ing
 smartish,smart=ish
 smartly,smart=ly
@@ -44581,6 +44582,7 @@ stanzas,stanza=s
 stapled,staple=ed
 staplers,stapler=s
 staples,staple=s
+starboard,star-board
 starboards,starboard=s
 starbucks,star-bucks
 starched,starch=ed
@@ -46646,6 +46648,7 @@ talkback,talk-back
 talked,talk=ed
 talker,talk=er
 talkers,talker=s
+talkfest,talk-fest
 talkies,talkie=s
 talking,talk=ing
 talks,talk=s
@@ -46755,6 +46758,7 @@ tarantulas,tarantula=s
 tarbell,tar-bell
 tarbox,tar-box
 tarbrush,tar-brush
+tardiness,tardy=ness
 targeted,target=ed
 targeteer,target=eer
 targeting,target=ing
@@ -47313,6 +47317,7 @@ themselves,them-selves
 thenceforth,thence-forth
 thenceforward,thence-forward
 theocratic,theocrat=ic
+theodolitic,theodolite=ic
 theologians,theologian=s
 theoretical,theoretic=al
 theoretically,theoretical=ly
@@ -47339,6 +47344,7 @@ thereinafter,therein-after
 thereinbefore,therein-before
 thereinto,there-into
 thereof,there-of
+thereon,there-on
 thereout,there-out
 therethrough,there-through
 thereunder,there-under
@@ -48854,6 +48860,7 @@ tunny,tun=y
 turbans,turban=s
 turbidity,turbid=ity
 turbines,turbine=s
+turbocharge,turbo-charge
 turbocharged,turbocharge=ed
 turbocharger,turbo-charger
 turbocharges,turbocharge=s
@@ -49109,6 +49116,7 @@ unallied,un=allied
 unallocated,un=allocated
 unallowable,un=allowable
 unalterable,un=alterable
+unalterably,unalterable=y
 unaltered,un=altered
 unambiguous,un=ambiguous
 unambiguously,un=ambiguously
@@ -49846,6 +49854,7 @@ unevenly,un=evenly
 uneventful,un=eventful
 unexacting,un=exacting
 unexamined,un=examined
+unexampled,un=exampled
 unexcelled,un=excelled
 unexceptionable,un=exceptionable
 unexceptionableness,unexceptionable=ness
@@ -51009,6 +51018,7 @@ uplands,upland=s
 uplifted,uplift=ed
 uplifter,uplift=er
 uplifting,uplift=ing
+upmarket,up-market
 upped,up=ed
 upper,up=er
 upperclassman,upper-classman
@@ -51374,6 +51384,7 @@ verbalizing,verbalize=ing
 verbally,verbal=ly
 verbify,verb=ify
 verbless,verb=less
+verbosity,verbose=ity
 verbs,verb=s
 verdicts,verdict=s
 vergeboard,verge-board
@@ -51644,6 +51655,7 @@ vitaminize,vitamin=ize
 vitamins,vitamin=s
 vitascope,vita-scope
 vitiated,vitiate=ed
+vitreosity,vitreous=ity
 vitrics,vitric=s
 vitriolic,vitriol=ic
 vitriolize,vitriol=ize
@@ -51695,11 +51707,13 @@ volleyball,volley-ball
 volleys,volley=s
 voltages,voltage=s
 voltairean,voltaire=ean
+voltaism,volta=ism
 voltammeter,volt-ammeter
 voltmeter,volt=meter
 volts,volt=s
 volumed,volume=ed
 volumes,volume=s
+voluminosity,voluminous=ity
 voluminously,voluminous=ly
 voluminousness,voluminous=ness
 voluntarily,voluntary=ly
@@ -53087,6 +53101,7 @@ worries,worry=es
 worriment,worry=ment
 worrisome,worry-some
 worrying,worry=ing
+worrywart,worry-wart
 worsen,worse=n
 worsened,worsen=ed
 worsening,worsen=ing
