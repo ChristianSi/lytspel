@@ -1873,7 +1873,6 @@ aphids,aphid=s
 aphorisms,aphorism=s
 aphoristic,aphorist=ic
 aphrodites,aphrodite=s
-apian,apia=n
 apically,apical=ly
 aping,ape=ing
 apish,ape=ish
@@ -2748,7 +2747,6 @@ availability,avail=ability
 available,avail=able
 availed,avail=ed
 avalanches,avalanche=s
-avant,ave=ant
 avariciously,avaricious=ly
 avariciousness,avaricious=ness
 avatars,avatar=s
@@ -3314,7 +3312,7 @@ barony,baron=y
 barracks,barrack=s
 barraged,barrage=ed
 barrages,barrage=s
-barred,barr=ed
+barred,bar=ed
 barreled,barrel=ed
 barrelful,barrel=ful
 barrelhead,barrel-head
@@ -3328,7 +3326,7 @@ barricaded,barricade=ed
 barricades,barricade=s
 barrier,barry=er
 barriers,barrier=s
-barring,barr=ing
+barring,bar=ing
 barrings,barring=s
 barrios,barrio=s
 barristers,barrister=s
@@ -4807,6 +4805,7 @@ bobbles,bobble=s
 bobbling,bobble=ing
 bobby,bob=y
 bobbysocks,bobby-socks
+bobbysoxer,bobbysocks=er
 bobcat,bob-cat
 bobcats,bobcat=s
 bobsled,bob-sled
@@ -8312,6 +8311,7 @@ coldness,cold=ness
 colds,cold=s
 coldslaw,cold-slaw
 coleen,cole=en
+coleopteran,coleoptera=n
 coleridge,cole-ridge
 coles,cole=s
 coleseed,cole-seed
@@ -8386,6 +8386,7 @@ collings,colling=s
 collins,collin=s
 collisional,collision=al
 collisions,collision=s
+collocation,collocate=ion
 colloid,coll=oid
 colloidal,colloid=al
 colloquialism,colloquial=ism
@@ -19129,7 +19130,6 @@ gammoning,gammon=ing
 gammons,gammon=s
 gammy,gam=y
 gamy,game=y
-gander,gand=er
 ganders,gander=s
 gandhian,gandhi=an
 gandhiism,gandhi=ism
@@ -23847,7 +23847,6 @@ indulgency,indulgence=y
 indulgent,indulge=ent
 indulges,indulge=s
 indulging,indulge=ing
-induna,in=duna
 induplicate,in=duplicate
 induration,in=duration
 industrial,industry=al
@@ -27629,7 +27628,6 @@ lolly,loll=y
 lollygag,lolly-gag
 lomas,loma=s
 lombards,lombard=s
-loment,lome=ent
 londonderry,london-derry
 londoner,london=er
 londoners,londoner=s
@@ -28281,11 +28279,8 @@ mandarins,mandarin=s
 mandated,mandate=ed
 mandates,mandate=s
 mandating,mandate=ing
-mandatory,mande=atory
-mandean,mande=ean
 mandrake,man-drake
 mandrill,man-drill
-mandy,mande=y
 maned,mane=ed
 manent,mane=ent
 manes,mane=s
@@ -30016,14 +30011,12 @@ molester,molest=er
 molesters,molester=s
 molesting,molest=ing
 molests,molest=s
-moline,mol=ine
 mollified,mollify=ed
 mollify,moll=ify
 mollusk,moll-usk
 mollusks,mollusk=s
 molly,moll=y
 mollycoddle,molly-coddle
-moloch,mol-och
 molten,molt=en
 moltenly,molten=ly
 molter,molt=er
@@ -32382,6 +32375,7 @@ orphaning,orphan=ing
 orphans,orphan=s
 orrisroot,orris-root
 orthocephalic,ortho-cephalic
+orthochromatic,ortho-chromatic
 orthodontics,orthodontic=s
 orthodontists,orthodontist=s
 orthodoxy,orthodox=y
@@ -32392,6 +32386,7 @@ orthogonality,orthogonal=ity
 orthogonalize,orthogonal=ize
 orthopedics,orthopedic=s
 orthopedists,orthopedist=s
+orthophosphoric,ortho-phosphoric
 orthopsychiatry,ortho-psychiatry
 orthoptic,orth-optic
 orthoptics,orthoptic=s
@@ -33837,6 +33832,7 @@ pastis,pasty=s
 pastor,past=or
 pastoral,pastor=al
 pastoralism,pastoral=ism
+pastoralist,pastoral=ist
 pastoralize,pastoral=ize
 pastorate,pastor=ate
 pastors,pastor=s
@@ -34032,6 +34028,7 @@ peculiarities,peculiarity=es
 peculiarize,peculiar=ize
 peculiarly,peculiar=ly
 pecuniarily,pecuniary=ly
+pedagogic,pedagogue=ic
 pedagogical,pedagogic=al
 pedagogics,pedagogic=s
 pedaled,pedal=ed
@@ -37236,7 +37233,6 @@ quacks,quack=s
 quacksalver,quack-salver
 quadragesimal,quadragesima=l
 quadrantal,quadrant=al
-quadrat,quad-rat
 quadratic,quadrat=ic
 quadratics,quadratic=s
 quadrennially,quadrennial=ly
@@ -37636,7 +37632,6 @@ raisers,raiser=s
 raises,raise=s
 raising,raise=ing
 raisins,raisin=s
-rajput,raj-put
 raked,rake=ed
 rakehell,rake-hell
 raker,rake=er
@@ -38187,6 +38182,7 @@ reclining,recline=ing
 reclothe,re=clothe
 reclusive,recluse=ive
 recognizable,recognize=able
+recognizably,recognizable=y
 recognizance,re=cognizance
 recognizant,re=cognizant
 recognized,recognize=ed
@@ -46721,12 +46717,10 @@ tannest,tan=est
 tannic,tan=ic
 tanning,tan=ing
 tans,tan=s
-tantalate,tanta-late
 tantalized,tantalize=ed
 tantalizes,tantalize=s
 tantalizing,tantalize=ing
 tantalizingly,tantalizing=ly
-tantamount,tanta-mount
 tantrums,tantrum=s
 tanzanian,tanzania=n
 taoism,tao=ism
@@ -46838,7 +46832,6 @@ taunts,taunt=s
 tauruses,taurus=es
 tautologically,tautological=ly
 tautology,taut=ology
-tautomerism,tautomer=ism
 tavernas,taverna=s
 taverner,tavern=er
 taverns,tavern=s
@@ -53384,6 +53377,7 @@ zigzagger,zigzag=er
 zigzagging,zigzag=ing
 zigzags,zigzag=s
 zillions,zillion=s
+zimbabwean,zimbabwe=an
 zimmers,zimmer=s
 zincate,zinc=ate
 zincic,zinc=ic
