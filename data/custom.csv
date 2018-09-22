@@ -446,14 +446,14 @@ alder,,A
 aldermanic,,A
 aldermanry,,A
 Alderney,,A
-aldicarb,,'aldIkAb
+aldicarb,,'aldIkArb
 Aldine,,'O:ldaIn
 Aldo,,B
 aldrin,,B
 aleatoric,,eIli:@t'QrIk
 aleatory,,'eIli:@tori:
 Alejandro,,a#lIh'androU
-Aleksandropol,,AlIks'Andr@pQl
+Aleksandropol,,alIks'Andr@pQl
 Aleksandrovsk,,alIks'Andr@fsk
 alencon,,P
 aleph,,'AlEf
@@ -465,7 +465,7 @@ Alfreda,,D
 Algeciras,,P
 Algeria,,B
 algerine,,P
-Algonkin,,alg'QnkIn
+Algonkin,,alg'QNkIn
 Algonquian,,P
 Algonquin,,P
 alienage,,P
@@ -516,6 +516,7 @@ Alston,,'O:lst@n
 Altair,,'alte@
 alt,,'alt
 altarage,,'O:lt@`IdZ
+altar,,'O:lt@`
 alteration,,O:lt@`'eIS@n
 alternation,,O:lt@`n'eIS@n
 alternative,,B
@@ -593,14 +594,13 @@ amylase,,B
 amylose,,'amIloUs
 amylum,,'amIl@m
 amyotrophic,,amaI@tr'QfIk
-Amytal,,'amItAl
+Amytal,,'amItal
 anabiotic,,an@b'aIQtIk
 Anacin,,D
 anacoluthon,,an@k@l'u:TQn
 anadyomene,,an@daI'Qm@ni:
 anaerobe,,'an@`oUb
 anaerobic,,an@`'oUbIk
-anaerobiotic,,e@r@#baI'QtIk
 analgesic,,B
 anaplasia,,an@pl'eIZ@
 anastigmatic,,A
@@ -618,7 +618,7 @@ andesite,,'and@zaIt
 andesitic,,and@z'ItIk
 Andizhan,,P
 Andre,,A
-androgyny,,andr'QdZ@ni:
+androgyny,,andr'QdZI#ni:
 Andromache,,P
 anecdotal,,B
 anecdote,,B
@@ -864,7 +864,7 @@ Ashkenazim,,P
 Ashkenazis,,D
 Ashkhabad,,ASk@b'Ad
 ashram,,P
-Ashurbanipal,,P
+Ashurbanipal,,ASUrb'AnIpAl
 Ashur,,P
 Asia,,A
 Asimov,,B
@@ -889,7 +889,7 @@ associate,,P
 associative,,P
 Assuan,,'aswAn
 assurance,,@S'Ur@ns
-Assurbanipal,,P
+Assurbanipal,,AsUrb'AnIpAl
 assure,,P
 Assyria,,a#s'i@i:@
 Assyriological,,a#si@I@l'QdZIk@l
@@ -942,7 +942,7 @@ Auriol,,D
 aurochs,,P
 auroral,,O:r'or@l
 aurora,,O:r'or@
-australopithecine,,O:streIloUp'ITI#si:n
+australopithecine,,O:streIloUp'IT@si:n
 Australopithecus,,O:streIloUp'ITIk@s
 Austrasia,,A
 Austronesia,,A
@@ -1004,6 +1004,7 @@ bacteria,,P
 bactericide,,P
 bacteriocin,,bakt'i:ri:@sIn
 bacterioid,,P
+bacteriology,,bakti:ri:'Ql@dZi:
 bacteriolysis,,bakti:ri:'QlIsIs
 bacteriolytic,,P
 bacteriophage,,P
@@ -1066,7 +1067,7 @@ bandeau,,P
 Bandung,,P
 bangkok,,B
 Bangladeshi,,B
-Bangui,,b'Angi:
+Bangui,,b'ANgi:
 banian,,P
 bani,,P
 Banjermasin,,P
@@ -1132,6 +1133,7 @@ Bastia,,D
 Batangas,,P
 bathos,,b'eITQs
 Batista,,b@t'i:st@
+batiste,,B
 battue,,bat'U:
 baudekin,,b'O:di:kIn
 Baudouin,,D
@@ -1139,7 +1141,7 @@ baur,,D
 bausond,,b'O:s@nd
 bavardage,,bav@`d'aZ
 bawcock,,B
-Bayamon,,P
+Bayamon,,bAj@m'Qn
 bayamo,,P
 Bayern,,D
 Bayes,,D
@@ -1214,7 +1216,7 @@ bestiary,,P
 bethink,,P
 beton,,D
 bhakta,,b'Vkt@
-bhangra,,b'Angr@
+bhangra,,b'ANgr@
 Bhili,,P
 Bhopal,,P
 Biafra,,P
@@ -1295,7 +1297,6 @@ blvd,,D
 Boabdil,,b'oU@bdIl
 bobak,,D
 bobbinet,,bQb@n'Et
-bobbysoxer,,b'Qbi:sQks@`
 bocaccio,,b@k'AtSoU
 bocage,,P
 Boccaccio,,b@k'AtSoU
@@ -1369,8 +1370,8 @@ Bosporus,,b'Qsp@`@s
 bosquet,,b'QskIt
 Boswellian,,bQzw'Eli:@n
 botanomancy,,b'Qt@n@mansi:
-Bothnia,,b'Qtni:@
-bothrium,,b'Qtri:@m
+Bothnia,,b'QTni:@
+bothrium,,b'QTri:@m
 botonee,,b'Qt@neI
 botryoidal,,bQtri:'OId@l
 botryose,,b'Qtri:oUs
@@ -1567,6 +1568,7 @@ caman,,B
 camaron,,P
 Cambrai,,P
 camcorder,,P
+Camelopardalis,,k@#mEl@p'Ard@lIs
 camelopard,,P
 Cameroon,,kam@`'u:n
 camiknickers,,k'amInIk@`z
@@ -1585,7 +1587,7 @@ Candide,,P
 Candiot,,k'andi:Qt
 cannelure,,k'an@lUr
 cantabile,,P
-cantatrice,,kant@tr'i:tSeI
+cantatrice,,kAntAtr'i:tSeI
 canterbury,,A
 cantorial,,A
 cantoris,,kant'orIs
@@ -1658,7 +1660,7 @@ carritch,,P
 carse,,A
 Cartagena,,P
 Carthusian,,A
-Cartier,,k'Qrti:eI
+Cartier,,k'Arti:eI
 cartouche,,P
 caryopsis,,kari:'QpsIs
 Casaubon,,D
@@ -1689,7 +1691,7 @@ catheter,,k'aTIt@`
 cathetus,,P
 cathisma,,k'Ati:zm@
 catholic,,k'aT@lIk
-catholicon,,k@T'Ql@k@n
+catholicon,,k@T'QlIk@n
 catholicos,,k@T'QlIkQs
 catjang,,P
 catoptric,,B
@@ -1697,6 +1699,7 @@ Cauca,,P
 Caucasia,,A
 Caucasoid,,k'O:k@sOId
 caulicolous,,P
+cauliculus,,kO:l'Ik@l@s
 cauliflory,,k'O:lIflori:
 cauliflower,,k'O:lI#flaU@`
 cauliform,,k'O:lI#fO:rm
@@ -1820,7 +1823,7 @@ Charlottenburg,,P
 Charonic,,P
 Charon,,P
 charoseth,,P
-Charpentier,,SArp@nt'Ir
+Charpentier,,D
 charpie,,tSArp'i:
 charro,,P
 Chartres,,S'Artr@
@@ -2004,6 +2007,7 @@ Ciscaucasia,,sIskO:k'eIZ@
 ciseleur,,D
 ciselure,,D
 cismontane,,P
+citrange,,s'ItrIndZ
 citrine,,B
 citronellol,,sItr@n'ElQl
 civilian,,P
@@ -2047,7 +2051,7 @@ coact,,P
 coadjutress,,koU'adZ@tr@s
 coadjutrices,,koU'adZ@trIsi:z
 coadunate,,P
-Coahuila,,P
+Coahuila,,koU@w'i:l@
 coarctate,,P
 coatimundi,,P
 coati,,P
@@ -2073,11 +2077,12 @@ Coimbra,,D
 Cointreau,,kw'antroU
 coitus,,k'oUIt@s
 Coleen,,kQl'i:n
-coleoptera,,koUli:'Qpt@`@
+coleoptera,,kQli:'Qpt@`@
 coleopteran,,koUli:'Qpt@`@n
 coleopteron,,kQli:'Qpt@`@n
 coleopterous,,kQli:'Qpt@`@s
 coleoptile,,kQli:'QptIl
+coleorhiza,,kQli:@`'aIz@
 Coligny,,D
 Colima,,kQl'i:mA
 colin,,B
@@ -2448,7 +2453,7 @@ daimyo,,d'aImjoU
 daiquiri,,d'aIk@`i:
 dali,,D
 dalis,,D
-Dallapiccola,,P
+Dallapiccola,,D
 dalton,,d'O:lt@n
 Daltonian,,dO:lt'oUni:@n,
 daltonic,,dO:lt'QnIk
@@ -2476,7 +2481,7 @@ dashiki,,d@S'i:ki:
 datcha,,P
 datto,,P
 datura,,d@t'U:r@
-Daugavpils,,P
+Daugavpils,,d'aUgAfpIls
 Daugherty,,d'Ak3:ti:
 daut,,d'O:t
 Davao,,dav'aU
@@ -2696,7 +2701,7 @@ dewan,,P
 dewar,,P
 Dewayne,,d@w'eIn
 dextrorotatory,,dEkstror'oUt@tori:
-Dezhnev,,d'EznEf
+Dezhnev,,d'EZnEf
 Dhaka,,d'ak@
 Dhammapada,,D
 diablo,,B
@@ -2724,6 +2729,7 @@ diatessaron,,daI@t'Es@`@n
 diatom,,d'aI@tQm
 diazotize,,P
 DiCaprio,,D
+dichogamic,,daIk@g'amIk
 dichogamous,,daIk'Qg@m@s
 dichogamy,,daIk'Qg@mi:
 dichondra,,daIk'Qndr@
@@ -3282,7 +3288,7 @@ Erhard,,D
 Erigena,,Ir'IdZ@n@
 Erivan,,j@`@v'An
 Erlanger,,'3:laN@`
-Ernesto,,Ern'EsoU
+Ernesto,,Ern'EstoU
 erose,,P
 erosible,,P
 errancy,,B
@@ -3563,6 +3569,7 @@ expert,,B
 expire,,P
 explain,,P
 explanatory,,Ikspl'an@tori:
+explicate,,'EksplIkeIt
 explicative,,'EksplIkeItIv
 explicatory,,'EksplIk@tori:
 explicit,,P
@@ -3678,13 +3685,19 @@ falconiform,,fO:lk'oUnI#fO:rm
 falconine,,f'O:lk@naIn
 falconry,,f'O:lk@nri:
 faldstool,,f'O:ldstu:l
+Falkirk,,f'O:lk3:k
 Falkland,,f'O:kla#nd
 fallibility,,fal@b'IlIti:
 false,,f'O:ls
+falsetto,,fO:ls'EtoU
 falsification,,fO:lsI#fIk'eIS@n
 falsify,,f'O:lsIfaI
 falsity,,f'O:lsIti:
+Falstaff,,f'O:lstaf
+Falstaffian,,fO:lst'afi:@n
+Falster,,f'O:lst@`
 faltboat,,f'O:ltboUt
+falter,,f'O:lt@`
 Falwell,,P
 Famagusta,,P
 familiarity,,fa#mIli:'arIti:
@@ -3868,7 +3881,7 @@ foment,,foUm'Ent
 fomites,,f'QmIti:z
 Fontainebleau,,D
 fontanel,,fQnt@n'El
-fontange,,P
+fontange,,fQnt'AnZ
 Fonteyn,,fQnt'eIn
 foramen,,f@`'eIm@n
 foram,,f'O:r@m
@@ -4047,7 +4060,7 @@ gayal,,P
 Gaya,,P
 gaydar,,O
 Gaza,,B
-Gaziantep,,P
+Gaziantep,,gAzi:ant'Ep
 gazpacho,,g@sp'AtSoU
 geanticlinal,,P
 geanticline,,P
@@ -4117,7 +4130,7 @@ geta,,B
 Gettysburg,,B
 gewgaw,,gj'u:gO:
 Ghana,,B
-Ghanaian,,g'Ani@n
+Ghanaian,,g'Ani:@n
 ghat,,g'O:t
 ghazal,,g'az@l
 Ghirlandaio,,gi:rlAnd'AjoU
@@ -4204,7 +4217,7 @@ Goethe,,D
 goethite,,g'3:taIt
 Gogh,,D
 goglet,,g'QglIt
-Goiania,,gOI'Ani@
+Goiania,,gOI'Ani:@
 goldarn,,g'Qld'Arn
 Golgi,,D
 golgotha,,g'Qlg@T@
@@ -4229,6 +4242,7 @@ gorgeous,,P
 gorge,,P
 gorget,,P
 gorgoneion,,gO:rg@n'i:Qn
+gorgonian,,A
 Gorizia,,gO:r'i:tsjA
 Gorlovka,,gO:rl'Qfk@
 gormand,,P
@@ -4319,13 +4333,13 @@ gynecocracy,,dZInIk'Qkr@si:
 gynecoid,,dZ'InIkOId
 gyniatrics,,gaInI'atrIks
 gynodioecism,,dZInoUdaI'i:sIz@m
-gypsophila,,dZIps'Qf@l@
+gypsophila,,dZIps'QfI#l@
 gyrfalcon,,dZ'3:fO:lk@n
 gyronny,,P
-gyttja,,P
+gyttja,,j'ItS@
 habanera,,P
 habdalah,,P
-habitan,,P
+habitan,,abIt'AN
 Habsburg,,h'apsb3:g
 hadarim,,k@d'ArIm
 Hadhramaut,,hAdrAm'O:t
@@ -4447,7 +4461,7 @@ Hegel,,D
 Hegelian,,heIg'eIli:@n
 hegemonic,,hEdZ@m'QnIk
 hegemony,,hIdZ'Em@ni:
-Heilungkiang,,heIl@NdZj'AN
+Heilungkiang,,heIlUNgj'AN
 Heimdall,,P
 Heine,,D
 heliacal,,P
@@ -4534,7 +4548,7 @@ Herakles,,P
 Herat,,P
 herbage,,B
 herbicide,,B
-Hercegovina,,P
+Hercegovina,,hErtsEg'QvIn@
 hereditarily,,h@`EdIt'e@Ili:
 heresiography,,h@`i:zi:'Qgr@fi:
 heresiologist,,h@`i:zi:'Ql@dZIst
@@ -4641,7 +4655,6 @@ holocrine,,h'Ql@krIn
 holoenzyme,,hQloU'EnzaIm
 Holofernes,,hQl@f'3:ni:z
 holohedral,,hQl@h'i:dr@l
-holometabolic,,hQloUmEt@b'QlIk
 holometabolous,,hQloUmIt'ab@l@s
 holothurian,,hQl@T'Uri:@n
 holozoic,,hQl@z'oUIk
@@ -4701,7 +4714,7 @@ hosey,,P
 hosier,,P
 hospitable,,h'QspIt@b@l
 Hospitalet,,P
-hospitia,,hQsp'Isi:@
+hospitia,,hQsp'ISi:@
 hospitium,,hQsp'ISi:@m
 hospodar,,h'Qsp@dAr
 hostile,,h'Qst@l
@@ -4889,7 +4902,7 @@ impediment,,B
 imperator,,Imp@`'At@`
 imperscriptible,,Imp@`skr'IptIb@l
 impetiginous,,B
-impetuosity,,ImpEtjU:'QsIti:
+impetuosity,,ImpEtjU'QsIti:
 impetuous,,Imp'EtjU@s
 impious,,P
 implead,,B
@@ -5076,7 +5089,7 @@ isogon,,'aIs@gQn
 isolative,,P
 Isolde,,Iz'oUld@
 isomerism,,aIs'Qm@`Iz@m
-isomerize,,aIsQAm@`aIz
+isomerize,,aIs'Qm@`aIz
 isomerous,,aIs'Qm@`@s
 isometry,,aIs'QmItri:
 isopodan,,aIs'Qp@d@n
@@ -5110,11 +5123,11 @@ Jadotville,,P
 Jagannatha,,dZVg@n'Ath@
 Jagannath,,P
 jaguarundi,,P
-Jahangir,,P
+Jahangir,,dZ@h'Angi:r
 Jaime,,dZ'eImi:
 Jakarta,,A
 Jalisco,,hAl'i:skoU
-Jamar,,dZ@m'Qr
+Jamar,,dZ@m'Ar
 jambos,,dZ'ambQs
 Jami,,D
 Jamshedpur,,dZAmSEdp'Ur
@@ -5223,7 +5236,7 @@ Kadiyevka,,k@d'i:j@fk@
 kaffeeklatsch,,k'Afi:klAtS
 Kafiristan,,P
 Kafkaesque,,kAfk@'Esk
-Kafka,,P
+Kafka,,k'Afk@
 Kagera,,P
 Kagoshima,,P
 Kaiserslautern,,kaIz@`zl'aUt@`n
@@ -5276,14 +5289,13 @@ Karafuto,,kArAfu:toU
 Karaganda,,kAr@g@nd'A
 Karaite,,k'ar@aIt
 Karajan,,D
-Karakoram,,kar@k'or@m
+Karakoram,,kAr@k'or@m
 kara,,k'Vr@
 karaoke,,B
 Kari,,k'ari:
 Karin,,k'arIn
 karmadharaya,,kArm@d'Ari:A
 Karol,,k'ar@l
-karter,,P
 karyogamy,,kari:'Qg@mi:
 karyolysis,,kari:'QlIsIs
 karyotype,,P
@@ -5325,7 +5337,7 @@ keeshond,,k'eIshQnd
 Keewatin,,ki:w'eItIn
 Keijo,,D
 keister,,k'i:st@`
-Kelantan,,k@l'AntAn
+Kelantan,,k@l'antan
 Kemerovo,,k'Em@`Qv@
 Kenilworth,,B
 Kenyatta,,P
@@ -5394,7 +5406,7 @@ Kirchhoff,,D
 Kirchner,,D
 Kirkcaldy,,k@rk'O:di:
 Kirkuk,,kIrk'u:k
-Kirovabad,,kI'oUv@bad
+Kirovabad,,kIr'oUv@bad
 Kirovograd,,kIr'oUv@grad
 kirpan,,P
 kirsch,,k'i@S
@@ -5431,12 +5443,12 @@ Kolyma,,kQlIm'A
 Kommunarsk,,k@mUn'Arsk
 komondor,,P
 Komsomol,,B
-Komsomolsk,,k@ms@m'Qlsk
+Komsomolsk,,kQms@m'Qlsk
 Konstanz,,P
 Kopeisk,,k@p'eIsk
 Koppel,,D
 Koran,,k@`'An
-Kordofan,,kO:rdoUf'An
+Kordofan,,kO:rd@f'An
 Koroseal,,D
 korun,,k'O:ru:n
 Korzybski,,P
@@ -5842,7 +5854,7 @@ lymphocytosis,,B
 lyolysis,,laI'QlIsIs
 Lyonnais,,D
 Lyon,,P
-lyophilize,,laI'Qf@laIz
+lyophilize,,laI'QfIlaIz
 Lysistrata,,P
 Lyublin,,B
 ma'am,,P
@@ -5894,11 +5906,12 @@ Mahabharata,,ma#h@b'Ar@t@
 mahaleb,,P
 maharajah,,P
 Maharashtra,,P
+maharishi,,mAh@`'i:Si:
 mahatma,,P
 Mahayana,,P
 Mahayanist,,P
 Mahfouz,,mAf'u:z
-mahua,,P
+mahua,,m'AhU@
 mahzorim,,mAkz'orIm
 maidan,,P
 Maillol,,D
@@ -5909,7 +5922,7 @@ Majorca,,m@j'O:rk@
 makar,,m'Ak@`
 Makeyevka,,m@k'eI@fk@
 Makhachkala,,P
-makimono,,mAki:m'oUnoU
+makimono,,mAkIm'oUnoU
 malacostracan,,mal@k'Qstr@k@n
 Malang,,P
 malathion,,malaT'aI@n
@@ -5920,7 +5933,7 @@ Malay,,P
 maleate,,m'eIli:eIt
 maleic,,m@l'i:Ik
 malgre,,m'algreI
-maline,,m@l'i:ni:
+maline,,m@l'i:n
 mallenders,,A
 Mallorca,,mAj'O:rk@
 Mallory,,D
@@ -6126,7 +6139,7 @@ McCarthyite,,m@k'ArTi:aIt
 McCartney,,m@k'eIrtni:
 McGuire,,D
 McIntosh,,m'akIntQS
-McLaughlin,,m@klf'O:lIn
+McLaughlin,,m@kl'O:flIn
 McMahon,,m@km'A@n
 McNamara,,P
 mechanoreceptor,,mEk@norIs'Ept@`
@@ -6171,6 +6184,7 @@ meiotic,,maI'QtIk
 Mejia,,mEj'i:@
 melamed,,mElam'Ed
 Melanesia,,mEl@n'i:Z@
+melange,,meIlAnZ
 mela,,P
 melilot,,B
 melinite,,B
@@ -6243,7 +6257,7 @@ metropolitan,,B
 Mexican,,B
 Meyerhof,,m'aI@`hQf
 Meyer,,P
-mezereon,,m@z'i:ri:@n
+mezereon,,m@z'i:ri:Qn
 mezereum,,m@z'i:ri:@m
 Mfume,,D
 Mia,,D
@@ -6259,7 +6273,7 @@ Micronesia,,maIkr@n'i:Z@
 micropolis,,maIkr'Qp@lIs
 microscopy,,P
 microsporous,,P
-micturition,,mIktju:r'IS@n
+micturition,,mIktU:r'IS@n
 midwifery,,mIdw'If@ri:
 mien,,P
 mignonne,,mInj'Qn
@@ -6592,7 +6606,7 @@ neoterism,,ni:'Qt@`Iz@m
 neoterize,,ni:'Qt@`aIz
 nepenthe,,B
 nephelinite,,n'Ef@lI#naIt
-Nepos,,n'i:Qas
+Nepos,,n'i:pQs
 nereid,,n'i@i:Id
 Nernst,,D
 Nero,,P
@@ -6620,7 +6634,7 @@ Nicolson,,n'Ik@ls@n
 nicotiana,,B
 Ni,,D
 nidal,,n'aId@l
-Nidaros,,n'i:@`roUs
+Nidaros,,n'i:d@`oUs
 nidificate,,n'IdI#fIkeIt
 Niedersachsen,,D
 nieves,,B
@@ -6917,14 +6931,12 @@ Orphean,,O:rf'i:@n
 ortanique,,A
 Ortegal,,P
 orthicon,,'O:rTIkQn
-orthochromatic,,A
 orthoclase,,A
 orthodontia,,O:rT@d'QnS@
 orthognathous,,O:rT'Qgn@T@s
 orthogonality,,O:rTQg@n'alIti:
 orthogonal,,O:rT'Qg@n@l
 orthographize,,O:rT'Qgr@faIz
-orthophosphoric,,O:rToUfQsf'QrIk
 orthopnea,,O:rT'Qpni:@
 orthopteran,,O:rT'Qpt@`@n
 orthopteron,,O:rT'Qpt@`Qn
@@ -6937,7 +6949,7 @@ orthotropous,,O:rT'Qtr@p@s
 ortolan,,'O:rt@l@n
 Oruro,,B
 Osage,,P
-Osborne,,'QzbO:rn
+Osborne,,'Qzborn
 Osborn,,'Qzb@`n
 oscillatory,,'QsI#l@tori:
 oscinine,,B
@@ -7123,7 +7135,7 @@ particulate,,p@`t'Ikj@lIt
 parton,,p'ArtQn
 parturient,,pArt'U:ri:@nt
 parturifacient,,pArtU:r@f'eIS@nt
-parturition,,pArtju:r'IS@n
+parturition,,pArtU:r'IS@n
 pascal,,P
 paschal,,p'ask@l
 Pasch,,P
@@ -7142,7 +7154,6 @@ pasteurization,,P
 pasteurize,,p'astS@`aIz
 Pasto,,p'AstoU
 pastorale,,p'ast@`'Al
-pastoralist,,P
 pastose,,P
 pataca,,P
 pathogenetic,,P
@@ -7400,7 +7411,7 @@ phosphoroscope,,fQsf'Qr@skoUp
 phosphorylase,,fQsf'QrIleIs
 phosphorylate,,fQsf'QrIleIt
 photophilous,,P
-photophosphorylation,,foUt@#fAsfQrIl'eIS@n
+photophosphorylation,,foUt@#fQsfQrIl'eIS@n
 phototropism,,foUt'Qtr@pIz@m
 phraseological,,P
 phraseologist,,freIzi:'Ql@dZIst
@@ -7600,7 +7611,7 @@ polymorphic,,pQlIm'O:rfIk
 polymorphism,,pQlIm'O:rfIz@m
 polymorphonuclear,,pQlImO:rf@n'U:kli:@`
 polymorphous,,pQlIm'O:rf@s
-Polynices,,pQl@n'aIsi:z
+Polynices,,pQlIn'aIsi:z
 polyphagia,,pQlIf'eIdZi:@
 Polyphemus,,pQlIf'i:m@s
 polypnea,,pQlIpn'i:@
@@ -7640,7 +7651,7 @@ poor,,A
 poortith,,p'u:rtIT
 popliteal,,pQpl'Iti:@l
 popliteus,,pQpl'Iti:@s
-Popocatepetl,,P
+Popocatepetl,,pQpQk@t'EpEt@l
 popularity,,pQpj@l'arIti:
 populist,,p'Qpj@lIst
 porch,,p'ortS
@@ -7696,7 +7707,7 @@ pozzuolanic,,pQtsw@l'AnIk
 Pozzuoli,,pQtsw'oUli:
 prahu,,P
 prairial,,B
-prajna,,pr'Vzn@
+prajna,,pr'VZn@
 Prakrit,,P
 praline,,P
 pralltriller,,P
@@ -7907,6 +7918,7 @@ Pryor,,D
 psalm,,B
 psalmodic,,B
 psalterium,,sO:lt'i:ri:@m
+psalter,,s'O:lt@`
 psephology,,si:f'Ql@dZi:
 pseudepigrapha,,P
 pseudonymous,,su:d'QnI#m@s
@@ -7994,7 +8006,7 @@ quadruped,,kw'QdrUpEd
 quadruple,,kwQdr'u:p@l
 quadruplet,,kw'QdrUplIt
 quadruplex,,kw'QdrUplEks
-quadruplicate/n,,kwQdr'u:pl@kIt
+quadruplicate,n,kwQdr'u:plI#kIt
 quadruplicity,,kwQdrUpl'IsIti:
 quadrupole,,kw'QdrUpoUl
 quahog,,kw'AhQg
@@ -8109,7 +8121,7 @@ ratan,,P
 ratchet,,B
 Rathenau,,P
 ratiocinate,,raSi:'QsI'neIt
-ratiocination,,rQSi:As@n'eIS@n
+ratiocination,,raSi:Qs@n'eIS@n
 rato,,D
 Raul,,P
 ravigote,,ravIg'Qt
@@ -8120,7 +8132,7 @@ Rayburn,,B
 rayon,,B
 razee,,P
 real,,B
-realpolitik,,reI'AlpQlItIk
+realpolitik,,reI'AlpQlIti:k
 reata,,P
 rebarbative,,rIb'Arb@tIv
 rebel,,B
@@ -8135,6 +8147,9 @@ reciprocant,,rIs'Ipr@k@nt
 recital,,B
 reclame,,reIkl'Am
 recognitory,,P
+recognizee,,rEkQgnIz'i:
+recognize,,r'Ek@#gnaIz
+recognizor,,rI'kQgnIzO:r
 recombinant,,rIk'QmbI#n@nt
 recommendation,,rEk@#mEnd'eIS@n
 reconnaissance,,rIk'Qn@s@ns
@@ -8278,10 +8293,11 @@ Rhode,,B
 rhodies,,D
 rhodochrosite,,roUd@kr'oUsaIt
 rhodopsin,,P
+rhodora,,roUd'or@
 rhody,,D
 rhombencephalon,,rQmbEns'Ef@lQn
-rhonchal,,r'Qnk@l
-rhonchus,,r'Nk@s
+rhonchal,,r'QNk@l
+rhonchus,,r'QNk@s
 rial,,ri:'O:l
 riata,,P
 ribald,,r'Ib@ld
@@ -8332,7 +8348,7 @@ Roget,,r'QZeI
 Rohypnol,,roUh'IpnQl
 rolf,,B
 Romagna,,P
-Romanov,,r@m'AnQf
+Romanov,,roUm'AnQf
 romaunt,,roUm'O:nt
 Romero,,P
 rondeau,,B
@@ -8392,12 +8408,14 @@ sabir,,s@b'i@
 sabot,,s'aboU
 sabra,,P
 saccade,,P
+saccadic,,sak'AdIk
 saccharide,,P
 saccharify,,sak'arIfaI
 saccharimeter,,sak@`'ImIt@`
 saccharine,,B
 sacerdotal,,sas@`d'Qt@l
 sachet,,B
+Sachs,,D
 Sachsen,,P
 sacrilege,,s'akr@lIdZ
 sacrilegious,,B
@@ -8462,7 +8480,7 @@ samadhi,,P
 saman,,P
 Samarang,,P
 Samaria,,B
-Samarkand,,s'mArk'and
+Samarkand,,samArk'and
 Samar,,s'AmAr
 samek,,s'Am@k
 samiel,,samj'El
@@ -8792,7 +8810,8 @@ Shakespearian,,B
 Shakhty,,P
 shako,,B
 Shakta,,P
-Shaktism,,S'VktIz@m
+Shakti,,S'Akti:
+Shaktism,,S'AktIz@m
 shakudo,,S'Aku:doU
 shakuhachi,,Saku:h'atSi:
 shalom,,S@l'Qm
@@ -8843,7 +8862,7 @@ Sichuan,,sItSw'An
 Sicilia,,D
 siciliana,,sIsIli:'An@
 siciliano,,sIsIli:'AnoU
-Sicyon,,s'Isi:Qn
+Sicyon,,s'ISi:Qn
 Siddhartha,,sId'Art@
 siddur,,s'Id@`
 sids,,D
@@ -8909,6 +8928,7 @@ Slavic,,B
 slavocracy,,sleIv'Qkr@si:
 Slavophile,,P
 Slavophilism,,sl@v'QfI#lIz@m
+Slavophobe,,P
 Slav,,P
 sloganeer,,P
 slough,,B
@@ -8947,7 +8967,7 @@ sojourn,,B
 sokol,,B
 Sokotra,,s@k'oUtr@
 solace,,B
-solanaceous,,P
+solanaceous,,sQl@n'eIS@s
 solano,,B
 solan,,P
 solanum,,s@l'eIn@m
@@ -8959,14 +8979,14 @@ solenoidal,,P
 soler,,D
 solfatara,,B
 solfege,,sQlf'EZ
-solfeggio,,sQlf'eIdZoU
+solfeggio,,sQlf'EdZoU
 solferino,,B
 solifluction,,B
 Solingen,,z'oUlIN@n
 soliped,,s'QlI#pEd
 solitaire,,s'QlIte@
 solitary,,P
-solitudinous,,P
+solitudinous,,sQlIt'U:dI#n@s
 solmization,,sQlmIz'eIS@n
 Solomon,,P
 solon,,P
@@ -9087,6 +9107,7 @@ Sporades,,sp'O:r@di:z
 sporogony,,sp@`'Qg@ni:
 sporophorous,,P
 sprauchle,,spr'O:k@l
+sprauncy,,B
 sprechgesang,,Spr'Ekg@zAN
 squabble,,B
 squall,,skw'O:l
@@ -9094,7 +9115,7 @@ squamose,,P
 squamous,,P
 Sr,,D
 sri,,B
-Srinagar,,sr'InVg@`
+Srinagar,,srIn'Vg@`
 stabile,,P
 stabilization,,B
 stadtholder,,P
@@ -9130,7 +9151,8 @@ steil,,D
 stellated,,A
 Stendhal,,P
 stenographer,,stEn'Qgr@f@`
-stenophagous,,P
+stenophagous,,st@n'Qf@g@s
+stenophyllous,,stEn@f'Il@s
 stenosed,,stIn'oUsd
 stenosis,,P
 stentor,,P
@@ -9152,7 +9174,7 @@ sternutator,,st'3:nj@teIt@`
 Steuben,,D
 sticharion,,stIk'Ari:Qn
 stichometry,,stIk'QmItri:
-stichomythy,,stIk'Qm@Ti:
+stichomythy,,stIk'QmITi:
 stich,,st'Ik
 stigma,,B
 stigmasterol,,stIgm'ast@`Ql
@@ -9171,7 +9193,7 @@ stomatic,,B
 stomatologic,,stoUma#t@l'QdZIk
 stomatopod,,st@m'at@pQd
 stook,,B
-stotinka,,stQt'Ink@
+stotinka,,stQt'INk@
 Stralsund,,P
 strangulation,,straNgj@l'eIS@n
 strangury,,P
@@ -9346,6 +9368,7 @@ systemically,,B
 syzygal,,B
 Szabadka,,D
 Szczecin,,StS'EtSi:n
+Szombathely,,s'QmbQtheI
 Szymanowski,,SIm@n'Qfski:
 taal,,B
 tabbouleh,,t@b'u:li:
@@ -9437,13 +9460,14 @@ tatou,,t@t'u:
 tatu,,t@t'u:
 taupe,,t'oUp
 taurine,,t'O:raIn
+tauromachian,,tO:r@m'eIki:@n
 tauromachy,,tO:r'Qm@ki:
 tautog,,tO:t'Qg
 tautological,,B
 tautologism,,tO:t'Ql@dZIz@m
-tautologize,,tO:t'Ql@dZaIz
 tautology,,tO:t'Ql@dZi:
 tautomeric,,tO:t@m'ErIk
+tautomerism,,tO:t'Qm@`Iz@m
 Tavel,,P
 taverna,,t@v'3:rn@
 tawie,,t'O:i:
@@ -9731,7 +9755,7 @@ tovarich,,tQv'ArIS
 toward,,t'oU@`d
 tower,,A
 towmond,,B
-toxophilite,,tQks'Qf@laIt
+toxophilite,,tQks'QfIlaIt
 toxophilitic,,tQksQf@l'ItIk
 Toyama,,tO:jAm'A
 toy,,B
@@ -9756,7 +9780,6 @@ tragedienne,,tra#dZi:dI'En
 Trajan,,P
 traject,,P
 tramell,,tr'am@l
-tramontana,,P
 tramontane,,P
 trampoline,,B
 trancedly,,tr'ansdli:
@@ -10225,7 +10248,7 @@ volvate,,v'QlvIt
 Volvo,,D
 volvulus,,v'Qlvj@l@s
 vomitory,,v'QmItori:
-vomiturition,,vAmItju:r'IS@n
+vomiturition,,vQmItU:r'IS@n
 vorlage,,P
 Voronezh,,v@`'QnEZ
 Voroshilovgrad,,vO:r@S'i:l@fgrad
@@ -10323,7 +10346,7 @@ Watusi,,w@t'u:si:
 waucht,,P
 waught,,P
 waw,,v'Av
-Waziristan,,w@z'i:rIstAn
+Waziristan,,w@zi:rIst'An
 wazir,,w@z'i@
 Wehrmacht,,P
 weigela,,waIdZ'i:l@
@@ -10334,6 +10357,7 @@ Weizmann,,P
 wejack,,P
 Wellesz,,D
 weltanschauung,,vEltAnS'aUUN
+Weltpolitik,,v'EltpQlIti:k
 Westfalen,,P
 whangee,,waNg'i:
 whap,,w'Qp
@@ -10465,9 +10489,9 @@ zakuska,,P
 zaman,,P
 Zama,,P
 zamarra,,P
-Zamboanga,,samboU'Ang@
+Zamboanga,,samboU'ANg@
 zamindar,,z@m'i:ndAr
-Zamora,,Tam'O:rA
+Zamora,,TAm'O:rA
 zante,,z'anti:
 zanthoxylum,,zanT'QksIl@m
 Zaporozhye,,P
@@ -10489,6 +10513,7 @@ zeroth,,z'i@oUT
 zeta,,z'i:t@
 Zhengzhou,,dZENdZ'oU
 Zhukov,,Z'u:kQf
+Zimbabwean,,zImb'AbweI@n
 Zimbabwe,,zImb'AbweI
 zincic,,P
 zincify,,z'INkIfaI
