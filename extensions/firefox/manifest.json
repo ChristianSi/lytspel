@@ -8,6 +8,7 @@
     "48": "icons/spellcheck-48.png",
     "96": "icons/spellcheck-96.png"
   },
+  "web_accessible_resources": [ "data/lytspel-dict.csv " ],
   "content_scripts": [
     {
       "matches": ["*://*/*"],
