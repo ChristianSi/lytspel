@@ -1296,10 +1296,8 @@ amateurishly,amateurish=ly
 amateurishness,amateurish=ness
 amateurism,amateur=ism
 amateurs,amateur=s
-amative,am=ative
 amatively,amative=ly
 amativeness,amative=ness
-amatory,am=atory
 amazed,amaze=ed
 amazement,amaze=ment
 amazes,amaze=s
@@ -1368,13 +1366,9 @@ amidine,amid=ine
 amidships,amid-ships
 amies,amie=s
 amigos,amigo=s
-amine,am=ine
 aminity,amin=ity
 amis,ami=s
-amity,am=ity
-ammeter,am=meter
 ammeters,ammeter=s
-ammine,am=ine
 ammonal,ammon-al
 ammonate,ammon=ate
 ammoniacal,ammoniac=al
@@ -1388,9 +1382,7 @@ ammunitions,ammunition=s
 amnesties,amnesty=es
 amniocentesis,amnio-centesis
 amoebas,amoeba=s
-amor,am=or
 amorally,amoral=ly
-amorist,amor=ist
 amorous,amor=ous
 amorously,amorous=ly
 amorousness,amorous=ness
@@ -1440,6 +1432,8 @@ anachronously,anachronous=ly
 anacreontic,anacreon=tic
 anaerobes,anaerobe=s
 anaerobic,anaerobe=ic
+anaerobiosis,an-aerobiosis
+anaerobiotic,an-aerobiotic
 analemmatic,analemma=tic
 analgesics,analgesic=s
 anally,anal=ly
@@ -2161,7 +2155,6 @@ arizonans,arizonan=s
 arkansans,arkansan=s
 armadillos,armadillo=s
 armaments,armament=s
-armand,arm-and
 armband,arm-band
 armbands,armband=s
 armchair,arm-chair
@@ -4165,6 +4158,7 @@ bioengineered,bio=engineered
 bioengineering,bio=engineering
 bioethics,bio=ethics
 biofeedback,bio=feedback
+bioflavonoid,bio=flavonoid
 bioflavonoids,bioflavonoid=s
 biogen,bio=gen
 biogenesis,bio=genesis
@@ -4833,7 +4827,6 @@ bodyguard,body-guard
 bodyguards,bodyguard=s
 bodywork,body-work
 boeotian,boeotia=n
-boer,bo=er
 boers,boer=s
 bogbean,bog-bean
 bogeyed,bogey=ed
@@ -4844,7 +4837,6 @@ bogging,bog=ing
 boggled,boggle=ed
 boggles,boggle=s
 boggling,boggle=ing
-bogor,bog=or
 bogs,bog=s
 bogtrotter,bog-trotter
 bogues,bogue=s
@@ -8310,14 +8302,12 @@ coldly,cold=ly
 coldness,cold=ness
 colds,cold=s
 coldslaw,cold-slaw
-coleen,cole=en
 coleopteran,coleoptera=n
 coleridge,cole-ridge
 coles,cole=s
 coleseed,cole-seed
 coleslaw,cole-slaw
 colewort,cole-wort
-coley,cole=y
 colfax,col-fax
 colgate,col-gate
 colic,col=ic
@@ -8457,7 +8447,6 @@ columbite,colum-bite
 columned,column=ed
 columnists,columnist=s
 columns,column=s
-coly,cole=y
 comaker,co-maker
 comanchean,comanche=ean
 comanches,comanche=s
@@ -8983,7 +8972,6 @@ confinement,confine=ment
 confines,confine=s
 confining,confine=ing
 confirmable,confirm=able
-confirmand,confirm-and
 confirmations,confirmation=s
 confirmatory,confirm=atory
 confirmed,confirm=ed
@@ -9685,7 +9673,6 @@ cords,cord=s
 corduroys,corduroy=s
 cordwainer,cordwain=er
 cordwood,cord-wood
-corelative,co-relative
 coreligionist,co-religionist
 coremaker,core-maker
 corer,core=er
@@ -19049,10 +19036,8 @@ gains,gain=s
 gainsay,gain-say
 gaited,gait=ed
 gaiter,gait=er
-galant,gal=ant
 galantine,galant=ine
 galas,gala=s
-galavant,gal-avant
 galaxies,galaxy=es
 galeas,galea=s
 galeate,gale=ate
@@ -19062,14 +19047,12 @@ gales,gale=s
 gallantly,gallant=ly
 gallantry,gallant=ry
 gallas,galla=s
-gallate,gal=ate
 gallbladder,gall-bladder
 galleons,galleon=s
 galleries,gallery=es
 galleting,gallet=ing
 galleys,galley=s
 gallfly,gall-fly
-gallic,gal=ic
 gallican,gallic=an
 gallicanism,gallican=ism
 galling,gall=ing
@@ -19079,22 +19062,18 @@ galloglass,gallo-glass
 gallons,gallon=s
 galloped,gallop=ed
 galloping,gallop=ing
-gallous,gal=ous
 galloways,galloway=s
 gallowglass,gallow-glass
 gallows,gallow=s
 galls,gall=s
 gallstone,gall-stone
 gallstones,gallstone=s
-gallup,gal=up
 galluses,gallus=es
 galoshes,galosh=es
 gals,gal=s
 galvanized,galvanize=ed
 galvanizes,galvanize=s
 galvanizing,galvanize=ing
-galway,gal-way
-galyak,gal-yak
 gambade,gam-bade
 gambier,gam-bier
 gambit,gam-bit
@@ -20826,7 +20805,6 @@ haloid,hal=oid
 halolike,halo-like
 halophytic,halophyte=ic
 halos,halo=s
-hals,hal=s
 halted,halt=ed
 halter,halt=er
 halters,halter=s
@@ -21558,7 +21536,6 @@ hellishly,hellish=ly
 hellishness,hellish=ness
 hellkite,hell-kite
 hellraiser,hell-raiser
-helmand,helm-and
 helmed,helm=ed
 helmeted,helmet=ed
 helmets,helmet=s
@@ -21758,6 +21735,7 @@ heterotaxis,hetero=taxis
 heterothallic,hetero=thallic
 heterotrophic,heterotroph=ic
 heterozygosis,hetero=zygosis
+heterozygosity,hetero=zygosity
 heterozygote,hetero=zygote
 hetmanate,hetman=ate
 heuristics,heuristic=s
@@ -22185,7 +22163,6 @@ honing,hone=ing
 honking,honk=ing
 honky,honk=y
 honorable,honor=able
-honorand,honor-and
 honorariums,honorarium=s
 honorary,honor=ary
 honored,honor=ed
@@ -26430,6 +26407,7 @@ laky,lake=y
 lallans,lallan=s
 lallation,lall=ation
 lamaism,lama=ism
+lamaist,lama=ist
 lamarckian,lamarck=ian
 lamarckism,lamarck=ism
 lamas,lama=s
@@ -28403,7 +28381,6 @@ marching,march=ing
 marchland,march-land
 marchman,march-man
 marchpane,march-pane
-marcos,marco=s
 mares,mare=s
 margaritas,margarita=s
 margent,marge=ent
@@ -39991,7 +39968,6 @@ rhythms,rhythm=s
 rials,rial=s
 riantly,riant=ly
 ribaldry,ribald=ry
-riband,rib-and
 ribband,rib-band
 ribbed,rib=ed
 ribbing,rib=ing
@@ -44573,7 +44549,6 @@ stanhope,stan-hope
 stannate,stan=ate
 stannic,stan=ic
 stannous,stan=ous
-stans,stan=s
 stanzas,stanza=s
 stapled,staple=ed
 staplers,stapler=s
