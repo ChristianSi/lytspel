@@ -427,11 +427,15 @@ single sound or an r-colored vowel):
   * Multigraphs ending in «r» may be interrupted by a stress marker before
     the final «r» and are still read as multigraphs, e.g. «co-ope'raition,
     hor'rific» ‹cooperation, horrific›. The multigraph «ss» is broken in
-    the middle, e.g. «as'sumption» ‹assumption›. Other multigraphs are
-    never interrupted by a stress marker, hence in such cases a marker has
-    the same effect as a hyphen: it indicates that the letters to the left
-    and to the right of it should be read in isolation, e.g. «co'operait»
-    ‹cooperate›.
+    the middle, e.g. «as'sumption» ‹assumption›.
+  * Other multigraphs are never interrupted by a stress marker, hence in
+    such cases a marker has the same effect as a hyphen: it indicates that
+    the letters to the left and to the right of it should be read in
+    isolation, e.g. «co'operait» ‹cooperate›.
+  * In particular, the vowel multigraphs «aw, ay, ow, oy» /O:, eI, aU, OI/
+    are *not* broken in the rare cases where a stressed vowel follows, to
+    prevent misreadings. Contrast «draw'ee» ‹drawee› with «a'waik» ‹awake›,
+    «cay'otic» ‹chaotic› with  «ga'yaal» ‹gayal›.
   * Hyphens are generally not inserted between a base word and a suffix,
     e.g. «truer» from «tru» ‹true›.
   * After a prefix or the first part of a compound, a hyphen is only
