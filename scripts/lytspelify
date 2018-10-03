@@ -39,7 +39,7 @@ const my $SAMPA_CONSONANT_CLS => "(?:[`bdDfghklmnNprStTvwzZ]|s#?|j(?!'?(?:u:|Ur)
 const my $OPT_STRESS_MARKER => "(?:=')?";
 
 # Pattern fragment matching a Lytspel consonant
-const my $LYTSPEL_CONSONANT => '(?:(?:[bcdfghjklmnprstvwxz]h?|(?<![ao])y|nn?g|qu)=?)';
+const my $LYTSPEL_CONSONANT => '(?:(?:[bcdfghjklmnprstvxz]h?|(?<![ao])[wy]|nn?g|qu)=?)';
 # Ditto, after original casing has been restored: «y» is only considered a consonant if a
 # vowel follows (use with /i flag)
 const my $LYTSPEL_CONSONANT_POST_PROC => '(?:(?:[bcdfghjklmnprstvwxz]h?|y(?=[aeiou])|nn?g|qu))';
@@ -73,13 +73,14 @@ my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/ante auto contra electro homo me
 my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acronymous
     albuminous allonymous ammonic ammonify animality antinomian antonymous apostrophic
     appositive atomic bacchantic balladic basophilic bestiality bitonality Brabantine Brythonic
-    canonic catastrophic civility coevality colonic congeniality councilmanic criminality
-    cryptogamous cryptonymous ctenophoran demonic diaphaneity equality external fibrinogenous
-    frivolity geniality gnomonic halogenous homonymous matrimonial Miltonic monomeric
-    monomerous monostrophic nebulosity originality partiality personification pseudonymity
-    planktonic prebendal puritanical quadrantal quadrupedal reclusive renewal sabbatical
-    satanic shamanic sinistrality stomachic subordinative sultanic sycophantic synodic
-    synodical synonymous talismanic testimonial tribadic tympanic/;
+    canonic catastrophic civility coevality colonic communality congeniality councilmanic
+    criminality cryptogamous cryptonymous ctenophoran demonic diaphaneity eosinophilous
+    equality external fibrinogenous frivolity geniality gnomonic halogenous homonymous
+    matrimonial Miltonic monomeric monomerous monostrophic nebulosity originality partiality
+    personification pseudonymity planktonic prebendal puritanical quadrantal quadratic
+    quadrupedal reclusive renewal sabbatical satanic shamanic sinistrality stomachic
+    subordinative sultanic sycophantic synodic synodical synonymous talismanic testimonial
+    tribadic tympanic/;
 
 # XXX Switch to Upper_Camel_Case for file-scoped variables
 my $CSV_IN  = new_csv_in;
@@ -165,7 +166,7 @@ sub build_mapping {
     close $fh;
 
     # Add context-specific spellings to %Lytspel_Set
-    $Lytspel_Set{$_} = 1 for qw/al aw a'w ay c eh n'g nn ow oy si ss s's ti uh ah oh/;
+    $Lytspel_Set{$_} = 1 for qw/al aw ay c eh n'g nn ow oy si ss s's ti uh ah oh/;
     return \%dict, $maxkeylen;
 }
 
@@ -486,7 +487,7 @@ sub insert_stress_marker_among_multiple_consonants {
     # Break before last three consonants, e.g. «di'scription, e'spresso, in'struction,
     # converrsaa'tsyoneh» ‹description, espresso, instruction, conversazione›
     if (   $consonants =~ /(f=r=w|s=c=[^=]+|s=p=[lry]|s=t=r|t=s=y)$/
-        && $tradspell !~ /^(dy|mi|juri)sp/)
+        && $tradspell !~ /^(dy|mi|Go|juri)sp/)
     {
         return $sep_count == 2 ? insert_at_start $consonants : insert_after_first $consonants;
     }
@@ -498,7 +499,7 @@ sub insert_stress_marker_among_multiple_consonants {
         if $consonants =~
         /^( l=c=m | l=f=[cw] | m=p=t | n=c=[nt] | n=s=h | n=t=[cghlp] | r=c=[mt] | r=d=[nv]
           | r=g=s | r=m=w | r=n=[mw] | r=p=[nst] | r=s=f | r=t=[fms] | r=th=w | s=p=n
-          | s=t=[ml] | t=s=[jpr] )$/x
+          | s=t=[fml] | t=s=[jpr] )$/x
         || $tradspell eq 'Kaiserslautern';
 
     # Otherwise break after first of three consonants, or after second of four
@@ -560,7 +561,7 @@ sub insert_stress_marker {
     # if the second is 'l' (not preceeded by d|m|n|r|t|v|?h), 'r' (not preceeded by l|m|n|z),
     # and in case of a few combinations ending in 'w' or 'y'
     return insert_at_start $consonants
-        if $consonants =~ /^s=(?![ct]h|[bdfjmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w$/
+        if $consonants =~ /^s=(?![ct]h|[bdfjmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w|sh=w$/
         # Likewise in final ‹tlan›, e.g. «Maassaa'tlaan» ‹Mazatlán›
         || ($consonants =~ /^t=l$/ && $tradspell =~ /tlan$/)
         # And usually in the rare «ts» combination
@@ -569,7 +570,8 @@ sub insert_stress_marker {
     # Likewise before combinations ending in 'y' (not preceeded by 'r'), though there are
     # a few exceptions
     return insert_at_start $consonants
-        if $consonants =~ /[^r]=y$/ && $tradspell !~ /^(goli|pallia)|(iority|yang)$/;
+        if $consonants =~ /[^r]=y$/
+        && $tradspell !~ /^(goli|pallia)|(iority|yang|yatta|yuan)$/;
 
     # Otherwise break in middle
     return insert_after_first $consonants;
@@ -601,9 +603,8 @@ sub move_stress_marker {
             $word =~ s/'//;
         } elsif ($consonants_before_marker eq '') {
             # Stressed vowel is preceded by another vowel: nothing to do
-        } elsif ($consonants_before_marker =~ /^(ss|rr)=$/) {
-            # «ss» and «rr» are separated by the marker,
-            # e.g. «as'sault, as'sumption, hor'rific»
+        } elsif ($consonants_before_marker =~ /^(rr|ss)=$/) {
+            # «rr, ss» are separated by the marker, e.g. «as'sault, hor'rific»
             $word =~ s/(.)='/'$1=/;
         } elsif ($consonants_before_marker =~ /^nng/) {
             # "nng..." becomes "n'g..."
@@ -779,8 +780,7 @@ sub restore_capitalization {
     return $converted;
 }
 
-# convert_pron $pron, $tradspell, $pos: Convert a pronunciation using a given
-# mapping alphabet (dictionary reference).
+# convert_pron $pron, $tradspell, $pos: Convert a pronunciation.
 sub convert_pron {
     my ($pron, $tradspell, $pos) = @_;
     return '' unless $pron;  # Empty input
