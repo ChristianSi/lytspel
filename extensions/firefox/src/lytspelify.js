@@ -2,8 +2,6 @@
 
 
 // --- Entry point ---
-// TODO Maybe test if document exists to allow using this script in tests:
-// if (typeof document !== 'undefined')
 triggerLytspelConversion(document.body, document.title);
 
 // Trigger the Lytspel conversion of the current document. Collect all words in the document
