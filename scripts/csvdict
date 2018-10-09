@@ -22,6 +22,11 @@ use PhonEng;
 
 const my $IN_FILE     => 'phonetic-dict.txt';
 const my $OUT_FILE    => 'phoneng-espeak-dict.csv';
+
+# Words listed here are added to the output dictionary. If a word listed here would
+# otherwise be treated as an redirect, it is added as a normal entry instead.
+# In other cases, adding words to this file that already exist in the input dictionary
+# triggers a warning.
 const my $EXTRA_WORDS => 'extra-words.txt';
 
 # A listing of words for which multiple POS-tagged entries should be created.
@@ -58,8 +63,9 @@ sub read_dict {
     while (my $word = <$extra_file>) {
         chomp $word;
 
-        unless (exists $dict{$word}) {
-            $dict{$word} = ':';  # Add as value-less simple entry
+        if (!exists $dict{$word} || redirect_target($dict{$word})) {
+            # Word doesn't yet exist or is a redirect: add as value-less simple entry
+            $dict{$word} = ':';
         } else {
             warn "Unnecessary entry in $EXTRA_WORDS: $word\n";
         }
