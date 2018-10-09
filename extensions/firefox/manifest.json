@@ -11,7 +11,7 @@
   "web_accessible_resources": [ "data/lytspel-dict.csv " ],
   "content_scripts": [
     {
-      "matches": ["*://*/*"],
+      "matches": ["<all_urls>"],
       "js": ["src/lytspelify.js"]
     }
   ],
