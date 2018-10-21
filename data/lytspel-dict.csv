@@ -388,7 +388,7 @@ abuna,,,a'buuna
 abundance,,,a'bundenss
 abundant,,,a'bundent
 abundantly,,,a'bundentli
-abusage,,,a'biucij
+abusage,,,a'biusij
 abuse,n,,a'biuss
 abuse,v,,a'bius
 abused,,,a'biusd
@@ -1733,8 +1733,10 @@ afforest,,,a'forrist
 affranchise,,,a'franchys
 affray,,,a'fray
 affrayer,,,a'frayer
-affricate,,,afrikit
-affricates,,,afrikits
+affricate,n,,afrikit
+affricate,v,,africait
+affricates,n,,afrikits
+affricates,v,,africaits
 affrication,,,afri'caition
 affricative,,,a'friketiv
 affright,,,a'fryt
@@ -1817,8 +1819,9 @@ aftermarkets,,,aftermarkits
 aftermath,,,aftermath
 aftermaths,,,aftermaths
 aftermost,,,aftermoast
-afternoon,,,afternuun
-afternoons,,,afternuuns
+afternoon,aj,,afternuun
+afternoon,n,,after'nuun
+afternoons,,,after'nuuns
 afterpains,,,afterpains
 afterpiece,,,afterpeess
 afters,,,afters
@@ -5710,7 +5713,8 @@ arsehole,,asshole
 arsenal,,,arsenel
 arsenals,,,arsenels
 arsenate,,,arsenait
-arsenic,,,arsenic
+arsenic,aj,,ar'senic
+arsenic,n,,arsenic
 arsenical,,,ar'senicl
 arsenide,,,arsenyd
 arsenious,,,ar'seeniass
@@ -11249,7 +11253,7 @@ bora,,,boara
 boraces,,,boarecees
 boracic,,,be'racic
 boracite,,,boarecyt
-borage,,,burij
+borage,,,boarij
 boraginaceous,,,beraji'naishuss
 borak,,,boarek
 boral,,,boaral
@@ -21738,7 +21742,7 @@ counterproposal,,,counterpropoasl
 counterproposals,,,counterpropoasls
 counterpunch,,,counterpunch
 counterreformation,,,counterrifor'maition
-counterreply,n,,counterri'ply
+counterreply,n,,counterriply
 counterreply,v,,counterri'ply
 counterrevolution,,,counterrevo'luution
 counterrevolutionary,,,counterrevo'luutionerri
@@ -22073,7 +22077,7 @@ cramps,,,cramps
 crams,,,crams
 cran,,,cran
 Cranach,,,Craanaak
-cranage,,,crainij
+cranage,,,cranij
 cranberries,,,cranberries
 cranberry,,,cranberri
 crane,,,crain
@@ -25235,8 +25239,8 @@ demure,,,di'miur
 demurely,,,di'miurli
 demureness,,,di'miurness
 demurrable,,,di'murebl
-demurrage,,,di'murrij
-demurral,,,di'murrel
+demurrage,,,di'murij
+demurral,,,di'murel
 demurred,,,di'murd
 demurrer,,,di'murer
 demurring,,,di'muring
@@ -28629,8 +28633,8 @@ Dorthy,,,Dorthi
 Dortmund,,,Dortmund
 dorty,,,dorti
 dory,,,doari
-dosage,,,doacij
-dosages,,,doacijes
+dosage,,,doassij
+dosages,,,doassijes
 dose,,,doass
 doser,,,doasser
 doses,,,doasses
@@ -33901,7 +33905,7 @@ expounded,,,ix'pounded
 expounding,,,ix'pounding
 expounds,,,ix'pounds
 express,,,ix'press
-expressage,,,ix'precij
+expressage,,,ix'pressij
 expressed,,,ix'pressd
 expresses,,,ix'presses
 expressing,,,ix'pressing
@@ -36539,7 +36543,7 @@ flouted,,,flouted
 flouting,,,flouting
 flouts,,,flouts
 flow,,,flo
-flowage,,,flo-ij
+flowage,,,floij
 flowchart,,,flochart
 flowcharts,,,flocharts
 flowed,,,fload
@@ -43047,7 +43051,7 @@ haught,,,haut
 haughtily,,,hautili
 haughty,,,hauti
 haul,,,hall
-haulage,,,haulij
+haulage,,,hallij
 hauled,,,halld
 hauler,,,haller
 haulers,,,hallers
@@ -59781,7 +59785,7 @@ microwaving,,,mycrowaiving
 micrurgy,,,mycrurji
 micturition,,,mictue'rition
 mid,,,mid
-midafternoon,,,midafternuun
+midafternoon,,,midafter'nuun
 midair,,,mid'air
 Midas,,,Mydess
 midbrain,,,midbrain
@@ -60703,7 +60707,7 @@ misunderstanding,,,misunder'standing
 misunderstandings,,,misunder'standings
 misunderstands,,,misunder'stands
 misunderstood,,,misunder'stood
-misusage,,,mis'iucij
+misusage,,,mis'iusij
 misuse,n,,mis'iuss
 misuse,v,,mis'ius
 misused,,,mis'iusd
@@ -61371,7 +61375,7 @@ monstrance,,,monstrenss
 monstrosity,,,mon'strociti
 monstrous,,,monstruss
 Mont,,,Mont
-montage,,,mon'taazh
+montage,,,montij
 montagnard,,,monta'nyard
 Montagu,,,Montegiu
 Montague,,,Montegiu
@@ -66141,8 +66145,8 @@ Orwell,,,Orwel
 Orwellian,,,Or'welian
 oryx,,,orrix
 os,,,oss
-Osage,,,Oas'saij
-Osages,,,Oas'saijes
+Osage,,,Ossij
+Osages,,,Ossijes
 Osaka,,,Oas'soca
 osar,,,oassar
 Osbert,,,Osbert
@@ -66597,7 +66601,8 @@ outshining,,,out'shyning
 outshone,,,out'shon
 outshoot,n,,outshuut
 outshoot,v,,out'shuut
-outshot,,,outshot
+outshot,n,,outshot
+outshot,v,,out'shot
 outshout,,,out'shout
 outside,,,out'syd
 outsider,,,out'syder
@@ -66709,7 +66714,7 @@ overact,,,oaveract
 overacted,,,oaveracted
 overactive,,,oaver'activ
 overacts,,,oaveracts
-overage,,,oaveraij
+overage,,,oaverij
 overall,,,oaverall
 overalled,,,oaveralld
 overalls,,,oaveralls
@@ -66762,9 +66767,11 @@ overcareful,,,oaver'cairful
 overcast,,,oavercast
 overcasting,,,oavercasting
 overcautious,,,oaver'caushuss
-overcharge,,,oavercharj
+overcharge,n,,oavercharj
+overcharge,v,,oaver'charj
 overcharged,,,oaver'charjd
-overcharges,,,oavercharjes
+overcharges,n,,oavercharjes
+overcharges,v,,oaver'charjes
 overcharging,,,oaver'charjing
 overcheck,,,oaverchek
 overclothes,,,oaver'cloadhs
@@ -66803,7 +66810,7 @@ overdo,,,oaver'du
 overdoes,,,oaver'dus
 overdoing,,,oaver'duing
 overdone,,,oaver'dun
-overdosage,,,oaver'doacij
+overdosage,,,oaver'doassij
 overdose,n,,oaverdoass
 overdose,v,,oaver'doass
 overdosed,,,oaver'doassd
@@ -68533,9 +68540,9 @@ passably,,,passebli
 passacaglia,,,paassa'caalya
 passade,,,pas'said
 passado,,,pas'saado
-passage,,,pacij
-passages,,,pacijes
-passageway,,,pacijway
+passage,,,passij
+passages,,,passijes
+passageway,,,passijway
 passament,,,pacement
 passant,,,passent
 passband,,,passband
@@ -68636,7 +68643,7 @@ pastrami,,,pa'straami
 pastries,,,paistries
 pastry,,,paistri
 pasts,,,pasts
-pasturage,,,pasterij
+pasturage,,,pascherij
 pasture,,,pascher
 pastures,,,paschers
 pasty,,,pasti
@@ -70554,7 +70561,7 @@ photometric,,,foato'metric
 photometry,,,foa'tometri
 photomicrograph,,,foato'mycrograf
 photomicroscope,,,foato'mycroscoap
-photomontage,,,foatomon'taazh
+photomontage,,,foato'montij
 photomultiplier,,,foato'multiplyer
 photomural,,,foatomiurel
 photon,,,foaton
@@ -71149,7 +71156,7 @@ pious,,,paiuss
 piously,,,paiussli
 pip,,,pip
 pipa,,,pipa
-pipage,,,pypij
+pipage,,,pipij
 pipe,,,pyp
 pipeclay,,,pypclay
 piped,,,pypd
@@ -72801,7 +72808,7 @@ posy,,,poasi
 pot,,,pot
 potable,,,poatebl
 potableness,,,poateblness
-potage,,,po'tazh
+potage,,,potij
 potamic,,,po'tamic
 potamology,,,pota'moleji
 potash,,,potash
@@ -78634,7 +78641,7 @@ reparatory,,,ri'parreteri
 repartee,,,reper'tee
 repartition,,,ripar'tition
 repass,,,ri'pass
-repassage,,,ri'pacij
+repassage,,,ri'passij
 repast,,,ri'past
 repatriate,n,,ri'paitriit
 repatriate,v,,ri'paitriait
@@ -81610,12 +81617,12 @@ salvable,,,salvebl
 Salvador,,,Salvedor
 Salvadoran,,,Salvedoaren
 Salvadorans,,,Salvedoarens
-salvage,,,salvij
-salvageable,,,salvijebl
-salvaged,,,salvijd
-salvager,,,salvijer
-salvagers,,,salvijers
-salvaging,,,salvijing
+salvage,,,savij
+salvageable,,,savijebl
+salvaged,,,savijd
+salvager,,,savijer
+salvagers,,,savijers
+salvaging,,,savijing
 salvarsan,,,salversan
 salvation,,,sal'vaition
 salvationist,,,sal'vaitionist
@@ -84020,7 +84027,7 @@ Servite,,,Survyt
 servitor,,,surviter
 servitude,,,survitued
 servo,,,survo
-servocontrol,n,,survocon'troal
+servocontrol,n,,survocontroal
 servocontrol,v,,survocon'troal
 servomechanical,,,survome'canicl
 servomechanism,,,survomekenism
@@ -86252,7 +86259,7 @@ smacker,,,smaker
 smacking,,,smaking
 smacks,,,smaks
 small,,,small
-smallage,,,smaulij
+smallage,,,smallij
 smallclothes,,,smallcloadhs
 smaller,,,smaller
 smallest,,,smallest
@@ -88474,7 +88481,7 @@ stadium,,,staidiam
 stadiums,,,staidiams
 stadtholder,,,stat-hoalder
 staff,,,staf
-staffage,,,sta'faazh
+staffage,,,stafij
 staffed,,,stafd
 staffer,,,stafer
 staffers,,,stafers
@@ -88562,7 +88569,7 @@ stalkless,,,staukless
 stalks,,,stauks
 stalky,,,stauki
 stall,,,stall
-stallage,,,stalij
+stallage,,,stallij
 stalled,,,stalld
 stallholder,,,stallhoalder
 stalling,,,stalling
@@ -89550,7 +89557,7 @@ stovepipe,,,stoavpyp
 stover,,,stoaver
 stoves,,,stoavs
 stow,,,sto
-stowage,,,sto-ij
+stowage,,,stoij
 stowaway,,,sto-away
 Stowe,,,Sto
 stowed,,,stoad
@@ -89982,7 +89989,7 @@ stumbling,,,stumbling
 stumer,,,stuemer
 stumm,,,stum
 stump,,,stump
-stumpage,,,stumpaij
+stumpage,,,stumpij
 stumped,,,stumpd
 stumper,,,stumper
 stumping,,,stumping
@@ -92914,9 +92921,9 @@ teemingly,,,teemingli
 teemingness,,,teemingness
 teems,,,teems
 teen,,,teen
-teenage,,,teenaij
-teenager,,,teenaijer
-teenagers,,,teenaijers
+teenage,,,teenij
+teenager,,,teenijer
+teenagers,,,teenijers
 teens,,,teens
 teeny,,,teeni
 teenybopper,,,teeniboper
@@ -95333,7 +95340,7 @@ touts,,,touts
 touzle,,,tousl
 tovarich,,,to'varish
 tow,,,to
-towage,,,to-ij
+towage,,,toij
 toward,aj,,toerd
 toward,prp,,toerd
 towardly,,,toerdli
@@ -96036,7 +96043,7 @@ triacid,,,trai'acid
 triad,,,traiad
 triadelphous,,,traia'delfuss
 triads,,,traiads
-triage,,,tri'aazh
+triage,,,tryij
 trial,,,traiel
 trialist,,,traielist
 trials,,,traiels
@@ -97798,7 +97805,7 @@ underachieve,,,undera'cheev
 underachiever,,,underacheever
 underachievers,,,underacheevers
 underact,,,under'act
-underage,,,underaij
+underage,,,underij
 underarm,,,underarm
 underbelly,,,underbeli
 underbid,,,underbid
@@ -99762,8 +99769,8 @@ Uruguayan,,,Iuru'gwayen
 urushiol,,,ooruushiol
 us,,,uss
 usable,,,iusebl
-usage,,,iucij
-usages,,,iucijes
+usage,,,iusij
+usages,,,iusijes
 usance,,,iusenss
 use,n,,iuss
 use,v,,ius
@@ -100238,7 +100245,7 @@ vasopressin,,,vaisoa'precin
 vasopressor,,,vassoaprecer
 Vasquez,,,Vaskes
 vassal,,,vassl
-vassalage,,,vacelij
+vassalage,,,vasslij
 vassals,,,vassls
 Vassar,,,Vacer
 vast,,,vast
@@ -100859,7 +100866,7 @@ victory,,,victeri
 victress,,,victress
 victrix,,,victrix
 victual,,,vitl
-victualage,,,vitulij
+victualage,,,vitlij
 victualer,,,vitler
 victuallage,,victualage
 victualler,,victualer
@@ -102045,7 +102052,7 @@ watchtower,,,wochtower
 watchword,,,wochwurd
 watchwords,,,wochwurds
 water,,,wauter
-waterage,,,woterij
+waterage,,,wauterij
 waterbed,,,wauterbed
 waterbeds,,,wauterbeds
 waterborne,,,wauterboarn
@@ -102104,7 +102111,7 @@ watery,,,wauteri
 Watkins,,,Wotkins
 Watson,,,Wotsen
 watt,,,wot
-wattage,,,waatij
+wattage,,,wotij
 wattle,,,wotl
 wattled,,,wotld
 wattles,,,wotls

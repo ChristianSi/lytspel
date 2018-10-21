@@ -1742,8 +1742,10 @@ afforest,,,a#f'QrIst,a#f'O:rIst,@f'QrIst
 affranchise,,,a#fr'antSaIz,,@fr'antSaIz
 affray,,,a#fr'eI,,@fr'eI
 affrayer,,,a#fr'eI@,a#fr'eI@`,@fr'eI@`
-affricate,,,a#frIk'eIt,a#frI#k'eIt,'afr@k@t
-affricates,,,a#frIk'eIts,a#frI#k'eIts,'afr@k@ts
+affricate,n,,a#frIk'eIt,a#frI#k'eIt,'afr@k@t
+affricate,v,,a#frIk'eIt,a#frI#k'eIt,'afr@k@t
+affricates,n,,a#frIk'eIts,a#frI#k'eIts,'afr@k@ts
+affricates,v,,a#frIk'eIts,a#frI#k'eIts,'afr@k@ts
 affrication,,,a#frIk'eIS@n,,afr@k'eIS@n
 affricative,,,a#fr'Ik@tIv,,@fr'Ik@tIv
 affright,,,a#fr'aIt,,@fr'aIt
@@ -1827,7 +1829,8 @@ aftermarkets,,,'aft@mAkIts,'aft@`mArkIts,'aft@`mQrkIts
 aftermath,,,'aft@maT,'aft@`maT,
 aftermaths,,,'aft@maTs,'aft@`maTs,
 aftermost,,,'aft@moUst,'aft@`moUst,
-afternoon,,,aft@n'u:n,aft@`n'u:n,
+afternoon,aj,,aft@n'u:n,aft@`n'u:n,
+afternoon,n,,aft@n'u:n,aft@`n'u:n,
 afternoons,,,aft@n'u:nz,aft@`n'u:nz,
 afterpains,,,'aft@peInz,'aft@`peInz,
 afterpiece,,,'aft@pi:s,'aft@`pi:s,
@@ -5753,7 +5756,8 @@ arsehole,,asshole
 arsenal,,,'As@n@l,'Ars@n@l,
 arsenals,,,'As@n@lz,'Ars@n@lz,
 arsenate,,,'As@n@t,'Ars@n@t,'Ars@neIt
-arsenic,,,'AsnIk,'ArsnIk,'Ars@nIk
+arsenic,aj,,'AsnIk,'ArsnIk,'Ars@nIk
+arsenic,n,,'AsnIk,'ArsnIk,'Ars@nIk
 arsenical,,,'AsnIk@l,'ArsnIk@l,Ars'EnIk@l
 arsenide,,,'As@naId,'Ars@naId,
 arsenious,,,'As@nI@s,'Ars@nI@s,Ars'i:ni:@s
@@ -23157,7 +23161,7 @@ culminant,,,k'VlmIn@nt,,k'Vlm@n@nt
 culminate,,,k'VlmIneIt,k'VlmI#neIt,
 culminated,,,k'VlmIneItId,k'VlmI#neItI#d,k'Vlm@neIt@d
 culminates,,,k'VlmIneIts,k'VlmI#neIts,
-culminating,,,k'VlmIneItIN,k'VlmI#neItIN,k'Vlm@neItIN
+culminating,,,k'VlmIneItIN,,k'Vlm@neItIN
 culmination,,,kVlmIn'eIS@n,kVlmI#n'eIS@n,kVlm@n'eIS@n
 culottes,,,kj'UlQts,kj'UlAts,ku:l'Qts
 culpa,,,k'Vlp@,,
@@ -34554,7 +34558,7 @@ fabricant,,,f'abrIk@nt,,
 fabricate,,,f'abrIkeIt,f'abrI#keIt,f'abr@keIt
 fabricated,,,f'abrIkeItId,f'abrI#keItI#d,f'abrIkeIt@d
 fabricates,,,f'abrIkeIts,f'abrI#keIts,
-fabricating,,,f'abrIkeItIN,,
+fabricating,,,f'abrIkeItIN,f'abrI#keItIN,
 fabrication,,,fabrIk'eIS@n,,
 fabrications,,,fabrIk'eIS@nz,,
 fabricator,,,f'abrIkeIt@,f'abrI#keIt@`,f'abrIkeIt@`
@@ -48115,7 +48119,7 @@ incidentally,,,InsId'Ent@li:,,
 incidentals,,,InsId'Ent@lz,,
 incidents,,,'InsId@nts,,'Ins@d@nts
 incinerate,,,Ins'In@reIt,Ins'In@`reIt,Ins'In@`eIt
-incinerated,,,Ins'In@reItId,Ins'In@`reItId,Ins'In@`eItId
+incinerated,,,Ins'In@reItId,Ins'In@`reItI#d,Ins'In@`eItId
 incinerating,,,Ins'In@reItIN,Ins'In@`reItIN,Ins'In@`eItIN
 incineration,,,InsIn@r'eIS@n,InsIn@`r'eIS@n,Ins'In@`eIS@n
 incinerator,,,Ins'In@reIt@,Ins'In@`reIt@`,Ins'In@`eIt@`
@@ -62976,7 +62980,7 @@ mutant,,,mj'u:t@nt,,
 mutants,,,mj'u:t@nts,,
 mutase,,,mj'u:teIs,,
 mutate,,,mju:t'eIt,,mj'u:teIt
-mutated,,,mju:t'eItId,mj'u:teItId,
+mutated,,,mju:t'eItId,mju:t'eItI#d,mj'u:teItId
 mutating,,,mju:t'eItIN,,mj'u:teItIN
 mutation,,,mju:t'eIS@n,,
 mutations,,,mju:t'eIS@nz,,
@@ -67238,7 +67242,8 @@ outshining,,,aUtS'aInIN,,'aUtSaInIN
 outshone,,,aUtS'Qn,aUtS'An,aUtS'oUn
 outshoot,n,,aUtS'u:t,,'aUtSu:t
 outshoot,v,,aUtS'u:t,,
-outshot,,,aUtS'Qt,aUtS'At,'aUtSAt
+outshot,n,,aUtS'Qt,aUtS'At,'aUtSAt
+outshot,v,,aUtS'Qt,aUtS'At,'aUtSAt
 outshout,,,aUtS'aUt,,
 outside,,,aUts'aId,,'aUts'aId
 outsider,,,aUts'aId@,aUts'aId@`,
@@ -67403,9 +67408,11 @@ overcareful,,,oUv@k'e@f@l,oUv@`k'Erf@l,'oUv@`k'e@f@l
 overcast,,,oUv@k'ast,oUv@`k'ast,'oUv@`kast
 overcasting,,,oUv@k'astIN,oUv@`k'astIN,'oUv@`kastIN
 overcautious,,,oUv@k'O:S@s,oUv@`k'O:S@s,'oUv@`k'QS@s
-overcharge,,,oUv@tS'AdZ,oUv@`tS'ArdZ,'oUv@`tSQrdZ
+overcharge,n,,oUv@tS'AdZ,oUv@`tS'ArdZ,'oUv@`tSQrdZ
+overcharge,v,,oUv@tS'AdZ,oUv@`tS'ArdZ,'oUv@`tSQrdZ
 overcharged,,,oUv@tS'AdZd,oUv@`tS'ArdZd,'oUv@`tS'QrdZd
-overcharges,,,oUv@tS'AdZIz,oUv@`tS'ArdZI#z,'oUv@`tSQrdZIz
+overcharges,n,,oUv@tS'AdZIz,oUv@`tS'ArdZI#z,'oUv@`tSQrdZIz
+overcharges,v,,oUv@tS'AdZIz,oUv@`tS'ArdZI#z,'oUv@`tSQrdZIz
 overcharging,,,oUv@tS'AdZIN,oUv@`tS'ArdZIN,oUv@`tS'QrdZIN
 overcheck,,,oUv@tS'Ek,oUv@`tS'Ek,'oUv@`tSEk
 overclothes,,,oUv@kl'oUDz,oUv@`kl'oUDz,'oUv@`kl'oUz
