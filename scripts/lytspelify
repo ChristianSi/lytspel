@@ -1118,9 +1118,9 @@ sub postprocess_suffixed {
     # XXX Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if (
-        $suffix =~ /^(.bility|able|ance|ant|ary|ative|ate|atory|dom|ed|en|ence|es|ent|er|ess
-        |est|ful|ing|ise|ish|ism|ist|ize|kinesis|l|less|ly|ment|morphism|ness|nik|n|oid|or
-        |up|ry|s|y)$/x
+        $suffix =~ /^(.bility|able|age|ance|ant|ary|ative|ate|atory|dom|ed|en|ence|es|ent|er
+        |ess|est|ful|ing|ise|ish|ism|ist|ize|kinesis|l|less|ly|ment|morphism|ness|nik|n|oid
+        |or|up|ry|s|y)$/x
         )
     {
         # ‹ate› is spoken in two different ways (/eIt/ or /It/) so we check which one to use
