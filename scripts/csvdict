@@ -20,8 +20,8 @@ use List::MoreUtils 'uniq';
 use lib dirname(abs_path $0);  # to locate the PhonEng package
 use PhonEng;
 
-const my $IN_FILE     => 'phonetic-dict.txt';
-const my $OUT_FILE    => 'phoneng-espeak-dict.csv';
+const my $IN_FILE  => 'phonetic-dict.txt';
+const my $OUT_FILE => 'phoneng-espeak-dict.csv';
 
 # Words listed here are added to the output dictionary. If a word listed here would
 # otherwise be treated as an redirect, it is added as a normal entry instead.
