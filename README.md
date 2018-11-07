@@ -678,6 +678,36 @@ and [Different spellings for different
 pronunciations](https://en.wikipedia.org/wiki/American_and_British_English_spelling_differences#Different_spellings_for_different_pronunciations).
 
 
+## Limitations of the Current Dictionary
+
+The Lytspel dictionary, as currently published, can distinguish between
+words traditionally written the same but pronounced differently
+(heteronyms) as long as their grammatical role in a sentence is different
+-- one is a noun, while the other is a verb, for example. This allows
+distinguishing the verb «cloas» ‹close› from the adjective «cloass», the
+noun «object» from the verb «ob'ject», etc. («Dhay wur tu cloass to dhe
+doar to cloas it.» ‹They were too close to the door to close it.› / «Y did
+not ob'ject to dhe object.» ‹I did not object to the object.›)
+
+However, heteronyms are currently only disambiguated by their grammatical
+role (commonly known as *part of speech,* or *POS*), hence if two
+heteronyms share the same grammatical role, the dictionary will list only
+one of them. The other one should, of course, nevertheless be used when
+appropriate. Words where this is the case include (the missing spelling is
+listed in parentheses):
+
+* ‹bass›: «baiss» (or «bass» for various fish species)
+* ‹drawer›: «dror» (or «drawer» for a person who draws)
+* ‹micrometer›: «my'cromiter» (a measuring device; or «mycromeeter» for the
+  millionth part of a meter)
+* ‹read›: «reed» (or «red» for the past tense)
+* ‹subsequence›: «subsiquenss» (for some subsequent occurrence; or
+  «subseequenss» for a sequence derived from another sequence)
+* ‹taxis›: «taxies» (multiple taxis, or taxicabs; or «taxiss», a scientific
+  term)
+* ‹tier›: «teer» (or «tyer» for a a person who ties)
+
+
 ## Overview
 
 TODO This section is older and partially outdated.
