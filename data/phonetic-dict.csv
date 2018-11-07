@@ -6877,6 +6877,8 @@ autochthon,,,O:toUtST'Qn,O:toUtST'An,O:t'QkT@n
 autochthonous,,,O:toUtST'Qn@s,O:toUtST'An@s,O:t'QkT@n@s
 autoclave,,,O:toUkl'eIv,,'O:toUkleIv
 autocoid,,,O:toUk'OId,,'O:t@kOId
+autocorrect,,,O:toUk@r'Ekt,O:toUk@`r'Ekt,
+autocorrection,,,O:toUk@r'EkS@n,O:toUk@`r'EkS@n,
 autocorrelation,,,O:toUkQrIl'eIS@n,O:toUkO:rIl'eIS@n,O:toUkQr@l'eIS@n
 autocracy,,,O:t'Qkr@si:,O:t'Akr@si:,
 autocrat,,,O:toUkr'at,,'O:t@krat
@@ -17446,6 +17448,7 @@ cipher,,,s'aIf@,s'aIf@`,
 cipolin,,,s'Ip@lIn,,
 cippi,,,s'Ipi:,,s'IpaI
 cippus,,,s'Ip@s,,
+circ,,,s'3:k,,
 circa,,,s'3:k@,,
 circadian,,,s3:k'eIdi:@n,,s@`k'eIdi:@n
 Circaean,,Circean
@@ -20607,7 +20610,7 @@ consumes,,,k@ns'u:mz,,
 consuming,,,k@ns'u:mIN,,
 consummate,aj,,k'Qns@meIt,k'Ans@meIt,k@ns'VmIt
 consummate,v,,k'Qns@meIt,k'Ans@meIt,
-consummated,,,k'Qns@meItId,k'Ans@meItI#d,k'Qns@meIt@d
+consummated,,,k@ns'VmeItId,k'Ans@meItI#d,k'Qns@meIt@d
 consummates,,,k'Qns@meIts,k'Ans@meIts,
 consummating,,,k'Qns@meItIN,k'Ans@meItIN,
 consummation,,,kQns@m'eIS@n,kAns@m'eIS@n,
@@ -23161,7 +23164,7 @@ culminant,,,k'VlmIn@nt,,k'Vlm@n@nt
 culminate,,,k'VlmIneIt,k'VlmI#neIt,
 culminated,,,k'VlmIneItId,k'VlmI#neItI#d,k'Vlm@neIt@d
 culminates,,,k'VlmIneIts,k'VlmI#neIts,
-culminating,,,k'VlmIneItIN,,k'Vlm@neItIN
+culminating,,,k'VlmIneItIN,k'VlmI#neItIN,k'Vlm@neItIN
 culmination,,,kVlmIn'eIS@n,kVlmI#n'eIS@n,kVlm@n'eIS@n
 culottes,,,kj'UlQts,kj'UlAts,ku:l'Qts
 culpa,,,k'Vlp@,,
@@ -33889,7 +33892,7 @@ exhibitory,,,Egz'IbIt@ri:,Egz'IbItori:,Igz'IbItori:
 exhibits,,,Egz'IbIts,,Igz'Ib@ts
 exhilarant,,,Egz'Ilar@nt,,Igz'Il@`@nt
 exhilarate,,,Egz'Ila#reIt,,Igz'Il@`eIt
-exhilarated,,,Egz'Ila#reItId,Egz'Ila#reItI#d,Igz'Il@`eItId
+exhilarated,,,Egz'Ila#reItId,,Igz'Il@`eItId
 exhilarating,,,Egz'Ila#reItIN,,Igz'Il@`eItIN
 exhilaration,,,EgzIla#r'eIS@n,,IgzIl@`'eIS@n
 exhilarative,,,Egz'Ila#r@tIv,,Igz'Il@`eItIv
@@ -34574,6 +34577,7 @@ fac,,,f'ak,,
 facade,,,f@s'Ad,,
 facades,,,f@s'Adz,,f@s'Qdz
 face,,,f'eIs,,
+Facebook,,,f'eIsbUk,,
 faced,,,f'eIsd,,f'eIst
 facedown,,,f'eIsdaUn,,f'eIsd'aUn
 faceless,,,f'eIsl@s,,
@@ -50179,7 +50183,8 @@ interspersed,,,Int@sp'3:sd,Int@`sp'3:sd,Int@`sp'3:st
 intersperses,,,Int@sp'3:sIz,Int@`sp'3:sI#z,Int@`sp'3:s@z
 interspersion,,,Int@sp'3:S@n,Int@`sp'3:Z@n,
 interstadial,,,Int@st'eIdI@l,Int@`st'eIdI@l,Int@`st'eIdi:@l
-interstate,,,Int@st'eIt,Int@`st'eIt,
+interstate,aj,,Int@st'eIt,Int@`st'eIt,
+interstate,n,,Int@st'eIt,Int@`st'eIt,
 interstates,,,Int@st'eIts,Int@`st'eIts,'Int@`steIts
 interstellar,,,Int@st'El@,Int@`st'El@`,
 interstice,,,Int'3:stIs,,
@@ -59354,6 +59359,8 @@ megabyte,,,m'Eg@baIt,,
 megabytes,,,m'Eg@baIts,,
 megacephalic,,,mEg@sIf'alIk,,mEg@s@f'alIk
 megacephalous,,,m'Eg@sEf@l@s,,mEg@s'Ef@l@s
+megacities,,,m'Eg@sIti:z,,
+megacity,,,m'Eg@sIti:,,
 megacycle,,,m'Eg@saIk@l,,
 megadeal,,,m'Eg@di:@l,,m'Eg@di:l
 megadeals,,,m'Eg@di:@lz,,m'Eg@di:lz
@@ -62086,7 +62093,8 @@ moots,,,m'u:ts,,
 mop,,,m'Qp,m'Ap,
 mopboard,,,m'QpbO:d,m'Apbord,m'QpbO:rd
 mope,,,m'oUp,,
-moped,,,m'oUpEd,,
+moped,n,,m'oUpEd,,
+moped,v,,m'oUpEd,,
 mopeds,,,m'oUpEdz,,
 mopey,,,m'oUpi:,,
 mophead,,,m'QfEd,m'AfEd,m'QphEd
@@ -65110,7 +65118,7 @@ nucleation,,,nju:klI'eIS@n,nu:klI'eIS@n,nu:kli:'eIS@n
 nuclei,,,nj'u:klIi:,n'u:klIi:,n'u:kli:aI
 nucleic,,,nju:kl'IIk,nu:kl'IIk,nu:kl'eIIk
 nucleolar,,,nju:klI'oUl@,nu:klI'oUl@`,nu:kl'i:@l@`
-nucleolated,,,nj'u:klIQleItId,n'u:klIAleItI#d,n'u:kli:@leItId
+nucleolated,,,nj'u:klIQleItId,n'u:klIAleItId,n'u:kli:@leItId
 nucleole,,,nj'u:klIoUl,n'u:klIoUl,n'u:kli:oUl
 nucleoli,,,nj'u:klIQli:,n'u:klIAli:,n'u:kli:oUli:
 nucleolus,,,nju:klI'oUl@s,nu:klI'oUl@s,nu:kl'i:@l@s
@@ -69634,6 +69642,7 @@ pebble,,,p'Eb@l,,
 pebbles,,,p'Eb@lz,,
 pebbly,,,p'Ebli:,,
 pebrine,,,p'Ebri:n,,peIbr'i:n
+pec,,,p'Ek,,
 pecan,,,pIk'An,pI#k'An,p'i:kQn
 pecans,,,pIk'Anz,pI#k'Anz,pIk'anz
 peccable,,,p'Ek@b@l,,
@@ -90107,7 +90116,8 @@ stipitate,,,st'IpIteIt,st'IpI#teIt,
 stipites,,,st'IpaIts,,st'IpIti:z
 stipple,,,st'Ip@l,,
 stipulae,,stipule
-stipulate,,,st'IpjUleIt,,st'Ipj@leIt
+stipulate,aj,,st'IpjUleIt,,st'Ipj@leIt
+stipulate,v,,st'IpjUleIt,,st'Ipj@leIt
 stipulated,,,st'IpjUleItId,st'IpjUleItI#d,st'Ipj@leItId
 stipulates,,,st'IpjUleIts,,st'Ipj@leIts
 stipulating,,,st'IpjUleItIN,,st'Ipj@leItIN
@@ -95638,7 +95648,7 @@ tog,,,t'Qg,t'Ag,
 toga,,,t'oUg@,,
 togaed,,,t'oUg@d,,
 togate,,,t'QgeIt,t'AgeIt,t'oUgeIt
-togated,,,t'QgeItId,t'AgeItI#d,t'oUdZi:vIr'aIli:z
+togated,,,t'QgeItId,t'AgeItId,t'oUdZi:vIr'aIli:z
 together,,,t@g'ED@,t@g'ED@`,
 togetherness,,,t@g'ED@n@s,t@g'ED@`n@s,tUg'ED@`nEs
 toggery,,,t'Qg@ri:,t'Ag@`ri:,t'Qg@`i:
@@ -103814,6 +103824,9 @@ wight,,,w'aIt,,
 wigs,,,w'Igz,,
 wigwag,,,w'Igwag,,
 wigwam,,,w'Igwam,,w'IgwAm
+wiki,,,w'Iki:,,
+Wikipedia,,,wIki:p'i:di:@,,
+wikis,,,w'Iki:z,,
 wikiup,,,w'Iki:Vp,,
 Wilberforce,,,w'Ilb@fO:s,w'Ilb@`fors,w'Ilb@`fO:rs
 Wilbert,,,w'Ilb@t,w'Ilb@`t,
@@ -105069,6 +105082,7 @@ youth,,,j'u:T,,
 youthen,,,j'u:D@n,,j'u:T@n
 youthful,,,j'u:Tf@l,,
 youths,,,j'u:Ts,,
+YouTube,,,ju:tj'u:b,ju:t'u:b,
 yow,,,j'aU,,
 yowl,,,j'aUl,,
 yowler,,,j'aUl@,j'aUl@`,
