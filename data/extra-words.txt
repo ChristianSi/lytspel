@@ -1,10 +1,13 @@
 amplicon
 appetent
+autocorrect
+autocorrection
 avulse
 centralist
 certificated
 chirurgic
 chirurgical
+circ
 civvy
 cochair
 controvertible
@@ -17,6 +20,7 @@ expiated
 expiates
 expiating
 expurgated
+Facebook
 flavonoid
 foveolae
 Gazan
@@ -32,6 +36,8 @@ kins
 laputa
 larn
 magnesian
+megacities
+megacity
 Melanesia
 mentionable
 micrometre
@@ -42,6 +48,7 @@ nihilist
 Okinawan
 Palauan
 paleontological
+pec
 perfects
 perimetry
 perpends
@@ -68,4 +75,8 @@ surpassable
 syphilitic
 venene
 vivisectionism
+wiki
+Wikipedia
+wikis
+YouTube
 zygosity
