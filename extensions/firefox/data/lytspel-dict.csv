@@ -388,7 +388,7 @@ abuna,,,a'buuna
 abundance,,,a'bundenss
 abundant,,,a'bundent
 abundantly,,,a'bundentli
-abusage,,,a'biucij
+abusage,,,a'biussij
 abuse,n,,a'biuss
 abuse,v,,a'bius
 abused,,,a'biusd
@@ -427,7 +427,7 @@ academe,,,akedeem
 academia,,,aca'deemia
 academic,,,aca'demic
 academical,,,aca'demicl
-academically,,,aca'demicli
+academically,,,aca'demiclli
 academician,,,akede'mition
 academicians,,,akede'mitions
 academicism,,,aca'demicism
@@ -851,7 +851,7 @@ Acosta,,,A'causta
 acotyledon,,,aicote'leeden
 acoustic,,,a'cuustic
 acoustical,,,a'cuusticl
-acoustically,,,a'cuusticli
+acoustically,,,a'cuusticlli
 acoustician,,,acoo'stition
 acoustics,,,a'cuustics
 acquaint,,,a'quaint
@@ -1025,8 +1025,8 @@ acumen,,,a'kiumen
 acuminate,aj,,a'kiumenit
 acuminate,v,,a'kiumenait
 acuminous,,,a'kiumenuss
-acupuncture,n,,akyoopunccher
-acupuncture,v,,akyoopunccher
+acupuncture,n,,akiupunccher
+acupuncture,v,,akiupunccher
 acutance,,,a'kiutenss
 acute,,,a'kiut
 acutely,,,a'kiutli
@@ -1238,7 +1238,7 @@ admen,,,admen
 Admetus,,,Ad'meetuss
 admin,,,admin
 adminicle,,,ad'minicl
-adminicular,,,admi'nikyooler
+adminicular,,,admi'nikiuler
 administer,,,ad'minister
 administered,,,ad'ministerd
 administering,,,ad'ministering
@@ -1733,8 +1733,10 @@ afforest,,,a'forrist
 affranchise,,,a'franchys
 affray,,,a'fray
 affrayer,,,a'frayer
-affricate,,,afrikit
-affricates,,,afrikits
+affricate,n,,afrikit
+affricate,v,,africait
+affricates,n,,afrikits
+affricates,v,,africaits
 affrication,,,afri'caition
 affricative,,,a'friketiv
 affright,,,a'fryt
@@ -1817,8 +1819,9 @@ aftermarkets,,,aftermarkits
 aftermath,,,aftermath
 aftermaths,,,aftermaths
 aftermost,,,aftermoast
-afternoon,,,afternuun
-afternoons,,,afternuuns
+afternoon,aj,,afternuun
+afternoon,n,,after'nuun
+afternoons,,,after'nuuns
 afterpains,,,afterpains
 afterpiece,,,afterpeess
 afters,,,afters
@@ -2400,7 +2403,7 @@ Alceste,,,Al'sest
 Alcestis,,,Al'sestiss
 alchemic,,,al'kemic
 alchemical,,,al'kemicl
-alchemically,,,al'kemicli
+alchemically,,,al'kemiclli
 alchemise,,alchemize
 alchemist,,,alkemist
 alchemistic,,,alke'mistic
@@ -2523,7 +2526,7 @@ algarroba,,,alge'roaba
 algebra,,,aljebra
 algebraic,,,alje'brayic
 algebraical,,,alje'brayicl
-algebraically,,,alje'brayicli
+algebraically,,,alje'brayiclli
 algebraist,,,aljebrayist
 Algeciras,,,Alji'ciress
 Alger,,,Aljer
@@ -2560,8 +2563,8 @@ Alhambresque,,,Alham'bresk
 Ali,,,Aali
 alias,,,ailiass
 aliases,,,ailiasses
-alibi,,,aleby
-alibis,,,alebys
+alibi,,,aliby
+alibis,,,alibys
 alible,,,alebl
 Alicante,,,Ali'canti
 Alice,,,Aliss
@@ -2909,7 +2912,7 @@ alpha,,,alfa
 alphabet,,,alfebet
 alphabetic,,,alfe'betic
 alphabetical,,,alfe'beticl
-alphabetically,,,alfa'beticli
+alphabetically,,,alfe'beticlli
 alphabetisation,,alphabetization
 alphabetise,,alphabetize
 alphabetised,,alphabetized
@@ -3009,7 +3012,7 @@ altricial,,,al'trishel
 altruism,,,altruism
 altruist,,,altruist
 altruistic,,,altru'istic
-aludel,,,alyoodel
+aludel,,,aliudel
 alula,,,alyula
 alum,,,alum
 alumina,,,a'luumina
@@ -3364,7 +3367,7 @@ amoretti,,,ame'reti
 amoretto,,,ame'reto
 amorino,,,ame'reeno
 amorist,,,amerist
-amorosity,,,ame'rociti
+amorosity,,,ame'rossiti
 amoroso,,,ame'roasso
 amorous,,,ameruss
 amorously,,,amerussli
@@ -3470,12 +3473,12 @@ ampule,,,ampiul
 ampulla,,,am'pula
 ampullaceous,,,ampu'laishuss
 ampullary,,,am'puleri
-amputate,,,ampyootait
-amputated,,,ampyootaited
+amputate,,,ampiutait
+amputated,,,ampiutaited
 amputation,,,ampyu'taition
 amputations,,,ampyu'taitions
-amputee,,,ampyoo'tee
-amputees,,,ampyoo'tees
+amputee,,,ampiu'tee
+amputees,,,ampiu'tees
 amrita,,,am'reeta
 Amritsar,,,Am'ritser
 Amsterdam,,,Amsterdam
@@ -3856,7 +3859,7 @@ anethole,,,anethoal
 aneurin,,,anyerin
 aneurysm,,,anyerism
 anew,,,a'nue
-anfractuosity,,,anfractiu'ociti
+anfractuosity,,,anfractiu'ossiti
 anfractuous,,,an'fractiuass
 anga,,,angga
 angakok,,,anggecok
@@ -5710,7 +5713,8 @@ arsehole,,asshole
 arsenal,,,arsenel
 arsenals,,,arsenels
 arsenate,,,arsenait
-arsenic,,,arsenic
+arsenic,aj,,ar'senic
+arsenic,n,,arsenic
 arsenical,,,ar'senicl
 arsenide,,,arsenyd
 arsenious,,,ar'seeniass
@@ -6762,7 +6766,7 @@ autecology,,,aute'colejeh
 auth,,,auth
 authentic,,,au'thentic
 authentical,,,au'thenticl
-authentically,,,au'thenticli
+authentically,,,au'thenticlli
 authenticate,,,au'thenticait
 authenticated,,,au'thenticaited
 authenticating,,,au'thenticaiting
@@ -6816,6 +6820,8 @@ autochthon,,,au'tocthen
 autochthonous,,,au'tocthenuss
 autoclave,,,autoclaiv
 autocoid,,,autecoid
+autocorrect,,,autoke'rect
+autocorrection,,,autoke'rection
 autocorrelation,,,autocorre'laition
 autocracy,,,au'tocreci
 autocrat,,,autecrat
@@ -9014,7 +9020,7 @@ bellhops,,,belhops
 bellicose,,,belicoass
 bellicosely,,,belicoassli
 bellicoseness,,,belicoassness
-bellicosity,,,beli'cociti
+bellicosity,,,beli'cossiti
 bellied,,,belied
 bellies,,,belies
 belligerence,,,be'lijerenss
@@ -9900,7 +9906,7 @@ biographer,,,bai'ogrefer
 biographers,,,bai'ogrefers
 biographic,,,baio'grafic
 biographical,,,baio'graficl
-biographically,,,baio'graficli
+biographically,,,baio'graficlli
 biographies,,,bai'ogrefies
 biography,,,bai'ogrefi
 biohazard,,,baio'haserd
@@ -10343,7 +10349,7 @@ blastoporal,,,blaste'poarel
 blastopore,,,blastepoar
 blastosphere,,,blastesfeer
 blasts,,,blasts
-blastula,,,blastyoola
+blastula,,,blastiula
 blat,,,blat
 blatant,,,blaitent
 blatantly,,,blaitentli
@@ -11249,7 +11255,7 @@ bora,,,boara
 boraces,,,boarecees
 boracic,,,be'racic
 boracite,,,boarecyt
-borage,,,burij
+borage,,,boarij
 boraginaceous,,,beraji'naishuss
 borak,,,boarek
 boral,,,boaral
@@ -13690,7 +13696,7 @@ Callisto,,,Ca'listo
 callithump,,,calithump
 callop,,,calep
 callose,,,caloass
-callosity,,,ca'lociti
+callosity,,,ca'lossiti
 callous,,,caluss
 calloused,,,calussd
 callously,,,calussli
@@ -14331,7 +14337,7 @@ captures,,,capchers
 capturing,,,capchering
 Capua,,,Capiua
 capuche,,,ca'puush
-capuchin,,,capyoochin
+capuchin,,,capiuchin
 Capulet,,,Capyulet
 caput,,,caiput
 capybara,,,cape'bara
@@ -14559,7 +14565,7 @@ Carinthia,,,Ke'rinthia
 carioca,,,carri'oaca
 cariogenic,,,cairia'jenic
 cariole,,,carrioal
-cariosity,,,cairi'ociti
+cariosity,,,cairi'ossiti
 carious,,,cairiass
 cariousness,,,cairiassness
 Carissa,,,Ke'rissa
@@ -14641,8 +14647,8 @@ carnivores,,,carnivoars
 carnivorous,,,car'niveruss
 carnivorously,,,car'niverussli
 carnivorousness,,,car'niverussness
-carnose,,,carnoas
-carnosity,,,car'nociti
+carnose,,,carnoass
+carnosity,,,car'nossiti
 Carnot,,,Car'no
 carnotite,,,carnetyt
 carns,,,carns
@@ -16324,7 +16330,7 @@ chelonian,,,ki'loanian
 Chelsea,,,Chelsi
 Cheltenham,,,Cheltnem
 Chelyabinsk,,,Che'lyaabinsk
-Chelyuskin,,,Che'lyooskin
+Chelyuskin,,,Che'liuskin
 chem,,,kem
 chemic,,,kemic
 chemical,,,kemicl
@@ -17272,6 +17278,7 @@ cipher,,,syfer
 cipolin,,,sipelin
 cippi,,,sipy
 cippus,,,sipuss
+circ,,,surk
 circa,,,surca
 circadian,,,sur'caidian
 Circaean,,Circean
@@ -17287,8 +17294,8 @@ circle,,,surcl
 circled,,,surcld
 circles,,,surcls
 circlet,,,surclet
-circling,,,surcling
-circs,,,surx
+circling,,,surkling
+circs,,,surks
 circuit,,,surkit
 circuited,,,surkited
 circuitous,,,ser'kiuituss
@@ -17662,7 +17669,7 @@ claustral,,,claustrel
 claustrophobe,,,claustrefoab
 claustrophobia,,,claustro'foabia
 claustrophobic,,,claustre'foabic
-clausula,,,clozhula
+clausula,,,clauzhula
 clavate,,,claivait
 clavately,,,claivaitli
 clave,,,claiv
@@ -18138,7 +18145,7 @@ coagulase,,,co'agyulaiss
 coagulate,aj,,co'agyulit
 coagulate,v,,co'agyulait
 coagulating,,,co'agyulaiting
-coagulation,,,co-agyoo'laition
+coagulation,,,co-agiu'laition
 coagulative,,,co'agyulaitiv
 coagulator,,,co'agyulaiter
 coagulum,,,co'agyulum
@@ -19963,7 +19970,7 @@ confusing,,,con'fiusing
 confusingly,,,con'fiusingli
 confusion,,,con'fiusion
 confusions,,,con'fiusions
-confutation,,,confyoo'taition
+confutation,,,confiu'taition
 confutative,,,con'fiutetiv
 confute,,,con'fiut
 cong,,,cong
@@ -20001,12 +20008,12 @@ congo,,,conggo
 Congolese,,,Conngo'lees
 congou,,,conggu
 congrats,,,con'grats
-congratulant,,,con'grachulent
-congratulate,,,con'grachulait
-congratulated,,,con'grachulaited
-congratulating,,,con'grachulaiting
-congratulation,,,kenngrachu'laition
-congratulations,,,kenngrachu'laitions
+congratulant,,,con'gratiulent
+congratulate,,,con'gratiulait
+congratulated,,,con'gratiulaited
+congratulating,,,con'gratiulaiting
+congratulation,,,conngratiu'laition
+congratulations,,,conngratiu'laitions
 congratulatory,,,con'grachuletoari
 congregant,,,conggregent
 congregants,,,conggregents
@@ -21738,7 +21745,7 @@ counterproposal,,,counterpropoasl
 counterproposals,,,counterpropoasls
 counterpunch,,,counterpunch
 counterreformation,,,counterrifor'maition
-counterreply,n,,counterri'ply
+counterreply,n,,counterriply
 counterreply,v,,counterri'ply
 counterrevolution,,,counterrevo'luution
 counterrevolutionary,,,counterrevo'luutionerri
@@ -22073,7 +22080,7 @@ cramps,,,cramps
 crams,,,crams
 cran,,,cran
 Cranach,,,Craanaak
-cranage,,,crainij
+cranage,,,cranij
 cranberries,,,cranberries
 cranberry,,,cranberri
 crane,,,crain
@@ -22121,7 +22128,7 @@ crappy,,,crapi
 craps,,,craps
 crapshoot,,,crapshuut
 crapshooter,,,crapshuuter
-crapulent,,,crapyoolent
+crapulent,,,crapyulent
 crapulous,,,crapyuluss
 crapulously,,,crapyulussli
 crapulousness,,,crapyulussness
@@ -22136,7 +22143,7 @@ crass,,,crass
 crassitude,,,cracitued
 crassly,,,crassli
 crassness,,,crassness
-crassulaceous,,,crasyoo'laishuss
+crassulaceous,,,craciu'laishuss
 Crassus,,,Crassuss
 cratch,,,crach
 crate,,,crait
@@ -23115,7 +23122,7 @@ curbside,,,curbsyd
 curbstone,,,curbstoan
 curch,,,curch
 curculio,,,cur'kiulio
-curcuma,,,curkyooma
+curcuma,,,curkiuma
 curd,,,curd
 curdle,,,curdl
 curdy,,,curdi
@@ -23136,8 +23143,8 @@ curing,,,kiuring
 curio,,,kiurio
 curios,,,kiurioas
 curiosa,,,kiuri'oassa
-curiosities,,,kiuri'ocities
-curiosity,,,kiuri'ociti
+curiosities,,,kiuri'ossities
+curiosity,,,kiuri'ossiti
 curious,,,kiuriass
 curiouser,,,kiuriasser
 curiously,,,kiuriassli
@@ -24515,10 +24522,10 @@ decry,,,di'cry
 decrying,,,di'crying
 decrypt,,,di'cript
 decubitus,,,di'kiubituss
-decuman,,,dekyoomen
+decuman,,,dekiumen
 decumbent,,,di'cumbent
 decumbently,,,di'cumbentli
-decuple,,,dekyoopl
+decuple,,,dekiupl
 decurion,,,di'kiurian
 decurrent,,,di'current
 decurrently,,,di'currentli
@@ -25154,11 +25161,11 @@ democrats,,,demecrats
 Democritus,,,Di'mocrituss
 demode,,,daimo'day
 demoded,,,daimo'dayd
-demodulate,,,di'modyoolait
-demodulated,,,di'modyoolaited
-demodulates,,,di'modyoolaits
-demodulation,,,dimodyoo'laition
-demodulator,,,di'modyoolaiter
+demodulate,,,di'modiulait
+demodulated,,,di'modiulaited
+demodulates,,,di'modiulaits
+demodulation,,,dimodiu'laition
+demodulator,,,di'modiulaiter
 Demogorgon,,,Deemo'gorgen
 demographer,,,di'mogrefer
 demographers,,,di'mogrefers
@@ -25235,8 +25242,8 @@ demure,,,di'miur
 demurely,,,di'miurli
 demureness,,,di'miurness
 demurrable,,,di'murebl
-demurrage,,,di'murrij
-demurral,,,di'murrel
+demurrage,,,di'murij
+demurral,,,di'murel
 demurred,,,di'murd
 demurrer,,,di'murer
 demurring,,,di'muring
@@ -25382,7 +25389,7 @@ denuclearization,,,dinuuclieri'saition
 denuclearize,,,di'niuclierys
 denuclearized,,,di'niuclierysd
 denudate,,,di'nuedait
-denudation,,,denyoo'daition
+denudation,,,denue'daition
 denude,,,di'nued
 denuded,,,di'nueded
 denuding,,,di'nueding
@@ -27067,7 +27074,7 @@ disallowance,,,disa'lowenss
 disallowances,,,disa'lowensses
 disallowed,,,disa'lowd
 disallowing,,,disa'lowing
-disambiguate,,,dissam'bigyooait
+disambiguate,,,dissam'bigiuait
 disamenity,,,disa'meniti
 disannul,,,dis'anul
 disanoint,,,disa'noint
@@ -28629,8 +28636,8 @@ Dorthy,,,Dorthi
 Dortmund,,,Dortmund
 dorty,,,dorti
 dory,,,doari
-dosage,,,doacij
-dosages,,,doacijes
+dosage,,,doassij
+dosages,,,doassijes
 dose,,,doass
 doser,,,doasser
 doses,,,doasses
@@ -29053,7 +29060,7 @@ drenching,,,drenching
 Drenthe,,,Drenta
 Dresden,,,Drezden
 dress,,,dress
-dressage,,,dres'sozh
+dressage,,,dres'saazh
 dressed,,,dressd
 dresser,,,dresser
 dressers,,,dressers
@@ -29293,7 +29300,7 @@ dubbed,,,dubd
 dubbin,,,dubin
 dubbing,,,dubing
 dubiety,,,due'baieti
-dubiosity,,,duebi'ociti
+dubiosity,,,duebi'ossiti
 dubious,,,duebiass
 dubiously,,,duebiassli
 dubiousness,,,duebiassness
@@ -30015,7 +30022,7 @@ econometrician,,,iconemi'trition
 econometrics,,,icono'metrics
 economic,,,ico'nomic
 economical,,,ico'nomicl
-economically,,,eco'nomicli
+economically,,,ico'nomiclli
 economics,,,ico'nomics
 economies,,,i'conemies
 economise,,economize
@@ -30081,14 +30088,14 @@ Ecuadoran,,,Eque'doren
 Ecuadorean,,,Eque'dorian
 Ecuadorian,,,Eque'dorian
 ecuelle,,,ai'quel
-ecumenical,,,ekyoo'menicl
-ecumenicalism,,,ekyoo'menikelism
-ecumenically,,,ekyoo'meniclli
-ecumenicism,,,ekyoo'menicism
-ecumenicist,,,ekyoo'menicist
-ecumenicity,,,ekyoome'niciti
-ecumenics,,,ekyoo'menix
-ecumenism,,,ekyoomenism
+ecumenical,,,ekiu'menicl
+ecumenicalism,,,ekiu'menikelism
+ecumenically,,,ekiu'meniclli
+ecumenicism,,,ekiu'menicism
+ecumenicist,,,ekiu'menicist
+ecumenicity,,,ekiume'niciti
+ecumenics,,,ekiu'menix
+ecumenism,,,ekiumenism
 ecus,,,ai'kius
 eczema,,,exema
 eczematous,,,ig'zemetuss
@@ -30388,7 +30395,7 @@ eisteddfodau,,,ystedh'vody
 either,,,eedher
 ejaculate,n,,i'jakyulit
 ejaculate,v,,i'jakyulait
-ejaculation,,,eejakiu'laition
+ejaculation,,,ijakyu'laition
 ejaculative,,,i'jakyulaitiv
 ejaculator,,,i'jakyulaiter
 ejaculatory,,,i'jakyuletoari
@@ -30651,7 +30658,7 @@ elephant,,,elefent
 elephantiasis,,,elefan'taieciss
 elephantine,,,ele'fantin
 elephants,,,elefents
-Eleusinian,,,Elyoo'cinian
+Eleusinian,,,Eliu'cinian
 Eleusis,,,I'luuciss
 elevate,,,elevait
 elevated,,,elevaited
@@ -31275,7 +31282,7 @@ encipher,,,en'syfer
 encircle,,,en'surcl
 encircled,,,en'surcld
 encirclement,,,en'surclment
-encircling,,,en'surcling
+encircling,,,en'surkling
 enclasp,,,en'clasp
 enclave,,,enclaiv
 enclaves,,,enclaivs
@@ -32856,7 +32863,7 @@ ethnarch,,,ethnark
 ethnarchy,,,ethnarki
 ethnic,,,ethnic
 ethnical,,,ethnicl
-ethnically,,,ethnicli
+ethnically,,,ethniclli
 ethnicity,,,eth'niciti
 ethnics,,,ethnics
 ethnocentric,,,ethno'sentric
@@ -33901,7 +33908,7 @@ expounded,,,ix'pounded
 expounding,,,ix'pounding
 expounds,,,ix'pounds
 express,,,ix'press
-expressage,,,ix'precij
+expressage,,,ix'pressij
 expressed,,,ix'pressd
 expresses,,,ix'presses
 expressing,,,ix'pressing
@@ -33949,7 +33956,7 @@ exsertile,,,e'xurtl
 exsiccatae,,exsiccate
 exsiccate,,,exicait
 exsolution,,,exo'luution
-exstipulate,,,ex'tipyoolit
+exstipulate,,,ex'stipyulait
 extant,,,extent
 extemporal,,,ix'temperel
 extemporally,,,ix'temperelli
@@ -34154,8 +34161,8 @@ exuberance,,,ig'zuuberenss
 exuberant,,,ig'zuuberent
 exuberantly,,,ig'zuuberentli
 exuberate,,,ig'zuuberait
-exudate,,,exyoodait
-exudation,,,exyoo'daition
+exudate,,,exiudait
+exudation,,,exiu'daition
 exudative,,,ig'zuudetiv
 exude,,,ig'zuud
 exuded,,,ig'zuuded
@@ -34276,6 +34283,7 @@ fac,,,fak
 facade,,,fas'saad
 facades,,,fas'saads
 face,,,faiss
+Facebook,,,Faissbook
 faced,,,faissd
 facedown,,,faissdoun
 faceless,,,faissless
@@ -34602,7 +34610,7 @@ fanny,,,fani
 fano,,,faano
 fanon,,,fanen
 fans,,,fans
-fantabulous,,,fan'tabyooluss
+fantabulous,,,fan'tabiuluss
 fantail,,,fantail
 fantasia,,,fan'taisia
 fantasies,,,fantecies
@@ -35971,7 +35979,7 @@ fisticuff,,,fisticuf
 fisticuffs,,,fisticufs
 fistnote,,,fistnoat
 fists,,,fists
-fistula,,,fistyoola
+fistula,,,fistiula
 fistulate,,,fischoolit
 fistulous,,,fischooluss
 fit,,,fit
@@ -36344,9 +36352,9 @@ flexographic,,,flexo'grafic
 flexography,,,fle'xogrefi
 flexor,,,flexer
 flextime,,,flextym
-flexuose,,,flexyooes
-flexuosity,,,flexyoo'ociti
-flexuous,,,flecshuass
+flexuose,,,flexiues
+flexuosity,,,flexiu'ossiti
+flexuous,,,flexiuuss
 flexure,,,flecsher
 fley,,,flay
 flibbertigibbet,,,fliberteejibit
@@ -36510,7 +36518,7 @@ florists,,,floarists
 Florsheim,,,Floarshym
 floruit,,,floaruit
 flory,,,floari
-floscular,,,floskyooler
+floscular,,,floskiuler
 floss,,,floss
 flossie,,,floci
 flossy,,,flossi
@@ -36539,7 +36547,7 @@ flouted,,,flouted
 flouting,,,flouting
 flouts,,,flouts
 flow,,,flo
-flowage,,,flo-ij
+flowage,,,floij
 flowchart,,,flochart
 flowcharts,,,flocharts
 flowed,,,fload
@@ -37455,7 +37463,7 @@ foutre,,fouter
 fovea,,,foavia
 foveate,,,foaviit
 foveola,,,foa'viala
-foveolae,,foveole
+foveolae,,,foa'viali
 foveolate,,,foavialit
 foveole,,,foavioal
 foveolet,,,foavialet
@@ -38144,8 +38152,8 @@ fulgurating,,,fulgyeraiting
 fulgurite,,,fulgyeryt
 fulgurous,,,fulgyeruss
 fulham,,,foolam
-fuliginous,,,fiu'lijenuss
-fuliginously,,,fiu'lijenussli
+fuliginous,,,fiu'lijinuss
+fuliginously,,,fiu'lijinussli
 full,,,fool
 fullam,,,foolem
 fullback,,,foolbak
@@ -38249,7 +38257,7 @@ fungistat,,,funjistat
 fungistatic,,,funji'static
 fungo,,,funggo
 fungoid,,,funggoid
-fungosity,,,fung'gociti
+fungosity,,,fung'gossiti
 fungous,,,fungguss
 fungus,,,fungguss
 funicle,,,fiunicl
@@ -39258,7 +39266,7 @@ generatrix,,,jene'raitrix
 generic,,,je'nerric
 generically,,,je'nerricli
 generics,,,je'nerrics
-generosity,,,jene'rociti
+generosity,,,jene'rossiti
 generous,,,jeneruss
 generously,,,jenerussli
 generousness,,,jenerussness
@@ -39360,8 +39368,8 @@ gentry,,,jentri
 genty,,,jenti
 genu,,,jeenue
 genua,,,jenuea
-genuflect,,,jenyooflect
-genuflection,,,jenyoo'flection
+genuflect,,,jeniuflect
+genuflection,,,jeniu'flection
 genuine,,,jeniuin
 genuinely,,,jeniuinli
 genuineness,,,jeniuinness
@@ -39385,7 +39393,7 @@ geognosy,,,ji'ognoci
 geographer,,,ji'ogrefer
 geographic,,,jio'grafic
 geographical,,,jio'graficl
-geographically,,,jio'graficli
+geographically,,,jio'graficlli
 geography,,,ji'ogrefi
 geoid,,,jio-id
 geologic,,,jio'lojic
@@ -39627,7 +39635,7 @@ gibbet,,,jibit
 gibbon,,,giben
 gibbons,,,gibens
 gibbose,,,giboass
-gibbosity,,,gi'bociti
+gibbosity,,,gi'bossiti
 gibbous,,,gibuss
 gibbously,,,gibussli
 Gibbs,,,Gibs
@@ -40073,7 +40081,7 @@ globoid,,,gloaboid
 globose,,,gloaboass
 globosely,,,gloaboassli
 globoseness,,,gloaboassness
-globosity,,,gloa'bociti
+globosity,,,gloa'bossiti
 globs,,,globs
 globular,,,globyuler
 globularly,,,globyulerli
@@ -40203,7 +40211,7 @@ gluten,,,gluuten
 glutenous,,,gluutenuss
 glutethimide,,,gluu'tethemyd
 gluteus,,,gluutiass
-glutinosity,,,gluuti'nociti
+glutinosity,,,gluuti'nossiti
 glutinous,,,gluutinuss
 glutinously,,,gluutinussli
 glutinousness,,,gluutinussness
@@ -40762,7 +40770,7 @@ gracile,,,gracil
 gracilis,,,graciliss
 gracility,,,gra'ciliti
 gracing,,,graissing
-graciosity,,,graishi'ociti
+graciosity,,,graishi'ossiti
 gracioso,,,graishi'oasso
 gracious,,,graishuss
 graciously,,,graishussli
@@ -40791,7 +40799,7 @@ gradual,,,grajual
 gradualism,,,grajualism
 gradualist,,,grajualist
 gradually,,,grajualli
-graduand,,,gradyooand
+graduand,,,gradiuand
 graduate,aj,,grajuit
 graduate,n,,grajuit
 graduate,v,,grajuait
@@ -40889,7 +40897,7 @@ grandiloquent,,,gran'dilequent
 grandiloquently,,,gran'dilequentli
 grandiose,,,grandioass
 grandiosely,,,grandioassli
-grandiosity,,,grandi'ociti
+grandiosity,,,grandi'ossiti
 grandioso,,,grandi'oasso
 grandkid,,,grandkid
 grandkids,,,grandkids
@@ -40986,7 +40994,7 @@ graphemics,,,gra'feemics
 graphic,,,grafic
 graphicacy,,,grafikeci
 graphical,,,graficl
-graphically,,,graficli
+graphically,,,graficlli
 graphicly,,,graficli
 graphicness,,,graficness
 graphics,,,grafics
@@ -41061,7 +41069,7 @@ gratuitous,,,gra'tueituss
 gratuitously,,,gra'tueitussli
 gratuitousness,,,gra'tueitussness
 gratuity,,,gra'tueiti
-gratulant,,,grachulent
+gratulant,,,1
 gratulate,,,grachulait
 gratulation,,,grachu'laition
 gratulatory,,,grachuletoari
@@ -43047,7 +43055,7 @@ haught,,,haut
 haughtily,,,hautili
 haughty,,,hauti
 haul,,,hall
-haulage,,,haulij
+haulage,,,hallij
 hauled,,,halld
 hauler,,,haller
 haulers,,,hallers
@@ -44188,7 +44196,7 @@ heterotroph,,,heteretrof
 heterotrophic,,,hetere'trofic
 heterotypic,,,hetero'tipic
 heterozygosis,,,heterozy'goaciss
-heterozygosity,,,heterozy'gociti
+heterozygosity,,,heterozy'gossiti
 heterozygote,,,hetero'zygoat
 heterozygous,,,hetero'syguss
 heth,,,heth
@@ -44294,7 +44302,7 @@ hiddenite,,,hidenyt
 hide,,,hyd
 hideaway,,,hydaway
 hidebound,,,hydbound
-hideosity,,,hidi'ociti
+hideosity,,,hidi'ossiti
 hideous,,,hidiass
 hideously,,,hidiassli
 hideout,,,hydout
@@ -46437,7 +46445,7 @@ hysteresis,,,histe'reeciss
 hysteria,,,hi'sterria
 hysteric,,,hi'sterric
 hysterical,,,hi'sterricl
-hysterically,,,hi'sterricli
+hysterically,,,hi'sterriclli
 hysterics,,,hi'sterrics
 hysterogenic,,,histero'jenic
 hysterogeny,,,histe'rojeni
@@ -46622,7 +46630,7 @@ ideographic,,,idia'grafic
 ideography,,,idi'ogrefi
 ideologic,,,ydia'lojic
 ideological,,,ydia'lojicl
-ideologically,,,ydia'lojicli
+ideologically,,,ydia'lojiclli
 ideologies,,,ydi'olejies
 ideologise,,ideologize
 ideologist,,,ydi'olejist
@@ -47145,7 +47153,7 @@ impearl,,,im'purl
 impeccable,,,im'pekebl
 impeccably,,,im'pekebli
 impeccant,,,im'pekent
-impecuniosity,,,impikiuni'ociti
+impecuniosity,,,impikiuni'ossiti
 impecunious,,,impi'kiuniass
 impedance,,,im'peedenss
 impede,,,im'peed
@@ -47243,10 +47251,10 @@ impetiginous,,,impi'tijinuss
 impetigo,,,impi'tygo
 impetrate,,,impitrait
 impetratory,,,impitretoari
-impetuosity,,,impetyoo'ociti
-impetuous,,,im'petyoouss
-impetuously,,,im'petyooussli
-impetuousness,,,im'petyooussness
+impetuosity,,,impetiu'ossiti
+impetuous,,,im'petiuuss
+impetuously,,,im'petiuussli
+impetuousness,,,im'petiuussness
 impetus,,,impetuss
 Imphal,,,Imphel
 impi,,,impi
@@ -47504,7 +47512,7 @@ impurities,,,im'piurities
 impurity,,,im'piuriti
 imputable,,,im'piutebl
 imputableness,,,im'piuteblness
-imputation,,,impyoo'taition
+imputation,,,impiu'taition
 imputative,,,im'piutetiv
 impute,,,im'piut
 imputed,,,im'piuted
@@ -47938,12 +47946,12 @@ incumbency,,,in'cumbensi
 incumbent,,,in'cumbent
 incumbents,,,in'cumbents
 incunable,,,in'kiunebl
-incunabula,,,inkyoo'nabyula
-incunabulum,,,inkyoo'nabyulum
+incunabula,,,inkiu'nabyula
+incunabulum,,,inkiu'nabyulum
 incur,,,in'cur
 incurable,,,in'kiurebl
 incurableness,,,in'kiureblness
-incuriosity,,,inkiuri'ociti
+incuriosity,,,inkiuri'ossiti
 incurious,,,in'kiuriass
 incuriously,,,in'kiuriassli
 incuriousness,,,in'kiuriassness
@@ -48458,7 +48466,7 @@ infestations,,,infe'staitions
 infested,,,in'fested
 infests,,,in'fests
 infeudation,,,infiu'daition
-infibulation,,,infibyoo'laition
+infibulation,,,infibiu'laition
 infidel,,,infidel
 infidelities,,,infi'delities
 infidelity,,,infi'deliti
@@ -48598,7 +48606,7 @@ infringements,,,in'frinjments
 infringes,,,in'frinjes
 infringing,,,in'frinjing
 infula,,,infyula
-infundibular,,,infun'dibyooler
+infundibular,,,infun'dibiuler
 infundibulate,,,infun'dibyulait
 infundibuliform,,,infun'dibyuleform
 infundibulum,,,infun'dibyulum
@@ -48618,9 +48626,9 @@ infusion,,,in'fiusion
 infusionism,,,in'fiusionism
 infusions,,,in'fiusions
 infusive,,,in'fiuciv
-infusoria,,,infyoo'soaria
-infusorial,,,infyoos'soarial
-infusorian,,,infyoo'soarian
+infusoria,,,infiu'soaria
+infusorial,,,infius'soarial
+infusorian,,,infiu'soarian
 ingate,,,ingait
 ingather,,,ingadher
 ingathering,,,ingadhering
@@ -49614,7 +49622,7 @@ intermixed,,,inter'mixd
 intermixing,,,inter'mixing
 intermixture,,,inter'mixcher
 intermodal,,,inter'moadl
-intermodulation,,,intermodyoo'laition
+intermodulation,,,intermodiu'laition
 intermolecular,,,intermo'lekyuler
 intermontane,,,inter'montain
 intermountain,,,inter'mountin
@@ -49755,7 +49763,8 @@ interspersed,,,inter'spurssd
 intersperses,,,inter'spursses
 interspersion,,,inter'spursion
 interstadial,,,inter'staidial
-interstate,,,inter'stait
+interstate,aj,,inter'stait
+interstate,n,,interstait
 interstates,,,interstaits
 interstellar,,,inter'steler
 interstice,,,in'turstiss
@@ -50301,7 +50310,7 @@ ironhanded,,,aiernhanded
 ironhandedness,,,aiernhandedness
 ironic,,,y'ronic
 ironical,,,y'ronicl
-ironically,,,y'ronicli
+ironically,,,y'roniclli
 ironies,,,yrenies
 ironing,,,aierning
 ironise,,ironize
@@ -51357,7 +51366,7 @@ jockteleg,,,jocteleg
 jocose,,,joa'coass
 jocosely,,,joa'coassli
 jocoseness,,,joa'coassness
-jocosity,,,joa'cociti
+jocosity,,,joa'cossiti
 jocular,,,jokyuler
 jocularity,,,jokyu'larriti
 jocund,,,jocund
@@ -51679,9 +51688,9 @@ Juneau,,,Juuno
 Juneberry,,,Juunberri
 Junes,,,Juuns
 Juneteenth,,,Juun'teenth
-Jung,,,Yoong
-Jungfrau,,,Yoongfrow
-Jungian,,,Yoongian
+Jung,,,Iung
+Jungfrau,,,Iungfrow
+Jungian,,,Iungian
 jungle,,,junggl
 junglegym,,,junggljim
 jungles,,,junggls
@@ -51943,7 +51952,7 @@ kantele,,,caantela
 Kantian,,,Cantian
 Kantianism,,,Cantianism
 kanzu,,,canzu
-Kaohsiung,,,Gou'syoong
+Kaohsiung,,,Gou'shiung
 Kaolack,,,Caaoalac
 kaoliang,,,coali'ang
 kaolin,,,cayelin
@@ -53265,9 +53274,9 @@ lachrymal,,,lacrimel
 lachrymation,,,lacri'maition
 lachrymator,,,lacrimaiter
 lachrymatory,,,lacrimetoari
-lachrymose,,,lacremoass
-lachrymosely,,,lacremoassli
-lachrymosity,,,lacri'mociti
+lachrymose,,,lacrimoass
+lachrymosely,,,lacrimoassli
+lachrymosity,,,lacri'mossiti
 lacing,,,laissing
 laciniate,,,la'ciniait
 lack,,,lak
@@ -53327,7 +53336,7 @@ lacuna,,,la'kiuna
 lacunal,,,la'kiunal
 lacunar,,,la'kiuner
 lacunaria,,,lakyu'nairia
-lacunary,,,lakyoonerri
+lacunary,,,lakiunerri
 lacunose,,,la'kiunoass
 lacustrine,,,la'custrin
 lacy,,,laissi
@@ -53700,7 +53709,7 @@ lanners,,,laners
 Lanny,,,Lani
 lanolin,,,lanelin
 lanose,,,lainoass
-lanosity,,,lai'nociti
+lanosity,,,lai'nossiti
 Lansing,,,Lansing
 lansquenet,,,lanskenet
 lant,,,lant
@@ -55341,7 +55350,7 @@ linguine,,,ling'gweeni
 linguist,,,linggwist
 linguistic,,,ling'gwistic
 linguistical,,,ling'gwisticl
-linguistically,,,ling'gwisticli
+linguistically,,,ling'gwisticlli
 linguistician,,,linggwi'stition
 linguistics,,,ling'gwistics
 linguists,,,linggwists
@@ -56358,7 +56367,7 @@ lucifer,,,luucifer
 luciferase,,,luu'ciferaiss
 luciferin,,,luu'ciferin
 luciferous,,,luu'ciferuss
-lucifugous,,,luu'cifyooguss
+lucifugous,,,luu'cifiuguss
 Lucile,,,Luu'ceel
 Lucilius,,,Luu'ciliass
 Lucille,,,Luu'ceel
@@ -56387,10 +56396,10 @@ lucrativeness,,,luucretivness
 lucre,,,luuker
 Lucretia,,,Luu'creesha
 Lucretius,,,Luu'creeshuss
-lucubrate,,,luukyoobrait
-lucubration,,,luukyoo'braition
-luculent,,,luukyoolent
-luculently,,,luukyoolentli
+lucubrate,,,luukiubrait
+lucubration,,,luukiu'braition
+luculent,,,luukiulent
+luculently,,,luukiulentli
 Lucullan,,,Luu'culen
 Lucullean,,,Luucu'lian
 Lucullus,,,Luu'culuss
@@ -56478,7 +56487,7 @@ luminesce,,,luumi'ness
 luminescence,,,luumi'nessenss
 luminescent,,,luumi'nessent
 luminiferous,,,luumi'niferuss
-luminosity,,,luumi'nociti
+luminosity,,,luumi'nossiti
 luminous,,,luuminuss
 lumisterol,,,luu'misterol
 lumme,,,lumi
@@ -56731,7 +56740,7 @@ lyre,,,lyr
 lyrebird,,,lyrburd
 lyric,,,liric
 lyrical,,,liricl
-lyrically,,,liricli
+lyrically,,,liriclli
 lyricise,,lyricize
 lyricism,,,liricism
 lyricist,,,liricist
@@ -56886,7 +56895,7 @@ macrospore,,,macrospoar
 macrostructure,,,macrostruccher
 macruran,,,ma'crooren
 macs,,,maks
-macula,,,makyoola
+macula,,,makiula
 maculae,,macule
 maculate,aj,,makyulit
 maculate,v,,makyulait
@@ -56979,7 +56988,7 @@ magi,,,maijy
 magian,,,maijian
 magic,,,majic
 magical,,,majicl
-magically,,,majicli
+magically,,,majiclli
 magician,,,ma'jition
 magicians,,,ma'jitions
 magisterial,,,maji'steerial
@@ -57194,7 +57203,7 @@ majority,,,ma'jorriti
 majors,,,maijers
 Majunga,,,Ma'jungga
 majusculae,,majuscule
-majuscular,,,ma'juskyooler
+majuscular,,,ma'juskiuler
 majuscule,,,ma'juskiul
 mak,,,mak
 Makalu,,,Mukelu
@@ -58640,7 +58649,7 @@ mecca,,,meca
 mech,,,mek
 mechanic,,,me'canic
 mechanical,,,me'canicl
-mechanically,,,me'canicli
+mechanically,,,me'caniclli
 mechanician,,,meca'nition
 mechanics,,,me'canics
 mechanisation,,mechanization
@@ -58780,6 +58789,8 @@ megabyte,,,megabyt
 megabytes,,,megabyts
 megacephalic,,,megase'falic
 megacephalous,,,megasefeluss
+megacities,,,megasities
+megacity,,,megasiti
 megacycle,,,megasycl
 megadeal,,,megadeel
 megadeals,,,megadeels
@@ -59394,7 +59405,7 @@ metanephros,,,meta'nefross
 metaphase,,,metefais
 metaphor,,,metefor
 metaphorical,,,mete'forricl
-metaphorically,,,meta'forricli
+metaphorically,,,mete'forriclli
 metaphors,,,metefors
 metaphosphate,,,mete'fosfait
 metaphrase,,,metefrais
@@ -59701,8 +59712,8 @@ micrometeorite,,,mycro'meetieryt
 micrometeorology,,,mycromeetie'roleji
 micrometer,,,my'cromiter
 micrometers,,,my'cromiters
-micrometre,,micrometer
-micrometres,,micrometers
+micrometre,,,mycromeeter
+micrometres,,,mycromeeters
 micrometrical,,,mycro'metricl
 micrometrically,,,mycro'metriclli
 micrometry,,,my'cromitri
@@ -59781,7 +59792,7 @@ microwaving,,,mycrowaiving
 micrurgy,,,mycrurji
 micturition,,,mictue'rition
 mid,,,mid
-midafternoon,,,midafternuun
+midafternoon,,,midafter'nuun
 midair,,,mid'air
 Midas,,,Mydess
 midbrain,,,midbrain
@@ -59923,7 +59934,7 @@ Milhaud,,,Mee'yo
 milia,,,milia
 miliaria,,,mili'airia
 miliary,,,milierri
-milieu,,,mi'lyoo
+milieu,,,mi'liu
 militancy,,,militensi
 militant,,,militent
 militantly,,,militentli
@@ -60146,7 +60157,7 @@ Mingrelian,,,Min'greelian
 mings,,,mings
 Mingus,,,Mingguss
 mingy,,,minji
-Minho,,,Meenyoo
+Minho,,,Meeniu
 mini,,,mini
 miniate,,,miniait
 miniature,,,miniacher
@@ -60260,7 +60271,7 @@ minuend,,,miniuend
 minuet,,,miniu'et
 Minuit,,,Minueit
 minus,,,mynuss
-minuscular,,,mi'nuskyooler
+minuscular,,,mi'nuskiuler
 minuscule,,,minuskiul
 minuses,,,mynusses
 minute,aj,,my'nuet
@@ -60703,7 +60714,7 @@ misunderstanding,,,misunder'standing
 misunderstandings,,,misunder'standings
 misunderstands,,,misunder'stands
 misunderstood,,,misunder'stood
-misusage,,,mis'iucij
+misusage,,,mis'iusij
 misuse,n,,mis'iuss
 misuse,v,,mis'ius
 misused,,,mis'iusd
@@ -60906,16 +60917,16 @@ modishly,,,modishli
 modishness,,,modishness
 modiste,,,moa'deest
 Modred,,,Moadrid
-modular,,,modyooler
-modularity,,,moju'larriti
-modulate,,,modyoolait
-modulated,,,modyoolaited
-modulation,,,modyoo'laition
-modulator,,,modyoolaiter
+modular,,,modiuler
+modularity,,,modiu'larriti
+modulate,,,modiulait
+modulated,,,modiulaited
+modulation,,,modiu'laition
+modulator,,,modiulaiter
 module,,,modiul
 modules,,,modiuls
-modulo,,,modyoolo
-modulus,,,modyooluss
+modulo,,,modiulo
+modulus,,,modiuluss
 modus,,,moaduss
 moe,,,mo
 Moed,,Med
@@ -61368,10 +61379,10 @@ monster,,,monster
 monstera,,,monstera
 monsters,,,monsters
 monstrance,,,monstrenss
-monstrosity,,,mon'strociti
+monstrosity,,,mon'strossiti
 monstrous,,,monstruss
 Mont,,,Mont
-montage,,,mon'taazh
+montage,,,montij
 montagnard,,,monta'nyard
 Montagu,,,Montegiu
 Montague,,,Montegiu
@@ -61488,7 +61499,8 @@ moots,,,muuts
 mop,,,mop
 mopboard,,,mopboard
 mope,,,moap
-moped,,,moaped
+moped,n,,moaped
+moped,v,,moapd
 mopeds,,,moapeds
 mopey,,,moapi
 mophead,,,mophed
@@ -61598,7 +61610,7 @@ Moros,,,Moaross
 morose,,,me'roass
 morosely,,,me'roassli
 moroseness,,,me'roassness
-morosity,,,me'rociti
+morosity,,,me'rossiti
 morph,,,morf
 morphed,,,morfd
 morpheme,,,morfeem
@@ -61940,7 +61952,7 @@ mucoprotein,,,miuco'proateen
 mucor,,,miuker
 mucosa,,,miu'coassa
 mucosal,,,miu'coassal
-mucosity,,,miu'cociti
+mucosity,,,miu'cossiti
 mucous,,,miucuss
 mucoviscidosis,,,miucoavici'doaciss
 mucro,,,miucro
@@ -62048,7 +62060,7 @@ mullock,,,mulek
 mulloway,,,muleway
 mulls,,,muls
 Mulroney,,,Mul'roani
-multangular,,,mul'tangyooler
+multangular,,,mul'tangiuler
 multeity,,,mul'teeiti
 multiangular,,,multi'anggyuler
 multiaxial,,,multi'axial
@@ -62282,7 +62294,7 @@ muscovites,,,muskevyts
 Muscovy,,,Muskevi
 muscular,,,muskyuler
 muscularity,,,muskyu'larriti
-musculature,,,muskyoolecher
+musculature,,,muskyulecher
 muse,,,mius
 mused,,,miusd
 museful,,,miusful
@@ -62304,7 +62316,7 @@ music,,,miusic
 musical,,,miusicl
 musicale,,,miusi'cal
 musicality,,,miusi'caliti
-musically,,,miusicli
+musically,,,miusiclli
 musicals,,,miusicls
 musician,,,miu'sition
 musicianly,,,miu'sitionli
@@ -62910,7 +62922,7 @@ navelwort,,,naivelwurt
 navette,,,na'vet
 navicert,,,navissurt
 navicula,,,na'vikyula
-navicular,,,na'vikyooler
+navicular,,,na'vikyuler
 navies,,,naivies
 navigable,,,navigebl
 navigableness,,,navigeblness
@@ -62984,7 +62996,7 @@ Nebraskans,,,Ne'brascans
 nebris,,,nebriss
 nebuchadnezzar,,,nebucad'neser
 nebula,,,nebyula
-nebular,,,nebyooler
+nebular,,,nebyuler
 nebule,,,nebyulay
 nebulise,,nebulize
 nebuliser,,nebulizer
@@ -63890,10 +63902,10 @@ nodose,,,noadoass
 nodosity,,,noa'dossiti
 nodous,,,noaduss
 nods,,,nods
-nodular,,,nodyooler
+nodular,,,nodiuler
 nodule,,,nodiul
 nodules,,,nodiuls
-nodulose,,,nodyooloas
+nodulose,,,nodiuloas
 nodus,,,noaduss
 Noe,,,No
 noel,,,no'el
@@ -64562,9 +64574,9 @@ numeration,,,nueme'raition
 numerator,,,nuemeraiter
 numeric,,,nue'merric
 numerical,,,nue'merricl
-numerically,,,nue'merricli
+numerically,,,nue'merriclli
 numerology,,,nueme'rolegi
-numerosity,,,nueme'rociti
+numerosity,,,nueme'rossiti
 numerous,,,nuemeruss
 numerously,,,nuemerussli
 numerousness,,,nuemerussness
@@ -65070,7 +65082,7 @@ octuplet,,,oc'tueplit
 octuplets,,,oc'tueplits
 ocular,,,okyuler
 ocularist,,,okyulerist
-oculate,,,okyoolet
+oculate,,,okiulet
 oculist,,,okyulist
 oculomotor,,,okyuloa'moater
 oculus,,,okyuluss
@@ -65720,7 +65732,7 @@ optatively,,,optetivli
 opted,,,opted
 optic,,,optic
 optical,,,opticl
-optically,,,opticli
+optically,,,opticlli
 optician,,,op'tition
 opticians,,,op'titions
 opticist,,,opticist
@@ -66141,8 +66153,8 @@ Orwell,,,Orwel
 Orwellian,,,Or'welian
 oryx,,,orrix
 os,,,oss
-Osage,,,Oas'saij
-Osages,,,Oas'saijes
+Osage,,,Ossij
+Osages,,,Ossijes
 Osaka,,,Oas'soca
 osar,,,oassar
 Osbert,,,Osbert
@@ -66597,7 +66609,8 @@ outshining,,,out'shyning
 outshone,,,out'shon
 outshoot,n,,outshuut
 outshoot,v,,out'shuut
-outshot,,,outshot
+outshot,n,,outshot
+outshot,v,,out'shot
 outshout,,,out'shout
 outside,,,out'syd
 outsider,,,out'syder
@@ -66709,7 +66722,7 @@ overact,,,oaveract
 overacted,,,oaveracted
 overactive,,,oaver'activ
 overacts,,,oaveracts
-overage,,,oaveraij
+overage,,,oaverij
 overall,,,oaverall
 overalled,,,oaveralld
 overalls,,,oaveralls
@@ -66762,9 +66775,11 @@ overcareful,,,oaver'cairful
 overcast,,,oavercast
 overcasting,,,oavercasting
 overcautious,,,oaver'caushuss
-overcharge,,,oavercharj
+overcharge,n,,oavercharj
+overcharge,v,,oaver'charj
 overcharged,,,oaver'charjd
-overcharges,,,oavercharjes
+overcharges,n,,oavercharjes
+overcharges,v,,oaver'charjes
 overcharging,,,oaver'charjing
 overcheck,,,oaverchek
 overclothes,,,oaver'cloadhs
@@ -66803,7 +66818,7 @@ overdo,,,oaver'du
 overdoes,,,oaver'dus
 overdoing,,,oaver'duing
 overdone,,,oaver'dun
-overdosage,,,oaver'doacij
+overdosage,,,oaver'doassij
 overdose,n,,oaverdoass
 overdose,v,,oaver'doass
 overdosed,,,oaver'doassd
@@ -67256,7 +67271,7 @@ ovoviviparous,,,oavoavy'viperuss
 ovoviviparously,,,oavoavy'viperussli
 ovoviviparousness,,,oavoavy'viperussness
 ovular,,,oavyuler
-ovulate,,,ovyoolait
+ovulate,,,ovyulait
 ovulation,,,oavyu'laition
 ovulations,,,oavyu'laitions
 ovule,,,oviul
@@ -67407,7 +67422,7 @@ pachydermatously,,,paki'durmetussli
 pachysandra,,,pakis'sandra
 pacific,,,pa'cific
 pacifical,,,pa'cificl
-pacifically,,,pa'cificli
+pacifically,,,pa'cificlli
 pacificate,,,pa'cificait
 pacification,,,pacifi'caition
 pacificatory,,,pa'cifiketoari
@@ -68030,7 +68045,7 @@ pappy,,,papi
 paprika,,,pa'preeca
 Papua,,,Papiua
 Papuan,,,Papiuan
-papula,,,papyoola
+papula,,,papiula
 papulae,,papule
 papule,,,papiul
 papulose,,,papyuloass
@@ -68084,7 +68099,7 @@ paradox,,,parredox
 paradoxes,,,parredoxes
 paradoxical,,,parre'doxicl
 paradoxically,,,parre'doxiclli
-paradoxure,,,parra'doxyooer
+paradoxure,,,parra'docsher
 paradrop,,,parradrop
 paraesthesia,,paresthesia
 paraesthetic,,paresthetic
@@ -68533,9 +68548,9 @@ passably,,,passebli
 passacaglia,,,paassa'caalya
 passade,,,pas'said
 passado,,,pas'saado
-passage,,,pacij
-passages,,,pacijes
-passageway,,,pacijway
+passage,,,passij
+passages,,,passijes
+passageway,,,passijway
 passament,,,pacement
 passant,,,passent
 passband,,,passband
@@ -68636,7 +68651,7 @@ pastrami,,,pa'straami
 pastries,,,paistries
 pastry,,,paistri
 pasts,,,pasts
-pasturage,,,pasterij
+pasturage,,,pascherij
 pasture,,,pascher
 pastures,,,paschers
 pasty,,,pasti
@@ -68968,13 +68983,14 @@ pebble,,,pebl
 pebbles,,,pebls
 pebbly,,,pebli
 pebrine,,,pai'breen
+pec,,,pek
 pecan,,,pi'caan
 pecans,,,pi'caans
 peccable,,,pekebl
 peccadillo,,,peca'dilo
 peccant,,,pekent
 peccantly,,,pekentli
-peccary,,,pekeri
+peccary,,,pekerri
 peccavi,,,pe'caivy
 pech,,,pek
 Pechora,,,Pe'choara
@@ -68985,10 +69001,10 @@ peckish,,,pekish
 Pecksniffian,,,Pex'nifian
 pecky,,,peki
 Pecos,,,Paikess
-pecs,,,pex
+pecs,,,peks
 pectase,,,pectaiss
 pecten,,,pecten
-pectic,,,pectic
+pectic,,,pectik
 pectin,,,pectin
 pectinaceous,,,pecti'naishuss
 pectinate,,,pectinait
@@ -69002,8 +69018,8 @@ peculate,,,pekyulait
 peculation,,,pekyu'laition
 peculiar,,,pi'kiulyer
 peculiarise,,peculiarize
-peculiarities,,,pikyooli'arrities
-peculiarity,,,pikyooli'arriti
+peculiarities,,,pikiuli'arrities
+peculiarity,,,pikiuli'arriti
 peculiarize,,,pi'kiulyerys
 peculiarly,,,pi'kiulyerli
 peculium,,,pi'kiuliam
@@ -69248,10 +69264,10 @@ pendent,,,pendent
 pendentive,,,pen'dentiv
 pending,,,pending
 pendragon,,,pendragen
-pendulate,,,pendyoolait
-penduline,,,pendyoolyn
-pendulous,,,pendyooluss
-pendulum,,,pendyoolum
+pendulate,,,pendiulait
+penduline,,,pendiulyn
+pendulous,,,pendiuluss
+pendulum,,,pendiulum
 Penelope,,,Pe'nelepi
 peneplain,,,peeneplain
 penetralia,,,peni'trailia
@@ -69287,7 +69303,7 @@ penillion,,,pe'nilyen
 peninsula,,,pen'insula
 peninsular,,,pen'insuler
 peninsularity,,,peninsu'larriti
-peninsulate,,,pe'ninsyoolait
+peninsulate,,,peninsulait
 penis,,,peeniss
 penises,,,peenisses
 penitence,,,penitenss
@@ -69654,7 +69670,7 @@ period,,,peeriad
 periodate,,,pe'raiedait
 periodic,,,peeri'odic
 periodical,,,peeri'odicl
-periodically,,,peeri'odikeli
+periodically,,,peeri'odiclli
 periodicals,,,peeri'odicls
 periodicity,,,peeria'diciti
 periodisation,,periodization
@@ -69792,7 +69808,7 @@ peroxidize,,,pe'roxidys
 peroxy,,,pe'roxi
 perpend,n,,purpend
 perpend,v,,per'pend
-perpendicular,,,purpen'dikyooler
+perpendicular,,,purpen'dikiuler
 perpends,n,,purpends
 perpends,v,,per'pends
 perpent,,,purpent
@@ -70118,10 +70134,10 @@ pettitoes,,,peteetoas
 pettle,,,petl
 petto,,,peto
 petty,,,peti
-petulance,,,pechulenss
-petulancy,,,pechulenssi
-petulant,,,pechulent
-petulantly,,,pechulentli
+petulance,,,petiulenss
+petulancy,,,petiulenssi
+petulant,,,petiulent
+petulantly,,,petiulentli
 petunia,,,pe'tuenia
 petunias,,,pe'tuenias
 petuntse,,,pe'toontseh
@@ -70554,7 +70570,7 @@ photometric,,,foato'metric
 photometry,,,foa'tometri
 photomicrograph,,,foato'mycrograf
 photomicroscope,,,foato'mycroscoap
-photomontage,,,foatomon'taazh
+photomontage,,,foato'montij
 photomultiplier,,,foato'multiplyer
 photomural,,,foatomiurel
 photon,,,foaton
@@ -70693,7 +70709,7 @@ physostomous,,,fys'sostemuss
 phytobiology,,,fytobai'oleji
 phytogenesis,,,fyto'jeneciss
 phytogeographical,,,fytojio'graficl
-phytogeographically,,,fytojio'graficli
+phytogeographically,,,fytojio'graficlli
 phytogeography,,,fytoji'ogrefi
 phytographic,,,fyto'grafic
 phytography,,,fy'togrefi
@@ -70984,7 +71000,7 @@ Pillsbury,,,Pilzbri
 pillwort,,,pilwurt
 pilocarpine,,,pylo'carpeen
 pilose,,,pyloass
-pilosity,,,py'lociti
+pilosity,,,py'lossiti
 pilot,,,pylet
 pilotage,,,pyletij
 piloted,,,pyleted
@@ -71144,12 +71160,12 @@ pioneered,,,paio'neerd
 pioneering,,,paio'neering
 pioneers,,,paio'neers
 pionic,,,pai'onic
-piosity,,,pai'ociti
+piosity,,,pai'ossiti
 pious,,,paiuss
 piously,,,paiussli
 pip,,,pip
 pipa,,,pipa
-pipage,,,pypij
+pipage,,,pipij
 pipe,,,pyp
 pipeclay,,,pypclay
 piped,,,pypd
@@ -71827,12 +71843,12 @@ plummets,,,plumets
 plummy,,,plumi
 plumose,,,pluumoass
 plumosely,,,pluumoassli
-plumosity,,,pluu'mociti
+plumosity,,,pluu'mossiti
 plump,,,plump
 plumped,,,plumpd
 plumper,,,plumper
 plums,,,plums
-plumulaceous,,,pluumyoo'laishuss
+plumulaceous,,,pluumiu'laishuss
 plumulae,,plumule
 plumular,,,pluumyuler
 plumule,,,pluumiul
@@ -71885,7 +71901,7 @@ pluvial,,,pluuvial
 pluviometer,,,pluuvi'omiter
 pluviometric,,,pluuvia'metric
 pluviose,,,pluuvioass
-pluviosity,,,pluuvi'ociti
+pluviosity,,,pluuvi'ossiti
 pluvious,,,pluuviass
 ply,,,ply
 plyer,,,plyer
@@ -72378,7 +72394,7 @@ pompey,,,pompi
 Pompidou,,,Pompidu
 pompom,,,pompom
 pompoms,,,pompoms
-pomposity,,,pom'pociti
+pomposity,,,pom'possiti
 pompous,,,pompuss
 pompousness,,,pompussness
 pomroy,,,pomroy
@@ -72395,7 +72411,7 @@ ponderation,,,ponde'raition
 pondered,,,ponderd
 pondering,,,pondering
 ponderosa,,,ponde'roassa
-ponderosity,,,ponde'rociti
+ponderosity,,,ponde'rossiti
 ponderous,,,ponderuss
 ponders,,,ponders
 Pondicherry,,,Pondi'cherri
@@ -72423,7 +72439,7 @@ pontifex,,,pontifex
 pontiff,,,pontif
 pontific,,,pon'tific
 pontifical,,,pon'tificl
-pontifically,,,pon'tificli
+pontifically,,,pon'tificlli
 pontificals,,,pon'tificls
 pontificate,,,pon'tificait
 pontificated,,,pon'tificaited
@@ -72569,7 +72585,7 @@ pornographer,,,poar'nogrefer
 pornographers,,,poar'nogrefers
 pornographic,,,poarno'grafic
 pornography,,,poar'nogrefi
-porosity,,,poa'rociti
+porosity,,,poa'rossiti
 porous,,,poaruss
 porously,,,poarussli
 porousness,,,poarussness
@@ -72784,7 +72800,7 @@ postscript,,,poastscript
 postscripts,,,poastscripts
 postsynaptic,,,poastsi'naptic
 posttraumatic,,,poasttrau'matic
-postulant,,,postyoolent
+postulant,,,postiulent
 postulate,,,poschulait
 postulates,,,poschulaits
 postulation,,,poschu'laition
@@ -72801,7 +72817,7 @@ posy,,,poasi
 pot,,,pot
 potable,,,poatebl
 potableness,,,poateblness
-potage,,,po'tazh
+potage,,,potij
 potamic,,,po'tamic
 potamology,,,pota'moleji
 potash,,,potash
@@ -72957,7 +72973,7 @@ practic,,,practic
 practicable,,,practikebl
 practical,,,practicl
 practicality,,,practi'caliti
-practically,,,practicli
+practically,,,practiclli
 practice,,,practiss
 practiced,,,practissd
 practices,,,practisses
@@ -73130,7 +73146,7 @@ precieuse,,,praici'oos
 precieux,,,praici'oo
 precinct,,,preecinct
 precincts,,,preecincts
-preciosity,,,preshi'ociti
+preciosity,,,preshi'ossiti
 precious,,,preshuss
 precipice,,,precipiss
 precipitable,,,pri'cipitebl
@@ -75087,7 +75103,7 @@ pukes,,,piuks
 pukka,,,puca
 puku,,,puucu
 pul,,,puul
-pula,,,puulaa
+pula,,,puula
 Pulaski,,,Poo'laski
 pulchritude,,,pulcritued
 pulchritudinous,,,pulcri'tuedenuss
@@ -75401,12 +75417,12 @@ pussyfoot,,,poossifoot
 pussyfooted,,,poossifooted
 pussyfooting,,,poossifooting
 pussyfoots,,,poossifoots
-pustulant,,,puschulent
-pustular,,,puschuler
-pustulate,aj,,puschulit
-pustulate,v,,puschulait
+pustulant,,,pustiulent
+pustular,,,pustiuler
+pustulate,aj,,pustiulet
+pustulate,v,,pustiulait
 pustule,,,pustiul
-pustulous,,,puschuluss
+pustulous,,,pustiuluss
 put,,,poot
 putamen,,,piu'taimin
 putaminous,,,piu'taminuss
@@ -76182,9 +76198,9 @@ radicchio,,,ra'deechio
 radicel,,,radicel
 radices,,,radicees
 radicle,,,radicl
-radicular,,,ra'dikyooler
-radiculitis,,,redikyu'lytiss
-radiculose,,,ra'dikyuloass
+radicular,,,ra'dikiuler
+radiculitis,,,radikiu'lytiss
+radiculose,,,radikiuloass
 radii,,,raidiai
 radio,,,raidio
 radioactinium,,,raidio-ac'tiniam
@@ -78023,7 +78039,7 @@ regulator,,,regyulaiter
 regulators,,,regyulaiters
 regulatory,,,regyuletoari
 reguline,,,regyulin
-regulo,,,regyoolo
+regulo,,,regyulo
 regulus,,,regyuluss
 regurgitate,,,ri'gurjitait
 regurgitation,,,rigurji'taition
@@ -78303,7 +78319,7 @@ religionist,,,ri'lijenist
 religionize,,,ri'lijenys
 religions,,,ri'lijens
 religiose,,,riliji'oass
-religiosity,,,riliji'ociti
+religiosity,,,riliji'ossiti
 religious,,,ri'lijuss
 religiously,,,ri'lijussli
 reline,,,ri'lyn
@@ -78634,7 +78650,7 @@ reparatory,,,ri'parreteri
 repartee,,,reper'tee
 repartition,,,ripar'tition
 repass,,,ri'pass
-repassage,,,ri'pacij
+repassage,,,ri'passij
 repast,,,ri'past
 repatriate,n,,ri'paitriit
 repatriate,v,,ri'paitriait
@@ -79823,7 +79839,7 @@ rhyolite,,,raielyt
 rhythm,,,ridhm
 rhythmic,,,ridhmic
 rhythmical,,,ridhmicl
-rhythmically,,,ridhmicli
+rhythmically,,,ridhmiclli
 rhythmicity,,,ridh'miciti
 rhythmics,,,ridhmics
 rhythmist,,,ridhmist
@@ -80948,7 +80964,7 @@ ruggedly,,,rugdli
 rugger,,,ruger
 rugging,,,ruging
 rugose,,,ruugoass
-rugosity,,,ruu'gociti
+rugosity,,,ruu'gossiti
 rugs,,,rugs
 rugulose,,,ruugyuloass
 Ruhr,,,Roor
@@ -81213,7 +81229,7 @@ sabra,,,saabra
 Sabre,,,Saiber
 sabres,,sabers
 Sabrina,,,Sa'breena
-sabulosity,,,sabyu'lociti
+sabulosity,,,sabyu'lossiti
 sabulous,,,sabyuluss
 sac,,,sak
 sacaton,,,saca'toan
@@ -81610,12 +81626,12 @@ salvable,,,salvebl
 Salvador,,,Salvedor
 Salvadoran,,,Salvedoaren
 Salvadorans,,,Salvedoarens
-salvage,,,salvij
-salvageable,,,salvijebl
-salvaged,,,salvijd
-salvager,,,salvijer
-salvagers,,,salvijers
-salvaging,,,salvijing
+salvage,,,savij
+salvageable,,,savijebl
+salvaged,,,savijd
+salvager,,,savijer
+salvagers,,,savijers
+salvaging,,,savijing
 salvarsan,,,salversan
 salvation,,,sal'vaition
 salvationist,,,sal'vaitionist
@@ -81823,7 +81839,7 @@ Sankhya,,,Saankya
 sanko,,,sanco
 Sanmicheli,,,Saanmee'keli
 sans,,,sans
-sansculotte,,,sanzkyoo'lot
+sansculotte,,,sanzkiu'lot
 sanserif,,,sanserrif
 Sanskrit,,,Sanscrit
 sant,,,sant
@@ -82463,7 +82479,7 @@ schismatic,,,skiz'matic
 schisms,,,skisms
 schist,,,shist
 schistose,,,shistoass
-schistosity,,,shi'stociti
+schistosity,,,shi'stossiti
 schistosome,,,shistessoam
 schistosomiasis,,,shistessoa'maieciss
 schists,,,shists
@@ -82923,7 +82939,7 @@ scrivener,,,scrivener
 scrobiculate,,,scroa'bikyulit
 scrod,,,scrod
 scroddled,,,scrodeld
-scrofula,,,scrofyoola
+scrofula,,,scrofiula
 scrog,,,scrog
 scroll,,,scroal
 scrolled,,,scroald
@@ -82959,7 +82975,7 @@ scrunch,,,scrunch
 scrunched,,,scrunchd
 scruple,,,scruupl
 scruples,,,scruupls
-scrupulosity,,,scruupyu'lociti
+scrupulosity,,,scruupyu'lossiti
 scrupulous,,,scruupyuluss
 scrupulously,,,scruupyulussli
 scrutable,,,scruutebl
@@ -83954,7 +83970,7 @@ serological,,,seero'lojicl
 serologist,,,si'rolejist
 serology,,,si'roleji
 serosa,,,si'roassa
-serosity,,,si'rociti
+serosity,,,si'rossiti
 serotherapy,,,seeroa'therrepi
 serotinal,,,si'rotinel
 serotine,,,serretin
@@ -83973,7 +83989,7 @@ serpentinize,,,surpen'teenys
 serpents,,,surpents
 serpiginous,,,ser'pijenuss
 serpigo,,,ser'pygo
-serpula,,,surpyoola
+serpula,,,surpiula
 serra,,,serra
 serradilla,,,serra'dila
 serranid,,,se'rainid
@@ -84020,7 +84036,7 @@ Servite,,,Survyt
 servitor,,,surviter
 servitude,,,survitued
 servo,,,survo
-servocontrol,n,,survocon'troal
+servocontrol,n,,survocontroal
 servocontrol,v,,survocon'troal
 servomechanical,,,survome'canicl
 servomechanism,,,survomekenism
@@ -84073,7 +84089,7 @@ settlers,,,setlers
 settles,,,setls
 settling,,,setling
 settlor,,,setler
-setula,,,setyoola
+setula,,,setiula
 setulose,,,sechuloass
 setulous,,,sechuluss
 setup,,,setup
@@ -85337,11 +85353,11 @@ Silvia,,,Silvia
 silvicolous,,,sil'vikeluss
 silviculture,,,silviculcher
 sim,,,sim
-sima,,,seema
+sima,,,syma
 simar,,,si'mar
 simarouba,,,sime'ruuba
 simaroubaceous,,,simeruu'baishuss
-simas,,,seemas
+simas,,,symas
 simba,,,simba
 Simeon,,,Simian
 Simferopol,,,Simfe'roapl
@@ -85515,7 +85531,7 @@ sins,,,sins
 sinter,,,sinter
 sinuate,,,siniuit
 sinuation,,,siniu'aition
-sinuosity,,,siniu'ociti
+sinuosity,,,siniu'ossiti
 sinuous,,,siniuass
 sinuously,,,siniuassli
 sinuousness,,,siniuassness
@@ -85912,7 +85928,7 @@ slangy,,,slangi
 slank,,,slank
 slant,,,slant
 slanted,,,slanted
-slantendicular,,,slanten'dikyooler
+slantendicular,,,slanten'dikiuler
 slanting,,,slanting
 slantwise,,,slantwys
 slap,,,slap
@@ -86252,7 +86268,7 @@ smacker,,,smaker
 smacking,,,smaking
 smacks,,,smaks
 small,,,small
-smallage,,,smaulij
+smallage,,,smallij
 smallclothes,,,smallcloadhs
 smaller,,,smaller
 smallest,,,smallest
@@ -86906,7 +86922,7 @@ solidifying,,,so'lidifying
 solidity,,,so'liditi
 solidly,,,solidli
 solids,,,solids
-solidungulate,,,saali'dungyulit
+solidungulate,,,soli'dungyulit
 solidus,,,soliduss
 solifidian,,,soli'fidian
 solifluction,,,soli'fluction
@@ -87499,8 +87515,8 @@ spatterdock,,,spaterdok
 spattered,,,spaterd
 spattering,,,spatering
 spatters,,,spaters
-spatula,,,spatyoola
-spatulate,,,spatyoolet
+spatula,,,spatiula
+spatulate,,,spatiulet
 spatzle,,,shpetsla
 spaviet,,,spavit
 spavin,,,spavin
@@ -87620,7 +87636,7 @@ speculations,,,spekyu'laitions
 speculative,,,spekyulaitiv
 speculator,,,spekyulaiter
 speculators,,,spekyulaiters
-speculum,,,spekyoolum
+speculum,,,spekiulum
 sped,,,sped
 speech,,,speech
 speeches,,,speeches
@@ -88474,7 +88490,7 @@ stadium,,,staidiam
 stadiums,,,staidiams
 stadtholder,,,stat-hoalder
 staff,,,staf
-staffage,,,sta'faazh
+staffage,,,stafij
 staffed,,,stafd
 staffer,,,stafer
 staffers,,,stafers
@@ -88562,7 +88578,7 @@ stalkless,,,staukless
 stalks,,,stauks
 stalky,,,stauki
 stall,,,stall
-stallage,,,stalij
+stallage,,,stallij
 stalled,,,stalld
 stallholder,,,stallhoalder
 stalling,,,stalling
@@ -89307,7 +89323,8 @@ stipitate,,,stipitait
 stipites,,,stipitees
 stipple,,,stipl
 stipulae,,stipule
-stipulate,,,stipyulait
+stipulate,aj,,stipyulait
+stipulate,v,,stipyulait
 stipulated,,,stipyulaited
 stipulates,,,stipyulaits
 stipulating,,,stipyulaiting
@@ -89550,7 +89567,7 @@ stovepipe,,,stoavpyp
 stover,,,stoaver
 stoves,,,stoavs
 stow,,,sto
-stowage,,,sto-ij
+stowage,,,stoij
 stowaway,,,sto-away
 Stowe,,,Sto
 stowed,,,stoad
@@ -89645,7 +89662,7 @@ stratal,,,straitl
 stratas,,,straatas
 strategic,,,stra'teejic
 strategical,,,stra'teejicl
-strategically,,,stra'teejicli
+strategically,,,stra'teejiclli
 strategics,,,stra'teejics
 strategies,,,stratejies
 strategist,,,stratijist
@@ -89728,7 +89745,7 @@ strengthened,,,strencthend
 strengthening,,,strencthening
 strengthens,,,strencthens
 strengths,,,strencths
-strenuosity,,,streniu'ociti
+strenuosity,,,streniu'ossiti
 strenuous,,,streniuass
 strenuously,,,streniuassli
 strenuousness,,,streniuassness
@@ -89845,7 +89862,7 @@ strivings,,,stryvings
 strobe,,,stroab
 strobila,,,stroa'byla
 strobilaceous,,,strobi'laishuss
-strobilae,,strobile
+strobilae,,,stroa'byli
 strobile,,,stroabyl
 strobilus,,,stroa'byluss
 stroboscope,,,stroabescoap
@@ -89982,7 +89999,7 @@ stumbling,,,stumbling
 stumer,,,stuemer
 stumm,,,stum
 stump,,,stump
-stumpage,,,stumpaij
+stumpage,,,stumpij
 stumped,,,stumpd
 stumper,,,stumper
 stumping,,,stumping
@@ -91012,7 +91029,7 @@ superminicomputers,,,suuper'minicompiuters
 supermodel,,,suupermodl
 supermodels,,,suupermodls
 supermundane,,,suupermun'dain
-supernaculum,,,suuper'nakyoolum
+supernaculum,,,suuper'nakiulum
 supernal,,,soo'purnel
 supernally,,,soo'purnelli
 supernatant,,,suuper'natent
@@ -92552,8 +92569,8 @@ tarantella,,,tarran'tela
 Tarantino,,,Tarran'teeno
 tarantism,,,tarrentism
 Taranto,,,Taraanto
-tarantula,,,te'rantyoola
-tarantulas,,,te'rantyoolas
+tarantula,,,te'rantiula
+tarantulas,,,te'rantiulas
 taraxacum,,,te'raxecum
 Tarbell,,,Tarbel
 Tarbes,,,Tarrb
@@ -92914,9 +92931,9 @@ teemingly,,,teemingli
 teemingness,,,teemingness
 teems,,,teems
 teen,,,teen
-teenage,,,teenaij
-teenager,,,teenaijer
-teenagers,,,teenaijers
+teenage,,,teenij
+teenager,,,teenijer
+teenagers,,,teenijers
 teens,,,teens
 teeny,,,teeni
 teenybopper,,,teeniboper
@@ -93642,7 +93659,6 @@ textures,,,texchers
 texturise,,texturize
 texturize,,,texcherys
 Tezel,,,Tetssl
-Th,,,Ti'aich
 thack,,,thak
 Thackeray,,,Thakeri
 Thad,,,Thad
@@ -94728,9 +94744,9 @@ tittup,,,titup
 titty,,,titi
 titubant,,,titiubent
 titubation,,,titiu'baition
-titular,,,tichuler
-titularity,,,tichu'larriti
-titulary,,,tichuleri
+titular,,,titiuler
+titularity,,,titiu'larriti
+titulary,,,titiuleri
 Titus,,,Tytuss
 Tityus,,,Titiass
 Tiu,,,Teeu
@@ -95333,7 +95349,7 @@ touts,,,touts
 touzle,,,tousl
 tovarich,,,to'varish
 tow,,,to
-towage,,,to-ij
+towage,,,toij
 toward,aj,,toerd
 toward,prp,,toerd
 towardly,,,toerdli
@@ -95939,7 +95955,7 @@ treble,,,trebl
 trebled,,,trebld
 Treblinka,,,Tre'blinca
 trebly,,,trebli
-trebuchet,,,trebyooshet
+trebuchet,,,trebiushet
 trebucket,,,treebukit
 tredecillion,,,treedi'cilyen
 tree,,,tree
@@ -96036,7 +96052,7 @@ triacid,,,trai'acid
 triad,,,traiad
 triadelphous,,,traia'delfuss
 triads,,,traiads
-triage,,,tri'aazh
+triage,,,tryij
 trial,,,traiel
 trialist,,,traielist
 trials,,,traiels
@@ -96706,7 +96722,7 @@ tuberculose,,,tue'burkyuloass
 tuberculosis,,,tueburkyu'loaciss
 tuberculous,,,tue'burkyuluss
 tuberose,,,tueberoass
-tuberosity,,,tuebe'rociti
+tuberosity,,,tuebe'rossiti
 tuberous,,,tueberuss
 tubes,,,tuebs
 tubicolous,,,tue'bikeluss
@@ -96757,7 +96773,7 @@ Tuinal,,,Tueinal
 tuition,,,tue'ition
 tuitionary,,,tue'itionerri
 tuitions,,,tue'itions
-Tula,,,Tuulaa
+Tula,,,Tuula
 tuladi,,,tuuledi
 Tulane,,,Tuu'lain
 tule,,,tuuli
@@ -96878,7 +96894,7 @@ turbos,,,turboas
 turboshaft,,,turboshaft
 turbosupercharger,,,turbosuupercharjer
 turbot,,,turbet
-turbulence,,,turbyoolenss
+turbulence,,,turbiulenss
 turbulent,,,turbyulent
 turbulently,,,turbyulentli
 Turco,,,Turco
@@ -97757,7 +97773,7 @@ uncrown,,,un'croun
 uncrowned,,,un'cround
 uncrushable,,,un'crushebl
 unction,,,ungction
-unctuosity,,,ungctiu'ociti
+unctuosity,,,ungctiu'ossiti
 unctuous,,,ungctiuass
 unctuously,,,ungctiuassli
 unctuousness,,,ungctiuassness
@@ -97798,7 +97814,7 @@ underachieve,,,undera'cheev
 underachiever,,,underacheever
 underachievers,,,underacheevers
 underact,,,under'act
-underage,,,underaij
+underage,,,underij
 underarm,,,underarm
 underbelly,,,underbeli
 underbid,,,underbid
@@ -98340,7 +98356,7 @@ ungainly,,,un'gainli
 ungallant,,,un'galent
 ungarbled,,,un'garbld
 Ungava,,,Ung'gaiva
-ungenerosity,,,unjene'rociti
+ungenerosity,,,unjene'rossiti
 ungenerous,,,un'jeneruss
 ungenerously,,,un'jenerussli
 ungenial,,,un'jeenyel
@@ -98725,7 +98741,7 @@ unmitre,,unmiter
 unmixed,,,un'mixd
 unmixedly,,,un'mixidli
 unmodified,,,un'modifyd
-unmodulated,,,un'modyoolaited
+unmodulated,,,un'modiulaited
 unmold,,,un'moald
 unmolested,,,unmo'lested
 unmoor,,,un'moor
@@ -98852,7 +98868,7 @@ unpossessed,,,unpo'sessd
 unposted,,,un'poasted
 unpracticable,,,un'practikebl
 unpractical,,,un'practicl
-unpractically,,,un'practicli
+unpractically,,,un'practiclli
 unpracticed,,,un'practissd
 unpractised,,unpracticed
 unprecedented,,,un'precidented
@@ -99693,7 +99709,7 @@ ureide,,,iuriyd
 uremia,,,iu'reemia
 uremic,,,iu'reemic
 urena,,,iu'reena
-ureter,,,yooe'reeter
+ureter,,,iue'reeter
 ureteric,,,iuri'terric
 urethan,,,iurethan
 urethane,,,iurethain
@@ -99762,8 +99778,8 @@ Uruguayan,,,Iuru'gwayen
 urushiol,,,ooruushiol
 us,,,uss
 usable,,,iusebl
-usage,,,iucij
-usages,,,iucijes
+usage,,,iusij
+usages,,,iusijes
 usance,,,iusenss
 use,n,,iuss
 use,v,,ius
@@ -100124,7 +100140,7 @@ vaporization,,,vaiperi'saition
 vaporize,,,vaiperys
 vaporized,,,vaiperysd
 vaporizer,,,vaiperyser
-vaporosity,,,vaipe'rociti
+vaporosity,,,vaipe'rossiti
 vaporous,,,vaiperuss
 vapors,,,vaipers
 vaporware,,,vaiperwair
@@ -100238,7 +100254,7 @@ vasopressin,,,vaisoa'precin
 vasopressor,,,vassoaprecer
 Vasquez,,,Vaskes
 vassal,,,vassl
-vassalage,,,vacelij
+vassalage,,,vasslij
 vassals,,,vassls
 Vassar,,,Vacer
 vast,,,vast
@@ -100435,7 +100451,7 @@ Venn,,,Ven
 venom,,,venem
 venomous,,,venemuss
 venose,,,veenoass
-venosity,,,vi'nociti
+venosity,,,vi'nossiti
 venous,,,veenuss
 venously,,,veenussli
 venousness,,,veenussness
@@ -100455,7 +100471,7 @@ ventilative,,,ventelaitiv
 ventilator,,,ventelaiter
 venting,,,venting
 ventose,,,ventoass
-ventosity,,,ven'tociti
+ventosity,,,ven'tossiti
 ventrad,,,ventrad
 ventral,,,ventrel
 ventrally,,,ventrelli
@@ -100463,7 +100479,7 @@ ventre,,venter
 ventres,,venters
 ventricle,,,ventricl
 ventricose,,,ventricoass
-ventricosity,,,ventri'cociti
+ventricosity,,,ventri'cossiti
 ventricular,,,ven'trikiuler
 ventriculography,,,ventrikyu'logrefi
 ventriculus,,,ven'trikyuluss
@@ -100579,7 +100595,7 @@ vermicularly,,,ver'mikyulerli
 vermiculate,aj,,ver'mikyulit
 vermiculate,v,,ver'mikyulait
 vermiculated,,,ver'mikyulaited
-vermiculation,,,vermikyoo'laition
+vermiculation,,,vermikyu'laition
 vermiculite,,,ver'mikyulyt
 vermiform,,,vurmiform
 vermifuge,,,vurmifiuj
@@ -100859,7 +100875,7 @@ victory,,,victeri
 victress,,,victress
 victrix,,,victrix
 victual,,,vitl
-victualage,,,vitulij
+victualage,,,vitlij
 victualer,,,vitler
 victuallage,,victualage
 victualler,,victualer
@@ -100972,7 +100988,7 @@ villenage,,,vilenij
 villi,,,vily
 villiform,,,viliform
 villose,,,viloass
-villosity,,,vi'lociti
+villosity,,,vi'lossiti
 villous,,,viluss
 villus,,,viluss
 Vilma,,,Vilma
@@ -101025,7 +101041,7 @@ vinificator,,,vinificaiter
 vining,,,vyning
 Vinnitsa,,,Vinitsa
 vino,,,veeno
-vinosity,,,vy'nociti
+vinosity,,,vy'nossiti
 vinous,,,vynuss
 Vinson,,,Vinsen
 vint,,,vint
@@ -101118,8 +101134,8 @@ virtual,,,vurchual
 virtually,,,vurchualli
 virtue,,,vurchu
 virtues,,,vurchuus
-virtuosic,,,vurchu'ocic
-virtuosity,,,vurchu'ociti
+virtuosic,,,vurchu'ossic
+virtuosity,,,vurchu'ossiti
 virtuoso,,,vurchu'oasso
 virtuous,,,vurchuass
 virtuously,,,vurchuassli
@@ -101155,7 +101171,7 @@ viscometer,,,vi'scomiter
 viscometric,,,visco'metric
 viscose,,,viscoass
 viscosimetric,,,viscoaci'metric
-viscosity,,,vi'scociti
+viscosity,,,vi'scossiti
 viscount,,,vycount
 viscountcy,,,vycountsi
 viscountess,,,vycountess
@@ -101192,7 +101208,7 @@ visor,,,vyser
 visors,,,vysers
 vista,,,vista
 vistas,,,vistas
-Vistula,,,Vistyoola
+Vistula,,,Vistiula
 visual,,,vizhual
 visualisation,,visualization
 visualise,,visualize
@@ -102045,7 +102061,7 @@ watchtower,,,wochtower
 watchword,,,wochwurd
 watchwords,,,wochwurds
 water,,,wauter
-waterage,,,woterij
+waterage,,,wauterij
 waterbed,,,wauterbed
 waterbeds,,,wauterbeds
 waterborne,,,wauterboarn
@@ -102104,7 +102120,7 @@ watery,,,wauteri
 Watkins,,,Wotkins
 Watson,,,Wotsen
 watt,,,wot
-wattage,,,waatij
+wattage,,,wotij
 wattle,,,wotl
 wattled,,,wotld
 wattles,,,wotls
@@ -102921,7 +102937,10 @@ wight,,,wyt
 wigs,,,wigs
 wigwag,,,wigwag
 wigwam,,,wigwaam
-wikiup,,,wiki-up
+wiki,,,wiki
+Wikipedia,,,Wikee'peedia
+wikis,,,wikies
+wikiup,,,wikiup
 Wilberforce,,,Wilberfoarss
 Wilbert,,,Wilbert
 Wilbur,,,Wilber
@@ -104098,7 +104117,7 @@ ylem,,,ylem
 Ymir,,,Eemir
 yo,,,yo
 yobbo,,,yobo
-yod,,,yood
+yod,,,yod
 yodel,,,yoadl
 yodeling,,,yoadling
 yodelling,,yodeling
@@ -104169,6 +104188,7 @@ youth,,,iuth
 youthen,,,iuthen
 youthful,,,iuthful
 youths,,,iuths
+YouTube,,,IuTueb
 yow,,,yow
 yowl,,,youl
 yowler,,,youler
@@ -104210,7 +104230,7 @@ yum,,,yum
 Yuma,,,Iuma
 yummies,,,yumies
 yummy,,,yumi
-Yunnan,,,Yoo'nan
+Yunnan,,,Iu'nan
 yup,,,yup
 yuppie,,,yupi
 yuppies,,,yupies
@@ -104309,7 +104329,7 @@ zebrass,,,zeebrass
 zebrawood,,,zebrawood
 zebrine,,,zeebryn
 zebu,,,zeebue
-Zebulun,,,Zebyoolun
+Zebulun,,,Zebiulun
 zecchino,,,ze'keeno
 Zech,,,Zek
 Zechariah,,,Zeke'raia
@@ -104560,7 +104580,7 @@ zygophyllaceous,,,zygoafe'laishuss
 zygophyte,,,zygefyt
 zygose,,,zygoass
 zygosis,,,zy'goaciss
-zygosity,,,zy'gociti
+zygosity,,,zy'gossiti
 zygospore,,,zygespoar
 zygote,,,zygoat
 zygotene,,,zygeteen
