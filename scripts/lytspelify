@@ -1102,7 +1102,7 @@ sub postprocess_suffixed {
     # XXX Split function into shorter parts
     my ($converted, $base, $suffix, $pos_hint, $tradspell) = @_;
     # Some suffixes are usually derived from a certain POS tag
-    $pos_hint = 'n'  if $tradspell eq 'contractor';
+    $pos_hint = 'n'  if $tradspell =~ /^(abusage|contractor|mopeds)$/;
     $pos_hint = 'aj' if $tradspell =~ /^(augustness|frequented|live[ns])$/;
     $pos_hint ||= 'v'
         if $tradspell =~ /^(contently|inversely)$/
