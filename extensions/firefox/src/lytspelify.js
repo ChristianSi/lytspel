@@ -2,7 +2,9 @@
 
 
 // --- Entry point ---
-triggerLytspelConversion(document.body, document.title);
+if (!testMode()) {
+  triggerLytspelConversion(document.body, document.title);
+}
 
 // Trigger the Lytspel conversion of the current document. Collect all words in the document
 // body and title and send them to the background script for conversion, setting a callback
@@ -53,7 +55,11 @@ function convertToLytspel(words) {
 // Tokenize a string, returning an array of words and puncuation. Words must start and end with
 // an ASCII letter and may contain apostrophes.
 function tokenizeText(text) {
-  return text.split(/([a-zA-Z](?:'?[a-zA-Z])*)/);
+  const result = text.split(/([a-zA-Z](?:['’]?[a-zA-Z])*)/);
+  // Remove first and/or last element if they are empty
+  if (result[0] === '') { result.shift(); }
+  if (result[result.length - 1] === '') { result.pop(); }
+  return result;
 }
 
 // Check if a token is a word. Words must start with an ASCII letter.
@@ -90,5 +96,39 @@ function convertToken(token, words) {
   return words[token] || token;
 }
 
-// TODO Test using Mocha or so
-// TODO Use ESLint (node package) to check the coding style
+// --- Test code and helpers ---
+
+if (testMode()) {
+  selfTest();
+}
+
+// Check whether this code is running in test mode (without a document object).
+function testMode() {
+  return typeof document === 'undefined';
+}
+
+// Run some tests.
+function selfTest() {
+  console.log('Running self-test...');
+  let assert = require('assert');
+  // using join in tests for readability
+  assert.equal(tokenizeText('This is a sentence.').join('|'), 'This| |is| |a| |sentence|.');
+  assert.equal(tokenizeText('A sentence without final punctuation').join('|'),
+    'A| |sentence| |without| |final| |punctuation');
+  assert.equal(tokenizeText('Sentence with-some inner, punctuation;this should - not! — cause problems?Let    us\thope so!').join('|'),
+    'Sentence| |with|-|some| |inner|, |punctuation|;|this| |should| - |not|! — |cause| |problems|?|Let|    |us|\t|hope| |so|!');
+  assert.equal(tokenizeText('Some words in "double" and \'half quotation\' marks.').join('|'),
+    'Some| |words| |in| "|double|" |and| \'|half| |quotation|\' |marks|.');
+  assert.equal(tokenizeText('Some words in typographic “double” and ‘half quotation’ marks.').join('|'),
+    'Some| |words| |in| |typographic| “|double|” |and| ‘|half| |quotation|’ |marks|.');
+  assert.equal(tokenizeText("Let's hope contractions are handled correctly wheresoe'er they'll occur, don't you think so, O'Connell?").join('|'),
+    "Let's| |hope| |contractions| |are| |handled| |correctly| |wheresoe'er| |they'll| |occur|, |don't| |you| |think| |so|, |O'Connell|?");
+  assert.equal(tokenizeText('Let’s hope contractions are handled correctly wheresoe’er they’ll occur, don’t you think so, O’Connell?').join('|'),
+    'Let’s| |hope| |contractions| |are| |handled| |correctly| |wheresoe’er| |they’ll| |occur|, |don’t| |you| |think| |so|, |O’Connell|?');
+  assert.equal(tokenizeText("He's happy to see my boyfriend's sister.").join('|'),
+    "He's| |happy| |to| |see| |my| |boyfriend's| |sister|.");
+  assert.equal(tokenizeText('He’s happy to see my boyfriend’s sister.').join('|'),
+    'He’s| |happy| |to| |see| |my| |boyfriend’s| |sister|.');
+  // assert.equal(tokenizeText('').join('|'), '');
+  console.log('Test passed');
+}
