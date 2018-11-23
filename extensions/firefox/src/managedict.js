@@ -3,6 +3,7 @@
 
 'use strict';  // strict mode
 
+
 // --- Globals ---
 const DICT_FILE = 'data/lytspel-dict.csv';
 const dict = new Map();  // dicts will be filled later
@@ -78,10 +79,11 @@ function fillDicts(contents) {
 }
 
 
-// --- Helpers ---
+// --- Primary helpers and callbacks ---
 
 // A word is assumed to be MiXed case if it starts with an upper-case letter and if it
 // contains at least one other upper-case and one lower-case letter.
+// Words must be ASCII-ified for this function to work correctly.
 function isMixedCase(word) {
   return /^[A-Z].*[a-z]/.test(word) && /.[A-Z]/.test(word);
 }
@@ -90,7 +92,7 @@ function isMixedCase(word) {
 // (lower, Capitalized, or ALL_CAPS). MixedCase is also restored provided that *both* the input
 // word and the dictionary entry use this case form (e.g. JavaScript -> JaavaScript).
 function lookup(word) {
-  word = word.split('’').join("'"); // replace typographic by normal apostrophe
+  word = asciiify(word);
   let genitiveS = '';
 
   if (/'s$/i.test(word)) { 
@@ -121,7 +123,94 @@ function lookup(word) {
 }
 
 
-// --- Test code and helpers ---
+// --- Secondary helpers ---
+
+// Convert a word to its ASCII equivalent. Typographic apostrophes are replaced by
+// normal ones and diacritical letters are replaced by their closest ASCII equivalents.
+function asciiify(word) {
+  let result = word.split('’').join("'"); // ASCII-ify apostrophes
+
+  if (! /^[a-z']*$/i.test(result) ) { // non-ASCII word
+    let letters = Array.from(result);
+
+    for (let i = 0; i < letters.length; i++) {
+      const letter = letters[i];
+      if (letter.codePointAt(0) < 128) continue; // ASCII, nothing to do
+      const lowerLetter = letter.toLowerCase();
+      let replacement;
+
+      // vowels and semivowels
+      if ('áàăâǎåäãąāả'.includes(lowerLetter)) {
+        replacement = 'a';
+      } else if ('æ'.includes(lowerLetter)) {
+        replacement = 'ae';
+      } else if ('éèĕêěëẽęēẻ'.includes(lowerLetter)) {
+        replacement = 'e';
+      } else if ('íìĭîǐïĩįī'.includes(lowerLetter)) {
+        replacement = 'i';
+      } else if ('óòŏôǒöõøǫōỏ'.includes(lowerLetter)) {
+        replacement = 'o';
+      } else if ('œ'.includes(lowerLetter)) {
+        replacement = 'oe';
+      } else if ('úùŭûǔůüũųūủ'.includes(lowerLetter)) {
+        replacement = 'u';
+      } else if ('ýỳŷẙÿỹȳỷ'.includes(lowerLetter)) {
+        replacement = 'y';
+      // consonants
+      } else if ('ćĉčċç'.includes(lowerLetter)) {
+        replacement = 'c';
+      } else if ('ďđ'.includes(lowerLetter)) {
+        replacement = 'd';
+      } else if ('ǵğĝǧġḡ'.includes(lowerLetter)) {
+        replacement = 'g';
+      } else if ('ĥȟḧħ'.includes(lowerLetter)) {
+        replacement = 'h';
+      } else if ('ĵǰ'.includes(lowerLetter)) {
+        replacement = 'j';
+      } else if ('ḱǩ'.includes(lowerLetter)) {
+        replacement = 'k';
+      } else if ('ĺľłḹ'.includes(lowerLetter)) {
+        replacement = 'l';
+      } else if ('ḿ'.includes(lowerLetter)) {
+        replacement = 'm';
+      } else if ('ńǹňñ'.includes(lowerLetter)) {
+        replacement = 'n';
+      } else if ('ṕ'.includes(lowerLetter)) {
+        replacement = 'p';
+      } else if ('ŕř'.includes(lowerLetter)) {
+        replacement = 'r';
+      } else if ('śŝšş'.includes(lowerLetter)) {
+        replacement = 's';
+      } else if ('ß'.includes(lowerLetter)) {
+        replacement = 'ss';
+      } else if ('ťẗ'.includes(lowerLetter)) {
+        replacement = 't';
+      } else if ('ṽ'.includes(lowerLetter)) {
+        replacement = 'v';
+      } else if ('ẃẁẘẅ'.includes(lowerLetter)) {
+        replacement = 'w';
+      } else if ('ẍ'.includes(lowerLetter)) {
+        replacement = 'x';
+      } else if ('źẑž'.includes(lowerLetter)) {
+        replacement = 'z';
+      }
+
+      if (replacement) {
+        if (letter !== lowerLetter) { // original was upper case
+          replacement = replacement.toUpperCase();
+        }
+        letters[i] = replacement;
+      }
+    }
+
+    result = letters.join('');
+  }
+
+  return result;
+}
+
+
+// --- Test code ---
 
 // Check whether this code is running in test mode (without a browser object).
 function testMode() {
@@ -132,6 +221,15 @@ function testMode() {
 function selfTest() {
   console.log('Running self-test...');
   let assert = require('assert');
+  testSimpleLookup(assert);
+  testCaseIsRestored(assert);
+  testApostrophes(assert);
+  testGenitiveS(assert);
+  testDiacritics(assert);
+  console.log('Self-test passed');
+}
+
+function testSimpleLookup(assert) {
   assert.equal(lookup('blackbird'), 'blakburd');
   assert.equal(lookup('earthward'), 'urthwerd');
   assert.equal(lookup('shadows'), 'shadoas');
@@ -139,7 +237,10 @@ function selfTest() {
   assert.equal(lookup('technology'), 'tec’noleji');
   assert.equal(lookup('tahiti'), 'ta’heeti');   // capitalized in dict
   assert.equal(lookup('notaword'), undefined);
-  // Case should be restored
+}
+
+// Case should be restored
+function testCaseIsRestored(assert) {
   assert.equal(lookup('Score'), 'Scoar');
   assert.equal(lookup('NETWORK'), 'NETWURK');
   assert.equal(lookup('POLITICAL'), 'PO’LITICL');
@@ -150,14 +251,20 @@ function selfTest() {
   assert.equal(lookup("O'Donnell"), 'O’Donel');
   assert.equal(lookup('PCs'), 'PCs');
   assert.equal(lookup('PowerPC'), 'PowerPC');
-  // Both normal and typographic apostrophes should be accepted
+}
+
+// Both normal and typographic apostrophes should be accepted
+function testApostrophes(assert) {
   assert.equal(lookup("I'm"), 'Y’m');
   assert.equal(lookup('I’m'), 'Y’m');
   assert.equal(lookup("it'll"), 'it’l');
   assert.equal(lookup('it’ll'), 'it’l');
   assert.equal(lookup("O'Connell"), 'O’Conel');
   assert.equal(lookup('O’Connell'), 'O’Conel');
-  // 's (genitive or contraction) is handled correctly (normal and typographic forms)
+}
+
+// 's (genitive or contraction) is handled correctly (normal and typographic forms)
+function testGenitiveS(assert) {
   assert.equal(lookup("He's"), 'Hi’s');
   assert.equal(lookup("boyfriend's"), 'boyfrend’s');
   assert.equal(lookup('He’s'), 'Hi’s');
@@ -165,29 +272,44 @@ function selfTest() {
   // Upper case words too
   assert.equal(lookup("HE's"), 'HI’s');
   assert.equal(lookup('He’s'), 'Hi’s');
-
-  //assert.equal(lookup(''), '');
-  // TODO Handle and test here and in other file:
-  // * Diacritical letters
-  // * Heuristic for language detection: don't convertText unless at least 40 % of its
-  //   words are known.
-  // * Skip script+style tags; also convert alt+title attributes; ensure that no problems
-  //   remain on e.g.spiegel.de, focus.de
-  // * POS tags -- test using https://en.wikipedia.org/wiki/Heteronym_(linguistics)#Examples
-  // * redirects
-  // * Special case: I and I'm should only remain capitalized at the beginning of sentences
-  // * Modify Makefile to also update extensions/firefox/data whenever lytspel-dict.csv has changed
-  // * Recognize URLs in text and treat as non-words (sample: IRC logs)
-  // * Use ESLint (node package) to check the coding style
-  // * Add button to turn conversion off and on
-  // * If called in test mode with argument, convert txt/html/epub file, storing the original
-  //   as FILE-orig.EXT
-  // * Also rewrite parts of a page loaded later (e.g. due to scrolling; sample: Youtube
-  //   comments); possibly use a custom data-\* attribute; can be read and written as
-  //   elem.dataset.NAME, e.g. elem.dataset.lytspel = conv|seen
-  // * Add form that allows the conversion of local txt/html/epub files (different interface
-  //   for same functionality)
-  // * Add a dialog for converting words and sentences to Lytspel
-  // * Package extension (see NOTES), tell Matthias, and upload to plugin directory
-  console.log('Self-test passed');
 }
+
+function testDiacritics(assert) {
+  assert.equal(lookup('café'), 'ca’fay');
+  assert.equal(lookup('continuüm'), 'con’tiniuam');
+  assert.equal(lookup('doppelgänger'), 'dopelganger');
+  assert.equal(lookup('élite'), 'i’leet');
+  assert.equal(lookup('Élite'), 'I’leet');
+  assert.equal(lookup('épée'), 'ai’pay');
+  assert.equal(lookup('ÉPÉE'), 'AI’PAY');
+  assert.equal(lookup('hôtel'), 'hoa’tel');
+  assert.equal(lookup('Hôtel'), 'Hoa’tel');
+  assert.equal(lookup('mañana'), 'maa’nyaanaa');
+  assert.equal(lookup('naïve'), 'naa’eev');
+  assert.equal(lookup('œuvre'), 'uuvra');
+  assert.equal(lookup('Œuvre'), 'Uuvra');
+  assert.equal(lookup('tōfu'), 'toafu');
+}
+
+//assert.equal(lookup(''), '');
+// TODO Handle and test here and in other file:
+// * Heuristic for language detection: don't convertText unless at least half of its
+//   words are known.
+// * Skip script+style tags; also convert alt+title attributes; ensure that no problems
+//   remain on e.g.spiegel.de, focus.de
+// * POS tags -- test using https://en.wikipedia.org/wiki/Heteronym_(linguistics)#Examples
+// * redirects
+// * Special case: I and I'm should only remain capitalized at the beginning of sentences
+// * Modify Makefile to also update extensions/firefox/data whenever lytspel-dict.csv has changed
+// * Recognize URLs in text and treat as non-words (sample: IRC logs)
+// * Use ESLint (node package) to check the coding style
+// * Add button to turn conversion off and on
+// * If called in test mode with argument, convert txt/html/epub file, storing the original
+//   as FILE-orig.EXT
+// * Also rewrite parts of a page loaded later (e.g. due to scrolling; sample: Youtube
+//   comments); possibly use a custom data-\* attribute; can be read and written as
+//   elem.dataset.NAME, e.g. elem.dataset.lytspel = conv|seen
+// * Add form that allows the conversion of local txt/html/epub files (different interface
+//   for same functionality)
+// * Add a dialog for converting words and sentences to Lytspel
+// * Package extension (see NOTES), tell Matthias, and upload to plugin directory
