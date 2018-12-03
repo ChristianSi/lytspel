@@ -8,7 +8,7 @@ const TOKEN_RE = new RegExp(
   '(' + LOWERCASE_LETTER_PAT + "(?:['’]?" + LOWERCASE_LETTER_PAT +')*)',
   'i');
 const STARTS_WITH_LETTER_RE = new RegExp('^' + LOWERCASE_LETTER_PAT, 'i');
-
+const ATTRIBS_TO_CONVERT = ['alt', 'title'];
 
 // --- Entry point ---
 if (!testMode()) {
@@ -31,7 +31,14 @@ function triggerLytspelConversion() {
 
 // Iterate the child nodes of an node. Element nodes are traversed recursively, while the
 // content of text nodes is tokenize and all word tokens are added to `wordset`.
+// Textual content of any ATTRIBS_TO_CONVERT is collected as well.
 function collectWordsFromChildNodes(node, wordset) {
+  // Collect from relevant attributes
+  for (const attrib of ATTRIBS_TO_CONVERT) {
+    collectWords(node.getAttribute(attrib), wordset);
+  }
+
+  // Collect from child nodes
   for (const child of node.childNodes) {
     switch(child.nodeType) {
       case Node.ELEMENT_NODE:
@@ -46,6 +53,7 @@ function collectWordsFromChildNodes(node, wordset) {
 
 // Tokenize `text` and add all word tokens to `wordset`.
 function collectWords(text, wordset) {
+  if (!text) return;  // nothing to do
   const tokens = tokenizeText(text);
 
   for (const token of tokens) {
@@ -78,8 +86,16 @@ function isWord(token) {
 }
 
 // Iterate the child nodes of an node. Element nodes are traversed recursively, while the
-// content of text nodes is converted to Lytspel.
+// content of text nodes is converted to Lytspel. Textual content of any ATTRIBS_TO_CONVERT
+// is converted as well.
 function convertChildNodes(node, words) {
+  // Convert relevant attributes
+  for (const attrib of ATTRIBS_TO_CONVERT) {
+    if (! node.hasAttribute(attrib)) continue;  // Nothing to do
+    node.setAttribute(attrib, convertText(node.getAttribute(attrib), words));
+  }
+
+  // Convert child nodes
   for (const child of node.childNodes) {
     switch(child.nodeType) {
       case Node.ELEMENT_NODE:
@@ -94,27 +110,32 @@ function convertChildNodes(node, words) {
 
 // Tokenize `text` and convert all word tokens to Lytspel. To prevent accidental
 // modification to specific words in foreign-language texts, `text` will only be
-// converted if half the words contained in it are listed in the dictionary
+// converted if at least half of its words are listed in the dictionary
 // (otherwise it will be returned unchanged).
 function convertText(text, words) {
   let tokens = tokenizeText(text);
   let knownWords = 0;
   let unknownWords = 0;
 
-  // TODO count words
   for (let i = 0; i < tokens.length; i++) {
     const token = tokens[i];
+    if (!isWord(token)) continue;  // not a word
+    const conv = words[token];
+
+    if (conv) {
+      ++knownWords;
+      tokens[i] = conv;
+    } else {
+      ++unknownWords;
+    }
   }
 
-  tokens = tokens.map(x => convertToken(x, words) );
-  return tokens.join('');
-}
-
-// Convert `token` to Lytspel. Non-word tokens and tokens not listed in the `words`
-// object will be returned unchanged.
-function convertToken(token, words) {
-  if (!isWord(token)) return token;
-  return words[token] || token;
+  if (unknownWords <= knownWords) {
+    // at least half of the words are known
+    return tokens.join('');
+  } else {
+    return text; // return text unchanged
+  }
 }
 
 
