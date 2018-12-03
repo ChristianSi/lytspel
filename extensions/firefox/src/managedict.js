@@ -293,10 +293,8 @@ function testDiacritics(assert) {
 
 //assert.equal(lookup(''), '');
 // TODO Handle and test here and in other file:
-// * Heuristic for language detection: don't convertText unless at least half of its
-//   words are known.
-// * Skip script+style tags; also convert alt+title attributes; ensure that no problems
-//   remain on e.g.spiegel.de, focus.de
+// * Skip script+style tags (cf. elem.tagName /i); ensure that no problems
+//   remain on e.g. spiegel.de, focus.de
 // * POS tags -- test using https://en.wikipedia.org/wiki/Heteronym_(linguistics)#Examples
 // * redirects
 // * Special case: I and I'm should only remain capitalized at the beginning of sentences
