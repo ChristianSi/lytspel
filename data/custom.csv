@@ -514,6 +514,7 @@ alms,,B
 Alphonsus,,alf'Qns@s
 already,,B
 alright,,B
+also,,'O:lsoU
 Alston,,'O:lst@n
 Altair,,'alte@
 alt,,'alt
@@ -2209,9 +2210,8 @@ conga,,k'QNg@
 congee,,P
 conge,,P
 congratulate,,k@ngr'atjUleIt
-congratulation,,k@#ngratjUl'eIS@n
-congratulatory,,k@ngr'atjUl@tori:
-congratulatory,,k@ngr'atS@l@tori:
+congratulation,,k@#NgratjUl'eIS@n
+congratulatory,,k@Ngr'atjUl@tori:
 congress,v,P
 congruence,,k'QNgru:@ns
 congruous,,P
@@ -2401,7 +2401,6 @@ cryptorchid,,P
 cryptozoic,,P
 cuadrilla,,P
 Cuisinart,,kwi:z@n'Art
-culet,,P
 cullis,,P
 Cunard,,kju:n'Ard
 Cuneo,,k'u:nEoU
@@ -2873,6 +2872,7 @@ doctrinal,,d'QktrIn@l
 docudrama,,d'Qkj@drAm@
 dodecagon,,doUd'Ek@gQn
 dodecaphonic,,B
+does,n,d'oUz
 dogged,,d'Qg@d
 dolichocephalic,,dQlIkoUs@f'alIk
 dolichocephalism,,dQlIkoUs'Ef@lIz@m
@@ -3128,6 +3128,7 @@ elucidative,,Il'u:sI#deItIv
 Elysia,,Il'Izi:@
 elysian,,P
 Elysium,,Il'IZi:@m
+email,,B
 emanant,,P
 emanate,,P
 emanative,,P
@@ -3849,6 +3850,7 @@ financial,,P
 financier,,fIn'ansI@`
 fini,,fi:n'i:
 Finisterre,,P
+Finland,,f'Inla#nd
 finocchio,,fIn'oUki:oU
 fireflaught,,f'aIrflO:t
 Firenze,,D
@@ -4297,7 +4299,7 @@ granulocyte,,granj@loUsaIt
 granulomatous,,P
 grappa,,P
 gratuity,,gr@t'U:Iti:
-gratulant,,P
+gratulant,,B
 gratulatory,,gr'atS@l@tori:
 gravimeter,,grav'ImIt@`
 gravure,,P
@@ -5760,7 +5762,6 @@ linear,,P
 lineate,,P
 lineation,,P
 Lingayat,,lINg'Aj@t
-Lingayat,,P
 lingerie,,l'anZ@`i:
 linotype,,B
 li,,P
@@ -6483,6 +6484,7 @@ moussaka,,mUs'Ak@
 Moussorgsky,,mUs'O:rgski:
 mouth,v,P
 mouton,,m'u:tQn
+mow,n,m'aU
 mozambican,,moUz@mb'i:k@n
 Mozartean,,moUts'Arti:@n
 mozzarella,,P
@@ -8113,7 +8115,7 @@ Rachmaninoff,,rakm'AnInQf
 racquetball,,r'akItbO:l
 radiative,,P
 radiculitis,,B
-radiculose,,r'adIkjUloUs
+radiculose,,rad'IkjUloUs
 radionics,,reIdI'QnIks
 radioscopy,,B
 Radom,,r'AdO:m
@@ -8210,6 +8212,7 @@ refractometric,,rIfrakt@m'EtrIk
 refulgence,,B
 refusal,,rIfj'u:z@l
 refusenik,,P
+refuse,n,r'Efju:s
 Regensburg,,D
 reges,,r'i:dZi:z
 regie,,D
@@ -8228,7 +8231,6 @@ regulation,,rEgj@l'eIS@n
 regulative,,P
 regulator,,P
 regulatory,,r'Egj@l@tori:
-regulo,,P
 regulo,,r'Egj@loU
 rehabilitation,,rIha#bIl@t'eIS@n
 rehabilitative,,rIh@b'IlI#teItIv
@@ -8577,6 +8579,7 @@ sawder,,A
 sayyid,,P
 scabies,,P
 scabiosa,,D
+scala,,B
 scalpriform,,A
 scarabaeid,,P
 scarabaeoid,,P
@@ -9219,6 +9222,8 @@ stigmasterol,,stIgm'ast@`Ql
 stilbestrol,,stIlb'EstrQl
 stipellate,,P
 stipel,,P
+stipulate,aj,st'IpjUlIt
+stipulate,v,st'IpjUleIt
 stirrup,,P
 stochastic,,st@k'astIk
 Stockhausen,,D
@@ -10303,6 +10308,7 @@ voyageur,,P
 voyeuristic,,P
 voyeur,,vOIj'3:
 vraisemblance,,P
+vs,,D
 vulcanological,,vVlk@n@l'QdZIk@l
 vulva,,B
 Vyatka,,vj'Atk@
@@ -10418,6 +10424,7 @@ Wickes,,D
 Wiesbaden,,v'i:sbAd@n
 Wiesenthal,,D
 wigwam,,P
+Wikipedia,,wIkIp'i:di:@
 Wilburn,,B
 Wilfred,,B
 Wilfredo,,D
@@ -10598,3 +10605,4 @@ zygapophysis,,zIg@p'QfIsIs
 zygogenetic,,P
 zymoses,,zaIm'oUsi:z
 Zyuganov,,D
+sow,n,s'aU
