@@ -1,5 +1,6 @@
 lytspel-dict.csv: compounds.csv compound-stress.csv custom.csv phonetic-dict.csv phoneme-map.csv pre-stressed-vowel.csv prefix.csv suffix.csv
 	lytspelify
+	cp lytspel-dict.csv ../extensions/firefox/data/lytspel-dict.csv
 
 compounds.csv: phonetic-dict.csv compounds-manual.csv compound-blacklist.csv compound-whitelist.csv prefix.list suffix.list
 	decompose
