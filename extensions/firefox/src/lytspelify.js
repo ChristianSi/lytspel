@@ -8,7 +8,13 @@ const TOKEN_RE = new RegExp(
   '(' + LOWERCASE_LETTER_PAT + "(?:['’]?" + LOWERCASE_LETTER_PAT +')*)',
   'i');
 const STARTS_WITH_LETTER_RE = new RegExp('^' + LOWERCASE_LETTER_PAT, 'i');
+
 const ATTRIBS_TO_CONVERT = ['alt', 'title'];
+const TAGS_TO_SKIP = ['script', 'style'];
+
+let lastKnownWords = 0;
+let lastUnknownWords = 0;
+
 
 // --- Entry point ---
 if (!testMode()) {
@@ -33,21 +39,21 @@ function triggerLytspelConversion() {
 // content of text nodes is tokenize and all word tokens are added to `wordset`.
 // Textual content of any ATTRIBS_TO_CONVERT is collected as well.
 function collectWordsFromChildNodes(node, wordset) {
-  // Collect from relevant attributes
-  for (const attrib of ATTRIBS_TO_CONVERT) {
-    collectWords(node.getAttribute(attrib), wordset);
-  }
-
   // Collect from child nodes
   for (const child of node.childNodes) {
     switch(child.nodeType) {
       case Node.ELEMENT_NODE:
-        collectWordsFromChildNodes(child, wordset);
+        if (! skipElement(child)) collectWordsFromChildNodes(child, wordset);
         break;
       case Node.TEXT_NODE:
         collectWords(child.nodeValue, wordset);
         break;
     }
+  }
+
+  // Collect from relevant attributes
+  for (const attrib of ATTRIBS_TO_CONVERT) {
+    collectWords(node.getAttribute(attrib), wordset);
   }
 }
 
@@ -70,6 +76,11 @@ function convertToLytspel(words) {
 
 // --- Secondary helpers ---
 
+// Check whether an element should be skipped (consults the TAGS_TO_SKIP array).
+function skipElement(elem) {
+  return TAGS_TO_SKIP.includes(elem.tagName.toLowerCase());
+}
+
 // Tokenize a string, returning an array of words and puncuation. Words must start and end with
 // a letter and may contain apostrophes.
 function tokenizeText(text) {
@@ -89,29 +100,29 @@ function isWord(token) {
 // content of text nodes is converted to Lytspel. Textual content of any ATTRIBS_TO_CONVERT
 // is converted as well.
 function convertChildNodes(node, words) {
-  // Convert relevant attributes
-  for (const attrib of ATTRIBS_TO_CONVERT) {
-    if (! node.hasAttribute(attrib)) continue;  // Nothing to do
-    node.setAttribute(attrib, convertText(node.getAttribute(attrib), words));
-  }
-
   // Convert child nodes
   for (const child of node.childNodes) {
     switch(child.nodeType) {
       case Node.ELEMENT_NODE:
-        convertChildNodes(child, words);
+        if (! skipElement(child)) convertChildNodes(child, words);
         break;
       case Node.TEXT_NODE:
         child.nodeValue = convertText(child.nodeValue, words);
         break;
     }
   }
+  // Convert relevant attributes
+  for (const attrib of ATTRIBS_TO_CONVERT) {
+    if (! node.hasAttribute(attrib)) continue;  // Nothing to do
+    node.setAttribute(attrib, convertText(node.getAttribute(attrib), words));
+  }
 }
 
 // Tokenize `text` and convert all word tokens to Lytspel. To prevent accidental
 // modification to specific words in foreign-language texts, `text` will only be
 // converted if at least half of its words are listed in the dictionary
-// (otherwise it will be returned unchanged).
+// (otherwise it will be returned unchanged). In case of short fragments, the words
+// from the preceding fragment are additionally considered to prevent misrecognitions.
 function convertText(text, words) {
   let tokens = tokenizeText(text);
   let knownWords = 0;
@@ -130,8 +141,18 @@ function convertText(text, words) {
     }
   }
 
-  if (unknownWords <= knownWords) {
-    // at least half of the words are known
+  const shortFragment = knownWords + unknownWords < 10;
+  const relevantKnownWords = shortFragment ? knownWords + lastKnownWords : knownWords;
+  const relevantUnknownWords = shortFragment ? unknownWords + lastUnknownWords : unknownWords;
+
+  if (knownWords + unknownWords) {
+    // update last... values if there were any words
+    lastKnownWords = knownWords;
+    lastUnknownWords = unknownWords;
+  }
+
+  if (knownWords > 0 && relevantUnknownWords <= relevantKnownWords) {
+    // at least half of the relevant words are known (and at least one word might have changed)
     return tokens.join('');
   } else {
     return text; // return text unchanged
