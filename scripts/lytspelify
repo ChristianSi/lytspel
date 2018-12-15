@@ -388,7 +388,7 @@ sub combine_and_adjust {
         $val = 'i';
     } elsif ($val eq 'oa'
         && $right !~ /^$SAMPA_CONSONANT_CLS/
-        && $tradspell !~ /^(know|owe|sew|sow)$/)
+        && $tradspell !~ /^(know|owe)$/)
     {
         # «oa» /oU/ becomes «o» at the end of words and before other vowels
         # (except in a few irregular words)
@@ -1018,9 +1018,9 @@ sub unify_sounds {
     # encourage, current -> «urr»
     ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'Vr', '3:r?', 'Vr', $tradspell, 0;
     # due, neutral, tune -> «ue»
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j'u:", "(?<![j])'u:", "'U:",
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j'(?:u:|U)", "(?<![j])'u:", "'U:",
         $tradspell, 0;
-    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "ju:", "(?<![j'])u:", "U:",
+    ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j(?:u:|U)", "(?<![j'])u:", "U:",
         $tradspell, 0;
     # during, neural -> «uer» (/ju:r/ or /jUr/ in RP, /Ur/ in GA)
     ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, "j'(?:u:|U)r", "(?<![j])'Ur", "'U:r",
