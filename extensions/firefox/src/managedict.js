@@ -293,12 +293,11 @@ function testDiacritics(assert) {
 
 //assert.equal(lookup(''), '');
 // TODO Handle and test here and in other file:
-// * Skip script+style tags (cf. elem.tagName /i); ensure that no problems
-//   remain on e.g. spiegel.de, focus.de
 // * POS tags -- test using https://en.wikipedia.org/wiki/Heteronym_(linguistics)#Examples
 // * redirects
 // * Special case: I and I'm should only remain capitalized at the beginning of sentences
-// * Modify Makefile to also update extensions/firefox/data whenever lytspel-dict.csv has changed
+// * Might require additional POS tag: ‹re› should become  «ri» if used as a hyphenated prefix
+// * Might require additional POS tag: US (capitalized) should remain unchanged
 // * Recognize URLs in text and treat as non-words (sample: IRC logs)
 // * Use ESLint (node package) to check the coding style
 // * Add button to turn conversion off and on
