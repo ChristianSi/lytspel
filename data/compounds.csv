@@ -1465,6 +1465,7 @@ anarchic,anarch=ic
 anarchical,anarchic=al
 anarchically,anarchical=ly
 anarchist,anarch=ist
+anarchistic,anarchist=ic
 anarchists,anarchist=s
 anarchy,anarch=y
 anarthrously,anarthrous=ly
@@ -1806,6 +1807,8 @@ antirheumatic,anti=rheumatic
 antirust,anti=rust
 antis,anti=s
 antiscorbutic,anti=scorbutic
+antisemitic,anti=semitic
+antisemitism,anti=semitism
 antisense,anti=sense
 antisepsis,anti=sepsis
 antiseptic,anti=septic
@@ -2885,6 +2888,9 @@ bachelors,bachelor=s
 backache,back-ache
 backaches,backache=s
 backband,back-band
+backbench,back-bench
+backbencher,backbench=er
+backbenchers,backbencher=s
 backbend,back-bend
 backbite,back-bite
 backbiting,backbite=ing
@@ -7690,7 +7696,7 @@ circean,circe=ean
 circinately,circinate=ly
 circled,circle=ed
 circles,circle=s
-circling,circ-ling
+circling,circle=ing
 circs,circ=s
 circuited,circuit=ed
 circuitously,circuitous=ly
@@ -8633,6 +8639,7 @@ commonage,common=age
 commonalities,commonality=es
 commoner,common=er
 commoners,commoner=s
+commoning,common=ing
 commonly,common=ly
 commonplace,common-place
 commonplaceness,commonplace=ness
@@ -11723,6 +11730,7 @@ delegates,delegate=s
 delegating,delegate=ing
 delegation,delegate=ion
 delegations,delegation=s
+delegitimize,de=legitimize
 deleted,delete=ed
 deletes,delete=s
 deleting,delete=ing
@@ -18697,8 +18705,10 @@ freeholder,freehold=er
 freeholders,freeholder=s
 freeing,free=ing
 freelance,free-lance
+freelanced,freelance=ed
 freelancer,freelance=er
 freelancers,freelancer=s
+freelances,freelance=s
 freelancing,freelance=ing
 freeloader,free-loader
 freeloaders,freeloader=s
@@ -20810,6 +20820,8 @@ hackbuteer,hackbut=eer
 hacked,hack=ed
 hacker,hack=er
 hackers,hacker=s
+hackerspace,hacker-space
+hackerspaces,hackerspace=s
 hackery,hacker=y
 hacking,hack=ing
 hackles,hackle=s
@@ -33503,6 +33515,7 @@ padauk,pad-auk
 padded,pad=ed
 paddies,paddy=es
 padding,pad=ing
+paddings,padding=s
 paddleboard,paddle-board
 paddled,paddle=ed
 paddlefish,paddle-fish
@@ -34180,16 +34193,12 @@ peatmoss,peat-moss
 peaty,peat=y
 pebbles,pebble=s
 pecans,pecan=s
-peccable,pec=able
-peccant,pec=ant
 peccantly,peccant=ly
-peccary,pec=ary
 pecker,peck=er
 pecking,peck=ing
 peckish,peck=ish
 pecky,peck=y
 pecs,pec=s
-pectic,pec=tic
 pectinate,pectin=ate
 peculiarities,peculiarity=es
 peculiarize,peculiar=ize
@@ -34667,6 +34676,7 @@ petroglyph,petro-glyph
 petroglyphs,petroglyph=s
 petrolic,petrol=ic
 petrological,petrologic=al
+petrostate,petro-state
 pets,pet=s
 petted,pet=ed
 petter,pet=er
@@ -41627,6 +41637,8 @@ scriptures,scripture=s
 scriptwriter,script-writer
 scriptwriters,scriptwriter=s
 scriptwriting,script-writing
+scrollbar,scroll-bar
+scrollbars,scrollbar=s
 scrolled,scroll=ed
 scrolls,scroll=s
 scrollwork,scroll-work
@@ -45797,6 +45809,7 @@ submaxilla,sub=maxilla
 submaxillary,sub=maxillary
 submediant,sub=mediant
 submental,sub=mental
+submenu,sub=menu
 submerged,submerge=ed
 submergence,submerge=ence
 submergible,submerge=ible
@@ -51638,6 +51651,7 @@ verbalizing,verbalize=ing
 verbally,verbal=ly
 verbify,verb=ify
 verbless,verb=less
+verbosely,verbose=ly
 verbosity,verbose=ity
 verbs,verb=s
 verdicts,verdict=s
@@ -52703,6 +52717,7 @@ whereto,where-to
 whereunder,where-under
 whereunto,where-unto
 whereupon,where-upon
+wherever,where-ever
 wherewithal,where-withal
 wherryman,wherry-man
 whetstone,whet-stone
@@ -52914,7 +52929,6 @@ wiggly,wiggle=y
 wigs,wig=s
 wigwag,wig-wag
 wikis,wiki=s
-wikiup,wiki=up
 wildcard,wild-card
 wildcat,wild-cat
 wildcats,wildcat=s
@@ -53143,6 +53157,7 @@ withering,wither=ing
 withers,wither=s
 withholding,withhold=ing
 withholds,withhold=s
+within,with-in
 withindoors,within-doors
 without,with-out
 withoutdoors,without-doors

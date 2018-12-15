@@ -3704,6 +3704,7 @@ anarchical,,,an'AkIk@l,an'ArkIk@l,an'Qrk@k@l
 anarchically,,,an'AkIkli:,an'ArkIkli:,@n'VrkIk@li:
 anarchism,,,'an@kIz@m,'an@`kIz@m,
 anarchist,,,'anAkIst,'anArkIst,'an@`kIst
+anarchistic,,,anAk'IstIk,anArk'IstIk,
 anarchists,,,'anAkIsts,'anArkIsts,'an@`k@sts
 anarchy,,,'anAki:,'anArki:,'an@`ki:
 anarthria,,,an'ATri:@,an'ArTri:@,
@@ -4585,6 +4586,8 @@ antirust,,,antIr'Vst,,anti:r'Vst
 antis,,,'anti:z,'antaIz,
 Antisana,,,antIs'An@,,Anti:s'AnA
 antiscorbutic,,,antIskO:bj'u:tIk,antIskorbj'u:tIk,anti:skO:rbj'u:tIk
+antisemitic,,,antIsEm'ItIk,,
+antisemitism,,,antIs'EmItIz@m,,
 antisense,,,antIs'Ens,,'antaIsEns
 antisepalous,,,antIs'Ep@l@s,,
 antisepsis,,,antIs'EpsIs,,
@@ -7370,6 +7373,9 @@ back,,,b'ak,,
 backache,,,b'akeIk,,
 backaches,,,b'akeIks,,
 backband,,,b'akband,,
+backbench,,,b'akbEntS,,
+backbencher,,,b'akbEntS@,b'akbEntS@`,
+backbenchers,,,b'akbEntS@z,b'akbEntS@`z,
 backbend,,,b'akb@nd,,b'akbEnd
 backbite,,,b'akbaIt,,
 backbiting,,,b'akbItIN,,b'akbaItIN
@@ -19348,6 +19354,7 @@ commonality,,,kQm@n'alIti:,kAm@n'alIti:,
 commonalty,,,k'Qm@n@lti:,k'Am@n@lti:,
 commoner,,,k'Qm@n@,k'Am@n@`,k'Qm@n@`
 commoners,,,k'Qm@n@z,k'Am@n@`z,k'Qm@n@`z
+commoning,,,k'Qm@nIN,k'Am@nIN,
 commonly,,,k'Qm@nli:,k'Am@nli:,
 commonplace,,,k'Qm@npleIs,k'Am@npleIs,
 commonplaceness,,,k'Qm@npleIsn@s,k'Am@npleIsn@s,k'Qm@npleIsnEs
@@ -20610,7 +20617,7 @@ consumes,,,k@ns'u:mz,,
 consuming,,,k@ns'u:mIN,,
 consummate,aj,,k'Qns@meIt,k'Ans@meIt,k@ns'VmIt
 consummate,v,,k'Qns@meIt,k'Ans@meIt,
-consummated,,,k@ns'VmeItId,k'Ans@meItI#d,k'Qns@meIt@d
+consummated,,,k'Qns@meItId,k'Ans@meItI#d,k'Qns@meIt@d
 consummates,,,k'Qns@meIts,k'Ans@meIts,
 consummating,,,k'Qns@meItIN,k'Ans@meItIN,
 consummation,,,kQns@m'eIS@n,kAns@m'eIS@n,
@@ -25127,6 +25134,7 @@ delegates,v,,d'ElIgeIts,,d'El@geIts
 delegating,,,d'ElIgeItIN,,d'El@geItIN
 delegation,,,dElIg'eIS@n,,dEl@g'eIS@n
 delegations,,,dElIg'eIS@nz,,dEl@g'eIS@nz
+delegitimize,,,d'El@dZItImaIz,,
 Deleon,,,dIlI'@n,,d'Eli:@n
 delete,,,dIl'i:t,,
 deleted,,,dIl'i:tId,dIl'i:tI#d,dIl'i:t@d
@@ -26965,7 +26973,7 @@ dilatant,,,daIl'at@nt,,dIl'eIt@nt
 dilatate,,,daIl'ateIt,,dIl'eIteIt
 dilatation,,,daIla#t'eIS@n,,dIl@t'eIS@n
 dilate,,,daIl'eIt,,
-dilated,,,daIl'eItId,daIl'eItI#d,daIl'eIt@d
+dilated,,,daIl'eItId,,daIl'eIt@d
 dilater,,,daIl'eIt@,daIl'eIt@`,
 dilation,,,daIl'eIS@n,,
 dilative,,,daIl'atIv,,daIl'eItIv
@@ -28511,7 +28519,8 @@ doek,,,d'oUk,,d'Uk
 Doenitz,,,d'oUnIts,,d'EnIts
 doer,,,d'u:@,d'u:@`,d'u:r
 doers,,,d'u:@z,d'u:@`z,
-does,,,d'Vz,,
+does,n,,d'Vz,,
+does,v,,d'Vz,,
 doeskin,,,d'oUskIn,,
 doesn't,,,d'Vz@nt,,
 doest,,,d'oUst,,d'u:Ist
@@ -33892,7 +33901,7 @@ exhibitory,,,Egz'IbIt@ri:,Egz'IbItori:,Igz'IbItori:
 exhibits,,,Egz'IbIts,,Igz'Ib@ts
 exhilarant,,,Egz'Ilar@nt,,Igz'Il@`@nt
 exhilarate,,,Egz'Ila#reIt,,Igz'Il@`eIt
-exhilarated,,,Egz'Ila#reItId,,Igz'Il@`eItId
+exhilarated,,,Egz'Ila#reItId,Egz'Ila#reItI#d,Igz'Il@`eItId
 exhilarating,,,Egz'Ila#reItIN,,Igz'Il@`eItIN
 exhilaration,,,EgzIla#r'eIS@n,,IgzIl@`'eIS@n
 exhilarative,,,Egz'Ila#r@tIv,,Igz'Il@`eItIv
@@ -38013,8 +38022,10 @@ freeholder,,,fr'i:hoUld@,fr'i:hoUld@`,
 freeholders,,,fr'i:hoUld@z,fr'i:hoUld@`z,
 freeing,,,fr'i:IN,,
 freelance,,,fr'i:lans,,
+freelanced,,,fr'i:lanst,,
 freelancer,,,fr'i:lans@,fr'i:lans@`,
 freelancers,,,fr'i:lans@z,fr'i:lans@`z,
+freelances,,,fr'i:lansIz,fr'i:lansI#z,
 freelancing,,,fr'i:lansIN,,
 freeloader,,,fr'i:loUd@,fr'i:loUd@`,
 freeloaders,,,fr'i:loUd@z,fr'i:loUd@`z,
@@ -42499,6 +42510,8 @@ hackbuteer,,,hakbju:t'i:@,hakbju:t'Ir,hakb@t'i:r
 hacked,,,h'akt,,
 hacker,,,h'ak@,h'ak@`,
 hackers,,,h'ak@z,h'ak@`z,
+hackerspace,,,h'ak@speIs,h'ak@`speIs,
+hackerspaces,,,h'ak@speIsIz,h'ak@`speIsI#z,
 hackery,,,h'ak@ri:,h'ak@`ri:,h'ak@`i:
 hackie,,,h'aki:,,
 hacking,,,h'akIN,,
@@ -51167,6 +51180,7 @@ itemizes,,,'aIt@maIzIz,,
 itemizing,,,'aIt@maIzIN,,
 items,n,,'aIt@mz,,
 items,v,,'aIt@mz,,
+iterable,,,'aIt@r@b@l,'aIt@`r@b@l,
 iterance,,,'aItr@ns,,'It@`@ns
 iterant,,,'aItr@nt,,'It@`@nt
 iterate,,,'It@reIt,'It@`reIt,'It@`eIt
@@ -62493,7 +62507,8 @@ movieola,,,mu:vI'oUl@,,mu:vi:'oUl@
 movies,,,m'u:vIz,,m'u:vi:z
 moving,,,m'u:vIN,,
 movingly,,,m'u:vINlI,m'u:vINli:,
-mow,,,m'oU,,
+mow,n,,m'oU,,
+mow,v,,m'oU,,
 mowed,,,m'oUd,,
 mower,,,m'oU@,m'oU@`,
 mowers,,,m'oU@z,m'oU@`z,
@@ -65118,7 +65133,7 @@ nucleation,,,nju:klI'eIS@n,nu:klI'eIS@n,nu:kli:'eIS@n
 nuclei,,,nj'u:klIi:,n'u:klIi:,n'u:kli:aI
 nucleic,,,nju:kl'IIk,nu:kl'IIk,nu:kl'eIIk
 nucleolar,,,nju:klI'oUl@,nu:klI'oUl@`,nu:kl'i:@l@`
-nucleolated,,,nj'u:klIQleItId,n'u:klIAleItId,n'u:kli:@leItId
+nucleolated,,,nj'u:klIQleItId,n'u:klIAleItI#d,n'u:kli:@leItId
 nucleole,,,nj'u:klIoUl,n'u:klIoUl,n'u:kli:oUl
 nucleoli,,,nj'u:klIQli:,n'u:klIAli:,n'u:kli:oUli:
 nucleolus,,,nju:klI'oUl@s,nu:klI'oUl@s,nu:kl'i:@l@s
@@ -68111,6 +68126,7 @@ padauk,,,p'adO:k,,pEd'aUk
 padded,,,p'adId,p'adI#d,p'ad@d
 paddies,,,p'adIz,,p'adi:z
 padding,,,p'adIN,,
+paddings,,,p'adINz,,
 paddle,,,p'ad@l,,
 paddleboard,,,p'ad@lbO:d,p'ad@lbord,
 paddled,,,p'ad@ld,,
@@ -70776,6 +70792,7 @@ Petronius,,,pEtr'oUnI@s,,pItr'oUni:@s
 Petropavlovsk,,,p'Etr@pavlVvsk,,pEtroUp'AvlQfsk
 petrosa,,,pEtr'oUs@,,pEtr'oUz@
 petrosal,,,pEtr'oUz@l,,pItr'oUs@l
+petrostate,,,p'Etr@steIt,,
 petrous,,,p'Etr@s,,
 Petrozavodsk,,,p'Etr@zavQdsk,p'Etr@zavAdsk,pEtrQzAv'Qtsk
 pets,,,p'Ets,,
@@ -72797,7 +72814,8 @@ polio,,,p'oUlIoU,,p'oUli:oU
 poliomyelitic,,,poUlIQmIIl'ItIk,poUlIAmIIl'ItIk,poUli:oUmaI@l'ItIk
 poliomyelitis,,,p'oUlIQmIIl'aItIs,p'oUlIAmIIl'aItIs,poUli:oUmaI@l'aItIs
 polis,,,p'oUli:z,,p'oUlIs
-polish,,,p'QlIS,p'AlIS,
+polish,n,,p'QlIS,p'AlIS,
+polish,v,,p'QlIS,p'AlIS,
 polished,,,p'QlISt,p'AlISt,
 polishing,,,p'QlISIN,p'AlISIN,
 politburo,,,pQlItbj'UroU,pAlItbj'UroU,p'Ql@tbjUroU
@@ -78588,7 +78606,8 @@ refurbishment,,,rIf'3:bISm@nt,,ri:f'3:bISm@nt
 refurnish,,,rIf'3:nIS,,ri:f'3:nIS
 refusal,,,rIfj'u:s@l,,ri:fj'u:z@l
 refusals,,,rIfj'u:s@lz,,rIfj'u:z@lz
-refuse,,,rIfj'u:z,,
+refuse,n,,rIfj'u:z,,
+refuse,v,,rIfj'u:z,,
 refused,,,rIfj'u:zd,,r@fj'u:zd
 refusenik,,,rIfj'u:s@nIk,,ri:fj'u:znIk
 refuseniks,,,rIfj'u:s@nIks,,rIfj'u:znIks
@@ -83689,6 +83708,8 @@ scroddled,,,skr'Qd@ld,skr'Ad@ld,
 scrofula,,,skr'QfjUl@,skr'AfjUl@,
 scrog,,,skr'Qg,skr'Ag,
 scroll,,,skr'oUl,,
+scrollbar,,,skr'oUlbA,skr'oUlbAr,
+scrollbars,,,skr'oUlbAz,skr'oUlbArz,
 scrolled,,,skr'oUld,,
 scrolls,,,skr'oUlz,,
 scrollwork,,,skr'oUlw3:k,,
@@ -88128,7 +88149,8 @@ Sovietologists,,,s'oUvaI@t'Ql@dZIsts,s'oUvaI@t'Al@dZIsts,soUvi:@t'Ql@dZIsts
 soviets,,,s'oUvi:@ts,,s'oUvi:Ets
 sovran,,,s'Qvr@n,s'Avr@n,
 sovrans,,,s'Qvr@nz,s'Avr@nz,
-sow,,,s'oU,,
+sow,n,,s'oU,,
+sow,v,,s'oU,,
 sowans,,,s'oU@nz,,
 sowar,,,s'oUO:,s'oUO:r,soUw'Ar
 sowback,,,s'oUbak,,s'aUbak
@@ -91088,6 +91110,7 @@ submaxilla,,,sVbma#ks'Il@,,sVbmaks'Il@
 submaxillary,,,s'Vbma#ksIl@ri:,s'Vbma#ksIl@`ri:,s@bm'aks@lEri:
 submediant,,,s'Vbmi:di:@nt,,s@bm'i:di:@nt
 submental,,,sVbm'Ent@l,,s@bm'Ent@l
+submenu,,,s'VbmEnju:,,
 submerge,,,s@bm'3:dZ,,
 submerged,,,s@bm'3:dZd,,
 submergence,,,s@bm'3:dZ@ns,,
@@ -95648,7 +95671,7 @@ tog,,,t'Qg,t'Ag,
 toga,,,t'oUg@,,
 togaed,,,t'oUg@d,,
 togate,,,t'QgeIt,t'AgeIt,t'oUgeIt
-togated,,,t'QgeItId,t'AgeItId,t'oUdZi:vIr'aIli:z
+togated,,,t'QgeItId,t'AgeItI#d,t'oUdZi:vIr'aIli:z
 together,,,t@g'ED@,t@g'ED@`,
 togetherness,,,t@g'ED@n@s,t@g'ED@`n@s,tUg'ED@`nEs
 toggery,,,t'Qg@ri:,t'Ag@`ri:,t'Qg@`i:
@@ -101396,6 +101419,7 @@ verbid,,,v'3:bId,,
 verbify,,,v'3:bIfaI,,v'3:b@faI
 verbless,,,v'3:bl@s,,v'3:blIs
 verbose,,,v'3:boUz,,v@`b'oUs
+verbosely,,,v'3:boUzli:,,
 verbosity,,,v3:b'QsIti:,v3:b'AsIti:,v@`b'AsIti:
 verboten,,,v'3:boUt@n,,v@`b'oUt@n
 verbs,,,v'3:bz,,
