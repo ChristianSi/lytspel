@@ -113,9 +113,11 @@ The long vowels and diphthongs are written as follows:
   * «oi» /OI/ as in «oil, point, a'void» ‹...avoid›
   * «ou» /aU/ as in «mouth, doun» ‹...down›
   * «uu» /u:/ as in «muun, ex'cluud, gruup» ‹moon, exclude, group›
-  * «iu» /ju:/ as in «valiu, kiut, com'piuter» ‹value, cute, computer›
-  * The spelling «ue» is used in words that are typically spoken with /ju:/
-    in RP, with /u:/ in GA, e.g. «due, nuetrel, tuen» ‹...neutral, tune›
+  * «iu» (/yU/ or /ju:/) as in «valiu, kiut, com'piuter, modiulait» ‹value,
+    cute, computer, modulate›
+  * The spelling «ue» is used in words that are typically spoken with /yU/
+    or /ju:/ in RP, with /u:/ in GA, e.g. «due, nuetrel, tuen» ‹...neutral,
+    tune›
   * «y» /aI/ as in «pryss, styl, dry» ‹price, style...›
 
 The consonants are written as follows:
@@ -249,7 +251,8 @@ Before «r», the vowels are spelled as follows:
     speakers pronounce this in the same way as the «or» /O:r/ in «north»,
     but the two sounds are distinguished in RP.
   * «oor» /Ur/ as in «poor, toor, in'shoorenss» ‹...tour, insurance›
-  * «iur» /jUr/ as in «Iurep, piur, ob'skiur» ‹Europe, pure, obscure›
+  * «iur» (/ju:r/ or /jUr/) as in «Iurep, piur, ob'skiur» ‹Europe, pure,
+    obscure›
   * The spelling «uer» is used in words that are typically spoken with
     /ju:r/ or /jUr/ in RP, with /Ur/ in GA, e.g. «duering, nuerel» ‹during,
     neural›
@@ -552,8 +555,6 @@ Irregular words:
   * «oa» ‹owe› is written somewhat irregularly since a verb with just one
     letter could be confusing (and also to distinguish it from the
     interjection «o» ‹oh›).
-  * «soa» ‹sew *or* sow› is written somewhat irregularly to distinguish it
-    from «so».
   * «to» remains irregular to distinguish it from «tu» ‹too *or* two›.
 
 Uses of the apostrophe:
