@@ -27,7 +27,6 @@ bow,v+n
 buffet,n+v
 buffets,n+v
 certificates,n+v
-closes,n+v
 collect,n+v
 collects,n+v
 combats,n+v
@@ -35,8 +34,6 @@ combines,n+v
 communes,n+v
 compact,n+v
 compacts,n+v
-complements,n+v
-compliments,n+v
 compresses,n+v
 concave,n+v
 concert,aj+n+v
@@ -58,7 +55,6 @@ contrasts,n+v
 converses,n+v
 converts,n+v
 convicts,n+v
-convoys,n+v
 coordinates,n+v
 costumes,n+v
 counterattacks,n+v
@@ -72,13 +68,10 @@ defects,n+v
 delegates,n+v
 desert,aj+n+v
 deserts,n+v
-details,n+v
 deviates,n+v
-dictates,n+v
 digests,n+v
 discounts,n+v
 discourses,n+v
-documents,n+v
 does,n+v
 dove,n+v
 doves,n+v
@@ -93,7 +86,6 @@ expatriates,n+v
 experiments,n+v
 exports,n+v
 extracts,n+v
-eyewitnesses,n+v
 ferment,n+v
 ferments,n+v
 graduate,aj+n+v
@@ -119,11 +111,8 @@ intrigues,n+v
 invalid,aj+n
 invites,n+v
 isolates,n+v
-items,n+v
-laminates,n+v
 leads,n+v
 live,aj+v
-mandates,n+v
 matriculates,n+v
 minute,aj+n
 minutely,aj+av
@@ -149,10 +138,9 @@ permits,n+v
 perpend,n+v
 perpends,n+v
 perverts,n+v
-polish,n+v
+polish,aj+v
 preconcert,aj+v
 predicates,n+v
-presages,n+v
 presents,n+v
 proceeds,n+v
 produces,n+v
@@ -171,14 +159,11 @@ reexport,n+v
 reflex,aj+n+v
 reflexes,n+v
 refuse,n+v
-regiments,n+v
 reincarnate,aj+v
 rejects,n+v
-relays,n+v
 remake,n+v
 replay,n+v
 resaw,n+v
-segments,n+v
 semipro,aj+n
 separates,n+v
 sow,n+v
