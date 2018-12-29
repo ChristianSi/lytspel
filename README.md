@@ -701,6 +701,7 @@ listed in parentheses):
 * ‹drawer›: «dror» (or «drawer» for a person who draws)
 * ‹micrometer›: «my'cromiter» (a measuring device; or «mycromeeter» for the
   millionth part of a meter)
+* ‹prayer›: «prair» (or «prayer» for a person who prays)
 * ‹read›: «reed» (or «red» for the past tense)
 * ‹subsequence›: «subsiquenss» (for some subsequent occurrence; or
   «subseequenss» for a sequence derived from another sequence)
