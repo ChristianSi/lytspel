@@ -895,6 +895,8 @@ sub prepare_pron {
 # * P: use the PhonEng pronunciation
 # * D: don't add the word to the output dictionary (used for rare foreign words or names)
 # * O: leave the spelling of the word unchanged
+# * /...: Use the spelling printed after the slash. This is necessary in a few cases
+#   to handle abbreviations correctly (e.g. ‹kWh› should become «kWo», for «kilewot-our»)
 #
 # Alternatively, a custom pronunciation may be given which is then used to generate the
 # final spelling (assumed to have at least two characters, otherwise a warning is printed
@@ -914,6 +916,8 @@ sub handle_custom_entry {
         $pron = $colref->[4];
     } elsif ($custom_entry eq 'P') {
         $pron = $colref->[5];
+    } elsif ($custom_entry =~ m#/(.*)#) {
+        return $1;                              # use custom spelling given after '/'
     } elsif (length($custom_entry) > 1) {
         $pron = $custom_entry;
     }
@@ -1415,8 +1419,9 @@ sub lookup_part_entry {
             $pos = 'n'
                 if ($part =~ /^(alloy|concave|congress|dove|house|lead|transfer|transfer|wind)$/
                 && $tradspell !~ /(able|^(${part}e?r|fairlead|mislead|leadoff|unwind))$/)
-                || ($part eq 'concert' && $tradspell =~ /er$/)
+                || ($part eq 'concert'      && $tradspell =~ /er$/)
                 || ($part =~ /^mou(se|th)$/ && $tradspell !~ /^$part(ed|e?r|ing|y)$/)
+                || ($part eq 'sow'          && $tradspell =~ /^sowb/)
                 || $tradspell =~ /^(discounter|fluidextract|internship|rebeldom|omnipresent|
                     subcompact|teardrop|semidesert)$/x;
         }
