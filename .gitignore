@@ -1,3 +1,5 @@
+conv/.cache
+conv/__pycache__
 data/cmudict
 data/moby
 data/scowl
