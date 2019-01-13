@@ -1,7 +1,7 @@
 #!/usr/bin/perl -CA
 # Convert phonetic SAMPA spellings into Lytspel.
 #
-# Copyright (c) 2016-18 Christian Siefkes
+# Copyright (c) 2016-2019 Christian Siefkes
 # See accompanying LICENSE.txt file for licensing information.
 #
 # Required modules: Const::Fast, Text::LevenshteinXS, and those listed in PhonEng.pm.
@@ -96,6 +96,10 @@ my $PRE_STRESSED_VOWEL_DREF = build_lc_map('pre-stressed-vowel.csv', 1);
 # List of compounds which are stressed differently from our regular rules.
 # Values indicate which part is the stressed one ('1' or '2').
 my $Compound_Stress_Dict_Ref = build_lc_map($COMPOUND_STRESS, 1);
+
+# TODO Implement function
+my $Start_Pattern_Aref = build_standard_patterns('startspellings.csv');
+my $End_Pattern_Aref   = build_standard_patterns('endspellings.csv');
 
 my $UNCONVERTED_DICT_REF;
 my $CONVERTED_DICT_REF;
@@ -577,6 +581,17 @@ sub insert_stress_marker {
     return insert_after_first $consonants;
 }
 
+# standardize_begin_and_end $word, $tradspell: Possibly standardize the beginning and ending
+# of a respelled word based on the rules listed in 'startspellings.csv' and 'endspellings.csv'
+# in order to reach consistency between similar words. If there is nothing to standardize,
+# the word is returned unchanged.
+sub standardize_begin_and_end {
+    my ($word, $tradspell) = @_;
+    say "$tradspell --> $word" if $tradspell =~ /^(aero|anthropo)/i;
+    # TODO Implement
+    return $word;
+}
+
 # move_stress_marker $word, $tradspell: Move stress marker before the stressed syllable,
 # omitting it if the first vowel is the stressed one.
 sub move_stress_marker {
@@ -815,8 +830,9 @@ OUTER: while ($unconverted) {
             . "unconverted part: /$unconverted/\n";
     }
 
-    $converted = move_stress_marker $converted,     $tradspell;
-    $converted = restore_capitalization $converted, $tradspell;
+    $converted = standardize_begin_and_end $converted, $tradspell;
+    $converted = move_stress_marker $converted,        $tradspell;
+    $converted = restore_capitalization $converted,    $tradspell;
     return $converted;
 }
 
