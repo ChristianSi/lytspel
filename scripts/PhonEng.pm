@@ -1,6 +1,6 @@
 # Shared code for the phoneng scripts.
 #
-# Copyright (c) 2016-18 Christian Siefkes
+# Copyright (c) 2016-2019 Christian Siefkes
 # See accompanying LICENSE.txt file for licensing information.
 #
 # Required modules: Text::CSV_XS.
@@ -56,14 +56,16 @@ sub valid_pos_tag {
     return $tag =~ /^(aj|av|n|prp|v)$/;
 }
 
-# build_lc_map $filename, $pos_tagged: Create and return a mapping from a simple CSV file
-# containing two or three columns (keys and values). If $pos_tagged is true, the 2nd column
+# build_lc_map $filename, $pos_tagged, $valueless: Create and return a mapping from a simple
+# CSV file containing up to three columns (keys and values). If $pos_tagged is true, the 2nd column
 # contains an optional POS tag which becomes part of the key per the 'gen_key' function.
+# Unless $valueless is true, the final (second or third) column contains the value; otherwise,
+# all values are set to 1.
 #
 # All keys are converted to lower-case, while values are used as is. Warns if there are
 # duplicate keys.
 sub build_lc_map {
-    my ($filename, $pos_tagged) = @_;
+    my ($filename, $pos_tagged, $valueless) = @_;
     my %dict;
     open my $fh, '<', $filename or die "Unable to open $filename: $!\n";
     my $colref = $Csv_In->getline($fh);  # Skip header line
@@ -77,9 +79,9 @@ sub build_lc_map {
             die "Invalid POS tag '$tag' for entry '$key' in $filename\n"
                 if $tag && !valid_pos_tag($tag);
             $key = gen_key($key, $tag);
-            $value = $colref->[2];
+            $value = $valueless ? 1 : $colref->[2];
         } else {
-            $value = $colref->[1];
+            $value = $valueless ? 1 : $colref->[1];
         }
 
         warn "Duplicate key '$key' in $filename\n" if exists($dict{$key});
