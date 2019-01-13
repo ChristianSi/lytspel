@@ -11,7 +11,7 @@ license:             BSD3
 license-file:        LICENSE.txt
 author:              Christian Siefkes
 maintainer:          christian@siefkes.net
-copyright:           Copyright (c) 2014-2018 Christian Siefkes
+copyright:           Copyright (c) 2014-2019 Christian Siefkes
 category:            Natural Language Processing
 build-type:          Simple
 extra-source-files:  README.txt
