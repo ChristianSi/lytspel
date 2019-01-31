@@ -53,8 +53,19 @@ def test_lookup_genitive_s():
     assert lookup('He’s') == 'Hi’s'
     assert lookup('boyfriend’s') == 'boyfrend’s'
     # Upper case words too
+    assert lookup("HE'S") == 'HI’S'
     assert lookup("HE's") == 'HI’s'
-    assert lookup('He’s') == 'Hi’s'
+
+
+def  test_lookup_contractions():
+    assert lookup("'s") == '’s'
+    assert lookup("’s") == '’s'
+    assert lookup("'d") == '’d'
+    assert lookup("’d") == '’d'
+    assert lookup("'ll") == '’l'
+    assert lookup("'re") == '’r'
+    assert lookup("'ve") == '’v'
+    assert lookup("’ve") == '’v'
 
 
 def test_lookup_diacritics():
@@ -72,6 +83,42 @@ def test_lookup_diacritics():
     assert lookup('œuvre') == 'uuvra'
     assert lookup('Œuvre') == 'Uuvra'
     assert lookup('tōfu') == 'toafu'
+
+
+def test_lookup_redirects():
+    """Test that redirects are resolved correctly."""
+    assert lookup('Anglicised') == 'Anglicysd'
+    assert lookup('barques') == 'barks'
+    assert lookup('calking') == 'cauking'
+    assert lookup('castors') == 'casters'
+    assert lookup('Centre') == 'Senter'
+    assert lookup('Compositae') == 'Com’posit'
+    assert lookup('ESOP') == 'EESSOP'
+    assert lookup('Ier') == 'Yr'
+    assert lookup('OKs') == 'Oa’cays'
+    assert lookup('paralyses') == 'parrelyses'
+    assert lookup('prise') == 'prys'
+    assert lookup('reanalyses') == 'ri’anelyses'
+
+
+def test_convert_para_simple():
+    assert lc.convert_para('This is a sentence.') == 'Dhiss is a sentenss.'
+    assert lc.convert_para('Some words in "double" and \'half quotation\' marks.') ==\
+        'Sum wurds in "dubl" and \'haf quoa’taition\' marks.'
+    assert lc.convert_para('Some words in typographic “double” and ‘half quotation’ marks.') ==\
+        'Sum wurds in typo’grafic “dubl” and ‘haf quotation’ marks.'
+
+
+def test_convert_para_contractions():
+    assert lc.convert_para("Let's hope contractions are handled correctly wheresoe'er they'll occur, don't you think so, O'Connell?") ==\
+        'Let’s hoap con’tractions ar handld ke’rectli wairso’air dhay’l o’cur, doan’t iu think so, O’Conel?'
+    assert lc.convert_para('Let’s hope contractions are handled correctly wheresoe’er they’ll occur, don’t you think so, O’Connell?') ==\
+        'Let’s hoap con’tractions ar handld ke’rectli wairso’air dhay’l o’cur, doan’t iu think so, O’Conel?'
+    assert lc.convert_para("He's happy to see my boyfriend's sister.") ==\
+        'Hi’s hapi to see my boyfrend’s sister.'
+    assert lc.convert_para('He’s happy to see my boyfriend’s sister.') ==\
+        'Hi’s hapi to see my boyfrend’s sister.'
+
 
 def test_convert_para_pos_tagged():
     assert lc.convert_para('I did not object to the object.') == 'Y did not ob’ject to dhe object.'
@@ -95,40 +142,34 @@ def test_convert_para_pos_tagged():
         'Y had to sub’ject dhe subject to a seerees ov tests.'
     assert lc.convert_para('Don’t desert me here in the desert!') ==\
         'Doan’t di’surt mi heer in dhe desert!'
+    assert lc.convert_para('The outright prohibition has caused smoking to be banned outright.') ==\
+            'Dhe outryt proe’bition has causd smoaking to bee band out’ryt.'
 
 
-def test_tokenize_simple():
-    assert '|'.join(lc.tokenize_text('This is a sentence.')) == 'This| |is| |a| |sentence|.'
-    assert '|'.join(lc.tokenize_text('A sentence without final punctuation')) ==\
-            'A| |sentence| |without| |final| |punctuation'
-    assert '|'.join(lc.tokenize_text('Sentence with-some inner, punctuation;this should - not! — cause problems?Let    us\thope so!')) ==\
-            'Sentence| |with|-|some| |inner|, |punctuation|;|this| |should| - |not|! — |cause| |problems|?|Let|    |us|\t|hope| |so|!'
-    assert '|'.join(lc.tokenize_text('Some words in "double" and \'half quotation\' marks.')) ==\
-            'Some| |words| |in| "|double|" |and| \'|half| |quotation|\' |marks|.'
-    assert '|'.join(lc.tokenize_text('Some words in typographic “double” and ‘half quotation’ marks.')) ==\
-            'Some| |words| |in| |typographic| “|double|” |and| ‘|half| |quotation|’ |marks|.'
-    assert '|'.join(lc.tokenize_text('This is a sentence.')) == 'This| |is| |a| |sentence|.'
-    assert '|'.join(lc.tokenize_text(':::sentence with leading punctuation:::')) ==\
-            ':::|sentence| |with| |leading| |punctuation|:::'
+def test_convert_para_nt_contractions():
+    assert lc.convert_para("Don't you think I won't do it, because I will!") ==\
+            'Doan’t iu think Y woan’t du it, bi’caus Y wil!'
+    assert lc.convert_para('Don’t you think I won’t do it, because I will!') ==\
+            'Doan’t iu think Y woan’t du it, bi’caus Y wil!'
+    assert lc.convert_para("You mustn't believe that they can't do such a thing.") ==\
+            'Iu musn’t bi’leev dhat dhay can’t du such a thing.'
+    assert lc.convert_para('You mustn’t believe that they can’t do such a thing.') ==\
+            'Iu musn’t bi’leev dhat dhay can’t du such a thing.'
+
+def test_convert_para_initial_nt():
+    """Leading "n't", though certainly irregular, shouldn't cause problems.
+
+    Rather, it should be treated as an unknown token and returned as is.
+    """
+    assert lc.convert_para("N't a good way to open a sentence.") ==\
+            "N't a good way to oapen a sentenss."
+    assert lc.convert_para('N’t a good way to open a sentence.') ==\
+            'N’t a good way to oapen a sentenss.'
 
 
-def test_tokenize_contractions():
-    assert '|'.join(lc.tokenize_text("Let's hope contractions are handled correctly wheresoe'er they'll occur, don't you think so, O'Connell?")) ==\
-        "Let's| |hope| |contractions| |are| |handled| |correctly| |wheresoe'er| |they'll| |occur|, |don't| |you| |think| |so|, |O'Connell|?"
-    assert '|'.join(lc.tokenize_text('Let’s hope contractions are handled correctly wheresoe’er they’ll occur, don’t you think so, O’Connell?')) ==\
-        'Let’s| |hope| |contractions| |are| |handled| |correctly| |wheresoe’er| |they’ll| |occur|, |don’t| |you| |think| |so|, |O’Connell|?'
-    assert '|'.join(lc.tokenize_text("He's happy to see my boyfriend's sister.")) ==\
-        "He's| |happy| |to| |see| |my| |boyfriend's| |sister|."
-    assert '|'.join(lc.tokenize_text('He’s happy to see my boyfriend’s sister.')) ==\
-        'He’s| |happy| |to| |see| |my| |boyfriend’s| |sister|.'
-
-
-def test_tokenize_diacritics():
-    assert '|'.join(lc.tokenize_text('Mañana me and my naïve doppelgänger will eat tōfu in the café of an élite hôtel.')) ==\
-      'Mañana| |me| |and| |my| |naïve| |doppelgänger| |will| |eat| |tōfu| |in| |the| |café| |of| |an| |élite| |hôtel|.'
-    assert '|'.join(lc.tokenize_text('MAÑANA me and my naïve doppelGÄNGER will eat tōfu in the CAFÉ of an Élite Hôtel.')) ==\
-      'MAÑANA| |me| |and| |my| |naïve| |doppelGÄNGER| |will| |eat| |tōfu| |in| |the| |CAFÉ| |of| |an| |Élite| |Hôtel|.'
-
+def test_convert_para_diacritics():
+    assert lc.convert_para('Mañana me and my naïve doppelgänger will eat tōfu in the café of an élite hôtel.') ==\
+      'Maa’nyaanaa mi and my naa’eev dopelganger wil eet toafu in dhe ca’fay ov an i’leet hoa’tel.'
 
 
 def test_Is_word_simple():
@@ -143,6 +184,17 @@ def test_Is_word_simple():
     assert not lc.is_word("'")
     assert not lc.is_word('’')
     assert not lc.is_word('“')
+
+
+def test_Is_word_apostrophe():
+    """Words starting with an apostrophe are recognized as such.
+
+    Spacy's tokenizer produces such words.
+    """
+    assert lc.is_word("'d")
+    assert lc.is_word("'re")
+    assert lc.is_word('’d"')
+    assert lc.is_word('’re')
 
 
 def test_is_word_diacritics():
