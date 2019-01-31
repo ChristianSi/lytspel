@@ -97,9 +97,8 @@ my $PRE_STRESSED_VOWEL_DREF = build_lc_map('pre-stressed-vowel.csv', 1);
 # Values indicate which part is the stressed one ('1' or '2').
 my $Compound_Stress_Dict_Ref = build_lc_map($COMPOUND_STRESS, 1);
 
-# TODO Implement function
-my $Start_Pattern_Aref = build_standard_patterns('startspellings.csv');
-my $End_Pattern_Aref   = build_standard_patterns('endspellings.csv');
+my $Start_Pattern_Aref = build_standard_patterns('startpron.csv');
+my $End_Pattern_Aref   = build_standard_patterns('endpron.csv');
 
 my $UNCONVERTED_DICT_REF;
 my $CONVERTED_DICT_REF;
@@ -131,6 +130,26 @@ my %SUFFIXES;
 
 # XXX Adapt decompose to use prefix|suffix.csv instead of .list (note that some prefixes,
 # e.g. ‹di›, are NOT auto-recognized but have been added manually in compounds-manual.csv)
+
+# build_standard_patterns $filename Create an array of leading or trailing pronunciations
+# that should be standardized. Returns a reference to that array. Each array element is a
+# hashref with tree entries: 'trad' (the tradspell), 'pron' (the current pronunciation),
+# 'fixed_pron' (the pronunciation to use instead). For example, {trad => 'ate',
+# pron => 'It', fixed_pron => '@t'} means that words ending (or starting) with 'ate'
+# should be pronounced /@t/ instead of /It/.
+sub build_standard_patterns {
+    my $filename     = shift;
+    my $pattern_aref = [];
+    open my $fh, '<', $filename or die "Unable to open $filename $!\n";
+    my $colref = $CSV_IN->getline($fh);  # Skip header line
+
+    while ($colref = $CSV_IN->getline($fh)) {
+        push @$pattern_aref,
+            {trad => $colref->[0], fixed_pron => $colref->[1], pron => $colref->[2]};
+    }
+
+    return $pattern_aref;
+}
 
 # build_mapping: Create and return a mapping from SAMPA to the standard Lytspel spellings.
 # Also returns the length of the longest key in the map and populates %Lytspel_Set.
@@ -194,6 +213,42 @@ sub build_unconverted_dict_and_case_redirects {
 
     close $infh;
     return \%unconverted_dict, \%case_redirect;
+}
+
+# standardize_begin_and_end_of_pron $pron, $tradspell: Possibly standardize the beginning
+# and ending of a pronunciation based on the rules listed in 'startpron.csv' and
+# 'endpron.csv' in order to reach consistency between similar-sounding words.
+# If there is nothing to standardize, the word is returned unchanged.
+sub standardize_begin_and_end_of_pron {
+    my ($pron, $tradspell) = @_;
+    my $ts_lower = lc $tradspell;
+
+    # TODO Adjust
+    # Check if one of the start patterns matches
+    ##for my $rule (@$Start_Pattern_Aref) {
+    ##    if (starts_with($ts_lower, $rule->{trad}) && starts_with($pron, $rule->{pron})) {
+    ##        $pron = $rule->{fixed_pron} . substr($pron, length $rule->{pron});
+    ##        last;  # only one pattern can match
+    ##    }
+    ##}
+
+    # Ditto end patterns
+    for my $rule (@$End_Pattern_Aref) {
+        if (ends_with($ts_lower, $rule->{trad})) {
+            my $pron_pattern = $rule->{pron} . '$';
+
+            # Prevent vowels from matching if stressed or if they are the second letter of a
+            # digraph
+            if (starts_with($pron_pattern, 'I')) {
+                $pron_pattern = "(?<!['aeO])" . $pron_pattern;
+            }
+
+            # Check if rule can be applied -- if yes, we're done here, since only one can match
+            last if $pron =~ s/$pron_pattern/$rule->{fixed_pron}/;
+        }
+    }
+
+    return $pron;
 }
 
 # delsep $str, $hyphens_too: Delete any occurrences of '=' (used as separator) from a string.
@@ -581,14 +636,35 @@ sub insert_stress_marker {
     return insert_after_first $consonants;
 }
 
+# starts_with $haystack, $needle: Compares two strings, checking if $haystack starts with $needle.
+sub starts_with {
+    my ($haystack, $needle) = @_;
+    return substr($haystack, 0, length $needle) eq $needle;
+}
+
+# ends_with $haystack, $needle: Compares two strings, checking if $haystack ends with $needle.
+sub ends_with {
+    my ($haystack, $needle) = @_;
+    return substr($haystack, -(length $needle)) eq $needle;
+}
+
 # standardize_begin_and_end $word, $tradspell: Possibly standardize the beginning and ending
-# of a respelled word based on the rules listed in 'startspellings.csv' and 'endspellings.csv'
+# of a respelled word based on the rules listed in 'startpron.csv' and 'endpron.csv'
 # in order to reach consistency between similar words. If there is nothing to standardize,
 # the word is returned unchanged.
 sub standardize_begin_and_end {
     my ($word, $tradspell) = @_;
-    say "$tradspell --> $word" if $tradspell =~ /^(aero|anthropo)/i;
-    # TODO Implement
+    my $ts_lower = lc $tradspell;
+
+    # TODO Eliminate
+    # Check if one of the start patterns matches
+    for my $rule (@$Start_Pattern_Aref) {
+        if (starts_with($ts_lower, $rule->{trad}) && starts_with($word, $rule->{pron})) {
+            $word = $rule->{fixed_pron} . substr($word, length $rule->{pron});
+            last;  # only one pattern can match
+        }
+    }
+
     return $word;
 }
 
@@ -799,6 +875,7 @@ sub restore_capitalization {
 sub convert_pron {
     my ($pron, $tradspell, $pos) = @_;
     return '' unless $pron;  # Empty input
+    $pron = standardize_begin_and_end_of_pron $pron, $tradspell;
 
     my $unconverted = $pron;
     my $converted   = '';
@@ -922,7 +999,7 @@ sub handle_custom_entry {
     $PROCESSED_CUSTOM_SET{gen_key(lc $tradspell, $pos)} = 1;
 
     return $tradspell if $custom_entry eq 'O';  # Leave word unchanged
-    return '' if $custom_entry eq 'D';          # Skip word altogether
+    return '' if $custom_entry eq 'D';          # Delete word
 
     my $pron = '';
 
@@ -1724,9 +1801,18 @@ sub convert_dict {
         my $colref = $UNCONVERTED_DICT_REF->{$key};
 
         if (scalar @$colref < 4) {
-            # Nothing to convert, just output and store line as is
-            $CSV_OUT->print($outfh, $colref);
-            $CONVERTED_DICT_REF->{$key} = $colref;
+            # Redirect: Nothing to convert, just output and store line as is
+            # (unless the custom dictionary says the entry should be deleted)
+            my $tradspell = $colref->[0];
+            my $custom_entry = $CUSTOM_DICT_REF->{lc $tradspell} // '';
+
+            if ($custom_entry eq 'D') {
+                $PROCESSED_CUSTOM_SET{lc $tradspell} = 1;
+            } else {
+                $CSV_OUT->print($outfh, $colref);
+                $CONVERTED_DICT_REF->{$key} = $colref;
+            }
+
             next;
         }
 
