@@ -17,26 +17,43 @@ PERFORMANCE OF THIS SOFTWARE.
 """
 
 
-from typing import Dict, List, Sequence, TypeVar
 import csv
+from inspect import trace
 from os import path
 import re
-from sys import argv
+from sys import argv, exc_info
+from typing import Dict, List, Sequence, TextIO, TypeVar
+import warnings
 from warnings import warn
+from zipfile import is_zipfile, ZipFile
 
+from lxml import etree, html
 import spacy
 
 
 # Constants and type variables
+SCRIPTNAME = 'lytspelconv'
+
 LOWERCASE_LETTER_PAT = '[a-záàăâǎåäãąāảæćĉčċçďđéèĕêěëẽęēẻǵğĝǧġḡĥȟḧħíìĭîǐïĩįīĵǰḱǩĺľłḹḿńǹňñóòŏôǒöõøǫōỏœṕŕřśŝšşßťẗúùŭûǔůüũųūủṽẃẁẘẅẍýỳŷẙÿỹȳỷźẑž]'
-TOKEN_RE = re.compile('(' + LOWERCASE_LETTER_PAT + "(?:['’]?" + LOWERCASE_LETTER_PAT +')*)',
-        re.IGNORECASE)
-STARTS_WITH_LETTER_RE = re.compile('^' + LOWERCASE_LETTER_PAT, re.IGNORECASE)
+
+BLOCK_LEVEL_TAGS = set(('address', 'article', 'aside', 'blockquote', 'canvas', 'dd', 'div',
+        'dl', 'dt', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1', 'h2',
+        'h3', 'h4', 'h5', 'h6', 'header', 'hr', 'li', 'main', 'nav', 'noscript', 'ol',
+        'output', 'p', 'pre', 'section', 'table', 'tfoot', 'ul', 'video'))
 
 T = TypeVar('T')
 
 
 # Initialization code
+
+if __name__ == '__main__':
+    def compact_warning(message, category, filename, lineno, line=None):
+        """Print warnings without showing the warning message line itself."""
+        fname = path.split(filename)[1]
+        return '{}:{}: {}: {}\n'.format(fname, lineno, category.__name__, message)
+
+    warnings.formatwarning = compact_warning
+
 
 def dict_filename() -> str:
     """Return the name of the dictionary file.
@@ -79,10 +96,12 @@ def load_dict() -> Dict[str, str]:
         csvreader = csv.reader(csvfile)
         next(csvreader)  # skip header line
         result = {}
+        redirects = {}  # will be resolved later
 
         for row in csvreader:
             tradspell = get_elem(row, 0)
             pos = get_elem(row, 1)
+            redirect = get_elem(row, 2)
             lytspel = get_elem(row, 3)
 
             if tradspell and lytspel:
@@ -100,7 +119,19 @@ def load_dict() -> Dict[str, str]:
                 if is_mixed_case(lytspel):
                     mixed_dict[tradspell] = lytspel
 
-            # TODO Add support for Redirects (2)
+            elif tradspell and redirect:
+                redirects[tradspell.lower()] = redirect.lower()
+            else:
+                warn('Unexpected/malformed CSV row: {}'.format(','.join(row)))
+
+        # Resolve redirects
+        for key, target in redirects.items():
+            value = result.get(target)
+            if value:
+                result[key] = value
+            else:
+                warn("Target '{}' of redirect '{}' missing!".format(target, key))
+
         return result
 
 
@@ -242,17 +273,26 @@ def lookup(word: str, spacy_pos: str) -> str:
     word = asciify(word)
     genitiveS = ''
 
-    if re.search("'s$", word, re.IGNORECASE):
+    if re.search(".'s$", word, re.IGNORECASE):
         # Strip final 's (genitive or contraction) and remember for later (handling case)
         genitiveS = word[-2:]
         word = word[:-2]
 
-    result = ls_dict.get(word.lower())
-    if result is None:
-        return result
+    lower = word.lower()
 
-    if isinstance(result, dict):
-        result = find_pos_tagged_entry(result, spacy_pos)
+    if lower in ("'ll", "'re", "'ve"):
+        # Contraction tokens produced by Spacy: discard the last letter
+        result = lower[:-1]
+    elif re.match("'.$", lower):
+        # Single-letter contraction token: return as is
+        result = lower
+    else:
+        result = ls_dict.get(lower)
+        if result is None:
+            return result
+
+        if isinstance(result, dict):
+            result = find_pos_tagged_entry(result, spacy_pos)
 
     if re.match("[A-Z']+$", word):
         result = result.upper()  # ALL_CAPS
@@ -269,33 +309,23 @@ def lookup(word: str, spacy_pos: str) -> str:
     return result
 
 
-
-def tokenize_text(text: str) -> List[str]:
-    """Tokenize a string, returning an array of words and puncuation.
-
-    Words must start and end with a letter and may contain apostrophes.
-    """
-    # TODO Obsolete??
-    result = TOKEN_RE.split(text)
-    # Remove first and/or last element if they are empty
-    if result[0] == '':
-        result.pop(0)
-    if result[-1] == '':
-        result.pop()
-    return result
-
-
 def is_word(token: str) -> bool:
-    """Check if a token is a word. Words must start with a letter."""
-    return STARTS_WITH_LETTER_RE.match(token)
+    """Check if a token is a word.
+
+    Words start with a letter, or with an apostrophe followed by a letter."""
+    return re.match("['’]?" + LOWERCASE_LETTER_PAT, token, re.IGNORECASE)
 
 
-def convert_para(text: str) -> str:
+def convert_para(text: str, make_foreign_lang_text: bool = True) -> str:
     """Convert a paragraph.
 
-    If a large part of the words in the paragraph is unknown, it is assumed to be written
-    in a foreign language and returned unchanged.
+    If 'make_foreign_lang_text' is True and a large part of the words in the paragraph is
+    unknown, the paragraph is assumed to be written in a foreign language and returned
+    unchanged.
     """
+    if not text:
+        return text  # Empty or None, nothing to do
+
     doc = nlp(text)
     tokens = []
     known_words = 0
@@ -308,7 +338,8 @@ def convert_para(text: str) -> str:
             # Spacy treats n't (as in don't etc.) as a separate word, but we look it up together
             # with the preceding word because the joined pronounciation (and hence spelling)
             # is sometimes different
-            tokens.pop()
+            if tokens:
+                tokens.pop()
             token = lasttok + token
 
         if is_word(token):
@@ -328,18 +359,145 @@ def convert_para(text: str) -> str:
         if entry.whitespace_:
             tokens[-1] += entry.whitespace_
 
-    if unknown_words <= known_words:
-        # At least half of the words are known
+    if not make_foreign_lang_text or unknown_words <= known_words:
+        # We shouldn't make the foreign language test OR at least half of the words are known
         return ''.join(tokens)
     else:
-        return text  # return text unchanged
+        return text  # Return text unchanged
 
 
-def convert_file(filename: str) -> None:
-    """Convert the file with the specified name."""
+def determine_file_type(filename: str) -> str:
+    """Inspect the contents of a file to determine the likely file type.
+
+    Returns either 'epub', 'html', 'txt', or None if the file is clearly not of any of these
+    types. However, 'txt' is used as a fairly general fallback hence it's quite possible that
+    a file labeled as 'txt' is actually something else
+    """
+    # Check if it's an epub file
+    if is_zipfile(filename):
+        with ZipFile(filename) as zip:
+            bytes = b''
+
+            try:
+                bytes = zip.read('mimetype')
+            except KeyError:
+                pass  # Not an epub file
+
+            if bytes.decode().startswith('application/epub+zip'):
+                return 'epub'
+            else:
+                return None
+
+    with open(filename) as file:
+        for line in file:
+            line = line.strip()
+            if not line: continue  # Empty line, inspect next one
+            if re.match("<[!?h]", line, re.IGNORECASE):
+                # File seems to start with a DOCTYPE or XML declaration, HTML comment or
+                # <html> tag
+                return 'html'
+            else:
+                break
+
+    return 'txt'
+
+
+def convert_html_elem(elem: html.HtmlElement) -> None:
+    """Recursively convert an element in an HTML document and its children.
+
+    Whether to convert textual content is decided on the level of block-level tags (such
+    as 'h1', 'blockquote', 'p') that do NOT contain any directly nested block-level tags
+    (e.g. if an 'ol' contains 'li' elements, the decision will be made for each of the
+    latter independently, not for the whole 'ol'). If a large part of the text embedded
+    in such an element seems to be in a foreign language, the whole element will NOT be
+    converted.
+    """
+    # Check if we should made the foreign-language test as this level
+    if elem.tag in BLOCK_LEVEL_TAGS:
+        decide_on_conversion = True
+
+        for child in elem:
+            if child.tag in BLOCK_LEVEL_TAGS:
+                decide_on_conversion = False
+                break
+
+        if decide_on_conversion:
+            # Ask convert_para as "oracle" whether the textual content looks English or foreign
+            full_text = str(elem.text_content())
+            if convert_para(full_text) == full_text:
+                # Oracle said "foreign", so we skip this part of the document tree
+                return
+
+    # Convert immediate content
+    elem.text = convert_para(elem.text, False)
+
+    # Convert a few textual attributes, if they are present
+    for attrib in ('alt', 'title'):
+        if attrib in elem.attrib:
+            elem.attrib[attrib] = convert_para(elem.attrib[attrib])
+
+    # Convert child elements (except comments and those that don't contain normal text)
+    for child in elem:
+        if not (isinstance(child, html.HtmlComment)
+                or isinstance(child, html.HtmlProcessingInstruction)
+                or child.tag in ('script', 'style')):
+            convert_html_elem(child)
+        child.tail = convert_para(child.tail, False)
+
+
+def convert_html_document(filename: str) -> None:
+    """Convert a HTML file."""
+    with open(filename) as file:
+        doc = html.parse(file)
+        root = doc.getroot()
+        title = root.find('.//title')
+        title.text = convert_para(title.text)
+        convert_html_elem(root.find('body'))
+        print(html.tostring(doc, encoding='utf8').decode('utf8'))
+
+
+def convert_epub(filename: str) -> None:
+    """Convert an epub file.
+
+    If the input file is called 'FILE.epub', the output will be stored in a new file called
+    'FILE-lytspel.epub'.
+    """
+    (root, ext) = path.splitext(filename)
+    outfile = '{}-lytspel{}'.format(root, ext)
+
+    with ZipFile(filename, 'r') as zin:
+        # Find the contents metafile
+        bytes = zin.read('META-INF/container.xml')
+        tree = etree.fromstring(bytes)
+        opfname = tree.xpath('n:rootfiles/n:rootfile/@full-path',
+                namespaces={'n': 'urn:oasis:names:tc:opendocument:xmlns:container'})[0]
+
+        # Find the XML files that need conversion
+        bytes = zin.read(opfname)
+        tree = etree.fromstring(bytes)
+        items = tree.xpath('/p:package/p:manifest/p:item',
+                namespaces={'p': 'http://www.idpf.org/2007/opf'})
+        for item in items:
+            print('file: {}, type: {}'.format(item.attrib['href'], item.attrib['media-type']))
+        ## TODO Relevant media types: application/xhtml+xml, application/x-dtbncx+xml (NCX file).
+
+        # Copy files to output archive, converting them if needed
+        with ZipFile(outfile, 'w') as zout:
+            zout.comment = zin.comment  # Preserve the comment, if any
+
+            for item in zin.infolist():
+                # TODO Check if it's one of the files that need conversion
+                ##if item.filename != filename:
+                zout.writestr(item, zin.read(item.filename))
+
+    print('{}: Output written to {}'.format(SCRIPTNAME, outfile))
+
+
+def convert_text_document(filename: str) -> None:
+    """Convert a plain text file."""
     para = ''
 
-    with open(filename, 'r') as file:
+    with open(filename) as file:
         for line in file:
             line = line.rstrip()
             # Paragraphs are considered to be separated by empty lines.
@@ -354,8 +512,9 @@ def convert_file(filename: str) -> None:
                     para += '\n'
                 para += line
             else:                 # empty line
-                print(convert_para(para))
-                para = ''
+                if para:
+                    print(convert_para(para))
+                    para = ''
                 print()
 
         # Convert final paragraph, if any
@@ -363,92 +522,61 @@ def convert_file(filename: str) -> None:
             print(convert_para(para))
 
 
+def convert_file(filename: str) -> None:
+    """Convert the file with the specified name.
+
+    Recognized file types are epub, HTML and plain text.
+    """
+    file_type = determine_file_type(file)
+    if file_type == 'epub':
+        convert_epub(file)
+    elif file_type == 'html':
+        convert_html_document(file)
+    elif file_type == 'txt':
+        convert_text_document(file)
+    elif file_type is None:
+        exit('{}: Cannot convert {} (unsupported file type)'.format(SCRIPTNAME, filename))
+    else:
+        raise ValueError('Unexpected file type: {}'.format(file_type))
+
+
 if __name__ == '__main__':
     try:
-        load_dict()
         for file in argv[1:]:
             convert_file(file)
     except Exception as e:
-        error_desc = '{}: {}'.format(e.__class__.__name__, e)
-        exit(error_desc)
+        tb = exc_info()[2]
+        # Find highest stack frame in the current file (closest to source of exception)
+        frames = trace()
+        last_useful_frame = frames[0]
+        current_file = last_useful_frame.filename
+
+        for frame in frames[1:]:
+            if frame.filename == current_file:
+                last_useful_frame = frame
+            else:
+                break  # Stepping out of current file
+
+        fname = path.split(current_file)[1]
+        exit('{}:{}: {}: {}'.format(fname, last_useful_frame.lineno, e.__class__.__name__, e))
 
 
 # TODO Handle and test:
-# * POS tags
-# * Redirects
-# * Also convert HTML (see below) and epub files; output in the latter case should be stored in
-#   FILE-lytspel.epub
 # * Special case: I and I'm should only remain capitalized at the beginning of sentences
+#   (cf. token.is_sent_start: bool, None if unknown)
 # * Might require additional POS tag: ‹re› should become  «ri» if used as a hyphenated prefix
 # * Might require additional POS tag: US (capitalized) should remain unchanged
-# * Recognize URLs in text and treat as non-words (sample: IRC logs)
+# * -u/--unknown Option to list unknown words (with frequency count)
+# * Convert module to class.
+# * Allow converting text passed on command line (-c flag)
 # * Use pylint to check the coding style
 # * Add button to turn conversion off and on
 # * Also rewrite parts of a page loaded later (e.g. due to scrolling; sample: Youtube
 #   comments); possibly use a custom data-\* attribute; can be read and written as
 #   elem.dataset.NAME, e.g. elem.dataset.lytspel = conv|seen
+# * Accept '-' argument to read stdin (file type recognition should still work)
 # * If called w/o arguments open dialog that allows the conversion of local txt/html/epub files,
 #   always writing the output to a file
 # * Add a dialog for converting words and sentences to Lytspel
 # * Package for pip3 and announce to the world
-# * Add drag-and-drop support (on Windows),
-
-# const ATTRIBS_TO_CONVERT = ['alt', 'title'];
-# const TAGS_TO_SKIP = ['script', 'style'];
-# 
-# // --- Primary helpers and callbacks ---
-# 
-# // Iterate the child nodes of an node. Element nodes are traversed recursively, while the
-# // content of text nodes is tokenize and all word tokens are added to `wordset`.
-# // Textual content of any ATTRIBS_TO_CONVERT is collected as well.
-# function collectWordsFromChildNodes(node, wordset) {
-#   // Collect from child nodes
-#   for (const child of node.childNodes) {
-#     switch(child.nodeType) {
-#       case Node.ELEMENT_NODE:
-#         if (! skipElement(child)) collectWordsFromChildNodes(child, wordset);
-#         break;
-#       case Node.TEXT_NODE:
-#         collectWords(child.nodeValue, wordset);
-#         break;
-#     }
-#   }
-# 
-#   // Collect from relevant attributes
-#   for (const attrib of ATTRIBS_TO_CONVERT) {
-#     collectWords(node.getAttribute(attrib), wordset);
-#   }
-# }
-# 
-# // Callback that converts the current document (including its title) to Lytspel.
-# function convertToLytspel(words) {
-#   convertChildNodes(document.body, words);
-#   document.title = convertText(document.title, words);
-# }
-# 
-# // Check whether an element should be skipped (consults the TAGS_TO_SKIP array).
-# function skipElement(elem) {
-#   return TAGS_TO_SKIP.includes(elem.tagName.lower());
-# }
-# 
-# // Iterate the child nodes of an node. Element nodes are traversed recursively, while the
-# // content of text nodes is converted to Lytspel. Textual content of any ATTRIBS_TO_CONVERT
-# // is converted as well.
-# function convertChildNodes(node, words) {
-#   // Convert child nodes
-#   for (const child of node.childNodes) {
-#     switch(child.nodeType) {
-#       case Node.ELEMENT_NODE:
-#         if (! skipElement(child)) convertChildNodes(child, words);
-#         break;
-#       case Node.TEXT_NODE:
-#         child.nodeValue = convertText(child.nodeValue, words);
-#         break;
-#     }
-#   }
-#   // Convert relevant attributes
-#   for (const attrib of ATTRIBS_TO_CONVERT) {
-#     if (! node.hasAttribute(attrib)) continue;  // Nothing to do
-#     node.setAttribute(attrib, convertText(node.getAttribute(attrib), words));
-#   }
-# }
+# * Add drag-and-drop support (esp. for Windows)
