@@ -12,7 +12,6 @@ affiliates,n+v
 affixes,n+v
 affricate,n+v
 affricates,n+v
-afternoon,aj+n
 agape,aj+n
 allies,n+v
 alloys,n+v
@@ -34,12 +33,16 @@ combines,n+v
 communes,n+v
 compact,n+v
 compacts,n+v
+complex,aj+n+v
+complexes,n+v
 compresses,n+v
 concave,n+v
 concert,aj+n+v
 concerts,n+v
 conducts,n+v
 conflicts,n+v
+conglomerate,aj+n+v
+conglomerates,n+v
 congresses,n+v
 conjugates,n+v
 conscripts,n+v
@@ -47,7 +50,7 @@ consists,n+v
 console,n+v
 consoles,n+v
 constructs,n+v
-content,n+v
+content,aj+n+v
 contents,n+v
 contests,n+v
 contracts,n+v
