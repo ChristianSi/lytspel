@@ -38,10 +38,12 @@ def test_lookup_case_restored():
 
 def test_lookup_apostrophes():
     """Both normal and typographic apostrophes should be accepted."""
-    assert lookup("I'm") == 'Y’m'
-    assert lookup('I’m') == 'Y’m'
+    assert lookup("we'd") == 'wi’d'
+    assert lookup('we’d') == 'wi’d'
     assert lookup("it'll") == 'it’l'
     assert lookup('it’ll') == 'it’l'
+    assert lookup("I'm") == 'y’m'
+    assert lookup('I’m') == 'y’m'
     assert lookup("O'Connell") == 'O’Conel'
     assert lookup('O’Connell') == 'O’Conel'
 
@@ -101,12 +103,69 @@ def test_lookup_redirects():
     assert lookup('reanalyses') == 'ri’anelyses'
 
 
+def test_lookup_nlp_needed_pos():
+    """Test that lookup signals its need for a POS tag if one is necessary but not given."""
+    assert lookup('increase') is lc.NLP_NEEDED
+    assert lookup('misuse') is lc.NLP_NEEDED
+
+
+def test_lookup_pos_tagged():
+    """Test that POS-tagged words are lookup up correctly."""
+    assert lc.lookup('increase', 'NOUN') == 'increess'
+    assert lc.lookup('increase', 'VERB') == 'in’creess'
+    assert lc.lookup('misuse', 'NOUN') == 'mis’iuss'
+    assert lc.lookup('misuse', 'VERB') == 'mis’ius'
+
+
+def test_tokenize_simple():
+    assert '|'.join(lc.tokenize_text('This is a sentence.')) == 'This| |is| |a| |sentence|.'
+    assert '|'.join(lc.tokenize_text('A sentence without final punctuation')) ==\
+            'A| |sentence| |without| |final| |punctuation'
+    assert '|'.join(lc.tokenize_text('Sentence with-some inner, punctuation;this should - not! — cause problems?Let    us\thope so!')) ==\
+            'Sentence| |with|-|some| |inner|, |punctuation|;|this| |should| - |not|! — |cause| |problems|?|Let|    |us|\t|hope| |so|!'
+    assert '|'.join(lc.tokenize_text('Some words in "double" and \'half quotation\' marks.')) ==\
+            'Some| |words| |in| "|double|" |and| \'|half| |quotation|\' |marks|.'
+    assert '|'.join(lc.tokenize_text('Some words in typographic “double” and ‘half quotation’ marks.')) ==\
+            'Some| |words| |in| |typographic| “|double|” |and| ‘|half| |quotation|’ |marks|.'
+    assert '|'.join(lc.tokenize_text('This is a sentence.')) == 'This| |is| |a| |sentence|.'
+    assert '|'.join(lc.tokenize_text(':::sentence with leading punctuation:::')) ==\
+            ':::|sentence| |with| |leading| |punctuation|:::'
+
+
+def test_tokenize_contractions():
+    assert '|'.join(lc.tokenize_text("Let's hope contractions are handled correctly wheresoe'er they'll occur, don't you think so, O'Connell?")) ==\
+        "Let's| |hope| |contractions| |are| |handled| |correctly| |wheresoe'er| |they'll| |occur|, |don't| |you| |think| |so|, |O'Connell|?"
+    assert '|'.join(lc.tokenize_text('Let’s hope contractions are handled correctly wheresoe’er they’ll occur, don’t you think so, O’Connell?')) ==\
+        'Let’s| |hope| |contractions| |are| |handled| |correctly| |wheresoe’er| |they’ll| |occur|, |don’t| |you| |think| |so|, |O’Connell|?'
+    assert '|'.join(lc.tokenize_text("He's happy to see my boyfriend's sister.")) ==\
+        "He's| |happy| |to| |see| |my| |boyfriend's| |sister|."
+    assert '|'.join(lc.tokenize_text('He’s happy to see my boyfriend’s sister.')) ==\
+        'He’s| |happy| |to| |see| |my| |boyfriend’s| |sister|.'
+
+
+def test_tokenize_diacritics():
+    assert '|'.join(lc.tokenize_text('Mañana me and my naïve doppelgänger will eat tōfu in the café of an élite hôtel.')) ==\
+      'Mañana| |me| |and| |my| |naïve| |doppelgänger| |will| |eat| |tōfu| |in| |the| |café| |of| |an| |élite| |hôtel|.'
+    assert '|'.join(lc.tokenize_text('MAÑANA me and my naïve doppelGÄNGER will eat tōfu in the CAFÉ of an Élite Hôtel.')) ==\
+      'MAÑANA| |me| |and| |my| |naïve| |doppelGÄNGER| |will| |eat| |tōfu| |in| |the| |CAFÉ| |of| |an| |Élite| |Hôtel|.'
+
+
 def test_convert_para_simple():
     assert lc.convert_para('This is a sentence.') == 'Dhiss is a sentenss.'
     assert lc.convert_para('Some words in "double" and \'half quotation\' marks.') ==\
         'Sum wurds in "dubl" and \'haf quoa’taition\' marks.'
     assert lc.convert_para('Some words in typographic “double” and ‘half quotation’ marks.') ==\
-        'Sum wurds in typo’grafic “dubl” and ‘haf quotation’ marks.'
+        'Sum wurds in typo’grafic “dubl” and ‘haf quoa’taition’ marks.'
+
+
+def test_convert_para_spacy_quotes():
+    """Test that quote marks are also handled correctly if spaCy is invoked."""
+    assert lc.convert_para('Who could object to some words in "double" and \'half quotation\' marks?') ==\
+        'Hu cood ob’ject to sum wurds in "dubl" and \'haf quoa’taition\' marks?'
+    assert lc.convert_para('Who could object to some words in typographic “double” and ‘half quotation’ marks?') ==\
+        'Hu cood ob’ject to sum wurds in typo’grafic “dubl” and ‘haf quoa’taition’ marks?'
+    assert lc.convert_para('Who could object to some words in typographic ‘‘fake double quotation’’ marks?') ==\
+        'Hu cood ob’ject to sum wurds in typo’grafic ‘‘faik dubl quoa’taition’’ marks?'
 
 
 def test_convert_para_contractions():
@@ -125,7 +184,7 @@ def test_convert_para_pos_tagged():
     assert lc.convert_para('They were too close to the door to close it.') ==\
         'Dhay wur tu cloass to dhe doar to cloas it.'
     assert lc.convert_para('Before I mow the lawn let me place this grain in the mow.') ==\
-        'Bi’foar Y mo dhe laun let mi plaiss dhiss grain in dhe mow.'
+        'Bi’foar y mo dhe laun let mi plaiss dhiss grain in dhe mow.'
     assert lc.convert_para('He thought it was time to present the present.') ==\
         'Hi thaut it wos tym to pri’sent dhe present.'
     assert lc.convert_para('I met an august man last August.') ==\
@@ -143,14 +202,14 @@ def test_convert_para_pos_tagged():
     assert lc.convert_para('Don’t desert me here in the desert!') ==\
         'Doan’t di’surt mi heer in dhe desert!'
     assert lc.convert_para('The outright prohibition has caused smoking to be banned outright.') ==\
-            'Dhe outryt proe’bition has causd smoaking to bee band out’ryt.'
+            'Dhe outryt proahi’bition has causd smoaking to bee band out’ryt.'
 
 
 def test_convert_para_nt_contractions():
     assert lc.convert_para("Don't you think I won't do it, because I will!") ==\
-            'Doan’t iu think Y woan’t du it, bi’caus Y wil!'
+            'Doan’t iu think y woan’t du it, bi’caus y wil!'
     assert lc.convert_para('Don’t you think I won’t do it, because I will!') ==\
-            'Doan’t iu think Y woan’t du it, bi’caus Y wil!'
+            'Doan’t iu think y woan’t du it, bi’caus y wil!'
     assert lc.convert_para("You mustn't believe that they can't do such a thing.") ==\
             'Iu musn’t bi’leev dhat dhay can’t du such a thing.'
     assert lc.convert_para('You mustn’t believe that they can’t do such a thing.') ==\
@@ -172,6 +231,19 @@ def test_convert_para_diacritics():
       'Maa’nyaanaa mi and my naa’eev dopelganger wil eet toafu in dhe ca’fay ov an i’leet hoa’tel.'
 
 
+def test_convert_i_case():
+    """Test case of Converted "I" and contractions such as "I'd", "I'll".
+
+    They should be capitalized at the start, but not in the middle of sentences.
+    """
+    assert lc.convert_para("I am capitalized at the start of sentences but I'm lower-case in the middle. I am still capitalized at the start.") ==\
+            "Y am capitelysd at dhe start ov sentensses but y’m loer-caiss in dhe midl. Y am stil capitelysd at dhe start."
+    assert lc.convert_para('I’d be capitalized at the start of sentences but I’ll be lower-case in the middle. I’d still be capitalized at the start.') ==\
+            "Y’d bee capitelysd at dhe start ov sentensses but y’l bee loer-caiss in dhe midl. Y’d stil bee capitelysd at dhe start."
+    assert lc.convert_para("I've seen that that works but I've not seen that this works. I've seen it now.") ==\
+            "Y’v seen dhat dhat wurks but y’v not seen dhat dhiss wurks. Y’v seen it now."
+
+
 def test_Is_word_simple():
     assert lc.is_word('a')
     assert lc.is_word('This')
@@ -189,7 +261,7 @@ def test_Is_word_simple():
 def test_Is_word_apostrophe():
     """Words starting with an apostrophe are recognized as such.
 
-    Spacy's tokenizer produces such words.
+    SpaCy's tokenizer produces such words.
     """
     assert lc.is_word("'d")
     assert lc.is_word("'re")
