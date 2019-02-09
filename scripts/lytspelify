@@ -67,7 +67,7 @@ my %STRESS_BEFORE = map { $_ => 1 } qw/about around away/;
 my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/ante auto contra electro homo meta mono para
     photo poly pro proto radio retro stereo tetra/;
 
-# XXX Move list into external CSV file.
+# TODO Move list into external CSV file.
 # If a derived word is listed here, a short vowel preceding the stress
 # marker won't be converted to «e».
 my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acronymous
@@ -80,7 +80,9 @@ my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acro
     personification pseudonymity planktonic prebendal puritanical quadrantal quadratic
     quadrupedal reclusive renewal sabbatical satanic shamanic sinistrality stomachic
     subordinative sultanic sycophantic synodic synodical synonymous talismanic testimonial
-    tribadic tympanic/;
+    tribadic tympanic advocatory agglutinative coagulative confederative coordination
+    coordinative delegation delegations discriminative ejaculative elaborative incoordination
+    intoxicative eyeleteer/;
 
 # XXX Switch to Upper_Camel_Case for file-scoped variables
 my $CSV_IN  = new_csv_in;
@@ -97,8 +99,8 @@ my $PRE_STRESSED_VOWEL_DREF = build_lc_map('pre-stressed-vowel.csv', 1);
 # Values indicate which part is the stressed one ('1' or '2').
 my $Compound_Stress_Dict_Ref = build_lc_map($COMPOUND_STRESS, 1);
 
-my $Start_Pattern_Aref = build_standard_patterns('startpron.csv');
-my $End_Pattern_Aref   = build_standard_patterns('endpron.csv');
+my $Start_Pattern_Aref = build_standard_patterns('startpron.csv', 1);
+my $End_Pattern_Aref   = build_standard_patterns('endpron.csv',   0);
 
 my $UNCONVERTED_DICT_REF;
 my $CONVERTED_DICT_REF;
@@ -131,21 +133,44 @@ my %SUFFIXES;
 # XXX Adapt decompose to use prefix|suffix.csv instead of .list (note that some prefixes,
 # e.g. ‹di›, are NOT auto-recognized but have been added manually in compounds-manual.csv)
 
-# build_standard_patterns $filename Create an array of leading or trailing pronunciations
-# that should be standardized. Returns a reference to that array. Each array element is a
-# hashref with tree entries: 'trad' (the tradspell), 'pron' (the current pronunciation),
-# 'fixed_pron' (the pronunciation to use instead). For example, {trad => 'ate',
-# pron => 'It', fixed_pron => '@t'} means that words ending (or starting) with 'ate'
-# should be pronounced /@t/ instead of /It/.
+# build_standard_patterns $filename, $start: Create an array of leading (set $start = 1) or
+# trailing (set $start = 0) pronunciations that should be standardized. Returns a reference to
+# that array. Each array element is a hashref with tree entries:
+#
+# * trad (field 1): the tradspell
+# * pron_pattern (field 2): pattern matching the current pronunciation
+# * fixed_pron (field 3): the pronunciation to use instead
+#
+# While in the CSV file, the second field is just a simple string, this function converts it
+# into a suitable regex string that's anchored at the begin or end and also prevents accidental
+# matches. For example, {trad => 'ate', pron_pattern => 'It$', fixed_pron => '@t'} would mean
+# that words starting with 'ate' should be pronounced /@t/ instead of /It/. But the actually
+# generated 'pron_pattern' is more complex to prevent /aI, eI, OI/ from accidentally matching.
 sub build_standard_patterns {
-    my $filename     = shift;
+    my ($filename, $start) = @_;
     my $pattern_aref = [];
     open my $fh, '<', $filename or die "Unable to open $filename $!\n";
     my $colref = $CSV_IN->getline($fh);  # Skip header line
 
     while ($colref = $CSV_IN->getline($fh)) {
+        my $pron_pattern = $colref->[1];
+
+        if ($start) {
+            $pron_pattern = "^$pron_pattern";
+        } else {
+            # Final /i:/ is occasionally written [I]
+            $pron_pattern =~ s/i:$/(?:i:|I)/;
+            $pron_pattern .= '$';
+
+            # Prevent vowels from matching if stressed or if they are the second letter of a
+            # digraph
+            if (starts_with($pron_pattern, 'I')) {
+                $pron_pattern = "(?<!['aeO])$pron_pattern";
+            }
+        }
+
         push @$pattern_aref,
-            {trad => $colref->[0], fixed_pron => $colref->[1], pron => $colref->[2]};
+            {trad => $colref->[0], pron_pattern => $pron_pattern, fixed_pron => $colref->[2]};
     }
 
     return $pattern_aref;
@@ -223,28 +248,19 @@ sub standardize_begin_and_end_of_pron {
     my ($pron, $tradspell) = @_;
     my $ts_lower = lc $tradspell;
 
-    # TODO Adjust
     # Check if one of the start patterns matches
-    ##for my $rule (@$Start_Pattern_Aref) {
-    ##    if (starts_with($ts_lower, $rule->{trad}) && starts_with($pron, $rule->{pron})) {
-    ##        $pron = $rule->{fixed_pron} . substr($pron, length $rule->{pron});
-    ##        last;  # only one pattern can match
-    ##    }
-    ##}
+    for my $rule (@$Start_Pattern_Aref) {
+        if (starts_with($ts_lower, $rule->{trad})) {
+            # Check if rule can be applied -- if yes, we're done here, since only one can match
+            last if $pron =~ s/$rule->{pron_pattern}/$rule->{fixed_pron}/;
+        }
+    }
 
     # Ditto end patterns
     for my $rule (@$End_Pattern_Aref) {
         if (ends_with($ts_lower, $rule->{trad})) {
-            my $pron_pattern = $rule->{pron} . '$';
-
-            # Prevent vowels from matching if stressed or if they are the second letter of a
-            # digraph
-            if (starts_with($pron_pattern, 'I')) {
-                $pron_pattern = "(?<!['aeO])" . $pron_pattern;
-            }
-
             # Check if rule can be applied -- if yes, we're done here, since only one can match
-            last if $pron =~ s/$pron_pattern/$rule->{fixed_pron}/;
+            last if $pron =~ s/$rule->{pron_pattern}/$rule->{fixed_pron}/;
         }
     }
 
@@ -648,26 +664,6 @@ sub ends_with {
     return substr($haystack, -(length $needle)) eq $needle;
 }
 
-# standardize_begin_and_end $word, $tradspell: Possibly standardize the beginning and ending
-# of a respelled word based on the rules listed in 'startpron.csv' and 'endpron.csv'
-# in order to reach consistency between similar words. If there is nothing to standardize,
-# the word is returned unchanged.
-sub standardize_begin_and_end {
-    my ($word, $tradspell) = @_;
-    my $ts_lower = lc $tradspell;
-
-    # TODO Eliminate
-    # Check if one of the start patterns matches
-    for my $rule (@$Start_Pattern_Aref) {
-        if (starts_with($ts_lower, $rule->{trad}) && starts_with($word, $rule->{pron})) {
-            $word = $rule->{fixed_pron} . substr($word, length $rule->{pron});
-            last;  # only one pattern can match
-        }
-    }
-
-    return $word;
-}
-
 # move_stress_marker $word, $tradspell: Move stress marker before the stressed syllable,
 # omitting it if the first vowel is the stressed one.
 sub move_stress_marker {
@@ -907,9 +903,8 @@ OUTER: while ($unconverted) {
             . "unconverted part: /$unconverted/\n";
     }
 
-    $converted = standardize_begin_and_end $converted, $tradspell;
-    $converted = move_stress_marker $converted,        $tradspell;
-    $converted = restore_capitalization $converted,    $tradspell;
+    $converted = move_stress_marker $converted,     $tradspell;
+    $converted = restore_capitalization $converted, $tradspell;
     return $converted;
 }
 
@@ -1216,7 +1211,7 @@ sub postprocess_suffixed {
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if (
         $suffix =~ /^(.bility|able|age|ance|ant|ary|ative|ate|atory|dom|ed|en|ence|es|ent|er
-        |ess|est|ful|ing|ise|ish|ism|ist|ize|kinesis|l|less|ly|ment|morphism|ness|nik|n|oid
+        |ess|est|ful|ing|ise|ish|ism|ist|ize|kinesis|l|less|let|ly|ment|morphism|ness|nik|n|oid
         |or|up|ry|s|y)$/x
         )
     {
@@ -1258,13 +1253,13 @@ sub postprocess_suffixed {
         # Suffix «n» becomes «en» after some consonants
         $conv_suffix = 'en' if $conv_suffix eq 'n' && $conv_base =~ /[djkhlpstv]$/;
 
-        # Omitted schwa before final «l» or «m» is restored in front of «ait/it, erri, ism,
+        # Omitted schwa before final «l» or «m» is restored in front of «ait/et, erri, ism,
         # ist, oid, ys» ‹ate, ary, ..., ise/ize› (as well as some irregular suffixes,
         # cf. below), unless the schwa is not spoken
         $conv_base =~ s/(${LYTSPEL_CONSONANT})ssl$/$1sel/
             || $conv_base =~ s/cl$/kel/
             || $conv_base =~ s/(.)$/e$1/
-            if $conv_suffix =~ /^(a?it|erri|ism|ist|oid|ys)$/
+            if $conv_suffix =~ /^(ait|et|erri|ism|ist|oid|ys)$/
             && $conv_base =~ /([bpdtfgcksz]l|(dh|s)m)$/
             && $base !~ /^(cycle|simple)$/;
 
