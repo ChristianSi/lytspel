@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Lytspel Sample</title>
+    <link rel="stylesheet" href="style.css"/>
+  </head>
+  <body onload="setUpActions();">
+    <!-- Comments are ignored. -->
+    <script>
+      function doSomething(event) {
+        alert("Text within scripts should not be modified.");
+        return false;
+      }
+      function setUpActions() {
+        // get the link object
+        var button = document.getElementById("actionButton");
+        // assign the onclick handler to the button object.
+        button.onclick = doSomething;
+      }
+    </script>
+
+    <h1>Lytspel, a Simple Phonetic Respelling for the English Language</h1>
+
+    <p>
+    <img src="icon.png" height="96" width="96"
+         alt="Alternative text should be converted as well"
+         title="Title text should be converted as well"/>
+    The <strong>North Wind</strong> and the <strong>Sun</strong> were disputing
+    which was the stronger, when a traveler came along wrapped in a warm cloak.
+    They agreed that the one who first succeeded in making the traveler take his
+    cloak off should be considered <em>stronger than the other.</em> Then the
+    North Wind blew as hard as he could, but the more he blew the more closely
+    did the traveler fold his cloak around him; and at last the North Wind gave
+    up the attempt. Then the Sun shined out warmly, and immediately the traveler
+    took off his cloak. And so the North Wind was obliged to confess that the
+    Sun was the stronger of the two.
+    </p>
+
+    <p>That quick beige fox jumped in the air over each thin dog under a calm
+    autumn moon. “Look out,” I shout, “for he’s foiled you yet again, creating
+    chaos.”</p>
+
+    <form action="doSomething.aspx" onsubmit="return false;">
+      <button type="button" id="actionButton" name="actionButton">Press button</button>
+    </form>
+
+    <!-- Paragraphs/elements containing mostly foreign-language text should
+        not be translated. -->
+
+    <p>Als Gregor Samsa eines Morgens aus unruhigen Träumen erwachte, fand er
+    sich – wie die <em>New York Times</em> berichtete – in seinem Bett zu einem
+    ungeheueren Ungeziefer verwandelt. Er lag auf seinem panzerartig harten
+    Rücken und sah, wenn er den Kopf ein wenig hob, seinen gewölbten, braunen,
+    von bogenförmigen Versteifungen geteilten Bauch, auf dessen Höhe sich die
+    Bettdecke, zum gänzlichen Niedergleiten bereit, kaum noch erhalten
+    konnte.</p>
+
+  </body>
+</html>
