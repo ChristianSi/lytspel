@@ -17,7 +17,10 @@ PERFORMANCE OF THIS SOFTWARE.
 """
 
 
+import argparse
+from collections import Counter
 import csv
+from enum import Enum
 from inspect import trace
 from io import BytesIO
 from os import path
@@ -50,8 +53,7 @@ POS_FALLBACKS = {'aj': 'n', 'av': 'aj', 'n': 'aj', 'prp': 'aj', 'v': 'n'}
 
 T = TypeVar('T')
 
-LOOKS_FOREIGN = object()
-NLP_NEEDED = object()
+ConvState = Enum('ConvState', 'LOOKS_FOREIGN NLP_NEEDED')
 
 
 # Initialization code
@@ -151,6 +153,12 @@ ls_dict = load_dict()
 # Load spaCy, disabling unnecessary components
 nlp = spacy.load('en', disable=['parser', 'ner'])
 
+# Global switch, consulted by lookup() and updated during conversion and tokenization
+at_sent_start = True
+
+# Optional counter of unknown words
+unknownCounter = None
+
 
 # Main code
 
@@ -162,7 +170,7 @@ def asciify(word: str) -> str:
     """
     result = word.replace('’', "'")  # ASCII-ify apostrophes
 
-    if not re.match("[a-zA-Z']*$", result): # non-ASCII word
+    if not re.match("[-'a-zA-Z]*$", result): # non-ASCII word
         letters = list(result)
 
         for i, letter in enumerate(letters):
@@ -287,14 +295,11 @@ def find_pos_tagged_entry(entries: dict, pos: str, tried_variants: List[str] = N
     return result
 
 
-def lookup(word: str, spacy_pos: str = None, is_sent_start: bool = False) -> str:
+def lookup(word: str, spacy_pos: str = None) -> str:
     """Lookup a word in the dictionary and returned its converted form.
 
     'spacy_pos' is the POS tag as returned by spaCy. If it's omitted and if the respelling
-    of the word depends on its POS tag, NLP_NEEDED is returend.
-
-    'is_sent_start' is a guess whether the token starts a sentence. Needed only in the rare
-    cases where a capitalized word will otherwise become lower-case, e.g. the pronoun "I".
+    of the word depends on its POS tag, ConvState.NLP_NEEDED is returend.
 
     None is returned if the word is unknown.
 
@@ -303,43 +308,42 @@ def lookup(word: str, spacy_pos: str = None, is_sent_start: bool = False) -> str
     (e.g. JavaScript -> JaavaScript).
     """
     word = asciify(word)
-    genitiveS = ''
+    # Strip final 's (genitive or contraction) and remember for later (handling case)
+    word, genitiveS = stripGenitiveS(word)
 
-    if re.search(".'s$", word, re.IGNORECASE):
-        # Strip final 's (genitive or contraction) and remember for later (handling case)
-        genitiveS = word[-2:]
-        word = word[:-2]
-
-    lower = word.lower()
-
-    if lower in ("'ll", "'re", "'ve"):
-        # Contraction tokens produced by spaCy: discard the last letter
-        result = lower[:-1]
-    elif re.match("'.$", lower):
-        # Single-letter contraction token: return as is
-        result = lower
+    if word == 'US':
+        result = word
     else:
-        result = ls_dict.get(lower)
-        if result is None:
-            return result
+        lower = word.lower()
 
-        if isinstance(result, dict):
-            if spacy_pos:
-                result = find_pos_tagged_entry(result, spacy_pos)
-            else:
-                return NLP_NEEDED
-
-    if re.match("[A-Z']+$", word):
-        result = result.upper()  # ALL_CAPS
-    elif re.match('[A-Z]', word):
-        if word in mixed_dict:
-            result = mixed_dict[word]  #  MixedCase
+        if lower in ("'ll", "'re", "'ve"):
+            # Contraction tokens produced by spaCy: discard the last letter
+            result = lower[:-1]
+        elif re.match("'.$", lower):
+            # Single-letter contraction token: return as is
+            result = lower
         else:
-            result = result[0].upper() + result[1:]  # Capitalized
+            result = ls_dict.get(lower)
+            if result is None:
+                return result
 
-    if not is_sent_start and re.match("I$|I['’]", word):
-        # Correct the case of 'I' and its contractions
-        result = result.lower()
+            if isinstance(result, dict):
+                if spacy_pos:
+                    result = find_pos_tagged_entry(result, spacy_pos)
+                else:
+                    return ConvState.NLP_NEEDED
+
+        if re.match("[-'A-Z]+$", word):
+            result = result.upper()  # ALL_CAPS
+        elif re.match('[A-Z]', word):
+            if word in mixed_dict:
+                result = mixed_dict[word]  #  MixedCase
+            else:
+                result = result[0].upper() + result[1:]  # Capitalized
+
+        if not at_sent_start and re.match("I$|I['’]", word):
+            # Correct the case of 'I' and its contractions
+            result = result.lower()
 
     if genitiveS:
         result += genitiveS
@@ -376,7 +380,7 @@ def is_word(token: str) -> bool:
 def text_looks_foreign(text: str) -> bool:
     """Check whether a text fragment looks like it's written in a foreign language.
 
-    Returns True iff a majority of the words is unknown.
+    Returns True iff a majority of the words are unknown.
     """
     in_tokens = tokenize_text(text)
     known_words = 0
@@ -393,74 +397,159 @@ def text_looks_foreign(text: str) -> bool:
     return unknown_words > known_words
 
 
-def convert_text_if_simple(text: str, test_if_foreign: bool = True) -> object:
+def ends_sentence(token: str) -> bool:
+    """Uses some simple heuristics to determine whether a token seems to end a sentence.
+
+    Returns True in one of three cases:
+
+    * The tokens ends in a dot, question or exclamation mark, optionally followed by an
+      opening or closing quote marks
+    * It ends in a colon followed by an opening quote mark
+    * It ends in '>' (quoted text marker), optionally followed by an opening quote mark
+
+    Whitespace is ignored in all cases.
+    """
+    if not token:
+        return False
+    if re.search('([.?!](\s*["\'“‘”’])?|:\s*["\'“‘]|>(\s*["\'“‘])?)\s*$', token):
+        return True
+    else:
+        return False
+
+
+def stripGenitiveS(word: str):
+    """Strip the genitive or contraction "'s" from a word, if its present.
+
+    Returns two values: actual word, genitive. If the word doesn't end in a genitive, the
+    first return value will be identical to the argument and the second return value will
+    be empty.
+
+    Both simple and typographic apostrophes are recognized.
+    """
+    if re.search(".'s$", word, re.IGNORECASE):
+        return word[:-2], word[-2:]
+    else:
+        return word, ''
+
+
+def convert_text_if_simple(text: str, test_if_foreign: bool = True,
+        starts_sent: bool = True) -> object:
     """Convert a text fragment if doing so is possible without POS tagging.
+
+    'starts_sent' is an optional attribute that specifies whether this text fragment is likely
+    to start with a new sentence. If true, the 'at_sent_start' switch is set accordingly,
+    otherwise it is left alone.
 
     The return value is either:
 
     * The converted text (a string)
-    * NLP_NEEDED if POS tagging (NLP) is needed)
-    * LOOKS_FOREIGN if 'test_if_foreign' is true and a majority of the words in the fragment
-      is unknown
+    * ConvState.NLP_NEEDED if POS tagging (NLP) is needed)
+    * ConvState.LOOKS_FOREIGN if 'test_if_foreign' is true and a majority of the words in
+      the fragment are unknown
     """
+    global at_sent_start, unknownCounter
+    orig_at_sent_start = at_sent_start  # Remember in case we have to restore it later
+
     if not text:
         return text  # Empty or None, nothing to do
+    if starts_sent:
+        at_sent_start = True
 
     in_tokens = tokenize_text(text)
     out_tokens = []
+    lasttok = ''
     known_words = 0
     unknown_words = 0
-    is_first = True
+
+    if unknownCounter is not None:
+        localUnknownCounter = Counter()
 
     for token in in_tokens:
         if is_word(token):
-            # TODO Improve heuristic
-            conv = lookup(token, is_sent_start=is_first)
-            if conv is NLP_NEEDED:
-                return NLP_NEEDED
+            conv = lookup(token)
+
+            if conv is ConvState.NLP_NEEDED:
+                at_sent_start = orig_at_sent_start
+                return ConvState.NLP_NEEDED
             elif conv:
                 known_words += 1
                 out_tokens.append(conv)
             else:
                 unknown_words += 1
                 out_tokens.append(token)
-        else:
-            # Not a word: append as is
-            out_tokens.append(token)
 
-        is_first = False
+                if unknownCounter is not None:
+                    actualWord = stripGenitiveS(token)[0]
+                    localUnknownCounter[actualWord] += 1
+
+            at_sent_start = False
+        else:
+            # Not a word
+            if token == '-' and lasttok:
+                # Check if this forms a hyphenated prefix with the preceding token, e.g. 're-'
+                conv = lookup(lasttok + token)
+
+                if conv:
+                    out_tokens[-1] = conv
+                else:
+                    out_tokens.append(token)
+            else:
+                # Append non-word as is and check whether it terminates a sentence
+                out_tokens.append(token)
+                at_sent_start |= ends_sentence(token)
+
+        lasttok = token
 
     if not test_if_foreign or unknown_words <= known_words:
         # We shouldn't make the foreign language test OR at least half of the words are known
+        if unknownCounter is not None:
+            unknownCounter += localUnknownCounter
+
         return ''.join(out_tokens)
     else:
-        return LOOKS_FOREIGN
+        return ConvState.LOOKS_FOREIGN
 
 
-def convert_para(text: str, test_if_foreign: bool = True) -> str:
+def convert_para(text: str, test_if_foreign: bool = True, starts_sent: bool = True) -> str:
     """Convert a paragraph.
 
-    If 'test_if_foreign' is True and a majority of the words in the paragraph is unknown,
+    'starts_sent' is an optional attribute that specifies whether this text fragment is likely
+    to start with a new sentence. If true, the 'at_sent_start' switch is set accordingly,
+    otherwise it is left alone.
+
+    If 'test_if_foreign' is True and a majority of the words in the paragraph are unknown,
     the paragraph is assumed to be written in a foreign language and returned unchanged.
     """
+    global at_sent_start
+
     if not text:
-        return text  # Empty or None, nothing to do
+        if starts_sent:
+            # Nothing to do, but we still update the global state (a new block-level HTML
+            # element might have been opened)
+            at_sent_start = True
+        return text
 
-    simple_result = convert_text_if_simple(text, test_if_foreign)
+    simple_result = convert_text_if_simple(text, test_if_foreign, starts_sent)
 
-    if simple_result is NLP_NEEDED:
-        # We have to invoke spaCy for POS tagging
+    if simple_result is ConvState.NLP_NEEDED:
+        # We have to invoke spaCy for POS tagging (unless the text looks foreign)
+        if text_looks_foreign(text):
+            return text  # Return text unchanged
+
         doc = nlp(text)
         tokens = []
         lasttok = ''
-        is_first = True
+        last_nonword = ''
+
+        if starts_sent:
+            at_sent_start = True
 
         for entry in doc:
             token = entry.text
-            tail = entry.whitespace_ or ''
+            tail = entry.whitespace_ or ''  # optional trailing whitespace
 
             if token.lower() in ("n't", 'n’t'):
-                # spaCy treats "n't" (as in "don't" etc.) as a separate word, but we look it up
+                # SpaCy treats "n't" (as in "don't" etc.) as a separate word, but we look it up
                 # together with the preceding word because the joined pronounciation (and hence
                 # spelling) is sometimes different
                 if tokens:
@@ -469,31 +558,48 @@ def convert_para(text: str, test_if_foreign: bool = True) -> str:
 
             if is_word(token):
                 if token.endswith('’'):
-                    # spaCy gets confused by typographic half quotation marks,
+                    # SpaCy gets confused by typographic half quotation marks,
                     # so we strip them ourselves
                     tail = token[-1:] + tail
                     token = token[:-1]
 
-                # TODO Improve is_sent_start heuristic
-                conv = lookup(token, entry.pos_, is_sent_start=is_first)
+                conv = lookup(token, entry.pos_)
 
                 if conv:
                     tokens.append(conv)
                 else:
                     tokens.append(token)
+
+                at_sent_start = ends_sentence(tail)
+                last_nonword = ''
             else:
-                # Not a word: append as is
-                tokens.append(token)
+                # Not a word
+                if token == '-' and not tail and lasttok:
+                    # Check if this forms a hyphenated prefix with the preceding token, e.g. 're-'
+                    conv = lookup(lasttok + token)
+
+                    if conv:
+                        tokens[-1] = conv
+                    else:
+                        tokens.append(token)
+                        last_nonword = token
+                else:
+                    # Append as is
+                    tokens.append(token)
+
+                    # We also consider the last nonword token for cases such as ‹: "› (colon
+                    # followed by quote) which are considered two tokens by spaCy
+                    at_sent_start |= ends_sentence(last_nonword + token + tail)
+                    last_nonword = token
 
             lasttok = token
-            is_first = False
 
             # Append trailing whitespace to token, if any
             if tail:
                 tokens[-1] += tail
 
         return ''.join(tokens)
-    elif simple_result is LOOKS_FOREIGN:
+    elif simple_result is ConvState.LOOKS_FOREIGN:
         return text  # Return text unchanged
     else:
         return simple_result
@@ -579,13 +685,8 @@ def convert_html_elem(elem: etree._Element) -> None:
                 # Skip this part of the document tree (doesn't seem to be English)
                 return
 
-    # Convert immediate content
-    elem.text = convert_para(elem.text, False)
-
-    # Convert a few textual attributes, if they are present
-    for attrib in ('alt', 'title'):
-        if attrib in elem.attrib:
-            elem.attrib[attrib] = convert_para(elem.attrib[attrib])
+    # Convert immediate content (only block-level elements count as start of a new paragraph
+    elem.text = convert_para(elem.text, False, starts_sent=simple_tag(elem) in BLOCK_LEVEL_TAGS)
 
     # Convert child elements (except comments and those that don't contain normal text)
     for child in elem:
@@ -593,7 +694,14 @@ def convert_html_elem(elem: etree._Element) -> None:
                 or isinstance(child, etree._ProcessingInstruction)
                 or simple_tag(child) in ('script', 'style')):
             convert_html_elem(child)
-        child.tail = convert_para(child.tail, False)
+
+        if child.tail:
+            child.tail = convert_para(child.tail, False, starts_sent=False)
+
+    # Convert a few textual attributes, if they are present
+    for attrib in ('alt', 'title'):
+        if attrib in elem.attrib and elem.attrib[attrib]:
+            elem.attrib[attrib] = convert_para(elem.attrib[attrib])
 
 
 def convert_html_document(filename_or_bytes: Union[str, BytesIO]) -> bytes:
@@ -645,7 +753,7 @@ def convert_xml_elem(elem: etree._Element) -> None:
         if not (isinstance(child, etree._Comment)
                 or isinstance(child, etree._ProcessingInstruction)):
             convert_xml_elem(child)
-        child.tail = convert_para(child.tail)
+        child.tail = convert_para(child.tail, starts_sent=False)
 
 
 def convert_xml_document(filename_or_bytes: Union[str, BytesIO]) -> bytes:
@@ -787,8 +895,24 @@ def convert_file(filename: str) -> None:
 
 if __name__ == '__main__':
     try:
-        for file in argv[1:]:
+        parser = argparse.ArgumentParser()
+        parser.add_argument('files', metavar='FILE', nargs='*',
+                help='files to convert')
+        parser.add_argument('-u', '--unknown', action='count', default=0,
+                help='list unknown words (repeat option n times to list only words that occur'
+                    ' at least that often)')
+        args = parser.parse_args()
+
+        if args.unknown:
+            unknownCounter = Counter()
+            print('***Counting unknown words***')
+
+        for file in args.files:
             convert_file(file)
+
+        if args.unknown:
+            # TODO Print unknown words
+            print('Unknown words: {}'.format(unknownCounter))
     except Exception as e:
         tb = exc_info()[2]
         # Find highest stack frame in the current file (closest to source of exception)
@@ -807,17 +931,11 @@ if __name__ == '__main__':
 
 
 # TODO Handle and test:
-# * Might require additional POS tag: ‹re› should become  «ri» if used as a hyphenated prefix
-# * Might require additional POS tag: US (capitalized) should remain unchanged
-# * -u/--unknown Option to list unknown words (with frequency count)
-# * Convert module to class.
 # * Allow converting text passed on command line (-c flag)
 # * Epub conversion: ensure that zip compression is as it should be
 # * Use pylint to check the coding style
+# * -o flag to specify an output file (requires a single input file)
 # * Add button to turn conversion off and on
-# * Also rewrite parts of a page loaded later (e.g. due to scrolling; sample: Youtube
-#   comments); possibly use a custom data-\* attribute; can be read and written as
-#   elem.dataset.NAME, e.g. elem.dataset.lytspel = conv|seen
 # * Accept '-' argument to read stdin (file type recognition should still work)
 # * If called w/o arguments open dialog that allows the conversion of local txt/html/epub files,
 #   always writing the output to a file
@@ -825,3 +943,4 @@ if __name__ == '__main__':
 # * HTML conversion: check whether complex mixed text handled correctly (foreign language testing)
 # * Package for pip3 and announce to the world
 # * Add drag-and-drop support (esp. for Windows)
+# * Profile epub conversion and remove any obvious bottlenecks
