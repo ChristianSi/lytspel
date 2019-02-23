@@ -13,6 +13,7 @@ affixes,n+v
 affricate,n+v
 affricates,n+v
 agape,aj+n
+aged,aj+v
 allies,n+v
 alloys,n+v
 alternates,n+v
@@ -21,6 +22,7 @@ arsenic,aj+n
 associates,n+v
 attributes,n+v
 august,aj+n
+blessed,aj+v
 bows,v+n
 bow,v+n
 buffet,n+v
@@ -65,7 +67,9 @@ counterbalances,n+v
 countercharges,n+v
 counterclaims,n+v
 countermoves,n+v
+crooked,aj+v
 curate,n+v
+cussed,aj+v
 decreases,n+v
 defects,n+v
 delegates,n+v
@@ -76,6 +80,7 @@ digests,n+v
 discounts,n+v
 discourses,n+v
 does,n+v
+dogged,aj+v
 dove,n+v
 doves,n+v
 effects,n+v
@@ -113,7 +118,9 @@ intrigues,n+v
 invalid,aj+n
 invites,n+v
 isolates,n+v
+jagged,aj+v
 leads,n+v
+learned,aj+v
 live,aj+v
 matriculates,n+v
 minute,aj+n
@@ -153,6 +160,7 @@ projects,n+v
 protests,n+v
 purports,n+v
 quadrate,n+v
+ragged,aj+v
 rainier,aj+n
 rampages,n+v
 rebels,n+v
@@ -193,4 +201,5 @@ updates,n+v
 upgrades,n+v
 uses,n+v
 warehouses,n+v
+wicked,aj+v
 winds,n+v
