@@ -1885,7 +1885,8 @@ agatize,,,'aga#taIz,,'ag@taIz
 agave,,,'ageIv,,@g'eIvi:
 agaze,,,'ageIz,,@g'eIz
 age,,,'eIdZ,,
-aged,,,'eIdZd,,'eIdZId
+aged,aj,,'eIdZd,,'eIdZId
+aged,v,,'eIdZd,,'eIdZId
 agedly,,,'eIdZIdlI,'eIdZIdli:,
 agedness,,,'eIdZdn@s,,'eIdZIdnEs
 agee,,,'adZi:,,'eIdZ'i:
@@ -10526,7 +10527,8 @@ blepharospasm,,,bl'Efa#rQspaz@m,bl'Efa#rAspaz@m,bl'Ef@`oUspaz@m
 blesbok,,,bl'EsbQk,bl'EsbAk,
 blesbuck,,,bl'EsbVk,,
 bless,,,bl'Es,,
-blessed,,,bl'Est,,bl'EsId
+blessed,aj,,bl'Est,,bl'EsId
+blessed,v,,bl'Est,,bl'EsId
 blessedly,,,bl'EsIdlI,bl'EsIdli:,bl'Es@dli:
 blessedness,,,bl'Estn@s,,bl'EsIdnEs
 blesses,,,bl'EsIz,bl'EsI#z,
@@ -22748,7 +22750,8 @@ crony,,,kr'oUni:,,
 cronyism,,,kr'oUnIIz@m,,kr'oUni:Iz@m
 crook,,,kr'Uk,,
 crookback,,,kr'Ukbak,,
-crooked,,,kr'UkId,,kr'Uk@d
+crooked,aj,,kr'UkId,,kr'Uk@d
+crooked,v,,kr'UkId,,kr'Uk@d
 crookedly,,,kr'UkIdlI,kr'UkIdli:,
 crookedness,,,kr'UkIdn@s,,kr'Uk@dn@s
 Crookes,,,kr'Uks,,
@@ -23458,7 +23461,8 @@ cuspidate,,,k'VspIdeIt,k'VspI#deIt,
 cuspidation,,,kVspId'eIS@n,,
 cuspidor,,,k'VspIdO:,k'VspIdor,k'VspIdO:r
 cuss,,,k'Vs,,
-cussed,,,k'Vst,,k'VsId
+cussed,aj,,k'Vst,,k'VsId
+cussed,v,,k'Vst,,k'VsId
 cussedly,,,k'VsIdlI,k'VsIdli:,
 cussedness,,,k'Vstn@s,,k'VsIdnIs
 cussing,,,k'VsIN,,
@@ -28528,7 +28532,8 @@ dogface,,,d'QgfeIs,d'AgfeIs,
 dogfight,,,d'QgfaIt,d'AgfaIt,
 dogfights,,,d'QgfaIts,d'AgfaIts,d'O:gfaIts
 dogfish,,,d'QgfIS,d'AgfIS,d'O:gfIS
-dogged,,,d'QgId,d'AgI#d,d'O:gd
+dogged,aj,,d'QgId,d'AgI#d,d'O:gd
+dogged,v,,d'QgId,d'AgI#d,d'O:gd
 doggedly,,,d'QgIdlI,d'AgIdli:,d'O:g@dli:
 doggedness,,,d'QgIdn@s,d'AgI#dn@s,d'QgIdnEs
 dogger,,,d'Qg@,d'Ag@`,d'Qg@`
@@ -51301,7 +51306,8 @@ Jagannath,,,dZ'aga#naT,,dZ'Vg@nAt
 Jagannatha,,,dZaga#n'aT@,,dZVg@n'AthV
 Jagatai,,,dZ'aga#taI,,dZag@t'aI
 jager,,,j'eIg@,j'eIg@`,dZ'eIg@`
-jagged,,,dZ'agId,dZ'agI#d,dZ'agd
+jagged,aj,,dZ'agId,dZ'agI#d,dZ'agd
+jagged,v,,dZ'agId,dZ'agI#d,dZ'agd
 jaggedly,,,dZ'agIdlI,dZ'agIdli:,
 jaggedness,,,dZ'agIdn@s,dZ'agI#dn@s,dZ'agIdnEs
 jagger,,,dZ'ag@,dZ'ag@`,
@@ -54719,7 +54725,8 @@ leaps,,,l'i:ps,,
 lear,,,l'i:@,l'Ir,l'i:r
 Learjet,,,l'i:@dZEt,l'IrdZEt,
 learn,,,l'3:n,,
-learned,,,l'3:nd,,
+learned,aj,,l'3:nId,l'3:nI#d,l'3:nd
+learned,v,,l'3:nd,,
 learnedly,,,l'3:nIdlI,l'3:nIdli:,l'3:ndli:
 learnedness,,,l'3:ndn@s,,l'3:ndnEs
 learner,,,l'3:n@,l'3:n@`,
@@ -57280,6 +57287,7 @@ lysol,,,l'aIsQl,l'aIsAl,l'aIsO:l
 lysozyme,,,l'aIs@zaIm,,
 lythraceous,,,lITr'eIS@s,,
 lytic,,,l'ItIk,,
+Lytspel,,,lItsp'El,,
 lytta,,,l'It@,,
 lyttae,,,l'Iti:,,
 Lytton,,,l'It@n,,
@@ -76975,7 +76983,8 @@ ragee,,,r'adZi:,,r'Agi:
 rager,,,r'eIdZ@,r'eIdZ@`,r'eIg@`
 rages,,,r'eIdZIz,r'eIdZI#z,
 ragfish,,,r'agfIS,,
-ragged,,,r'agId,r'agI#d,r'ag@d
+ragged,aj,,r'agId,r'agI#d,r'ag@d
+ragged,v,,r'agId,r'agI#d,r'ag@d
 raggedly,,,r'agIdlI,r'agIdli:,
 raggedness,,,r'agIdn@s,r'agI#dn@s,r'agIdnEs
 raggedy,,,r'ag@di:,,
@@ -103730,7 +103739,8 @@ wice,,,w'aIs,,
 wich,,,w'ItS,,
 Wichita,,,w'ItSItA,w'ItSItAr,w'ItSItQ
 wick,,,w'Ik,,
-wicked,,,w'IkId,w'IkI#d,w'Ik@d
+wicked,aj,,w'IkId,w'IkI#d,w'Ik@d
+wicked,v,,w'IkId,w'IkI#d,w'Ik@d
 wickedly,,,w'IkIdlI,w'IkIdli:,
 wickedness,,,w'IkIdn@s,w'IkI#dn@s,w'Ik@dn@s
 wickens,,,w'Ik@nz,,

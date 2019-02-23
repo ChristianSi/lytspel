@@ -9018,6 +9018,7 @@ confers,confer=s
 confervoid,confer-void
 confessant,confess=ant
 confessed,confess=ed
+confessedly,confessed=ly
 confesses,confess=es
 confessing,confess=ing
 confessional,confession=al
@@ -10270,7 +10271,6 @@ craftsmen,crafts-men
 craftspeople,crafts-people
 craftwork,craft-work
 crafty,craft=y
-cragged,crag=ed
 craggedness,cragged=ness
 craggy,crag=y
 crags,crag=s
@@ -13762,6 +13762,7 @@ dogface,dog-face
 dogfight,dog-fight
 dogfights,dogfight=s
 dogfish,dog-fish
+dogged,dog=ed
 doggedly,dogged=ly
 doggedness,dogged=ness
 dogger,dog=er
@@ -15936,6 +15937,7 @@ estonian,estonia=n
 estonians,estonian=s
 estoppage,estop=age
 estranged,estrange=ed
+estrangedness,estranged=ness
 estrangement,estrange=ment
 estrogenic,estrogen=ic
 estrogens,estrogen=s
@@ -22425,6 +22427,7 @@ horoscopes,horoscope=s
 horoscopic,horoscope=ic
 horrendously,horrendous=ly
 horribleness,horrible=ness
+horribly,horrible=y
 horridly,horrid=ly
 horridness,horrid=ness
 horrified,horrify=ed
@@ -23283,6 +23286,7 @@ imperatively,imperative=ly
 imperativeness,imperative=ness
 imperatives,imperative=s
 imperceptibleness,imperceptible=ness
+imperceptibly,imperceptible=y
 imperceptiveness,imperceptive=ness
 imperfectible,imperfect=ible
 imperfections,imperfection=s
@@ -25448,6 +25452,7 @@ iranian,irani=an
 iranians,iranian=s
 iraqis,iraqi=s
 irascibleness,irascible=ness
+irascibly,irascible=y
 irately,irate=ly
 ireful,ire=ful
 irenics,irenic=s
@@ -28169,6 +28174,7 @@ lyricists,lyricist=s
 lyrics,lyric=s
 lysenkoism,lysenko=ism
 lysine,lyse=ine
+lytspel,light-spell
 macaques,macaque=s
 macaws,macaw=s
 macedoines,macedoine=s
@@ -28706,6 +28712,7 @@ massagers,massager=s
 massages,massage=s
 massaging,massage=ing
 massed,mass=ed
+massedly,massed=ly
 masses,masse=s
 massing,mass=ing
 massive,mass=ive
@@ -30365,7 +30372,6 @@ monotint,mono-tint
 monotone,mono-tone
 monotonousness,monotonous=ness
 monotype,mono-type
-monoxide,mon-oxide
 mons,mon=s
 monseigneur,mon-seigneur
 monsignors,monsignor=s
@@ -40834,7 +40840,6 @@ ruffing,ruff=ing
 ruffled,ruffle=ed
 ruffles,ruffle=s
 ruffling,ruffle=ing
-rugged,rug=ed
 ruggedly,rugged=ly
 rugger,rug=er
 rugging,rug=ing
@@ -52954,6 +52959,7 @@ whosesoever,whose-soever
 whosoever,whoso-ever
 whys,why=s
 wiccan,wicca=n
+wicked,wick=ed
 wickedly,wicked=ly
 wickedness,wicked=ness
 wicker,wick=er
