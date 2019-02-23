@@ -305,19 +305,19 @@ vowels:
     vowels. (Final /Q/ could be written «oh», but in practice it never
     seems to occur.)
   * This spelling is also used at the end of prefixes such as «baio, endo,
-    ethno, ferro, fyto, hetero, imyuno, jio, keemo, macro, mycro, nio,
-    nuero, pailio, soacio, spectro, suudo, thurmo, ysso» ‹bio, endo, ethno,
-    ferro, phyto, hetero, immuno, geo, chemo, macro, micro, neo, neuro,
-    paleo, socio, spectro, pseudo, thermo, iso›, e.g. «baio'kemistri,
-    endo'thurmic, ethno'sentric, ferromag'netic, fyto'plancten,
-    hetero'secshual, imyunodi'fishenssi, jio'fisicl, keemo'therrepi,
-    macroico'nomic, mycrowaiv, nio'classic, nuero'surjeri, pailioji'ogrefi,
-    soaciobai'oleji, spectrofoa'tomiter, suudosaienss, thurmody'namics,
-    ysso'proapil» ‹biochemistry, endothermic, ethnocentric, ferromagnetic,
-    phytoplankton, heterosexual, immunodeficiency, geophysical,
-    chemotherapy, macroeconomic, microwave, neoclassic, neurosurgery,
-    paleogeography, sociobiology, spectrophotometer, pseudoscience,
-    thermodynamics, isopropyl›.
+    ethno, ferro, fyto, hetero, hypo, imyuno, jio, keemo, macro, mycro,
+    nio, nuero, pailio, soacio, spectro, suudo, thurmo, ysso» ‹bio, endo,
+    ethno, ferro, phyto, hetero, hypo, immuno, geo, chemo, macro, micro,
+    neo, neuro, paleo, socio, spectro, pseudo, thermo, iso›, e.g.
+    «baio'kemistri, endo'thurmic, ethno'sentric, ferromag'netic,
+    fyto'plancten, hetero'secshual, imyunodi'fishenssi, jio'fisicl,
+    keemo'therrepi, macroico'nomic, mycrowaiv, nio'classic, nuero'surjeri,
+    pailioji'ogrefi, soaciobai'oleji, spectrofoa'tomiter, suudosaienss,
+    thurmody'namics, ysso'proapil» ‹biochemistry, endothermic,
+    ethnocentric, ferromagnetic, phytoplankton, heterosexual,
+    immunodeficiency, geophysical, chemotherapy, macroeconomic, microwave,
+    neoclassic, neurosurgery, paleogeography, sociobiology,
+    spectrophotometer, pseudoscience, thermodynamics, isopropyl›.
   * /OI/ is spelled «oy» at the end of words and before other vowels
     (instead of «oi»), e.g. «boy, en'joy, em'ployi» ‹...enjoy, employee›.
   * /aU/ is spelled «ow» at the end of words and before other vowels
