@@ -42,8 +42,8 @@ def test_lookup_apostrophes():
     assert lookup('we’d') == 'wi’d'
     assert lookup("it'll") == 'it’l'
     assert lookup('it’ll') == 'it’l'
-    assert lookup("I'm") == 'y’m'
-    assert lookup('I’m') == 'y’m'
+    assert lookup("I'm").lower() == 'y’m'
+    assert lookup('I’m').lower() == 'y’m'
     assert lookup("O'Connell") == 'O’Conel'
     assert lookup('O’Connell') == 'O’Conel'
 
@@ -105,8 +105,8 @@ def test_lookup_redirects():
 
 def test_lookup_nlp_needed_pos():
     """Test that lookup signals its need for a POS tag if one is necessary but not given."""
-    assert lookup('increase') is lc.NLP_NEEDED
-    assert lookup('misuse') is lc.NLP_NEEDED
+    assert lookup('increase') is lc.ConvState.NLP_NEEDED
+    assert lookup('misuse') is lc.ConvState.NLP_NEEDED
 
 
 def test_lookup_pos_tagged():
@@ -115,6 +115,27 @@ def test_lookup_pos_tagged():
     assert lc.lookup('increase', 'VERB') == 'in’creess'
     assert lc.lookup('misuse', 'NOUN') == 'mis’iuss'
     assert lc.lookup('misuse', 'VERB') == 'mis’ius'
+
+
+def test_lookup_hyphenated_prefix():
+    assert lookup('re-') == 'ri-'
+    assert lookup('Re-') == 'Ri-'
+    assert lookup('RE-') == 'RI-'
+    assert lookup('de-') == 'di-'
+    assert lookup('multi-') == 'multi-'
+    assert lookup('paleo-') == 'pailio-'
+    assert lookup('Paleo-') == 'Pailio-'
+    assert lookup('PALEO-') == 'PAILIO-'
+
+
+def test_lookup_us():
+    """Special: 'US' should remain unchanged if it's a capitalized abbreviation."""
+    assert lookup('us') == 'uss'
+    assert lookup('Us') == 'Uss'
+    assert lookup('US') == 'US'
+    assert lookup('US') == 'US'
+    assert lookup("US's") == 'US’s'
+    assert lookup('US’s') == 'US’s'
 
 
 def test_tokenize_simple():
@@ -148,6 +169,13 @@ def test_tokenize_diacritics():
       'Mañana| |me| |and| |my| |naïve| |doppelgänger| |will| |eat| |tōfu| |in| |the| |café| |of| |an| |élite| |hôtel|.'
     assert '|'.join(lc.tokenize_text('MAÑANA me and my naïve doppelGÄNGER will eat tōfu in the CAFÉ of an Élite Hôtel.')) ==\
       'MAÑANA| |me| |and| |my| |naïve| |doppelGÄNGER| |will| |eat| |tōfu| |in| |the| |CAFÉ| |of| |an| |Élite| |Hôtel|.'
+
+
+def test_tokenize_dates_and_numbers():
+    assert '|'.join(lc.tokenize_text('On 11 Feb. 2019 I wrote a test.')) ==\
+            'On| 11 |Feb|. 2019 |I| |wrote| |a| |test|.'
+    assert '|'.join(lc.tokenize_text('33 divided by 2 is 16.5.')) ==\
+            '33 |divided| |by| 2 |is| 16.5.'
 
 
 def test_convert_para_simple():
@@ -232,16 +260,110 @@ def test_convert_para_diacritics():
 
 
 def test_convert_i_case():
-    """Test case of Converted "I" and contractions such as "I'd", "I'll".
+    """Test case of converted "I" and contractions such as "I'd", "I'll".
 
     They should be capitalized at the start, but not in the middle of sentences.
     """
     assert lc.convert_para("I am capitalized at the start of sentences but I'm lower-case in the middle. I am still capitalized at the start.") ==\
             "Y am capitelysd at dhe start ov sentensses but y’m loer-caiss in dhe midl. Y am stil capitelysd at dhe start."
-    assert lc.convert_para('I’d be capitalized at the start of sentences but I’ll be lower-case in the middle. I’d still be capitalized at the start.') ==\
-            "Y’d bee capitelysd at dhe start ov sentensses but y’l bee loer-caiss in dhe midl. Y’d stil bee capitelysd at dhe start."
-    assert lc.convert_para("I've seen that that works but I've not seen that this works. I've seen it now.") ==\
-            "Y’v seen dhat dhat wurks but y’v not seen dhat dhiss wurks. Y’v seen it now."
+    assert lc.convert_para('I’d be capitalized at the start of sentences but I’ll be lower-case in the “middle”! I’d still be capitalized at the start.') ==\
+            'Y’d bee capitelysd at dhe start ov sentensses but y’l bee loer-caiss in dhe “midl”! Y’d stil bee capitelysd at dhe start.'
+    assert lc.convert_para("I've seen that that works but I've not seen whether this works? I've seen it now.") ==\
+            'Y’v seen dhat dhat wurks but y’v not seen wedher dhiss wurks? Y’v seen it now.'
+
+
+def test_convert_i_case_quotes():
+    """Test "I" case conversion after quote marks."""
+    assert lc.convert_para('Opening quote marks don\'t hurt, I guess. "I am still capitalized."') ==\
+            'Oapening quoat marks doan’t hurt, y gess. "Y am stil capitelysd."'
+    assert lc.convert_para('Opening quote marks don’t hurt, I guess. “I am still capitalized.”') ==\
+            'Oapening quoat marks doan’t hurt, y gess. “Y am stil capitelysd.”'
+    assert lc.convert_para('"Closing trailing quote marks don\'t hurt, I hope?" I\'m still capitalized.') ==\
+            '"Cloasing trailing quoat marks doan’t hurt, y hoap?" Y’m stil capitelysd.'
+    assert lc.convert_para('“Closing trailing quote marks don’t hurt, I hope!” I’m still capitalized.') ==\
+            '“Cloasing trailing quoat marks doan’t hurt, y hoap!” Y’m stil capitelysd.'
+    assert lc.convert_para("Closing leading quote marks don't hurt, I 'hope'. I am still capitalized.") ==\
+            "Cloasing leeding quoat marks doan’t hurt, y 'hoap'. Y am stil capitelysd."
+    assert lc.convert_para('Closing leading quote marks don’t hurt, I ‘hope’! I am still capitalized.') ==\
+            'Cloasing leeding quoat marks doan’t hurt, y ‘hoap’! Y am stil capitelysd.'
+
+
+def test_convert_i_case_colon():
+    """Test "I" case conversion after a colon.
+
+    A quoted phrase after a colon is assumed to start a new sentence (capitalized).
+    In all other cases, the preceding sentence is assumed to continue (lower-case).
+    """
+    assert lc.convert_para('After a colon: I should not be capitalized.') ==\
+            'After a coalen: y shood not bee capitelysd.'
+    assert lc.convert_para('I said: "I hope I\'ll be capitalized now."') ==\
+            'Y sed: "Y hoap y’l bee capitelysd now."'
+    assert lc.convert_para('I said: “I hope I’ll be capitalized now.”') ==\
+            'Y sed: “Y hoap y’l bee capitelysd now.”'
+    assert lc.convert_para('I said: ‘I hope I’ll be capitalized now.’') ==\
+            'Y sed: ‘Y hoap y’l bee capitelysd now.’'
+
+
+def test_convert_i_case_dates_and_numbers():
+    """Test "I" case conversion after dates and numbers."""
+    assert lc.convert_para('On 11 Feb. 2019 I wrote a test.') ==\
+            'On 11 Feb. 2019 y roat a test.'
+    assert lc.convert_para('Even after a fraction such as 3.5 I should still be lower-case.') ==\
+            'Eeven after a fraction such as 3.5 y shood stil bee loer-caiss.'
+
+
+def test_convert_i_case_spacy():
+    """Test that "I" case conversion also works if Spacy is invoked."""
+    assert lc.convert_para("I estimate that I am capitalized at the start of sentences but that I'm lower-case in the middle. I am still capitalized at the start.") ==\
+            "Y estimait dhat y am capitelysd at dhe start ov sentensses but dhat y’m loer-caiss in dhe midl. Y am stil capitelysd at dhe start."
+    assert lc.convert_para('Opening quote marks don’t hurt, I estimate. “I am still capitalized.”') ==\
+            'Oapening quoat marks doan’t hurt, y estimait. “Y am stil capitelysd.”'
+    assert lc.convert_para('"Closing trailing quote marks don\'t hurt, I estimate?" I\'m still capitalized.') ==\
+            '"Cloasing trailing quoat marks doan’t hurt, y estimait?" Y’m stil capitelysd.'
+    assert lc.convert_para('Closing leading quote marks don’t hurt, ‘I’d estimate’! I am still capitalized.') ==\
+            'Cloasing leeding quoat marks doan’t hurt, ‘y’d estimait’! Y am stil capitelysd.'
+    assert lc.convert_para('After a colon: I should not be capitalized, I’d estimate.') ==\
+            'After a coalen: y shood not bee capitelysd, y’d estimait.'
+    assert lc.convert_para('I said: “I estimate I’ll be capitalized now.”') ==\
+            'Y sed: “Y estimait y’l bee capitelysd now.”'
+    assert lc.convert_para('I estimate that around 11 Feb. 2019 I wrote a test.') ==\
+            'Y estimait dhat e’round 11 Feb. 2019 y roat a test.'
+    assert lc.convert_para('Even after a fraction such as 3.5 I should still be lower-case, I estimate.') ==\
+            'Eeven after a fraction such as 3.5 y shood stil bee loer-caiss, y estimait.'
+
+
+def test_convert_hyphenated_prefixes():
+    assert lc.convert_para('I re-sent the file to you last night.') ==\
+        'Y ri-sent dhe fyl to iu last nyt.'
+    # Test that it works with spaCy too
+    assert lc.convert_para('I estimate that I have to re-press the shirt.') ==\
+        'Y estimait dhat y hav to ri-press dhe shurt.'
+    # Also if capitalized
+    assert lc.convert_para('The Re-Creation of a Lost Artwork') ==\
+        'Dhe Ri-Cri’aition ov a Lost Artwurk'
+    # Nothing should happen in other cases
+    assert lc.convert_para('I talked with her re the case.') ==\
+        'Y taukd widh hur ree dhe caiss.'
+    assert lc.convert_para('Re: Your mail') ==\
+        'Ree: Iur mail'
+    # Also test some other prefix
+    assert lc.convert_para('She de-emphasized our differences.') ==\
+            'Shi di-emfecysd our diferensses.'
+    assert lc.convert_para('The Paleo-Americans arrived in the Americas a long, long time ago.') ==\
+        'Dhe Pailio-A’merricans e’ryvd in dhe A’merricas a long, long tym a’go.'
+
+
+def test_convert_other_hyphens():
+    """Test that hyphens between words don't cause problems."""
+    # Hyphens between independent words
+    assert lc.convert_para('We need a state-of-the-art solution.') ==\
+        'Wi need a stait-ov-dhe-art so’luution.'
+    # Not a prefix, since there is whitespace after the hyphen
+    assert lc.convert_para('I’m contacting you re- you might have guessed it -your mail.') ==\
+        'Y’m contacting iu ree- iu myt hav gessd it -iur mail.'
+    # Likewise if another hyphen follows
+    assert lc.convert_para('I’m contacting you re--you might have guessed it--your mail.') ==\
+        'Y’m contacting iu ree--iu myt hav gessd it--iur mail.'
 
 
 def test_Is_word_simple():
