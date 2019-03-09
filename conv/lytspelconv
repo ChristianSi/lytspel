@@ -67,26 +67,7 @@ if __name__ == '__main__':
     warnings.formatwarning = compact_warning
 
 
-def dict_filename() -> str:
-    """Return the name of the dictionary file.
-
-    The file is supposed to sit in a '../data' directory relative to the location of the
-    current script.
-    """
-    script_dir = path.dirname(__file__)
-    joined_path = path.join(script_dir, '../data/lytspel-dict.csv')
-    return path.abspath(joined_path)  # eliminate '../' part
-
-
-def is_mixed_case(word: str) -> bool:
-    """Test whether a word is MiXed case.
-
-    A word is assumed to be MiXed case if it starts with an upper-case letter and if it
-    contains at least one other upper-case and one lower-case letter. Words must be
-    ASCII-fied for this function to work correctly.
-    """
-    return re.match('[A-Z].*[a-z]', word) and re.search('.[A-Z]', word)
-
+# Utility functions
 
 def get_elem(seq: Sequence[T], idx: int) -> T:
     """Savely retried an element from a sequence.
@@ -99,798 +80,923 @@ def get_elem(seq: Sequence[T], idx: int) -> T:
         return None
 
 
-def load_dict() -> Dict[str, str]:
-    """Load the dictionary.
+# Classes
 
-    Also loads the 'mixed_dict' dictionary which must already exist as an (empty) global.
+class Dictionary:
+    """A dictionary mapping tradspell to Lytspel.
+
+    Instances of this class are threadsafe after initialization. Usually it should be
+    enough to have a single instance per program.
     """
-    with open(dict_filename(), encoding='utf-8') as csvfile:
-        csvreader = csv.reader(csvfile)
-        next(csvreader)  # skip header line
-        result = {}
-        redirects = {}  # will be resolved later
 
-        for row in csvreader:
-            tradspell = get_elem(row, 0)
-            pos = get_elem(row, 1)
-            redirect = get_elem(row, 2)
-            lytspel = get_elem(row, 3)
+    def __init__(self):
+        """Initializes and loads the dictionary."""
+        self._dict = {}
+        self._mixed_dict = {}
 
-            if tradspell and lytspel:
-                ts_lower = tradspell.lower()
-                ls_lower = lytspel.lower()
+        with open(self._dict_filename(), encoding='utf-8') as csvfile:
+            csvreader = csv.reader(csvfile)
+            next(csvreader)  # skip header line
+            redirects = {}  # will be resolved later
 
-                if pos:
-                    # Treat value as a dict of POS-tagged entries
-                    if not ts_lower in result:
-                        result[ts_lower] = {}
-                    result[ts_lower][pos] = ls_lower
+            for row in csvreader:
+                tradspell = get_elem(row, 0)
+                pos = get_elem(row, 1)
+                redirect = get_elem(row, 2)
+                lytspel = get_elem(row, 3)
+
+                if tradspell and lytspel:
+                    ts_lower = tradspell.lower()
+                    ls_lower = lytspel.lower()
+
+                    if pos:
+                        # Treat value as a dict of POS-tagged entries
+                        if not ts_lower in self._dict:
+                            self._dict[ts_lower] = {}
+                        self._dict[ts_lower][pos] = ls_lower
+                    else:
+                        self._dict[ts_lower] = ls_lower
+
+                    if self.is_mixed_case(lytspel):
+                        self._mixed_dict[tradspell] = lytspel
+
+                elif tradspell and redirect:
+                    redirects[tradspell.lower()] = redirect.lower()
                 else:
-                    result[ts_lower] = ls_lower
+                    warn('Unexpected/malformed CSV row: {}'.format(','.join(row)))
 
-                if is_mixed_case(lytspel):
-                    mixed_dict[tradspell] = lytspel
-
-            elif tradspell and redirect:
-                redirects[tradspell.lower()] = redirect.lower()
+        # Resolve redirects
+        for key, target in redirects.items():
+            value = self._dict.get(target)
+            if value:
+                self._dict[key] = value
             else:
-                warn('Unexpected/malformed CSV row: {}'.format(','.join(row)))
+                warn("Target '{}' of redirect '{}' missing!".format(target, key))
 
-    # Resolve redirects
-    for key, target in redirects.items():
-        value = result.get(target)
-        if value:
-            result[key] = value
+    def _dict_filename(self) -> str:
+        """Return the name of the dictionary file.
+
+        The file is supposed to sit in a '../data' directory relative to the location of the
+        current script.
+        """
+        script_dir = path.dirname(__file__)
+        joined_path = path.join(script_dir, '../data/lytspel-dict.csv')
+        return path.abspath(joined_path)  # eliminate '../' part
+
+    def is_mixed_case(self, word: str) -> bool:
+        """Test whether a word is MiXed case.
+
+        A word is assumed to be MiXed case if it starts with an upper-case letter and if it
+        contains at least one other upper-case and one lower-case letter. Words must be
+        ASCII-fied for this function to work correctly.
+        """
+        return re.match('[A-Z].*[a-z]', word) and re.search('.[A-Z]', word)
+
+    def lookup(self, word: str, spacy_pos: str = None, at_sent_start: bool = False) -> Union[
+            str, ConvState]:
+        """Lookup a word in the dictionary and returned its converted form.
+
+        'spacy_pos' is the POS tag as returned by spaCy. If it's omitted and if the respelling
+        of the word depends on its POS tag, ConvState.NLP_NEEDED is returend.
+
+        'at_sent_start' should be set to true if this token is the first of a new sentence.
+        It is used to handle the case of the converted pronoun 'I' and its contractions.
+
+        None is returned if the word is unknown.
+
+        Case is restored (lower, Capitalized, or ALL_CAPS). MixedCase is also restored
+        provided that *both* the input word and the dictionary entry use this case form
+        (e.g. JavaScript -> JaavaScript).
+        """
+        word = self.asciify(word)
+        # Strip final 's (genitive or contraction) and remember for later (handling case)
+        word, genitiveS = self.strip_genitive_s(word)
+
+        if word in ('BIOS', 'US'):
+            # Keep some capitalized abbreviations unchanged
+            result = word
         else:
-            warn("Target '{}' of redirect '{}' missing!".format(target, key))
+            lower = word.lower()
 
-    return result
-
-
-# Globals
-mixed_dict = {}
-ls_dict = load_dict()
-# Load spaCy, disabling unnecessary components
-nlp = spacy.load('en', disable=['parser', 'ner'])
-
-# Global switch, consulted by lookup() and updated during conversion and tokenization
-at_sent_start = True
-
-# Optional counter of unknown words
-unknownCounter = None
-
-
-# Main code
-
-def asciify(word: str) -> str:
-    """Convert a word to its ASCII equivalent.
-
-    Typographic apostrophes are replaced by normal ones and diacritical letters are
-    replaced by their closest ASCII equivalents.
-    """
-    result = word.replace('’', "'")  # ASCII-ify apostrophes
-
-    if not re.match("[-'a-zA-Z]*$", result): # non-ASCII word
-        letters = list(result)
-
-        for i, letter in enumerate(letters):
-            if ord(letter) < 128: continue  # ASCII, nothing to do
-            lower_letter = letter.lower()
-            replacement = ''
-
-            # vowels and semivowels
-            if lower_letter in 'áàăâǎåäãąāả':
-                replacement = 'a'
-            elif lower_letter in 'æ':
-                replacement = 'ae'
-            elif lower_letter in 'éèĕêěëẽęēẻ':
-                replacement = 'e'
-            elif lower_letter in 'íìĭîǐïĩįī':
-                replacement = 'i'
-            elif lower_letter in 'óòŏôǒöõøǫōỏ':
-                replacement = 'o'
-            elif lower_letter in 'œ':
-                replacement = 'oe'
-            elif lower_letter in 'úùŭûǔůüũųūủ':
-                replacement = 'u'
-            elif lower_letter in 'ýỳŷẙÿỹȳỷ':
-                replacement = 'y'
-            # consonants
-            elif lower_letter in 'ćĉčċç':
-                replacement = 'c'
-            elif lower_letter in 'ďđ':
-                replacement = 'd'
-            elif lower_letter in 'ǵğĝǧġḡ':
-                replacement = 'g'
-            elif lower_letter in 'ĥȟḧħ':
-                replacement = 'h'
-            elif lower_letter in 'ĵǰ':
-                replacement = 'j'
-            elif lower_letter in 'ḱǩ':
-                replacement = 'k'
-            elif lower_letter in 'ĺľłḹ':
-                replacement = 'l'
-            elif lower_letter in 'ḿ':
-                replacement = 'm'
-            elif lower_letter in 'ńǹňñ':
-                replacement = 'n'
-            elif lower_letter in 'ṕ':
-                replacement = 'p'
-            elif lower_letter in 'ŕř':
-                replacement = 'r'
-            elif lower_letter in 'śŝšş':
-                replacement = 's'
-            elif lower_letter in 'ß':
-                replacement = 'ss'
-            elif lower_letter in 'ťẗ':
-                replacement = 't'
-            elif lower_letter in 'ṽ':
-                replacement = 'v'
-            elif lower_letter in 'ẃẁẘẅ':
-                replacement = 'w'
-            elif lower_letter in 'ẍ':
-                replacement = 'x'
-            elif lower_letter in 'źẑž':
-                replacement = 'z'
-
-            if replacement:
-                if letter != lower_letter:  #  original was upper case
-                    replacement = replacement.upper()
-                letters[i] = replacement
-
-        result = ''.join(letters)
-    return result
-
-
-def translate_pos(spacy_pos: str) -> str:
-    """Translate a POS tag as used by spaCy into the form used in the dictionary."""
-    if spacy_pos in ('AUX', 'VERB'):
-        return 'v'
-    elif spacy_pos in ('NOUN', 'PROPN'):
-        return 'n'
-    elif spacy_pos == 'ADJ':
-        return 'aj'
-    elif spacy_pos == 'ADV':
-        return 'av'
-    elif spacy_pos == 'ADP':
-        return 'prp'
-    else:
-        # Other POS tags shouldn't usually occur regarding our POS-tagged words
-        warn('Unexpected spaCy POS tag: {}'.format(spacy_pos))
-        return 'v'
-
-
-def find_pos_tagged_entry(entries: dict, pos: str, tried_variants: List[str] = None) -> str:
-    """Find the entry to use if several POS-tagged spellings exist for a word.
-
-    'pos' is the POS tag as returned by spaCy (capitalized) or used in our dictionary
-    (lower-case) - the former will be translated into the later if needed.
-
-    'tried_variants' is used internally to prevent endless loops in case another POS tag
-    has to be tried as fallback.
-    """
-    if pos and pos[0].isupper():
-        pos = translate_pos(pos)
-    if tried_variants is None:
-        tried_variants = []
-
-    tried_variants.append(pos)
-    result = entries.get(pos)
-
-    if result is None:
-        fallback = POS_FALLBACKS.get(pos)
-
-        if fallback is None or fallback in tried_variants:
-            if fallback is None:
-                warn("No fallback found for POS tag '{}'; using last entry of {} as fallback"
-                        .format(pos, entries))
+            if lower in ("'ll", "'re", "'ve"):
+                # Contraction tokens produced by spaCy: discard the last letter
+                result = lower[:-1]
+            elif re.match("'.$", lower):
+                # Single-letter contraction token: return as is
+                result = lower
             else:
-                warn("Trying POS tag '{}' after {} would loop; using last entry of {} as fallback"
-                        .format(pos, tried_variants, entries))
+                result = self._dict.get(lower)
+                if result is None:
+                    return result
 
-            result = entries[sorted(entries.keys())[-1]]
-        else:
-            result = find_pos_tagged_entry(entries, fallback, tried_variants)
+                if isinstance(result, dict):
+                    if spacy_pos:
+                        result = self._find_pos_tagged_entry(result, spacy_pos)
+                    else:
+                        return ConvState.NLP_NEEDED
 
-    return result
-
-
-def lookup(word: str, spacy_pos: str = None) -> str:
-    """Lookup a word in the dictionary and returned its converted form.
-
-    'spacy_pos' is the POS tag as returned by spaCy. If it's omitted and if the respelling
-    of the word depends on its POS tag, ConvState.NLP_NEEDED is returend.
-
-    None is returned if the word is unknown.
-
-    Case is restored (lower, Capitalized, or ALL_CAPS). MixedCase is also restored
-    provided that *both* the input word and the dictionary entry use this case form
-    (e.g. JavaScript -> JaavaScript).
-    """
-    word = asciify(word)
-    # Strip final 's (genitive or contraction) and remember for later (handling case)
-    word, genitiveS = stripGenitiveS(word)
-
-    if word == 'US':
-        result = word
-    else:
-        lower = word.lower()
-
-        if lower in ("'ll", "'re", "'ve"):
-            # Contraction tokens produced by spaCy: discard the last letter
-            result = lower[:-1]
-        elif re.match("'.$", lower):
-            # Single-letter contraction token: return as is
-            result = lower
-        else:
-            result = ls_dict.get(lower)
-            if result is None:
-                return result
-
-            if isinstance(result, dict):
-                if spacy_pos:
-                    result = find_pos_tagged_entry(result, spacy_pos)
+            if re.match("[-'A-Z]+$", word):
+                result = result.upper()  # ALL_CAPS
+            elif re.match('[A-Z]', word):
+                if word in self._mixed_dict:
+                    result = self._mixed_dict[word]  #  MixedCase
                 else:
-                    return ConvState.NLP_NEEDED
+                    result = result[0].upper() + result[1:]  # Capitalized
 
-        if re.match("[-'A-Z]+$", word):
-            result = result.upper()  # ALL_CAPS
-        elif re.match('[A-Z]', word):
-            if word in mixed_dict:
-                result = mixed_dict[word]  #  MixedCase
-            else:
-                result = result[0].upper() + result[1:]  # Capitalized
+            if not at_sent_start and re.match("I$|I['’]", word):
+                # Correct the case of 'I' and its contractions
+                result = result.lower()
 
-        if not at_sent_start and re.match("I$|I['’]", word):
-            # Correct the case of 'I' and its contractions
-            result = result.lower()
+        if genitiveS:
+            result += genitiveS
 
-    if genitiveS:
-        result += genitiveS
+        result = result.replace( "'", '’')  # replace normal by typographic apostrophe
+        return result
 
-    result = result.replace( "'", '’')  # replace normal by typographic apostrophe
-    return result
+    def asciify(self, word: str) -> str:
+        """Convert a word to its ASCII equivalent.
 
+        Typographic apostrophes are replaced by normal ones and diacritical letters are
+        replaced by their closest ASCII equivalents.
+        """
+        result = word.replace('’', "'")  # ASCII-ify apostrophes
 
-def tokenize_text(text: str) -> List[str]:
-    """Tokenize a string, returning an array of words and puncuation.
-    Words must start and end with a letter and may contain apostrophes.
-    """
-    if not text:
-        return []  # Empty or None
+        if not re.match("[-'a-zA-Z]*$", result): # non-ASCII word
+            letters = list(result)
 
-    result = TOKEN_RE.split(text)
-    # Remove first and/or last element if they are empty
-    if result[0] == '':
-        result.pop(0)
-    if result[-1] == '':
-        result.pop()
-    return result
+            for i, letter in enumerate(letters):
+                if ord(letter) < 128: continue  # ASCII, nothing to do
+                lower_letter = letter.lower()
+                replacement = ''
 
+                # vowels and semivowels
+                if lower_letter in 'áàăâǎåäãąāả':
+                    replacement = 'a'
+                elif lower_letter in 'æ':
+                    replacement = 'ae'
+                elif lower_letter in 'éèĕêěëẽęēẻ':
+                    replacement = 'e'
+                elif lower_letter in 'íìĭîǐïĩįī':
+                    replacement = 'i'
+                elif lower_letter in 'óòŏôǒöõøǫōỏ':
+                    replacement = 'o'
+                elif lower_letter in 'œ':
+                    replacement = 'oe'
+                elif lower_letter in 'úùŭûǔůüũųūủ':
+                    replacement = 'u'
+                elif lower_letter in 'ýỳŷẙÿỹȳỷ':
+                    replacement = 'y'
+                # consonants
+                elif lower_letter in 'ćĉčċç':
+                    replacement = 'c'
+                elif lower_letter in 'ďđ':
+                    replacement = 'd'
+                elif lower_letter in 'ǵğĝǧġḡ':
+                    replacement = 'g'
+                elif lower_letter in 'ĥȟḧħ':
+                    replacement = 'h'
+                elif lower_letter in 'ĵǰ':
+                    replacement = 'j'
+                elif lower_letter in 'ḱǩ':
+                    replacement = 'k'
+                elif lower_letter in 'ĺľłḹ':
+                    replacement = 'l'
+                elif lower_letter in 'ḿ':
+                    replacement = 'm'
+                elif lower_letter in 'ńǹňñ':
+                    replacement = 'n'
+                elif lower_letter in 'ṕ':
+                    replacement = 'p'
+                elif lower_letter in 'ŕř':
+                    replacement = 'r'
+                elif lower_letter in 'śŝšş':
+                    replacement = 's'
+                elif lower_letter in 'ß':
+                    replacement = 'ss'
+                elif lower_letter in 'ťẗ':
+                    replacement = 't'
+                elif lower_letter in 'ṽ':
+                    replacement = 'v'
+                elif lower_letter in 'ẃẁẘẅ':
+                    replacement = 'w'
+                elif lower_letter in 'ẍ':
+                    replacement = 'x'
+                elif lower_letter in 'źẑž':
+                    replacement = 'z'
 
-def is_word(token: str) -> bool:
-    """Check if a token is a word.
+                if replacement:
+                    if letter != lower_letter:  #  original was upper case
+                        replacement = replacement.upper()
+                    letters[i] = replacement
 
-    Words start with a letter, or with an apostrophe followed by a letter."""
-    return re.match("['’]?" + LOWERCASE_LETTER_PAT, token, re.IGNORECASE)
+            result = ''.join(letters)
+        return result
 
+    def strip_genitive_s(self, word: str):
+        """Strip the genitive or contraction "'s" from a word, if its present.
 
+        Returns two values: actual word, genitive. If the word doesn't end in a genitive, the
+        first return value will be identical to the argument and the second return value will
+        be empty.
 
-
-def text_looks_foreign(text: str) -> bool:
-    """Check whether a text fragment looks like it's written in a foreign language.
-
-    Returns True iff a majority of the words are unknown.
-    """
-    in_tokens = tokenize_text(text)
-    known_words = 0
-    unknown_words = 0
-
-    for token in in_tokens:
-        if is_word(token):
-            conv = lookup(token)
-            if conv:
-                known_words += 1
-            else:
-                unknown_words += 1
-
-    return unknown_words > known_words
-
-
-def ends_sentence(token: str) -> bool:
-    """Uses some simple heuristics to determine whether a token seems to end a sentence.
-
-    Returns True in one of three cases:
-
-    * The tokens ends in a dot, question or exclamation mark, optionally followed by an
-      opening or closing quote marks
-    * It ends in a colon followed by an opening quote mark
-    * It ends in '>' (quoted text marker), optionally followed by an opening quote mark
-
-    Whitespace is ignored in all cases.
-    """
-    if not token:
-        return False
-    if re.search('([.?!](\s*["\'“‘”’])?|:\s*["\'“‘]|>(\s*["\'“‘])?)\s*$', token):
-        return True
-    else:
-        return False
-
-
-def stripGenitiveS(word: str):
-    """Strip the genitive or contraction "'s" from a word, if its present.
-
-    Returns two values: actual word, genitive. If the word doesn't end in a genitive, the
-    first return value will be identical to the argument and the second return value will
-    be empty.
-
-    Both simple and typographic apostrophes are recognized.
-    """
-    if re.search(".'s$", word, re.IGNORECASE):
-        return word[:-2], word[-2:]
-    else:
-        return word, ''
-
-
-def convert_text_if_simple(text: str, test_if_foreign: bool = True,
-        starts_sent: bool = True) -> object:
-    """Convert a text fragment if doing so is possible without POS tagging.
-
-    'starts_sent' is an optional attribute that specifies whether this text fragment is likely
-    to start with a new sentence. If true, the 'at_sent_start' switch is set accordingly,
-    otherwise it is left alone.
-
-    The return value is either:
-
-    * The converted text (a string)
-    * ConvState.NLP_NEEDED if POS tagging (NLP) is needed)
-    * ConvState.LOOKS_FOREIGN if 'test_if_foreign' is true and a majority of the words in
-      the fragment are unknown
-    """
-    global at_sent_start, unknownCounter
-    orig_at_sent_start = at_sent_start  # Remember in case we have to restore it later
-
-    if not text:
-        return text  # Empty or None, nothing to do
-    if starts_sent:
-        at_sent_start = True
-
-    in_tokens = tokenize_text(text)
-    out_tokens = []
-    lasttok = ''
-    known_words = 0
-    unknown_words = 0
-
-    if unknownCounter is not None:
-        localUnknownCounter = Counter()
-
-    for token in in_tokens:
-        if is_word(token):
-            conv = lookup(token)
-
-            if conv is ConvState.NLP_NEEDED:
-                at_sent_start = orig_at_sent_start
-                return ConvState.NLP_NEEDED
-            elif conv:
-                known_words += 1
-                out_tokens.append(conv)
-            else:
-                unknown_words += 1
-                out_tokens.append(token)
-
-                if unknownCounter is not None:
-                    actualWord = stripGenitiveS(token)[0]
-                    localUnknownCounter[actualWord] += 1
-
-            at_sent_start = False
+        Both simple and typographic apostrophes are recognized.
+        """
+        if re.search(".['’]s$", word, re.IGNORECASE):
+            return word[:-2], word[-2:]
         else:
-            # Not a word
-            if token == '-' and lasttok:
-                # Check if this forms a hyphenated prefix with the preceding token, e.g. 're-'
-                conv = lookup(lasttok + token)
+            return word, ''
 
+    def translate_pos(self, spacy_pos: str) -> str:
+        """Translate a POS tag as used by spaCy into the form used in the dictionary."""
+        if spacy_pos in ('AUX', 'VERB'):
+            return 'v'
+        elif spacy_pos in ('NOUN', 'PROPN'):
+            return 'n'
+        elif spacy_pos == 'ADJ':
+            return 'aj'
+        elif spacy_pos == 'ADV':
+            return 'av'
+        elif spacy_pos == 'ADP':
+            return 'prp'
+        else:
+            # Other POS tags shouldn't usually occur regarding our POS-tagged words,
+            # but we use a reasonable default for cases where spaCy gets it wrong
+            return 'v'
+
+    def _find_pos_tagged_entry(self, entries: dict, pos: str,
+            tried_variants: List[str] = None) -> str:
+        """Find the entry to use if several POS-tagged spellings exist for a word.
+
+        'pos' is the POS tag as returned by spaCy (capitalized) or used in our dictionary
+        (lower-case) - the former will be translated into the later if needed.
+
+        'tried_variants' is used internally to prevent endless loops in case another POS tag
+        has to be tried as fallback.
+        """
+        if pos and pos[0].isupper():
+            pos = self.translate_pos(pos)
+        if tried_variants is None:
+            tried_variants = []
+
+        tried_variants.append(pos)
+        result = entries.get(pos)
+
+        if result is None:
+            fallback = POS_FALLBACKS.get(pos)
+
+            if fallback is None or fallback in tried_variants:
+                if fallback is None:
+                    warn("No fallback found for POS tag '{}'; using last entry of {} as fallback"
+                            .format(pos, entries))
+                else:
+                    warn("Trying POS tag '{}' after {} would loop; using last entry of {} as "
+                         "fallback".format(pos, tried_variants, entries))
+
+                result = entries[sorted(entries.keys())[-1]]
+            else:
+                result = self._find_pos_tagged_entry(entries, fallback, tried_variants)
+
+        return result
+
+
+class Converter:
+    """A converter from tradspell to Lytspell.
+
+    Instances of this class are stateful and hence not threadsafe.
+    """
+
+    # Load Dictionary (once)
+    _dict = Dictionary()
+
+    # Load spaCy (once), disabling unnecessary components
+    _nlp = spacy.load('en', disable=['parser', 'ner'])
+
+    def __init__(self, use_unknown_counter: bool = False):
+        """Create a new instance.
+
+        Parameters:
+
+        * use_unknown_counter: whether unknown words should be counted
+        """
+        # Switch consulted by self.lookup() and updated during conversion and tokenization
+        self._at_sent_start = True
+        # Optional counter of unknown words
+        self._unknown_counter = Counter() if use_unknown_counter else None
+
+    def lookup(self, word: str, spacy_pos: str = None) -> Union[str, ConvState]:
+        """Lookup a word, delegating to the corrresponding 'Dictionary' method."""
+        return self._dict.lookup(word, spacy_pos, self._at_sent_start)
+
+    def tokenize_text(self, text: str) -> List[str]:
+        """Tokenize a string, returning an array of words and puncuation.
+
+        Words must start and end with a letter and may contain apostrophes.
+        """
+        if not text:
+            return []  # Empty or None
+
+        result = TOKEN_RE.split(text)
+        # Remove first and/or last element if they are empty
+        if result[0] == '':
+            result.pop(0)
+        if result[-1] == '':
+            result.pop()
+        return result
+
+    def is_word(self, token: str) -> bool:
+        """Check if a token is a word.
+
+        Words start with a letter, or with an apostrophe followed by a letter."""
+        return re.match("['’]?" + LOWERCASE_LETTER_PAT, token, re.IGNORECASE)
+
+    def text_looks_foreign(self, text: str) -> bool:
+        """Check whether a text fragment looks like it's written in a foreign language.
+
+        Returns True iff a majority of the words are unknown.
+        """
+        in_tokens = self.tokenize_text(text)
+        known_words = 0
+        unknown_words = 0
+
+        for token in in_tokens:
+            if self.is_word(token):
+                conv = self.lookup(token)
                 if conv:
-                    out_tokens[-1] = conv
+                    known_words += 1
                 else:
-                    out_tokens.append(token)
-            else:
-                # Append non-word as is and check whether it terminates a sentence
-                out_tokens.append(token)
-                at_sent_start |= ends_sentence(token)
+                    unknown_words += 1
 
-        lasttok = token
+        return unknown_words > known_words
 
-    if not test_if_foreign or unknown_words <= known_words:
-        # We shouldn't make the foreign language test OR at least half of the words are known
-        if unknownCounter is not None:
-            unknownCounter += localUnknownCounter
+    def ends_sentence(self, token: str) -> bool:
+        """Use some simple heuristics to determine whether a token seems to end a sentence.
 
-        return ''.join(out_tokens)
-    else:
-        return ConvState.LOOKS_FOREIGN
+        Returns True in one of three cases:
 
+        * The tokens ends in a dot, question or exclamation mark, optionally followed by an
+          opening or closing quote marks
+        * It ends in a colon followed by an opening quote mark
+        * It ends in '>' (quoted text marker), optionally followed by an opening quote mark
 
-def convert_para(text: str, test_if_foreign: bool = True, starts_sent: bool = True) -> str:
-    """Convert a paragraph.
+        Whitespace is ignored in all cases.
+        """
+        if not token:
+            return False
+        if re.search('([.?!](\s*["\'“‘”’])?|:\s*["\'“‘]|>(\s*["\'“‘])?)\s*$', token):
+            return True
+        else:
+            return False
 
-    'starts_sent' is an optional attribute that specifies whether this text fragment is likely
-    to start with a new sentence. If true, the 'at_sent_start' switch is set accordingly,
-    otherwise it is left alone.
+    def _update_at_sent_start(self, token: str) -> None:
+        """Update the '_at_sent_start' attribute.
 
-    If 'test_if_foreign' is True and a majority of the words in the paragraph are unknown,
-    the paragraph is assumed to be written in a foreign language and returned unchanged.
-    """
-    global at_sent_start
+        Paramater:
 
-    if not text:
+        * token: the last read token which must be a non-word
+        """
+        local_value = self._at_sent_start
+        if local_value:
+            if re.search('\d', token):
+                # Token contains digits, hence it is considered as first token of the new sentence
+                local_value = False
+
+        # Set to True if the token seems to end a sentence OR if the attribute was already True
+        # (and not set to False by us due to encountering a number)
+        self._at_sent_start = local_value or self.ends_sentence(token)
+
+    def _convert_text_if_simple(self, text: str, test_if_foreign: bool = True,
+            starts_sent: bool = True) -> Union[str, ConvState]:
+        """Convert a text fragment if doing so is possible without POS tagging.
+
+        'starts_sent' is an optional attribute that specifies whether this text fragment is
+        likely to start with a new sentence. If true, the '_at_sent_start' switch is set
+        accordingly, otherwise it is left alone.
+
+        The return value is either:
+
+        * The converted text (a string)
+        * ConvState.NLP_NEEDED if POS tagging (NLP) is needed)
+        * ConvState.LOOKS_FOREIGN if 'test_if_foreign' is true and a majority of the words in
+          the fragment are unknown
+        """
+        orig_at_sent_start = self._at_sent_start  # Remember in case we have to restore it later
+
+        if not text:
+            return text  # Empty or None, nothing to do
         if starts_sent:
-            # Nothing to do, but we still update the global state (a new block-level HTML
-            # element might have been opened)
-            at_sent_start = True
-        return text
+            self._at_sent_start = True
 
-    simple_result = convert_text_if_simple(text, test_if_foreign, starts_sent)
-
-    if simple_result is ConvState.NLP_NEEDED:
-        # We have to invoke spaCy for POS tagging (unless the text looks foreign)
-        if text_looks_foreign(text):
-            return text  # Return text unchanged
-
-        doc = nlp(text)
-        tokens = []
+        in_tokens = self.tokenize_text(text)
+        out_tokens = []
         lasttok = ''
-        last_nonword = ''
+        known_words = 0
+        unknown_words = 0
 
-        if starts_sent:
-            at_sent_start = True
+        if self._unknown_counter is not None:
+            local_unknown_counter = Counter()
 
-        for entry in doc:
-            token = entry.text
-            tail = entry.whitespace_ or ''  # optional trailing whitespace
+        for token in in_tokens:
+            if self.is_word(token):
+                conv = self.lookup(token)
 
-            if token.lower() in ("n't", 'n’t'):
-                # SpaCy treats "n't" (as in "don't" etc.) as a separate word, but we look it up
-                # together with the preceding word because the joined pronounciation (and hence
-                # spelling) is sometimes different
-                if tokens:
-                    tokens.pop()
-                token = lasttok + token
-
-            if is_word(token):
-                if token.endswith('’'):
-                    # SpaCy gets confused by typographic half quotation marks,
-                    # so we strip them ourselves
-                    tail = token[-1:] + tail
-                    token = token[:-1]
-
-                conv = lookup(token, entry.pos_)
-
-                if conv:
-                    tokens.append(conv)
+                if conv is ConvState.NLP_NEEDED:
+                    self._at_sent_start = orig_at_sent_start
+                    return ConvState.NLP_NEEDED
+                elif conv:
+                    known_words += 1
+                    out_tokens.append(conv)
                 else:
-                    tokens.append(token)
+                    unknown_words += 1
+                    out_tokens.append(token)
 
-                at_sent_start = ends_sentence(tail)
-                last_nonword = ''
+                    if self._unknown_counter is not None:
+                        actualWord = self._dict.strip_genitive_s(token)[0]
+                        if len(actualWord) > 1:
+                            local_unknown_counter[actualWord] += 1
+
+                self._at_sent_start = False
             else:
                 # Not a word
-                if token == '-' and not tail and lasttok:
+                if token == '-' and lasttok:
                     # Check if this forms a hyphenated prefix with the preceding token, e.g. 're-'
-                    conv = lookup(lasttok + token)
+                    conv = self.lookup(lasttok + token)
 
                     if conv:
-                        tokens[-1] = conv
+                        out_tokens[-1] = conv
                     else:
-                        tokens.append(token)
-                        last_nonword = token
+                        out_tokens.append(token)
                 else:
-                    # Append as is
-                    tokens.append(token)
-
-                    # We also consider the last nonword token for cases such as ‹: "› (colon
-                    # followed by quote) which are considered two tokens by spaCy
-                    at_sent_start |= ends_sentence(last_nonword + token + tail)
-                    last_nonword = token
+                    # Append non-word as is and check whether it terminates a sentence
+                    out_tokens.append(token)
+                    self._update_at_sent_start(token)
 
             lasttok = token
 
-            # Append trailing whitespace to token, if any
-            if tail:
-                tokens[-1] += tail
+        if not test_if_foreign or unknown_words <= known_words:
+            # We shouldn't make the foreign language test OR at least half of the words are known
+            if self._unknown_counter is not None:
+                self._unknown_counter += local_unknown_counter
 
-        return ''.join(tokens)
-    elif simple_result is ConvState.LOOKS_FOREIGN:
-        return text  # Return text unchanged
-    else:
-        return simple_result
+            return ''.join(out_tokens)
+        else:
+            return ConvState.LOOKS_FOREIGN
 
+    def convert_para(self, text: str, test_if_foreign: bool = True,
+            starts_sent: bool = True) -> str:
+        """Convert a paragraph.
 
-def determine_file_type(filename: str) -> str:
-    """Inspect the contents of a file to determine the likely file type.
+        'starts_sent' is an optional attribute that specifies whether this text fragment is likely
+        to start with a new sentence. If true, the 'self._at_sent_start' switch is set accordingly,
+        otherwise it is left alone.
 
-    Returns either 'epub', 'html', 'txt', or None if the file is clearly not of any of these
-    types. However, 'txt' is used as a fairly general fallback hence it's quite possible that
-    a file labeled as 'txt' is actually something else
-    """
-    # Check if it's an epub file
-    if is_zipfile(filename):
-        with ZipFile(filename) as zip:
-            bytes = b''
+        If 'test_if_foreign' is True and a majority of the words in the paragraph are unknown,
+        the paragraph is assumed to be written in a foreign language and returned unchanged.
+        """
+        if not text:
+            if starts_sent:
+                # Nothing to do, but we still update the global state (a new block-level HTML
+                # element might have been opened)
+                self._at_sent_start = True
+            return text
 
-            try:
-                bytes = zip.read('mimetype')
-            except KeyError:
-                pass  # Not an epub file
+        simple_result = self._convert_text_if_simple(text, test_if_foreign, starts_sent)
 
-            if bytes.decode().startswith('application/epub+zip'):
-                return 'epub'
-            else:
-                return None
+        if simple_result is ConvState.NLP_NEEDED:
+            # We have to invoke spaCy for POS tagging (unless the text looks foreign)
+            if self.text_looks_foreign(text):
+                return text  # Return text unchanged
 
-    with open(filename) as file:
-        for line in file:
-            line = line.strip()
-            if not line: continue  # Empty line, inspect next one
-            if re.match("<[!?h]", line, re.IGNORECASE):
-                # File seems to start with a DOCTYPE or XML declaration, HTML comment or
-                # <html> tag
-                return 'html'
-            else:
-                break
+            doc = self._nlp(text)
+            out_tokens = []
+            lasttok = ''
+            last_nonword = ''
 
-    return 'txt'
+            if starts_sent:
+                self._at_sent_start = True
 
+            for entry in doc:
+                # Sometimes spaCy doesn't recognize all word boundaries, hence we run our own
+                # tokenizer on each of its entries (unless it looks like an ULR or abbreviation)
+                if entry.text.count('.') >= 2 or entry.text.count('/') >= 2:
+                    in_tokens = [entry.text]
+                    looks_like_url = True
+                else:
+                    in_tokens = self.tokenize_text(entry.text)
+                    looks_like_url = False
 
-def simple_tag(elem: etree._Element) -> str:
-    """Return the tag name of an Element without the XHTML namespace, if used.
+                # Glue contraction tokens such as "'ll" back together
+                if len(in_tokens) >= 2 and in_tokens[0] in ("'", "’") and \
+                        self.is_word(in_tokens[1]):
+                    in_tokens[0] += in_tokens[1]
+                    in_tokens.pop(1)
 
-    If the element lives within the XHTML namespace, just the local name is returned,
-    e.g. '{http://www.w3.org/1999/xhtml}img' becomes 'img'.
+                for idx, token in enumerate(in_tokens, start=1):
+                    tail = ''
 
-    In all other cases, the tag name is returned unchanged.
-    """
-    tag = elem.tag
+                    if idx == len(in_tokens) and entry.whitespace_:
+                        tail = entry.whitespace_  # optional trailing whitespace after the entry
 
-    if tag is None:
-        return tag
+                    if token.lower() in ("n't", 'n’t'):
+                        # SpaCy treats "n't" (as in "don't" etc.) as a separate word, but we look
+                        # it up together with the preceding word because the joined pronounciation
+                        # (and hence spelling) is sometimes different
+                        if out_tokens:
+                            out_tokens.pop()
+                        token = lasttok + token
 
-    if tag.startswith(XHTML_NAMESPACE):
-        return tag[len(XHTML_NAMESPACE):]
-    else:
-        return tag
+                        if self._unknown_counter is not None and lasttok in self._unknown_counter:
+                            self._unknown_counter[lasttok] -= 1
 
+                    if self.is_word(token):
+                        conv = self.lookup(token, entry.pos_)
 
-def convert_html_elem(elem: etree._Element) -> None:
-    """Recursively convert an element in an HTML document and its children.
+                        if conv:
+                            out_tokens.append(conv)
+                        else:
+                            out_tokens.append(token)
 
-    Whether to convert textual content is decided on the level of block-level tags (such
-    as 'h1', 'blockquote', 'p') that do NOT contain any directly nested block-level tags
-    (e.g. if an 'ol' contains 'li' elements, the decision will be made for each of the
-    latter independently, not for the whole 'ol'). If a large part of the text embedded
-    in such an element seems to be in a foreign language, the whole element will NOT be
-    converted.
-    """
-    # Check if we should made the foreign-language test as this level
-    if simple_tag(elem) in BLOCK_LEVEL_TAGS:
-        decide_on_conversion = True
+                            if self._unknown_counter is not None and not looks_like_url:
+                                actualWord = self._dict.strip_genitive_s(token)[0]
+                                if len(actualWord) > 1:
+                                    self._unknown_counter[actualWord] += 1
 
+                        self._at_sent_start = self.ends_sentence(tail)
+                        last_nonword = ''
+                    else:
+                        # Not a word
+                        if token == '-' and not tail and lasttok:
+                            # Check if this forms a hyphenated prefix with the preceding token,
+                            # e.g. 're-'
+                            conv = self.lookup(lasttok + token)
+
+                            if conv:
+                                out_tokens[-1] = conv
+                            else:
+                                out_tokens.append(token)
+                                last_nonword = token
+                        else:
+                            # Append as is
+                            out_tokens.append(token)
+
+                            # We also consider the last nonword token for cases such as ‹: "›
+                            # (colon followed by quote) which are considered two tokens by spaCy
+                            self._update_at_sent_start(last_nonword + token + tail)
+                            last_nonword = token
+
+                    lasttok = token
+
+                    # Append trailing whitespace to token, if any
+                    if tail:
+                        out_tokens[-1] += tail
+
+            return ''.join(out_tokens)
+        elif simple_result is ConvState.LOOKS_FOREIGN:
+            return text  # Return text unchanged
+        else:
+            return simple_result
+
+    def determine_file_type(self, filename: str) -> str:
+        """Inspect the contents of a file to determine the likely file type.
+
+        Returns either 'epub', 'html', 'txt', or None if the file is clearly not of any of
+        these types. However, 'txt' is used as a fairly general fallback hence it's quite
+        possible that a file labeled as 'txt' is actually something else
+        """
+        # Check if it's an epub file
+        if is_zipfile(filename):
+            with ZipFile(filename) as zip:
+                bytes = b''
+
+                try:
+                    bytes = zip.read('mimetype')
+                except KeyError:
+                    pass  # Not an epub file
+
+                if bytes.decode().startswith('application/epub+zip'):
+                    return 'epub'
+                else:
+                    return None
+
+        with open(filename) as file:
+            for line in file:
+                line = line.strip()
+                if not line: continue  # Empty line, inspect next one
+                if re.match("<[!?h]", line, re.IGNORECASE):
+                    # File seems to start with a DOCTYPE or XML declaration, HTML comment or
+                    # <html> tag
+                    return 'html'
+                else:
+                    break
+
+        return 'txt'
+
+    def simple_tag(self, elem: etree._Element) -> str:
+        """Return the tag name of an Element without the XHTML namespace, if used.
+
+        If the element lives within the XHTML namespace, just the local name is returned,
+        e.g. '{http://www.w3.org/1999/xhtml}img' becomes 'img'.
+
+        In all other cases, the tag name is returned unchanged.
+        """
+        tag = elem.tag
+
+        if tag is None:
+            return tag
+
+        if tag.startswith(XHTML_NAMESPACE):
+            return tag[len(XHTML_NAMESPACE):]
+        else:
+            return tag
+
+    def convert_html_elem(self, elem: etree._Element) -> None:
+        """Recursively convert an element in an HTML document and its children.
+
+        Whether to convert textual content is decided on the level of block-level tags (such
+        as 'h1', 'blockquote', 'p') that do NOT contain any directly nested block-level tags
+        (e.g. if an 'ol' contains 'li' elements, the decision will be made for each of the
+        latter independently, not for the whole 'ol'). If a large part of the text embedded
+        in such an element seems to be in a foreign language, the whole element will NOT be
+        converted.
+        """
+        # Check if we should made the foreign-language test as this level
+        if self.simple_tag(elem) in BLOCK_LEVEL_TAGS:
+            decide_on_conversion = True
+
+            for child in elem:
+                if self.simple_tag(child) in BLOCK_LEVEL_TAGS:
+                    decide_on_conversion = False
+                    break
+
+            if decide_on_conversion:
+                full_text = str(etree.XPath("string()")(elem))
+                if self.text_looks_foreign(full_text):
+                    # Skip this part of the document tree (doesn't seem to be English)
+                    return
+
+        # Convert immediate content (only block-level elements count as start of a new paragraph)
+        elem.text = self.convert_para(elem.text, False,
+                starts_sent=self.simple_tag(elem) in BLOCK_LEVEL_TAGS)
+
+        # Convert child elements (except comments and those that don't contain normal text)
         for child in elem:
-            if simple_tag(child) in BLOCK_LEVEL_TAGS:
-                decide_on_conversion = False
-                break
+            if not (isinstance(child, etree._Comment)
+                    or isinstance(child, etree._ProcessingInstruction)
+                    or self.simple_tag(child) in ('script', 'style')):
+                self.convert_html_elem(child)
 
-        if decide_on_conversion:
-            full_text = str(etree.XPath("string()")(elem))
-            if text_looks_foreign(full_text):
-                # Skip this part of the document tree (doesn't seem to be English)
-                return
+            if child.tail:
+                child.tail = self.convert_para(child.tail, False, starts_sent=False)
 
-    # Convert immediate content (only block-level elements count as start of a new paragraph
-    elem.text = convert_para(elem.text, False, starts_sent=simple_tag(elem) in BLOCK_LEVEL_TAGS)
+        # Convert a few textual attributes, if they are present
+        for attrib in ('alt', 'title'):
+            if attrib in elem.attrib and elem.attrib[attrib]:
+                elem.attrib[attrib] = self.convert_para(elem.attrib[attrib])
 
-    # Convert child elements (except comments and those that don't contain normal text)
-    for child in elem:
-        if not (isinstance(child, etree._Comment)
-                or isinstance(child, etree._ProcessingInstruction)
-                or simple_tag(child) in ('script', 'style')):
-            convert_html_elem(child)
+    def convert_html_document(self, filename_or_bytes: Union[str, BytesIO]) -> bytes:
+        """Convert and return an HTML or XHTML file.
 
-        if child.tail:
-            child.tail = convert_para(child.tail, False, starts_sent=False)
+        Returns an UTF-8 encoded bytestring.
+        """
+        doc = None
+        is_xhtml = True
 
-    # Convert a few textual attributes, if they are present
-    for attrib in ('alt', 'title'):
-        if attrib in elem.attrib and elem.attrib[attrib]:
-            elem.attrib[attrib] = convert_para(elem.attrib[attrib])
+        # Try parsing as XHTML, if that doesn't work, parse as regular HTML
+        try:
+            doc = etree.parse(filename_or_bytes)
+        except etree.XMLSyntaxError:
+            doc = html.parse(filename_or_bytes)
+            is_xhtml = False
 
+        root = doc.getroot()
+        title = root.find('.//title', namespaces=root.nsmap)
+        body = root.find('body', namespaces=root.nsmap)
 
-def convert_html_document(filename_or_bytes: Union[str, BytesIO]) -> bytes:
-    """Convert and return an HTML or XHTML file.
+        if title is not None:
+            title.text = self.convert_para(title.text)
+        if body is not None:
+            self.convert_html_elem(body)
 
-    Returns an UTF-8 encoded bytestring.
-    """
-    doc = None
-    is_xhtml = True
+        if is_xhtml:
+            return etree.tostring(doc, encoding='utf8')
+        else:
+            return html.tostring(doc, encoding='utf8')
 
-    # Try parsing as XHTML, if that doesn't work, parse as regular HTML
-    try:
+    def convert_xml_elem(self, elem: etree._Element) -> None:
+        """Recursively convert an element in an XML document and its children.
+
+        This function is only meant for elements that aren't (X)HTML. All textual content of
+        the element and its child elements are converted (unless they look foreign), while
+        all attribute values are left alone. In HTML, on the other hand, certain elements
+        (such as 'script') are skipped and certain attributes (such as 'alt') are converted.
+
+        Also, while in HTML the foreign-language test is made at the level of block-level tags
+        (such as 'p' or 'li'), here every text fragment is tested independently.
+        """
+        # Convert immediate content
+        elem.text = self.convert_para(elem.text)
+
+        # Convert child elements (except comments and PIs)
+        for child in elem:
+            if not (isinstance(child, etree._Comment)
+                    or isinstance(child, etree._ProcessingInstruction)):
+                self.convert_xml_elem(child)
+            child.tail = self.convert_para(child.tail, starts_sent=False)
+
+    def convert_xml_document(self, filename_or_bytes: Union[str, BytesIO]) -> bytes:
+        """Convert and return an XML file.
+
+        This function is only meant for documents that aren't (X)HTML.
+
+        Returns an UTF-8 encoded bytestring.
+        """
         doc = etree.parse(filename_or_bytes)
-    except etree.XMLSyntaxError:
-        doc = html.parse(filename_or_bytes)
-        is_xhtml = False
-
-    root = doc.getroot()
-    title = root.find('.//title', namespaces=root.nsmap)
-    body = root.find('body', namespaces=root.nsmap)
-
-    if title is not None:
-        title.text = convert_para(title.text)
-    if body is not None:
-        convert_html_elem(body)
-
-    if is_xhtml:
+        self.convert_xml_elem(doc.getroot())
         return etree.tostring(doc, encoding='utf8')
-    else:
-        return html.tostring(doc, encoding='utf8')
 
+    def _make_hrefs_absolute(self, items: Sequence[etree._Element],
+            dirname: str) -> Sequence[etree._Element]:
+        """Convert a list of XML elements with filenames from relative into absolute filenames.
 
-def convert_xml_elem(elem: etree._Element) -> None:
-    """Recursively convert an element in an XML document and its children.
+        Each member of the 'items' sequence must have a 'href' attribute that will be
+        modified accordingly.
 
-    This function is only meant for elements that aren't (X)HTML. All textual content of
-    the element and its child elements are converted (unless they look foreign), while
-    all attribute values are left alone. In HTML, on the other hand, certain elements
-    (such as 'script') are skipped and certain attributes (such as 'alt') are converted.
+        If dirname is empty, the original list is returned unchanged.
+        """
+        if dirname:
+            for item in items:
+                item.attrib['href'] = path.join(dirname, item.attrib['href'])
 
-    Also, while in HTML the foreign-language test is made at the level of block-level tags
-    (such as 'p' or 'li'), here every text fragment is tested independently.
-    """
-    # Convert immediate content
-    elem.text = convert_para(elem.text)
+        return items
 
-    # Convert child elements (except comments and PIs)
-    for child in elem:
-        if not (isinstance(child, etree._Comment)
-                or isinstance(child, etree._ProcessingInstruction)):
-            convert_xml_elem(child)
-        child.tail = convert_para(child.tail, starts_sent=False)
+    def convert_epub(self, filename: str) -> None:
+        """Convert an epub file.
 
+        If the input file is called 'FILE.epub', the output will be stored in a new file called
+        'FILE-lytspel.epub'.
+        """
+        (root, ext) = path.splitext(filename)
+        outfile = '{}-lytspel{}'.format(root, ext)
 
-def convert_xml_document(filename_or_bytes: Union[str, BytesIO]) -> bytes:
-    """Convert and return an XML file.
-
-    This function is only meant for documents that aren't (X)HTML.
-
-    Returns an UTF-8 encoded bytestring.
-    """
-    doc = etree.parse(filename_or_bytes)
-    convert_xml_elem(doc.getroot())
-    return etree.tostring(doc, encoding='utf8')
-
-
-def make_hrefs_absolute(items: Sequence[etree._Element], dirname: str) -> Sequence[etree._Element]:
-    """Convert a list of XML elements with filenames from relative into absolute filenames.
-
-    Each member of the 'items' sequence must have a 'href' attribute that will be
-    modified accordingly.
-
-    If dirname is empty, the original list is returned unchanged.
-    """
-    if dirname:
-        for item in items:
-            item.attrib['href'] = path.join(dirname, item.attrib['href'])
-
-    return items
-
-
-def convert_epub(filename: str) -> None:
-    """Convert an epub file.
-
-    If the input file is called 'FILE.epub', the output will be stored in a new file called
-    'FILE-lytspel.epub'.
-    """
-    (root, ext) = path.splitext(filename)
-    outfile = '{}-lytspel{}'.format(root, ext)
-
-    with ZipFile(filename, 'r') as zin:
-        # Find the contents metafile
-        bytes = zin.read('META-INF/container.xml')
-        tree = etree.fromstring(bytes)
-        # Usually there is just one OPF file, but multiple-rendition epubs have several ones
-        opf_files = tree.xpath('n:rootfiles/n:rootfile/@full-path',
-                namespaces={'n': 'urn:oasis:names:tc:opendocument:xmlns:container'})
-        absolute_items = []
-
-        # Find the XML files that need conversion
-        for opf_file in opf_files:
-            bytes = zin.read(opf_file)
+        with ZipFile(filename, 'r') as zin:
+            # Find the contents metafile
+            bytes = zin.read('META-INF/container.xml')
             tree = etree.fromstring(bytes)
-            relative_items = tree.xpath('/p:package/p:manifest/p:item',
-                    namespaces={'p': 'http://www.idpf.org/2007/opf'})
-            absolute_items += make_hrefs_absolute(relative_items, path.dirname(opf_file))
+            # Usually there is just one OPF file, but multiple-rendition epubs have several ones
+            opf_files = tree.xpath('n:rootfiles/n:rootfile/@full-path',
+                    namespaces={'n': 'urn:oasis:names:tc:opendocument:xmlns:container'})
+            absolute_items = []
 
-        html_files = set()
-        ncx_files = set()
+            # Find the XML files that need conversion
+            for opf_file in opf_files:
+                bytes = zin.read(opf_file)
+                tree = etree.fromstring(bytes)
+                relative_items = tree.xpath('/p:package/p:manifest/p:item',
+                        namespaces={'p': 'http://www.idpf.org/2007/opf'})
+                absolute_items += self._make_hrefs_absolute(relative_items,
+                        path.dirname(opf_file))
 
-        for item in absolute_items:
-            media_type = item.attrib['media-type']
+            html_files = set()
+            ncx_files = set()
 
-            if media_type == 'application/xhtml+xml':
-                html_files.add(item.attrib['href'])
-            elif media_type == 'application/x-dtbncx+xml':
-                # Deprecated, but might occur in older epubs
-                ncx_files.add(item.attrib['href'])
+            for item in absolute_items:
+                media_type = item.attrib['media-type']
 
-        # Copy files to output archive, converting them if needed
-        with ZipFile(outfile, 'w') as zout:
-            zout.comment = zin.comment  # Preserve the comment, if any
+                if media_type == 'application/xhtml+xml':
+                    html_files.add(item.attrib['href'])
+                elif media_type == 'application/x-dtbncx+xml':
+                    # Deprecated, but might occur in older epubs
+                    ncx_files.add(item.attrib['href'])
 
-            for item in zin.infolist():
-                bytes = zin.read(item.filename)
+            # Copy files to output archive, converting them if needed
+            with ZipFile(outfile, 'w') as zout:
+                zout.comment = zin.comment  # Preserve the comment, if any
 
-                if item.filename in html_files:
-                    bio = BytesIO(bytes)
-                    bytes = convert_html_document(bio)
-                if item.filename in ncx_files or item.filename in opf_files:
-                    bio = BytesIO(bytes)
-                    bytes = convert_xml_document(bio)
+                for item in zin.infolist():
+                    bytes = zin.read(item.filename)
 
-                zout.writestr(item, bytes)
+                    if item.filename in html_files:
+                        bio = BytesIO(bytes)
+                        bytes = self.convert_html_document(bio)
+                    if item.filename in ncx_files or item.filename in opf_files:
+                        bio = BytesIO(bytes)
+                        bytes = self.convert_xml_document(bio)
 
-    print('{}: Output written to {}'.format(SCRIPTNAME, outfile), file=stderr)
+                    zout.writestr(item, bytes)
 
+        print('{}: Output written to {}'.format(SCRIPTNAME, outfile), file=stderr)
 
-def convert_text_document(filename: str) -> None:
-    """Convert a plain text file."""
-    para = ''
+    def convert_text_document(self, filename: str) -> None:
+        """Convert a plain text file."""
+        para = ''
 
-    with open(filename) as file:
-        for line in file:
-            line = line.rstrip()
-            # Paragraphs are considered to be separated by empty lines.
-            # However, very long lines (200+ chars) are considered paragraphs in their own right.
-            if len(line) >= 200:  # stand-alone paragraph
-                if para:
-                    print(convert_para(para))
-                    para = ''
-                print(convert_para(line))
-            elif line:            # regular line
-                if para:
-                    para += '\n'
-                para += line
-            else:                 # empty line
-                if para:
-                    print(convert_para(para))
-                    para = ''
-                print()
+        with open(filename) as file:
+            for line in file:
+                line = line.rstrip()
+                # Paragraphs are considered to be separated by empty lines. However, very long
+                # lines (200+ chars) are considered paragraphs in their own right.
+                if len(line) >= 200:  # stand-alone paragraph
+                    if para:
+                        print(self.convert_para(para))
+                        para = ''
+                    print(self.convert_para(line))
+                elif line:            # regular line
+                    if para:
+                        para += '\n'
+                    para += line
+                else:                 # empty line
+                    if para:
+                        print(self.convert_para(para))
+                        para = ''
+                    print()
 
-        # Convert final paragraph, if any
-        if para:
-            print(convert_para(para))
+            # Convert final paragraph, if any
+            if para:
+                print(self.convert_para(para))
 
+    def convert_file(self, filename: str) -> None:
+        """Convert the file with the specified name.
 
-def convert_file(filename: str) -> None:
-    """Convert the file with the specified name.
+        Recognized file types are epub, HTML and plain text.
+        """
+        file_type = self.determine_file_type(file)
 
-    Recognized file types are epub, HTML and plain text.
-    """
-    file_type = determine_file_type(file)
+        if path.getsize(filename) / 1024 >= 256:
+            print('{}: Converting {} -- this may take a while...'.format(SCRIPTNAME, filename),
+                    file=stderr)
 
-    if path.getsize(filename) / 1024 >= 256:
-        print('{}: Converting {} -- this may take a while...'.format(SCRIPTNAME, filename),
-                file=stderr)
+        if file_type == 'epub':
+            self.convert_epub(file)
+        elif file_type == 'html':
+            bytes = self.convert_html_document(file)
+            print(bytes.decode('utf8'))
+        elif file_type == 'txt':
+            self.convert_text_document(file)
+        elif file_type is None:
+            exit('{}: Cannot convert {} (unsupported file type)'.format(SCRIPTNAME, filename))
+        else:
+            raise ValueError('Unexpected file type: {}'.format(file_type))
 
-    if file_type == 'epub':
-        convert_epub(file)
-    elif file_type == 'html':
-        bytes = convert_html_document(file)
-        print(bytes.decode('utf8'))
-    elif file_type == 'txt':
-        convert_text_document(file)
-    elif file_type is None:
-        exit('{}: Cannot convert {} (unsupported file type)'.format(SCRIPTNAME, filename))
-    else:
-        raise ValueError('Unexpected file type: {}'.format(file_type))
+    def _unify_case_differences(self) -> None:
+        """Unify entries within the internal unknown word counter that differ only by case.
+
+        Calling this method when this instance had been initialized with 'use_unknown_counter' =
+        False will trigger an error.
+
+        Any counts of capitalized words to the count of the lower-case variant if it exists,
+        deleting the alternative entries. For example, Counter(hulla=3, Hulla=1, HULLA=1)
+        becomes Counter(hulla=5).
+
+        If there is no lower-case variant, other variants that differ in case will NOT be
+        unified. For example, Counter(Hulla=1, HULLA=1) remains unchanged.
+        """
+        entries_to_delete = []
+
+        for key, count in self._unknown_counter.items():
+            if any(x.isupper() for x in key):
+                lower = key.lower()
+
+                if lower in self._unknown_counter:
+                   self._unknown_counter[lower] += count
+                   entries_to_delete.append(key)
+
+        for entry in entries_to_delete:
+            del self._unknown_counter[entry]
+
+    def print_unknown_words(self, min_count: int = 1) -> None:
+        """Writes the list of unknown words encountered in the converted texts to stderr.
+
+        Only words encountered at least 'min_count' times are shown.
+
+        Calling this method when this instance had been initialized with 'use_unknown_counter' =
+        False will trigger a warning.
+        """
+        if self._unknown_counter is None:
+            warn('print_unknown_words called on a Converter without an unknown_counter')
+            return
+
+        header_shown = False
+        self._unify_case_differences()
+
+        for key, count in sorted(self._unknown_counter.items(), key=lambda pair: pair[0].lower()):
+            if count < min_count:
+                continue
+
+            output = '  ' + key
+
+            if count > 1:
+                output += ' ({}x)'.format(count)
+            if not header_shown:
+                print('Unknown words:', file=stderr)
+                header_shown = True
+
+            print(output, file=stderr)
+
+        if not header_shown:
+            if min_count <= 1:
+                print('No unknown words', file=stderr)
+            else:
+                print('No unknown words (occurring {} times or more)'.format(min_count),
+                        file=stderr)
 
 
 if __name__ == '__main__':
@@ -903,16 +1009,14 @@ if __name__ == '__main__':
                     ' at least that often)')
         args = parser.parse_args()
 
-        if args.unknown:
-            unknownCounter = Counter()
-            print('***Counting unknown words***')
+        use_unknown_counter = args.unknown > 0
+        conv = Converter(use_unknown_counter)
 
         for file in args.files:
-            convert_file(file)
+            conv.convert_file(file)
 
-        if args.unknown:
-            # TODO Print unknown words
-            print('Unknown words: {}'.format(unknownCounter))
+        if use_unknown_counter:
+            conv.print_unknown_words(args.unknown)
     except Exception as e:
         tb = exc_info()[2]
         # Find highest stack frame in the current file (closest to source of exception)
@@ -935,12 +1039,7 @@ if __name__ == '__main__':
 # * Epub conversion: ensure that zip compression is as it should be
 # * Use pylint to check the coding style
 # * -o flag to specify an output file (requires a single input file)
-# * Add button to turn conversion off and on
 # * Accept '-' argument to read stdin (file type recognition should still work)
-# * If called w/o arguments open dialog that allows the conversion of local txt/html/epub files,
-#   always writing the output to a file
-# * Add a dialog for converting words and sentences to Lytspel
 # * HTML conversion: check whether complex mixed text handled correctly (foreign language testing)
-# * Package for pip3 and announce to the world
-# * Add drag-and-drop support (esp. for Windows)
 # * Profile epub conversion and remove any obvious bottlenecks
+# * Package for pip3 and announce to the world
