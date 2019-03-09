@@ -54,6 +54,7 @@ aerometeorograph,aero-meteorograph
 afrikanerdom,afrikaner=dom
 after
 agee
+agglutinogenic,agglutinogen=ic
 aggravation,aggravate=ion
 agon
 agonic
@@ -527,6 +528,7 @@ caliche
 caliphate
 callan
 callant
+callee,call=ee
 callosity,callose=ity
 calumniate
 caman
@@ -594,6 +596,7 @@ cation
 catlin
 cattail,cat-tail
 cattleman,cattle-man
+cauline
 cavalryman,cavalry-man
 Cavan
 Cayes
@@ -941,6 +944,7 @@ deal
 dealat
 dealate
 dealate,de=alate
+deallocate,de=allocate
 dean
 deana
 Deana
@@ -948,6 +952,7 @@ deanna
 Deanna
 deathsman,deaths-man
 debby
+debian
 debit
 debora
 debouch
@@ -1044,6 +1049,7 @@ dentary
 Deon
 depilate
 deposition
+depositional,deposition=al
 depositions,deposition=s
 depository
 deposits,deposit=s
@@ -1296,6 +1302,8 @@ enamor
 enantiomorphism
 enate
 enclave
+encoffined,encoffin=ed
+encoffins,encoffin=s
 encore
 encores,encore=s
 encrinite
@@ -1377,6 +1385,7 @@ exciseman,excise-man
 excommunicable,ex-communicable
 excommunicate,ex-communicate
 excommunication,ex-communication
+executables,executable=s
 exhibitory
 exopoditic,exopodite=ic
 exosmosis,ex-osmosis
@@ -1394,6 +1403,7 @@ exurban,ex-urban
 exurbanite,ex-urbanite
 eyeleteer,eyelet=eer
 facsimile
+factotum
 factum
 falangist
 falconine
@@ -1527,6 +1537,7 @@ gainsborough
 galavant
 galaxy
 galcha
+galeate
 Galen
 gallant
 gallery
@@ -1622,10 +1633,12 @@ gradient
 gradual
 grammatical
 granary
+grandaunt,grand-aunt
 granddaddy,grand-daddy
 granddad,grand-dad
 granddaughter,grand-daughter
 grandiosity,grandiose=ity
+granjon
 graphically,graphical=ly
 greedily,greedy=ly
 greegree
@@ -1795,6 +1808,7 @@ huckaback
 humidor
 humvee
 Hungary
+hunger
 hungry
 huntsman,hunts-man
 Hurrian
@@ -1840,6 +1854,7 @@ imperatival,imperative=al
 imperceptibly,imperceptible=y
 impetuosity,impetuous=ity
 implead
+implementers,implementer=s
 impliedly,implied=ly
 imply
 important
@@ -1894,8 +1909,10 @@ ingine
 ingrid
 Ingrid
 inhalation
+inhaled,inhale=ed
 inion
 inkling
+inlays,inlay=s
 inlet
 inly
 innate
@@ -1937,6 +1954,7 @@ inure
 invite
 invocation,invocate=ion
 invocation,invoke=ation
+invocations,invocation=s
 invocative,invocate=ive
 involuntarily,involuntary=ly
 involute
@@ -2107,6 +2125,7 @@ laryngoscopic,laryngoscope=ic
 lascar
 Lassen
 lastex
+latencies,latency=es
 lathee
 laundryman,laundry-man
 laundrywoman,laundry-woman
@@ -2383,10 +2402,12 @@ messan
 messapian
 messily,messy=ly
 messman,mess-man
+metaclasses,metaclass=es
 metage,mete=age
 metamerism
 metamorphosis
 metaphorically,metaphorical=ly
+metaprotocol,meta=protocol
 metastatic
 metathetic
 metazoa,meta=zoa
@@ -2721,11 +2742,19 @@ passible
 passive
 pastoralist,pastoral=ist
 pastrami
+pated,pate=ed
 paten
+patent
 pathology
+patine
+patmore
 patmos
 patrician
 patrick
+pattee
+patten
+patty
+pauline
 Pauling
 paviser
 pawn
@@ -2932,6 +2961,7 @@ postil
 postilion
 postman,post-man
 postoperative,post=operative
+postprocessors,postprocessor=s
 potation
 potatory
 potman,pot-man
@@ -3508,6 +3538,8 @@ serrate
 serry
 servile
 Servite
+setscrew,set-screw
+settable,sett=able
 severely,severe=ly
 severest,severe=est
 severn
@@ -3517,6 +3549,7 @@ sextet
 sextolet
 sexuality,sexual=ity
 shagreen
+shamaness,shaman=ess
 shamanist,shaman=ist
 shampoo
 shanties,shanty=es
@@ -3678,6 +3711,7 @@ stricken
 strickling,strickle=ing
 strontian
 strophoid
+stylesheet,style-sheet
 stylobate,stylo-bate
 stylograph,stylo-graph
 stymied,stymie=ed
@@ -3882,6 +3916,7 @@ titlark,tit-lark
 Tobey
 toby
 toffee
+tokenize,token=ize
 tolan
 tollman,toll-man
 toluate
@@ -4076,6 +4111,7 @@ verdigris
 verdin
 vernation
 versant
+versatile
 versine
 vertebral,vertebra=l
 vertical
