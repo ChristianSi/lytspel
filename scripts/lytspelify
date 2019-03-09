@@ -82,7 +82,7 @@ my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acro
     subordinative sultanic sycophantic synodic synodical synonymous talismanic testimonial
     tribadic tympanic advocatory agglutinative coagulative confederative coordination
     coordinative delegation delegations discriminative ejaculative elaborative incoordination
-    intoxicative eyeleteer/;
+    intoxicative eyeleteer integrality/;
 
 # XXX Switch to Upper_Camel_Case for file-scoped variables
 my $CSV_IN  = new_csv_in;
@@ -157,6 +157,9 @@ sub build_standard_patterns {
         my $trad_pattern = $colref->[0];
         my $pron_pattern = $colref->[1];
 
+        # /I/ is sometimes written /I#/
+        $pron_pattern =~ s/(?<![aeO])I/I#?/g;
+
         if ($start) {
             $trad_pattern = "^$trad_pattern";
             $pron_pattern = "^$pron_pattern";
@@ -171,6 +174,9 @@ sub build_standard_patterns {
             # digraph
             if (starts_with($pron_pattern, 'I')) {
                 $pron_pattern = "(?<!['aeO])$pron_pattern";
+            } elsif (starts_with($pron_pattern, 'oU')) {
+                # Protect /oU/ after /I/ since /I@/ has a special meaning
+                $pron_pattern = "(?<!['I])$pron_pattern";
             } elsif (starts_with($pron_pattern, '@')) {
                 # Note: the combination /i:@/ @ «ia» is also prevented from accidentally
                 # matching and must be listed separately if desired
@@ -1351,7 +1357,7 @@ sub postprocess_suffixed {
 
     if ($conv_base =~ /all$/) {
         # Restore final «all», e.g. «spal'laition» ‹spallation› from «spall»
-        $converted =~ s/(.*)aa('?)l/$1al$2l/;
+        $converted =~ s/(.*)au('?)l/$1al$2l/;
     } elsif ($conv_base =~ /k$/ && ($conv_suffix !~ /^([eiY]|d$)/ || $suffix eq 'al')) {
         # Restore final «k», e.g. «embar'kaition« ‹embarkation›
         $converted =~ s/(.*)c/$1k/ || warn "No match: $converted ($tradspell) from $conv_base";
