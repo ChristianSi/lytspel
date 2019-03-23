@@ -32,7 +32,7 @@ Aesop's fables that's frequently used as an example in phonetics, while the
 second is made up of two nonsense sentences that contain most of the sounds
 of English.
 
-> Dhe North Wind and dhe Sun wur dis'piuting wich wos dhe strongger, wen a
+> Dhe North Wind and dhe Sun wur di'spiuting wich wos dhe strongger, wen a
 > traveler caim a'long rapd in a worm cloak. Dhay a'greed dhat dhe won hu
 > furst su'xeeded in maiking dhe traveler taik his cloak of shood bee
 > con'siderd strongger dhan dhe udher. Dhen dhe North Wind blu as hard as
@@ -281,7 +281,8 @@ vowels:
     word, e.g. «raidiai» ‹radii›.
   * /O:/ is spelled «aw» at the end of words and before other vowels
     (instead of «au»), e.g. «law, drawing».
-  * Final /E/ is spelled «eh» (instead of «e»), e.g. «eh».
+  * Final /E/ is spelled «eh» (instead of «e»), e.g. «eh, Yaaweh
+    ‹...Yahweh›».
   * Unstressed /i:/ is spelled «i» at the end of words and before other
     vowels (instead of «ee»), e.g. «fansi, ne'ceciti, vidio, cri'aition»
     ‹fancy, necessity, video, creation›. This means that Lytspel cannot
@@ -306,15 +307,15 @@ vowels:
     seems to occur.)
   * This spelling is also used at the end of prefixes such as «astro, baio,
     endo, ethno, ferro, fyto, galveno, hetero, hypo, imyuno, jio, keemo,
-    macro, mycro, nio, nuero, pailio, soacio, spectro, suudo, thurmo, ysso»
-    ‹astro, bio, endo, ethno, ferro, phyto, galvano, hetero, hypo, immuno,
-    geo, chemo, macro, micro, neo, neuro, paleo, socio, spectro, pseudo,
-    thermo, iso›, e.g. «baio'kemistri, ethno'sentric, hetero'secshual,
-    imyunodi'fishenssi, jio'fisicl, keemo'therrepi, mycrowaiv, nio'classic,
-    nuero'surjeri, suudosaienss, thurmody'namics» ‹biochemistry,
-    ethnocentric, heterosexual, immunodeficiency, geophysical,
-    chemotherapy, microwave, neoclassic, neurosurgery, pseudoscience,
-    thermodynamics›.
+    macro, mycro, nio, nuemo, nuero, pailio, soacio, spectro, suudo,
+    thurmo, ysso» ‹astro, bio, endo, ethno, ferro, phyto, galvano, hetero,
+    hypo, immuno, geo, chemo, macro, micro, neo, pneumo, neuro, paleo,
+    socio, spectro, pseudo, thermo, iso›, e.g. «baio'kemistri,
+    ethno'sentric, hetero'secshual, imyunodi'fishenssi, jio'fisicl,
+    keemo'therrepi, mycrowaiv, nio'classic, nuero'surjeri, suudosaienss,
+    thurmody'namics» ‹biochemistry, ethnocentric, heterosexual,
+    immunodeficiency, geophysical, chemotherapy, microwave, neoclassic,
+    neurosurgery, pseudoscience, thermodynamics›.
   * /OI/ is spelled «oy» at the end of words and before other vowels
     (instead of «oi»), e.g. «boy, en'joy, em'ployi» ‹...enjoy, employee›.
   * /aU/ is spelled «ow» at the end of words and before other vowels
@@ -346,13 +347,13 @@ Spellings involving several sounds:
     ys'socroess» ‹boa, coalition, isochroous›. In a few words, «oe» instead
     represents /oUE/, e.g. «floem» ‹phloem› (this distinction is not
     represented in writing).
-  * The vowel combination /u:@/ is written «ua», e.g. «acchual,
+  * The vowel combination /u:@/ or /U@/ is written «ua», e.g. «acchual,
     indi'vijual, influanss, soo'purfluass, crual» ‹actual, individual,
     influence, superfluous, cruel›. In a few words, «ua» instead represents
     /u:a/, e.g. «bivuac» ‹bivouac› (this distinction is not represented in
     writing).
-  * Likewise, /ju:@/ is written «iua», e.g. «am'bigiuass, maniual»
-    ‹ambiguous, manual›.
+  * Likewise, /ju:@/ and /jU@/ are written «iua», e.g. «am'bigiuass,
+    maniual» ‹ambiguous, manual›.
   * The consonant combination /kw/ is written «qu», e.g. «quit, ri'quest»
     ‹...request›; the letter «q» only occurs in this combination.
   * The sound combination /ks/ is written «x», e.g. «mix, next, ex'plicit,
@@ -540,6 +541,19 @@ Rules for derived and related words:
     compound or if one belongs to a prefix or suffix and the other to the
     base word, e.g. «toatelli, suuper'reejennel, un'nececeri» ‹totally,
     superregional, unnecessary›.
+  * Unstressed final /Iks/ traditionally written ‹ics› is treated as if it
+    is a plural (and hence written «ics») even if the corresponding
+    singular form (ending in /Ik/) is unknown or rarely used, e.g.
+    «astro'fisics, daia'netics» ‹astrophysics, dianetics›. This is for
+    consistency with the many cases where «ics» /Iks/ indeed marks a plural
+    or quasi-plural, e.g. «ilec'tronics» ‹electronics› from «ilec'tronic»
+    ‹electronic›.
+  * For consistency with forms derived by appending «li» ‹ly› to words
+    ending in «cl» ‹cal› (e.g. «practiclli» ‹practically› from «practicl»
+    ‹practical›), all forms derived by appending ‹ally› (pronounced /@li:/
+    or /li:/) to words ending in «c« are written «clli», e.g. «baissiclli»
+    ‹basically› from «baissic» ‹basic› «spe'cificlli» ‹specifically› from
+    «spe'cific» ‹specific›.
 
 Irregular words:
 
