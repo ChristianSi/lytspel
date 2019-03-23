@@ -1,3 +1,23 @@
+"""Unit tests for the Lytspel converter.
+
+Copyright (c) 2018-2019 Christian Siefkes
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted, provided that the above
+copyright notice and this permission notice appear in all copies.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+"""
+
+# pylint: disable=invalid-name, line-too-long, missing-docstring, redefined-outer-name, protected-access
+# Note: invalid-name disabled since pylint limits function names to 30 chars.
+
 from collections import Counter
 from pytest import fixture
 
@@ -6,135 +26,141 @@ lc = __import__('lytspelconv')
 
 # Fixtures
 
-@fixture(scope="session")
-def dict():
+@fixture(scope='session')
+def dct():
     return lc.Dictionary()
 
 @fixture
 def conv():
     return lc.Converter()
 
+@fixture
+def is_word():
+    """'is_word' was formerly a function.
+
+    But it has been replaced with a direct regex call for efficiency."""
+    return lc.WORD_RE.match
 
 # Tests
 
-def test_dict_filename(dict):
-    assert dict._dict_filename().endswith('data/lytspel-dict.csv')
+def test_dict_filename(dct):
+    assert dct._dict_filename().endswith('data/lytspel-dict.csv')
 
 
-def test_lookup_simple(dict):
-    assert dict.lookup('blackbird') == 'blakburd'
-    assert dict.lookup('earthward') == 'urthwerd'
-    assert dict.lookup('shadows') == 'shadoas'
-    assert dict.lookup('sharp') == 'sharp'
-    assert dict.lookup('technology') == 'tec’noleji'
-    assert dict.lookup('tahiti') == 'ta’heeti'   # capitalized in dict
-    assert dict.lookup('notaword') == None
+def test_lookup_simple(dct):
+    assert dct.lookup('blackbird') == 'blakburd'
+    assert dct.lookup('earthward') == 'urthwerd'
+    assert dct.lookup('shadows') == 'shadoas'
+    assert dct.lookup('sharp') == 'sharp'
+    assert dct.lookup('technology') == 'tec’noleji'
+    assert dct.lookup('tahiti') == 'ta’heeti'   # capitalized in dict
+    assert dct.lookup('notaword') is None
 
-def test_lookup_case_restored(dict):
+def test_lookup_case_restored(dct):
     """Case should be restored."""
-    assert dict.lookup('Score') == 'Scoar'
-    assert dict.lookup('NETWORK') == 'NETWURK'
-    assert dict.lookup('POLITICAL') == 'PO’LITICL'
-    assert dict.lookup('JavaScript') == 'JaavaScript'
-    assert dict.lookup('McCain') == 'McCain'
-    assert dict.lookup('MeV') == 'MeV'
-    assert dict.lookup('ODed') == 'ODed'
-    assert dict.lookup("O'Donnell") == 'O’Donel'
-    assert dict.lookup('PCs') == 'PCs'
-    assert dict.lookup('PowerPC') == 'PowerPC'
+    assert dct.lookup('Score') == 'Scoar'
+    assert dct.lookup('NETWORK') == 'NETWURK'
+    assert dct.lookup('POLITICAL') == 'PO’LITICL'
+    assert dct.lookup('JavaScript') == 'JaavaScript'
+    assert dct.lookup('McCain') == 'McCain'
+    assert dct.lookup('MeV') == 'MeV'
+    assert dct.lookup('ODed') == 'ODed'
+    assert dct.lookup("O'Donnell") == 'O’Donel'
+    assert dct.lookup('PCs') == 'PCs'
+    assert dct.lookup('PowerPC') == 'PowerPC'
 
-def test_lookup_apostrophes(dict):
+def test_lookup_apostrophes(dct):
     """Both normal and typographic apostrophes should be accepted."""
-    assert dict.lookup("we'd") == 'wi’d'
-    assert dict.lookup('we’d') == 'wi’d'
-    assert dict.lookup("it'll") == 'it’l'
-    assert dict.lookup('it’ll') == 'it’l'
-    assert dict.lookup("I'm").lower() == 'y’m'
-    assert dict.lookup('I’m').lower() == 'y’m'
-    assert dict.lookup("O'Connell") == 'O’Conel'
-    assert dict.lookup('O’Connell') == 'O’Conel'
+    assert dct.lookup("we'd") == 'wi’d'
+    assert dct.lookup('we’d') == 'wi’d'
+    assert dct.lookup("it'll") == 'it’l'
+    assert dct.lookup('it’ll') == 'it’l'
+    assert dct.lookup("I'm").lower() == 'y’m'
+    assert dct.lookup('I’m').lower() == 'y’m'
+    assert dct.lookup("O'Connell") == 'O’Conel'
+    assert dct.lookup('O’Connell') == 'O’Conel'
 
-def test_lookup_genitive_s(dict):
+def test_lookup_genitive_s(dct):
     """'s (genitive or contraction) is handled correctly (normal and typographic forms)."""
-    assert dict.lookup("He's") == 'Hi’s'
-    assert dict.lookup("boyfriend's") == 'boyfrend’s'
-    assert dict.lookup('He’s') == 'Hi’s'
-    assert dict.lookup('boyfriend’s') == 'boyfrend’s'
+    assert dct.lookup("He's") == 'Hi’s'
+    assert dct.lookup("boyfriend's") == 'boyfrend’s'
+    assert dct.lookup('He’s') == 'Hi’s'
+    assert dct.lookup('boyfriend’s') == 'boyfrend’s'
     # Upper case words too
-    assert dict.lookup("HE'S") == 'HI’S'
-    assert dict.lookup("HE's") == 'HI’s'
+    assert dct.lookup("HE'S") == 'HI’S'
+    assert dct.lookup("HE's") == 'HI’s'
 
-def  test_lookup_contractions(dict):
-    assert dict.lookup("'s") == '’s'
-    assert dict.lookup("’s") == '’s'
-    assert dict.lookup("'d") == '’d'
-    assert dict.lookup("’d") == '’d'
-    assert dict.lookup("'ll") == '’l'
-    assert dict.lookup("'re") == '’r'
-    assert dict.lookup("'ve") == '’v'
-    assert dict.lookup("’ve") == '’v'
+def  test_lookup_contractions(dct):
+    assert dct.lookup("'s") == '’s'
+    assert dct.lookup("’s") == '’s'
+    assert dct.lookup("'d") == '’d'
+    assert dct.lookup("’d") == '’d'
+    assert dct.lookup("'ll") == '’l'
+    assert dct.lookup("'re") == '’r'
+    assert dct.lookup("'ve") == '’v'
+    assert dct.lookup("’ve") == '’v'
 
-def test_lookup_diacritics(dict):
-    assert dict.lookup('café') == 'ca’fay'
-    assert dict.lookup('continuüm') == 'con’tiniuam'
-    assert dict.lookup('doppelgänger') == 'dopelganger'
-    assert dict.lookup('élite') == 'i’leet'
-    assert dict.lookup('Élite') == 'I’leet'
-    assert dict.lookup('épée') == 'ai’pay'
-    assert dict.lookup('ÉPÉE') == 'AI’PAY'
-    assert dict.lookup('hôtel') == 'hoa’tel'
-    assert dict.lookup('Hôtel') == 'Hoa’tel'
-    assert dict.lookup('mañana') == 'maa’nyaanaa'
-    assert dict.lookup('naïve') == 'naa’eev'
-    assert dict.lookup('œuvre') == 'uuvra'
-    assert dict.lookup('Œuvre') == 'Uuvra'
-    assert dict.lookup('tōfu') == 'toafu'
+def test_lookup_diacritics(dct):
+    assert dct.lookup('café') == 'ca’fay'
+    assert dct.lookup('continuüm') == 'con’tiniuam'
+    assert dct.lookup('doppelgänger') == 'dopelganger'
+    assert dct.lookup('élite') == 'i’leet'
+    assert dct.lookup('Élite') == 'I’leet'
+    assert dct.lookup('épée') == 'ai’pay'
+    assert dct.lookup('ÉPÉE') == 'AI’PAY'
+    assert dct.lookup('hôtel') == 'hoa’tel'
+    assert dct.lookup('Hôtel') == 'Hoa’tel'
+    assert dct.lookup('mañana') == 'maa’nyaanaa'
+    assert dct.lookup('naïve') == 'naa’eev'
+    assert dct.lookup('œuvre') == 'uuvra'
+    assert dct.lookup('Œuvre') == 'Uuvra'
+    assert dct.lookup('tōfu') == 'toafu'
 
-def test_lookup_redirects(dict):
+def test_lookup_redirects(dct):
     """Test that redirects are resolved correctly."""
-    assert dict.lookup('Anglicised') == 'Anglicysd'
-    assert dict.lookup('barques') == 'barks'
-    assert dict.lookup('calking') == 'cauking'
-    assert dict.lookup('castors') == 'casters'
-    assert dict.lookup('Centre') == 'Senter'
-    assert dict.lookup('Compositae') == 'Com’posit'
-    assert dict.lookup('ESOP') == 'EESSOP'
-    assert dict.lookup('Ier') == 'Yr'
-    assert dict.lookup('OKs') == 'Oa’cays'
-    assert dict.lookup('paralyses') == 'parrelyses'
-    assert dict.lookup('prise') == 'prys'
-    assert dict.lookup('reanalyses') == 'ri’anelyses'
+    assert dct.lookup('Anglicised') == 'Anglicysd'
+    assert dct.lookup('barques') == 'barks'
+    assert dct.lookup('calking') == 'cauking'
+    assert dct.lookup('castors') == 'casters'
+    assert dct.lookup('Centre') == 'Senter'
+    assert dct.lookup('Compositae') == 'Com’posit'
+    assert dct.lookup('ESOP') == 'EESSOP'
+    assert dct.lookup('Ier') == 'Yr'
+    assert dct.lookup('OKs') == 'Oa’cays'
+    assert dct.lookup('paralyses') == 'parrelyses'
+    assert dct.lookup('prise') == 'prys'
+    assert dct.lookup('reanalyses') == 'ri’anelyses'
 
-def test_lookup_nlp_needed_pos(dict):
-    """Test that dict.lookup signals its need for a POS tag if one is necessary but not given."""
-    assert dict.lookup('increase') is lc.ConvState.NLP_NEEDED
-    assert dict.lookup('misuse') is lc.ConvState.NLP_NEEDED
+def test_lookup_nlp_needed_pos(dct):
+    """Test that lookup signals its need for a POS tag if one is necessary but not given."""
+    assert dct.lookup('increase') is lc.ConvState.NLP_NEEDED
+    assert dct.lookup('misuse') is lc.ConvState.NLP_NEEDED
 
-def test_lookup_pos_tagged(dict):
+def test_lookup_pos_tagged(dct):
     """Test that POS-tagged words are looked up correctly."""
-    assert dict.lookup('increase', 'NOUN') == 'increess'
-    assert dict.lookup('increase', 'VERB') == 'in’creess'
-    assert dict.lookup('misuse', 'NOUN') == 'mis’iuss'
-    assert dict.lookup('misuse', 'VERB') == 'mis’ius'
+    assert dct.lookup('increase', 'NOUN') == 'increess'
+    assert dct.lookup('increase', 'VERB') == 'in’creess'
+    assert dct.lookup('misuse', 'NOUN') == 'mis’iuss'
+    assert dct.lookup('misuse', 'VERB') == 'mis’ius'
 
-def test_lookup_hyphenated_prefix(dict):
-    assert dict.lookup('re-') == 'ri-'
-    assert dict.lookup('Re-') == 'Ri-'
-    assert dict.lookup('RE-') == 'RI-'
-    assert dict.lookup('de-') == 'di-'
-    assert dict.lookup('meta-') == 'mete-'
-    assert dict.lookup('paleo-') == 'pailio-'
-    assert dict.lookup('Paleo-') == 'Pailio-'
-    assert dict.lookup('PALEO-') == 'PAILIO-'
+def test_lookup_hyphenated_prefix(dct):
+    assert dct.lookup('re-') == 'ri-'
+    assert dct.lookup('Re-') == 'Ri-'
+    assert dct.lookup('RE-') == 'RI-'
+    assert dct.lookup('de-') == 'di-'
+    assert dct.lookup('meta-') == 'mete-'
+    assert dct.lookup('paleo-') == 'pailio-'
+    assert dct.lookup('Paleo-') == 'Pailio-'
+    assert dct.lookup('PALEO-') == 'PAILIO-'
 
-def test_lookup_us(dict):
+def test_lookup_us(dct):
     """Special: 'US' should remain unchanged if it's a capitalized abbreviation."""
-    assert dict.lookup('us') == 'uss'
-    assert dict.lookup('Us') == 'Uss'
-    assert dict.lookup('US') == 'US'
-    assert dict.lookup('US') == 'US'
-    assert dict.lookup("US's") == 'US’s'
-    assert dict.lookup('US’s') == 'US’s'
+    assert dct.lookup('us') == 'uss'
+    assert dct.lookup('Us') == 'Uss'
+    assert dct.lookup('US') == 'US'
+    assert dct.lookup('US') == 'US'
+    assert dct.lookup("US's") == 'US’s'
+    assert dct.lookup('US’s') == 'US’s'
 
 
 def test_tokenize_simple(conv):
@@ -256,7 +282,7 @@ def test_convert_i_case(conv):
     They should be capitalized at the start, but not in the middle of sentences.
     """
     assert conv.convert_para("I am capitalized at the start of sentences but I'm lower-case in the middle. I am still capitalized at the start.") ==\
-            "Y am capitelysd at dhe start ov sentensses but y’m loer-caiss in dhe midl. Y am stil capitelysd at dhe start."
+            'Y am capitelysd at dhe start ov sentensses but y’m loer-caiss in dhe midl. Y am stil capitelysd at dhe start.'
     assert conv.convert_para('I’d be capitalized at the start of sentences but I’ll be lower-case in the “middle”! I’d still be capitalized at the start.') ==\
             'Y’d bee capitelysd at dhe start ov sentensses but y’l bee loer-caiss in dhe “midl”! Y’d stil bee capitelysd at dhe start.'
     assert conv.convert_para("I've seen that that works but I've not seen whether this works? I've seen it now.") ==\
@@ -300,9 +326,9 @@ def test_convert_i_case_dates_and_numbers(conv):
             'Eeven after a fraction such as 3.5 y shood stil bee loer-caiss.'
 
 def test_convert_i_case_spacy(conv):
-    """Test that "I" case conversion also works if Spacy is invoked."""
+    """Test that "I" case conversion also works if spaCy is invoked."""
     assert conv.convert_para("I estimate that I am capitalized at the start of sentences but that I'm lower-case in the middle. I am still capitalized at the start.") ==\
-            "Y estimait dhat y am capitelysd at dhe start ov sentensses but dhat y’m loer-caiss in dhe midl. Y am stil capitelysd at dhe start."
+            'Y estimait dhat y am capitelysd at dhe start ov sentensses but dhat y’m loer-caiss in dhe midl. Y am stil capitelysd at dhe start.'
     assert conv.convert_para('Opening quote marks don’t hurt, I estimate. “I am still capitalized.”') ==\
             'Oapening quoat marks doan’t hurt, y estimait. “Y am stil capitelysd.”'
     assert conv.convert_para('"Closing trailing quote marks don\'t hurt, I estimate?" I\'m still capitalized.') ==\
@@ -352,37 +378,37 @@ def test_convert_other_hyphens(conv):
         'Y’m contacting iu ree--iu myt hav gessd it--iur mail.'
 
 
-def test_is_word_simple(conv):
-    assert conv.is_word('a')
-    assert conv.is_word('This')
-    assert conv.is_word('sentence')
-    assert conv.is_word("Let's")
-    assert not conv.is_word('')
-    assert not conv.is_word(' ')
-    assert not conv.is_word('.')
-    assert not conv.is_word('; ')
-    assert not conv.is_word("'")
-    assert not conv.is_word('’')
-    assert not conv.is_word('“')
+def test_is_word_simple(is_word):
+    assert is_word('a')
+    assert is_word('This')
+    assert is_word('sentence')
+    assert is_word("Let's")
+    assert not is_word('')
+    assert not is_word(' ')
+    assert not is_word('.')
+    assert not is_word('; ')
+    assert not is_word("'")
+    assert not is_word('’')
+    assert not is_word('“')
 
-def test_is_word_apostrophe(conv):
+def test_is_word_apostrophe(is_word):
     """Words starting with an apostrophe are recognized as such.
 
     SpaCy's tokenizer produces such words.
     """
-    assert conv.is_word("'d")
-    assert conv.is_word("'re")
-    assert conv.is_word('’d"')
-    assert conv.is_word('’re')
+    assert is_word("'d")
+    assert is_word("'re")
+    assert is_word('’d"')
+    assert is_word('’re')
 
-def test_is_word_diacritics(conv):
-    assert conv.is_word('œuvre')
-    assert conv.is_word('élite')
-    assert conv.is_word('épée')
-    assert conv.is_word('doppelgänger')
-    assert conv.is_word('Œuvre')
-    assert conv.is_word('Élite')
-    assert conv.is_word('ÉPÉE')
+def test_is_word_diacritics(is_word):
+    assert is_word('œuvre')
+    assert is_word('élite')
+    assert is_word('épée')
+    assert is_word('doppelgänger')
+    assert is_word('Œuvre')
+    assert is_word('Élite')
+    assert is_word('ÉPÉE')
 
 
 def test_unify_case_differences_basic(conv):
