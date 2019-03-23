@@ -1,4 +1,5 @@
 conv/.cache
+conv/.mypy_cache
 conv/__pycache__
 data/cmudict
 data/moby
