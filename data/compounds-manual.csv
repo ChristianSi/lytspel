@@ -1,5 +1,6 @@
 Word,Parts
 abacist
+beckford
 abalone
 abampere
 abate
@@ -269,6 +270,7 @@ awless,awe=less
 axman,ax-man
 axseed,ax-seed
 azonal,a=zonal
+azygous,a=zygous
 baal
 baccalaureate
 bacillary
@@ -354,6 +356,7 @@ belize
 bellicosity,bellicose=ity
 bellman,bell-man
 beltman,belt-man
+belying,belie=ing
 benedick
 benediction
 benefactor
@@ -792,6 +795,7 @@ contrariwise,contrary-wise
 contrary
 contributory
 convexity,convex=ity
+convulsed,convulse=ed
 cony
 cooee
 coon
@@ -927,6 +931,7 @@ damascus
 damn
 damnable
 damnatory
+damnit
 dampproof,damp-proof
 darkey
 Darlan
@@ -1117,6 +1122,7 @@ dichromic,di=chromic
 dicot,di=cot
 dicotyledon,di=cotyledon
 dicoumarin,di=coumarin
+didact
 dieldrin
 dieses
 differentia
@@ -1194,6 +1200,7 @@ disyllable,di=syllable
 divest
 dizygotic,di=zygotic
 doby
+dockland,dock-land
 doctrinal,doctrine=al
 documentary
 doest
@@ -1220,6 +1227,7 @@ douglass
 doup
 dover
 down
+downland,down-land
 dowry
 draftsman,drafts-man
 dramamine
@@ -1236,6 +1244,8 @@ dudeen
 duer
 Dulles
 duly,due=ly
+dumdum
+dummy
 dundee
 dunkirk
 duodenary
@@ -1250,6 +1260,7 @@ Duran
 durgan
 dutchman,dutch-man
 dutiful,duty=ful
+dying,die=ing
 earreach,ear-reach
 easily,easy=ly
 eastman,east-man
@@ -1401,7 +1412,8 @@ extravasation,extravasate=ion
 exudate
 exurban,ex-urban
 exurbanite,ex-urbanite
-eyeleteer,eyelet=eer
+eyed,eye=ed
+eyer,eye=er
 facsimile
 factotum
 factum
@@ -1490,7 +1502,8 @@ Forbes
 forby
 forearms,forearm=s
 forecasts,forecast=s
-foreman,fore-man
+foreman,fore=man
+foreperson,fore=person
 forest
 forestation,forest=ation
 forever,for-ever
@@ -1499,6 +1512,7 @@ formee
 formulary
 fortalice
 fortis
+forward
 fossor
 foulard
 Francine
@@ -1517,9 +1531,11 @@ freshman,fresh-man
 freytag
 friable
 Friedan
+friesland,frieze-land
 frithstool
 frontes
 frontiersman,frontiers-man
+froward
 frown
 frugal
 fugleman,fugle-man
@@ -1611,6 +1627,7 @@ glutinosity,glutinous=ity
 goal
 goan,goa=n
 goddamn
+goddamnit,god-damnit
 goddaughter,god-daughter
 godiva
 godzilla
@@ -1708,6 +1725,8 @@ hawkweed,hawk-weed
 hawser
 hawthorne,haw-thorn
 Hayes
+hayward
+headland,head-land
 headman,head-man
 headsman,heads-man
 heal
@@ -1730,7 +1749,8 @@ hellespontine
 helminthoid
 heman,he-man
 hematitic,hematite=ic
-hemispheroid
+hemispheroid,hemi-spheroid
+hemizygous,hemi=zygous
 henchman,hench-man
 henrietta
 herbarium
@@ -1826,6 +1846,7 @@ hydrogeology,hydro-geology
 hydromedusa,hydro-medusa
 hydropower,hydro-power
 hydrotropism,hydro=tropism
+hying,hie=ing
 hymenopteran
 hymnary
 hymnist
@@ -1840,8 +1861,10 @@ hypothecate
 hysterically,hysterical=ly
 iceland,ice-land
 ichor
+icy,ice=y
 ideologically,ideological=ly
 idiomorphic
+igor
 ilion
 illation
 illative
@@ -1901,6 +1924,7 @@ infinity
 infirmary
 inflammatorily,inflammatory=ly
 informations,information=s
+informers,informer=s
 infula
 Inge
 ingeminate
@@ -1952,8 +1976,7 @@ into
 intonate
 inure
 invite
-invocation,invocate=ion
-invocation,invoke=ation
+invocation
 invocations,invocation=s
 invocative,invocate=ive
 involuntarily,involuntary=ly
@@ -2095,7 +2118,9 @@ labrador
 lacedaemon
 lacey
 lachrymosity,lachrymose=ity
+lackland,lack-land
 lacunal,lacuna=l
+lakeland,lake-land
 lallan
 Lally
 lamaist,lama=ist
@@ -2186,6 +2211,7 @@ lier,lie=er
 lifeboatman,lifeboat-man
 ligamentary
 lighterman,lighter-man
+likelihood,likely-hood
 Lillian
 liman
 limbate
@@ -2204,6 +2230,7 @@ lingual
 linguistically,linguistical=ly
 linkman,link-man
 lis,li=s
+livelihood,lively-hood
 liver
 liveryman,livery-man
 livingstone
@@ -2256,10 +2283,12 @@ lungee
 Lunik
 luny
 Lusatian
+lustihood,lusty-hood
 luteous
 Luther
 Luxor
 luxuries,luxury=es
+lying,lie=ing
 lyman
 lymphoblast
 lyrically,lyrical=ly
@@ -2477,6 +2506,7 @@ monorhyme,mono-rhyme
 monostich
 monotone,mono-tone
 monoxide
+monozygotic,mono-zygotic
 monroe
 monsanto
 monsoon
@@ -2512,6 +2542,7 @@ multiplicate
 multiplies,multiply=es
 multivocal
 mundane
+munshi
 murrey
 murry
 muscadel
@@ -2566,6 +2597,7 @@ normand
 normandy
 norplant
 norsemen,norse-men
+northeastward,north-eastward
 northman,north-man
 northumbria
 norway
@@ -2583,6 +2615,7 @@ numerically,numerical=ly
 numerosity,numerous=ity
 nurserymen,nursery-men
 nursling,nurse-ling
+oakland,oak-land
 oarsman,oars-man
 obligable
 obligatorily,obligatory=ly
@@ -2646,6 +2679,9 @@ outta
 overalls,overall=s
 overarching,overarch=ing
 overate,over-ate
+overfilled,overfill=ed
+overfilling,overfill=ing
+overfills,overfill=s
 overlapped,overlap=ed
 overlapping,overlap=ing
 overlaps,overlap=s
@@ -2794,6 +2830,7 @@ perdido
 perdu
 perdue
 peres
+performers,performer=s
 perfume
 perfumed,perfume=ed
 perfumes,perfume=s
@@ -2951,6 +2988,7 @@ porn
 porosity,porous=ity
 portend
 portfolio
+portland,port-land
 portman,port-man
 portrait
 portray
@@ -3094,6 +3132,7 @@ puerperal,puerpera=l
 puffin
 pulaski
 pulpit
+pulsed,pulse=ed
 pungy
 puree
 puritanisms,puritanism=s
@@ -3253,6 +3292,7 @@ reeves,reeve=s
 reflex
 reflexed,reflex=ed
 reflexes,reflex=es
+reformers,reformer=s
 refuse
 refused,refuse=ed
 refusenik,refuse=nik
@@ -3278,6 +3318,7 @@ reich
 reif
 reilly
 rein
+reincarnated,reincarnate=ed
 reins,rein=s
 reist
 reit
@@ -3291,6 +3332,7 @@ relevant
 relied,rely=ed
 relier,rely=er
 religiosity,religious=ity
+relying,rely=ing
 remanent
 remarkably,remarkable=y
 remediable
@@ -3318,6 +3360,7 @@ representative,represent=ative
 represented,represent=ed
 representing,represent=ing
 represents,represent=s
+repulsed,repulse=ed
 require
 requiring,require=ing
 rescission
@@ -3382,6 +3425,7 @@ revive
 revives,revive=s
 revolute
 revolution
+reward
 rheotropism
 rhetoric
 rhetorically,rhetorical=ly
@@ -3433,6 +3477,8 @@ rugged
 rugosity,rugose=ity
 runagate
 ruskin
+rutland,rut-land
+ryeland,rye-land
 sabulosity,sabulous=ity
 saccate
 sacrament
@@ -3565,6 +3611,8 @@ sheepman,sheep-man
 sheer
 sheikdom,sheikh-dom
 shenyang
+shier,shy=er
+shiest,shy=est
 shingly,shingle=y
 shipman,ship-man
 shootout,shoot-out
@@ -3624,6 +3672,7 @@ sociologistic,sociologist=ic
 sociopath
 sociopaths,sociopath=s
 solan
+solander
 solemnize
 solen
 Solent
@@ -3637,6 +3686,8 @@ soothed,soothe=ed
 soothing,soothe=ing
 sorn
 sorry
+southeastward,south-eastward
+southwestward,south-westward
 sowcar
 sparkling,sparkle=ing
 sparry,spar=y
@@ -3793,6 +3844,7 @@ swagman,swag-man
 swanee
 swedish,swede=ish
 switchman,switch-man
+switzerland,switzer-land
 swordman,sword-man
 swordsman,swords-man
 sycee
@@ -3846,6 +3898,7 @@ tatami
 tautomerism
 teal
 teammate,team-mate
+teared
 teed
 teer
 teetotal
@@ -3885,6 +3938,7 @@ tetrode
 thebes
 theodolitic,theodolite=ic
 thereanent,there-anent
+therefor,there-for
 thereof,there-of
 thereon,there-on
 therewithal,there-withal
@@ -3962,6 +4016,7 @@ transfer
 transference
 transferrin
 transformation
+transformers,transformer=s
 transire
 transit
 transitorily,transitory=ly
@@ -4028,6 +4083,7 @@ trudgen
 trueman,true-man
 truer,true=er
 truest,true=est
+truly,true=ly
 trypanosomic,trypanosome=ic
 tuberosity,tuberose=ity
 tubman,tub-man
@@ -4072,6 +4128,7 @@ unmistakably,unmistakable=y
 unrecompensed,un=recompensed
 unselfconscious
 unto
+upland,up-land
 upmarket,up-market
 upsize,up-size
 upstanding,up-standing
@@ -4095,6 +4152,8 @@ vaporosity,vaporous=ity
 vasoinhibitory
 Vatican
 vaxes
+veal
+veer
 vegan
 vegas
 velamen
@@ -4129,6 +4188,7 @@ vinal
 Vincent
 vincentian
 vincible
+vineland,vine-land
 vinic
 vinosity,vinous=ity
 vinous
@@ -4147,6 +4207,7 @@ voltaism,volta=ism
 voluminosity,voluminous=ity
 voluntarily,voluntary=ly
 votary
+vying,vie=ing
 waal
 wadas
 waddy
@@ -4172,6 +4233,7 @@ warwick
 washerman,washer-man
 washiness,washy-ness
 washingtonia
+wastery
 watchman,watch-man
 waterman,water-man
 weal
@@ -4187,6 +4249,7 @@ weer,wee=er
 weest
 weest,wee=est
 weighman,weigh-man
+welcome,well-come
 welshman,welsh-man
 wheelman,wheel-man
 wheelsman,wheels-man
