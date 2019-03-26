@@ -39,8 +39,8 @@ of English.
 > hi cood, but dhe mor hi blu dhe mor cloassli did dhe traveler foald his
 > cloak e'round him; and at last dhe North Wind gaiv up dhe a'tempt. Dhen
 > dhe Sun shynd out wormli, and i'meediatli dhe traveler took of his cloak.
-> And so dhe North Wind wos o'blyjd to con'fess dhat dhe Sun wos dhe
-> strongger ov dhe tu.
+> And so dhe North Wind wos o'blyjd tu con'fess dhat dhe Sun wos dhe
+> strongger ov dhe tuu.
 >
 > Dhat quik baizh fox jumpd in dhe air oaver eech thin dog under a caam
 > autum muun. Look out, y shout, for hi's foild iu yet a'gen, cri'aiting
@@ -559,14 +559,15 @@ Irregular words:
 
   * The vowels in the articles «dhe, a, an» ‹the, a, an› retain their
     traditional spelling.
-  * «ey» ‹eye› is written somewhat irregularly to distinguish it from «y»
-    ‹I› and for easier recognition in compounds such as «fishey» ‹fisheye›.
+  * «ey» ‹eye› is written irregularly to distinguish it from «y» ‹I› and
+    for easier recognition in compounds such as «fishey» ‹fisheye›.
   * «noa» ‹know› is written somewhat irregularly to distinguish it from
     «no».
   * «oa» ‹owe› is written somewhat irregularly since a verb with just one
     letter could be confusing (and also to distinguish it from the
     interjection «o» ‹oh›).
-  * «to» remains irregular to distinguish it from «tu» ‹too *or* two›.
+  * «tuu» ‹too *or* two› is written somewhat irregularly to distinguish it
+    from «tu» ‹to›.
 
 Uses of the apostrophe:
 
