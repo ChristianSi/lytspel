@@ -977,6 +977,7 @@ aught,,B
 Augsburg,,'O:gzb3:g
 Augustinism,,O:g'VstI#nIz@m
 august,n,B
+Au,,O
 aurar,,'OIrAr
 Aurelio,,D
 Auriol,,D
@@ -3014,6 +3015,7 @@ dorsum,,P
 dos,,D
 Dostoevsky,,dQst@j'Efski:
 dotard,,P
+Doubs,,D
 doucet,,d'u:sIt
 Doukhobor,,P
 douma,,P
@@ -3111,6 +3113,8 @@ dysteleology,,dIstEli:'Ql@dZi:
 ea,,D
 earthward,,'3:Tw@`d
 eastland,,D
+eau,,D
+eaux,,D
 ebenezer,,Eb@n'i:z@`
 ebeniste,,D
 ebonics,,Ib'QnIks
@@ -3556,6 +3560,7 @@ evaporative,,P
 evaporator,,Iv'ap@`eIt@`
 evasive,,B
 evidentiary,,EvId'EnS@`i:
+evil,,'i:vI#l
 evincive,,P
 eviscerate,,A
 evocation,,Ev@k'eIS@n
@@ -3809,6 +3814,7 @@ exultancy,,P
 exult,,P
 exurb,,'Eks3:b
 eyalet,,P
+Eyck,,D
 eyre,,'e@
 Faberge,,fab@`Z'eI
 Fabre,,D
@@ -3975,7 +3981,8 @@ figurative,,P
 figure,,A
 figurine,,P
 filar,,P
-fille,,f'i:
+fille,,D
+filles,,D
 financial,,P
 financier,,fIn'ansI@`
 fini,,fi:n'i:
@@ -4365,6 +4372,7 @@ gnomic,,P
 gnomonic,,P
 gnomon,,P
 gnotobiotic,,noUtoUbaI'QtIk
+gnu,,n'U:
 gobang,,P
 goban,,P
 gobbledygook,,g'Qb@ldi:gUk
@@ -5036,6 +5044,7 @@ idolatress,,aId'Ql@tr@s
 idolatrize,,P
 idolatrous,,P
 Idun,,'i:DUn
+iff,,O
 IgE,,D
 Ignacio,,D
 ignominy,,B
@@ -5990,6 +5999,7 @@ loci,,B
 locomobility,,loUk@#moUb'IlIti:
 loessial,,l'oUEsi:@l
 loess,,P
+Loewe,,D
 Loews,,D
 loggia,,l'QdZ@
 logician,,B
@@ -6831,6 +6841,7 @@ necrophilism,,n@kr'QfI#lIz@m
 nectareous,,P
 nectarine,,P
 nectarous,,P
+nee,,n'eI
 nefarious,,P
 negativity,,B
 Negrillo,,P
@@ -6842,6 +6853,7 @@ nematic,,P
 nematological,,nEm@#t@l'QdZIk@l
 Nembutal,,n'Embj@tO:l
 nemesia,,nIm'i:zi:@
+ne,,O
 neodymium,,ni:@d'Imi:@m
 neologism,,ni:'Ql@dZIz@m
 neologize,,ni:'Ql@dZaIz
@@ -6912,6 +6924,7 @@ nodose,,P
 nodular,,n'QdjUl@`
 nodule,,B
 nodulose,,B
+Noe,,n'oU@
 Nofretete,,nQfr@t'i:ti:
 Noguchi,,n@g'u:tSi:
 noisette,,P
@@ -6987,6 +7000,7 @@ numina,,n'U:mI#n@
 numinous,,n'U:mI#n@s
 numismatist,,nU:m'Ism@tIst
 Nunez,,n'u:njEz
+nu,,n'U:
 nuptial,,B
 nuraghe,,P
 nur,,D
@@ -7262,6 +7276,7 @@ Oxnard,,'QksnArd
 oxysalt,,'QksIsO:lt
 oxytetracycline,,QksItEtr@s'aIklIn
 oxytocin,,QksIt'oUsIn
+oye,,D
 Ozark,,P
 Ozenfant,,D
 Paar,,D
@@ -7444,6 +7459,7 @@ patronal,,p'eItr@n@l
 pattee,,p'ateI
 patulous,,P
 patzer,,p'Ats@`
+Pau,,D
 Pauline,,p'O:li:n
 Pauling,,D
 pavan,,p@v'An
@@ -7491,6 +7507,7 @@ pedophilia,,B
 pedophiliac,,B
 pedophilic,,B
 peepul,,B
+pei,,D
 pekingese,,pi:kIn'i:z
 pelagian,,p@l'eIdZi:@n
 Pelasgian,,P
@@ -7534,6 +7551,7 @@ pentose,,P
 Pentothal,,p'Ent@TO:l
 penultima,,pIn'VltI#m@
 penultimate,,pIn'VltI#mIt
+pe,,p'eI
 Pepys,,P
 perambulatory,,p@`'ambj@l@tori:
 Perceval,,B
@@ -7852,6 +7870,7 @@ podiatry,,p@d'aI@tri:
 Podolsk,,p@d'Qlsk
 podomere,,p'Qd@mi:r
 podophyllin,,pQd@f'IlIn
+Poe,,D
 poet,,B
 pogrom,,p'Qgr@m
 poilu,,P
@@ -8584,6 +8603,7 @@ revitalization,,B
 Reyes,,B
 Reynaldo,,D
 Rh,,D
+Rhee,,D
 Rheinland,,D
 Rhenish,,B
 rheotropism,,ri:'Qtr@pIz@m
@@ -9857,6 +9877,7 @@ tenosynovitis,,tEnoUsIn@v'aItIs
 tensile,,t'EnsIl
 tenuity,,t@n'U:Iti:
 tenzon,,t'Enz@n
+te,,O
 Tepic,,tEp'i:k
 terebic,,B
 terebinth,,t'Er@bInT
@@ -10052,7 +10073,6 @@ tomnoddy,,P
 tonga,,B
 tonicity,,B
 tonite,,t@n'aIt
-to,,O
 tootsie,,t'Utsi:
 topazolite,,t@p'az@laIt
 toph,,B
@@ -10286,6 +10306,7 @@ twibill,,P
 twier,,twi:j'e@
 twi,,P
 Tycho,,t'aIkoU
+ty,,D
 tymbal,,B
 tympan,,P
 typography,,B
@@ -10426,6 +10447,7 @@ vav,,P
 vaward,,v'AwO:rd
 VAXes,,D
 Vazquez,,v'askEz
+ve,,D
 vedalia,,vId'eIli:@
 Vedanta,,P
 Veda,,P
@@ -10722,6 +10744,7 @@ what,,A
 whereabouts,,B
 where'er,,P
 wheresoe'er,,P
+whew,,wj'u:
 whimbrel,,B
 whirligig,,w'3:lIgIg
 whodunit,,P
@@ -10770,6 +10793,7 @@ Wozniak,,B
 wretch,,B
 wretched,,B
 wristlet,,r'IstlIt
+writhe,,B
 Wuhan,,P
 Wulfila,,w'UlfI#l@
 www,,O
