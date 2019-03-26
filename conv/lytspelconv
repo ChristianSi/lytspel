@@ -79,8 +79,8 @@ I_AND_CONTRACTIONS_RE = re.compile("I$|I['’]")
 # Words start with a letter, or with an apostrophe followed by a letter.
 WORD_RE = re.compile("['’]?" + LOWERCASE_LETTER_PAT, re.IGNORECASE)
 
-# Matches words ending in "'s" or its typographic equivalent.
-GENITIVE_S_RE = re.compile(".['’]s$", re.IGNORECASE)
+# Matches words ending in "'s" (genitive) or generic contractions such as "'ve".
+GENERIC_CONTRACTION_RE = re.compile(".['’](s|d|ll|re|ve)$", re.IGNORECASE)
 
 # Heuristic used to detect the end of a sentence.
 ENDS_SENTENCE_HEURISTIC_RE = re.compile(r'([.?!](\s*["\'“‘”’])?|:\s*["\'“‘]|>(\s*["\'“‘])?)\s*$')
@@ -91,6 +91,9 @@ DIGIT_RE = re.compile(r'\d')
 # Matches the first non-whitespace characters that typically occur at the start of a XML or
 # HTML file
 XML_START_RE = re.compile('<[!?h]', re.IGNORECASE)
+
+# All-caps abbreviations that should be kept unchanged
+CAP_ABBREVS = set(('BIOS', 'DE', 'GA', 'HI', 'LA', 'MA', 'ME', 'MI', 'OH', 'PA', 'US', 'WA'))
 
 XHTML_NAMESPACE = '{http://www.w3.org/1999/xhtml}'
 
@@ -143,7 +146,6 @@ class Dictionary:
 
     def __init__(self):
         """Initializes and loads the dictionary."""
-        warn('Loading the dict')  # TODO
         self._dict = {}
         self._mixed_dict = {}
 
@@ -224,12 +226,12 @@ class Dictionary:
         provided that *both* the input word and the dictionary entry use this case form
         (e.g. JavaScript -> JaavaScript).
         """
+        # pylint: disable=too-many-branches
         word = self.asciify(word)
-        # Strip final 's (genitive or contraction) and remember for later (handling case)
-        word, genitive_s = self.strip_genitive_s(word)
+        # Strip final "'s" (genitive) or contraction and remember for later (handling case)
+        word, contraction = self.strip_generic_contraction(word)
 
-        if word in ('BIOS', 'US'):
-            # Keep some capitalized abbreviations unchanged
+        if word in CAP_ABBREVS:
             result = word
         else:
             lower = word.lower()
@@ -242,8 +244,12 @@ class Dictionary:
                 result = lower
             else:
                 result = self._dict.get(lower)
+
                 if result is None:
-                    return result
+                    result = self.fallback_lookup(lower)
+                    if result is None:
+                        # Still no match
+                        return None
 
                 if isinstance(result, dict):
                     if spacy_pos:
@@ -257,8 +263,11 @@ class Dictionary:
                 # Correct the case of 'I' and its contractions
                 result = result.lower()
 
-        if genitive_s:
-            result += genitive_s
+        if contraction:
+            if len(contraction) == 3:
+                # Strip the final letter of two-letter contractions such as "'ll" or "'ve"
+                contraction = contraction[:-1]
+            result += contraction
 
         result = result.replace("'", '’')  # replace normal by typographic apostrophe
         return result
@@ -348,19 +357,41 @@ class Dictionary:
         return result
 
     @staticmethod
-    def strip_genitive_s(word: str) -> Tuple[str, str]:
-        """Strip the genitive or contraction "'s" from a word, if its present.
+    def strip_generic_contraction(word: str) -> Tuple[str, str]:
+        """Strip the genitive ("'s") and generic contractions (such as "'ve") from a word.
 
-        Returns two values: actual word, genitive. If the word doesn't end in a genitive, the
-        first return value will be identical to the argument and the second return value will
-        be empty.
+        Returns two values: actual word, contraction. If the word doesn't end in a genitive
+        or contraction, the first return value will be identical to the argument and the
+        second return value will be empty.
 
         Both simple and typographic apostrophes are recognized.
         """
-        if GENITIVE_S_RE.search(word):
-            return word[:-2], word[-2:]
+        match = GENERIC_CONTRACTION_RE.search(word)
+        if match:
+            idx = match.start() + 1
+            return word[:idx], word[idx:]
         else:
             return word, ''
+
+    def fallback_lookup(self, lc_word: str) -> str:
+        """Fallback lookup if the regular lookup failed.
+
+        'lc_word' must be a lower-case word.
+
+        Checks if the word is a contraction that starts with an apostrophe (e.g. "'cause" or
+        "'em"), as sometimes produced by spaCy, or if it ends in -in and a corresponding -ing
+        entry exists (e.g. 'friggin' instead of 'frigging').
+        """
+        if lc_word.startswith("'"):
+            result = self._dict.get(lc_word[1:])
+            if isinstance(result, str):
+                return "'" + result
+        elif lc_word.endswith('in'):
+            result = self._dict.get(lc_word + 'g')
+            if isinstance(result, str) and result.endswith('g'):
+                return result[:-1]
+
+        return None
 
     @staticmethod
     def translate_pos(spacy_pos: str) -> str:
@@ -435,11 +466,11 @@ class Converter:
     Instances of this class are stateful and hence not threadsafe.
     """
 
-    # Load Dictionary (once)
-    _dict = Dictionary()
-
-    # Load spaCy (once), disabling unnecessary components
-    _nlp = spacy.load('en', disable=['parser', 'ner'])
+    # Attributes that are shared across all instances, but loaded in the constructor to avoid
+    # loading them in cases where they aren't needed (e.g. when this program is called with the
+    # --help option)
+    _dict = None
+    _nlp = None
 
     def __init__(self, use_unknown_counter: bool = False) -> None:
         """Create a new instance.
@@ -452,6 +483,14 @@ class Converter:
         self._at_sent_start = True
         # Optional counter of unknown words
         self._unknown_counter: Counter = Counter() if use_unknown_counter else None
+
+        # Lazy initialization of static attributes
+        if self._dict is None:
+            self._dict = Dictionary()
+
+        if self._nlp is None:
+            # Load spaCy without any unnecessary components
+            self._nlp = spacy.load('en', disable=['parser', 'ner'])
 
     @staticmethod
     def tokenize_text(text: str) -> List[str]:
@@ -572,7 +611,7 @@ class Converter:
                     out_tokens.append(token)
 
                     if self._unknown_counter is not None:
-                        actual_word = self._dict.strip_genitive_s(token)[0]
+                        actual_word = self._dict.strip_generic_contraction(token)[0]
                         if len(actual_word) > 1:
                             local_unknown_counter[actual_word] += 1
 
@@ -682,7 +721,7 @@ class Converter:
                             out_tokens.append(token)
 
                             if self._unknown_counter is not None and not looks_like_url:
-                                actual_word = self._dict.strip_genitive_s(token)[0]
+                                actual_word = self._dict.strip_generic_contraction(token)[0]
                                 if len(actual_word) > 1:
                                     self._unknown_counter[actual_word] += 1
 
@@ -956,9 +995,8 @@ class Converter:
         appending '-lytspel' before the file extension (if the input file is called 'FILE.epub',
         the output file will be called 'FILE-lytspel.epub').
         """
-        root, ext = path.splitext(filename)
-
         if not out_filename:
+            root, ext = path.splitext(filename)
             out_filename = '{}-lytspel{}'.format(root, ext)
 
         with ZipFile(filename, 'r') as zin:
