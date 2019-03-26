@@ -3080,7 +3080,6 @@ bailed,bail=ed
 bailee,bail=ee
 bailer,bail=er
 baileys,bailey=s
-bailiff,bail-iff
 bailiffs,bailiff=s
 bailing,bail=ing
 bailment,bail=ment
@@ -4497,6 +4496,7 @@ blames,blame=s
 blameworthy,blame-worthy
 blaming,blame=ing
 blanched,blanch=ed
+blanches,blanch=es
 blander,bland=er
 blandish,bland=ish
 blandishment,blandish=ment
@@ -7337,6 +7337,7 @@ chatterbox,chatter-box
 chattered,chatter=ed
 chatterer,chatter=er
 chattering,chatter=ing
+chatters,chatter=s
 chatting,chat=ing
 chatty,chat=y
 chauffeured,chauffeur=ed
@@ -7812,6 +7813,7 @@ civilized,civilize=ed
 civilly,civil=ly
 civvies,civvy=es
 clacked,clack=ed
+clacks,clack=s
 cladding,clad=ing
 cladism,clad=ism
 claimant,claim=ant
@@ -7908,6 +7910,7 @@ classwork,class-work
 classy,class=y
 clattered,clatter=ed
 clattering,clatter=ing
+clatters,clatter=s
 claudine,claude=ine
 clauses,clause=s
 claustrophobic,claustrophobe=ic
@@ -8032,6 +8035,7 @@ clinics,clinic=s
 clinked,clink=ed
 clinker,clink=er
 clinking,clink=ing
+clinks,clink=s
 clinkstone,clink-stone
 clipboard,clip-board
 clipped,clip=ed
@@ -8183,6 +8187,7 @@ coachwhip,coach-whip
 coachwood,coach-wood
 coachwork,coach-work
 coactive,coact=ive
+coagulated,coagulate=ed
 coagulates,coagulate=s
 coagulating,coagulate=ing
 coagulative,coagulate=ive
@@ -12721,6 +12726,7 @@ dictionaries,dictionary=es
 dictionary,diction=ary
 didache,did-ache
 didactic,didact=ic
+didacts,didact=s
 diddy,did=y
 dieback,die-back
 dienes,diene=s
@@ -15818,6 +15824,7 @@ entryphone,entry-phone
 entryway,entry-way
 entwine,en=twine
 entwined,en=twined
+entwines,entwine=s
 entwining,en=twining
 entwist,en=twist
 enumerated,enumerate=ed
@@ -17603,7 +17610,6 @@ filipinos,filipino=s
 filled,fill=ed
 filler,fill=er
 fillers,filler=s
-filles,fille=s
 filleting,fillet=ing
 fillets,fillet=s
 fillies,filly=es
@@ -19675,7 +19681,6 @@ gentlest,gentle=est
 gentlewoman,gentle-woman
 gentlewomen,gentle-women
 gently,gent=ly
-gentoo,gen-too
 gentrified,gentrify=ed
 gentrifying,gentrify=ing
 gentry,gent=ry
@@ -19973,6 +19978,7 @@ glimpsed,glimpse=ed
 glimpses,glimpse=s
 glinted,glint=ed
 glinting,glint=ing
+glints,glint=s
 glistened,glisten=ed
 glistening,glisten=ing
 glitches,glitch=es
@@ -23273,7 +23279,7 @@ idolizing,idolize=ing
 idols,idol=s
 idyllic,idyll=ic
 idyllist,idyll=ist
-iffy,iff=y
+iffy,if=y
 ignited,ignite=ed
 igniter,ignite=er
 ignites,ignite=s
@@ -28008,7 +28014,6 @@ lodging,lodge=ing
 lodgings,lodging=s
 lodgment,lodge=ment
 loessial,loess=ial
-loews,loewe=s
 lofter,loft=er
 loftier,lofty=er
 lofting,loft=ing
@@ -31857,7 +31862,7 @@ nodosity,nodose=ity
 nodous,nod=ous
 nods,nod=s
 nodules,nodule=s
-noes,noe=s
+noes,no=es
 nogging,nogg=ing
 noirs,noir=s
 noiseless,noise=less
@@ -36102,7 +36107,6 @@ ponies,pony=es
 pontage,pont=age
 pontes,pont=es
 pontic,pont=ic
-pontiff,pont-iff
 pontifical,pontific=al
 pontifically,pontifical=ly
 pontificals,pontifical=s
@@ -38025,6 +38029,7 @@ quittor,quit=or
 quivered,quiver=ed
 quiverful,quiver=ful
 quivering,quiver=ing
+quivers,quiver=s
 quizmaster,quiz-master
 quizzed,quiz=ed
 quizzes,quiz=es
@@ -39722,7 +39727,6 @@ renderings,rendering=s
 renders,render=s
 rending,rend=ing
 renditions,rendition=s
-renee,re=nee
 renegades,renegade=s
 reneged,renege=ed
 reneging,renege=ing
@@ -43032,7 +43036,9 @@ shirtwaist,shirt-waist
 shirtwaister,shirtwaist=er
 shirty,shirt=y
 shithead,shit-head
+shitheads,shithead=s
 shitload,shit-load
+shitloads,shitload=s
 shitty,shit=y
 shiver,shiv=er
 shivered,shiver=ed
@@ -43887,6 +43893,7 @@ slipware,slip-ware
 slipway,slip-way
 slithered,slither=ed
 slithering,slither=ing
+slithers,slither=s
 slits,slit=s
 slitting,slit=ing
 slitty,slit=y
@@ -48301,6 +48308,7 @@ throats,throat=s
 throaty,throat=y
 throbbed,throb=ed
 throbbing,throb=ing
+throbs,throb=s
 throes,throe=s
 thronged,throng=ed
 throngs,throng=s
@@ -49799,7 +49807,7 @@ twos,two=s
 twosome,two-some
 tycoons,tycoon=s
 tyer,tie=er
-tying,ty=ing
+tying,tie=ing
 tympanic,tympan=ic
 tympanist,tympan=ist
 tynes,tyne=s
@@ -54087,6 +54095,7 @@ wretchedly,wretched=ly
 wretchedness,wretched=ness
 wretches,wretch=es
 wriggled,wriggle=ed
+wriggles,wriggle=s
 wrights,wright=s
 wringer,wring=er
 wringing,wring=ing
@@ -54103,6 +54112,7 @@ writer,write=er
 writers,writer=s
 writes,write=s
 writhed,writhe=ed
+writhes,writhe=s
 writhing,writhe=ing
 writing,write=ing
 writings,writing=s
@@ -54206,6 +54216,7 @@ yellowwood,yellow-wood
 yells,yell=s
 yelped,yelp=ed
 yelping,yelp=ing
+yelps,yelp=s
 yeomanry,yeoman=ry
 yeses,yes=es
 yester,yest=er

@@ -10438,6 +10438,7 @@ blanch,,,bl'antS,,
 Blanchard,,,bl'antS@d,bl'antS@`d,
 Blanche,,,bl'AnS,,bl'antS
 blanched,,,bl'antSt,,
+blanches,,,bl'AnSIz,bl'AnSI#z,
 blancmange,,,bl@m'QnZ,bl@m'AnZ,bl@m'AndZ
 blanco,,,bl'ankoU,,bl'aNkoU
 bland,,,bl'and,,
@@ -16384,6 +16385,7 @@ chatterbox,,,tS'at@bQks,tS'at@`bAks,
 chattered,,,tS'at@d,tS'at@`d,
 chatterer,,,tS'at@r@,tS'at@`r@`,tS'at@`@`
 chattering,,,tS'at@rIN,tS'at@`rIN,tS'at@`IN
+chatters,,,tS'at@z,tS'at@`z,
 Chatterton,,,tS'at@t@n,tS'at@`t@n,
 chatting,,,tS'atIN,,
 chatty,,,tS'ati:,,
@@ -17712,6 +17714,7 @@ clachan,,,kl'atS@n,,kl'Ak@n
 clack,,,kl'ak,,
 clacked,,,kl'akt,,
 Clackmannan,,,kl'akman@n,,klakm'an@n
+clacks,,,kl'aks,,
 Clactonian,,,klakt'oUni:@n,,
 clad,,,kl'ad,,
 claddagh,,,kl'adAg,,kl'adV
@@ -17884,6 +17887,7 @@ clathrate,,,kl'aTreIt,,
 clatter,,,kl'at@,kl'at@`,
 clattered,,,kl'at@d,kl'at@`d,
 clattering,,,kl'at@rIN,kl'at@`rIN,kl'at@`IN
+clatters,,,kl'at@z,kl'at@`z,
 claucht,,,kl'O:tSt,,kl'Qkt
 Claude,,,kl'O:d,,
 Claudel,,,kl'O:d@l,,kloUd'El
@@ -18119,6 +18123,7 @@ clink,,,kl'INk,,
 clinked,,,kl'INkt,,
 clinker,,,kl'INk@,kl'INk@`,
 clinking,,,kl'INkIN,,kl'INki:N
+clinks,,,kl'INks,,
 clinkstone,,,kl'INkstoUn,,
 clinometer,,,klIn'QmIt@,klIn'AmIt@`,klaIn'QmIt@`
 clinometric,,,klInoUm'EtrIk,,klaIn@m'EtrIk
@@ -18386,6 +18391,7 @@ coagulant,,,koU'agjUl@nt,,koU'agj@l@nt
 coagulase,,,koU'agjUleIs,,koU'agj@leIs
 coagulate,aj,,koU'agjUleIt,,koU'agj@lIt
 coagulate,v,,koU'agjUleIt,,koU'agj@leIt
+coagulated,,,koU'agjUleItId,koU'agjUleItI#d,
 coagulates,,,koU'agjUleIts,,
 coagulating,,,koU'agjUleItIN,,koU'agj@leItIN
 coagulation,,,koUagjUl'eIS@n,,
@@ -26889,6 +26895,7 @@ did,,,d'Id,,
 Didache,,,d'IdeIk,,d'Id@ki:
 didact,,,d'Idakt,,
 didactic,,,dId'aktIk,,daId'aktIk
+didacts,,,d'Idakts,,
 didapper,,,d'Idap@,d'Idap@`,d'aIdap@`
 diddle,,,d'Id@l,,
 diddley,,,d'IdlI,d'Idli:,
@@ -32357,6 +32364,7 @@ entryphone,,,'EntrIfoUn,,'Entri:foUn
 entryway,,,'EntrIweI,,'Entri:weI
 entwine,,,Entw'aIn,,
 entwined,,,Entw'aInd,,
+entwines,,,Entw'aInz,,
 entwining,,,Entw'aInIN,,
 entwist,,,Entw'Ist,,
 enucleate,aj,,Inj'u:klIeIt,In'u:klIeIt,In'u:kli:It
@@ -40565,6 +40573,7 @@ Glinka,,,gl'INk@,,
 glint,,,gl'Int,,
 glinted,,,gl'IntId,gl'IntI#d,
 glinting,,,gl'IntIN,,
+glints,,,gl'Ints,,
 glioma,,,glI'oUm@,,glaI'oUm@
 gliomatous,,,glI@m'at@s,,glaI'oUm@t@s
 glisk,,,gl'Isk,,
@@ -64008,7 +64017,7 @@ nefariousness,,,n@f'e@rI@sn@s,n@f'ErI@sn@s,nIf'e@i:@snEs
 Nefertiti,,,nEf@t'i:ti:,nEf@`t'i:ti:,
 neg,,,n'Eg,,
 negate,,,nIg'eIt,,
-negated,,,nIg'eItId,nIg'eItI#d,n'i:geItId
+negated,,,nIg'eItId,n'EgeItId,n'i:geItId
 negates,,,nIg'eIts,,
 negating,,,nIg'eItIN,,
 negation,,,nIg'eIS@n,,n@g'eIS@n
@@ -69890,7 +69899,7 @@ paysage,,,p'eIsIdZ,,peIz'AZ
 paysagist,,,p'eIsa#dZIst,,p'eIzAdZIst
 pc,,,pi:s'i:,,p'i:s'i:
 PCs,,,pi:si:'Es,,p'i:s'i:z
-pe,,poe
+pe,,,p'i:,,
 pea,,,p'i:,,
 Peabody,,,p'i:bQdi:,p'i:bAdi:,
 peace,,,p'i:s,,
@@ -77069,6 +77078,7 @@ quiver,,,kw'Iv@,kw'Iv@`,
 quivered,,,kw'Iv@d,kw'Iv@`d,
 quiverful,,,kw'Iv@f@l,kw'Iv@`f@l,kw'Iv@fUl
 quivering,,,kw'Iv@rIN,kw'Iv@`rIN,kw'Iv@`IN
+quivers,,,kw'Iv@z,kw'Iv@`z,
 quixote,,,kw'IksoUt,,ki:h'oUti:
 quixotic,,,kwIks'QtIk,kwIks'AtIk,
 quixotism,,,kw'Iks@tIz@m,,
@@ -81784,7 +81794,7 @@ rota,,,r'oUt@,,
 Rotarian,,,roUt'e@ri:@n,roUt'Eri:@n,roUt'e@i:@n
 rotary,,,r'oUt@ri:,r'oUt@`ri:,r'oUt@`i:
 rotate,,,roUt'eIt,,r'oUteIt
-rotated,,,r'oUteItId,roUt'eItI#d,
+rotated,,,roUt'eItId,roUt'eItI#d,r'oUteItId
 rotates,,,roUt'eIts,,r'oUteIts
 rotating,,,roUt'eItIN,,r'oUteItIN
 rotation,,,roUt'eIS@n,,
@@ -85868,7 +85878,9 @@ shirtwaister,,,S'3:tweIst@,S'3:tweIst@`,
 shirty,,,S'3:ti:,,
 shit,,,S'It,,
 shithead,,,S'IthEd,,
+shitheads,,,S'IthEdz,,
 shitload,,,S'ItloUd,,
+shitloads,,,S'ItloUdz,,
 shitty,,,S'Iti:,,
 shiv,,,S'Iv,,
 shiva,,,S'i:v@,,
@@ -87313,6 +87325,7 @@ slit,,,sl'It,,
 slither,,,sl'ID@,sl'ID@`,
 slithered,,,sl'ID@d,sl'ID@`d,
 slithering,,,sl'ID@rIN,sl'ID@`rIN,sl'ID@`IN
+slithers,,,sl'ID@z,sl'ID@`z,
 slits,,,sl'Its,,
 slitting,,,sl'ItIN,,
 slitty,,,sl'Iti:,,
@@ -95511,6 +95524,7 @@ throaty,,,Tr'oUti:,,
 throb,,,Tr'Qb,Tr'Ab,
 throbbed,,,Tr'Qbd,Tr'Abd,
 throbbing,,,Tr'QbIN,Tr'AbIN,
+throbs,,,Tr'Qbz,Tr'Abz,
 throe,,,Tr'oU,,
 throes,,,Tr'oUz,,
 thrombin,,,Tr'QmbIn,Tr'AmbIn,
@@ -102962,8 +102976,8 @@ Vyborg,,,v'aIbO:g,v'aIborg,v'i:bO:rg
 Vycor,,,v'aIk@,v'aIk@`,v'aIkO:r
 vying,,,v'aIIN,,
 vyingly,,,v'aIINlI,v'aIINli:,
-wa,,,w'A,,
 WA,,,w'A,,w'Q
+wa,,,w'A,,
 Waadt,,,w'At,,v'At
 WAAF,,,w'Af,,w'af
 Waal,,,w'Al,,w'Ql
@@ -105170,6 +105184,7 @@ wrick,,,r'Ik,,
 wriggle,,,r'Ig@l,,
 wriggled,,,r'Ig@ld,,
 wriggler,,,r'Igl@,r'Igl@`,
+wriggles,,,r'Ig@lz,,
 wriggly,,,r'Igli:,,
 wright,,,r'aIt,,
 wrights,,,r'aIts,,
@@ -105199,6 +105214,7 @@ writes,,,r'aIts,,
 writhe,,,r'aID,,r'IT
 writhed,,,r'aIDd,,
 writhen,,,r'ID@n,,
+writhes,,,r'aIDz,,
 writhing,,,r'aIDIN,,r'ITIN
 writing,,,r'aItIN,,
 writings,,,r'aItINz,,
@@ -105498,6 +105514,7 @@ yells,,,j'Elz,,
 yelp,,,j'Elp,,
 yelped,,,j'Elpt,,
 yelping,,,j'ElpIN,,
+yelps,,,j'Elps,,
 Yeltsin,,,j'EltsIn,,j'Elts@n
 Yemen,,,j'Em@n,,
 Yemeni,,,j'Em@ni:,,

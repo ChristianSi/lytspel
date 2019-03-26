@@ -6578,7 +6578,7 @@ Atwood,,,Atwood
 atypic,,,ai'tipic
 atypical,,,ai'tipicl
 atypically,,,ai'tipiclli
-Au,,,O
+Au,,,Au
 aubade,,,oa'bad
 aubades,,,oa'bads
 Aube,,,Aub
@@ -10328,6 +10328,7 @@ blanch,,,blanch
 Blanchard,,,Blancherd
 Blanche,,,Blanch
 blanched,,,blanchd
+blanches,,,blanches
 blancmange,,,bla'maanj
 blanco,,,blanco
 bland,,,bland
@@ -12839,7 +12840,7 @@ bulrush,,,boolrush
 Bultmann,,,Booltmaan
 bulwark,,,boolwerk
 bum,,,bum
-bumbailiff,,,bumbailif
+bumbailiff,,,bum'bailif
 bumbershoot,,,bumbershuut
 bumble,,,bumbl
 bumblebee,,,bumblbee
@@ -16223,6 +16224,7 @@ chatterbox,,,chaterbox
 chattered,,,chaterd
 chatterer,,,chaterer
 chattering,,,chatering
+chatters,,,chaters
 Chatterton,,,Chaterten
 chatting,,,chating
 chatty,,,chati
@@ -17538,6 +17540,7 @@ clachan,,,claken
 clack,,,clak
 clacked,,,clakd
 Clackmannan,,,Clac'manen
+clacks,,,claks
 Clactonian,,,Clac'toanian
 clad,,,clad
 claddagh,,,clada
@@ -17710,6 +17713,7 @@ clathrate,,,clathrait
 clatter,,,clater
 clattered,,,claterd
 clattering,,,clatering
+clatters,,,claters
 claucht,,,clauct
 Claude,,,Claud
 Claudel,,,Cloa'del
@@ -17944,6 +17948,7 @@ clink,,,clink
 clinked,,,clinkd
 clinker,,,clinker
 clinking,,,clinking
+clinks,,,clinks
 clinkstone,,,clinkstoan
 clinometer,,,cly'nomiter
 clinometric,,,clyno'metric
@@ -18207,6 +18212,7 @@ coagulant,,,co'agyulent
 coagulase,,,co'agyulaiss
 coagulate,aj,,co'agyulet
 coagulate,v,,co'agyulait
+coagulated,,,co'agyulaited
 coagulates,,,co'agyulaits
 coagulating,,,co'agyulaiting
 coagulation,,,co-agiu'laition
@@ -26654,6 +26660,7 @@ did,,,did
 Didache,,,Didaik
 didact,,,dydact
 didactic,,,dy'dactic
+didacts,,,dydacts
 didapper,,,dydaper
 diddle,,,didl
 diddley,,,didli
@@ -28815,7 +28822,6 @@ doubling,,,dubling
 doubloon,,,du'bluun
 doublure,,,du'bloor
 doubly,,,dubli
-Doubs,,,Du
 doubt,,,dout
 doubted,,,douted
 doubter,,,douter
@@ -30017,8 +30023,6 @@ eath,,,eedh
 eating,,,eeting
 Eaton,,,Eeten
 eats,,,eets
-eau,,,o
-eaux,,,o
 eave,,,eev
 eaves,,,eevs
 eavesdrip,,,eevsdrip
@@ -32073,6 +32077,7 @@ entryphone,,,entrifoan
 entryway,,,entriway
 entwine,,,en'twyn
 entwined,,,en'twynd
+entwines,,,en'twyns
 entwining,,,en'twyning
 entwist,,,en'twist
 enucleate,aj,,i'nuecliat
@@ -33371,12 +33376,12 @@ evidential,,,evi'denshel
 evidentially,,,evi'denshelli
 evidentiary,,,evi'densheri
 evidently,,,evidentli
-evil,,,eevel
-evildoer,,,eevelduer
-evildoers,,,eevelduers
-evildoing,,,eevelduing
-evilly,,,eevelli
-evils,,,eevels
+evil,,,eevil
+evildoer,,,eevilduer
+evildoers,,,eevilduers
+evildoing,,,eevilduing
+evilly,,,eevilli
+evils,,,eevils
 evince,,,i'vinss
 evinced,,,i'vinssd
 evincive,,,i'vinssiv
@@ -34336,7 +34341,6 @@ exuviate,,,ig'zuuviait
 Exxon,,,Exon
 eyalet,,,aiyaa'let
 eyas,,,aiess
-Eyck,,,Yk
 eye,,,ey
 eyeball,,,eyball
 eyeballs,,,eyballs
@@ -35812,11 +35816,9 @@ Filipinos,,,Fili'peenoas
 filister,,,filister
 fill,,,fil
 fillagree,,,filegri
-fille,,,fee
 filled,,,fild
 filler,,,filer
 fillers,,,filers
-filles,,,fees
 fillet,,,filit
 filleted,,,fileted
 filleting,,,filiting
@@ -40204,6 +40206,7 @@ Glinka,,,Glinca
 glint,,,glint
 glinted,,,glinted
 glinting,,,glinting
+glints,,,glints
 glioma,,,glai'oama
 gliomatous,,,glai'oametuss
 glisk,,,glisk
@@ -40476,7 +40479,7 @@ Gnosticize,,,Nosticys
 gnotobiosis,,,noatoabai'oaciss
 gnotobiote,,,noatoa'baioat
 gnotobiotic,,,noatoabai'otic
-gnu,,,nu
+gnu,,,nue
 go,,,go
 goa,,,goe
 goad,,,goad
@@ -46903,7 +46906,7 @@ Ieper,,,Eeper
 Ier,,Ire
 Ieyasu,,,Eeye'yaassu
 if,,,if
-iff,,,if
+iff,,,iff
 iffy,,,ifi
 Ifni,,,Eefni
 ifs,,,ifs
@@ -56104,7 +56107,6 @@ Lodz,,,Looj
 Loeb,,,Loab
 loess,,,loess
 loessial,,,loessial
-Loewe,,,Lo
 Loewi,,,Loawi
 loft,,,loft
 lofter,,,lofter
@@ -63239,7 +63241,7 @@ nazis,,,naatsies
 Nazism,,,Naatsism
 nd,,,nd
 Ndebele,,,Ende'beeli
-ne,,,nee
+ne,,,ne
 ne'er,,,nai'r
 neal,,,neel
 neanderthal,,,ni'andertaal
@@ -63352,7 +63354,7 @@ nectarine,,,necte'reen
 nectarous,,,necteruss
 nectary,,,necteri
 ned,,,ned
-nee,,,nee
+nee,,,nay
 need,,,need
 needed,,,needed
 needfire,,,needfyr
@@ -64195,7 +64197,7 @@ nodule,,,nodiul
 nodules,,,nodiuls
 nodulose,,,nodiuloas
 nodus,,,noaduss
-Noe,,,No
+Noe,,,Noe
 noel,,,no'el
 Noelle,,,No'el
 Noemi,,,Noemy
@@ -64770,7 +64772,7 @@ noyes,,,nois
 nozzle,,,nosl
 nozzles,,,nosls
 nth,,,nth
-nu,,,nu
+nu,,,nue
 nuance,,,nueaanss
 nuanced,,,nueaanssd
 nuances,,,nueaansses
@@ -67680,7 +67682,6 @@ oxytocic,,,oxi'toacic
 oxytocin,,,oxi'toacin
 oxytone,,,oxitoan
 oy,,,oy
-oye,,,oy
 oyer,,,oyer
 oyster,,,oister
 oystercatcher,,,oistercacher
@@ -69128,7 +69129,6 @@ patulously,,,pachulussli
 patulousness,,,pachulussness
 paty,,,paiti
 patzer,,,paatser
-Pau,,,Po
 paucity,,,pauciti
 paul,,,pall
 Paula,,,Paula
@@ -69223,7 +69223,7 @@ payrolls,,,payroals
 pays,,,pays
 pc,,,pc
 PCs,,,PCs
-pe,,poe
+pe,,,pay
 pea,,,pee
 Peabody,,,Peebodi
 peace,,,peess
@@ -69476,7 +69476,6 @@ pegs,,,pegs
 Pegu,,,Pe'gu
 peh,,,pay
 Pehlevi,,,Pailevi
-Pei,,,Pay
 peignoir,,,pain'war
 Peiping,,,Bai'ping
 Peipus,,,Pypuss
@@ -72312,7 +72311,6 @@ podsol,,,podsol
 Podunk,,,Poadunk
 podzol,,,podzol
 podzolize,,,podzelys
-Poe,,,Po
 poem,,,poem
 poems,,,poems
 poesy,,,po-isi
@@ -76373,6 +76371,7 @@ quiver,,,quiver
 quivered,,,quiverd
 quiverful,,,quiverful
 quivering,,,quivering
+quivers,,,quivers
 quixote,,,kee'hoati
 quixotic,,,qui'xotic
 quixotism,,,quixetism
@@ -78880,7 +78879,7 @@ rending,,,rending
 rendition,,,ren'dition
 renditions,,,ren'ditions
 Rene,,,Re'nay
-Renee,,,Ri'nee
+Renee,,,Re'nay
 renegade,,,renegaid
 renegades,,,renegaids
 renegado,,,reni'gaido
@@ -80091,7 +80090,6 @@ rhapsodizes,,,rapsedyses
 rhapsody,,,rapsedi
 rhatany,,,rateni
 rhea,,,ria
-Rhee,,,Ree
 Rheingau,,,Rynngow
 rhematic,,,ri'matic
 Rhenish,,,Renish
@@ -85089,7 +85087,9 @@ shirtwaister,,,shurtwaister
 shirty,,,shurti
 shit,,,shit
 shithead,,,shithed
+shitheads,,,shitheds
 shitload,,,shitload
+shitloads,,,shitloads
 shitty,,,shiti
 shiv,,,shiv
 shiva,,,sheeva
@@ -86521,6 +86521,7 @@ slit,,,slit
 slither,,,slidher
 slithered,,,slidherd
 slithering,,,slidhering
+slithers,,,slidhers
 slits,,,slits
 slitting,,,sliting
 slitty,,,sliti
@@ -93247,7 +93248,7 @@ tazza,,,taatsa
 Tb,,,Tb
 Tbilisi,,,Tbi'leeci
 Tchaikovsky,,,Chai'covski
-te,,,tee
+te,,,te
 tea,,,tee
 teacake,,,teecaik
 teacart,,,teecart
@@ -94678,6 +94679,7 @@ throaty,,,throati
 throb,,,throb
 throbbed,,,throbd
 throbbing,,,throbing
+throbs,,,throbs
 throe,,,thro
 throes,,,throas
 thrombin,,,thrombin
@@ -95203,7 +95205,7 @@ Tlaxcala,,,Tlaas'caalaa
 Tlemcen,,,Tlem'sen
 Tlingit,,,Tlinggit
 tmesis,,,te'meeciss
-to,,,to
+to,,,tu
 toad,,,toad
 toadeater,,,toadeeter
 toadfish,,,toadfish
@@ -95463,7 +95465,7 @@ tonus,,,toanuss
 tony,,,toani
 Tonya,,,Tonya
 Tonys,,,Toanies
-too,,,tu
+too,,,tuu
 took,,,took
 tool,,,tuul
 toolbox,,,tuulbox
@@ -97598,15 +97600,14 @@ twitching,,,twiching
 twite,,,twyt
 twitter,,,twiter
 twittery,,,twiteri
-two,,,tu
+two,,,tuu
 twofer,,,tuufer
-twofold,,,tufoald
-twolegged,,,tulegd
+twofold,,,tuufoald
+twolegged,,,tuulegd
 twopence,,,tupenss
 twopenny,,,tupeni
-twos,,,tuus
-twosome,,,tusum
-Ty,,,Ty
+twos,,,tuuus
+twosome,,,tuusum
 Tyburn,,,Tybern
 Tycho,,,Tyco
 tycoon,,,ty'cuun
@@ -100790,7 +100791,6 @@ vav,,,vaav
 vavasory,,,vavessoari
 vaward,,,vaaword
 Vazquez,,,Vaskes
-ve,,,vee
 veal,,,veel
 vealer,,,veeler
 veals,,,veels
@@ -103113,7 +103113,7 @@ whereout,,,wair'out
 wheresoe'er,,,wairso'air
 wheresoever,,,wairso'ever
 wherethrough,,,wair'thru
-whereto,,,wair'to
+whereto,,,wair'tu
 whereunder,,,wair'under
 whereunto,,,wair'untu
 whereupon,,,wairu'pon
@@ -103126,7 +103126,7 @@ whet,,,wet
 whether,,,wedher
 whetstone,,,wetstoan
 whetted,,,weted
-whew,,,wu
+whew,,,wiu
 whey,,,way
 wheyey,,,wayi
 which,,,wich
@@ -104266,6 +104266,7 @@ wrick,,,rik
 wriggle,,,rigl
 wriggled,,,rigld
 wriggler,,,rigler
+wriggles,,,rigls
 wriggly,,,rigli
 wright,,,ryt
 wrights,,,ryts
@@ -104292,10 +104293,11 @@ writeoffs,,,rytofs
 writer,,,ryter
 writers,,,ryters
 writes,,,ryts
-writhe,,,rith
-writhed,,,rithd
+writhe,,,rydh
+writhed,,,rydhd
 writhen,,,ridhen
-writhing,,,rithing
+writhes,,,rydhs
+writhing,,,rydhing
 writing,,,ryting
 writings,,,rytings
 writs,,,rits
@@ -104590,6 +104592,7 @@ yells,,,yels
 yelp,,,yelp
 yelped,,,yelpd
 yelping,,,yelping
+yelps,,,yelps
 Yeltsin,,,Yeltsin
 Yemen,,,Yemen
 Yemeni,,,Yemeni
