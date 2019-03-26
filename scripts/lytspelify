@@ -524,8 +524,9 @@ sub combine_and_adjust {
     } elsif ($val eq 'ou' && $right !~ /^$SAMPA_CONSONANT_CLS/) {
         # «ou» /aU/ becomes «ow» at the end of words and before other vowels
         $val = 'ow';
-    } elsif ($val eq 'uu' && $right !~ /^$SAMPA_CONSONANT_CLS/) {
+    } elsif ($val eq 'uu' && $right !~ /^$SAMPA_CONSONANT_CLS/ && $tradspell !~ /^t[ow]o$/) {
         # «uu» /u:/ becomes «u» at the end of words and before other vowels
+        # (except in ‹too, two›)
         $val = 'u';
     } elsif ($val =~ /^ng?$/ && $right =~ /^k/ && $left !~ /^('?[eiu]|[cn]='?o)$/) {
         # Before /k/, «n» is pronounced /N/ rather then /n/, unless the word starts with
