@@ -3,11 +3,13 @@ bytestring
 dirname
 epub
 epubs
+friggin
 href
 html
 idx
 iff
 img
+ing
 li
 lytspel
 metafile
@@ -31,5 +33,6 @@ tokenize
 tokenizer
 tradspell
 txt
+ve
 whitespace
 zin
