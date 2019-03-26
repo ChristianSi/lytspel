@@ -39,7 +39,7 @@ import spacy
 
 
 # Constants and type variables
-SCRIPTNAME = 'lytspelconv'
+SCRIPTNAME = 'lytspel'
 
 # Non-ASCII letters which we know how to convert to ASCII (lower-case only).
 HANDLED_NON_ASCII_LETTERS = 'áàăâǎåäãąāảæćĉčċçďđéèĕêěëẽęēẻǵğĝǧġḡĥȟḧħíìĭîǐïĩįīĵǰḱǩĺľłḹḿńǹňñ'\

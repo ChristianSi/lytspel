@@ -21,25 +21,25 @@ PERFORMANCE OF THIS SOFTWARE.
 from collections import Counter
 from pytest import fixture
 
-lc = __import__('lytspelconv')
+lytspel = __import__('lytspel')
 
 
 # Fixtures
 
 @fixture(scope='session')
 def dct():
-    return lc.Dictionary()
+    return lytspel.Dictionary()
 
 @fixture(scope='session')
 def conv():
-    return lc.Converter()
+    return lytspel.Converter()
 
 @fixture
 def is_word():
     """'is_word' was formerly a function.
 
     But it has been replaced with a direct regex call for efficiency."""
-    return lc.WORD_RE.match
+    return lytspel.WORD_RE.match
 
 # Tests
 
@@ -142,8 +142,8 @@ def test_lookup_redirects(dct):
 
 def test_lookup_nlp_needed_pos(dct):
     """Test that lookup signals its need for a POS tag if one is necessary but not given."""
-    assert dct.lookup('increase') is lc.ConvState.NLP_NEEDED
-    assert dct.lookup('misuse') is lc.ConvState.NLP_NEEDED
+    assert dct.lookup('increase') is lytspel.ConvState.NLP_NEEDED
+    assert dct.lookup('misuse') is lytspel.ConvState.NLP_NEEDED
 
 def test_lookup_pos_tagged(dct):
     """Test that POS-tagged words are looked up correctly."""

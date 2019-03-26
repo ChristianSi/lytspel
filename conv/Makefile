@@ -1,4 +1,4 @@
-files = lytspelconv test_lytspelconv.py
+files = lytspel test_lytspel.py
 mypy = mypy --ignore-missing-imports
 
 all: lint typecheck test
