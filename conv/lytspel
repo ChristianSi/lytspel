@@ -484,7 +484,7 @@ class Converter:
                 # Load spaCy without any unnecessary components
                 self._nlp = spacy.load('en', disable=['parser', 'ner'])
             except OSError:
-                print("{}: Downloading language model for the spaCy POS tagger\n"
+                print('{}: Downloading language model for the spaCy POS tagger\n'
                       "(don't worry, this will only happen once)".format(SCRIPTNAME), file=stderr)
                 from spacy.cli import download
                 download('en')
