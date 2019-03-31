@@ -43,10 +43,6 @@ def is_word():
 
 # Tests
 
-def test_dict_filename(dct):
-    assert dct._dict_filename().endswith('data/lytspel-dict.csv')
-
-
 def test_lookup_simple(dct):
     assert dct.lookup('blackbird') == 'blakburd'
     assert dct.lookup('earthward') == 'urthwerd'
