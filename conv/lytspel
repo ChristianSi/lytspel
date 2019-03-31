@@ -24,7 +24,7 @@ import csv
 from enum import Enum
 from functools import lru_cache
 from inspect import trace
-from io import BytesIO
+from io import BytesIO, TextIOWrapper
 from os import path
 import re
 import readline  # pylint: disable=unused-import
@@ -35,6 +35,7 @@ from warnings import warn
 from zipfile import is_zipfile, ZipFile
 
 from lxml import etree, html
+from pkg_resources import resource_stream
 import spacy
 
 
@@ -149,8 +150,9 @@ class Dictionary:
         self._dict = {}
         self._mixed_dict = {}
 
-        with open(self._dict_filename(), encoding='utf-8') as csvfile:
-            csvreader = csv.reader(csvfile)
+        with TextIOWrapper(resource_stream('lytspel', 'lytspel-dict.csv'),
+                           encoding='utf-8') as csv_stream:
+            csvreader = csv.reader(csv_stream)
             next(csvreader)  # skip header line
             redirects = {}  # will be resolved later
 
@@ -187,17 +189,6 @@ class Dictionary:
                 self._dict[key] = value
             else:
                 warn("Target '{}' of redirect '{}' missing!".format(target, key))
-
-    @staticmethod
-    def _dict_filename() -> str:
-        """Return the name of the dictionary file.
-
-        The file is supposed to sit in a '../data' directory relative to the location of the
-        current script.
-        """
-        script_dir = path.dirname(__file__)
-        joined_path = path.join(script_dir, '../data/lytspel-dict.csv')
-        return path.abspath(joined_path)  # eliminate '../' part
 
     @staticmethod
     def is_mixed_case(word: str) -> bool:
@@ -489,8 +480,15 @@ class Converter:
             self._dict = Dictionary()
 
         if self._nlp is None:
-            # Load spaCy without any unnecessary components
-            self._nlp = spacy.load('en', disable=['parser', 'ner'])
+            try:
+                # Load spaCy without any unnecessary components
+                self._nlp = spacy.load('en', disable=['parser', 'ner'])
+            except OSError:
+                print("{}: Downloading language model for the spaCy POS tagger\n"
+                      "(don't worry, this will only happen once)".format(SCRIPTNAME), file=stderr)
+                from spacy.cli import download
+                download('en')
+                self._nlp = spacy.load('en', disable=['parser', 'ner'])
 
     @staticmethod
     def tokenize_text(text: str) -> List[str]:
@@ -1116,7 +1114,7 @@ class Converter:
                     outfile.write(bstr)
                     outfile.write(b'\n')
             else:
-                print(bstr.decode('utf8'))
+                print(bstr.decode())
 
         elif filetype == 'epub':
             self.convert_epub(filename, out_filename)
