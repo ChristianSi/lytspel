@@ -1,11 +1,13 @@
-conv/.cache
-conv/.mypy_cache
-conv/__pycache__
+build
+.cache
 data/cmudict
 data/moby
 data/scowl
 data/varcon
 dist
+lytspel.egg-info
+.mypy_cache
+__pycache__
 *~
 *.bak
 *.swp

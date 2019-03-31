@@ -1,12 +1,15 @@
-install:
+wheel:
+	python3 setup.py sdist bdist_wheel
+
+hs-install:
 	cabal install
 
-all: install hlint test
+hs-all: hs-install hlint hs-test
 
 hlint:
 	hlint src/*.hs
 
-test: test-dictbuilder test-pronounce
+hs-test: test-dictbuilder test-pronounce
 
 test-dictbuilder:
 	cd data && dictbuilder
