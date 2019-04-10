@@ -42,6 +42,8 @@ import spacy
 # Constants and type variables
 SCRIPTNAME = 'lytspel'
 
+__version__ = '0.9.1'
+
 # Non-ASCII letters which we know how to convert to ASCII (lower-case only).
 HANDLED_NON_ASCII_LETTERS = 'áàăâǎåäãąāảæćĉčċçďđéèĕêěëẽęēẻǵğĝǧġḡĥȟḧħíìĭîǐïĩįīĵǰḱǩĺľłḹḿńǹňñ'\
                             'óòŏôǒöõøǫōỏœṕŕřśŝšşßťẗúùŭûǔůüũųūủṽẃẁẘẅẍýỳŷẙÿỹȳỷźẑž'
@@ -134,6 +136,11 @@ def get_elem(seq: Sequence[T], idx: int) -> T:
         return seq[idx]
     else:
         return None
+
+
+def printmsg(msg: str) -> None:
+    """Print a message to stderr, prefixed by the name of the script."""
+    print('{}: {}'.format(SCRIPTNAME, msg), file=stderr)
 
 
 # Classes
@@ -484,8 +491,8 @@ class Converter:
                 # Load spaCy without any unnecessary components
                 self._nlp = spacy.load('en', disable=['parser', 'ner'])
             except OSError:
-                print('{}: Downloading language model for the spaCy POS tagger\n'
-                      "(don't worry, this will only happen once)".format(SCRIPTNAME), file=stderr)
+                printmsg('Downloading language model for the spaCy POS tagger\n'
+                         "(don't worry, this will only happen once)")
                 from spacy.cli import download
                 download('en')
                 self._nlp = spacy.load('en', disable=['parser', 'ner'])
@@ -1016,7 +1023,7 @@ class Converter:
 
                     zout.writestr(item, bstr)
 
-        print('{}: Output written to {}'.format(SCRIPTNAME, out_filename), file=stderr)
+        printmsg('Output written to {}'.format(out_filename))
 
     def convert_stdin_interactively(self) -> None:
         """Interactively convert plain text read from stdin, writing the output to stdout."""
@@ -1101,8 +1108,7 @@ class Converter:
             filetype = self.determine_file_type(filename)
 
             if path.getsize(filename) / 1024 >= 256:
-                print('{}: Converting {} -- this may take a while...'.format(SCRIPTNAME, filename),
-                      file=stderr)
+                printmsg('Converting {} -- this may take a while...'.format(filename))
 
         if filetype == 'txt':
             self.convert_text_document(filename, out_filename)
@@ -1195,7 +1201,7 @@ def main() -> None:
                    'enter a line, then press return to see the converted output; press Ctrl-D '
                    '(or the local equivalent on your system) to quit.')
         parser.add_argument('files', metavar='FILE', nargs='*',
-                            help='file to convert')
+                            help='file to convert (plain text, HTML, or epub)')
         parser.add_argument('-c', '--convert', metavar='TEXT',
                             help='convert TEXT that follows (any FILES will be ignored)')
         parser.add_argument('-o', '--outfile', metavar='OUTFILE',
@@ -1203,6 +1209,9 @@ def main() -> None:
         parser.add_argument('-u', '--unknown', action='count', default=0,
                             help='list unknown words (repeat option n times to list only words'
                             ' that occur at least that often)')
+        parser.add_argument('-v', '--version', action='version',
+                            version='{} {}'.format(SCRIPTNAME, __version__))
+
         args = parser.parse_args()
 
         use_unknown_counter = args.unknown > 0
