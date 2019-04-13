@@ -5,6 +5,7 @@ data/moby
 data/scowl
 data/varcon
 dist
+lytspel/web.cfg
 lytspel.egg-info
 .mypy_cache
 __pycache__
