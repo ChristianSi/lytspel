@@ -1,19 +1,4 @@
-"""Unit tests for the Lytspel converter.
-
-Copyright (c) 2018-2019 Christian Siefkes
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY AND
-FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-"""
+"""Unit tests for the Lytspel converter."""
 
 # pylint: disable=invalid-name, line-too-long, missing-docstring, redefined-outer-name, protected-access
 # Note: invalid-name disabled since pylint limits function names to 30 chars.
@@ -21,25 +6,26 @@ PERFORMANCE OF THIS SOFTWARE.
 from collections import Counter
 from pytest import fixture
 
-lytspel = __import__('lytspel')
-
+from . import Converter
+from .conv import WORD_RE
+from .dict import ConvState, Dictionary
 
 # Fixtures
 
 @fixture(scope='session')
 def dct():
-    return lytspel.Dictionary()
+    return Dictionary()
 
 @fixture(scope='session')
 def conv():
-    return lytspel.Converter()
+    return Converter()
 
 @fixture
 def is_word():
     """'is_word' was formerly a function.
 
     But it has been replaced with a direct regex call for efficiency."""
-    return lytspel.WORD_RE.match
+    return WORD_RE.match
 
 # Tests
 
@@ -138,8 +124,8 @@ def test_lookup_redirects(dct):
 
 def test_lookup_nlp_needed_pos(dct):
     """Test that lookup signals its need for a POS tag if one is necessary but not given."""
-    assert dct.lookup('increase') is lytspel.ConvState.NLP_NEEDED
-    assert dct.lookup('misuse') is lytspel.ConvState.NLP_NEEDED
+    assert dct.lookup('increase') is ConvState.NLP_NEEDED
+    assert dct.lookup('misuse') is ConvState.NLP_NEEDED
 
 def test_lookup_pos_tagged(dct):
     """Test that POS-tagged words are looked up correctly."""
