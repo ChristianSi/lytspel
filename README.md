@@ -148,44 +148,41 @@ The consonants are written as follows:
 * «zh» /Z/ as in «mi'raazh» ‹mirage›
 * The sound /k/ is written as «c» or «k», depending on context:
 
-      * «k» is used before «e, i, y», e.g. «keep, king, kynd,
-        calkyu'laition» ‹...kind, calculation›
-      * «k» is also used before «h» to prevent confusion with the digraph
-        «ch» /tS/, e.g. «lunkhed» ‹lunkhead›
-      * «c» is used before any other letter, e.g. «cat, cost, crisp»
-      * «c» is also used at the end of words ending in unstressed /ak/ or
-        /Ik/, e.g. «mainiac, majic, public» ‹maniac, magic...›
-      * «k» is used at the end of other words ending in /k/, e.g. «book,
-        drink, quik, speek, naimsaik» ‹...quick, speak, namesake›
+  * «k» is used before «e, i, y», e.g. «keep, king, kynd, calkyu'laition»
+    ‹...kind, calculation›
+  * «k» is also used before «h» to prevent confusion with the digraph «ch»
+    /tS/, e.g. «lunkhed» ‹lunkhead›
+  * «c» is used before any other letter, e.g. «cat, cost, crisp»
+  * «c» is also used at the end of words ending in unstressed /ak/ or /Ik/,
+    e.g. «mainiac, majic, public» ‹maniac, magic...›
+  * «k» is used at the end of other words ending in /k/, e.g. «book, drink,
+    quik, speek, naimsaik» ‹...quick, speak, namesake›
 
 * The sound /s/ is written as «c», «s», or «ss», depending on context:
 
-      * «c» is used between any vowel and a vowel starting with «e, i, y»,
-        e.g. «deecent, ex'plicit, nececeri, de'cyd» ‹decent, explicit,
-        necessary, decide›
-      * «ss» is used between any vowel and a vowel starting with «a, o, u»,
-        e.g. «as'sault, epissoad, as'sumption» ‹assault, episode,
-        assumption›. Note: If a stressed syllable starts with «ss», the
-        stress marker is inserted before the second «s».
-      * «ss» is also used at the end of words except after any of the
-        consonants /f, k, p, t, T/, e.g. «less, miss, evidenss»
-        ‹...evidence›
-      * «s» is used anywhere else, e.g. «sun, desk, chips, up'sets»
-        ‹...upsets›
-      * «s» is also used in the prefixes «dis, mis» regardless of which
-        letter follows, e.g. «disa'gree, disen'chantment, misin'turpret,
-        misunder'stand» ‹disagree, disenchantment, misinterpret,
-        misunderstand›
+  * «c» is used between any vowel and a vowel starting with «e, i, y», e.g.
+    «deecent, ex'plicit, nececeri, de'cyd» ‹decent, explicit, necessary,
+    decide›
+  * «ss» is used between any vowel and a vowel starting with «a, o, u»,
+    e.g. «as'sault, epissoad, as'sumption» ‹assault, episode, assumption›.
+    Note: If a stressed syllable starts with «ss», the stress marker is
+    inserted before the second «s».
+  * «ss» is also used at the end of words except after any of the
+    consonants /f, k, p, t, T/, e.g. «less, miss, evidenss» ‹...evidence›
+  * «s» is used anywhere else, e.g. «sun, desk, chips, up'sets» ‹...upsets›
+  * «s» is also used in the prefixes «dis, mis» regardless of which letter
+    follows, e.g. «disa'gree, disen'chantment, misin'turpret,
+    misunder'stand» ‹disagree, disenchantment, misinterpret, misunderstand›
 
 * The sound /z/ is written as «s» or «z», depending on context:
 
-      * «s» is used between two vowels, e.g. «visit, eesi, dusen, di'syr,
-        bi'sar, ri'sult» ‹...easy, dozen, desire, bizarre, result›
-      * «s» is also used at the end of words except after any of the
-        consonants /f, k, p, t, T/, e.g. «his, wishes, meens, paus, quis»
-        ‹...means, pause, quiz›
-      * «z» is used anywhere else, e.g. «zeero, ig'zact, ob'zurv» ‹zero,
-        exact, observe›
+  * «s» is used between two vowels, e.g. «visit, eesi, dusen, di'syr,
+    bi'sar, ri'sult» ‹...easy, dozen, desire, bizarre, result›
+  * «s» is also used at the end of words except after any of the consonants
+    /f, k, p, t, T/, e.g. «his, wishes, meens, paus, quis» ‹...means,
+    pause, quiz›
+  * «z» is used anywhere else, e.g. «zeero, ig'zact, ob'zurv» ‹zero, exact,
+    observe›
 
 The schwa /@/:
 
@@ -217,20 +214,17 @@ The schwa /@/:
   writing; since these pairs never occur *without* an intervening vowel at
   the end of words, there is no risk of confusion:
 
-      * Final /s@l/ is written «ssl», e.g. «counssl, mussl» ‹council,
-        muscle›
-      * Final /z@l/ is written «sl», e.g. «pro'poasl, pusl» ‹proposal,
-        puzzle›
-      * The schwa is also omitted between any of /b, p, d, t, f, g, k/ and
-        final /l/, e.g. «flexibl, simpl, midl, hospitl, litl, bafl, singgl,
-        leegl, sta'tisticl, articl» ‹flexible, simple, middle, hospital,
-        little, baffle, single, legal, statistical, article›. An exception
-        is the suffix «ful», which is sometimes spoken with a schwa but
-        remains unchanged for clarity; e.g. «helpful, meeningful»
-        ‹...meaningful›.
-      * Final /z@m/ is written «sm», e.g. «criticism, sarcasm»
-      * The schwa is also omitted between /D/ and final /m/, e.g.
-        «algeridhm, ridhm» ‹algorithm, rhythm›
+  * Final /s@l/ is written «ssl», e.g. «counssl, mussl» ‹council, muscle›
+  * Final /z@l/ is written «sl», e.g. «pro'poasl, pusl» ‹proposal, puzzle›
+  * The schwa is also omitted between any of /b, p, d, t, f, g, k/ and
+    final /l/, e.g. «flexibl, simpl, midl, hospitl, litl, bafl, singgl,
+    leegl, sta'tisticl, articl» ‹flexible, simple, middle, hospital,
+    little, baffle, single, legal, statistical, article›. An exception is
+    the suffix «ful», which is sometimes spoken with a schwa but remains
+    unchanged for clarity; e.g. «helpful, meeningful» ‹...meaningful›.
+  * Final /z@m/ is written «sm», e.g. «criticism, sarcasm»
+  * The schwa is also omitted between /D/ and final /m/, e.g. «algeridhm,
+    ridhm» ‹algorithm, rhythm›
 
 Before «r», the vowels are spelled as follows:
 
@@ -492,27 +486,26 @@ Rules for derived and related words:
   long as the base word doesn't change (except for possible shifts of
   stress), e.g.
 
-      * «c» representing /k/: «publicli, publi'caition» ‹publicly,
-        publication› from «public»; «me'canics, me'canicl» ‹mechanics,
-        mechanical› from «me'canic» ‹mechanic›
-      * «k» representing /k/: «weeks, weekli» ‹...weekly› from «week»
-      * «ss» representing /s/: «classic» from «class»; «con'vinssd,
-        con'vinssing» ‹convinced, convincing› from «con'vinss» ‹convince»;
-        «a'nounssment» ‹announcement› from «a'nounss» ‹announce›;
-        «prinssess» ‹princess› from «prinss» ‹prince›
-      * «a» representing /@/: «extras» from «extra», «A'merrican»
-        ‹American› from «A'merrica» ‹America›
-      * «aw» representing /O:/: «draws, drawn, drawing» from «draw»
-      * «i» representing unstressed /i:/: «fansiful, fansiing» ‹fanciful,
-        fancying› from «fansi» ‹fancy›; «hapiness» ‹happiness› from «hapi»
-        ‹happy›
-      * «oy» representing /OI/: «de'stroys, de'stroyd, de'stroyer»
-        ‹destroys, destroyed, destroyer› from «de'stroy» ‹destroy›
-      * «y» representing /aI/ (unchanged even before vowels): «hyer»
-        ‹higher› from «hy» ‹high›; «su'plyer» ‹supplier› from «su'ply»
-        ‹supply›
-      * «yr» representing /aI@`/: «in'spyrd» ‹inspired› from «in'spyr»
-        ‹inspire›
+  * «c» representing /k/: «publicli, publi'caition» ‹publicly, publication›
+    from «public»; «me'canics, me'canicl» ‹mechanics, mechanical› from
+    «me'canic» ‹mechanic›
+  * «k» representing /k/: «weeks, weekli» ‹...weekly› from «week»
+  * «ss» representing /s/: «classic» from «class»; «con'vinssd,
+    con'vinssing» ‹convinced, convincing› from «con'vinss» ‹convince»;
+    «a'nounssment» ‹announcement› from «a'nounss» ‹announce›; «prinssess»
+    ‹princess› from «prinss» ‹prince›
+  * «a» representing /@/: «extras» from «extra», «A'merrican» ‹American›
+    from «A'merrica» ‹America›
+  * «aw» representing /O:/: «draws, drawn, drawing» from «draw»
+  * «i» representing unstressed /i:/: «fansiful, fansiing» ‹fanciful,
+    fancying› from «fansi» ‹fancy›; «hapiness» ‹happiness› from «hapi»
+    ‹happy›
+  * «oy» representing /OI/: «de'stroys, de'stroyd, de'stroyer» ‹destroys,
+    destroyed, destroyer› from «de'stroy» ‹destroy›
+  * «y» representing /aI/ (unchanged even before vowels): «hyer» ‹higher›
+    from «hy» ‹high›; «su'plyer» ‹supplier› from «su'ply» ‹supply›
+  * «yr» representing /aI@`/: «in'spyrd» ‹inspired› from «in'spyr»
+    ‹inspire›
 
 * They are also preserved in compounds, e.g. «bakground, extrate'restriel,
   fyrwurks›» ‹background, extraterrestrial, fireworks›.
