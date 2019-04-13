@@ -1,0 +1,31 @@
+<!doctype html>
+<title>Lytspel, a Simple Phonetic Respelling for the English Language</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="static/bootstrap.min.css">
+<div class="container">
+<h1>Lytspel</h1>
+<h2>A Simple Phonetic Respelling for the English Language
+</h2>
+<form action="" method="post" role="form">
+  {{ form.csrf }}
+  <div class="form-group">
+    <label for="tradspell">Tradspell:</label>
+    <textarea name="tradspell" class="form-control" placeholder="Type or paste text to convert."
+      maxlength=10000 autofocus></textarea>
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    {% for message in messages %}
+      {% if "Error" not in message[1]: %}
+        <div class="alert alert-info"><strong>Success! </strong> {{ message[1] }}</div>
+      {% endif %}
+      {% if "Error" in message[1]: %}
+        <div class="alert alert-warning">{{ message[1] }}</div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+</div>
