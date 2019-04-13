@@ -9,7 +9,7 @@ from .conv import Converter
 from .util import PACKAGENAME
 
 
-__version__ = '0.9.1'
+__version__ = '0.9.2'
 
 
 def compact_warning(message, category, filename, lineno, line=None):
@@ -22,8 +22,8 @@ warnings.formatwarning = compact_warning
 
 def main() -> None:
     """Run this script."""
-    if argv[0] in ('-c', ''):
-        # Set script name if it's not already set
+    if argv[0] in ('-c', '') or '/' in argv[0]:
+        # Set script name if it's not already set or fix it if it contains the full path
         argv[0] = PACKAGENAME
     scriptname = argv[0]
 
