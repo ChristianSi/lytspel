@@ -1,4 +1,4 @@
-lytspel-dict.csv: compounds.csv compound-stress.csv custom.csv phonetic-dict.csv phoneme-map.csv pre-stressed-vowel.csv prefix.csv suffix.csv startpron.csv endpron.csv
+lytspel-dict.csv: compounds.csv compound-stress.csv custom.csv phonetic-dict.csv phoneme-map.csv dont-convert-pre-stressed-e.csv pre-stressed-vowel.csv prefix.csv suffix.csv startpron.csv endpron.csv
 	lytspelify
 
 compounds.csv: phonetic-dict.csv compounds-manual.csv compound-blacklist.csv compound-whitelist.csv prefix.list suffix.list
