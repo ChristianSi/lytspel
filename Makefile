@@ -1,5 +1,23 @@
-wheel:
+mypy = mypy --ignore-missing-imports
+
+allpytests: pylint mypy pytest testdir
+	echo "All checks and tests passed"
+
+wheel: allpytests
 	python3 setup.py sdist bdist_wheel
+	twine check dist/lytspel-*.*
+
+pylint:
+	pylint3 lytspel/*.py
+
+mypy:
+	$(mypy) lytspel/*.py
+
+pytest:
+	pytest-3 lytspel/*.py
+
+testdir:
+	cd test && make
 
 hs-install:
 	cabal install

@@ -1,5 +1,6 @@
 blockquote
 bytestring
+config
 dirname
 epub
 epubs
