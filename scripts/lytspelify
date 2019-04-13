@@ -47,6 +47,7 @@ const my $LYTSPEL_CONSONANT_POST_PROC => '(?:(?:[bcdfghjklmnprstvwxz]h?|y(?=[aei
 # but accepting «e» after digraphs such as «ee, oe, ue, iu, qu»)
 const my $PLAIN_E => "(?:[eou]ee|[iq]ue|(?<![eu])e)(?!(e|'?r))";
 
+# XXX Switch all file-scoped variables to Upper_Camel_Case.
 # Stress the second part of a compound if the first part is listed here.
 my %STRESS_AFTER = map { $_ => 1 } qw/arch best chemo chromo co com con crypt crypto dynamo ego
     ere ex extra fibro helio hemi here hetero hydro hypo infra magneto mal mon nitro peri psycho
@@ -67,24 +68,6 @@ my %STRESS_BEFORE = map { $_ => 1 } qw/about around away/;
 my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/ante auto contra electro homo meta mono para
     photo poly pro proto radio retro stereo tetra/;
 
-# TODO Move list into external CSV file.
-# If a derived word is listed here, a short vowel preceding the stress
-# marker won't be converted to «e».
-my %DONT_CONVERT_E_BEFORE_STRESS = map { $_ => 1 } qw/absolutory acrogenous acronymous
-    albuminous allonymous ammonic ammonify animality antinomian antonymous apostrophic
-    appositive atomic bacchantic balladic basophilic bestiality bitonality Brabantine Brythonic
-    canonic catastrophic civility coevality colonic communality congeniality councilmanic
-    criminality cryptogamous cryptonymous ctenophoran demonic diaphaneity eosinophilous
-    equality external fibrinogenous frivolity geniality gnomonic halogenous homonymous
-    matrimonial Miltonic monomeric monomerous monostrophic nebulosity originality partiality
-    personification pseudonymity planktonic prebendal puritanical quadrantal quadratic
-    quadrupedal reclusive renewal sabbatical satanic shamanic sinistrality stomachic
-    subordinative sultanic sycophantic synodic synodical synonymous talismanic testimonial
-    tribadic tympanic advocatory agglutinative coagulative confederative coordination
-    coordinative delegation delegations discriminative ejaculative elaborative incoordination
-    intoxicative integrality hyalinization improvisation anonymous agility/;
-
-# XXX Switch to Upper_Camel_Case for file-scoped variables
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
 
@@ -94,6 +77,10 @@ my $WORD_COUNT              = 0;
 my $COMPOUND_DICT_REF       = build_lc_map($COMPOUNDS, 0);
 my $CUSTOM_DICT_REF         = build_lc_map($CUSTOM, 1);
 my $PRE_STRESSED_VOWEL_DREF = build_lc_map('pre-stressed-vowel.csv', 1);
+
+# If a derived word is listed here, a short vowel preceding the stress
+# marker won't be converted to «e».
+my $DONT_CONVERT_E_BEFORE_STRESS_SREF = build_lc_map('dont-convert-pre-stressed-e.csv', 0, 1);
 
 # List of compounds which are stressed differently from our regular rules.
 # Values indicate which part is the stressed one ('1' or '2').
@@ -1436,7 +1423,7 @@ sub postprocess_suffixed {
     if (
         $converted =~ /(ss|c|qu|[$LYTSPEL_VOWELS]{1,2})? ([aiou]) ((?!'?r)
                           $LYTSPEL_CONSONANT_POST_PROC*')/x
-        && !exists($DONT_CONVERT_E_BEFORE_STRESS{$tradspell})
+        && !exists($DONT_CONVERT_E_BEFORE_STRESS_SREF->{lc $tradspell})
         && $tradspell !~ /ographic$/
         )
     {
