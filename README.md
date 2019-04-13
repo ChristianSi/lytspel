@@ -147,6 +147,7 @@ The consonants are written as follows:
 * «y» /j/ as in «yet»
 * «zh» /Z/ as in «mi'raazh» ‹mirage›
 * The sound /k/ is written as «c» or «k», depending on context:
+
       * «k» is used before «e, i, y», e.g. «keep, king, kynd,
         calkyu'laition» ‹...kind, calculation›
       * «k» is also used before «h» to prevent confusion with the digraph
@@ -156,7 +157,9 @@ The consonants are written as follows:
         /Ik/, e.g. «mainiac, majic, public» ‹maniac, magic...›
       * «k» is used at the end of other words ending in /k/, e.g. «book,
         drink, quik, speek, naimsaik» ‹...quick, speak, namesake›
+
 * The sound /s/ is written as «c», «s», or «ss», depending on context:
+
       * «c» is used between any vowel and a vowel starting with «e, i, y»,
         e.g. «deecent, ex'plicit, nececeri, de'cyd» ‹decent, explicit,
         necessary, decide›
@@ -173,7 +176,9 @@ The consonants are written as follows:
         letter follows, e.g. «disa'gree, disen'chantment, misin'turpret,
         misunder'stand» ‹disagree, disenchantment, misinterpret,
         misunderstand›
+
 * The sound /z/ is written as «s» or «z», depending on context:
+
       * «s» is used between two vowels, e.g. «visit, eesi, dusen, di'syr,
         bi'sar, ri'sult» ‹...easy, dozen, desire, bizarre, result›
       * «s» is also used at the end of words except after any of the
@@ -211,6 +216,7 @@ The schwa /@/:
 * Between some consonant pairs at the end of words, the schwa is omitted in
   writing; since these pairs never occur *without* an intervening vowel at
   the end of words, there is no risk of confusion:
+
       * Final /s@l/ is written «ssl», e.g. «counssl, mussl» ‹council,
         muscle›
       * Final /z@l/ is written «sl», e.g. «pro'poasl, pusl» ‹proposal,
@@ -485,6 +491,7 @@ Rules for derived and related words:
 * Otherwise, end-of-word spellings are preserved in all derived forms as
   long as the base word doesn't change (except for possible shifts of
   stress), e.g.
+
       * «c» representing /k/: «publicli, publi'caition» ‹publicly,
         publication› from «public»; «me'canics, me'canicl» ‹mechanics,
         mechanical› from «me'canic» ‹mechanic›
@@ -506,6 +513,7 @@ Rules for derived and related words:
         ‹supply›
       * «yr» representing /aI@`/: «in'spyrd» ‹inspired› from «in'spyr»
         ‹inspire›
+
 * They are also preserved in compounds, e.g. «bakground, extrate'restriel,
   fyrwurks›» ‹background, extraterrestrial, fireworks›.
 * If the pronunciation of the base word itself changes (beyond mere shifts
