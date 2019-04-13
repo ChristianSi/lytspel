@@ -71,9 +71,8 @@ The following formatting conventions are used in this document:
 * «double guillemets» for Lytspel (and spellings that haven't changed)
 * ‹single guillemets› for traditional spellings
 * /slashes/ for phonetics, written in the
-  [SAMPA](https://en.wikipedia.org/wiki/Speech_Assessment_Methods_Phonetic_Alphabet_chart_for_English)
-  alphabet (with some slight modifications to make it more suitable for
-  English)
+  [SAMPA](https://en.wikipedia.org/wiki/SAMPA_chart_for_English) alphabet
+  (with some slight modifications to make it more suitable for English)
 
 Abbreviations used:
 
