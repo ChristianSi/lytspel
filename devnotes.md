@@ -37,8 +37,8 @@ Note: Only the maintainer should do this.
 
 Steps:
 
-* Bump the version number in setup.py and conv/lytspel. Versions have the
-  form x.y.z.
+* Bump the version number in `setup.py` and `lytspel/__init__.py`. Versions
+  have the form x.y.z.
 
       * Bump z if the dictionary has changed, bugs have been fixed, or
         other small changes that don't add new functionality have been
@@ -55,9 +55,9 @@ Steps:
 
 * Delete the old binary and source packages:
 
-        rm dist/lytspel-*.*
+        rm -f dist/lytspel-*.*
 
-* Build and check the new packages:
+* Build the new packages:
 
         make wheel
 
@@ -69,4 +69,4 @@ Steps:
 
 * Upload them to PyPI:
 
-        twine upload lytspel-*.*
+        twine upload dist/lytspel-*.*
