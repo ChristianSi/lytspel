@@ -2,13 +2,18 @@
 
 ## [Unreleased]
 
+* Fixed some dictionary entries and added some others.
+* Worked on web interface.
+* Finished README file, esp. documenting how pronunciation differences
+  between regional variants are resolved.
+
 
 ## [0.9.2] -- 2019-04-13
 
 * Fixed some dictionary entries.
 * Added -v/--version argument to print the version number
 * Converted script into proper package.
-* Started to create web front end.
+* Started to create web interface.
 * README: Started to document how BE/AE differences are handled.
 
 
