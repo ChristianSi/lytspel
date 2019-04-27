@@ -1498,6 +1498,7 @@ aeciospore,,,'i:sIQspO:,'i:sIAspor,'i:si:@spor
 aecium,,,'i:si:@m,,'i:Si:@m
 aedes,,,'i:dz,,eI'i:di:z
 aedile,,,'i:daIl,,
+aediles,,,'i:daIlz,,
 Aegaeon,,,'i:gi:Qn,'i:gi:An,IdZ'i:An
 Aegean,,,i:dZ'i:@n,,IdZ'i:@n
 aeger,,eger
@@ -2490,7 +2491,7 @@ Aleksandrovsk,,,a#l'Eksa#ndrQvsk,a#l'Eksa#ndrAvsk,AlEks'AndrQfsk
 Alemanni,,,a#l'Ema#ni:,a#l'Emani:,al@m'anaI
 Alemannic,,,a#lIm'anIk,,al@m'anIk
 alembic,,,a#l'EmbIk,,@l'EmbIk
-alembicated,,,a#l'EmbIkeItId,a#l'EmbI#keItI#d,@l'EmbIkeItId
+alembicated,,,a#l'EmbIkeItId,,@l'EmbIkeItId
 alencon,,,a#l'Enk@n,,AlAns'oUn
 aleph,,,'alEf,,'AlIf
 Aleppo,,,a#l'EpoU,,@l'EpoU
@@ -3047,7 +3048,7 @@ aluminic,,,a#lu:m'InIk,,alj@m'InIk
 aluminiferous,,,a#lu:mIn'If@r@s,a#lu:mIn'If@`r@s,@lu:m@n'If@`@s
 aluminise,,aluminize
 aluminised,,aluminized
-aluminium,,aluminum
+aluminium,,,aljUm'Ini:@m,,
 aluminize,,,a#l'u:mInaIz,,@l'u:m@naIz
 aluminized,,,a#l'u:mInaIzd,,@l'u:m@naIzd
 aluminosilicate,,,a#lu:mIn@s'IlIkeIt,a#lu:mIn@s'IlI#keIt,@lu:m@noUs'Il@keIt
@@ -18606,6 +18607,7 @@ coded,,,k'oUdId,k'oUdI#d,
 codefendant,,,k'oUdf@nd@nt,,koUdIf'End@nt
 codeina,,,k'oUdIn@,,koUdi:'i:n@
 codeine,,,k'oUdaIn,,k'oUdi:n
+codename,,,k'oUdneIm,,
 coder,,,k'oUd@,k'oUd@`,
 codes,,,k'oUdz,,
 codetta,,,koUd'Et@,,
@@ -19194,16 +19196,14 @@ comatose,,,k'oUma#toUz,,k'oUm@toUs
 comatosely,,,k'oUma#toUzli:,,k'Qm@toUsli:
 comatulid,,,k'oUma#tjUlId,k'oUma#tu:lId,k@m'atS@lId
 comb,,,k'oUm,,
-combat,n,,k'Qmbat,k'Ambat,
-combat,v,,k'Qmbat,k'Ambat,k@mb'at
+combat,,,k'Qmbat,k'Ambat,
 combatant,,,k'Qmbat@nt,k'Ambat@nt,k@mb'at@nt
 combatants,,,k'Qmbat@nts,k'Ambat@nts,k@mb'at@nts
 combating,,,k'QmbatIN,k'AmbatIN,k@mb'atIN
 combative,,,k'Qmb@tIv,k@mb'atIv,
 combatively,,,k'Qmb@tIvli:,k@mb'atIvli:,
 combativeness,,,k'Qmb@tIvn@s,k@mb'atIvn@s,k@mb'atIvnEs
-combats,n,,k'Qmbats,k'Ambats,k@mb'ats
-combats,v,,k'Qmbats,k'Ambats,k@mb'ats
+combats,,,k'Qmbats,k'Ambats,k@mb'ats
 combe,,,k@m'E,,k'oUm
 combed,,,k'oUmd,,
 comber,,,kQm'@,kAm'@`,k'oUm@`
@@ -31046,6 +31046,7 @@ elegancy,,,'ElIg@nsi:,,'El@g@nsi:
 elegant,,,'ElIg@nt,,'El@g@nt
 elegantly,,,'ElIg@ntli:,,
 elegiac,,,'ElIdZ@k,,El@dZ'aI@k
+elegies,,,'ElIdZIz,,
 elegise,,elegize
 elegist,,,'ElIdZIst,,
 elegit,,,'ElIdZIt,,Il'i:dZIt
@@ -32389,6 +32390,7 @@ envenom,,,Env'En@m,,
 enviable,,,'EnvI@b@l,,'Envi:@b@l
 enviableness,,,'EnvI@b@ln@s,,'Envi:@b@lnEs
 envied,,,'EnvId,,'Envi:d
+envies,,,'EnvIz,,
 envious,,,'EnvI@s,,'Envi:@s
 enviously,,,'EnvI@sli:,,'Envi:@sli:
 enviousness,,,'EnvI@sn@s,,'Envi:@snEs
@@ -32414,6 +32416,7 @@ envoi,,,Env'OI,,'EnvOI
 envoy,,,'EnvOI,,
 envoys,,,'EnvOIz,,
 envy,,,'Envi:,,
+envying,,,'EnvIIN,,
 enwind,,,Enw'Ind,,Enw'aInd
 enwomb,,,Enw'u:m,,
 enwrap,,,Enr'ap,,
@@ -32574,6 +32577,7 @@ epigrammatise,,epigrammatize
 epigrammatism,,,'EpIgram@tIz@m,,Ep@gr'am@tIz@m
 epigrammatist,,,'EpIgrama#tIst,,Ep@gr'am@tIst
 epigrammatize,,,'EpIgrama#taIz,,Ep@gr'am@taIz
+epigrams,,,'EpIgramz,,
 epigraph,,,'EpIgraf,,'Ep@graf
 epigraphic,,,EpIgr'afIk,,Ep@gr'afIk
 epigraphy,,,Ep'Igr@fi:,,Ip'Igr@fi:
@@ -35885,6 +35889,7 @@ fey,,,f'eI,,
 Feynman,,,f'eInm@n,,
 fez,,,f'Ez,,
 Fezzan,,,f'Ez@n,,fEz'An
+ff,,,Ef'Ef,,
 fiacre,,,f'aI@k@,f'aI@k@`,fi:'Ak@`
 fiance,,,fI'QnseI,fI'AnseI,fi:Ans'eI
 fiancee,,,fI'QnseI,fI'AnseI,fi:'ansi:
@@ -38671,6 +38676,7 @@ fullam,,,f'Ulam,,f'Ul@m
 fullback,,,f'Ulbak,,
 fullbacks,,,f'Ulbaks,,
 fuller,,,f'Ul@,f'Ul@`,
+fullers,,,f'Ul@z,f'Ul@`z,
 Fullerton,,,f'Ul@t@n,f'Ul@`t@n,
 fullest,,,f'Ul@st,,
 fullness,,,f'Uln@s,,f'UlnEs
@@ -49120,7 +49126,7 @@ infighting,,,Inf'aItIN,,'InfaItIN
 infill,,,'InfIl,,
 infilling,,,'InfIlIN,,'InfIli:N
 infiltrate,,,'InfIltreIt,,Inf'IltreIt
-infiltrated,,,'InfIltreItId,'InfIltreItI#d,Inf'IltreItId
+infiltrated,,,'InfIltreItId,,Inf'IltreItId
 infiltrating,,,'InfIltreItIN,,Inf'IltreItIN
 infiltration,,,InfIltr'eIS@n,,
 infiltrator,,,'InfIltreIt@,'InfIltreIt@`,
@@ -60852,6 +60858,7 @@ millefiori,,,m'IlIfi@i:,m'IlIfIri:,mIl@fi:'ori:
 millefleur,,,m'IlIfl3:,mIlIfl'Ur,mi:lfl'3:
 millenarian,,,mIlIn'e@ri:@n,mIlIn'Eri:@n,mIl@n'e@i:@n
 millenary,,,mIl'En@ri:,mIl'EnEri:,mIl'En@`i:
+millennia,,,mIl'Eni:@,,
 millennial,,,mIl'EnI@l,,mIl'Eni:@l
 millennialism,,,mIl'EnI@lIz@m,,mIl'Eni:@lIz@m
 millennially,,,mIl'EnI@li:,,mIl'Eni:@li:
@@ -68499,6 +68506,8 @@ pageantry,,,p'adZ@ntri:,,
 pageants,,,p'adZ@nts,,
 pageboy,,,p'eIdZbOI,,
 paged,,,p'eIdZd,,
+pagelink,,,p'eIdZlINk,,
+pagelinks,,,p'eIdZlINks,,
 pager,,,p'eIdZ@,p'eIdZ@`,
 pagers,,,p'eIdZ@z,p'eIdZ@`z,
 pages,,,p'eIdZIz,p'eIdZI#z,p'eIdZ@z
@@ -73050,6 +73059,8 @@ poised,,,p'OIzd,,
 poiser,,,p'OIz@,p'OIz@`,
 poison,,,p'OIz@n,,
 poisoned,,,p'OIz@nd,,
+poisoner,,,p'OIz@n@,p'OIz@n@`,
+poisoners,,,p'OIz@n@z,p'OIz@n@`z,
 poisoning,,,p'OIz@nIN,,
 poisonings,,,p'OIz@nINz,,
 poisonous,,,p'OIz@n@s,,
@@ -73403,6 +73414,7 @@ pomp,,,p'Qmp,p'Amp,
 pompadour,,,p'Qmpa#dO:,p'Ampa#dor,p'Qmp@dO:r
 pompano,,,p@mp'AnoU,,p'Qmp@noU
 Pompeian,,,p'QmpeI@n,p'AmpeI@n,pAmp'eI@n
+Pompeii,,,p'QmpeIi:,p'AmpeIi:,
 pompey,,,p'QmpI,p'Ampi:,p'Qmpi:
 Pompidou,,,p'QmpIdu:,p'AmpIdu:,
 pompom,,,p'Qmp@m,p'Amp@m,p'QmpQm
@@ -80329,9 +80341,11 @@ resultant,,,rIz'Vlt@nt,,ri:z'Vlt@nt
 resulted,,,rIz'VltId,rIz'VltI#d,ri:z'Vlt@d
 resulting,,,rIz'VltIN,,ri:z'VltIN
 results,,,rIz'Vlts,,ri:z'Vlts
-resume,,,rIzj'u:m,rIz'u:m,
+resume,n,,rIzj'u:m,rIz'u:m,
+resume,v,,rIzj'u:m,rIz'u:m,
 resumed,,,rIzj'u:md,rIz'u:md,ri:z'u:md
-resumes,,,rIzj'u:mz,rIz'u:mz,ri:z'u:mz
+resumes,n,,rIzj'u:mz,rIz'u:mz,ri:z'u:mz
+resumes,v,,rIzj'u:mz,rIz'u:mz,ri:z'u:mz
 resuming,,,rIzj'u:mIN,rIz'u:mIN,ri:z'u:mIN
 resumption,,,rIs'VmpS@n,,rIz'VmpS@n
 resumptive,,,rIs'VmptIv,,rIz'VmptIv
@@ -83223,6 +83237,7 @@ satyagraha,,,satIa#gr'Ah@,,s@tj'Agr@hA
 satyr,,,s'at@,,s'eIt@`
 satyriasis,,,s'atIrIa#si:z,s'atIrIasi:z,seIt@`'aI@sIs
 satyric,,,sat'IrIk,,s@t'IrIk
+Satyricon,,,s'atIrIk@n,,
 satyrid,,,s'atIrId,,s@t'Iri:d
 sau,,,s'aU,,
 sauce,,,s'O:s,,
@@ -87377,8 +87392,10 @@ slouch,,,sl'aUtS,,
 slouches,,,sl'aUtSIz,sl'aUtSI#z,
 slouching,,,sl'aUtSIN,,
 slouchy,,,sl'aUtSi:,,
-slough,,,sl'aU,,sl'Vf
-sloughs,,,sl'aUz,,sl'Vfs
+slough,n,,sl'aU,,sl'Vf
+slough,v,,sl'Vf,,
+sloughs,n,,sl'aUz,,sl'Vfs
+sloughs,v,,sl'Vfz,,sl'Vfs
 sloughy,,,sl'aUi:,,
 Slovak,,,sl'oUvak,,
 Slovakia,,,slVv'aki:@,,sloUv'Aki:@
@@ -87472,6 +87489,7 @@ smaller,,,sm'O:l@,sm'O:l@`,
 smallest,,,sm'O:l@st,,
 smallgoods,,,sm'O:lgUdz,,sm'AlgUdz
 smallholder,,,sm'O:lhoUld@,sm'O:lhoUld@`,sm'AlhoUld@`
+smallholders,,,sm'O:lhoUld@z,sm'O:lhoUld@`z,
 smallholding,,,sm'O:lhoUldIN,,sm'AlhoUldi:N
 smalling,,,sm'O:lIN,,
 smallish,,,sm'O:lIS,,sm'AlIS
@@ -93743,6 +93761,7 @@ tannate,,,t'aneIt,,
 tanned,,,t'and,,
 Tannenberg,,,t'an@nb3:g,,t'An@nbErk
 tanner,,,t'an@,t'an@`,
+tanners,,,t'an@z,t'an@`z,
 tannery,,,t'an@ri:,t'an@`ri:,t'an@`i:
 tannest,,,t'an@st,,t'anIst
 Tannhauser,,,t'anhO:s@,t'anhO:s@`,t'anhaUz@`
@@ -95823,6 +95842,7 @@ timecard,,,t'aImkAd,t'aImkArd,
 timed,,,t'aImd,,
 timeframe,,,t'aImfreIm,,
 timekeeper,,,t'aImki:p@,t'aImki:p@`,
+timekeeping,,,t'aImki:pIN,,
 timeless,,,t'aIml@s,,t'aImlEs
 timeline,,,t'aImlaIn,,
 timelines,,,t'aImlaInz,,
@@ -96116,6 +96136,7 @@ tofu,,,t'oUfu:,,
 tog,,,t'Qg,t'Ag,
 toga,,,t'oUg@,,
 togaed,,,t'oUg@d,,
+togas,,,t'oUg@z,,
 togate,,,t'QgeIt,t'AgeIt,t'oUgeIt
 togated,,,t'QgeItId,t'AgeItI#d,t'oUdZi:vIr'aIli:z
 together,,,t@g'ED@,t@g'ED@`,
@@ -97413,6 +97434,7 @@ tribunal,,,traIbj'u:n@l,,
 tribunals,,,traIbj'u:n@lz,,
 tribunate,,,tr'Ib@neIt,,tr'Ibj@nIt
 tribune,,,tr'Ibju:n,,
+tribunes,,,tr'Ibju:nz,,
 tribunicial,,,trIbju:n'IS@l,,trIbj@n'IS@l
 tributaries,,,tr'Ibju:t@ri:z,tr'Ibju:tEri:z,tr'Ibj@tEri:z
 tributary,,,tr'Ibju:t@ri:,tr'Ibju:tEri:,tr'Ibj@tEri:
@@ -97780,11 +97802,13 @@ Trojans,,,tr'oUdZ@nz,,
 troke,,,tr'oUk,,
 troland,,,tr'oUl@nd,,
 troll,,,tr'oUl,,
+trolled,,,tr'oUld,,
 trolley,,,tr'QlI,tr'Ali:,tr'Qli:
 trolleys,,,tr'QlIz,tr'AlIz,tr'Qli:z
 trolling,,,tr'oUlIN,,
 trollop,,,tr'Ql@p,tr'Al@p,
 Trollope,,,tr'QloUp,tr'AloUp,tr'Ql@p
+trolls,,,tr'oUlz,,
 trombidiasis,,,tr'QmbIdIa#si:z,tr'AmbIdIasi:z,trQmb@d'aI@sIs
 trombone,,,trQmb'oUn,trAmb'oUn,
 trombones,,,trQmb'oUnz,trAmb'oUnz,
@@ -98587,6 +98611,7 @@ Ucayali,,,ju:keI'Ali:,,u:kAj'Ali:
 Uccello,,,Vks'EloU,,u:tS'EloU
 Udall,,,j'u:dO:l,,j'u:dAl
 udder,,,'Vd@,'Vd@`,
+udders,,,'Vd@z,'Vd@`z,
 Udine,,,j'u:di:n,,'u:di:nE
 udo,,,j'u:doU,,'u:doU
 udometer,,,ju:d'QmIt@,ju:d'AmIt@`,ju:d'QmIt@`
@@ -101112,6 +101137,7 @@ Urmia,,,'3:mi:@,,'Urmi:@
 urn,,,'3:n,,
 urnfield,,,'3:nfi:ld,,
 urning,,,'3:nIN,,'3:ni:N
+urns,,,'3:nz,,
 urochrome,,,j'Ur@kroUm,,
 urogenital,,,j'UroUdZnIt@l,,jUroUdZ'EnIt@l
 urogenous,,,jUr'QdZ@n@s,jUr'AdZ@n@s,
@@ -102105,6 +102131,7 @@ vessels,,,v'Es@lz,,
 vest,,,v'Est,,
 vesta,,,v'Est@,,
 vestal,,,v'Est@l,,
+vestals,,,v'Est@lz,,
 vested,,,v'EstId,v'EstI#d,
 vestee,,,v'Esti:,,vEst'i:
 vestiary,,,v'EsSj@rI,v'EsSj@`ri:,v'Esti:Eri:
@@ -102974,8 +103001,8 @@ Vyborg,,,v'aIbO:g,v'aIborg,v'i:bO:rg
 Vycor,,,v'aIk@,v'aIk@`,v'aIkO:r
 vying,,,v'aIIN,,
 vyingly,,,v'aIINlI,v'aIINli:,
-WA,,,w'A,,w'Q
 wa,,,w'A,,
+WA,,,w'A,,w'Q
 Waadt,,,w'At,,v'At
 WAAF,,,w'Af,,w'af
 Waal,,,w'Al,,w'Ql
@@ -104934,6 +104961,7 @@ woof,,,w'u:f,,
 woofer,,,w'u:f@,w'u:f@`,w'Uf@`
 woofers,,,w'u:f@z,w'u:f@`z,w'Uf@`z
 woofter,,,w'u:ft@,w'u:ft@`,
+woogie,,,w'u:dZi:,,
 wooing,,,w'u:IN,,
 wool,,,w'Ul,,
 woolen,,,w'Ul@n,,
@@ -105329,6 +105357,8 @@ Xhosa,,,k'O:s@,,z'oUS@
 xi,,,roUm@nIl'Ev@n,,z'aI
 Xian,,,z'aI@n,,S'i:An
 Xiaoping,,,z'aI@r@pIN,z'aI@@pIN,Z'aUp'IN
+xii,,,roUm@ntw'Elv,,
+xiii,,,roUm@nT'3:ti:n,,
 Ximenes,,,z'aImi:nz,,hi:m'EnED
 xiphisternum,,,z'IfIst@n@m,z'IfIst@`n@m,zIfIst'3:n@m
 xiphoid,,,z'IfOId,,
