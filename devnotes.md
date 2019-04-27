@@ -64,8 +64,8 @@ Steps:
     Note: this also makes sure that all checks and tests pass. If the
     command aborts with an error, the problem must first be addressed.
 
-* If there is any doubt whether they work as they should, install them
-  locally using a venv (virtual environment) and try them out.
+* If there is any doubt whether the packages work as they should, install
+  them locally using a venv (virtual environment) and try them out.
 
 * Upload them to PyPI:
 
