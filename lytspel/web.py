@@ -14,14 +14,16 @@ app.config['SECRET_KEY'] = 'vi_kajBer2racag`6Okphub'
 def web() -> str:
     """Main entry point."""
     tradspell = ''
+    lytspel = ''
+
     if request.method == 'POST':
         tradspell = request.form['tradspell']
 
     if tradspell:
         conv = Converter()
-        flash(conv.convert_para(tradspell, False))
+        lytspel = conv.convert_para(tradspell, False)
 
-    return render_template('web.html', form=request.form)
+    return render_template('web.html', form=request.form, tradspell=tradspell, lytspel=lytspel)
 
 
 if __name__ == "__main__":

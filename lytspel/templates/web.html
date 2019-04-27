@@ -1,31 +1,45 @@
 <!doctype html>
-<title>Lytspel, a Simple Phonetic Respelling for the English Language</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<link rel="stylesheet" href="static/bootstrap.min.css">
-<div class="container">
-<h1>Lytspel</h1>
-<h2>A Simple Phonetic Respelling for the English Language
-</h2>
-<form action="" method="post" role="form">
-  {{ form.csrf }}
-  <div class="form-group">
-    <label for="tradspell">Tradspell:</label>
-    <textarea name="tradspell" class="form-control" placeholder="Type or paste text to convert."
-      maxlength=10000 autofocus></textarea>
-  </div>
-  <button type="submit" class="btn btn-success">Submit</button>
-</form>
-{% with messages = get_flashed_messages(with_categories=true) %}
-  {% if messages %}
-    {% for message in messages %}
-      {% if "Error" not in message[1]: %}
-        <div class="alert alert-info"><strong>Success! </strong> {{ message[1] }}</div>
-      {% endif %}
-      {% if "Error" in message[1]: %}
-        <div class="alert alert-warning">{{ message[1] }}</div>
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-{% endwith %}
-</div>
+<html>
+  <head>
+    <title>Lytspel, a Simple Phonetic Respelling for the English Language</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="static/bootstrap.min.css">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <h1 class="text-center mb-3">Lytspel
+      <small>– A Simple Phonetic Respelling for the English Language</small></h1>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <form action="" method="post" role="form">
+            {{form.csrf}}
+            <div class="form-group">
+              <label for="tradspell">Tradspell:</label>
+              <textarea name="tradspell" class="form-control vresize"
+                placeholder="Type or paste text to convert." maxlength=10000 rows=10
+                autofocus>{{tradspell}}</textarea>
+            </div>
+            <div class="text-right">
+              <button type="submit" class="btn btn-success">Convert</button>
+            </div>
+          </form>
+        </div>
+        <div class="col-md-6">
+          <div class="form-group">
+            <label for="lytspel">Lytspel:</label>
+            <textarea name="lytspel" class="form-control vresize" rows=10
+              readonly>{{lytspel}}</textarea>
+          </div>
+          <form action="" method="post" enctype="multipart/form-data" role="form">
+            {{form.csrf}}
+            <div class="text-right">
+              <input type="file" name="file">
+              <input type="submit" value="Convert file">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
