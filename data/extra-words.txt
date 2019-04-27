@@ -3,8 +3,10 @@ ablutions
 accesses
 acknowledgements
 acknowledgments
+aediles
 algorithmic
 algorithmically
+aluminium
 amidst
 amplicon
 anarchistic
@@ -86,6 +88,7 @@ coagulated
 coagulates
 cochair
 codebase
+codename
 coherency
 collated
 colludes
@@ -160,6 +163,7 @@ earflaps
 editable
 ejaculated
 ejaculates
+elegies
 embroils
 emptinesses
 emptive
@@ -177,8 +181,11 @@ entendre
 entertainingly
 entwines
 entwining
+envies
+envying
 epaulets
 epaulettes
+epigrams
 errable
 esthetic
 exampled
@@ -204,6 +211,7 @@ fastens
 felicitations
 felicities
 fetcher
+ff
 findable
 firewalls
 flagons
@@ -221,6 +229,7 @@ frameworks
 freelanced
 freelances
 Freemasons
+fullers
 ganged
 Gazan
 gerency
@@ -355,6 +364,7 @@ methodologist
 methodologists
 micrometre
 micrometres
+millennia
 minilanguage
 minilanguages
 mistranslated
@@ -399,6 +409,8 @@ overfills
 overweighting
 paddings
 pagans
+pagelink
+pagelinks
 Palauan
 palefaced
 paleontological
@@ -420,9 +432,12 @@ planarity
 plugin
 plugins
 pockmarks
+poisoner
+poisoners
 Pokemon
 polisher
 polishers
+Pompeii
 positional
 postprocessor
 postprocessors
@@ -488,6 +503,7 @@ salinate
 salination
 salinize
 salutations
+Satyricon
 scalability
 schoolgirls
 scriptability
@@ -521,6 +537,7 @@ skinning
 skulking
 slithered
 slithers
+smallholders
 sniffled
 snowbank
 snowbanks
@@ -567,6 +584,7 @@ syntactically
 syntaxes
 syphilitic
 systemwide
+tanners
 tarball
 tarballs
 teared
@@ -576,10 +594,12 @@ tha
 thirsted
 throbbed
 throbs
+timekeeping
 timesharing
 timestamp
 timestamps
 tits
+togas
 toggles
 tokenize
 tokenized
@@ -598,6 +618,9 @@ traduced
 traduces
 traducing
 trashcan
+tribunes
+trolled
+trolls
 tropes
 trotters
 troubleshooting
@@ -606,6 +629,7 @@ tuk
 tuple
 tussocks
 ubiquitously
+udders
 unbelievers
 unceasingly
 uncensorable
@@ -633,6 +657,7 @@ uppercase
 uprightly
 uprightness
 uptime
+urns
 validator
 validators
 ve
@@ -641,6 +666,7 @@ verbosely
 versa
 versioning
 versts
+vestals
 viands
 vibrated
 vii
@@ -663,6 +689,7 @@ wiki
 Wikipedia
 wikis
 wildcards
+woogie
 workaround
 workarounds
 wretchedness
@@ -672,6 +699,8 @@ wriggles
 writhed
 writhes
 www
+xii
+xiii
 yellowed
 yelped
 yelps
