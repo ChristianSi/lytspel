@@ -114,8 +114,8 @@ The long vowels and diphthongs are written as follows:
 * «iu» (/yU/ or /ju:/) as in «valiu, kiut, com'piuter, modiulait» ‹value,
   cute, computer, modulate›
 * The spelling «ue» is used in words that are typically spoken with /yU/ or
-  /ju:/ in RP, with /u:/ in GA, e.g. «due, nuetrel, tuen» ‹...neutral,
-  tune›
+  /ju:/ in RP, with /u:/ or /U/ in GA, e.g. «due, nuetrel, tuen»
+  ‹...neutral, tune›
 * «y» /aI/ as in «pryss, styl, dry» ‹price, style...›
 
 The consonants are written as follows:
@@ -302,7 +302,7 @@ vowels:
   written «oh», but in practice it never seems to occur.)
 * This spelling is also used at the end of prefixes such as «astro, baio,
   endo, ethno, ferro, fyto, galveno, hetero, hypo, imyuno, jio, keemo,
-  macro, mycro, nio, nuemo, nuero, pailio, soacio, spectro, suudo, thurmo,
+  macro, mycro, nio, nuemo, nuero, palio, soacio, spectro, suudo, thurmo,
   ysso» ‹astro, bio, endo, ethno, ferro, phyto, galvano, hetero, hypo,
   immuno, geo, chemo, macro, micro, neo, pneumo, neuro, paleo, socio,
   spectro, pseudo, thermo, iso›, e.g. «baio'kemistri, ethno'sentric,
@@ -521,7 +521,7 @@ Rules for derived and related words:
   is spelled as it's spoken, e.g. «kept» from «keep».
 * While in tradspell a noun and a related verb are often written the same
   even if spoken differently, in Lytspel the spelling reflects the actual
-  pronunciation, e.g. «a suspect, to sus'pect; a rekerd, to ri'coard; a
+  pronunciation, e.g. «a suspect, to sus'pect; a record, to ri'cord; a
   houss, to hous» ‹a suspect, to suspect; a record, to record; a house, to
   house›.
 * Normally Lytspel doesn't use double consonants, except in those cases
@@ -647,48 +647,92 @@ the «ue» and «uer» spellings are a compromise used in words spoken
 differently in RP and GA. But such compromises are not almost possible
 without making the written language extremely complex and unwieldy. In
 other cases, Lytspel therefore resolves differences between RP and GA by
-preferring the spelling that keeps the written language more similar to
-tradspell:
+choosing one spelling -- often the one that keeps the written language more
+similar to tradspell or else the shorter one:
 
-* «a» is used if one variety speaks /a/ and the other /A/, e.g. «last»
-* «o» is used if one variety speaks /Q/ and the other /O:/, e.g. «cloth»
-* «o» is also used if one variety speaks /Q/ and the other /V/, e.g. «from»
-* «i» is preferred if a vowel is commonly spoken as either /I/ or /aI/,
-  e.g. «di'rect, di'vurss» ‹direct, diverse›.
+* /a/ («a») is preferred if a vowel is commonly spoken as either /a/ or
+  /A/, e.g. «last, guulash» ‹...goulash›.
+* /a/ is also preferred if a vowel is commonly spoken as either /a/ or
+  /eI/, e.g. «patent, patriat» ‹...patriot›.
+* /a/ is also preferred if a vowel is commonly spoken as either /a/ or /Q/,
+  e.g. «rath» ‹wrath›.
+* /A/ («aa)» is preferred if a vowel is commonly spoken as either /A/ or
+  /eI/, e.g. «to'maato, swaadh» ‹tomato, swathe›.
+* /aI/ («y», «ai» before vowels) is preferred if a vowel is commonly spoken
+  as either /aI/ or /i:/, e.g. «nydher, filistyn» ‹neither, philistine›.
+* /E/ («e)» is preferred if a vowel is commonly spoken as either /E/ or
+  /eI/, e.g. «a'gen» ‹again›.
+* /E/ is also preferred if a vowel is commonly spoken as either /E/ or
+  /i:/, e.g. «lezher, predececer» ‹leisure, predecessor›.
+* /I/ («i») is preferred if a vowel is commonly spoken as either /I/ or
+  /aI/, e.g. «cristelin, di'rect, orgeni'saition» ‹crystalline, direct,
+  organization›.
+* /I/ is also preferred if a vowel is commonly spoken as either /I/ or /i:/
+  (e.g. «afro'disiac» ‹aphrodisiac›), unless the original representation of
+  the vowel is ‹ee› (e.g. «been»).
+* /i:/ («ee», «i» before vowels) is preferred if a vowel is commonly spoken
+  as either /i:/ or /eI/, e.g. «beeta, ga'seebo, Izrial» ‹beta, gazebo,
+  Israel›.
+* /Q/ («o») is preferred if a vowel is commonly spoken as either /Q/ or
+  /O:/, e.g. «alkehol, cloth» ‹alcohol...›.
+* /Q/ is also preferred if a vowel is commonly spoken as either /Q/ or
+  /oU/, e.g. «process, shon» ‹...shone›.
+* /Q/ is also preferred if a vowel is commonly spoken as either /Q/ or /V/,
+  e.g. «from, wot, a'complish» ‹...what, accomplish›.
+* /oU/ («oa») is preferred if a vowel is commonly spoken as either /oU/ or
+  /O:/, e.g. «sloath» ‹sloth›.
+* /U/ («oo») is preferred if a vowel is commonly spoken as either /U/ or
+  /u:/, e.g. «coocu, hoof» ‹cuckoo...›.
+* /Ir/ («ir») is preferred if an r-colored vowel is commonly spoken as
+  either /Ir/ or /3:/, e.g. «squirel» ‹squirrel›.
+* /3:/ («ur») is preferred if an r-colored vowel is commonly spoken as
+  either /3:/ or /A(r)/, e.g. «clurk, durbi» ‹clerk, derby›.
+* /w/ («w») is preferred if a sound preceding a vowel is commonly spoken as
+  either /w/ or one of /ju:/ or /jU/, e.g. «jagwar» ‹jaguar›.
 * If a vowel is spoken as a schwa or omitted altogether in some regions, as
   /aI/ elsewhere, Lytspel generally uses «i» /I/ as a compromise, e.g.
   «ajil, vursetil», ‹agile, versatile›.
 * Otherwise, if a vowel is spoken with a full vowel sound in some regions,
   while reduced to a schwa or omitted altogether elsewhere, Lytspel tends
-  to write the full version, e.g. «categoari, militerri, prymerri,
-  roazmairi, testimoani» ‹category, military, primary, rosemary,
-  testimony›.
+  to write the full version, e.g. «categoari, inevaitiv, militerri,
+  poartrait, prymerri, python, roazmairi, testimoani» ‹category,
+  innovative, military, portrait, primary, python, rosemary, testimony›.
+* /z/ («s» or «z», depending on position) is preferred if a consonant is
+  commonly spoken as either /z/ or /s/, e.g. «i'rais, venisen, talizmen»
+  ‹erase, venison, talisman›.
+* If a consonant is commonly spoken as either /Z/ or /S/, final «sion»
+  /Z@n/ is preserved if it's already the traditional ending (e.g.
+  «con'vursion» ‹conversion›), otherwise /S/ (usually «sh») is preferred,
+  e.g. «Aisha, i'raisher» ‹Asia, erasure›.
+* /si:/ (depending on position, but often «ci») is preferred if a sequence
+  is commonly spoken as either /si:/ or /S/, e.g. «hecian, om'niciant»
+  ‹hessian, omniscient›.
+* /zi:/ (depending on position, but often «si») is preferred if a sequence
+  is commonly spoken as either /zi:/ or /Z/, e.g. «hoasieri, Ma'laisia»
+  ‹hosiery, Malaysia›.
+* /ti:/ («ti» before vowels) is preferred if a sequence is commonly spoken
+  as either /ti:/ or as one of /S, Si:, tS, tSi:/, e.g. «sentiant,
+  con'sortiam, bestial, bestierri» ‹sentient, consortium, bestial,
+  bestiary›.
+
+If a letter is commonly either spoken or silent, Lytspel tends to preserve
+it, e.g. «platinum, trait» (not "platnum, tray").
 
 If speakers in different regions tend to stress different syllables,
 Lytspel usually places the stress early rather than late, e.g. «an adress,
-decaid, truncait, weekend» ‹an address, decade, truncate...›. But in case
-of originally foreign words where a late stress placement corresponds to
-the pronunciation in the original language, it is often preserved, e.g.
+decaid, truncait, weekend» ‹an address, decade, truncate...›. But in the
+case of originally foreign words where a late stress placement corresponds
+to the pronunciation in the original language, it is often preserved, e.g.
 «ca'feen, expoa'say» ‹caffeine, exposé›.
 
-TODO Describe additional compromise decisions, e.g.
+Other differences are usually unique to just one or very few words. In such
+cases, Lytspel generally also represents the pronunciation that is more
+similar to the traditional written form, e.g. «cordial, figer, shediul»
+‹...figure, schedule› (rather than "corjel, figyer, skejuul").
 
-  * The one that's more similar to the traditionel spelling is preferred.
-  * A short vowel such as /@, E, I/ is preferred over a long one such as
-    /aI, i:/.
-  * If one variety speaks /Vr/ and the other /3:/, «urr» is used if the
-    traditional spelling includes ‹rr› (e.g. «current»), otherwise «ur» is
-    used (e.g. «curij» ‹courage›)?
-  * «er» is used if RP has /@/ and GA has /y@`/, e.g. «figer» ‹figure›?
-  * Document that stress marker--free variant is preferred in doubt, e.g.
-    «adult» rather than «*a'dult», «to dictait» ‹to dictate› rather than
-    «to *dic'tate», «sabetaazh» ‹sabotage› rather than «*sabo'taazh».
-
-Cf. [American and British English pronunciation
-differences](https://en.wikipedia.org/wiki/American_and_British_English_pronunciation_differences)
-and [Different spellings for different
-pronunciations](https://en.wikipedia.org/wiki/American_and_British_English_spelling_differences#Different_spellings_for_different_pronunciations).
-
+In a few cases, one pronunciation is preferred because it is more similar
+to that of a closely related word, e.g. «pryveci» ‹privacy› from «pryvet»
+‹private› (rather than "priveci").
 
 
 ## Limitations of the Current Dictionary
@@ -711,10 +755,14 @@ listed in parentheses):
 
 * ‹bass›: «baiss» (or «bass» for various fish species)
 * ‹drawer›: «dror» (or «drawer» for a person who draws)
+* ‹logos›: «loagoas» (plural of «loago» ‹logo›; or «logoss» for the Greek
+  word)
 * ‹micrometer›: «my'cromiter» (a measuring device; or «mycromeeter» for the
   millionth part of a meter)
 * ‹prayer›: «prair» (or «prayer» for a person who prays)
 * ‹read›: «reed» (or «red» for the past tense)
+* ‹routed, router, routing›: «ruuted, ruuter, ruuting» (if derived from
+  «ruut» ‹route›; or «routed, router, routing» if derived from «rout»)
 * ‹subsequence›: «subsiquenss» (for some subsequent occurrence; or
   «subseequenss» for a sequence derived from another sequence)
 * ‹taxis›: «taxies» (multiple taxis, or taxicabs; or «taxiss», a scientific
@@ -722,129 +770,22 @@ listed in parentheses):
 * ‹tier›: «teer» (or «tyer» for a person who ties)
 
 
-## Overview
+## Other Documentation
 
-TODO This section is older and partially outdated.
+**LICENSE.txt** contains the license used for the Lytspel program suite (a
+permissive license known as "ISC license"). The proposed spellings do not
+fall under copyright (you cannot copyright a single word, let alone a way
+to spell it) and may be considered a part of the public domain.
 
-This phoneng program suite (short for: Phonetic English) shows how English
-is pronounced and offers an alternative spelling system that is more
-consistent and easier to learn and use than the traditional spelling.
+**CHANGELOG.md** contains a compact list of the changes made between the
+various released versions of the program (and dictionary).
 
-TODO These programs aren't implemented yet.
-The `pronounce` command shows how English texts are pronounced. The
-`lytspel` command converts them into a simplified spelling.
+If you want to install and use the program locally (rather then the web
+frontend), see **INSTALL-USE.md**.
 
-The provided tools can also be used to implement your own spelling reform
-proposals or to adapt the chosen respellings as needed.
+If you want to experiment with the program suite locally, in order to add
+some functionality, fix bugs, or modify spellings, see **devnotes.md**.
 
-
-## Installation
-
-The phoneng program suite is written in
-[Haskell](https://www.haskell.org/haskellwiki/Haskell). To build it from
-source, you need the [Cabal](https://www.haskell.org/cabal/) build system.
-If you use a Debian-based system, install the `cabal-install` package to
-get it.
-
-Afterwards clone this repository from GitHub and run the following commands
-in the main directory:
-
-    cabal configure && cabal build && cabal install
-
-The compiled programs should now be in your path and ready to run.
-
-
-## Usage
-
-TODO document
-
-
-## Files and File Formats
-
-All files are in UTF-8 format (some of them may use just the ASCII subset).
-
-*Line files* (extension: .txt) have one entry per line; line breaks in entries
-are therefore not allowed.
-
-*Key-value files* (extension: .txt) are line files where each line represents
-a key/value pair. Keys and values are separated by ':'; trailing comments
-introduced by '#' are stripped. No escape syntax is supported, hence keys
-cannot contain ':', values cannot contain '#', and neither can contain line
-breaks.
-
-
-### Files in data Directory
-
-TODO Update this section.
-
-  * `cmudict-phonemes.txt`: key-value file containing a mapping from the
-    phonemes used in cmudict to the corresponding Phonetic English
-    phonemes. Used by the `dictbuilder` program.
-
-  * `custom.csv`: CSV file listing those words for which a specific
-    pronunciation should be used. The case of the words listed in the
-    first field is ignored. The second field may contain the following
-    values:
-
-      * B: use British (RP) pronunciation
-      * A: use American (GA) pronunciation
-      * P: use the PhonEng pronunciation
-      * D: don't add the word to the output dictionary (used for rare
-        foreign words or names)
-      * O: leave the spelling of the word unchanged
-      * Alternatively, a custom pronunciation may be given which is then
-        used to generate the final spelling
-
-    Manually created file; used by `lytspelify`.
-
-  * `moby-phonemes.txt`: key-value file containing a mapping from the phonemes
-    used in Moby to the corresponding Phonetic English phonemes. Used by the
-    `dictbuilder` program.
-
-  * `words-not-in-scowl.txt`: Line file containing words that aren't listed in
-    SCOWL but should become part of the pronunciation dictionary. Used by the
-    `dictbuilder` program.
-
-  * `phonetic-dict.txt`: Line file containing a mapping from words to their
-    pronunciations. If there is just a single pronunciations, the entry is
-    written as `word: pron`. If the pronunciation of a word depends on which
-    POS (part-of-speed) it is, it is written as `word/n: pron1; v: pron2`
-    (where "n", "v" etc. are POS tags). Redirects are written as `word:>
-    target`, e.g. `colour:> color`. Generated by the `dictbuilder` program.
-
-
-## History: Steps used to Generate the Phonetic Dictionary
-
-Some of the following steps require manual intervention. They are described
-here to document the history of phoneng.
-
-Downloaded and installed knowledge sources:
-
-  * Downloaded SCOWL and VarCon from [SCOWL And
-    Friends](http://wordlist.aspell.net/) -- version 2014.08.11 was used to
-    create the distributed dictionary. Unzipped both of them within the `data`
-    directory and renamed the resulting subdirectories to `scowl` and `varcon`.
-  * Downloaded the [CMU Pronouncing
-    Dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) -- version 0.7a
-    was used to create the distributed dictionary. It's enough to download the
-    file `cmudict.0.7a` and store it in a new `data` subdirectory named
-    `cmudict`.
-  * Downloaded the [Moby Pronunciation List by Grady
-    Ward](http://www.gutenberg.org/ebooks/3205). Created a `data` subdirectory
-    named `moby` and unzipped it there.
-
-Then run `make` from within the `data` directory, that should handle the
-rest. TODO Document PATH requirements.
-
-TODO Or execute the following commands manually (the rest of this section
-is outdated and should be deleted or possibly cleaned up):
-
-Invoked the `dictbuilder` program within the `data` directory. This writes
-a file called `phonetic-dict.txt`.
-
-Invoked the `csvdict` script. This writes a file called
-`phoneng-espeak-dict.csv`.
-
-Invoked the `mergeprons` script. This writes a file called `phonetic-dict.csv`.
-
-Invoked the `lytspelify` script. This writes a file called `lytspel-dict.csv`.
+**files.md** quickly describes the various files in the Lytspel repository.
+This too is mostly interesting if you want to modify the dictionary or some
+of the programs used to generate it.
