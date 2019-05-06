@@ -85,9 +85,9 @@ def test_lookup_contractions(dct):
 def test_lookup_nonstandard_contractions(dct):
     assert dct.lookup('Peter’d') == 'Peeter’d'
     assert dct.lookup('PETER’D') == 'PEETER’D'
-    assert dct.lookup("what'll") == 'wut’l'
-    assert dct.lookup("What'll") == 'Wut’l'
-    assert dct.lookup('What’Re') == 'Wut’R'
+    assert dct.lookup("what'll") == 'wot’l'
+    assert dct.lookup("What'll") == 'Wot’l'
+    assert dct.lookup('What’Re') == 'Wot’R'
     assert dct.lookup("where've") == 'wair’v'
     assert dct.lookup("WHERE'VE") == 'WAIR’V'
 
@@ -114,7 +114,7 @@ def test_lookup_redirects(dct):
     assert dct.lookup('calking') == 'cauking'
     assert dct.lookup('castors') == 'casters'
     assert dct.lookup('Centre') == 'Senter'
-    assert dct.lookup('Compositae') == 'Com’posit'
+    assert dct.lookup('aesthetician') == 'esthi’tition'
     assert dct.lookup('ESOP') == 'EESSOP'
     assert dct.lookup('Ier') == 'Yr'
     assert dct.lookup('OKs') == 'Oa’cays'
@@ -140,9 +140,9 @@ def test_lookup_hyphenated_prefix(dct):
     assert dct.lookup('RE-') == 'RI-'
     assert dct.lookup('de-') == 'di-'
     assert dct.lookup('meta-') == 'mete-'
-    assert dct.lookup('paleo-') == 'pailio-'
-    assert dct.lookup('Paleo-') == 'Pailio-'
-    assert dct.lookup('PALEO-') == 'PAILIO-'
+    assert dct.lookup('paleo-') == 'palio-'
+    assert dct.lookup('Paleo-') == 'Palio-'
+    assert dct.lookup('PALEO-') == 'PALIO-'
 
 def test_lookup_us(dct):
     """A few capitalized abbreviation such as 'US' should remain unchanged."""
@@ -236,9 +236,9 @@ def test_convert_para_nonstandard_contractions(conv):
     assert conv.convert_para('Sue’ll do it ’cause she can.') ==\
         'Su’l du it ’caus shi can.'
     assert conv.convert_para('Peter’d know what to do.') ==\
-        'Peeter’d noa wut tu du.'
+        'Peeter’d noa wot tu du.'
     assert conv.convert_para("What're they going to do?") ==\
-        'Wut’r dhay going tu du?'
+        'Wot’r dhay going tu du?'
     assert conv.convert_para('Where’ve they put it?') ==\
         'Wair’v dhay poot it?'
 
@@ -249,9 +249,9 @@ def test_convert_para_nonstandard_contractions_spacy(conv):
     assert conv.convert_para('I object: Sue’ll do it ’cause she can.') ==\
         'Y ob’ject: Su’l du it ’caus shi can.'
     assert conv.convert_para('I estimate: Peter’d know what to do.') ==\
-        'Y estimait: Peeter’d noa wut tu du.'
+        'Y estimait: Peeter’d noa wot tu du.'
     assert conv.convert_para("I object: What're they going to do?") ==\
-        'Y ob’ject: Wut’r dhay going tu du?'
+        'Y ob’ject: Wot’r dhay going tu du?'
 
 def test_convert_para_pos_tagged(conv):
     assert conv.convert_para('I did not object to the object.') == 'Y did not ob’ject tu dhe object.'
@@ -276,7 +276,7 @@ def test_convert_para_pos_tagged(conv):
     assert conv.convert_para('Don’t desert me here in the desert!') ==\
         'Doan’t di’surt mi heer in dhe desert!'
     assert conv.convert_para('The outright prohibition has caused smoking to be banned outright.') ==\
-            'Dhe outryt proahi’bition has causd smoaking tu bee band out’ryt.'
+            'Dhe outryt prohi’bition has causd smoaking tu bee band out’ryt.'
 
 def test_convert_para_nt_contractions(conv):
     assert conv.convert_para("Don't you think I won't do it, because I will!") ==\
@@ -390,7 +390,7 @@ def test_convert_hyphenated_prefixes(conv):
     assert conv.convert_para('She de-emphasized our differences.') ==\
             'Shi di-emfecysd our diferensses.'
     assert conv.convert_para('The Paleo-Americans arrived in the Americas a long, long time ago.') ==\
-        'Dhe Pailio-A’merricans e’ryvd in dhe A’merricas a long, long tym a’go.'
+        'Dhe Palio-A’merricans e’ryvd in dhe A’merricas a long, long tym a’go.'
 
 def test_convert_other_hyphens(conv):
     """Test that hyphens between words don't cause problems."""
