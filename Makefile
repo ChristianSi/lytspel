@@ -19,6 +19,9 @@ pytest:
 testdir:
 	cd test && make
 
+flask:
+	FLASK_APP=lytspel/web.py FLASK_DEBUG=1 flask run
+
 hs-install:
 	cabal install
 
