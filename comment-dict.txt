@@ -22,6 +22,7 @@ ol
 OPF
 pos
 precompiling
+printmsg
 regexes
 Siefkes
 stateful

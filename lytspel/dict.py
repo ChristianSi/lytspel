@@ -10,7 +10,7 @@ from warnings import warn
 
 from pkg_resources import resource_stream
 
-from .util import get_elem, printmsg
+from .util import get_elem
 
 
 # Non-ASCII letters which we know how to convert to ASCII (lower-case only).
@@ -62,7 +62,7 @@ class Dictionary:
 
     def __init__(self):
         """Initializes and loads the dictionary."""
-        printmsg('Loading the dictionary.')
+        ##printmsg('Loading the dictionary.')
         self._dict = {}
         self._mixed_dict = {}
 

@@ -1,6 +1,6 @@
 """A web front end for the Lytspel converter."""
 
-from flask import Flask, render_template, flash, request
+from flask import Flask, render_template, request
 
 from .conv import Converter
 

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <title>Lytspel, a Simple Phonetic Respelling for the English Language</title>
     <meta charset="utf-8">
@@ -12,11 +12,11 @@
       <small>– A Simple Phonetic Respelling for the English Language</small></h1>
       <div class="row">
         <div class="col-md-6 mb-3">
-          <form action="" method="post" role="form">
+          <form method="post">
             {{form.csrf}}
             <div class="form-group">
               <label for="tradspell">Tradspell:</label>
-              <textarea name="tradspell" class="form-control vresize"
+              <textarea id="tradspell" name="tradspell" class="form-control vresize"
                 placeholder="Type or paste text to convert." maxlength=10000 rows=10
                 autofocus>{{tradspell}}</textarea>
             </div>
@@ -28,18 +28,30 @@
         <div class="col-md-6">
           <div class="form-group">
             <label for="lytspel">Lytspel:</label>
-            <textarea name="lytspel" class="form-control vresize" rows=10
+            <textarea id="lytspel" name="lytspel" class="form-control vresize" rows=10
               readonly>{{lytspel}}</textarea>
           </div>
-          <form action="" method="post" enctype="multipart/form-data" role="form">
+          {# <form method="post" enctype="multipart/form-data">
             {{form.csrf}}
             <div class="text-right">
               <input type="file" name="file">
               <input type="submit" value="Convert file">
             </div>
-          </form>
+          </form> #}
         </div>
       </div>
+    <h3>Coming soon:</h3>
+    <ul>
+      <li>Motivation and rules (for now, see the
+        <a
+          href="https://github.com/ChristianSi/lytspel#lytspel-a-simple-phonetic-respelling-for-the-english-language">README
+          file on GitHub</a>)</li>
+      <li>Upload and conversion of files in HTML, epub, or plain text format (for now, please
+        <a
+          href="https://github.com/ChristianSi/lytspel/blob/master/INSTALL-USE.md#installation-and-usage">install
+          the command-line version</a> if you want to use this feature)</li>
+      <li>Sample texts</li>
+    </ul>
     </div>
   </body>
 </html>
