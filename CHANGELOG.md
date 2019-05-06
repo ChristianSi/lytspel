@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 * Fixed some dictionary entries and added some others.
-* Worked on web interface.
+* Finalized initial version of web app.
 * Finished README file, esp. documenting how pronunciation differences
   between regional variants are resolved.
 
