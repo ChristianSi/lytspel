@@ -2,7 +2,7 @@
 
 ## Run lytspel directly from source
 
-The normal way to install lytspel is to run
+The normal way to install `lytspel` is to run
 
     pip3 install lytspel
 
@@ -15,10 +15,10 @@ in your virtual environment) and then invoke the `lytspel` command created
 during installation.
 
 But if you want to run it directly from the source repository (say for
-testing purposes), you can define a `lytspel` alias in your ~/.bashrc (or
-suitably adapted for which ever shell you are using):
+testing purposes), you can define a `lytspel` alias in your `~/.bashrc` (or
+suitably adapted for whichever shell you are using):
 
-    alias lc="PYTHONPATH=SOURCEDIR python3 -c 'from lytspel import main; main()'"
+    alias lytspel="PYTHONPATH=SOURCEDIR python3 -c 'from lytspel import main; main()'"
 
 Replace SOURCEDIR with the root of your Lytspel repository (i.e., the
 directory containing this file).
@@ -29,6 +29,25 @@ directory containing this file).
 Change to the root of your Lytspel repository and call
 
     make
+
+
+## Starting the web app
+
+In order to run the web app locally, you first need to create a file called
+"web.cfg" in the "lytspel" directory which contains the line:
+
+    SECRET_KEY = '...'
+
+Replace `...` by a dozen or more random characters. That file has to exist
+but isn't tracked by git since otherwise the SECRET_KEY wouldn't be secret!
+
+Afterwards, change to the root of your Lytspel repository and call
+
+    make flask
+
+to start the web app.
+
+To stop it, press `Ctrl+C`.
 
 
 ## Publish a new release on PyPI
@@ -45,9 +64,9 @@ Steps:
         made.
       * Bumpy y (and set z to 0) if new non-trivial functionality has been
         added in a backwards-compatible manner.
-      * Bump x (and set y and z to 0) if functionality has added in a way
-        that breaks compatibility. NOTE: Whenever possible, this should be
-        avoided!
+      * Bump x (and set y and z to 0) if functionality has been added in a
+        way that breaks compatibility. NOTE: Whenever possible, this should
+        be avoided!
 
 * Update the CHANGELOG.
 
@@ -65,7 +84,8 @@ Steps:
     command aborts with an error, the problem must first be addressed.
 
 * If there is any doubt whether the packages work as they should, install
-  them locally using a venv (virtual environment) and try them out.
+  them locally using a [venv](https://docs.python.org/3/tutorial/venv.html)
+  (virtual environment) and try them out.
 
 * Upload them to PyPI:
 
