@@ -1,193 +1,278 @@
 # Files
 
-## Files in Root Directory
+All files are in UTF-8 format (some of them may use just the ASCII subset).
+
+
+## Main (root) Directory
+
+Note: The README file (**README.md**) and the text files listed within it
+are not documented here.
 
 Some of the files are used to test and build the Python package:
 
-* **comment-dict.txt**: a line-separated list of words that may be used in
+* **comment-dict.txt**: line-separated list of words that may be used in
   Python comments; used by `pylint3`.
-* **Makefile**: a list of `make` targets for building and testing the
-  Haskell and Python scripts; see **devnotes.md** for a description of some
-  of the most important ones.
+* **Makefile**: list of `make` targets for building and testing the Haskell
+  and Python scripts (see **devnotes.md** for a description of a few of the
+  most important ones).
+* **MANIFEST.in**: line-separated list of files to add to the source
+  tarball uploaded to PyPI; used by `make wheel`.
+* **setup.cfg**: additional configuration settings for the Python wheel;
+  used by `make wheel`.
+* **setup.py**: configuration settings for the Python package (both wheel
+  and source tarball); used by `make wheel`.
+* **.pylintrc**: configuration settings for `pylint3`.
 
-TODO
+Some other files are used to build the Haskell program that creates an
+initial version of the dictionary:
 
-MANIFEST.in
-phoneng.cabal
-pylintrc
-README.md
-scripts/csvdict
-scripts/decompose
-scripts/lytspelify
-scripts/mergeprons
-scripts/PhonEng.pm
-setup.cfg
-Setup.hs
-setup.py
-src/dictbuilder.hs
-src/PhonEng.hs
-src/pronounce.hs
-test/expected-output.epub
-test/expected-output.html
-test/expected-output.txt
-test/expected-output.xhtml
-test/icon.png
-test/input.epub
-test/input.html
-test/input.txt
-test/input.xhtml
-test/Makefile
-test/style.css
+* **phoneng.cabal**: configuration settings for the Haskell program; used
+  by `make hs-install`.
+* **Setup.hs**: additional configuration settings for the Haskell program;
+  used by `make hs-install`.
 
-lytspel/conv.py
-lytspel/dict.py
-lytspel/__init__.py
-lytspel/static/bootstrap.min.css
-lytspel/templates/web.html
-lytspel/test.py
-lytspel/util.py
-lytspel/web.cfg
-lytspel/web.py
-
-TODO The phoneng program suite is written in
-[Haskell](https://www.haskell.org/haskellwiki/Haskell). To build it from
-source, you need the [Cabal](https://www.haskell.org/cabal/) build system.
-If you use a Debian-based system, install the `cabal-install` package to
-get it.
-
-Afterwards clone this repository from GitHub and run the following commands
-in the main directory:
-
-    cabal configure && cabal build && cabal install
-
-The compiled programs should now be in your path and ready to run.
+**.gitignore** contains a list of files and directories that should be
+ignored by git.
 
 
-## Files and File Formats
+## data Directory
 
-All files are in UTF-8 format (some of them may use just the ASCII subset).
+This directory contains the Lytspel dictionary (**lytspel-dict.csv**, also
+known as "final dictionary") and all data files needed to generate it. To
+regenerate it, call "make" within this directory. Depending on which other
+files (if any) have changed, this command should invoke any and all
+programs needed to regenerate the dictionary (based on the dependencies
+documented in the **Makefile**).
 
-*Line files* (extension: .txt) have one entry per line; line breaks in entries
-are therefore not allowed.
+In CSV files (.csv extension, comma-separated values), the first line is
+always an informational header. It lists the name of each field in the file
+to augment human understanding, but is skipped by programs reading the
+file.
 
-*Key-value files* (extension: .txt) are line files where each line represents
-a key/value pair. Keys and values are separated by ':'; trailing comments
-introduced by '#' are stripped. No escape syntax is supported, hence keys
-cannot contain ':', values cannot contain '#', and neither can contain line
-breaks.
+Text files (.txt extension) in this directory are either "key-value files"
+or "line files".
+
+In *key-value files,* each line represents a key/value pair. Keys and
+values are separated by ':'; trailing comments introduced by '#' are
+stripped. No escape syntax is supported, hence keys cannot contain ':',
+values cannot contain '#', and neither can contain line breaks.
+
+*Line files* contain exactly one value per line. They are thus very similar
+to CSV files with just one field, but don't contain an informational
+header. A few line files use the ".list" extension instead.
+
+* **cmudict-phonemes.txt**: key-value file containing a mapping from the
+  phonemes used in cmudict to the corresponding PhonEng (Phonetic English)
+  phonemes. Used by `dictbuilder`.
+* **compound-blacklist.csv**: CSV file listing all words that should *not*
+  be recognized as potential parts of a compound. The second field is
+  optional; it may be '1' or '2' to signal that the word is not allowed in
+  that position (first or second part of a compound) but may occur in the
+  other position. This listing contains mostly short words that would
+  otherwise lead to many "false positives": words wrongly recognized as
+  compounds though they actually aren't. Used by `decompose`.
+* **compound-stress.csv**: CSV file listing which part in a compound is the
+  stressed one, used for those compounds where the heuristics would
+  otherwise get it wrong. The second field contains an optional POS tag;
+  the third field is either '1' or '2'. Used by `lytspelify`.
+* **compound-whitelist.csv**: CSV file listing compounds for which the
+  effects of **compound-blacklist.csv** should be ignored. For example,
+  "impish" (listed here) is recognized as "imp=ish", while the blacklist
+  otherwise forbids "imp" as a part of compounds. Used by `decompose`.
+* **compounds.csv**: CSV file listing all words that are treated as
+  compounds and their identified parts. '=' as separator between parts
+  means that one of them is a prefix or suffix, while '-' means that both
+  are regular words. Generated by `decompose`; used by `lytspelify`.
+* **compounds-manual.csv**: CSV file listing words that would otherwise be
+  misidentified as compounds. The second field may list the parts that
+  should actually be used (using the same separators as **compounds.csv**)
+  or it may be empty to signal that the word is not a compound at all. Only
+  one separator is allowed per word. Used by `decompose`.
+* **custom.csv**: CSV file listing those words for which a specific
+  pronunciation should be used. Used by `lytspelify`. The second field
+  contains an optional POS tag. The third field may contain the following
+  values:
+
+  * B: use the British (RP) pronunciation suggested by
+    [eSpeak](http://espeak.sourceforge.net/)
+  * A: use the American (GA) pronunciation suggested by eSpeak
+  * P: use the PhonEng pronunciation
+  * D: don't add the word to the output dictionary (used to delete rare
+    foreign words or names)
+  * O: leave the spelling of the word unchanged
+  * Alternatively, a custom pronunciation may be given which is then used
+    to generate the final spelling
+
+* **dont-convert-pre-stressed-e.csv**: normally, a schwa preceding the
+  stressed vowel may be represented by any short vowel, but if a schwa is
+  written 'e' in a base word, it shouldn't become a different vowel in
+  derived words which may be stressed on a different syllable. Heuristics
+  are used to change the schwa back to 'e' is such cases. But sometimes
+  they get it wrong, and a word may be listed here to turn them off
+  (meaning that, as usual, a vowel letter from the original representation
+  of the schwa will be used). Used by `lytspelify`.
+* **endpron.csv**: CSV file containing a list of rules for
+  spelling/pronunciations patterns that should be modified when they occur
+  at the end of a word. The rule "morphic,m'orfIk,m'O:rfIk" means that, if
+  a word ends in "morphic" and is pronounced /m'orfIk/, the pronunciation
+  should be changed to /m'O:rfIk/ instead. The purpose of these rules is to
+  eliminate slight differences and inconsistencies in the used
+  pronunciation dictionaries. Used by `lytspelify`.
+* **extra-words.txt**: a line file of words that are missing in the initial
+  dictionary (generated via Haskell), but should be added to the final
+  dictionary. May also contain words that would otherwise be treated as
+  redirects to turn them into regular entries instead. If you want to use
+  just the Perl scripts and notice some missing words, add them here rather
+  than to **words-not-in-scowl.txt**. Used by `csvdict`.
+* **lytspel-dict.csv**: The final dictionary listing how words are spelled
+  in Lytspel. The first field contains the traditional spelling, the second
+  contains an optional POS tag, and the fourth contains the spelling used
+  in Lytspel. If the third instead of the fourth field is filled, the word
+  is a redirect -- e.g. "favour,,favor" means that "favour" should be
+  respelled in the same ways as "favor". Redirects are never POS-tagged.
+  Generated by `lytspelify`.
+* **moby-phonemes.txt**: key-value file containing a mapping from the
+  phonemes used in Moby to the corresponding PhonEng (Phonetic English)
+  phonemes. Used by `dictbuilder`.
+* **phoneme-map.csv**: mapping between
+  [SAMPA](https://en.wikipedia.org/wiki/SAMPA_chart_for_English) (used in
+  the newer Perl-based parts of the Lytspel program suite), PhonEng (a
+  custom pronunciation alphabet used by the older Haskell-based
+  `dictbuilder`), the [IPA](https://en.wikipedia.org/wiki/Help:IPA/English)
+  notation used by [eSpeak](http://espeak.sourceforge.net/) for British and
+  American English, and the standard spellings used by Lytspel for each
+  phoneme. Used by `mergeprons` and `lytspelify`.
+* **phoneng-espeak-dict.csv**: pronunciation dictionary listing both the
+  PhonEng notation determined by `dictbuilder` and the British and American
+  pronunciations (in IPA notation) used by eSpeak. Generated by `csvdict`;
+  used by `mergeprons`.
+* **phonetic-dict.csv**: a modified copy of **phoneng-espeak-dict.csv**
+  which uses the SAMPA phoneme set instead of IPA and PhonEng notations.
+  Generated by `mergeprons`; used by `decompose` and `lytspelify`.
+* **phonetic-dict.txt**: line file containing a mapping from words to their
+  pronunciations in PhonEng notation; also known as "initial dictionary".
+  If there is just a single pronunciation, the entry is written as "word:
+  pron". If the pronunciation of a word depends on its grammatical role
+  (POS tag), it is written as "word/n: pron1; v: pron2", where 'n', 'v'
+  etc. are POS tags. Redirects are written as `word:> target`, e.g.
+  `colour:> color`. Generated by `dictbuilder`.
+* **prefix.csv**: CSV file listing all recognized prefixes and how to
+  pronounce them. The third field indicates which part of the word should
+  be stressed: '1' for the prefix; '2' for the main word (following the
+  prefix); 'A' (auto) signals that the stress used in the phonetic
+  representation of the word should be kept. Generally, any new prefix
+  should be added both here and to **prefix.list**. Used by `lytspelify`.
+* **prefix.list**: line file containing all prefixes that should be
+  identified at the start of compounds. Used by `decompose`.
+* **pre-stressed-vowel.csv**: A schwa preceding the stressed vowel can be
+  represented by any of the five vowel letters and usually one from the
+  traditional spelling is used. If the heuristic gets it wrong or if a
+  different choice is preferable to increase similarity with related words,
+  the vowel letter to use should be added to this file. E.g.
+  "questionnaire,,e" means that ‹questionnaire› will become «quesche'nair»
+  (instead of "quescho'nair"), which keeps similarity with «queschen»
+  ‹question›. The second field contains an optional POS tag. Used by
+  `lytspelify`.
+* **startpron.csv**: CSV file containing a list of rules for
+  spelling/pronunciations patterns that should be modified when they occur
+  at the start of a word. See **endpron.csv** for a short explanation of
+  the format and purpose. Used by `lytspelify`.
+* **suffix.csv**: CSV file listing all recognized suffixes and how to
+  pronounce them. Generally, any new suffix should be added both here and
+  to **suffix.list**. Used by `lytspelify`.
+* **suffix.list**: line file containing all suffixes that should be
+  identified at the end of compounds. Used by `decompose`.
+* **tagify.csv**: CSV file with two fields containing all words which
+  aren't POS-tagged in the initial directory but should be. The second
+  field contains a plus-separated list of tags to generate (e.g. "aj+v":
+  adjective and verb). If a word is already POS-tagged but needs
+  *additional* POS tags, it is also added here (listing all actually needed
+  POS tags). Used by `csvdict`.
+* **untagify.csv**: CSV file with one field containing all words which are
+  POS-tagged in the initial dictionary but should *not* be POS-tagged in
+  the final one (because all their variants are actually spoken the same).
+  Used by `csvdict`.
+* **words-not-in-scowl.txt**: line file containing additional words that
+  should be added to the initial dictionary generated via Haskell. Used by
+  `dictbuilder`.
 
 
-### Files in data Directory
+## lytspel Directory
 
-TODO
-
-data/cmudict-phonemes.txt
-data/compound-blacklist.csv
-data/compounds.csv
-data/compounds.csv.bak
-data/compounds.csv.old
-data/compounds-manual.csv
-data/.compounds-manual.csv.swp
-data/compound-stress.csv
-data/compound-whitelist.csv
-data/custom.csv
-data/custom.csv.bak
-data/dont-convert-pre-stressed-e.csv
-data/endpron.csv
-data/extra-words.txt
-data/lytspel-dict.csv
-data/lytspel-dict.csv.bak
-data/lytspel-dict.csv.old
-data/lytspel-phonemes.txt
-data/Makefile
-data/moby-phonemes.txt
-data/phoneme-map.csv
-data/phoneng-espeak-dict.csv
-data/phoneng-espeak-dict.csv.bak
-data/phonetic-dict.csv
-data/phonetic-dict.csv.bak
-data/phonetic-dict.txt
-data/phonetic-dict.txt.bak
-data/prefix.csv
-data/prefix.list
-data/pre-stressed-vowel.csv
-data/startpron.csv
-data/suffix.csv
-data/suffix.list
-data/tagify.csv
-data/untagify.csv
-data/words-not-in-scowl.txt
-
-TODO Update this section.
-
-  * `cmudict-phonemes.txt`: key-value file containing a mapping from the
-    phonemes used in cmudict to the corresponding Phonetic English
-    phonemes. Used by the `dictbuilder` program.
-
-  * `custom.csv`: CSV file listing those words for which a specific
-    pronunciation should be used. The case of the words listed in the
-    first field is ignored. The second field may contain the following
-    values:
-
-      * B: use British (RP) pronunciation
-      * A: use American (GA) pronunciation
-      * P: use the PhonEng pronunciation
-      * D: don't add the word to the output dictionary (used for rare
-        foreign words or names)
-      * O: leave the spelling of the word unchanged
-      * Alternatively, a custom pronunciation may be given which is then
-        used to generate the final spelling
-
-    Manually created file; used by `lytspelify`.
-
-  * `moby-phonemes.txt`: key-value file containing a mapping from the phonemes
-    used in Moby to the corresponding Phonetic English phonemes. Used by the
-    `dictbuilder` program.
-
-  * `words-not-in-scowl.txt`: Line file containing words that aren't listed in
-    SCOWL but should become part of the pronunciation dictionary. Used by the
-    `dictbuilder` program.
-
-  * `phonetic-dict.txt`: Line file containing a mapping from words to their
-    pronunciations. If there is just a single pronunciations, the entry is
-    written as `word: pron`. If the pronunciation of a word depends on which
-    POS (part-of-speed) it is, it is written as `word/n: pron1; v: pron2`
-    (where "n", "v" etc. are POS tags). Redirects are written as `word:>
-    target`, e.g. `colour:> color`. Generated by the `dictbuilder` program.
+This directory contains the Python package which actually converts text
+fragments and documents into Lytspel, as well as its web interface. The
+"static" subdirectory contains static files used for the web app (such as
+CSS files), the "templates" subdirectory contains HTML templates (in
+[Jinja2](http://jinja.pocoo.org/docs/2.10/) syntax) for the web app.
 
 
-## History: Steps used to Generate the Phonetic Dictionary
+## scripts Directory
 
-Some of the following steps require manual intervention. They are described
-here to document the history of phoneng.
+This directory contains the Perl scripts used to generate the final Lytspel
+dictionary. There also is a Perl module ("PhonEng.pm") which contains
+shared code.
 
-Downloaded and installed knowledge sources:
+You only need to call these scripts if you want to change the dictionary,
+say by adding missing words. To use them, install the Perl modules
+Const::Fast, List::MoreUtils, Text::CSV_XS, and Text::LevenshteinXS (e.g.,
+via "cpan -i"). You also need to install the
+[eSpeak](http://espeak.sourceforge.net/) speech synthesizer  (e.g. via
+"sudo apt install espeak" if you are on Debian or Ubuntu). Then add this
+directory to your PATH, change into the "data" directory, and type `make`.
 
-  * Downloaded SCOWL and VarCon from [SCOWL And
-    Friends](http://wordlist.aspell.net/) -- version 2014.08.11 was used to
-    create the distributed dictionary. Unzipped both of them within the `data`
-    directory and renamed the resulting subdirectories to `scowl` and `varcon`.
-  * Downloaded the [CMU Pronouncing
-    Dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict) -- version 0.7a
-    was used to create the distributed dictionary. It's enough to download the
-    file `cmudict.0.7a` and store it in a new `data` subdirectory named
-    `cmudict`.
-  * Downloaded the [Moby Pronunciation List by Grady
-    Ward](http://www.gutenberg.org/ebooks/3205). Created a `data` subdirectory
-    named `moby` and unzipped it there.
 
-Then run `make` from within the `data` directory, that should handle the
-rest. TODO Document PATH requirements.
+## src Directory
 
-TODO Or execute the following commands manually (the rest of this section
-is outdated and should be deleted or possibly cleaned up):
+This directory contains the source code for the oldest part of the Lytspel
+program suite, the `dictbuilder` program written in Haskell and used to
+generate an initial version of the phonetic dictionary.
 
-Invoked the `dictbuilder` program within the `data` directory. This writes
-a file called `phonetic-dict.txt`.
+Note: I haven't used this program since 2016; it might not work with the
+latest versions of GHC (the usual Haskell compiler) and the used libraries
+without changes. When in doubt, simply use the initial dictionary
+("phonetic-dict.txt" in the "data" directory) as is.
 
-Invoked the `csvdict` script. This writes a file called
-`phoneng-espeak-dict.csv`.
+If you want to regenerate the dictionary, the following steps are needed (+
+possibly some modifications of the source code if you get compiler errors
+due to library changes):
 
-Invoked the `mergeprons` script. This writes a file called `phonetic-dict.csv`.
+* Make sure that you have the [Cabal](https://www.haskell.org/cabal/) build
+  system installed. If you use a Debian-based system, install the
+  `cabal-install` package to get it.
+* Change into the root directory of this repository (the one containing
+  this file) and run the following commands:
 
-Invoked the `lytspelify` script. This writes a file called `lytspel-dict.csv`.
+        cabal configure && cabal build && cabal install
+
+* If everything goes well, you should have the `dictbuilder` program in
+  your path and ready to be used. But you still need to download and
+  installed several knowledge sources (see the next steps).
+* Download *SCOWL* and *VarCon* from [SCOWL and
+  Friends](http://wordlist.aspell.net/).  Unzip both of them within the
+  "data" directory and rename the resulting subdirectories to "scowl" and
+  "varcon". Note: version 2014.08.11 was used to create the initial
+  dictionary contained in this repository.
+* Download the [CMU Pronouncing
+  Dictionary](http://www.speech.cs.cmu.edu/cgi-bin/cmudict): Create a
+  subdirectory named "cmudict" within the "data" directory, download the
+  file "cmudict.0.7a" (or a successor version such as "cmudict-0.7b").
+  Version 0.7a was used to create the initial dictionary contained in this
+  repository; if you use another version, you'll have to adjust the file
+  name in "dictbuilder.hs" prior to building the program, or else to rename
+  the file.
+* Download the [Moby Pronunciation List](www.gutenberg.org/ebooks/3205) --
+  click on "More Files…" and download "files.zip". Unzip it within the
+  "data" directory and rename the unpacked directory to "moby".
+
+After you have build the program and installed all knowledge source, change
+into the "data" directory and run `dictbuilder`. Alternatively, you can run
+`make`, which should invoke all necessary steps, including `dictbuilder` if
+and when needed.
+
+
+## test Directory
+
+This directory contains various files used to test the Lytspel converter.
+To run the tests, type `make` within the directory. Alternatively, you can
+invoke `make` (or `make allpytests`) in the root directory (one level up),
+which will run these tests as well as other tests and checks.
