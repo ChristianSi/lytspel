@@ -2,7 +2,7 @@
 
 The idea: Spelling should be fun, not a burden. The traditional English
 spelling system is afflicted with exceptions and conflicting rules, making
-writing and reading texts unnecessary hard.
+writing and reading texts unnecessarily hard.
 
 Lytspel is a proposal for reforming the English spelling in order to make
 it strictly follow the alphabetic principle. The alphabetic principle means
@@ -14,7 +14,7 @@ Traditional English spelling (tradspell) deviates from the alphabetic
 principle in many ways. The mapping between written and spoken words is
 very complex and riddled with irregularities and exceptions. Lytspel (for
 «lytwait speling» or ‹lightweight spelling›) is a proposal to change this,
-while stilling keeping as much visual similarity to tradspell as reasonably
+while keeping as much visual similarity to tradspell as reasonably
 possible.
 
 Lytspel not only creates an unambiguous mapping between the sounds used in
@@ -110,7 +110,7 @@ The long vowels and diphthongs are written as follows:
 * «oa» /oU/ as in «boat, hoam» ‹...home›
 * «oi» /OI/ as in «oil, point, a'void» ‹...avoid›
 * «ou» /aU/ as in «mouth, doun» ‹...down›
-* «uu» /u:/ as in «muun, ex'cluud, gruup» ‹moon, exclude, group›
+* «uu» /u:/ as in «muun, ix'cluud, gruup» ‹moon, exclude, group›
 * «iu» (/yU/ or /ju:/) as in «valiu, kiut, com'piuter, modiulait» ‹value,
   cute, computer, modulate›
 * The spelling «ue» is used in words that are typically spoken with /yU/ or
@@ -141,7 +141,7 @@ The consonants are written as follows:
 * «w» /w/ as in «west, wen» ‹...when›. Note: In some English accepts, the
   «w» in «wen» ‹when› is spoken differently than the «w» in «west», but
   since most accents (including RP and GA) no longer make this difference,
-  it is not preserved in Lytspel (cf. [wine-whine
+  it is not preserved in Lytspel ([wine-whine
   merger](https://en.wikipedia.org/wiki/Pronunciation_of_English_%E2%9F%A8wh%E2%9F%A9#Wine.E2.80.93whine_merger)).
 * «y» /j/ as in «yet»
 * «zh» /Z/ as in «mi'raazh» ‹mirage›
@@ -160,7 +160,7 @@ The consonants are written as follows:
 * The sound /s/ is written as «c», «s», or «ss», depending on context:
 
   * «c» is used between any vowel and a vowel starting with «e, i, y», e.g.
-    «deecent, ex'plicit, nececeri, de'cyd» ‹decent, explicit, necessary,
+    «deecent, ix'plicit, nececerri, di'cyd» ‹decent, explicit, necessary,
     decide›
   * «ss» is used between any vowel and a vowel starting with «a, o, u»,
     e.g. «as'sault, epissoad, as'sumption» ‹assault, episode, assumption›.
@@ -170,7 +170,7 @@ The consonants are written as follows:
     consonants /f, k, p, t, T/, e.g. «less, miss, evidenss» ‹...evidence›
   * «s» is used anywhere else, e.g. «sun, desk, chips, up'sets» ‹...upsets›
   * «s» is also used in the prefixes «dis, mis» regardless of which letter
-    follows, e.g. «disa'gree, disen'chantment, misin'turpret,
+    follows, e.g. «disa'gree, disen'chantment, misin'turprit,
     misunder'stand» ‹disagree, disenchantment, misinterpret, misunderstand›
 
 * The sound /z/ is written as «s» or «z», depending on context:
@@ -188,12 +188,12 @@ The schwa /@/:
 * The schwa is an unstressed and neutral vowel that occurs frequently in
   English words. Lytspel generally writes it as «e» or «u».
 * «u» is used whenever the traditional spelling contains this vowel, e.g.
-  «album, nurvuss, sus'pend» ‹...nervous, suspend›.
+  «album, nurvuss, su'spend» ‹...nervous, suspend›.
 * «e» is used otherwise, e.g. «camel, problem, hiden, sentrel» ‹...hidden,
   central›.
 * This means that Lytspel doesn't distinguish between unstressed /V/ as in
-  «funda'mentl» ‹fundamental› or /E/ as in «index» and the schwa /@/.
-  However, since the unstressed form of these vowels sounds quite similar
+  «funde'mentl» ‹fundamental› or /E/ as in «index» and the schwa /@/.
+  However, since the unstressed forms of these vowels sound quite similar
   to the schwa and there is often no agreement between speakers whether to
   use one or the other, this shouldn't hurt.
 * A schwa immediately preceding the primarily stressed syllable can also be
@@ -216,7 +216,7 @@ The schwa /@/:
   * Final /s@l/ is written «ssl», e.g. «counssl, mussl» ‹council, muscle›
   * Final /z@l/ is written «sl», e.g. «pro'poasl, pusl» ‹proposal, puzzle›
   * The schwa is also omitted between any of /b, p, d, t, f, g, k/ and
-    final /l/, e.g. «flexibl, simpl, midl, hospitl, litl, bafl, singgl,
+    final /l/, e.g. «flexebl, simpl, midl, hospitl, litl, bafl, singgl,
     leegl, sta'tisticl, articl» ‹flexible, simple, middle, hospital,
     little, baffle, single, legal, statistical, article›. An exception is
     the suffix «ful», which is sometimes spoken with a schwa but remains
@@ -229,16 +229,16 @@ Before «r», the vowels are spelled as follows:
 
 * «air» /e@/ as in «pair, shair, vairi'aition» ‹...share, variation›
 * «ar» /Ar/ as in «dark, argyument» ‹...argument›
-* «arr» /ar/ as in «carri, em'barress» ‹...embarrass›
+* «arr» /ar/ as in «carri, em'barress» ‹carry, embarrass›
 * «eer» /i@/ as in «cheer, yeer» ‹...year›. Note: GA speakers often
   pronounce this in the same way as the «ir» /Ir/ in «mirer» ‹mirror›
-  ([mirror–mere
-  merger](https://en.wikipedia.org/wiki/English-language_vowel_changes_before_historic_/r/#Mirror.E2.80.93mere_merger)).
+  ([mirror–nearer
+  merger](https://en.wikipedia.org/wiki/English-language_vowel_changes_before_historic_/r/#Mirror%E2%80%93nearer_merger)).
 * «er» /@`/ as in «number, modern» (r-colored schwa). Note: In RP and other
   [non-rhotic accents](https://en.wikipedia.org/wiki/Rhoticity_in_English),
   this usually sounds like a normal schwa; likewise, «r» after other vowels
   is often inaudible or reduced to a schwa.
-* «err» /Er/ as in «merry, errer» ‹...error›
+* «err» /Er/ as in «merri, errer» ‹merry, error›
 * «ir» /Ir/ as in «mirer, iritait» ‹mirror, irritate›
 * «oar» /or/ as in «poart, ig'noar, keeboard» ‹port, ignore, keyboard›
 * «or» /O:r/ as in «north, order, iuniform» ‹...uniform›. Note: Most RP
@@ -253,10 +253,9 @@ Before «r», the vowels are spelled as follows:
 * The spelling «uer» is used in words that are typically spoken with /ju:r/
   or /jUr/ in RP, with /Ur/ in GA, e.g. «duering, nuerel» ‹during, neural›
 * «our» /aUr/ as in «flour, our» ‹flour, our *or* hour›
-* «ur» /3:/ as in «turn, purfect, furst, con'surn, obzur'vaition»
-  ‹...perfect, first, concern, observation›. This sound only occurs before
-  «r» and can be considered a stronger (and often stressed) variant of the
-  schwa.
+* «ur» /3:/ as in «turn, furst, con'surn, obzur'vaition» ‹...first,
+  concern, observation›. This sound only occurs before «r» and can be
+  considered a stronger (and often stressed) variant of the schwa.
 * «urr» /Vr/ as in «hurri, current» ‹hurry...›
 * «yr» is spoken /aI@`/ at the end of words (e.g. «fyr, in'spyr» ‹fire,
   inspire›), /aIr/ elsewhere (e.g. «vyruss, yreni, spyrel» ‹virus, irony,
@@ -268,7 +267,7 @@ vowels:
 * /eI/ is spelled «ay» at the end of words and before other vowels (instead
   of «ai»), e.g. «play, holiday, layer, cayoss» ‹...chaos›.
 * /aI/ is spelled «ai» before other vowels (instead of «y»), e.g.
-  «dai'ameter, quaiet, vaielenss, aiern, haierarki, Ha'waii» ‹diameter,
+  «dai'amiter, quaiet, vaielenss, aiern, haierarki, Ha'waii» ‹diameter,
   quiet, violence, iron, hierarchy, Hawaii›. This prevents confusion with
   the consonant /j/ (as in «yet») which is also spelled «y» but only occurs
   before vowels. There is no risk of confusion with /eI/ (as in «aim,
@@ -277,8 +276,8 @@ vowels:
   word, e.g. «raidiai» ‹radii›.
 * /O:/ is spelled «aw» at the end of words and before other vowels (instead
   of «au»), e.g. «law, drawing».
-* Final /E/ is spelled «eh» (instead of «e»), e.g. «eh, Yaaweh
-  ‹...Yahweh›».
+* Final /E/ is spelled «eh» (instead of «e»), e.g. «eh, Yaaweh»
+  ‹...Yahweh›.
 * Unstressed /i:/ is spelled «i» at the end of words and before other
   vowels (instead of «ee»), e.g. «fansi, ne'ceciti, vidio, cri'aition»
   ‹fancy, necessity, video, creation›. This means that Lytspel cannot
@@ -291,7 +290,7 @@ vowels:
   wi, mi» ‹he, she, we, me›. And it's used at the end of prefixes such as
   «anti, semi» (spoken with /i:/ by many speakers, with /aI/ by others) as
   well as «di, pri, ri» ‹de, pre, re› (even if the prefix is stressed),
-  e.g. «anti'aircraft, anti'soashel; semi'fynel, semiauto'matic; di'graid,
+  e.g. «anti'aircraft, anti'soashel; semi'fynel, semiaute'matic; di'graid,
   di'bug; prima'choor, pri'requisit; ri'act, ripro'duess» ‹antiaircraft,
   antisocial; semifinal, semiautomatic; degrade, debug; premature,
   prerequisite; react, reproduce›.
@@ -307,7 +306,7 @@ vowels:
   immuno, geo, chemo, macro, micro, neo, pneumo, neuro, paleo, socio,
   spectro, pseudo, thermo, iso›, e.g. «baio'kemistri, ethno'sentric,
   hetero'secshual, imyunodi'fishenssi, jio'fisicl, keemo'therrepi,
-  mycrowaiv, nio'classic, nuero'surjeri, suudosaienss, thurmody'namics»
+  mycrowaiv, nio'classic, nuero'surjeri, suudo'saienss, thurmody'namics»
   ‹biochemistry, ethnocentric, heterosexual, immunodeficiency, geophysical,
   chemotherapy, microwave, neoclassic, neurosurgery, pseudoscience,
   thermodynamics›.
@@ -315,11 +314,11 @@ vowels:
   of «oi»), e.g. «boy, en'joy, royel» ‹...enjoy, royal›.
 * /aU/ is spelled «ow» at the end of words and before other vowels (instead
   of «ou»), e.g. «now, power, a'low» ‹...allow›.
+* Final /V/ is spelled «uh» (instead of «u»), e.g. «huh».
 * /u:/ is spelled «u» at the end of words and before other vowels (instead
   of «uu»), e.g. «clu, ishu, sichu'aition» ‹clue, issue, situation›. This
   poses little risk of confusion, as /V/ (as in «bus») occurs rarely or
   never before other vowels.
-* Final /V/ is spelled «uh» (instead of «u»), e.g. «huh».
 * Final schwa /@/ is spelled «a» (instead of «e» or «u»), e.g. «extra,
   daita» ‹...data›. (Should unstressed /a/ (as in «cat») occur at the end
   of words, it could be written «ah», but in practice it never seems to
@@ -330,7 +329,7 @@ vowels:
 
 Spellings involving several sounds:
 
-* The vowel combination /i:@/ or /I@/ is written «ia», e.g. «mis'teeriass,
+* The vowel combination /i:@/ or /I@/ is written «ia», e.g. «mi'steeriass,
   ma'teerial, meediam, obviass, vairiabl, airia, i'meediat» ‹mysterious,
   material, medium, obvious, variable, area, immediate›. In a few words,
   «ia» instead represents /i:a/, e.g. «en'thuesiasm, zoadiac» ‹enthusiasm,
@@ -351,18 +350,18 @@ Spellings involving several sounds:
 * The consonant combination /kw/ is written «qu», e.g. «quit, ri'quest»
   ‹...request›; the letter «q» only occurs in this combination.
 * The consonant combination /ks/ is written «x», e.g. «mix, next,
-  ex'plicit, axident» ‹...explicit, accident›.
+  ix'plicit, axident» ‹...explicit, accident›.
 * Since «ng» represents the single sound /N/ (as in «long»), the sound
   combination /ng/ is written «n'g» if a stress marker is needed in this
   position (e.g. «en'gaij, in'grain» ‹engage, ingrain›), «nng» otherwise
   (e.g. «cairnngorm, martenngail» ‹cairngorm, martingale›).
 * Before /k/, «n» is pronounced /N/ rather then /n/ (e.g. «bank, tranquil,
   dis'tinct, bron'kytiss» ‹...distinct, bronchitis›), except if «n» and /k/
-  belong to different parts of a compound (e.g. «mankynd, reincoat»
-  ‹mankind, raincoat›) or if a word starts with any of «con, en, in, non,
-  un» followed by a /k/ sound (e.g. «con'cluusion, en'counter,
-  in'compitent, increess *or* in'creess, noncon'foarmist, un'cleer»
-  ‹conclusion, encounter, incompetent, increase, nonconformist, unclear›).
+  belong to different parts of a compound (e.g. «mankynd, raincoat»
+  ‹mankind...›) or if a word starts with any of «con, en, in, non, un»
+  followed by a /k/ sound (e.g. «con'cluusion, en'counter, in'compitent,
+  increess *or* in'creess, noncon'formist, un'cleer» ‹conclusion,
+  encounter, incompetent, increase, nonconformist, unclear›).
 * If /Nk/ is spoken where the preceding rule suggests /nk/, the /N/ is
   written «ng», e.g. «congker, ingk, ingcling, ungcl, ungction» ‹conker
   *or* conquer, ink, inkling, uncle, unction›. Some words starting with
@@ -386,8 +385,8 @@ end of words:
   ‹...confusion, equation›.
 * The «tion» and «sion» spellings aren't used in words that are derived by
   appending «n» or «en» to another word, e.g. «ashen, freshen, Rushan,
-  Purzhan» ‹ashen, freshen, Russian, Persian› from «ash, fresh, Rusha,
-  Purzha» ‹ash, fresh, Russia, Persia›.
+  Mela'neezhan» ‹ashen, freshen, Russian, Melanesian› from «ash, fresh,
+  Rusha, Mela'neezha» ‹ash, fresh, Russia, Melanesia›.
 * The «tion» and «sion» spellings are preserved in derived words (e.g.
   «ri'laitionship, tra'ditionel, o'caisionel» ‹relationship, traditional,
   occasional›), even if the derived form is irregular (e.g. «nationel»
@@ -404,11 +403,11 @@ single sound or an r-colored vowel):
 * But the trigraphs «iai, uai» are read as «i» /i:/ or «u» /u:/ followed by
   «ai» (spoken /aI/ at the end of words, /eI/ otherwise), e.g.
   «a'preeshiait, flucchuait, raidiai» ‹appreciate, fluctuate, radii›.
-* «oic» at the end of words is always spoken /oUIk/ (two separate vowels),
-  e.g. «hi'roic, stoic» ‹heroic...›.
 * Since final /OI/ is spelled «oy», final «oi» unambiguously represents the
   two vowels /oUi:/. This combination occasionally occurs in derived words,
   e.g. «shoi» ‹showy› from «sho» ‹show›.
+* «oic» at the end of words is always spoken /oUIk/ (two separate vowels),
+  e.g. «hi'roic, stoic» ‹heroic...›.
 * Double «rr» always forms a trigraph with the vowel to its left, e.g.
   «Februerri» ‹February› is read as «F-e-b-r-u-err-i».
 * In cases where the previous rules would lead to a misreading, Lytspel
@@ -454,7 +453,7 @@ Rules for derived and related words:
 * In front of suffixes consisting in a single consonant («d, n, s»), final
   «i» (unstressed /i:/) becomes «ie» to mark it as long, e.g. «studied»
   from «studi» ‹study›, «vairies» ‹varies› from «vairi» ‹vary›. Otherwise
-  forms such as «\*studid» would look like «splendid», but be spoken quite
+  forms such as "studid" would look like «splendid», but be spoken quite
   differently.
 * To prevent misreadings, final «o» /oU/ is changed back to «oa» and final
   «u» /u:/ to «uu» in front of the same suffixes, e.g. «foload» ‹followed›
@@ -472,7 +471,7 @@ Rules for derived and related words:
 * As noted above, the schwa is omitted between certain consonants and final
   «l» or «m». To prevent misreadings, the omitted schwa is restored as «e»
   in front of the suffixes «ait/et, erri, ism, ist, oid, uss, ys» ‹ate,
-  ary, ..., ous, ise/ize› as well as before stressed «ee», e.g.
+  ary..., ous, ise/ize› as well as before stressed «ee», e.g.
   «en'capselait» ‹encapsulate› from «capssl» ‹capsule›, «piupelerri»
   ‹pupillary› from «piupl» ‹pupil›, «vandelism» ‹vandalism› from «vandl»
   ‹vandal›, «iuni'vurselism» ‹universalism› from «iuni'vurssl» ‹universal›,
@@ -490,7 +489,7 @@ Rules for derived and related words:
     «me'canic» ‹mechanic›
   * «k» representing /k/: «weeks, weekli» ‹...weekly› from «week»
   * «ss» representing /s/: «classic» from «class»; «con'vinssd,
-    con'vinssing» ‹convinced, convincing› from «con'vinss» ‹convince»;
+    con'vinssing» ‹convinced, convincing› from «con'vinss» ‹convince›;
     «a'nounssment» ‹announcement› from «a'nounss» ‹announce›; «prinssess»
     ‹princess› from «prinss» ‹prince›
   * «a» representing /@/: «extras» from «extra», «A'merrican» ‹American›
@@ -499,14 +498,14 @@ Rules for derived and related words:
   * «i» representing unstressed /i:/: «fansiful, fansiing» ‹fanciful,
     fancying› from «fansi» ‹fancy›; «hapiness» ‹happiness› from «hapi»
     ‹happy›
-  * «oy» representing /OI/: «de'stroys, de'stroyd, de'stroyer» ‹destroys,
-    destroyed, destroyer› from «de'stroy» ‹destroy›
+  * «oy» representing /OI/: «di'stroys, di'stroyd, di'stroyer» ‹destroys,
+    destroyed, destroyer› from «di'stroy» ‹destroy›
   * «y» representing /aI/ (unchanged even before vowels): «hyer» ‹higher›
     from «hy» ‹high›; «su'plyer» ‹supplier› from «su'ply» ‹supply›
   * «yr» representing /aI@`/: «in'spyrd» ‹inspired› from «in'spyr»
     ‹inspire›
 
-* They are also preserved in compounds, e.g. «bakground, extrate'restriel,
+* They are also preserved in compounds, e.g. «bakground, extrate'restrial,
   fyrwurks›» ‹background, extraterrestrial, fireworks›.
 * If the pronunciation of the base word itself changes (beyond mere shifts
   of stress), the spelling reflects this, e.g. «creecher» ‹creature› from
@@ -515,13 +514,13 @@ Rules for derived and related words:
   ‹actual› from «act»; «as'sumption» ‹assumption› from «as'suum» ‹assume›;
   «men'taliti» ‹mentality› from «mentl» ‹mental›.
 * The past tense of regular verbs is formed by appending «ed» if /@d/ is
-  spoken (e.g. «se'lected, waisted» ‹selected, wasted›), «d» if /d/ or /t/
+  spoken (e.g. «si'lected, waisted» ‹selected, wasted›), «d» if /d/ or /t/
   is spoken (e.g. «ri'veeld, con'siderd, payd, fixd, con'vinssd» ‹revealed,
   considered, paid, fixed, convinced›). The past tense of irregular verbs
   is spelled as it's spoken, e.g. «kept» from «keep».
 * While in tradspell a noun and a related verb are often written the same
   even if spoken differently, in Lytspel the spelling reflects the actual
-  pronunciation, e.g. «a suspect, to sus'pect; a record, to ri'cord; a
+  pronunciation, e.g. «a suspect, to su'spect; a record, to ri'cord; a
   houss, to hous» ‹a suspect, to suspect; a record, to record; a house, to
   house›.
 * Normally Lytspel doesn't use double consonants, except in those cases
@@ -529,7 +528,7 @@ Rules for derived and related words:
   «ss» spoken /s/ in certain contexts where «s» is spoken /z/). However,
   double consonants can also occur if they belong to different parts of a
   compound or if one belongs to a prefix or suffix and the other to the
-  base word, e.g. «toatelli, suuper'reejennel, un'nececeri» ‹totally,
+  base word, e.g. «toatlli, suuper'reejenel, un'nececerri» ‹totally,
   superregional, unnecessary›.
 * Unstressed final /Iks/ traditionally written ‹ics› is treated as if it is
   a plural (and hence written «ics») even if the corresponding singular
@@ -541,7 +540,7 @@ Rules for derived and related words:
   in «cl» ‹cal› (e.g. «practiclli» ‹practically› from «practicl»
   ‹practical›), all forms derived by appending ‹ally› (pronounced /@li:/ or
   /li:/) to words ending in «c« are written «clli», e.g. «baissiclli»
-  ‹basically› from «baissic» ‹basic› «spe'cificlli» ‹specifically› from
+  ‹basically› from «baissic» ‹basic›, «spe'cificlli» ‹specifically› from
   «spe'cific» ‹specific›.
 
 Irregular words:
@@ -562,8 +561,8 @@ Uses of the apostrophe:
 * Lytspel uses an apostrophe to mark the syllable that carries the main
   stress (provided it's not the first one). Additionally, as in tradspell,
   apostrophes are used to mark genitives and contractions.
-* «'s» is for the genitive (as in tradspell) and for contractions with «is,
-  has», e.g. «Linda's sister, dhair's» ‹...there's›.
+* «'s» is used for the genitive (as in tradspell) and for contractions with
+  «is, has», e.g. «Linda's sister, dhair's» ‹...there's›.
 * «'d» is used for contractions with «had, wood, shood» ‹...would, should›,
   e.g. «it'd».
 * «'l» ‹'ll› is used for contractions with «wil, shal» ‹will, shall›, e.g.
@@ -578,7 +577,7 @@ Uses of the apostrophe:
   «n» is omitted: «can't» from «can not». In a few cases, the first word
   may be further contracted: «ain't» for one of «am/is/ar/has/hav not»
   ‹am/is/are/has/have not›, «han't» for «has/hav not» ‹has/have not›,
-  «shan't» for «shal not» ‹shall not›, «woan't» ‹won't» for «wil not». The
+  «shan't» for «shal not» ‹shall not›, «woan't» ‹won't› for «wil not». The
   pronunciations of «doan't» ‹don't› and «musn't» ‹mustn't› differ from the
   uncontracted forms, and the spelling reflects this.
 * In all these cases, the genitive or contraction marker is inserted after
@@ -588,8 +587,8 @@ Uses of the apostrophe:
   clock›.
 * This also applies to Irish names starting with «O'», e.g. «O'Coner,
   O'Neel» ‹O'Connor, O'Neil›. The capitalized «O'» is spoken /oU/ (as in
-  «boat»). Of course, proper names can be spelled as they please, so many
-  names won't be regularized according to the Lytspel rules.
+  «boat»). Of course, proper names can be spelled as their owners prefer
+  it, so many names won't be regularized according to the Lytspel rules.
 * In the nonstandard expression ‹y'all›, short for «iu all» ‹you all›, the
   contraction marker is placed in front of the stressed vowel, marking the
   original word boundary.
@@ -603,7 +602,7 @@ Uses of the apostrophe:
   nor'easter› from «wair'ever, wairso'ever, north'eester» ‹wherever,
   wheresoever, northeaster›).
 
-Inner capitalization instead of stress marker:
+Inner capitalization instead of a stress marker:
 
 * Various Scottish and Irish names start with ‹Mc› or ‹Mac› /m@k/ followed
   by a capitalized and stressed second syllable. Lytspel recommends writing
@@ -617,8 +616,8 @@ Inner capitalization instead of stress marker:
 
 ## English as an International Language
 
-As an international language, English is currently written and spoken quite
-differently in various parts of the world.
+As an international language, English is currently written and spoken
+somewhat differently in various parts of the world.
 
 On the one hand, by using a phonetic spelling, Lytspel eliminates most
 differences that traditionally exist between written British (BE) and
@@ -641,14 +640,14 @@ RP (since the English language originates in England) and GA (since the
 United States are the country with the highest number of native English
 speakers).
 
-Various details of the Lytspel spellings have already been motivated above
-as representing sound distinctions that exist either in RP or in GA, and
-the «ue» and «uer» spellings are a compromise used in words spoken
-differently in RP and GA. But such compromises are not almost possible
-without making the written language extremely complex and unwieldy. In
-other cases, Lytspel therefore resolves differences between RP and GA by
-choosing one spelling -- often the one that keeps the written language more
-similar to tradspell or else the shorter one:
+Various details of the Lytspel spellings have already been motivated as
+representing sound distinctions that exist either in RP or in GA, and the
+«ue» and «uer» spellings are a compromise used in words spoken differently
+in RP and GA. But such compromises are not almost possible without making
+the written language extremely complex and unwieldy. In other cases,
+Lytspel therefore resolves differences between RP and GA by choosing one
+spelling -- often the one that keeps the written language more similar to
+tradspell or else the shorter one:
 
 * /a/ («a») is preferred if a vowel is commonly spoken as either /a/ or
   /A/, e.g. «last, guulash» ‹...goulash›.
@@ -668,8 +667,8 @@ similar to tradspell or else the shorter one:
   /aI/, e.g. «cristelin, di'rect, orgeni'saition» ‹crystalline, direct,
   organization›.
 * /I/ is also preferred if a vowel is commonly spoken as either /I/ or /i:/
-  (e.g. «afro'disiac» ‹aphrodisiac›), unless the original representation of
-  the vowel is ‹ee› (e.g. «been»).
+  (e.g. «afro'disiac» ‹aphrodisiac›), unless its original representation is
+  ‹ee› (e.g. «been»).
 * /i:/ («ee», «i» before vowels) is preferred if a vowel is commonly spoken
   as either /i:/ or /eI/, e.g. «beeta, ga'seebo, Izrial» ‹beta, gazebo,
   Israel›.
@@ -726,9 +725,9 @@ to the pronunciation in the original language, it is often preserved, e.g.
 «ca'feen, expoa'say» ‹caffeine, exposé›.
 
 Other differences are usually unique to just one or very few words. In such
-cases, Lytspel generally also represents the pronunciation that is more
-similar to the traditional written form, e.g. «cordial, figer, shediul»
-‹...figure, schedule› (rather than "corjel, figyer, skejuul").
+cases, Lytspel generally prefers the pronunciation that is more similar to
+the traditional written form, e.g. «cordial, figer, shediul» ‹...figure,
+schedule› (rather than "corjel, figyer, skejuul").
 
 In a few cases, one pronunciation is preferred because it is more similar
 to that of a closely related word, e.g. «pryveci» ‹privacy› from «pryvet»
@@ -780,8 +779,8 @@ to spell it) and may be considered a part of the public domain.
 **CHANGELOG.md** contains a compact list of the changes made between the
 various released versions of the program (and dictionary).
 
-If you want to install and use the program locally (rather then the web
-frontend), see **INSTALL-USE.md**.
+If you want to install and use the program locally (rather then using the
+web frontend), see **INSTALL-USE.md**.
 
 If you want to experiment with the program suite locally, in order to add
 some functionality, fix bugs, or modify spellings, see **devnotes.md**.
