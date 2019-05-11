@@ -5,7 +5,7 @@ with open('README.md', 'r') as fh:
 
 setuptools.setup(
     name='lytspel',
-    version='0.9.2',
+    version='0.9.3',
     author='Christian Siefkes',
     author_email='christian@siefkes.net',
     description='A Simple Phonetic Respelling for the English Language',

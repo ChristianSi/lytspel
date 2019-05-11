@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+
+## [0.9.3] -- 2019-05-11
+
 * Fixed some dictionary entries and added some others.
 * Finalized initial version of web app.
 * Finished README file, esp. documenting how pronunciation differences
