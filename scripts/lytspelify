@@ -1483,7 +1483,16 @@ sub convert_row {
         } elsif ($tradspell =~ /^[A-Z]+$/
             && $tradspell !~ /^(COBOL|FORTRAN|IMAX|UNESCO|UNICEF)$/)
         {
-            $converted = '';  # Skip most all-caps words (abbreviations)
+            # Most all-caps words (abbreviations) are either skipped or added unchanged
+            if (
+                $tradspell =~ /^(AOL|ASCII|BBQ|CIA|CNN|DNA|FIFO|GATT|IL|ILO|IOU|KKK|LIFO|MC|MIT
+                    |MPEG|NAFTA|NASA|NASCAR|NASDAQ|NATO|OK|OPEC|OT|RAF|TNT|TV|USA|USS|WY)$/x
+                )
+            {
+                $converted = $tradspell;
+            } else {
+                $converted = '';
+            }
         } else {
             my ($rp, $ga, $phoneng) = unify_sounds $colref->[3], $colref->[4], $colref->[5],
                 $tradspell;
