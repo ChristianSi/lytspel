@@ -15,7 +15,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type='text/markdown',
     license='ISC',
-    url='http://lytspel.org',
+    url='https://www.lytspel.org/',
     packages=setuptools.find_packages(),
     install_requires=[
         'lxml >= 4.0.0',
