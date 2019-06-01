@@ -129,6 +129,7 @@ dainties
 damnit
 datatypes
 deallocate
+dears
 debauches
 Debian
 debuggable
@@ -189,6 +190,9 @@ epaulettes
 epigrams
 errable
 esthetic
+etherized
+etherizes
+etherizing
 exampled
 executable
 executables
@@ -283,6 +287,7 @@ incarnated
 incarnates
 incarnating
 incompatibilities
+indecisions
 infectiousness
 infelicities
 initialization
@@ -322,6 +327,7 @@ lanuginous
 laputa
 larn
 latencies
+lettuces
 lictors
 localhost
 logfile
