@@ -3,6 +3,11 @@
 ## [Unreleased]
 
 
+## [0.9.4] -- 2019-06-01
+
+* Added some missing words, especially all-caps abbreviations.
+
+
 ## [0.9.3] -- 2019-05-11
 
 * Fixed some dictionary entries and added some others.
