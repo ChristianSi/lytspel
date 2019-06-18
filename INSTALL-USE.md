@@ -2,7 +2,7 @@
 
 ## Installation
 
-To install the Lytspel converter, two steps are needed:
+To install the Lytspel converter locally, two steps are needed:
 
 1. Make sure you have `pip3` (sometimes just called `pip`), the Python
    package installer for Python 3, on your system.

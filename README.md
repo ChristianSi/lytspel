@@ -22,7 +22,8 @@ English and their written representations, it also indicates which syllable
 in each word is the stressed one.
 
 In addition to the reform proposal, there is a comprehensive dictionary and
-a converter that translates traditional spelling into Lytspel.
+a [converter](https://www.lytspel.org/) that translates traditional
+spelling into Lytspel.
 
 Here are two example paragraphs written in Lytspel. The first is [The North
 Wind and the
@@ -614,7 +615,7 @@ Inner capitalization instead of a stress marker:
   capitalization, e.g. «Makintosh» ‹Macintosh *or* McIntosh›.
 
 
-## English as an International Language
+## International Pronunciation Differences
 
 As an international language, English is currently written and spoken
 somewhat differently in various parts of the world.
@@ -770,6 +771,11 @@ listed in parentheses):
 
 
 ## Other Documentation
+
+**docs/lytspel-on-one-page.md|odt|pdf**: A compact, single-page description
+of the most important rules. The PDF is exported from the ODT
+(OpenDocument/LibreOffice) document, while the Markdown (md) version is
+maintained independently.
 
 **LICENSE.txt** contains the license used for the Lytspel program suite (a
 permissive license known as "ISC license"). The proposed spellings do not
