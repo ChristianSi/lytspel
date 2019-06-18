@@ -22,7 +22,7 @@ setuptools.setup(
         'setuptools >= 34.3.3',
         'spacy >= 2.0.0',
     ],
-    python_requires='>=3.4',
+    python_requires='>=3.5',
     package_data={'lytspel': ['lytspel-dict.csv']},
     classifiers=[
         'Development Status :: 4 - Beta',
