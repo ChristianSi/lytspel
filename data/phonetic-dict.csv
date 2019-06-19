@@ -8087,10 +8087,13 @@ barchan,,,b'AtS@n,b'ArtS@n,bArk'An
 Barclay,,,b'AkleI,b'ArkleI,b'QrkleI
 bard,,,b'Ad,b'Ard,
 barde,,,b'Ad,b'Ard,
+barded,,,b'AdId,b'ArdI#d,
 Bardeen,,,b'Adi:n,b'Ardi:n,bArd'i:n
+barding,,,b'AdIN,b'ArdIN,
 bardo,,,b'AdoU,b'ArdoU,b'QrdoU
 bardolater,,,b'Ad@leIt@,b'Ard@leIt@`,bArd'Ql@t@`
 bardolatry,,,bAd'Ql@trI,bArd'Al@tri:,bArd'Ql@tri:
+bards,,,b'Adz,b'Ardz,
 bardy,,,b'Adi:,b'Ardi:,
 bare,,,b'e@,b'Er,
 bareback,,,b'e@bak,b'Erbak,
@@ -12045,6 +12048,7 @@ brawn,,,br'O:n,,
 brawny,,,br'O:ni:,,
 braxy,,,br'eIksi:,,br'aksi:
 bray,,,br'eI,,
+brayed,,,br'eId,,
 brayer,,,br'eI@,br'eI@`,
 Braz,,,br'az,,
 braza,,,br'Az@,,br'ATA
@@ -16090,6 +16094,7 @@ Champollion,,,tSamp'Qli:@n,tSamp'Ali:@n,SAnpQlj'QN
 champs,,,tS'amps,,
 Chan,,,tS'an,,
 chance,,,tS'ans,,
+chanced,,,tS'anst,,
 chanceful,,,tS'ansf@l,,
 chancel,,,tS'ans@l,,
 chancellery,,,tS'ansIl@ri:,tS'ansIl@`ri:,tS'ans@l@`i:
@@ -22876,6 +22881,7 @@ crossbirth,,,kr'Qsb3:T,kr'O:sb3:T,
 crossbones,,,kr'QsboUnz,kr'O:sboUnz,
 crossbow,,,kr'QsboU,kr'O:sboU,
 crossbowman,,,kr'QsboUm@n,kr'O:sboUm@n,kr'Qsb'oUm@n
+crossbowmen,,,kr'QsboUmEn,kr'O:sboUmEn,
 crossbows,,,kr'QsboUz,kr'O:sboUz,
 crossbred,,,kr'QsbrEd,kr'O:sbrEd,
 crossbreed,,,kr'Qsbri:d,kr'O:sbri:d,kr'QsbrEd
@@ -27218,6 +27224,9 @@ dinosaurian,,,dIn@s'O:ri:@n,,daIn'VsQri:@n
 dinosaurs,,,d'aIn@sO:z,d'aIn@sO:rz,
 dinothere,,,d'InVD@,d'InVD@`,d'aIn@Ti:r
 dint,,,d'Int,,
+dinted,,,d'IntId,d'IntI#d,
+dinting,,,d'IntIN,,
+dints,,,d'Ints,,
 diocesan,,,dI'oUss@n,,daI'Qs@s@n
 diocese,,,dIoUs'i:z,,d'aI@si:s
 dioceses,,,dIoUs'i:zIz,dIoUs'i:zI#z,d'aI@si:z
@@ -31188,6 +31197,7 @@ Elsa,,,'Els@,,
 else,,,'Els,,
 elsewhere,,,'Elswe@,'ElswEr,
 elsewhither,,,'ElswID@,'ElswID@`,
+elsewise,,,'ElswaIz,,
 Elsie,,,'Elsi:,,
 Elsinore,,,'ElsInO:,'ElsInor,'Els@nO:r
 Elton,,,'Elt@n,,
@@ -35894,6 +35904,7 @@ Feynman,,,f'eInm@n,,
 fez,,,f'Ez,,
 Fezzan,,,f'Ez@n,,fEz'An
 ff,,,Ef'Ef,,
+fi,,,f'aI,,
 fiacre,,,f'aI@k@,f'aI@k@`,fi:'Ak@`
 fiance,,,fI'QnseI,fI'AnseI,fi:Ans'eI
 fiancee,,,fI'QnseI,fI'AnseI,fi:'ansi:
@@ -46189,6 +46200,7 @@ hoyle,,,h'OIl,,
 Hrvatska,,,eItS'Av'atsk@,eItS'Arv'atsk@,krv'AtskA
 Hsining,,,'eItSs'aInIN,,S'i:nIN
 Hsinking,,,'eItSs'INkIN,,S'IndZ'IN
+HTML,,,eItSti:Em'El,,
 Hualapai,,,hj'u:a#lapaI,,halAp'Vj
 Huambo,,,hju:'amboU,,w'AmbQ
 Huang,,,hj'u:aN,,w'aN
@@ -52219,6 +52231,7 @@ journeys,,,dZ'3:nIz,,dZ'3:ni:z
 journeywork,,,dZ'3:nIw3:k,,dZ'3:ni:w3:k
 joust,,,dZ'aUst,,
 jousting,,,dZ'aUstIN,,
+jousts,,,dZ'aUsts,,
 Jove,,,dZ'oUv,,
 jovial,,,dZ'oUvI@l,,dZ'oUvi:@l
 joviality,,,dZ'oUvI'alIti:,,dZoUvi:'alIti:
@@ -53489,7 +53502,11 @@ knavish,,,n'eIvIS,,
 knavishly,,,n'eIvISli:,,
 knavishness,,,n'eIvISn@s,,n'eIvISnEs
 knead,,,n'i:d,,
+kneaded,,,n'i:dId,n'i:dI#d,
+kneader,,,n'i:d@,n'i:d@`,
+kneaders,,,n'i:d@z,n'i:d@`z,
 kneading,,,n'i:dIN,,
+kneads,,,n'i:dz,,
 knee,,,n'i:,,
 kneecap,,,n'i:kap,,
 kneecaps,,,n'i:kaps,,
@@ -53733,6 +53750,7 @@ Krak,,,kr'ak,,kr'Ak
 Krakatoa,,,kraka#t'oU@,,krAk@t'oU@
 Krakau,,,kr'akaU,,kr'AkaU
 kraken,,,kr'eIk@n,,kr'Ak@n
+krakens,,,kr'eIk@nz,,
 Krakow,,,kr'akaU,,kr'AkQf
 kram,,,kr'am,,
 Kramatorsk,,,kr'ama#tO:sk,kr'ama#torsk,krAmAt'O:rsk
@@ -54996,6 +55014,7 @@ leapfrogged,,,l'i:pfrQgd,l'i:pfrAgd,l'i:pfrO:gd
 leapfrogging,,,l'i:pfrQgIN,l'i:pfrAgIN,l'i:pfrO:gIN
 leaping,,,l'i:pIN,,
 leaps,,,l'i:ps,,
+leapt,,,l'Ept,,
 lear,,,l'i:@,l'Ir,l'i:r
 Learjet,,,l'i:@dZEt,l'IrdZEt,
 learn,,,l'3:n,,
@@ -56822,6 +56841,8 @@ longspurs,,,l'QNspU@z,l'ANspUrz,l'O:Nsp3:z
 longstanding,,,l'QNstandIN,l'ANstandIN,l'O:NstandIN
 longstop,,,l'QNstQp,l'ANstAp,
 Longstreet,,,l'QNstri:t,l'ANstri:t,l'O:Nstri:t
+longsword,,,l'QNsO:d,l'ANsord,
+longswords,,,l'QNsO:dz,l'ANsordz,
 longterm,,,l'QNt3:m,l'ANt3:m,l'O:Nt3:m
 longtime,,,l'QNtaIm,l'ANtaIm,l'O:NtaIm
 longueur,,,l'QN3:,l'AN3:,lQNg'3:
@@ -56916,6 +56937,7 @@ lord,,,l'O:d,l'O:rd,
 lording,,,l'O:dIN,l'O:rdIN,
 lordless,,,l'O:dl@s,l'O:rdl@s,l'O:rdlIs
 lordling,,,l'O:dlIN,l'O:rdlIN,
+lordlings,,,l'O:dlINz,l'O:rdlINz,
 lordly,,,l'O:dli:,l'O:rdli:,
 lordosis,,,lO:d'oUsIs,lO:rd'oUsIs,
 lordotic,,,lO:d'QtIk,lO:rd'AtIk,lO:rd'QtIk
@@ -57358,7 +57380,9 @@ lungyi,,,l'VndZIi:,,l'UNgi:
 Lunik,,,lj'u:nIk,,l'u:nIk
 lunisolar,,,lju:nIs'oUl@,lju:nIs'oUl@`,lu:nIs'oUl@`
 lunitidal,,,lj'u:nItId@l,,lu:nIt'aId@l
+lunk,,,l'VNk,,
 lunkhead,,,l'VNkhEd,,
+lunks,,,l'VNks,,
 lunt,,,l'Vnt,,
 lunula,,,l'VnjUl@,,l'u:nj@l@
 lunulae,,lunule
@@ -66634,7 +66658,7 @@ opines,,,oUp'aInz,,
 opinicus,,,@p'InIk@s,,oUp'In@k@s
 opining,,,oUp'aInIN,,
 opinion,,,@p'Ini:@n,,@p'Inj@n
-opinionated,,,@p'Ini:@neItId,,@p'Inj@neItId
+opinionated,,,@p'Ini:@neItId,@p'Ini:@neItI#d,@p'Inj@neItId
 opinionative,,,@p'Ini:@n@tIv,,@p'Inj@neItIv
 opinioned,,,@p'Ini:@nd,,@p'Inj@nd
 opinions,,,@p'Ini:@nz,,@p'Inj@nz
@@ -69974,6 +69998,7 @@ peas,,,p'i:z,,
 peasant,,,p'Ez@nt,,
 peasantry,,,p'Ez@ntri:,,
 peasants,,,p'Ez@nts,,
+pease,,,p'i:z,,
 peasecod,,,p'i:skQd,p'i:skAd,p'i:zkQd
 peashooter,,,p'i:Su:t@,p'i:Su:t@`,
 peat,,,p'i:t,,
@@ -72269,6 +72294,8 @@ pisolitic,,,pIs@l'ItIk,,
 piss,,,p'Is,,
 Pissarro,,,pIs'aroU,,pIs'AroU
 pissed,,,p'Ist,,
+pisses,,,p'IsIz,p'IsI#z,
+pissing,,,p'IsIN,,
 pistache,,,p'IstaS,,pIst'aS
 pistachio,,,pIst'aSIoU,,pIst'aSi:oU
 pistachios,,,pIst'aSIoUz,,p@st'aSi:oUz
@@ -74885,6 +74912,7 @@ prince,,,pr'Ins,,
 princekin,,,pr'InskIn,,
 princelet,,,pr'Insl@t,,pr'InslIt
 princeling,,,pr'Ins@lIN,,pr'InslIN
+princelings,,,pr'Ins@lINz,,
 princely,,,pr'Insli:,,
 princes,,,pr'InsIz,pr'InsI#z,pr'Ins@z
 princess,,,pr'InsEs,,
@@ -86404,6 +86432,7 @@ sightseeing,,,s'aItsi:IN,,s'aIts'i:IN
 sightseer,,,saIts'i:@,saIts'Ir,s'aIts'i:@`
 sightseers,,,saIts'i:@z,saIts'Irz,s'aIts'i:@`z
 sightworthy,,,s'aItw3:Di:,,
+sigil,,,s'IdZIl,,
 sigillary,,,s'IgIl@ri:,s'IgIl@`ri:,s'IdZ@lEri:
 sigillate,,,s'IgIleIt,,s'IdZ@leIt
 sigillation,,,sIgIl'eIS@n,,sIdZ@l'eIS@n
@@ -89662,7 +89691,9 @@ squiredom,,,skw'aI@d@m,skw'aI@`d@m,
 squireen,,,skw'aI@ri:n,skw'aI@`ri:n,skwaIr'i:n
 squireling,,,skw'aI@lIN,skw'aI@`lIN,
 squires,,,skw'aI@z,skw'aI@`z,
+squiring,,,skw'aI@rIN,skw'aI@`rIN,
 squirm,,,skw'3:m,,
+squirmed,,,skw'3:md,,
 squirming,,,skw'3:mIN,,
 squirms,,,skw'3:mz,,
 squirmy,,,skw'3:mi:,,
@@ -89710,6 +89741,7 @@ stabilizes,,,st'eIbIlaIzIz,st'eIbIlaIzI#z,st'eIb@laIz@z
 stabilizing,,,st'eIbIlaIzIN,,st'eIb@laIzIN
 stable,,,st'eIb@l,,
 stableboy,,,st'eIb@lbOI,,
+stableboys,,,st'eIb@lbOIz,,
 stableman,,,st'eIb@lm@n,,
 stabler,,,st'eIbl@,st'eIbl@`,
 stables,,,st'eIb@lz,,
@@ -89769,6 +89801,7 @@ stagnate,,,stagn'eIt,,st'agneIt
 stagnated,,,stagn'eItId,stagn'eItI#d,st'agneItId
 stagnating,,,stagn'eItIN,,st'agneItIN
 stagnation,,,stagn'eIS@n,,
+stags,,,st'agz,,
 stagy,,,st'eIdZi:,,
 staid,,,st'eId,,
 staidly,,,st'eIdli:,,
@@ -90806,7 +90839,11 @@ storyteller,,,st'O:rItEl@,st'orItEl@`,st'O:ri:tEl@`
 storytellers,,,st'O:rItEl@z,st'orItEl@`z,st'O:ri:tEl@`z
 storytelling,,,st'O:rItElIN,,st'O:ri:tElIN
 stoss,,,st'Qs,st'As,st'oUs
+stot,,,st'Qt,st'At,
 stotinka,,,st'QtINk@,st'AtINk@,stQt'INkA
+stots,,,st'Qts,st'Ats,
+stotted,,,st'QtId,st'AtI#d,
+stotting,,,st'QtIN,st'AtIN,
 stound,,,st'aUnd,,
 stoup,,,st'u:p,,
 stoush,,,st'aUS,,
@@ -90968,6 +91005,8 @@ streaking,,,str'i:kIN,,
 streaks,,,str'i:ks,,
 streaky,,,str'i:ki:,,
 stream,,,str'i:m,,
+streambed,,,str'i:mbEd,,
+streambeds,,,str'i:mbEdz,,
 streamed,,,str'i:md,,
 streamer,,,str'i:m@,str'i:m@`,
 streamers,,,str'i:m@z,str'i:m@`z,
@@ -99289,6 +99328,7 @@ underlay,n,,Vnd@l'eI,Vnd@`l'eI,'Vnd@`leI
 underlay,v,,Vnd@l'eI,Vnd@`l'eI,
 underlayer,,,Vnd@l'eI@,Vnd@`l'eI@`,'Vnd@`leI@`
 underlayment,,,Vnd@l'eIm@nt,Vnd@`l'eIm@nt,
+underleaf,,,Vnd@l'i:f,Vnd@`l'i:f,
 underlease,,,Vnd@l'i:s,Vnd@`l'i:s,'Vnd@li:s
 underlet,,,Vnd@l'Et,Vnd@`l'Et,
 underlie,,,Vnd@l'aI,Vnd@`l'aI,
@@ -99405,6 +99445,8 @@ understates,,,Vnd@st'eIts,Vnd@`st'eIts,'Vnd@`steIts
 understating,,,Vnd@st'eItIN,Vnd@`st'eItIN,'Vnd@`steItIN
 understeer,n,,Vnd@st'i:@,Vnd@`st'Ir,'Vnd@sti:@`
 understeer,v,,Vnd@st'i:@,Vnd@`st'Ir,'Vnd@sti:@`
+understeward,,,Vnd@stj'u:@d,Vnd@`st'u:@`d,
+understewards,,,Vnd@stj'u:@dz,Vnd@`st'u:@`dz,
 understock,n,,Vnd@st'Qk,Vnd@`st'Ak,'Vnd@`stQk
 understock,v,,Vnd@st'Qk,Vnd@`st'Ak,Vnd@`st'Qk
 understood,,,Vnd@st'Ud,Vnd@`st'Ud,
@@ -99548,6 +99590,7 @@ undulation,,,VndjUl'eIS@n,VndZu:l'eIS@n,VndZ@l'eIS@n
 undulatory,,,VndjUl'eIt@ri:,'VndZu:l@tori:,'VndZ@l@tori:
 unduly,,,Vndj'u:li:,,Vnd'u:li:
 undutiful,,,Vndj'u:tIf@l,Vnd'u:tIf@l,Vndj'u:tIfUl
+undy,,,Vnd'aI,,
 undyed,,,Vnd'aId,,
 undying,,,Vnd'aIIN,,
 unearned,,,Vn'3:nd,,

@@ -3280,6 +3280,9 @@ barbs,barb=s
 barbut,bar-but
 barbwire,barb-wire
 barclay,bar-clay
+barded,bard=ed
+barding,bard=ing
+bards,bard=s
 bardy,bard=y
 bareback,bare-back
 bared,bare=ed
@@ -5420,6 +5423,7 @@ brawling,brawl=ing
 brawls,brawl=s
 brawly,braw=ly
 brawny,brawn=y
+brayed,bray=ed
 brayer,bray=er
 brazen,braze=n
 brazenly,brazen=ly
@@ -7198,6 +7202,7 @@ championship,champion-ship
 championships,championship=s
 champlain,cham-plain
 champs,champ=s
+chanced,chance=ed
 chanceful,chance=ful
 chancellor,chancel=or
 chancellors,chancellor=s
@@ -10633,6 +10638,7 @@ crossbirth,cross-birth
 crossbones,cross-bones
 crossbow,cross-bow
 crossbowman,crossbow-man
+crossbowmen,crossbow-men
 crossbows,crossbow=s
 crossbred,cross-bred
 crossbreed,cross-breed
@@ -12876,6 +12882,9 @@ dinnertime,dinner-time
 dinnerware,dinner-ware
 dinning,din=ing
 dinosaurs,dinosaur=s
+dinted,dint=ed
+dinting,dint=ing
+dints,dint=s
 dioceses,diocese=s
 diodes,diode=s
 dioeciously,dioecious=ly
@@ -15158,6 +15167,7 @@ elopes,elope=s
 eloquently,eloquent=ly
 elsewhere,else-where
 elsewhither,else-whither
+elsewise,else-wise
 elucidated,elucidate=ed
 eluded,elude=ed
 eludes,elude=s
@@ -26252,6 +26262,7 @@ journeyman,journey-man
 journeys,journey=s
 journeywork,journey-work
 jousting,joust=ing
+jousts,joust=s
 jovial,jove=ial
 joviality,jovial=ity
 jovially,jovial=ly
@@ -26634,7 +26645,11 @@ knaves,knave=s
 knavish,knave=ish
 knavishly,knavish=ly
 knavishness,knavish=ness
+kneaded,knead=ed
+kneader,knead=er
+kneaders,kneader=s
 kneading,knead=ing
+kneads,knead=s
 kneecap,knee-cap
 kneecaps,kneecap=s
 kneehole,knee-hole
@@ -26726,6 +26741,7 @@ koshers,kosher=s
 kowtowed,kowtow=ed
 kowtowing,kowtow=ing
 kowtows,kowtow=s
+krakens,kraken=s
 kremlinologists,kremlinologist=s
 kremlinology,kremlin=ology
 kronen,krone=n
@@ -28114,6 +28130,8 @@ longspurs,longspur=s
 longstanding,long-standing
 longstop,long-stop
 longstreet,long-street
+longsword,long-sword
+longswords,longsword=s
 longterm,long-term
 longtime,long-time
 longwall,long-wall
@@ -28177,6 +28195,7 @@ loran,lora=n
 lording,lord=ing
 lordless,lord=less
 lordling,lord-ling
+lordlings,lordling=s
 lordly,lord=ly
 lords,lord=s
 lordship,lord-ship
@@ -28387,6 +28406,8 @@ lunging,lunge=ing
 lungs,lung=s
 lungworm,lung-worm
 lungwort,lung-wort
+lunkhead,lunk-head
+lunks,lunk=s
 lupine,lupe=ine
 lurched,lurch=ed
 lurcher,lurch=er
@@ -34569,6 +34590,7 @@ peartly,peart=ly
 peas,pea=s
 peasantry,peasant=ry
 peasants,peasant=s
+peasecod,pease-cod
 peashooter,pea-shooter
 peatbog,peat-bog
 peatmoss,peat-moss
@@ -35564,6 +35586,8 @@ pirating,pirate=ing
 pirouettes,pirouette=s
 piscatorial,piscatory=al
 pissed,piss=ed
+pisses,piss=es
+pissing,piss=ing
 pistachios,pistachio=s
 pistillate,pistil=ate
 pistols,pistol=s
@@ -37009,6 +37033,7 @@ primroses,primrose=s
 princekin,prince-kin
 princelet,prince=let
 princeling,prince-ling
+princelings,princeling=s
 princely,prince=ly
 princes,prince=s
 princess,prince=ess
@@ -45182,6 +45207,8 @@ squirearchy,squirearch=y
 squiredom,squire=dom
 squireling,squire-ling
 squires,squire=s
+squiring,squire=ing
+squirmed,squirm=ed
 squirming,squirm=ing
 squirms,squirm=s
 squirmy,squirm=y
@@ -45203,6 +45230,7 @@ stabilizers,stabilizer=s
 stabilizes,stabilize=s
 stabilizing,stabilize=ing
 stableboy,stable-boy
+stableboys,stableboy=s
 stableman,stable-man
 stables,stable=s
 stablest,stable=est
@@ -45236,6 +45264,7 @@ staghound,stag-hound
 staging,stage=ing
 stagnated,stagnate=ed
 stagnating,stagnate=ing
+stags,stag=s
 stagy,stage=y
 staidly,staid=ly
 staidness,staid=ness
@@ -45869,6 +45898,9 @@ storyline,story-line
 storyteller,story-teller
 storytellers,storyteller=s
 storytelling,story-telling
+stots,stot=s
+stotted,stot=ed
+stotting,stot=ing
 stoutish,stout=ish
 stoutly,stout=ly
 stoutness,stout=ness
@@ -45952,6 +45984,8 @@ streaker,streak=er
 streaking,streak=ing
 streaks,streak=s
 streaky,streak=y
+streambed,stream-bed
+streambeds,streambed=s
 streamed,stream=ed
 streamer,stream=er
 streamers,streamer=s
@@ -50403,6 +50437,7 @@ underlap,under=lap
 underlay,under=lay
 underlayer,under=layer
 underlayment,underlay=ment
+underleaf,under=leaf
 underlease,under=lease
 underlet,under-let
 underlie,under=lie
@@ -50515,6 +50550,8 @@ understatement,under=statement
 understates,under=states
 understating,under=stating
 understeer,under=steer
+understeward,under=steward
+understewards,understeward=s
 understock,under=stock
 understood,under=stood
 understorey,under=story
