@@ -2,6 +2,12 @@
 
 ## [Unreleased]
 
+* Add and correct some dictionary entries.
+* Add some more all-caps abbreviations to the list of known (and preserved)
+  words.
+* Create compact "Lytspel on One Page" document.
+* Improve web app: file upload, show parts of README and other docs.
+
 
 ## [0.9.4] -- 2019-06-01
 
