@@ -115,6 +115,11 @@ def render_nav_items(page_dict: 'OrderedDict[str, PageData]') -> Markup:
     itemlist = [format_nav_item('/', 'Converter')]
     for url, page_data in page_dict.items():
         itemlist.append(format_nav_item('/' + url, page_data.title))
+
+    ### TODO Add sample texts
+    ##itemlist.append('<span class="navbar-text navbar-sep border-top border-2 border-info">'
+    ##                'Samples:</span>')
+    ##itemlist.append(format_nav_item('/sample/', 'Dummy Sample'))
     return Markup('\n'.join(itemlist))
 
 
@@ -236,6 +241,12 @@ def convert_file() -> str:
 
     # GET: redirect to start view
     return redirect('/')
+
+
+@app.route("/favicon.ico", methods=['GET'])
+def favicon() -> str:
+    """Redirect old browsers which may expect the favicon in the root."""
+    return redirect('/static/favicon.ico')
 
 
 @app.route("/lytspel-on-one-page.pdf", methods=['GET'])
