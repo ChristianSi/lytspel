@@ -4,6 +4,7 @@ config
 dirname
 epub
 epubs
+favicon
 friggin
 href
 html
@@ -11,6 +12,7 @@ idx
 iff
 img
 ing
+itemlist
 li
 lytspel
 metafile
