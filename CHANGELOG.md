@@ -8,6 +8,12 @@
 * Create compact "Lytspel on One Page" document.
 * Improve web app: file upload, show parts of README and other docs, favicon.
 
+Bugfixes:
+
+* Removed inline type annotations which aren't yet supported by Python 3.5.
+* Hyphenated prefixes such as "infra-" were erroneously counted as unknown
+  words.
+
 
 ## [0.9.4] -- 2019-06-01
 
