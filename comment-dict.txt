@@ -35,6 +35,7 @@ stateful
 stderr
 stdin
 stdout
+str
 threadsafe
 tokenization
 tokenize

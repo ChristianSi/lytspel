@@ -66,8 +66,11 @@ class Converter:
         """
         # Switch consulted during lookup and updated during conversion and tokenization
         self._at_sent_start = True
+
         # Optional counter of unknown words
-        self._unknown_counter: Counter = Counter() if use_unknown_counter else None
+        self._unknown_counter = None  # type: Counter
+        if use_unknown_counter:
+            self._unknown_counter = Counter()
 
         # Lazy initialization of static attributes
         if Converter._dict is None:
@@ -180,13 +183,13 @@ class Converter:
             self._at_sent_start = True
 
         in_tokens = self.tokenize_text(text)
-        out_tokens: List[str] = []
+        out_tokens = []  # type: List[str]
         lasttok = ''
         known_words = 0
         unknown_words = 0
 
         if self._unknown_counter is not None:
-            local_unknown_counter: Counter = Counter()
+            local_unknown_counter = Counter()  # type: Counter
 
         for token in in_tokens:
             if WORD_RE.match(token):
@@ -216,6 +219,9 @@ class Converter:
 
                     if isinstance(conv, str):
                         out_tokens[-1] = conv
+                        # Decrement unknown word counter
+                        if self._unknown_counter is not None and lasttok in local_unknown_counter:
+                            local_unknown_counter[lasttok] -= 1
                     else:
                         out_tokens.append(token)
                 else:
@@ -261,7 +267,7 @@ class Converter:
                 return text  # Return text unchanged
 
             doc = Converter._nlp(text)
-            out_tokens: List[str] = []
+            out_tokens = []  # type: List[str]
             lasttok = ''
             last_nonword = ''
 
@@ -329,6 +335,10 @@ class Converter:
 
                             if isinstance(conv, str):
                                 out_tokens[-1] = conv
+                                # Decrement unknown word counter
+                                if self._unknown_counter is not None and \
+                                        lasttok in self._unknown_counter:
+                                    self._unknown_counter[lasttok] -= 1
                             elif conv is not None:
                                 raise ValueError(
                                     'lookup({}, {}) returned unexpected result: {}'
@@ -555,7 +565,7 @@ class Converter:
         # Usually there is just one OPF file, but multiple-rendition epubs have several ones
         opf_files = tree.xpath('n:rootfiles/n:rootfile/@full-path',
                                namespaces={'n': 'urn:oasis:names:tc:opendocument:xmlns:container'})
-        absolute_items: List[etree._Element] = []
+        absolute_items = []  # type: List[etree._Element]
 
         # Find the XML files that need conversion
         for opf_file in opf_files:
