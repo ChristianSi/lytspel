@@ -1942,6 +1942,7 @@ aggravation,,,agre'vaition
 aggregate,,,agregait
 aggregated,,,agregaited
 aggregates,,,agregaits
+aggregating,,,agregaiting
 aggregation,,,agre'gaition
 aggress,,,a'gress
 aggression,,,a'gretion
@@ -2754,6 +2755,7 @@ alliteratively,,,a'literaitivli
 alliterativeness,,,a'literaitivness
 allium,,,aliam
 allness,,,allness
+allo,,,alo
 allocable,,,alekebl
 allocate,,,alecait
 allocated,,,alecaited
@@ -2768,7 +2770,7 @@ allocution,,,ale'kiution
 allodial,,,a'loadial
 allodium,,,a'loadiam
 allogamy,,,a'logemi
-allogenic,,,ale'jenic
+allogenic,,,alo'jenic
 allograph,,,alegraf
 allographs,,,alegrafs
 allomerism,,,a'lomerism
@@ -6363,10 +6365,10 @@ Athanasian,,,Atha'naision
 Athanasius,,,Atha'naishuss
 athanasy,,,a'thaneci
 athanor,,,athenor
-atheism,,,aithiism
-atheist,,,aithiist
+atheism,,,aitheeism
+atheist,,,aitheeist
 atheistic,,,aithi'istic
-atheists,,,aithiists
+atheists,,,aitheeists
 atheling,,,atheling
 Athelstan,,,Athelstan
 athematic,,,aithee'matic
@@ -8545,7 +8547,9 @@ bazar,,,ba'sar
 Baziotes,,,Basi'oatees
 bazooka,,,ba'suuca
 bazookas,,,ba'suucas
+BBC,,,BBC
 BBQ,,,BBQ
+BC,,,BC
 bdellium,,,deliam
 be,,,bee
 beach,,,beech
@@ -9779,6 +9783,7 @@ bilinear,,,by'linier
 bilingual,,,by'linggwel
 bilingualism,,,by'linggwelism
 bilingually,,,by'linggwelli
+bilinguals,,,by'linggwels
 bilinguist,,,by'linggwist
 bilious,,,biliass
 biliously,,,biliassli
@@ -13437,6 +13442,8 @@ cachou,,,ca'shu
 cachucha,,,ca'chuucha
 cacique,,,ca'ceek
 cackle,,,cacl
+cackled,,,cacld
+cackles,,,cacls
 cackling,,,cacling
 cacoaethes,,cacoethes
 cacodaemon,,cacodemon
@@ -16591,6 +16598,7 @@ chides,,,chyds
 chiding,,,chyding
 chief,,,cheef
 chiefdom,,,cheefdem
+chiefdoms,,,cheefdems
 chiefly,,,cheefli
 chiefs,,,cheefs
 chieftain,,,cheeften
@@ -17618,6 +17626,7 @@ clannishly,,,clanishli
 clans,,,clans
 clanship,,,clanship
 clansman,,,clansman
+clansmen,,,clansmen
 clanswoman,,,clanswoomen
 clap,,,clap
 clapboard,,,clapboard
@@ -19246,6 +19255,7 @@ commonality,,,como'naliti
 commonalty,,,comenelti
 commoner,,,comener
 commoners,,,comeners
+commonest,,,comenest
 commoning,,,comening
 commonly,,,comenli
 commonplace,,,comenplaiss
@@ -19917,6 +19927,7 @@ confederacy,,,con'federeci
 confederate,n,,con'federet
 confederate,v,,con'federait
 confederation,,,confede'raition
+confederations,,,confede'raitions
 confederative,,,con'federaitiv
 confer,,,con'fur
 conferee,,,confe'ree
@@ -22305,6 +22316,8 @@ creating,,,cri'aiting
 creatinine,,,cri'ateneen
 creation,,,cri'aition
 creationism,,,cri'aitionism
+creationist,,,cri'aitionist
+creationists,,,cri'aitionists
 creations,,,cri'aitions
 creative,,,cri'aitiv
 creatively,,,cri'aitivli
@@ -22589,6 +22602,7 @@ critiques,,,cri'teeks
 critiquing,,,cri'teeking
 critter,,,criter
 critters,,,criters
+Cro,,,Cro
 croak,,,croak
 croaker,,,croaker
 croaking,,,croaking
@@ -26369,6 +26383,8 @@ diabasic,,,daie'baissic
 diabetes,,,daia'beetees
 diabetic,,,daia'betic
 diabetics,,,daia'betics
+diabetologist,,,daiabi'tolejist
+diabetologists,,,daiabi'tolejists
 diablerie,,,di'aableri
 diablery,,,di'aableri
 diablo,,,di'aablo
@@ -27852,6 +27868,7 @@ disproves,,,dis'pruuvs
 disputable,,,di'spiutebl
 disputableness,,,di'spiuteblness
 disputant,,,di'spiutent
+disputants,,,di'spiutents
 disputation,,,dispiu'taition
 disputatious,,,dispiu'taishuss
 disputatiously,,,dispiu'taishussli
@@ -28144,7 +28161,7 @@ ditcher,,,dicher
 ditches,,,diches
 ditching,,,diching
 ditchwater,,,dichwauter
-ditheism,,,dythiism
+ditheism,,,dytheeism
 dither,,,didher
 dithering,,,didhering
 dithers,,,didhers
@@ -28974,6 +28991,8 @@ downy,,,douni
 dowry,,,douri
 dowsabel,,,doucebel
 dowse,,,douss
+dowser,,,dousser
+dowsers,,,doussers
 dowsing,,,doussing
 Dowson,,,Doucen
 doxie,,,doxi
@@ -30310,6 +30329,7 @@ Edna,,,Edna
 Edo,,,Eedo
 Edom,,,Eedem
 Edomite,,,Eedemyt
+eds,,,eds
 Edsel,,,Edssl
 educable,,,ejookebl
 educatable,,,ejoocaitebl
@@ -30612,6 +30632,7 @@ Elbrus,,,Elbruuss
 eld,,,eld
 elder,,,elder
 elderberry,,,elderberri
+eldercare,,,eldercair
 elderly,,,elderli
 elders,,,elders
 eldest,,,eldest
@@ -33036,6 +33057,8 @@ ethno-,,,ethno-
 ethnocentric,,,ethno'sentric
 ethnocentrism,,,ethno'centrism
 ethnogeny,,,eth'nojeni
+ethnographer,,,eth'nogrefer
+ethnographers,,,eth'nogrefers
 ethnographic,,,ethno'grafic
 ethnography,,,eth'nogrefi
 ethnohistorical,,,ethnohi'storricl
@@ -33873,6 +33896,7 @@ exothermicity,,,exoather'miciti
 exotic,,,ig'zotic
 exotica,,,ig'zotica
 exoticism,,,ig'zoticism
+exoticness,,,ig'zoticness
 exotics,,,ig'zotics
 exotoxin,,,exoa'toxin
 exotropia,,,exo'troapia
@@ -34593,6 +34617,7 @@ faintness,,,faintness
 faints,,,faints
 fair,,,fair
 Fairbanks,,,Fairbanks
+faire,,,fair
 fairer,,,fairer
 fairest,,,fairest
 Fairfax,,,Fairfax
@@ -37132,6 +37157,8 @@ foppishness,,,fopishness
 for,,,for
 fora,,,fora
 forage,,,forrij
+forager,,,forrijer
+foragers,,,forrijers
 forages,,,forrijes
 foraging,,,forrijing
 foram,,,forem
@@ -37745,6 +37772,7 @@ frameworks,,,fraimwurks
 framing,,,fraiming
 Fran,,,Fran
 franc,,,frank
+franca,,,franca
 France,,,Franss
 Frances,,,Fransses
 Francesca,,,Fran'chesca
@@ -41521,9 +41549,11 @@ griff,,,grif
 griffe,,,grif
 griffes,,,grifs
 griffin,,,grifin
+griffins,,,grifins
 Griffith,,,Grifith
 Griffiths,,,Grifiths
 griffon,,,grifen
+griffons,,,grifens
 grift,,,grift
 grifter,,,grifter
 grig,,,grig
@@ -41815,6 +41845,8 @@ Grus,,,Gruss
 grushie,,,grushi
 grutch,,,gruch
 gruyere,,,gruu'yair
+Gryphon,,,Grifen
+Gryphons,,,Grifens
 gu,,,gu
 guacamole,,,gwoca'moali
 guacharo,,,gwaachero
@@ -41977,6 +42009,8 @@ guilty,,,gilti
 guimpe,,,gimp
 Guin,,,Gin
 guinea,,,gini
+Guinean,,,Ginien
+Guineans,,,Giniens
 guineas,,,ginies
 Guinevere,,,Gwineveer
 Guinness,,,Giness
@@ -44062,7 +44096,7 @@ hennery,,,heneri
 Hennessy,,,Heneci
 hennin,,,henin
 henning,,,hening
-henotheism,,,henethiism
+henotheism,,,henetheeism
 henpeck,,,henpek
 henpecked,,,henpekd
 Henri,,,Henri
@@ -45646,6 +45680,7 @@ hothead,,,hothed
 hotheaded,,,hotheded
 hotheadedly,,,hothededli
 hotheadedness,,,hothededness
+hotheads,,,hotheds
 hothouse,,,hothouss
 hothouses,,,hothousses
 Hotien,,,Hoa'tyen
@@ -46475,6 +46510,7 @@ hypersthenic,,,hyper'sthenic
 hypersusceptible,,,hypersu'ceptebl
 hypertension,,,hyper'tention
 hypertensive,,,hyper'tenssiv
+hypertensives,,,hyper'tenssivs
 hypertext,,,hypertext
 hyperthermia,,,hyper'thurmia
 hyperthermy,,,hyper'thurmi
@@ -49537,6 +49573,7 @@ intactness,,,in'tactness
 intagliated,,,in'taliaited
 intaglio,,,in'talyo
 intake,,,intaik
+intakes,,,intaiks
 intangible,,,in'tanjebl
 intangibleness,,,in'tanjeblness
 intangibles,,,in'tanjebls
@@ -50731,6 +50768,7 @@ Irvine,,,Urvyn
 Irving,,,Urving
 Irwin,,,Urwin
 is,,,is
+isa,,,ysa
 Isaac,,,Ysek
 isabel,,,isebel
 isabella,,,isa'bela
@@ -51307,6 +51345,7 @@ jaunts,,,jaunts
 jaunty,,,jaunti
 jaup,,,jaup
 java,,,jaava
+Javan,,,Jaavan
 Javanese,,,Java'nees
 JavaScript,,,JaavaScript
 javelin,,,javlin
@@ -52014,6 +52053,7 @@ jurors,,,joorers
 Jurua,,,Zhuuru'aa
 jury,,,joori
 juryman,,,jooriman
+jurymen,,,joorimen
 juryrigged,,,jooririgd
 jurywoman,,,jooriwoomen
 jus,,,juss
@@ -53592,6 +53632,7 @@ lactase,,,lactaiss
 lactate,,,lactait
 lactating,,,lactaiting
 lactation,,,lac'taition
+lactational,,,lac'taitionel
 lacteal,,,lactial
 lacteally,,,lactialli
 lacteals,,,lactials
@@ -53705,6 +53746,7 @@ lain,,,lain
 lair,,,lair
 laird,,,laird
 lairdly,,,lairdli
+laissez,,,lessay
 laitance,,,laitenss
 laith,,,laith
 laity,,,layiti
@@ -55146,6 +55188,7 @@ liaise,,,li'ais
 liaison,,,li'aison
 liaisons,,,li'aisons
 liana,,,li'aana
+lianas,,,li'aanas
 liane,,,li'an
 liang,,,lyang
 Liao,,,Li'ow
@@ -56594,6 +56637,7 @@ Lowestoft,,,Loastoft
 lowing,,,loing
 lowland,,,loland
 lowlander,,,lolander
+lowlanders,,,lolanders
 lowlands,,,lolands
 lowlife,,,lolyf
 lowlight,,,lolyt
@@ -57368,6 +57412,8 @@ magnitudes,,,magnitueds
 magnolia,,,mag'noalia
 magnoliaceous,,,magnoali'aishuss
 magnolias,,,mag'noalias
+Magnon,,,Magnen
+Magnons,,,Magnens
 magnox,,,magnox
 magnum,,,magnum
 Magog,,,Maigog
@@ -57870,6 +57916,8 @@ maniacal,,,ma'naiecl
 maniacally,,,ma'naieclli
 maniacs,,,mainiacs
 manic,,,manic
+Manichaean,,,Mani'kian
+Manichaeans,,,Mani'kians
 Manichean,,,Mani'kian
 Manichee,,,Maniki
 manicotti,,,mani'coti
@@ -60820,6 +60868,7 @@ misguided,,,mis'gyded
 misguidedly,,,mis'gydedli
 misguidedness,,,mis'gydedness
 misguides,,,mis'gyds
+mish,,,mish
 mishandle,,,mis'handl
 mishandled,,,mis'handld
 mishandles,,,mis'handls
@@ -61594,6 +61643,8 @@ monolater,,,mo'noleter
 monolatry,,,mo'noletri
 monolayer,,,mono'layer
 monolingual,,,mono'linggwel
+monolingualism,,,mono'linggwelism
+monolinguals,,,mono'linggwels
 monolith,,,monolith
 monolithic,,,mono'lithic
 monoliths,,,monoliths
@@ -61674,6 +61725,8 @@ monosyllabism,,,mono'silebism
 monosyllable,,,monosilebl
 monosymmetric,,,monosi'metric
 monotheism,,,monotheeism
+monotheist,,,monotheeist
+monotheistic,,,monoathi'istic
 monothelite,,,mo'nothelyt
 monothelitism,,,mo'nothelytism
 monotint,,,monotint
@@ -62431,6 +62484,7 @@ multilayered,,,multi'layerd
 multilevel,,,multi'level
 multiline,,,multilyn
 multilingual,,,multi'linggwel
+multilingualism,,,multi'linggwelism
 multilobular,,,multi'lobyuler
 multimedia,,,multi'meedia
 multimeter,,,mul'timiter
@@ -62670,6 +62724,7 @@ musket,,,muskit
 musketeer,,,muski'teer
 musketeers,,,muski'teers
 musketry,,,muskitri
+muskets,,,muskits
 muskie,,,muski
 muskmelon,,,muskmelen
 Muskogean,,,Mus'coagian
@@ -63235,6 +63290,8 @@ naumachia,,,no'maikia
 naumachy,,,naumeki
 nauplius,,,naupliass
 Nauru,,,Naa'uuru
+Nauruan,,,Naa'uuruan
+Nauruans,,,Naa'uuruans
 nausea,,,nausia
 nauseate,,,nausiait
 nauseated,,,nausiaited
@@ -63549,6 +63606,7 @@ neoliberal,,,nio'liberel
 neoliberals,,,nio'liberels
 neolith,,,niolith
 neolithic,,,nio'lithic
+neolocal,,,nio'loacl
 neologian,,,nia'loajian
 neological,,,nio'lojicl
 neologically,,,nio'lojiclli
@@ -65910,6 +65968,7 @@ ontologism,,,on'tolejism
 ontology,,,on'toleji
 onus,,,oanuss
 onward,,,onwerd
+onwards,,,onwerds
 onychia,,,oa'nikia
 onychophoran,,,oni'coferen
 onymous,,,onimuss
@@ -67265,6 +67324,9 @@ overfunded,,,oaverfunded
 overfunding,,,oaverfunding
 overgeneralise,,overgeneralize
 overgeneralize,,,oaver'jenerelys
+overgeneralized,,,oaver'jenerelysd
+overgeneralizes,,,oaver'jenerelyses
+overgeneralizing,,,oaver'jenerelysing
 overgenerous,,,oaverjeneruss
 overgild,,,oaver'gild
 overglance,,,oaver'glanss
@@ -67840,6 +67902,7 @@ paddle,,,padl
 paddleboard,,,padlboard
 paddled,,,padld
 paddlefish,,,padlfish
+paddler,,,padler
 paddles,,,padls
 paddling,,,padling
 paddock,,,padek
@@ -71587,6 +71650,8 @@ piquet,,,pi'ket
 piracy,,,pyreci
 Piraeus,,,Py'riass
 piragua,,,pi'raagwa
+Piraha,,,Pira'haang
+Pirahas,,,Pira'haangs
 Pirandello,,,Piran'delo
 Piranesi,,,Pira'nesi
 piranha,,,pi'ranha
@@ -71996,6 +72061,7 @@ playgoer,,,playgoer
 playground,,,playground
 playgrounds,,,playgrounds
 playgroup,,,playgruup
+playgroups,,,playgruups
 playhouse,,,playhouss
 playhouses,,,playhousses
 playing,,,playing
@@ -73196,6 +73262,7 @@ postsynaptic,,,poastsi'naptic
 posttraumatic,,,poasttrau'matic
 postulant,,,postiulent
 postulate,,,poschulait
+postulated,,,poschulaited
 postulates,,,poschulaits
 postulation,,,poschu'laition
 postulator,,,poschulaiter
@@ -74113,6 +74180,7 @@ prevailed,,,pri'vaild
 prevailing,,,pri'vailing
 prevails,,,pri'vails
 prevalence,,,prevelenss
+prevalences,,,prevelensses
 prevalent,,,prevelent
 prevalently,,,prevelentli
 prevaricate,,,pri'varricait
@@ -76242,6 +76310,7 @@ Queensland,,,Queensland
 Queenstown,,,Queenstoun
 queer,,,queer
 queerer,,,queerer
+queerest,,,queerest
 queers,,,queers
 quelea,,,queelia
 quell,,,quel
@@ -76779,6 +76848,8 @@ raindrops,,,raindrops
 rained,,,raind
 rainfall,,,rainfall
 rainfalls,,,rainfalls
+rainforest,,,rainforrest
+rainforests,,,rainforrests
 rainier,aj,,rainier
 rainier,n,,rai'neer
 rainiest,,,rainiast
@@ -78131,6 +78202,7 @@ reest,,,reest
 reestablish,,,rii'stablish
 reestablished,,,rii'stablishd
 reestablishing,,,rii'stablishing
+reestablishment,,,rii'stablishment
 reevaluate,,,rii'valiuait
 reevaluated,,,rii'valiuaited
 reevaluating,,,rii'valiuaiting
@@ -80547,6 +80619,8 @@ ripe,,,ryp
 ripen,,,rypen
 ripened,,,rypend
 ripening,,,rypening
+riper,,,ryper
+ripest,,,rypest
 ripidolite,,,ri'pidelyt
 ripieno,,,ri'pyaino
 Ripley,,,Ripli
@@ -80610,6 +80684,8 @@ ritualist,,,richualist
 ritualistic,,,richua'listic
 ritualistically,,,richua'listiclli
 ritualize,,,richualys
+ritualized,,,richualysd
+ritualizes,,,richualyses
 ritually,,,richualli
 rituals,,,richuals
 ritz,,,rits
@@ -81567,8 +81643,10 @@ rustier,,,rustier
 rustiest,,,rustiast
 rusting,,,rusting
 rustle,,,russl
+rustled,,,russld
 rustler,,,rusler
 rustlers,,,ruslers
+rustles,,,russls
 rustling,,,rusling
 rustproof,,,rustpruuf
 rustproofing,,,rustpruufing
@@ -82590,6 +82668,7 @@ savagism,,,savijism
 Savaii,,,Saa'vaii
 savanna,,,sa'vana
 Savannah,,,Sa'vana
+savannahs,,,sa'vanas
 savannas,,,sa'vanas
 savant,,,savent
 savants,,,savents
@@ -83743,6 +83822,7 @@ sedation,,,se'daition
 sedative,,,sedetiv
 Seddon,,,Seden
 sedentarily,,,seden'terrili
+sedentariness,,,sedenterriness
 sedentary,,,sedenterri
 seder,,,saider
 sederunt,,,si'deerunt
@@ -88013,6 +88093,7 @@ speaking,,,speeking
 speaks,,,speeks
 spean,,,speen
 spear,,,speer
+speared,,,speerd
 spearfish,,,speerfish
 spearhead,,,speerhed
 spearheaded,,,speerheded
@@ -89373,6 +89454,7 @@ steaming,,,steeming
 steampipe,,,steempyp
 steamroller,,,steemroaler
 steamrollered,,,steemroalerd
+steamrollers,,,steemroalers
 steams,,,steems
 steamship,,,steemship
 steamtight,,,steemtyt
@@ -90910,8 +90992,11 @@ subsidizes,,,subsidyses
 subsidizing,,,subsidysing
 subsidy,,,subsidi
 subsist,,,sub'sist
+subsisted,,,sub'sisted
 subsistence,,,sub'sistenss
 subsistent,,,sub'sistent
+subsisting,,,sub'sisting
+subsists,,,sub'sists
 subsocial,,,sub'soashel
 subsoil,,,subsoil
 subsolar,,,sub'soaler
@@ -91098,6 +91183,7 @@ sudd,,,sud
 sudden,,,suden
 suddenly,,,sudenli
 suddenness,,,sudenness
+Sudoku,,,Suudoacu
 sudor,,,suudoar
 sudoriferous,,,suude'riferuss
 sudorific,,,suude'rific
@@ -91947,6 +92033,9 @@ swab,,,swob
 swabber,,,swober
 swabs,,,swobs
 swaddle,,,swaadl
+swaddled,,,swaadld
+swaddles,,,swaadls
+swaddling,,,swaadling
 swaddy,,,swaadi
 Swadeshi,,,Swa'daishi
 swag,,,swag
@@ -93345,6 +93434,7 @@ teaching,,,teeching
 teachings,,,teechings
 teacup,,,teecup
 teacupful,,,teecupful
+teacups,,,teecups
 teaer,,teer
 teagle,,,teegl
 teahouse,,,teehouss
@@ -96581,6 +96671,8 @@ treponema,,,trepo'neema
 treponematosis,,,trepeneema'toaciss
 treponematous,,,trepo'nemetuss
 trespass,,,trespess
+trespasser,,,trespesser
+trespassers,,,trespessers
 trespassing,,,trespessing
 tress,,,tress
 tresses,,,tresses
@@ -96633,6 +96725,7 @@ tribe,,,tryb
 tribes,,,trybs
 tribesman,,,trybsman
 tribesmen,,,trybsmen
+tribespeople,,,trybspeepl
 triblet,,,triblit
 triboelectric,,,trybo-i'lectric
 triboelectricity,,,trybo-ilec'triciti
@@ -96985,6 +97078,7 @@ trivializes,,,trivialyses
 trivializing,,,trivialysing
 trivium,,,triviam
 triweekly,,,try'weekli
+Trobriand,,,Troabriand
 trocar,,,troacar
 trochaic,,,troa'cayic
 trochal,,,troacl
@@ -97281,6 +97375,7 @@ tuberculous,,,tue'burkyuluss
 tuberose,,,tueberoass
 tuberosity,,,tuebe'rossiti
 tuberous,,,tueberuss
+tubers,,,tuebers
 tubes,,,tuebs
 tubicolous,,,tue'bikeluss
 tubifex,,,tuebifex
@@ -97836,6 +97931,7 @@ uhlan,,,uulaan
 Uigur,,,Weegoor
 uitlander,,,ytlander
 Ujiji,,,Uu'jeeji
+UK,,,UK
 ukase,,,iucaiss
 uke,,,iuk
 Ukraine,,,Iu'crain
@@ -98293,6 +98389,7 @@ unconstraint,,,uncon'straint
 unconstricted,,,uncon'stricted
 unconsumed,,,uncon'suumd
 unconsummated,,,un'consumaited
+uncontacted,,,un'contacted
 uncontainable,,,uncon'tainebl
 uncontaminated,,,uncon'taminaited
 uncontested,,,uncon'tested
@@ -102691,6 +102788,8 @@ waterfowl,,,wauterfoul
 waterfront,,,wauterfrunt
 waterfronts,,,wauterfrunts
 watergate,,,wautergait
+waterhole,,,wauterhoal
+waterholes,,,wauterhoals
 wateriness,,,wauteriness
 watering,,,wautering
 waterish,,,wauterish
@@ -104583,6 +104682,7 @@ yanking,,,yanking
 yanks,,,yanks
 Yankton,,,Yancten
 Yanomami,,,Yano'maami
+Yanomamo,,,Yano'maamo
 yanqui,,,yaanki
 Yao,,,Yow
 Yaobang,,,Youbang
@@ -105106,7 +105206,7 @@ Zocor,,,Zoacor
 zodiac,,,zoadiac
 zodiacal,,,zoa'daiecl
 Zoe,,,Zo-i
-zoea,,zea
+zoea,,,zo'ia
 zoetrope,,,zo-eetroap
 Zola,,,Zoala
 Zoloft,,,Zoloft
