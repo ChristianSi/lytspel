@@ -1,7 +1,7 @@
 mypy = mypy --ignore-missing-imports
 
 allpytests: pylint mypy pytest testdir
-	echo "All checks and tests passed"
+	@echo "All checks and tests passed"
 
 wheel: allpytests
 	python3 setup.py sdist bdist_wheel
