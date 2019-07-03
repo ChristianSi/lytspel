@@ -1,6 +1,7 @@
 """Defines the class that actually converts tradspell to Lytspel."""
 
 from collections import Counter
+from enum import Enum
 from io import BytesIO
 from os import path
 import re
@@ -16,6 +17,8 @@ from .dict import ConvState, Dictionary, HANDLED_NON_ASCII_LETTERS
 from .util import printmsg
 
 
+TokenType = Enum('TokenType', 'Word Punctuation URL')  # pylint: disable=invalid-name
+
 LOWERCASE_LETTER_PAT = '[a-z{}]'.format(HANDLED_NON_ASCII_LETTERS)
 
 # Matches a word or non-word token.
@@ -25,6 +28,11 @@ TOKEN_RE = re.compile('(' + LOWERCASE_LETTER_PAT + "(?:['’]?" + LOWERCASE_LETT
 # Matches an arbitrary word (allowing non-ASCII and contractions).
 # Words start with a letter, or with an apostrophe followed by a letter.
 WORD_RE = re.compile("['’]?" + LOWERCASE_LETTER_PAT, re.IGNORECASE)
+
+# Matches punctuation (non-alphabetic characters) allowed in a URL or email address.
+# This is somewhat rough and also includes punctuation that often precedes or follows a URL,
+# but it should work for nearly all common cases.
+URL_PUNCTUATION_RE = re.compile(r"^[-1-9$_.+!*'(),;/?:@=&<>[\]#%^{|}~]+$")
 
 # Heuristic used to detect the end of a sentence.
 ENDS_SENTENCE_HEURISTIC_RE = re.compile(r'([.?!](\s*["\'“‘”’])?|:\s*["\'“‘]|>(\s*["\'“‘])?)\s*$')
@@ -38,11 +46,11 @@ XML_START_RE = re.compile('<[!?h]', re.IGNORECASE)
 
 XHTML_NAMESPACE = '{http://www.w3.org/1999/xhtml}'
 
-BLOCK_LEVEL_TAGS = set(('address', 'article', 'aside', 'blockquote', 'canvas', 'dd', 'div',
-                        'dl', 'dt', 'fieldset', 'figcaption', 'figure', 'footer', 'form', 'h1',
-                        'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hr', 'li', 'main', 'nav',
-                        'noscript', 'ol', 'output', 'p', 'pre', 'section', 'table', 'tfoot',
-                        'ul', 'video'))
+BLOCK_LEVEL_TAGS = frozenset(('address', 'article', 'aside', 'blockquote', 'canvas', 'dd', 'div',
+                              'dl', 'dt', 'fieldset', 'figcaption', 'figure', 'footer', 'form',
+                              'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'header', 'hr', 'li', 'main',
+                              'nav', 'noscript', 'ol', 'output', 'p', 'pre', 'section', 'table',
+                              'tfoot', 'ul', 'video'))
 
 
 class Converter:
@@ -102,6 +110,72 @@ class Converter:
             result.pop(0)
         if result[-1] == '':
             result.pop()
+        return result
+
+    @staticmethod
+    def typed_tokenize(text: str) -> List[Tuple[TokenType, str]]:
+        """Tokenize a string, returning a list of typed tokens.
+
+        URL recognition is somewhat rough and a (URL, str) token may not always identify the
+        exact start and end points of a URL correctly, but it should be sufficient to
+        distinguish words within URLs (which should NOT be converted) from other words. The URL
+        TokenType is also used for email addresses.
+        """
+        # pylint: disable=too-many-locals, too-many-nested-blocks
+        raw_tokens = Converter.tokenize_text(text)
+        raw_token_count = len(raw_tokens)
+        result = []
+        i = 0
+
+        while i < raw_token_count:
+            token = raw_tokens[i]
+
+            if token.isalpha() and i + 4 < raw_token_count:
+                # Check if this token starts a URL -- URLs have at least 5 raw tokens:
+                # alphabetic URL_Punctuation alphabetic URL_Punctuation alphabetic,
+                # optionally followed by more (URL_Punctuation, alphabetic) pairs
+                next_first, next_second, next_third, next_fourth = raw_tokens[i+1 : i+5]
+                if (next_second.isalpha() and next_fourth.isalpha()
+                        and URL_PUNCTUATION_RE.match(next_first)
+                        and URL_PUNCTUATION_RE.match(next_third)):
+                    # Looks good so far, check whether additional tokens pairs belong to the URL
+                    extra_token_count = 4
+                    looks_good = True
+                    period_count = int('.' in next_first) + int('.' in next_third)
+                    slash_or_at_seen = ('/' in next_first or '@' in next_first or
+                                        '/' in next_third or '@' in next_third)
+
+                    while looks_good:
+                        if i + extra_token_count + 2 < raw_token_count:
+                            next_xth, next_yth = raw_tokens[i+extra_token_count+1
+                                                            : i+extra_token_count+3]
+                            if next_yth.isalpha() and URL_PUNCTUATION_RE.match(next_xth):
+                                extra_token_count += 2
+                                period_count += int('.' in next_xth)
+                                if not slash_or_at_seen:
+                                    slash_or_at_seen = '/' in next_xth or '@' in next_xth
+                            else:
+                                looks_good = False
+                        else:
+                            looks_good = False
+
+                    # A valid URL (or email) must contain at least two '.' (between alphabetic
+                    # elements) or '.' as well as '/' or '@'
+                    if period_count >= 2 or (period_count and slash_or_at_seen):
+                        # Assemble URL token
+                        next_i = i + extra_token_count + 1
+                        url_text = ''.join(raw_tokens[i:next_i])
+                        result.append((TokenType.URL, url_text))
+                        i = next_i
+                        continue
+
+            if WORD_RE.match(token):
+                result.append((TokenType.Word, token))
+            else:
+                # Punctuation is anything that's not a word or a URL (also whitespace and numbers)
+                result.append((TokenType.Punctuation, token))
+            i += 1
+
         return result
 
     def text_looks_foreign(self, text: str) -> bool:
@@ -174,7 +248,7 @@ class Converter:
         * ConvState.LOOKS_FOREIGN if 'test_if_foreign' is true and a majority of the words in
           the fragment are unknown
         """
-        # pylint: disable=too-many-branches
+        # pylint: disable=too-many-branches, too-many-locals
         orig_at_sent_start = self._at_sent_start  # Remember in case we have to restore it later
 
         if not text:
@@ -182,8 +256,9 @@ class Converter:
         if starts_sent:
             self._at_sent_start = True
 
-        in_tokens = self.tokenize_text(text)
+        typed_tokens = self.typed_tokenize(text)
         out_tokens = []  # type: List[str]
+        lasttype = None
         lasttok = ''
         known_words = 0
         unknown_words = 0
@@ -191,8 +266,8 @@ class Converter:
         if self._unknown_counter is not None:
             local_unknown_counter = Counter()  # type: Counter
 
-        for token in in_tokens:
-            if WORD_RE.match(token):
+        for (toktype, token) in typed_tokens:
+            if toktype is TokenType.Word:
                 conv = Converter._dict.lookup(token, None, self._at_sent_start)
 
                 if conv is ConvState.NLP_NEEDED:
@@ -213,7 +288,7 @@ class Converter:
                 self._at_sent_start = False
             else:
                 # Not a word
-                if token == '-' and lasttok and WORD_RE.match(lasttok):
+                if token == '-' and lasttype is TokenType.Word:
                     # Check if this forms a hyphenated prefix with the preceding token, e.g. 're-'
                     conv = Converter._dict.lookup(lasttok + token, None, self._at_sent_start)
 
@@ -229,6 +304,7 @@ class Converter:
                     out_tokens.append(token)
                     self._update_at_sent_start(token)
 
+            lasttype = toktype
             lasttok = token
 
         if not test_if_foreign or unknown_words <= known_words:
@@ -275,9 +351,10 @@ class Converter:
                 self._at_sent_start = True
 
             for entry in doc:
+                period_count = entry.text.count('.')
                 # Sometimes spaCy doesn't recognize all word boundaries, hence we run our own
-                # tokenizer on each of its entries (unless it looks like an URL or abbreviation)
-                if entry.text.count('.') >= 2 or entry.text.count('/') >= 2:
+                # tokenizer on each of its entries (unless it looks like a URL or abbreviation)
+                if period_count >= 2 or (period_count and ('/' in entry.text or '@' in entry.text)):
                     in_tokens = [entry.text]
                     looks_like_url = True
                 else:
