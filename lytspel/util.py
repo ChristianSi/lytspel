@@ -23,3 +23,9 @@ def get_elem(seq: Sequence[T], idx: int) -> T:
 def printmsg(msg: str) -> None:
     """Print a message to stderr, prefixed by the name of the script."""
     print('{}: {}'.format(PACKAGENAME, msg), file=stderr)
+
+
+def readfile(filename: str) -> str:
+    """Read a whole file into a string and return it."""
+    with open(filename) as file:
+        return file.read()

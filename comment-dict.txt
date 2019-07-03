@@ -15,7 +15,9 @@ ing
 itemlist
 li
 lytspel
+mailto
 metafile
+mypy
 namespace
 navbar
 NCX
@@ -43,5 +45,6 @@ tokenizer
 tradspell
 txt
 ve
+webfiles
 whitespace
 zin
