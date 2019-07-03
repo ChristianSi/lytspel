@@ -1,7 +1,11 @@
-lytspel = PYTHONPATH=.. python3 -c 'from lytspel import main; main()'
+python = python3  # Or set to python3.5 to test with older version
+lytspel = PYTHONPATH=.. $(python) -c 'from lytspel import main; main()'
 
-all: txt html xhtml epub outtxt outhtml stdin convert version
-	true
+all: most epub
+	@echo Success
+
+most: txt html xhtml outtxt outhtml stdin convert version
+	@echo Success
 
 epub:
 	$(lytspel) input.epub
