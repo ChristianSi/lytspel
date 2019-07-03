@@ -45,8 +45,8 @@ I_AND_CONTRACTIONS_RE = re.compile("I$|I['’]")
 GENERIC_CONTRACTION_RE = re.compile(".['’](s|d|ll|re|ve)$", re.IGNORECASE)
 
 # All-caps abbreviations that should be kept unchanged
-CAP_ABBREVS = set(('BIOS', 'DE', 'ETA', 'GA', 'HI', 'LA', 'MA', 'ME', 'MI', 'OH', 'PA', 'US',
-                   'WA'))
+CAP_ABBREVS = frozenset(('BIOS', 'DE', 'ETA', 'GA', 'HI', 'LA', 'MA', 'ME', 'MI', 'OH', 'PA', 'US',
+                         'WA'))
 
 POS_FALLBACKS = {'aj': 'n', 'av': 'aj', 'n': 'aj', 'prp': 'aj', 'v': 'n'}
 
