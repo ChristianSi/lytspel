@@ -404,6 +404,53 @@ def test_convert_other_hyphens(conv):
     assert conv.convert_para('I’m contacting you re--you might have guessed it--your mail.') ==\
         'Y’m contacting iu ree--iu myt hav gessd it--iur mail.'
 
+def test_convert_urls(conv):
+    """Test that URLs are not converted."""
+    assert conv.convert_para('This is a link: www.lytspel.org/overview, hence it should not be converted.') ==\
+        'Dhiss is a link: www.lytspel.org/overview, henss it shood not bee con’vurted.'
+    assert conv.convert_para('This is a link: https://www.lytspel.org/idea which is not converted.') ==\
+        'Dhiss is a link: https://www.lytspel.org/idea wich is not con’vurted.'
+    assert conv.convert_para('This is a link: <https://www.lytspel.org/limitations>, hence it should not be converted.') ==\
+        'Dhiss is a link: <https://www.lytspel.org/limitations>, henss it shood not bee con’vurted.'
+    assert conv.convert_para('See the subsequent link (https://www.lytspel.org/rules) which is not converted.') ==\
+        'See dhe subsiquent link (https://www.lytspel.org/rules) wich is not con’vurted.'
+    assert conv.convert_para('See the subsequent link [https://www.lytspel.org/overview], which is not converted.') ==\
+        'See dhe subsiquent link [https://www.lytspel.org/overview], wich is not con’vurted.'
+
+def test_convert_urls_spacy(conv):
+    """Ditto with spaCy."""
+    assert conv.convert_para('This, I object, is a link: www.lytspel.org/overview, hence it should not be converted.') ==\
+        'Dhiss, y ob’ject, is a link: www.lytspel.org/overview, henss it shood not bee con’vurted.'
+    assert conv.convert_para('This, I object, is a link: https://www.lytspel.org/idea which is not converted.') ==\
+        'Dhiss, y ob’ject, is a link: https://www.lytspel.org/idea wich is not con’vurted.'
+    assert conv.convert_para('This, I object, is a link: <https://www.lytspel.org/limitations>, hence it should not be converted.') ==\
+        'Dhiss, y ob’ject, is a link: <https://www.lytspel.org/limitations>, henss it shood not bee con’vurted.'
+    assert conv.convert_para('I object: See the subsequent link (https://www.lytspel.org/rules) which is not converted.') ==\
+        'Y ob’ject: See dhe subsiquent link (https://www.lytspel.org/rules) wich is not con’vurted.'
+    assert conv.convert_para('I object: See the subsequent link [https://www.lytspel.org/overview], which is not converted.') ==\
+        'Y ob’ject: See dhe subsiquent link [https://www.lytspel.org/overview], wich is not con’vurted.'
+
+def test_convert_emails(conv):
+    """Test that email addressed are not converted."""
+    assert conv.convert_para('This is an email: christian@example.org, hence it should not be converted.') ==\
+        'Dhiss is an eemail: christian@example.org, henss it shood not bee con’vurted.'
+    assert conv.convert_para('This is an email: mailto:christian@example.org which is not converted.') ==\
+        'Dhiss is an eemail: mailto:christian@example.org wich is not con’vurted.'
+    assert conv.convert_para('This is an email: <christian@example.org>, hence it should not be converted.') ==\
+        'Dhiss is an eemail: <christian@example.org>, henss it shood not bee con’vurted.'
+    assert conv.convert_para('See the subsequent email (christian@example.org) which is not converted.') ==\
+        'See dhe subsiquent eemail (christian@example.org) wich is not con’vurted.'
+
+def test_convert_emails_spacy(conv):
+    """Ditto with spaCy."""
+    assert conv.convert_para('This, I object, is an email: christian@example.org, hence it should not be converted.') ==\
+        'Dhiss, y ob’ject, is an eemail: christian@example.org, henss it shood not bee con’vurted.'
+    assert conv.convert_para('This, I object, is an email: mailto:christian@example.org which is not converted.') ==\
+        'Dhiss, y ob’ject, is an eemail: mailto:christian@example.org wich is not con’vurted.'
+    assert conv.convert_para('This, I object, is an email: <christian@example.org>, hence it should not be converted.') ==\
+        'Dhiss, y ob’ject, is an eemail: <christian@example.org>, henss it shood not bee con’vurted.'
+    assert conv.convert_para('I object: See the subsequent email (christian@example.org) which is not converted.') ==\
+        'Y ob’ject: See dhe subsiquent eemail (christian@example.org) wich is not con’vurted.'
 
 def test_is_word_simple(is_word):
     assert is_word('a')
