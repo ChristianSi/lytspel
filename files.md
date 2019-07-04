@@ -202,8 +202,17 @@ header. A few line files use the ".list" extension instead.
 This directory contains the Python package which actually converts text
 fragments and documents into Lytspel, as well as its web interface. The
 "static" subdirectory contains static files used for the web app (such as
-CSS files), the "templates" subdirectory contains HTML templates (in
-[Jinja2](http://jinja.pocoo.org/docs/2.10/) syntax) for the web app.
+CSS and JavaScript files), the "templates" subdirectory contains HTML
+templates (in [Jinja2](http://jinja.pocoo.org/docs/2.10/) syntax) for the
+web app.
+
+
+## samples Directory
+
+This directory contains the tradspell version of a few sample texts. The
+corresponding Lytspel version is dynamically created by the web app; or you
+can generate it yourself by passing one (or more) of these files as
+argument(s) to the `lytspel` command-line script.
 
 
 ## scripts Directory
@@ -277,3 +286,11 @@ This directory contains various files used to test the Lytspel converter.
 To run the tests, type `make` within the directory. Alternatively, you can
 invoke `make` (or `make allpytests`) in the root directory (one level up),
 which will run these tests as well as other tests and checks.
+
+
+## webfiles Directory
+
+This directory contains the content of several pages shown by the web app
+and the source code of the website's favicon. For details on how the
+favicon was designed and integrated, see **NOTE.md** (within the
+directory).
