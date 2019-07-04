@@ -18,7 +18,7 @@ li > ul { list-style-type: square; margin-top: 1rem; margin-bottom: 1rem; }
      border-width: 2px !important;
 }
 
-.navbar {
+#nav-container {
    background-color: transparent;
    /* single-pixel image from http://png-pixel.com/ corresponding to background-color: #e3f2fd */
    background-image: url(/static/1x1-e3f2fdff.png);
@@ -32,6 +32,10 @@ li > ul { list-style-type: square; margin-top: 1rem; margin-bottom: 1rem; }
 .navbar-nav  { display: inline-block; background-color: #e3f2fd; padding: .5rem; float: right; }
 
 .navbar-sep { font-weight: bold; width: 100%; }
+
+.lytspel { font-style: italic; }
+
+.lytspel em, .lytspel i { font-style: normal; }
 
 @media screen and (max-width: 525px) {
   .wide-details { display: none; }
