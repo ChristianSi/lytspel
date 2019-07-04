@@ -18,6 +18,7 @@
         // Hide any alerts which may exist from earlier file submissions.
         let fileAlerts = document.getElementById('file-alerts');
         if (fileAlerts) fileAlerts.parentNode.removeChild(fileAlerts);
+
         // Disable the "Convert file" button until a new file has been selected
         disableFileConversion();
         return true;
@@ -26,6 +27,35 @@
       window.onload = function() {
         // Initally disable the "Convert file" button until a file has been selected
         disableFileConversion();
+
+        // Grow textareas if needed to show the whole initial content without scrollbars
+        // (both will have the same initial height sufficient for both)
+        let $textareas = jQuery('textarea');
+        let maxScrollHeight = 0;
+
+        $textareas.each(function() {
+          if (this.scrollHeight > maxScrollHeight) maxScrollHeight = this.scrollHeight;
+        });
+
+        $textareas.each(function() {
+          let $this = jQuery(this);
+          if ($this.innerHeight() < maxScrollHeight) $this.innerHeight(maxScrollHeight);
+        });
+
+        // Register handlers that keep the height of the textareas in sync
+        $textareas.mouseup(function() {
+          let $this = jQuery(this);
+          let otherid = (this.id === 'tradspell') ? 'lytspel' : 'tradspell';
+          let $other = jQuery('#' + otherid);
+
+          if (Math.round($this.offset().top) === Math.round($other.offset().top)) {
+            // Both textareas are placed side by side
+            let thisHeight = $this.outerHeight();
+            // If heights are different, this one has likely been resized by the user,
+            // hence we resize the other one accordingly
+            if (thisHeight !== $other.outerHeight()) $other.outerHeight(thisHeight);
+          }
+         });
       };
     </script>
 {% endblock %}
@@ -62,7 +92,7 @@
           </div>
           </form>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 mb-3">
           <div class="form-group">
             <label for="lytspel">Lytspel:</label>
             <textarea id="lytspel" name="lytspel" class="form-control vresize" rows=10
@@ -87,9 +117,6 @@
           </form>
         </div>
       </div>
-      <h3 id="soon" name="soon">Coming soon:</h3>
-      <ul>
-        <li>Sample texts</li>
-      </ul>
     </div>
+    {{intro}}
 {% endblock %}
