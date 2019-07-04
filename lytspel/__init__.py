@@ -9,7 +9,7 @@ from .conv import Converter
 from .util import PACKAGENAME
 
 
-__version__ = '0.9.4'
+__version__ = '0.9.5'
 
 
 def compact_warning(message, category, filename, lineno, line=None):

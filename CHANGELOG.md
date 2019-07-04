@@ -2,11 +2,16 @@
 
 ## [Unreleased]
 
+
+## [0.9.5] -- 2019-07-04
+
 * Add and correct some dictionary entries.
 * Add some more all-caps abbreviations to the list of known (and preserved)
   words.
+* Prevent URLs and email addresses from being converted.
 * Create compact "Lytspel on One Page" document.
-* Improve web app: file upload, show parts of README and other docs, favicon.
+* Complete web app: file upload, show parts of README and various other
+  documents, sample pages, favicon, improved caching and logging.
 
 Bugfixes:
 
