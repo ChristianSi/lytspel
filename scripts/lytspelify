@@ -813,6 +813,7 @@ OUTER: while ($rest && $rest_with_sep) {
     $reconstructed =~ s/-('?r)/=$1/g;       # not needed before «r»
     $reconstructed =~ s/a-([lw])/a=$1/g;    # not needed for «al, aw»
     $reconstructed =~ s/([aeou])-h/$1=h/g;  # not needed for «ah, eh, oh, uh»
+    $reconstructed =~ s/ee-i/ee=i/g;        # not needed for «eei» (only used in a quasi-compound)
     $reconstructed =~ s/i-er/i=er/g;        # not needed for «ier»
     $reconstructed =~ s/u-err/u=err/g;      # not needed for «uerr»
     $reconstructed =~ s/s-sh/s=sh/g;        # not needed for «ssh» (rarely in foreign words)
@@ -1485,8 +1486,9 @@ sub convert_row {
         {
             # Most all-caps words (abbreviations) are either skipped or added unchanged
             if (
-                $tradspell =~ /^(AOL|ASCII|BBQ|CIA|CNN|DNA|FIFO|GATT|HTML|IL|ILO|IOU|KKK|LIFO
-                    |MC|MIT|MPEG|NAFTA|NASA|NASCAR|NASDAQ|NATO|OK|OPEC|OT|RAF|TNT|TV|USA|USS|WY)$/x
+                $tradspell =~ /^(AOL|ASCII|BBC|BBQ|BC|CIA|CNN|DNA|FIFO|GATT|HTML|IL|ILO|IOU
+                    |KKK|LIFO|MC|MIT|MPEG|NAFTA|NASA|NASCAR|NASDAQ|NATO|OK|OPEC|OT|RAF|TNT
+                    |TV|UK|USA|USS|WY)$/x
                 )
             {
                 $converted = $tradspell;
