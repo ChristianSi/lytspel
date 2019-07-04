@@ -1,5 +1,6 @@
-This directory contains the source code for the website's favicon. The icon
-was designed in LibreOffice; exported as png, size: 600x600 px; uploaded to
+This directory contains the source code of the website's favicon as well as
+the content of several pages shown by the web app. The icon was designed in
+LibreOffice; exported as png, size: 600x600 px; uploaded to
 https://realfavicongenerator.net/ (using a svg instead of png didn't work
 correctly with that website).
 
