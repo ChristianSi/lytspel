@@ -116,5 +116,5 @@ n**uer**el, **our**» ‹mirror, poor, pure, neural, our/hour›).
 
 ## Links
 
-* Online converter: <https://www.lytspel.org/>
+* Online converter: <https://www.lytspel.org>
 * Detailed ruleset: <https://www.lytspel.org/rules>
