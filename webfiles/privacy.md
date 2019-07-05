@@ -57,15 +57,15 @@ that we do not collect any personal data.
 ## Use of the Online Converter
 
 When you enter text in the the input field entitled "Traditional spelling"
-at <https://www.lytspel.org/> and press the "Convert" button, the entered
+at <https://www.lytspel.org> and press the "Convert" button, the entered
 text will be sent to our web server. There it is automatically converted
 into the reformed Lytspel spelling and both the original and the converted
 text are sent back to your web browser. While being processed on the
 server, the text is only stored in memory, never on disk. At our side, no
 person will ever look at the text or get any information about its
 contents. The only thing we may log (in addition to the general information
-mentioned above) is the number of characters in the original and converted
-text (that is, the length of the text).
+mentioned above) is the number of characters in the original and the
+converted text (that is, the length of the text).
 
 When you select a file to upload and convert and press the "Convert file"
 button, a copy of the selected file will be sent to our web server. There
@@ -77,7 +77,8 @@ of time; however, no file is ever stored for more than one hour. At our
 side, no person will ever look at the files or get any information about
 their contents. The only things we may log (in addition to the general
 information mentioned above) are the number of characters in the original
-and converted file as well as the file extension (e.g. "txt" or "html").
+and the converted file as well as the file extension (e.g. "txt" or
+"html").
 
 
 ## Disclosure of Data
