@@ -8,7 +8,7 @@ To install the Lytspel converter locally, two steps are needed:
    package installer for Python 3, on your system.
 2. Use it to install Lytspel itself.
 
-If you have Python 3.4 or newer on your system, `pip3` should already be
+If you have Python 3.5 or newer on your system, `pip3` should already be
 included with it. Otherwise, please [download and
 install](https://www.python.org/downloads/) the latest Python version.
 

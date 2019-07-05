@@ -22,6 +22,7 @@ setuptools.setup(
         'setuptools >= 34.3.3',
         'spacy >= 2.0.0',
     ],
+    # Keep minimum version listed here in sync with the one in INSTALL-USE.md
     python_requires='>=3.5',
     package_data={'lytspel': ['lytspel-dict.csv']},
     classifiers=[
