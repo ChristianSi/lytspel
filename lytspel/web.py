@@ -213,9 +213,20 @@ def render_nav_items(page_dict: 'OrderedDict[str, PageData]',
 
 ##### Constants and immutable values #####
 
-# Note: keep this in sync with the "accept" list in templates/startpage.html
-ALLOWED_EXTENSIONS = frozenset((
-    'epub', 'htm', 'html', 'markdown', 'md', 'rst', 'txt', 'xht', 'xhtml', 'xml'))
+# A mapping from allowed file extensions to their MIME types.
+# Note: keep this in sync with the "accept" list in templates/startpage.html.
+ALLOWED_EXTENSIONS = {
+    'epub': 'application/epub+zip',
+    'htm': 'text/html',
+    'html': 'text/html',
+    'markdown': 'text/markdown',
+    'md': 'text/markdown',
+    'rst': 'text/x-rst',
+    'txt': 'text/plain',
+    'xht': 'application/xhtml+xml',
+    'xhtml': 'application/xhtml+xml',
+    'xml': 'application/xml'
+    }
 
 HOME = path.expanduser('~')
 
@@ -363,11 +374,12 @@ def convert_file() -> Response:
         except Exception as err:   # pylint: disable=broad-except
             return redirect_with_error('Could not convert file: {}'.format(err))
 
+        norm_ext = ext[1:].lower()
         app.logger.info('/file: Converted %s file with %d bytes to one with %d bytes',
-                        ext[1:].lower(), path.getsize(in_file_path), path.getsize(out_file_path))
+                        norm_ext, path.getsize(in_file_path), path.getsize(out_file_path))
         return send_from_directory(
             upload_folder, out_file_name, as_attachment=True, attachment_filename=target_name,
-            cache_timeout=0, add_etags=False)
+            mimetype=ALLOWED_EXTENSIONS.get(norm_ext), cache_timeout=0, add_etags=False)
 
     # GET: redirect to start view
     app.logger.info('/file GET: Redirecting to start page')
@@ -386,6 +398,13 @@ def one_page_pdf() -> Response:
     """Serve the requested PDF document."""
     app.logger.info('/lytspel-on-one-page.pdf fetched')
     return send_file('../docs/lytspel-on-one-page.pdf', mimetype='application/pdf')
+
+
+@app.route("/robots.txt", methods=['GET'])
+def robots_txt() -> Response:
+    """Serve the robots.txt file."""
+    app.logger.info('/robots.txt fetched')
+    return send_file('../webfiles/robots.txt', mimetype='text/plain')
 
 
 @app.route("/<localpath>", methods=['GET'])
