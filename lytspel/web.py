@@ -364,7 +364,7 @@ def convert_file() -> Response:
             return redirect_with_error('Could not convert file: {}'.format(err))
 
         app.logger.info('/file: Converted %s file with %d bytes to one with %d bytes',
-                        ext, path.getsize(in_file_path), path.getsize(out_file_path))
+                        ext[1:].lower(), path.getsize(in_file_path), path.getsize(out_file_path))
         return send_from_directory(
             upload_folder, out_file_name, as_attachment=True, attachment_filename=target_name,
             cache_timeout=0, add_etags=False)
