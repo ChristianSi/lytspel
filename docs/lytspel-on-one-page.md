@@ -82,7 +82,7 @@ e**v**er, **w**est, **y**et»).
 * «arr» as in «carri» ‹carry›
 * «eer» as in «cheer»
 * «er» as in «number»
-* «err» as in «merri» ‹error›
+* «err» as in «merri» ‹merry›
 * «oar» as in «foarss, board» ‹force...›
 * «or» as in «north, order» (many people pronounce «oar» and «or» the same)
 * «orr» as in «sorri» ‹sorry›
