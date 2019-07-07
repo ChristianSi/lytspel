@@ -286,7 +286,7 @@ def normalize_url() -> Optional[Response]:
         new_path = new_path.lower()
 
     if new_path != orig_path:
-        app.logger.info('URL normalization: Redirecting from %s to %s', orig_path, new_path)
+        log_web_event('URL normalization: Redirecting from %s to %s', orig_path, new_path)
         return redirect(new_path)
     else:
         return None  # let request pass as is
@@ -296,7 +296,7 @@ def normalize_url() -> Optional[Response]:
 def page_not_found(err):
     """Return requests for non-existing pages to the start page."""
     #pylint: disable=unused-argument
-    app.logger.info('Page not found handler: Redirecting from %s to start page', request.path)
+    log_web_event('%s: Redirecting to start page', request.path)
     return redirect('/')
 
 
@@ -318,9 +318,9 @@ def startpage() -> str:
     if tradspell:
         conv = Converter()
         lytspel = conv.convert_para(tradspell, False)
-        app.logger.info('/: Converted %d to %d characters', len(tradspell), len(lytspel))
+        log_web_event('/: Converted %d to %d characters', len(tradspell), len(lytspel))
     else:
-        app.logger.info('/ fetched')
+        log_web_event()
 
     return render_template('startpage.html',
                            nav_items=NAV_ITEMS, form=request.form, intro=INTRO_TEXT,
@@ -375,35 +375,35 @@ def convert_file() -> Response:
             return redirect_with_error('Could not convert file: {}'.format(err))
 
         norm_ext = ext[1:].lower()
-        app.logger.info('/file: Converted %s file with %d bytes to one with %d bytes',
-                        norm_ext, path.getsize(in_file_path), path.getsize(out_file_path))
+        log_web_event('/file: Converted %s file with %d bytes to one with %d bytes',
+                      norm_ext, path.getsize(in_file_path), path.getsize(out_file_path))
         return send_from_directory(
             upload_folder, out_file_name, as_attachment=True, attachment_filename=target_name,
             mimetype=ALLOWED_EXTENSIONS.get(norm_ext), cache_timeout=0, add_etags=False)
 
     # GET: redirect to start view
-    app.logger.info('/file GET: Redirecting to start page')
+    log_web_event('/file GET: Redirecting to start page')
     return redirect('/')
 
 
 @app.route("/favicon.ico", methods=['GET'])
 def favicon() -> Response:
     """Redirect old browsers which may expect the favicon in the root."""
-    app.logger.info('/favicon.ico: Redirecting to /static/favicon.ico')
+    log_web_event('/favicon.ico: Redirecting to /static/favicon.ico')
     return redirect('/static/favicon.ico')
 
 
 @app.route("/lytspel-on-one-page.pdf", methods=['GET'])
 def one_page_pdf() -> Response:
     """Serve the requested PDF document."""
-    app.logger.info('/lytspel-on-one-page.pdf fetched')
+    log_web_event()
     return send_file('../docs/lytspel-on-one-page.pdf', mimetype='application/pdf')
 
 
 @app.route("/robots.txt", methods=['GET'])
 def robots_txt() -> Response:
     """Serve the robots.txt file."""
-    app.logger.info('/robots.txt fetched')
+    log_web_event()
     return send_file('../webfiles/robots.txt', mimetype='text/plain')
 
 
@@ -412,11 +412,11 @@ def doc_page(localpath: str) -> Response:
     """Show a page from the documentation."""
     page_data = PAGE_DICT.get(localpath)
     if page_data:
-        app.logger.info('/%s fetched', localpath)
+        log_web_event()
         return cacheable(render_template(
             'base.html', nav_items=NAV_ITEMS, content=page_data.content, title=page_data.title))
     else:
-        app.logger.info('/%s: Redirecting to start page', localpath)
+        log_web_event('%s: Redirecting to start page', request.path)
         return redirect('/') # Redirect to start page
 
 
@@ -425,19 +425,39 @@ def sample_page(localpath: str) -> Response:
     """Show a text sample."""
     page_data = SAMPLE_DICT.get(localpath)
     if page_data:
-        app.logger.info('/sample/%s fetched', localpath)
+        log_web_event()
         return cacheable(render_template(
             'sample.html', nav_items=NAV_ITEMS, title=page_data.title, paras=page_data.paras))
     else:
-        app.logger.info('/sample/%s: Redirecting to start page', localpath)
+        log_web_event('%s: Redirecting to start page', request.path)
         return redirect('/') # Redirect to start page
 
 
 ##### Helper functions #####
 
+def log_web_event(msg: str = None, *args):
+    """Log an info message in the context of a web request.
+
+    Any 'args' are merged into 'msg' using the string formatting operator. Additionally, the
+    user agent making the request will be added to the logged message.
+
+    If 'msg' is omitted, a default message noticing that the current request path was fetched
+    will be logged.
+    """
+    # pylint: disable=keyword-arg-before-vararg
+    if not msg:
+        msg = '%s fetched'
+        args = (request.path,)
+
+    msg += ' (user agent: %s/%s %s)'
+    agent = request.user_agent
+    args = (*args, agent.platform, agent.browser, agent.version)
+    app.logger.info(msg, *args)
+
+
 def redirect_with_error(msg: str, url: str = '/') -> Response:
     """"Redirect to specific URL, flashing an error message."""
-    app.logger.info('Error redirect to %s with flash message: %s', url, msg)
+    log_web_event('Error redirect to %s with flash message: %s', url, msg)
     flash(msg)
     return redirect(url)
 
