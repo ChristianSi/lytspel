@@ -491,6 +491,7 @@ optimized
 optimizing
 orderlies
 orthographic
+otherguess
 overcomplicated
 overfilled
 overfilling
@@ -701,6 +702,7 @@ subsists
 substring
 subsumed
 subtasks
+sudarium
 Sudoku
 suggestibility
 sullenly
@@ -747,6 +749,7 @@ toolchains
 toolkit
 toolkits
 toolset
+tradecraft
 tradeoff
 tradeoffs
 traduced
