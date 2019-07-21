@@ -449,9 +449,16 @@ def log_web_event(msg: str = None, *args):
         msg = '%s fetched'
         args = (request.path,)
 
-    msg += ' (user agent: %s/%s %s)'
+    msg += ' (user agent: %s)'
     agent = request.user_agent
-    args = (*args, agent.platform, agent.browser, agent.version)
+    agent_string = '{}/{} {}'.format(
+        agent.platform or '-', agent.browser or '-', agent.version or '-')
+
+    if agent_string == '-/- -':
+        # Log the raw User-Agent header instead (if sent)
+        agent_string = '"{}"'.format(agent.string or '')
+
+    args = (*args, agent_string)
     app.logger.info(msg, *args)
 
 
