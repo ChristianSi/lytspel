@@ -5852,6 +5852,7 @@ artilleryman,,,At'Il@rIm@n,Art'Il@`rIm@n,Art'Il@`i:m@n
 artiodactyl,,,'AtIQda#ktaIl,'ArtIAda#ktaIl,Arti:oUd'akt@l
 artiodactyls,,,'AtIQda#ktaIlz,'ArtIAda#ktaIlz,Arti:oUd'akt@lz
 artisan,,,'AtIs@n,'ArtIs@n,'ArtIz@n
+artisanal,,,At'Is@n@l,Art'Is@n@l,
 artisans,,,'AtIs@nz,'ArtIs@nz,'Art@z@nz
 artist,,,'AtIst,'ArtIst,
 artiste,,,At'i:st,Art'i:st,
@@ -19453,10 +19454,13 @@ commove,,,k@m'u:v,,
 communal,,,k@mj'u:n@l,,
 communalise,,communalize
 communalism,,,k@mj'u:n@lIz@m,,
+communalist,,,k@mj'u:n@lIst,,
+communalists,,,k@mj'u:n@lIsts,,
 communality,,,k@mju:n'alIti:,,kQmjUn'alIti:
 communalize,,,k@mj'u:n@laIz,,
 communally,,,k@mj'u:n@li:,,
 communard,,,k@mj'u:nAd,k@mj'u:nArd,k'QmjUnArd
+communards,,,k@mj'u:nAdz,k@mj'u:nArdz,
 commune,n,,k'Qmju:n,k'Amju:n,
 commune,v,,k'Qmju:n,k'Amju:n,k@mj'u:n
 communes,n,,k'Qmju:nz,k'Amju:nz,
@@ -39964,6 +39968,7 @@ Geoffrey,,,dZ'EfrI,dZ'Efri:,
 geognostic,,,dZi:oUgn'QstIk,dZi:oUgn'AstIk,dZi:Agn'QstIk
 geognosy,,,dZi:oUgn@s'aI,,dZi:'Agn@si:
 geographer,,,dZI'Qgr@f@,dZI'Agr@f@`,dZi:'Qgr@f@`
+geographers,,,dZI'Qgr@f@z,dZI'Agr@f@`z,
 geographic,,,dZI@gr'afIk,,dZi:@gr'afIk
 geographical,,,dZI@gr'afIk@l,,dZi:@gr'afIk@l
 geographically,,,dZI@gr'afIkli:,,dZi:@gr'afIk@li:
@@ -50041,6 +50046,7 @@ intellectually,,,Int@l'EktSu:@li:,,
 intellectuals,,,Int@l'EktSu:@lz,,
 intelligence,,,Int'ElIdZ@ns,,
 intelligencer,,,Int'ElIdZ@ns@,Int'ElIdZ@ns@`,
+intelligences,,,Int'ElIdZ@nsIz,Int'ElIdZ@nsI#z,
 intelligent,,,Int'ElIdZ@nt,,
 intelligential,,,IntElIdZ'EnS@l,,
 intelligently,,,Int'ElIdZ@ntli:,,
@@ -53641,6 +53647,7 @@ knowledge,,,n'QlIdZ,n'AlIdZ,
 knowledgeable,,,n'QlIdZ@b@l,n'AlIdZ@b@l,n'Ql@dZ@b@l
 knowledgeableness,,,n'QlIdZ@b@ln@s,n'AlIdZ@b@ln@s,n'QlIdZ@b@lnEs
 knowledgeably,,,n'QlIdZ@blI,n'AlIdZ@bli:,n'QlIdZ@bli:
+knowledges,,,n'QlIdZIz,n'AlIdZI#z,
 Knowles,,,n'oU@lz,,n'oUlz
 known,,,n'oUn,,
 knowns,,,n'oUnz,,
@@ -55790,6 +55797,7 @@ library,,,l'aIbr@ri:,l'aIbrEri:,
 librate,,,l'aIbreIt,,
 libration,,,laIbr'eIS@n,,
 libratory,,,l'aIbr@t@ri:,l'aIbr@tori:,
+libre,,,li:br'@,,
 librettist,,,lIbr'EtIst,,
 libretto,,,lIbr'EtoU,,
 Libreville,,,li:br@v'Il,,li:brEv'i:l
@@ -62405,6 +62413,7 @@ Monty,,,m'Qnti:,m'Anti:,m'O:nti:
 monument,,,m'Qnju:m@nt,m'Anju:m@nt,m'Qnj@m@nt
 monumental,,,mQnju:m'Ent@l,mAnju:m'Ent@l,mQnj@m'Ent@l
 monumentalise,,monumentalize
+monumentality,,,mQnju:m'Ent'alIti:,mAnju:m'Ent'alIti:,
 monumentalize,,,mQnju:m'Ent@laIz,mAnju:m'Ent@laIz,mQnj@m'Ent@laIz
 monumentally,,,mQnju:m'Ent@li:,mAnju:m'Ent@li:,
 monuments,,,m'Qnju:m@nts,m'Anju:m@nts,
@@ -74100,6 +74109,7 @@ pozzolana,,,pQz@l'An@,pAz@l'An@,pAts@l'An@
 pozzolanic,,,pQz@l'anIk,pAz@l'anIk,pAts@l'AnIk
 pozzuolanic,,,pQzju:@l'anIk,pAzju:@l'anIk,pAtsu:@l'AnIk
 Pozzuoli,,,p'Qzju:Qli:,p'Azju:Ali:,pAtsw'oUli:
+pp,,,pi:p'i:,,
 ppm,,,pi:pi:'Em,,p'i:p'i:'Em
 praam,,,pr'Am,,
 practic,,,pr'aktIk,,
@@ -89163,7 +89173,7 @@ spies,,,sp'aIz,,
 spiffing,,,sp'IfIN,,
 spiffy,,,sp'IfI,sp'Ifi:,
 spiflicate,,,sp'IflIkeIt,sp'IflI#keIt,
-spiflicated,,,sp'IflIkeItId,sp'IflI#keItI#d,sp'Ifl@keItId
+spiflicated,,,sp'IflIkeItId,,sp'Ifl@keItId
 spiflicates,,,sp'IflIkeIts,sp'IflI#keIts,
 spignel,,,sp'Ign@l,,
 spigot,,,sp'Ig@t,,
@@ -100182,7 +100192,7 @@ unleashing,,,Vnl'i:SIN,,
 unleavened,,,Vnl'Ev@nd,,
 unless,,,Vnl'Es,,
 unlettered,,,Vnl'Et@d,Vnl'Et@`d,
-unliberated,,,Vnl'Ib@reItId,Vnl'Ib@`reItId,Vnl'Ib@`eItId
+unliberated,,,Vnl'Ib@reItId,Vnl'Ib@`reItI#d,Vnl'Ib@`eItId
 unlicensed,,,Vnl'aIs@nsd,,Vnl'aIs@nst
 unlighted,,,Vnl'aItId,Vnl'aItI#d,
 unlike,,,Vnl'aIk,,
@@ -102950,6 +102960,7 @@ voila,,,vwAl'A,,vwal'a
 voile,,,v'OIl,,
 voiles,,,v'OIlz,,
 voiture,,,v'OItS@,v'OItS@`,vwat'i:r
+vol,,,v'Ql,v'Al,
 Volans,,,v'Qlanz,v'Alanz,v'oUlanz
 volant,,,v'Ql@nt,v'Al@nt,v'oUl@nt
 volante,,,v@l'AnteI,,voUl'AnteI

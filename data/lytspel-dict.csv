@@ -4422,7 +4422,7 @@ anticly,,,anticli
 anticoagulant,,,antico'agyulent
 anticoagulative,,,antico'agyulaitiv
 anticodon,,,anti'coadon
-anticommunist,,,anti'comyunist
+anticommunist,,,anti'comiunist
 anticompetitive,,,anticom'petitiv
 anticonvulsant,,,anticon'vulssent
 anticorrosive,,,antike'roaciv
@@ -5811,6 +5811,7 @@ artilleryman,,,ar'tileriman
 artiodactyl,,,artioa'dactil
 artiodactyls,,,artioa'dactils
 artisan,,,artisen
+artisanal,,,artisenel
 artisans,,,artisens
 artist,,,artist
 artiste,,,ar'teest
@@ -19272,10 +19273,13 @@ commove,,,co'muuv
 communal,,,co'miunel
 communalise,,communalize
 communalism,,,co'miunelism
-communality,,,comyu'naliti
+communalist,,,co'miunelist
+communalists,,,co'miunelists
+communality,,,comiu'naliti
 communalize,,,co'miunelys
 communally,,,co'miunelli
-communard,,,comyunard
+communard,,,comiunard
+communards,,,comiunards
 commune,n,,comiun
 commune,v,,co'miun
 communes,n,,comiuns
@@ -19301,14 +19305,14 @@ communique,,,comiuni'cay
 communiques,,,comiuni'cays
 communisation,,communization
 communise,,communize
-communism,,,comyunism
-communist,,,comyunist
-communists,,,comyunists
+communism,,,comiunism
+communist,,,comiunist
+communists,,,comiunists
 communitarian,,,comiuni'tairian
 communities,,,co'miunities
 community,,,co'miuniti
-communization,,,comyuni'saition
-communize,,,comyunys
+communization,,,comiuni'saition
+communize,,,comiunys
 commutable,,,co'miutebl
 commutate,,,comyutait
 commutation,,,comyu'taition
@@ -20375,8 +20379,8 @@ consolidate,,,con'solidait
 consolidated,,,con'solidaited
 consolidates,,,con'solidaits
 consolidating,,,con'solidaiting
-consolidation,,,kensoli'daition
-consolidations,,,kensoli'daitions
+consolidation,,,consoli'daition
+consolidations,,,consoli'daitions
 consolidator,,,con'solidaiter
 consolidators,,,con'solidaiters
 consoling,,,con'soaling
@@ -20661,7 +20665,7 @@ continuance,,,con'tiniuanss
 continuances,,,con'tiniuansses
 continuant,,,con'tiniuant
 continuate,,,con'tiniuait
-continuation,,,kentiniu'aition
+continuation,,,continiu'aition
 continuative,,,con'tiniuaitiv
 continuatively,,,con'tiniuaitivli
 continuator,,,con'tiniuaiter
@@ -20669,7 +20673,7 @@ continue,,,con'tiniu
 continued,,,con'tiniud
 continues,,,con'tinius
 continuing,,,con'tiniuing
-continuity,,,conti'nuiti
+continuity,,,conti'niuiti
 continuo,,,con'tiniuo
 continuous,,,con'tiniuass
 continuously,,,con'tiniuassli
@@ -27391,11 +27395,11 @@ discontentedly,,,discon'tentedli
 discontentedness,,,discon'tentedness
 discontents,,,discon'tents
 discontinuance,,,discon'tiniuanss
-discontinuation,,,diskentiniu'aition
+discontinuation,,,discontiniu'aition
 discontinue,,,discon'tiniu
 discontinued,,,discon'tiniud
 discontinuing,,,discon'tiniuing
-discontinuity,,,disconti'nuiti
+discontinuity,,,disconti'niuiti
 discontinuous,,,discon'tiniuass
 discontinuously,,,discon'tiniuassli
 discontinuousness,,,discon'tiniuassness
@@ -33227,7 +33231,7 @@ euro,,,iuro
 eurobond,,,iurobond
 eurobonds,,,iurobonds
 Euroclydon,,,Iu'roclidon
-Eurocommunism,,,Iuro'comyunism
+Eurocommunism,,,Iuro'comiunism
 Eurocrat,,,Iurecrat
 Eurocrats,,,Iurecrats
 Eurodollar,,,Iurodoler
@@ -39616,6 +39620,7 @@ Geoffrey,,,Jefri
 geognostic,,,jiog'nostic
 geognosy,,,ji'ognoci
 geographer,,,ji'ogrefer
+geographers,,,ji'ogrefers
 geographic,,,jio'grafic
 geographical,,,jio'graficl
 geographically,,,jio'graficlli
@@ -49614,6 +49619,7 @@ intellectually,,,inte'lecchualli
 intellectuals,,,inte'lecchuals
 intelligence,,,in'telijenss
 intelligencer,,,in'telijensser
+intelligences,,,in'telijensses
 intelligent,,,in'telijent
 intelligential,,,inteli'jenshel
 intelligently,,,in'telijentli
@@ -53176,6 +53182,7 @@ knowledge,,,nolij
 knowledgeable,,,nolijebl
 knowledgeableness,,,nolijeblness
 knowledgeably,,,nolijebli
+knowledges,,,nolijes
 known,,,noan
 knowns,,,noans
 knows,,,noas
@@ -55275,6 +55282,7 @@ library,,,lybrerri
 librate,,,lybrait
 libration,,,ly'braition
 libratory,,,lybratoari
+libre,,,leebra
 librettist,,,li'bretist
 libretto,,,li'breto
 Libreville,,,Leebre'veel
@@ -61808,6 +61816,7 @@ Monty,,,Monti
 monument,,,monyument
 monumental,,,monyu'mentl
 monumentalise,,monumentalize
+monumentality,,,monyumen'taliti
 monumentalize,,,monyu'mentelys
 monumentally,,,monyu'mentlli
 monuments,,,monyuments
@@ -64428,8 +64437,8 @@ noncommercial,,,nonco'murshel
 noncommissioned,,,nonco'mitiond
 noncommittal,,,nonco'mitl
 noncommunicant,,,nonco'miunikent
-noncommunist,,,non'comyunist
-noncommunists,,,non'comyunists
+noncommunist,,,non'comiunist
+noncommunists,,,non'comiunists
 noncompact,,,noncom'pact
 noncompetitive,,,noncom'petitiv
 noncompliance,,,noncom'plyenss
@@ -73430,6 +73439,7 @@ pozzolana,,,potso'laana
 pozzolanic,,,potso'laanic
 pozzuolanic,,,potswo'laanic
 Pozzuoli,,,Pot'swoali
+pp,,,pp
 ppm,,,ppm
 praam,,,praam
 practic,,,practic
@@ -83597,6 +83607,7 @@ Scyros,,,Skyross
 scythe,,,sydh
 Scythia,,,Sithia
 Scythian,,,Sithian
+se,,,say
 sea,,,see
 seabeach,,,seebeech
 seabed,,,seebed
@@ -89008,6 +89019,7 @@ squiz,,,squis
 sri,,,sree
 Srinagar,,,Sri'nuger
 sruti,,,shrooti
+st,,,st
 Sta,,,Sta
 stab,,,stab
 stabbed,,,stabd
@@ -94274,6 +94286,7 @@ textures,,,texchers
 texturise,,texturize
 texturize,,,texcherys
 Tezel,,,Tetssl
+Th,,,Th
 tha,,,thaa
 thack,,,thak
 Thackeray,,,Thakeri
@@ -102077,6 +102090,7 @@ voila,,,vwaa'laa
 voile,,,voil
 voiles,,,voils
 voiture,,,vwa'tuer
+vol,,,vol
 Volans,,,Voalans
 volant,,,voalent
 volante,,,voa'laantay
