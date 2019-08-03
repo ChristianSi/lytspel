@@ -2,7 +2,11 @@
 
 ## [Unreleased]
 
+
+## [1.0.0] -- 2019-08-03
+
 * Add and correct some dictionary entries.
+* Declare project stable.
 
 
 ## [0.9.5] -- 2019-07-04
