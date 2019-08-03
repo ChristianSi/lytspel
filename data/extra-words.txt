@@ -19,6 +19,7 @@ applets
 archiver
 archiving
 argento
+artisanal
 assented
 assholes
 autocorrect
@@ -108,6 +109,9 @@ colludes
 colons
 commonest
 commoning
+communalist
+communalists
+communards
 Compositae
 conceives
 concierges
@@ -275,6 +279,7 @@ Freemasons
 fullers
 ganged
 Gazan
+geographers
 gerency
 gestational
 girdles
@@ -344,6 +349,7 @@ inked
 inlays
 installable
 intakes
+intelligences
 interactively
 intercedes
 internals
@@ -374,6 +380,7 @@ kneader
 kneaders
 kneads
 kneeled
+knowledges
 kowtowed
 kowtowing
 kowtows
@@ -389,6 +396,7 @@ latencies
 leapt
 lettuces
 lianas
+libre
 lictors
 localhost
 logfile
@@ -453,6 +461,7 @@ monolingualism
 monolinguals
 monotheist
 monotheistic
+monumentality
 moslem
 multi
 multilingualism
@@ -543,6 +552,7 @@ postprocessor
 postprocessors
 postulated
 powerlessly
+pp
 prefigured
 preinstalled
 preprocessing
@@ -821,6 +831,7 @@ vibrated
 vii
 viii
 vivisectionism
+vol
 vomited
 wa
 walkthrough
