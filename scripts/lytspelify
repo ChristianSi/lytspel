@@ -660,9 +660,9 @@ sub insert_stress_marker {
 
     # Break before both consonants if the first is 's' (not followed by certain combinations),
     # if the second is 'l' (not preceeded by d|m|n|r|t|v|?h), 'r' (not preceeded by l|m|n|z),
-    # and in case of a few combinations ending in 'w' or 'y'
+    # in a few combinations ending in 'r' or 'w', and in 'sht'
     return insert_at_start $consonants
-        if $consonants =~ /^s=(?![ct]h|[bdfjmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w|sh=w$/
+        if $consonants =~ /^s=(?![ct]h|[bdfjmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w|sh=[wt]$/
         # Likewise in final ‹tlan›, e.g. «Maassaa'tlaan» ‹Mazatlán›
         || ($consonants =~ /^t=l$/ && $tradspell =~ /tlan$/)
         # And usually in the rare «ts» combination
@@ -702,7 +702,7 @@ sub move_stress_marker {
         if $word !~ /'/
         || $tradspell =~ /^( abampere$ | abaxial$ | abirrita | abohm$ | aboral$ | antalkali$
           | circumamb | enactory$ | Finsteraarhorn$ | inordinacy$ | permalloy$ | Oberammergau$
-          | subordinat | supererogate$ )/x;
+          | subordinat | superannuat | supererogate$ )/x;
 
     # If the compound contains two stress markers, we keep just the first one
     $word =~ s/('.*)'/$1/ if $word =~ /'.*'/;
