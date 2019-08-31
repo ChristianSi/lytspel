@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* Add and correct some dictionary entries.
+
 
 ## [1.0.0] -- 2019-08-03
 
