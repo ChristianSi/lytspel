@@ -371,6 +371,11 @@ def test_convert_i_case_spacy(conv):
     assert conv.convert_para('Even after a fraction such as 3.5 I should still be lower-case, I estimate.') ==\
             'Eeven after a fraction such as 3.5 y shood stil bee loer-caiss, y estimait.'
 
+def test_convert_i_vs_roman_i(conv):
+    """Test that the pronoun 'I' and the roman number 'I' are distinguished."""
+    assert conv.convert_para('I survived World War I, but many others didn’t.') ==\
+            'Y ser’vyvd Wurld Wor I, but meni udhers didn’t.'
+
 
 def test_convert_hyphenated_prefixes(conv):
     assert conv.convert_para('I re-sent the file to you last night.') ==\

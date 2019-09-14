@@ -161,13 +161,14 @@ class Dictionary:
                 if isinstance(result, dict):
                     if spacy_pos:
                         result = self._find_pos_tagged_entry(result, spacy_pos)
+
                     else:
                         return ConvState.NLP_NEEDED
 
             result = self._restore_capitalization(result, word)
 
-            if not at_sent_start and I_AND_CONTRACTIONS_RE.match(word):
-                # Correct the case of 'I' and its contractions
+            if not at_sent_start and I_AND_CONTRACTIONS_RE.match(word) and result != 'I':
+                # Correct the case of the pronoun 'I' and its contractions
                 result = result.lower()
 
         if contraction:
@@ -311,7 +312,7 @@ class Dictionary:
             return 'aj'
         elif spacy_pos == 'ADV':
             return 'av'
-        elif spacy_pos == 'ADP':
+        elif spacy_pos in ('ADP', 'PRON'):
             return 'prp'
         else:
             # Other POS tags shouldn't usually occur regarding our POS-tagged words,
