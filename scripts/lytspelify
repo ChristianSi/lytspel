@@ -336,24 +336,28 @@ sub lookup_tagged_dict_entry {
     return $dict_ref->{gen_key($lower, $pos)} // $dict_ref->{$lower} // '';
 }
 
-# any_short_vowel $left, $right, $tradspell, $pos: Return any of the five vowel letters
-# depending on which is most similar to $tradspell. Ties are resolved by preferring the
-# left-most match from the following list: e, u, a, o, i. ('e' and 'u' are generally
-# preferred because their sound is close to a schwa sound, the other vowel letters are
-# ranked by how often they represent a schwa in tradspell.)
+# any_short_vowel $left, $right, $tradspell, $pos, $allow_overwrite: Return any of the
+# five vowel letters depending on which is most similar to $tradspell. Ties are resolved
+# by preferring the left-most match from the following list: e, u, a, o, i. ('e' and 'u'
+# are generally preferred because their sound is close to a schwa sound, the other vowel
+# letters are ranked by how often they represent a schwa in tradspell.)
 #
-# If a $tradspell/$pos entry exists in $PRE_STRESSED_VOWEL_DREF, the value listed there
-# is always used instead of the above heuristic. This is used to overwrite entries
-# where the Levenshtein similarity score gets it wrong or where a specific value (most
-# often 'e') is required for consistency with related words.
+# If $allow_overwrite is true and a $tradspell/$pos entry exists in
+# $PRE_STRESSED_VOWEL_DREF, the value listed there is always used instead of the above
+# heuristic. This is used to overwrite entries where the Levenshtein similarity score gets
+# it wrong or where a specific value (most often 'e') is required for consistency with
+# related words.
 sub any_short_vowel {
-    my ($left, $right, $tradspell, $pos) = @_;
-    my $specific = lookup_tagged_dict_entry $PRE_STRESSED_VOWEL_DREF, $tradspell, $pos;
+    my ($left, $right, $tradspell, $pos, $allow_overwrite) = @_;
 
-    if ($specific) {
-        die "Invalid entry in pre-stressed-vowel.csv for $tradspell($pos): $specific"
-            unless $specific =~ /^[aeiou]$/;
-        return $specific;
+    if ($allow_overwrite) {
+        my $specific = lookup_tagged_dict_entry $PRE_STRESSED_VOWEL_DREF, $tradspell, $pos;
+
+        if ($specific) {
+            die "Invalid entry in pre-stressed-vowel.csv for $tradspell($pos): $specific"
+                unless $specific =~ /^[aeiou]$/;
+            return $specific;
+        }
     }
 
     my $chosen  = '';
@@ -456,12 +460,13 @@ sub combine_and_adjust {
     } elsif ($val eq 'I#' && $left eq 'd') {
         # Initial /dI#/ is written «di» (for consistency with the «di» ‹de› prefix)
         $val = 'i';
-    } elsif (($val =~ /^(@|a#|I#)$/ && $right =~ /^$SAMPA_SIMPLE_CONSONANT_CLS*'/)
-        || $val eq '@#')
-    {
-        # Any schwa followed by a stressed vowel can become «e/u/a/o/i» (in preference order);
-        # some custom spellings use '@#' to request this (for consistency with related words)
-        $val = any_short_vowel $left, $right, $tradspell, $pos;
+    } elsif ($val =~ /^(@|a#|I#)$/ && $right =~ /^$SAMPA_SIMPLE_CONSONANT_CLS*'/) {
+        # Any schwa followed by a stressed vowel can become «e/u/a/o/i» (in preference order)
+        $val = any_short_vowel $left, $right, $tradspell, $pos, 1;
+    } elsif ($val eq '@#') {
+        # Some custom spellings use '@#' to request that the original vowel be retained
+        # (for consistency with related words)
+        $val = any_short_vowel $left, $right, $tradspell, $pos, 0;
     } elsif ($val eq '@') {
         if ($right eq 's' && $tradspell =~ /eous$/) {
             # Final ‹eous› becomes «uss» for consistency with other words ending in ‹ous›
@@ -1486,9 +1491,9 @@ sub convert_row {
         {
             # Most all-caps words (abbreviations) are either skipped or added unchanged
             if (
-                $tradspell =~ /^(AOL|ASCII|BBC|BBQ|BC|CIA|CNN|DNA|FIFO|GATT|HTML|IL|ILO|IOU
-                    |KKK|LIFO|MC|MIT|MPEG|NAFTA|NASA|NASCAR|NASDAQ|NATO|OK|OPEC|OT|RAF|TNT
-                    |TV|UK|USA|USS|WY)$/x
+                $tradspell =~ /^(AOL|ASCII|BBC|BBQ|BC|CIA|CNN|DNA|FIFO|GATT|GMT|GOP|HMS|HTML|IL
+                    |ILO|IOU|ISBN|KKK|LIFO|MC|MIT|MPEG|NAFTA|NASA|NASCAR|NASDAQ|NATO|OK|OPEC|OT
+                    |RAF|TNT|TV|UK|USA|USS|WY)$/x
                 )
             {
                 $converted = $tradspell;
@@ -1562,6 +1567,7 @@ sub lookup_part_entry {
                 || ($part eq 'sow'          && $tradspell =~ /^sowb/)
                 || $tradspell =~ /^(discounter|fluidextract|internship|rebeldom|omnipresent|
                     subcompact|teardrop|semidesert)$/x;
+            $pos = 'prp' if $part eq 'i';
         }
 
         $key = gen_key $part, $pos;
