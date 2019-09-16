@@ -223,6 +223,7 @@ abominableness,,,a#b'QmIn@b@ln@s,a#b'AmIn@b@ln@s,@b'Am@n@b@lnEs
 abominably,,,a#b'QmIn@blI,a#b'AmIn@bli:,
 abominate,,,a#b'QmIneIt,a#b'AmI#neIt,@b'Am@neIt
 abomination,,,a#bQmIn'eIS@n,a#bAmI#n'eIS@n,@bQm@n'eIS@n
+abominations,,,a#bQmIn'eIS@nz,a#bAmI#n'eIS@nz,
 aboon,,,a#b'u:n,,@b'u:n
 aboral,,,a#b'O:r@l,a#b'or@l,ab'or@l
 aboriginal,,,ab@r'IdZIn@l,ab@`r'IdZIn@l,ab@`'IdZ@n@l
@@ -555,6 +556,7 @@ acclimate,,,a#kl'aIm@t,,'akl@meIt
 acclimated,,,a#kl'aIm@tId,a#kl'aIm@tI#d,'akl@meItId
 acclimation,,,a#klaIm'eIS@n,,akl@m'eIS@n
 acclimatise,,acclimatize
+acclimatization,,,a#klaIma#taIz'eIS@n,,
 acclimatize,,,a#kl'aIma#taIz,,@kl'aIm@taIz
 acclivity,,,a#kl'IvIti:,,@kl'IvIti:
 acclivous,,,a#kl'Iv@s,,@kl'aIv@s
@@ -1021,6 +1023,9 @@ actuarially,,,aktSu:'e@rI@li:,aktSu:'ErI@li:,aktSu:'e@i:@li:
 actuaries,,,'aktSu:@ri:z,'aktSu:Eri:z,'aktSu:'Eri:z
 actuary,,,'aktSu:@ri:,'aktSu:Eri:,'aktSu:'Eri:
 actuate,,,'aktSu:eIt,,'aktSu:'eIt
+actuated,,,'aktSu:eItId,'aktSu:eItI#d,
+actuates,,,'aktSu:eIts,,
+actuating,,,'aktSu:eItIN,,
 actuator,,,'aktSu:eIt@,'aktSu:eIt@`,'aktju:eIt@`
 actuators,,,'aktSu:eIt@z,'aktSu:eIt@`z,'aktju:eIt@`z
 acuate,,,a#kj'u:eIt,,'akju:It
@@ -1853,6 +1858,7 @@ aftertime,,,'aft@taIm,'aft@`taIm,
 afterward,,,'aft@w@d,'aft@`w@`d,
 afterwards,,,'aft@w@dz,'aft@`w@`dz,
 afterword,,,'aft@w3:d,'aft@`w3:d,
+afterwords,,,'aft@w3:dz,'aft@`w3:dz,
 afterworld,,,'aft@w3:ld,'aft@`w3:ld,
 afteryears,,,'aft@ji:@z,'aft@`jIrz,'aft@`ji:rz
 aftmost,,,'aftmoUst,,
@@ -4296,6 +4302,7 @@ Antares,,,'ante@z,'antErz,ant'e@i:z
 antarthritic,,,antATr'ItIk,antArTr'ItIk,
 antasthmatic,,,anta#sTm'atIk,,antazm'atIk
 antbird,,,'antb3:d,,
+antbirds,,,'antb3:dz,,
 ante,,,'anti:,,
 anteater,,,'anti:t@,'anti:t@`,
 anteaters,,,'anti:t@z,'anti:t@`z,
@@ -4374,6 +4381,7 @@ anthracosilicosis,,,anTra#kQsIlIk'oUsIs,anTra#kAsIlIk'oUsIs,anTr@koUsIl@k'oUsIs
 anthracosis,,,anTra#k'oUsIs,,anTr@k'oUsIs
 anthraquinone,,,'anTra#kwInQn,'anTra#kwInAn,anTr@kw@n'oUn
 anthrax,,,'anTraks,,
+Anthropocene,,,'anTr@poUsi:n,,
 anthropocentric,,,anTr@poUs'EntrIk,,
 anthropocentrism,,,'anTr@poUs@ntrIz@m,,anTr@poUs'EntrIz@m
 anthropogenesis,,,anTr@poUdZ'EnIsIs,,
@@ -4457,6 +4465,7 @@ anticly,,,'antIkli:,,
 anticoagulant,,,antIkoU'agjUl@nt,,anteIkoU'agj@l@nt
 anticoagulative,,,antIkoU'agjUl@tIv,,anti:koU'agj@leItIv
 anticodon,,,antIk'QdQn,antIk'AdAn,antIk'oUdQn
+anticommunism,,,antIk'Qmju:nIz@m,antIk'Amju:nIz@m,
 anticommunist,,,antIk'Qmju:nIst,antIk'Amju:nIst,anti:k'Qmj@nIst
 anticompetitive,,,antIk@mp'EtItIv,,
 anticonvulsant,,,antIk@nv'Vls@nt,,
@@ -6308,6 +6317,7 @@ astraphobia,,,a#stra#f'oUbi:@,,astr@f'oUbi:@
 astray,,,a#str'eI,,@str'eI
 astrict,,,'astrIkt,,@str'Ikt
 astrictive,,,astr'IktIv,,@str'IktIv
+Astrid,,,'astrId,,
 astride,,,a#str'aId,,@str'aId
 astringe,,,a#str'IndZ,,@str'IndZ
 astringent,,,a#str'IndZ@nt,,@str'IndZ@nt
@@ -6740,6 +6750,7 @@ augustness,,,'O:g@stn@s,,O:g'VstnEs
 Augustus,,,'O:gVst@s,,O:g'Vst@s
 auk,,,'O:k,,
 auklet,,,'O:kl@t,,'O:klIt
+auks,,,'O:ks,,
 aulic,,,'O:lIk,,
 aulos,,,'O:loUz,,'O:lQs
 Aum,,,'aUm,,'oUm
@@ -6831,6 +6842,7 @@ Austria,,,'Qstri:@,'O:stri:@,
 Austrian,,,'Qstri:@n,'O:stri:@n,
 Austrians,,,'Qstri:@nz,'O:stri:@nz,
 austringer,,,'QstrIN@,'O:strIN@`,'O:strIndZ@`
+austro,,,'QstroU,'O:stroU,
 Austroasiatic,,,QstroUsI'atIk,O:stroUsI'atIk,O:stroUeIZi:'atIk
 Austronesia,,,QstroUn'i:zi:@,O:stroUn'i:Z@,
 Austronesian,,,QstroUn'i:zi:@n,O:stroUn'i:Z@n,
@@ -9089,6 +9101,7 @@ beleaguered,,,bIl'i:g@d,bIl'i:g@`d,
 beleaguering,,,bIl'i:g@rIN,bIl'i:g@`rIN,bIl'i:g@`IN
 Belem,,,bIl'Em,,b@l'Em
 belemnite,,,bIl'EmnaIt,,b'El@mnaIt
+belemnites,,,bIl'EmnaIts,,
 Belfast,,,b'Elfast,,
 Belfort,,,b'ElfO:t,b'ElfO:rt,bElf'O:r
 belfry,,,b'Elfri:,,
@@ -12498,6 +12511,8 @@ Bromberg,,,br'Qm3:g,br'Am3:g,br'Qmb3:g
 brome,,,br'oUm,,
 bromelia,,,broUm'i:li:@,,
 bromeliaceous,,,broUmi:lI'eIS@s,,broUmi:li:'eIS@s
+bromeliad,,,broUm'i:lIad,,
+bromeliads,,,broUm'i:lIadz,,
 bromeosin,,,br'oUm@sIn,,broUm'i:@sIn
 bromhidrosis,,,brQmhIdr'oUsIs,brAmhIdr'oUsIs,broUmIdr'oUsIs
 bromic,,,br'QmIk,br'AmIk,br'oUmIk
@@ -13641,9 +13656,11 @@ cadency,,,k'eId@nsi:,,
 cadent,,,k'ad@nt,,k'eId@nt
 cadential,,,kad'EnS@l,,keId'EnS@l
 cadenza,,,k'ad@nz@,,k@d'Enz@
+cadenzas,,,k'ad@nz@z,,
 cadet,,,ka#d'Et,,k@d'Et
 cadets,,,ka#d'Ets,,k@d'Ets
 Cadette,,,kad'Et,,k@d'Et
+cadettes,,,kad'Ets,,
 cadge,,,k'adZ,,
 cadgy,,,k'adZi:,,
 cadi,,,k'adI,k'adi:,k'Adi:
@@ -13789,9 +13806,11 @@ calciferous,,,kals'If@r@s,kals'If@`r@s,kals'If@`@s
 calcific,,,kals'IfIk,,
 calcification,,,kalsIfIk'eIS@n,,kals@f@k'eIS@n
 calcified,,,k'alsIfaId,,k'als@faId
+calcifies,,,k'alsIfaIz,,
 calcifuge,,,k'alsIfju:dZ,,k'als@fju:dZ
 calcifugous,,,kalsIfj'u:g@s,,kals'Ifj@g@s
 calcify,,,k'alsIfaI,,k'als@faI
+calcifying,,,k'alsIfaIIN,,
 calcimine,,,k'alsImi:n,,k'als@maIn
 calcine,,,k'alsi:n,,k'alsaIn
 calcite,,,k'alsaIt,,
@@ -13818,6 +13837,7 @@ caldarium,,,kQld'e@ri:@m,kAld'Eri:@m,kald'e@i:@m
 Calder,,,k'Qld@,k'Ald@`,
 caldera,,,kQld'e@r@,kAld'Er@,kald'Er@
 Calderon,,,k'Qld@r@n,k'Ald@`r@n,kald@`'oUn
+caldron,,,k'Qldr@n,k'Aldr@n,
 Caldwell,,,k'QldwEl,k'AldwEl,
 Caleb,,,k'alEb,,k'eIl@b
 caleche,,,k'alEtS,,kal'ES
@@ -15211,6 +15231,7 @@ cataclasm,,,k'ata#klaz@m,,k'at@klaz@m
 cataclinal,,,k'ata#klIn@l,,kat@kl'aIn@l
 cataclysm,,,k'ata#klIz@m,,k'at@klIs@m
 cataclysmic,,,kata#kl'IsmIk,,kat@kl'IzmIk
+cataclysms,,,k'ata#klIz@mz,,
 catacomb,,,k'ata#koUm,,k'at@koUm
 catacombs,,,k'ata#koUmz,,k'at@koUmz
 catacumbal,,,k'ata#kVmb@l,,kat@k'Vmb@l
@@ -15277,6 +15298,7 @@ catastrophe,,,ka#t'astr@fI,ka#t'astr@fi:,k@t'astr@fi:
 catastrophes,,,ka#t'astr@fIz,,k@t'astr@fi:z
 catastrophic,,,kata#str'QfIk,kata#str'AfIk,kat@str'QfIk
 catastrophism,,,k'ata#strQfIz@m,k'ata#strAfIz@m,k@t'astr@fIz@m
+catastrophist,,,k'ata#strQfIst,k'ata#strAfIst,
 catatonia,,,kata#t'oUni:@,,kat@t'oUni:@
 catatonic,,,kata#t'QnIk,kata#t'AnIk,kat@t'QnIk
 catawba,,,kat'O:b@,,k@t'Ab@
@@ -15965,6 +15987,8 @@ Ceylon,,,seIl'Qn,seIl'An,sIl'Qn
 Ceylonese,,,seIloUn'i:z,,si:l@n'i:z
 Ceyx,,,s'eIks,,s'i:Iks
 Cezanne,,,s'Ezan,,sEz'an
+cf,,,si:'Ef,,
+ch,,,si:'eItS,,
 Ch'in,,,si:'eItS'In,,tS'i:n
 cha,,,tS'A,,tS'Q
 chabazite,,,tS'aba#zaIt,,k'ab@zaIt
@@ -17332,6 +17356,7 @@ chrysoprase,,,kr'aIs@preIz,,kr'Is@preIz
 Chrysostom,,,kr'aIsQst@m,kr'aIsAst@m,kr'Is@st@m
 chrysotile,,,kr'aIs@taIl,,kr'Is@tIl
 Chrystal,,,kr'Ist@l,,
+chs,,,si:eItS'Es,,
 chthonian,,,si:'eItST'oUni:@n,,T'oUni:@n
 chthonic,,,si:'eItST'QnIk,si:'eItST'AnIk,T'AnIk
 chub,,,tS'Vb,,tS@b
@@ -17419,6 +17444,7 @@ chylaceous,,,tSaIl'eIS@s,,kaIl'eIS@s
 chyle,,,tS'aIl,,k'aIl
 chyme,,,tS'aIm,,k'aIm
 chymotrypsin,,,tS'aIm@trIpsIn,,kaImoUtr'IpsIn
+chytrid,,,tS'aItrId,,
 CIA,,,si:aI'eI,,s'i:'aI'eI
 ciao,,,tS'aU,,tS'AQ
 Cibber,,,s'Ib@,s'Ib@`,
@@ -17997,6 +18023,7 @@ clearheadedness,,,kl'i:@hIdIdn@s,kl'IrhIdI#dn@s,kl'i:rh'EdIdnEs
 clearing,,,kl'i@IN,kl'IrIN,kl'i:rIN
 clearinghouse,,,kl'i@INhaUs,kl'IrINhaUs,
 clearinghouses,,,kl'i@INhaUzIz,kl'IrINhaUzIz,kl'i:rINhaUsIz
+clearings,,,kl'i@INz,kl'IrINz,
 clearly,,,kl'i:@li:,kl'Irli:,kl'i:rli:
 clearness,,,kl'i:@n@s,kl'Irn@s,kl'i:rnIs
 clears,,,kl'i:@z,kl'Irz,
@@ -18007,6 +18034,7 @@ cleat,,,kl'i:t,,
 cleats,,,kl'i:ts,,
 cleavable,,,kl'i:v@b@l,,
 cleavage,,,kl'i:vIdZ,,
+cleavages,,,kl'i:vIdZIz,kl'i:vIdZI#z,
 cleave,,,kl'i:v,,
 cleaver,,,kl'i:v@,kl'i:v@`,
 cleavers,,,kl'i:v@z,kl'i:v@`z,
@@ -18849,6 +18877,7 @@ coital,,,k'OIt@l,,k'oUIt@l
 coition,,,k'OIS@n,,koU'IS@n
 coitus,,,k'OIt@s,,
 coke,,,k'oUk,,
+coked,,,k'oUkt,,
 cokernut,,,k'oUk@nVt,k'oUk@`nVt,
 cokes,,,k'oUks,,
 coking,,,k'oUkIN,,
@@ -21575,6 +21604,7 @@ corpora,,,k'O:pO:r@,k'O:rpor@,k'O:rp@`@
 corporal,,,k'O:pr@l,k'O:rpr@l,k'O:rp@`@l
 corporality,,,kO:pO:r'alIti:,kO:rpor'alIti:,korp@`'alIti:
 corporally,,,k'O:pr@li:,k'O:rpr@li:,k'O:rp@`@li:
+corporals,,,k'O:pr@lz,k'O:rpr@lz,
 corporate,,,k'O:p@r@t,k'O:rp@`r@t,k'O:rp@`@t
 corporately,,,k'O:p@r@tli:,k'O:rp@`r@tli:,k'O:rp@`Itli:
 corporation,,,kO:p@r'eIS@n,kO:rp@`r'eIS@n,kO:rp@`'eIS@n
@@ -23130,6 +23160,8 @@ cryohydrate,,,kr'aIoUaIdreIt,,kraIoUh'aIdreIt
 cryolite,,,kr'aI@laIt,,
 cryology,,,kraI'Ql@dZi:,kraI'Al@dZi:,
 cryometer,,,kraI'QmIt@,kraI'AmIt@`,
+cryonic,,,kraI'QnIk,kraI'AnIk,
+cryonically,,,kraI'QnIkli:,kraI'AnIkli:,
 cryoscopic,,,kraI@sk'QpIk,kraI@sk'ApIk,
 cryoscopy,,,kraI'Qsk@pI,kraI'Ask@pi:,
 cryostat,,,kr'aI@stat,,
@@ -24125,6 +24157,9 @@ dander,,,d'and@,d'and@`,
 dandify,,,d'andIfaI,,d'and@faI
 dandiprat,,,d'andIprat,,d'andi:prat
 dandle,,,d'and@l,,
+dandled,,,d'and@ld,,
+dandles,,,d'and@lz,,
+dandling,,,d'andlIN,,
 dandriff,,,d'andrIf,,
 dandruff,,,d'andrVf,,d'andr@f
 dandy,,,d'andi:,,
@@ -24265,6 +24300,7 @@ Darvon,,,d'AvQn,d'ArvAn,
 Darwin,,,d'AwIn,d'ArwIn,
 Darwinian,,,dAw'Ini:@n,dArw'Ini:@n,
 Darwinism,,,d'AwInIz@m,d'ArwInIz@m,d'QrwInIz@m
+Darwinists,,,d'AwInIsts,d'ArwInIsts,
 Daryl,,,d'ArIl,,d'ar@l
 das,,,d'as,,
 dash,,,d'aS,,
@@ -25106,6 +25142,7 @@ deforce,,,dIf'O:s,dIf'ors,
 deforciant,,,dIf'O:Si:@nt,dIf'orSi:@nt,dIf'orS@nt
 deforest,,,dIf'QrIst,dIf'O:rIst,di:f'QrIst
 deforestation,,,dIfQrIst'eIS@n,dIfO:rIst'eIS@n,
+deforested,,,dIf'QrIstId,dIf'O:rIstI#d,
 deform,,,dIf'O:m,dIf'O:rm,di:f'O:rm
 deformation,,,dIfO:m'eIS@n,dIform'eIS@n,di:fO:rm'eIS@n
 deformed,,,dIf'O:md,dIf'O:rmd,
@@ -25692,7 +25729,7 @@ denning,,,d'EnIN,,
 Dennis,,,d'EnIs,d'EnI#s,
 Denny,,,d'Eni:,,
 denominate,,,dIn'QmIneIt,dIn'AmI#neIt,dIn'Qm@neIt
-denominated,,,dIn'QmIneItId,dIn'AmI#neItId,dIn'Qm@neItId
+denominated,,,dIn'QmIneItId,dIn'AmI#neItI#d,dIn'Qm@neItId
 denomination,,,dInQmIn'eIS@n,dInAmI#n'eIS@n,dInO:m@n'eIS@n
 denominational,,,dInQmIn'eIS@n@l,dInAmI#n'eIS@n@l,dInO:m@n'eIS@n@l
 denominationalism,,,dInQmIn'eIS@n@lIz@m,dInAmI#n'eIS@n@lIz@m,dInQm@n'eIS@n@lIz@m
@@ -27365,6 +27402,7 @@ dippers,,,d'Ip@z,d'Ip@`z,
 dipping,,,d'IpIN,,
 dippy,,,d'Ipi:,,
 diprotic,,,dIpr'QtIk,dIpr'AtIk,daIpr'QtIk
+diprotodon,,,d'IproUtoUd@n,,
 dips,,,d'Ips,,
 dipso,,,d'IpsoU,,
 dipsomania,,,dIps@m'eIni:@,,
@@ -30475,6 +30513,7 @@ economiser,,economizer
 economises,,economizes
 economising,,economizing
 economist,,,Ik'Qn@mIst,Ik'An@mIst,
+economistic,,,Ik'Qn@m'IstIk,Ik'An@m'IstIk,
 economists,,,Ik'Qn@mIsts,Ik'An@mIsts,
 economize,,,Ik'Qn@maIz,Ik'An@maIz,
 economizer,,,Ik'Qn@maIz@,Ik'An@maIz@`,Ik'Qn@maIz@`
@@ -32233,6 +32272,8 @@ ensky,,,Ensk'aI,,
 enslave,,,Ensl'eIv,,
 enslaved,,,Ensl'eIvd,,
 enslavement,,,Ensl'eIvm@nt,,
+enslaves,,,Ensl'eIvz,,
+enslaving,,,Ensl'eIvIN,,
 ensnare,,,Ensn'e@,Ensn'Er,
 ensnared,,,Ensn'e@d,Ensn'Erd,Insn'Erd
 ensnares,,,Ensn'e@z,Ensn'Erz,Insn'Erz
@@ -32401,6 +32442,7 @@ entrepreneurship,,,QntrIprIn'3:SIp,AntrIprIn'UrSIp,Qntr@pr@n'3:SIp
 entrepreneuse,,,QntrIprIn'3:z,AntrIprIn'u:z,Antr@pr@n'Uz
 entresol,,,Entr'EsQl,Entr'EsAl,'Ent@`sAl
 entries,,,'EntrIz,,'Entri:z
+entropic,,,Entr'QpIk,Entr'ApIk,
 entropy,,,'Entr@pi:,,
 entrust,,,Entr'Vst,,
 entrusted,,,Entr'VstId,Entr'VstI#d,
@@ -34626,6 +34668,7 @@ extrasensory,,,'Ekstr@z@ns@ri:,'Ekstr@z@ns@`ri:,Ekstr@s'Ens@`i:
 extrasystole,,,'Ekstr@sIstoUl,,Ekstr@s'Ist@li:
 extrasystolic,,,Ekstr@sIst'QlIk,Ekstr@sIst'AlIk,
 extraterrestrial,,,Ekstr@t@r'EstrI@l,Ekstr@t@`r'EstrI@l,Ekstr@t@`'Estri:@l
+extraterrestriality,,,Ekstr@t@rEstrI'alIti:,Ekstr@t@`rEstrI'alIti:,
 extraterrestrials,,,Ekstr@t@r'EstrI@lz,Ekstr@t@`r'EstrI@lz,Ekstr@t3:'Estri:@lz
 extraterritorial,,,Ekstr@tErIt'O:rI@l,Ekstr@tErIt'orI@l,Ekstr@tErIt'O:ri:@l
 extraterritoriality,,,Ekstr@tErItO:rI'alIti:,Ekstr@tErItorI'alIti:,'Ekstr@tErItori:'alIti:
@@ -35399,6 +35442,7 @@ faulty,,,f'Qlti:,f'Alti:,f'O:lti:
 faun,,,f'O:n,,f'Qn
 fauna,,,f'O:n@,,
 faunal,,,f'O:n@l,,f'Qn@l
+faunas,,,f'O:n@z,,
 Fauntleroy,,,f'O:nt@lrOI,,f'O:ntl@`OI
 Faunus,,,f'O:n@s,,f'Qn@s
 Faust,,,f'O:st,,f'aUst
@@ -36038,6 +36082,7 @@ fictitiously,,,fIkt'IS@sli:,,
 fictitiousness,,,fIkt'IS@sn@s,,fIkt'IS@snEs
 fictive,,,f'IktIv,,
 fictively,,,f'IktIvli:,,
+ficus,,,f'aIk@s,,
 fid,,,f'Id,,
 fiddle,,,f'Id@l,,
 fiddleback,,,f'Id@lbak,,
@@ -37507,7 +37552,9 @@ foramen,,,f'O:reImEn,,for'eIm@n
 foraminal,,,fO:r'amIn@l,,f@`'am@n@l
 foraminate,,,fO:r'amIneIt,fO:r'amI#neIt,for'am@nIt
 foraminifer,,,f'O:ra#mInaIf@,f'O:ra#mInaIf@`,fQr@m'In@f@`
+foraminifera,,,f'O:ra#mInIf@r@,f'O:ra#mInIf@`r@,
 foraminiferal,,,f'O:ra#mInIf@r@l,f'O:ra#mInIf@`r@l,foram@n'If@`@l
+forams,,,f'O:ramz,,
 forasmuch,,,f'O:ra#zmVtS,,f'Qr@zm'VtS
 foray,,,f'O:reI,,
 forayed,,,f'O:reId,,
@@ -39386,6 +39433,7 @@ gangue,,,g'aN,,
 gangway,,,g'aNweI,,
 ganister,,,g'anIst@,g'anIst@`,
 gannet,,,g'anIt,,
+gannets,,,g'anIts,,
 ganof,,,g'anQf,g'anAf,g'An@f
 ganoid,,,g'anOId,,
 ganoin,,,g'anOIn,,g'anoUIn
@@ -39430,6 +39478,7 @@ garcon,,,g'Ak@n,g'Ark@n,gars'QN
 Gard,,,g'Ad,g'Ard,g'Qrd
 garda,,,g'Ad@,g'Ard@,
 gardant,,,g'Ad@nt,g'Ard@nt,
+garde,,,g'Ad,g'Ard,
 garden,,,g'Ad@n,g'Ard@n,
 gardened,,,g'Ad@nd,g'Ard@nd,g'Qrd@nd
 gardener,,,g'Ad@n@,g'Ard@n@`,g'Ardn@`
@@ -39690,6 +39739,8 @@ gayal,,,g'eI@l,,g@j'Al
 gaydar,,,g'eId@,g'eId@`,g'eIdQr
 gayer,,,g'eI@,g'eI@`,
 Gayle,,,g'eIl,,
+gaylord,,,g'eIlO:d,g'eIlO:rd,
+gaylords,,,g'eIlO:dz,g'eIlO:rdz,
 gayness,,,g'eIn@s,,g'eInEs
 Gayomart,,,g'eI@mAt,g'eI@mArt,gAj'oUmArt
 gays,,,g'eIz,,
@@ -40875,6 +40926,7 @@ glyptodont,,,gl'Ipt@dQnt,gl'Ipt@dAnt,
 glyptograph,,,gl'Ipt@graf,,
 glyptographic,,,glIpt@gr'afIk,,
 glyptography,,,glIpt'Qgr@fi:,glIpt'Agr@fi:,
+GMT,,,dZi:Emt'i:,,
 gnamma,,,n'am@,,
 gnar,,,n'A,n'Ar,
 gnarl,,,n'Al,n'Arl,
@@ -41224,6 +41276,7 @@ goosewing,,,g'u:swIN,,
 goosewinged,,,g'u:swIndZd,,g'u:swINd
 goosey,,,g'u:si:,,
 goosy,,,g'u:si:,,
+GOP,,,g'Qp,g'Ap,
 gopak,,,g'Qpak,g'Apak,g'oUpak
 gopher,,,g'oUf@,g'oUf@`,
 gophers,,,g'oUf@z,g'oUf@`z,
@@ -41646,6 +41699,7 @@ grappled,,,gr'ap@ld,,
 grapples,,,gr'ap@lz,,
 grappling,,,gr'aplIN,,
 graptolite,,,gr'apt@laIt,,
+graptolites,,,gr'apt@laIts,,
 graptolitic,,,grapt@l'ItIk,,
 grapy,,,gr'eIpi:,,
 Grasmere,,,gr'azmi:@,gr'azmIr,gr'asmi:r
@@ -43484,6 +43538,7 @@ harebrained,,,h'e@breInd,h'ErbreInd,
 hareem,,,har'i:m,,hAr'i:m
 harelip,,,h'e@lIp,h'ErlIp,
 harem,,,hAr'i:m,,h'e@@m
+harems,,,hAr'i:mz,,
 hares,,,h'e@z,h'Erz,
 harewood,,,h'e@wUd,h'ErwUd,
 Hargeisa,,,h'AdZeIs@,h'ArdZeIs@,hArg'eIs@
@@ -43679,6 +43734,7 @@ hatchets,,,h'atSIts,,h'atS@ts
 hatchettite,,,h'atSItaIt,,
 hatching,,,h'atSIN,,
 hatchling,,,h'atSlIN,,h'atSli:N
+hatchlings,,,h'atSlINz,,
 hatchment,,,h'atSm@nt,,
 hatchway,,,h'atSweI,,
 hate,,,h'eIt,,
@@ -43876,6 +43932,7 @@ headhunting,,,h'EdhVntIN,,
 heading,,,h'EdIN,,
 headings,,,h'EdINz,,
 headlamp,,,h'Edlamp,,
+headlamps,,,h'Edlamps,,
 headland,,,h'Edl@nd,,
 headless,,,h'Edl@s,,
 headlessness,,,h'Edl@sn@s,,h'EdlIsnEs
@@ -44732,6 +44789,8 @@ Herophilus,,,h'i@oUfIl@s,h'i:@roUfIl@s,hIr'Qf@l@s
 herpes,,,h'3:pi:z,,
 herpetic,,,h3:p'EtIk,,h'VrpEtIk
 herpetologic,,,h3:pIt@l'QdZIk,h3:pIt@l'AdZIk,
+herpetologist,,,h3:pIt'Ql@dZIst,h3:pIt'Al@dZIst,
+herpetologists,,,h3:pIt'Ql@dZIsts,h3:pIt'Al@dZIsts,
 herpetology,,,h3:pIt'Ql@dZi:,h3:pIt'Al@dZi:,
 Herr,,,h'e@,h'Er,
 Herren,,,h'Er@n,,
@@ -44949,6 +45008,9 @@ hibernacle,,,h'aIb@n@k@l,h'aIb@`n@k@l,h'aIb@`nak@l
 hibernaculum,,,haIb@n'akjUl@m,haIb@`n'akjUl@m,haIb@`n'akj@l@m
 hibernal,,,h'aIb@n@l,h'aIb@`n@l,haIb'3:n@l
 hibernate,,,h'aIb@neIt,h'aIb@`neIt,
+hibernated,,,h'aIb@neItId,h'aIb@`neItI#d,
+hibernates,,,h'aIb@neIts,h'aIb@`neIts,
+hibernating,,,h'aIb@neItIN,h'aIb@`neItIN,
 hibernation,,,haIb@n'eIS@n,haIb@`n'eIS@n,
 Hibernia,,,h'aIb@ni:@,h'aIb@`ni:@,haIb'3:ni:@
 Hibernian,,,h'aIb@ni:@n,h'aIb@`ni:@n,haIb'3:ni:@n
@@ -45334,7 +45396,9 @@ Hittite,,,h'ItaIt,,
 hive,,,h'aIv,,
 hives,,,h'aIvz,,
 hmm,,,h'@m,,
+hmmm,,,h'@m,,
 Hmong,,,'eItSm'QN,'eItSm'AN,hm'O:N
+HMS,,,eItSEm'Es,,
 ho,,,h'oU,,
 hoactzin,,,h'oUktsIn,,hoU'aktsIn
 Hoad,,,h'oUd,,
@@ -45364,6 +45428,7 @@ hobbies,,,h'QbIz,h'AbIz,h'Qbi:z
 hobbing,,,h'QbIN,h'AbIN,
 Hobbism,,,h'QbIz@m,h'AbIz@m,
 hobbit,,,h'QbIt,h'AbIt,
+hobbits,,,h'QbIts,h'AbIts,
 hobble,,,h'Qb@l,h'Ab@l,
 hobblebush,,,h'Qb@lbUS,h'Ab@lbUS,
 hobbled,,,h'Qb@ld,h'Ab@ld,
@@ -45691,6 +45756,7 @@ homogenised,,homogenized
 homogenization,,,hQmoUdZnaIz'eIS@n,hAmoUdZnaIz'eIS@n,hoUm'QdZ@nIzeIS@n
 homogenize,,,h'QmoUdZnaIz,h'AmoUdZnaIz,hoUm'QdZ@naIz
 homogenized,,,h'QmoUdZnaIzd,h'AmoUdZnaIzd,hoUm'QdZ@naIzd
+homogenous,,,h@m'QdZ@n@s,h@m'AdZ@n@s,
 homogeny,,,h@m'QdZ@ni:,h@m'AdZ@ni:,hoUm'QdZ@ni:
 homogony,,,h'Qm@g@nI,h'Am@g@ni:,h@m'Qg@ni:
 homograft,,,h'Qm@graft,h'Am@graft,h'oUm@graft
@@ -47159,7 +47225,8 @@ hysteroid,,,h'Ist@rOId,h'Ist@`rOId,h'Ist@`OId
 hysterotomy,,,hIst@r'oUt@mI,hIst@`r'oUt@mi:,hIst@`'Qt@mi:
 hyte,,,h'aIt,,
 Hyundai,,,hj'u:ndaI,h'VndeI,hj'VndeI
-i,,,'aI,,
+i,n,,'aI,,
+i,prp,,'aI,,
 I'd,,,'aId,,
 I'll,,,'aIl,,
 I'm,,,'aIm,,
@@ -47215,6 +47282,7 @@ icefish,,,'aIsfIS,,
 icehouse,,,'aIshaUs,,
 Iceland,,,'aIsl@nd,,
 Icelander,,,'aIsl@nd@,'aIsl@nd@`,'aIsland@`
+Icelanders,,,'aIsl@nd@z,'aIsl@nd@`z,
 Icelandic,,,aIsl'andIk,,
 iceman,,,'aIsm@n,,'aIsman
 Iceni,,,'aIsni:,,aIs'i:naI
@@ -47256,6 +47324,7 @@ icicles,,,'aIsIk@lz,,
 icily,,,'aIsIlI,'aIsIli:,
 iciness,,,'aIsInEs,,'aIsi:nIs
 icing,,,'aIsIN,,
+ick,,,'aIk,,
 icker,,,'aIk@,'aIk@`,'Ik@`
 icky,,,'aIki:,,'Iki:
 icon,,,'aIkQn,'aIkAn,
@@ -51243,6 +51312,7 @@ Isar,,,'IsA,'IsAr,'i:zAr
 isarithm,,,'IsArIT@m,,'aIs@`ID@m
 isatin,,,'Isa#tIn,,'aIs@tIn
 isba,,,'Isb@,,Izb'A
+ISBN,,,aIEsbi:'En,,
 Iscariot,,,Isk'arI@t,,Isk'ari:@t
 ischaemia,,ischemia
 ischemia,,,Isk'i:mi:@,,Isk'Emi:@
@@ -52328,6 +52398,7 @@ joyride,,,dZ'OIraId,,
 joyriding,,,dZ'OIraIdIN,,
 joys,,,dZ'OIz,,
 joystick,,,dZ'OIstIk,,
+Jr,,,dZeI'A,dZeI'Ar,
 Juan,,,hw'An,,w'An
 Juana,,,hw'An@,,w'An@
 Juanita,,,hwAn'i:t@,,dZu:@n'i:t@
@@ -52357,6 +52428,7 @@ Judd,,,dZ'Vd,,
 Jude,,,dZ'u:d,,
 Judea,,,dZ'u:di:@,,dZu:d'i:@
 Judean,,,dZ'u:di:@n,,dZu:d'i:@n
+Judeo,,,dZu:d'eIoU,,
 judge,,,dZ'VdZ,,
 judged,,,dZ'VdZd,,
 judgement,,judgment
@@ -53113,6 +53185,7 @@ kewpie,,,kj'u:paI,,kj'u:pi:
 kex,,,k'Eks,,
 key,,,k'i:,,
 keyboard,,,k'i:bO:d,k'i:bord,k'i:bO:rd
+keyboarder,,,k'i:bO:d@,k'i:bord@`,
 keyboards,,,k'i:bO:dz,k'i:bordz,k'i:bO:rdz
 keyed,,,k'i:d,,
 keyhole,,,k'i:hoUl,,
@@ -55315,6 +55388,7 @@ legless,,,l'Egl@s,,
 legman,,,l'Egm@n,,l'Egman
 Legnica,,,l'EgnIk@,,lEgn'i:tsA
 Lego,,,l'EgoU,,
+Legos,,,l'EgoUz,,
 Legree,,,l'Egri:,,lIgr'i:
 legroom,,,l'Egru:m,,
 legs,,,l'Egz,,
@@ -55799,6 +55873,7 @@ Liberia,,,laIb'i@i:@,,laIb'i:ri:@
 Liberian,,,laIb'i@i:@n,,laIb'Iri:@n
 liberians,,,laIb'i@i:@nz,,laIb'Iri:@nz
 libertarian,,,lIb@t'e@ri:@n,lIb@`t'Eri:@n,lIb@`t'e@i:@n
+libertarianism,,,lIb@t'e@ri:@nIz@m,lIb@`t'Eri:@nIz@m,
 libertarians,,,lIb@t'e@ri:@nz,lIb@`t'Eri:@nz,
 liberticide,,,l'Ib@tIsaId,l'Ib@`tIsaId,lIb'3:tIsaId
 liberties,,,l'Ib@tIz,l'Ib@`tIz,l'Ib@`ti:z
@@ -58627,6 +58702,7 @@ manto,,,m'antoU,,
 mantra,,,m'antr@,,
 mantrap,,,m'antrap,,
 mantua,,,m'antju:@,m'antu:@,m'antSu:@
+manu,,,m'Anju:,,
 manual,,,m'anju:@l,,
 manually,,,m'anju:@li:,,
 manuals,,,m'anju:@lz,,
@@ -58771,6 +58847,9 @@ marginalise,,marginalize
 marginalised,,marginalized
 marginalises,,marginalizes
 marginalising,,marginalizing
+marginalism,,,m'AdZIn@lIz@m,m'ArdZIn@lIz@m,
+marginalist,,,m'AdZIn@lIst,m'ArdZIn@lIst,
+marginalists,,,m'AdZIn@lIsts,m'ArdZIn@lIsts,
 marginalization,,,mAdZIn@laIz'eIS@n,mArdZIn@laIz'eIS@n,mQrdZ@n@l@z'eIS@n
 marginalize,,,m'AdZIn@laIz,m'ArdZIn@laIz,
 marginalized,,,m'AdZIn@laIzd,m'ArdZIn@laIzd,m'QrdZ@n@laIzd
@@ -59174,6 +59253,7 @@ mastitic,,,mast'ItIk,,
 mastitis,,,mast'aItIs,,
 mastix,,,m'astIks,,
 mastodon,,,m'ast@dQn,m'ast@dAn,m'ast@dO:n
+mastodons,,,m'ast@dQnz,m'ast@dAnz,
 mastoid,,,m'astOId,,
 mastoidectomy,,,mastOId'Ekt@mI,mastOId'Ekt@mi:,
 mastoiditis,,,mastOId'aItIs,,
@@ -59765,6 +59845,7 @@ megadeal,,,m'Eg@di:@l,,m'Eg@di:l
 megadeals,,,m'Eg@di:@lz,,m'Eg@di:lz
 megadeath,,,m'Eg@dET,,
 Megaera,,,m'Eg@r@r@,m'Eg@@`r@,m@dZ'i:r@
+megafauna,,,m'Eg@fO:n@,,
 megagamete,,,m'Eg@gami:t,,mEg@g@m'i:t
 megahertz,,,m'Eg@h3:ts,,
 megajoule,,,m'Eg@dZu:l,,m'Eg@dZaUl
@@ -59842,6 +59923,7 @@ Melanesia,,,mEleIn'i:zi:@,mEleIn'i:Z@,
 Melanesian,,,mEleIn'i:zi:@n,mEleIn'i:Z@n,mEl@n'i:Z@n
 Melanesians,,,mEleIn'i:zi:@nz,mEleIn'i:Z@nz,mEl@n'i:Z@nz
 melange,,,m'ElandZ,,m'ElaN
+Melania,,,mEl'eIni:@,,
 melanic,,,mEl'anIk,,m@l'anIk
 Melanie,,,m'El@ni:,,
 melanin,,,m'Ela#nIn,,m'El@nIn
@@ -60377,6 +60459,7 @@ metamerism,,,mEt@m'3:rIz@m,,m@t'am@`Iz@m
 metamorphic,,,mEt@m'O:fIk,mEt@m'orfIk,mEt@m'O:rfIk
 metamorphism,,,mEt@m'O:fIz@m,mEt@m'orfIz@m,mEt@m'O:rfIz@m
 metamorphose,,,mEt@m'O:foUz,mEt@m'orfoUz,mEt@m'O:rfoUz
+metamorphosed,,,mEt@m'O:foUzd,mEt@m'orfoUzd,
 metamorphoses,,,mEt@m'O:foUzIz,mEt@m'orfoUzI#z,mEt@m'O:rf@si:z
 metamorphosis,,,mEt@m'O:f@sIs,mEt@m'orf@sIs,mEt@m'O:rf@sIs
 metamorphous,,,mEt@m'O:f@s,mEt@m'orf@s,mEt@m'O:rf@s
@@ -60786,6 +60869,7 @@ midafternoon,,,mId'aft@n'u:n,mId'aft@`n'u:n,m'Idaft@`nu:n
 midair,,,mId'e@,mId'Er,m'Id'Er
 Midas,,,m'i:d@z,,m'aId@s
 midbrain,,,m'IdbreIn,,
+midcentury,,,mIds'EntS@ri:,mIds'EntS@`ri:,
 midcourse,,,m'IdkO:s,m'Idkors,m'Idk'O:rs
 midday,,,mIdd'eI,,m'IdeI
 Middelburg,,,m'IdIlb3:g,,m'Id@lb3:g
@@ -61806,6 +61890,7 @@ moan,,,m'oUn,,
 moaned,,,m'oUnd,,
 moaning,,,m'oUnIN,,
 moans,,,m'oUnz,,
+moas,,,m'oU@z,,
 moat,,,m'oUt,,
 moats,,,m'oUts,,
 mob,,,m'Qb,m'Ab,
@@ -61991,6 +62076,7 @@ molal,,,m'oUl@l,,
 molality,,,moUl'alIti:,,
 molar,,,m'oUl@,m'oUl@`,
 molarity,,,moUl'arIti:,,
+molars,,,m'oUl@z,m'oUl@`z,
 molasses,,,m@l'asIz,m@l'asI#z,m@l'as@z
 mold,,,m'oUld,,
 moldable,,,m'oUld@b@l,,
@@ -62174,6 +62260,7 @@ mongrelise,,mongrelize
 mongrelize,,,m'QNgr@laIz,m'ANgr@laIz,m'VNgr@laIz
 monial,,,m'oUnI@l,,m'oUni:@l
 Monica,,,m'QnIk@,m'AnIk@,
+monied,,,m'VnId,,
 monies,,,m'VnIz,,m'Vni:z
 moniker,,,m'QnIk@,m'AnIk@`,m'QnIk@`
 monikers,,,m'QnIk@z,m'AnIk@`z,m'QnIk@`z
@@ -62695,6 +62782,7 @@ mosaicist,,,m'QseIsIst,m'AseIsIst,moUz'eIIsIst
 mosaicked,,,m'QseIkt,m'AseIkt,moUz'eIIkt
 mosaics,,,m@s'eIIks,,moUz'eIIks
 mosasaur,,,m'Qsa#sO:,m'Asa#sO:r,m'oUs@sQr
+mosasaurs,,,m'Qsa#sO:z,m'Asa#sO:rz,
 mosasaurus,,,mQsa#s'O:r@s,mAsa#s'O:r@s,moUs@s'Ar@s
 moschate,,,m'QstSeIt,m'AstSeIt,m'QskeIt
 moschatel,,,m'QstSeIt@l,m'AstSeIt@l,mQsk@t'El
@@ -63958,6 +64046,7 @@ nauseousness,,,n'O:sI@sn@s,,n'QS@snEs
 nautch,,,n'O:tS,,n'QtS
 nautical,,,n'O:tIk@l,,n'QtIk@l
 nautilus,,,n'O:tIl@s,,n'O:t@l@s
+nautiluses,,,n'O:tIl@sIz,n'O:tIl@sI#z,
 nav,,,n'av,,
 Navajo,,,n'Av@hoU,,n'avAhoU
 Navajos,,,n'Av@hoUz,,n'av@hoUz
@@ -64010,6 +64099,7 @@ Ndebele,,,'End'EbEl,,End@b'i:li:
 ne,,,n'i:,,
 ne'er,,,n'e@,n'Er,
 neal,,,n'i:l,,
+Neandertal,,,ni:'and'3:t@l,,
 neanderthal,,,ni:'and@TAl,ni:'and@`TAl,
 Neanderthaloid,,,ni:'and@TalOId,ni:'and@`TalOId,n'i:p
 neanderthals,,,ni:'and@TAlz,ni:'and@`TAlz,ni:'and@`TO:lz
@@ -64024,6 +64114,7 @@ nearer,,,n'i@@,n'Ir@`,
 nearest,,,n'i@@st,n'Ir@st,
 nearing,,,n'i@IN,n'IrIN,
 nearly,,,n'i:@li:,n'Irli:,n'i:rli:
+nearness,,,n'i:@n@s,n'Irn@s,
 nears,,,n'i:@z,n'Irz,
 nearside,,,n'i:@saId,n'IrsaId,n'i:@`saId
 nearsighted,,,n'i:@saItId,n'IrsaItI#d,n'i:rsaItId
@@ -64252,11 +64343,15 @@ neoclassic,,,ni:oUkl'asIk,,
 neoclassical,,,ni:oUkl'asIk@l,,
 neoclassicism,,,ni:oUkl'asIsIz@m,,
 neocolonialism,,,ni:oUk@l'oUnI@lIz@m,,ni:oUk@l'oUni:@lIz@m
+neocon,,,n'i:oUk@n,,
+neocons,,,n'i:oUk@nz,,
+neoconservatism,,,n'i:oUkQns@v@tIz@m,n'i:oUkAns@`v@tIz@m,
 neoconservative,,,n'i:oUkQns@v@tIv,n'i:oUkAns@`v@tIv,ni:oUk@ns'3:v@tIv
 neoconservatives,,,n'i:oUkQns@v@tIvz,n'i:oUkAns@`v@tIvz,ni:oUk@ns'3:v@tIvz
 neodymium,,,ni:oUd'Imi:@m,,
 neogene,,,n'i:oUdZi:n,,n'i:@dZi:n
 neoliberal,,,n'i:oUlIb@r@l,n'i:oUlIb@`r@l,ni:oUl'Ib@`@l
+neoliberalism,,,n'i:oUlIb@r@lIz@m,n'i:oUlIb@`r@lIz@m,
 neoliberals,,,n'i:oUlIb@r@lz,n'i:oUlIb@`r@lz,ni:oUl'Ib@`@lz
 neolith,,,n'i:oUlIT,,n'i:@lIT
 neolithic,,,ni:oUl'ITIk,,ni:@l'ITIk
@@ -64703,6 +64798,7 @@ niello,,,nI'EloU,,ni:'EloU
 Nielsen,,,n'i:ls@n,,
 Niersteiner,,,n'i:@staIn@,n'IrstaIn@`,n'i:rstaIn@`
 Nietzsche,,,n'i:tSi:,,
+Nietzschean,,,n'aI@tsstSi:@n,,
 nieves,,,n'i:vz,,ni:'EvEs
 nifedipine,,,n'aIfdIpaIn,,naIf'Ed@pi:n
 nifty,,,n'Ifti:,,
@@ -65204,6 +65300,8 @@ nonpayment,,,nQnp'eIm@nt,nAnp'eIm@nt,
 nonperformance,,,nQnp@f'O:m@ns,nAnp@`f'orm@ns,nQnp@`f'O:rm@ns
 nonperforming,,,nQnp@f'O:mIN,nAnp@`f'O:rmIN,nQnp@`f'O:rmIN
 nonperishable,,,nQnp'ErIS@b@l,nAnp'ErIS@b@l,
+nonperson,,,nQnp'3:s@n,nAnp'3:s@n,
+nonpersons,,,nQnp'3:s@nz,nAnp'3:s@nz,
 nonplanar,,,nQnpl'anA,nAnpl'anAr,nQnpl'eIn@`
 nonplus,,,nQnpl'Vs,nAnpl'Vs,
 nonplussed,,,nQnpl'Vst,nAnpl'Vst,
@@ -65824,6 +65922,7 @@ ob,,,'Qb,'Ab,
 oba,,,'oUb@,,
 Obadiah,,,oUbeId'aI@,,oUb@d'aI@
 Obama,,,oUb'Am@,,oUb'Qm@
+Obamacare,,,'oUba#make@,'oUba#makEr,
 obbligato,,,QblIg'AtoU,AblIg'AtoU,
 obconical,,,Qbk'QnIk@l,Abk'AnIk@l,Qbk'AnIk@l
 obcordate,,,'QbkO:deIt,'AbkordeIt,Qbk'O:rdeIt
@@ -65877,6 +65976,8 @@ objectively,,,QbdZ'EktIvli:,AbdZ'EktIvli:,
 objectives,,,QbdZ'EktIvz,AbdZ'EktIvz,@bdZ'EktIvz
 objectivise,,objectivize
 objectivism,,,QbdZ'EktIvIz@m,AbdZ'EktIvIz@m,@bdZ'Ekt@vIz@m
+objectivist,,,QbdZ'EktIvIst,AbdZ'EktIvIst,
+objectivists,,,QbdZ'EktIvIsts,AbdZ'EktIvIsts,
 objectivity,,,QbdZIkt'IvIti:,AbdZIkt'IvIti:,QbdZEkt'IvIti:
 objectivization,,,QbdZEktIvaIz'eIS@n,AbdZEktIvaIz'eIS@n,@bdZEktIvaIz'eIS@n
 objectivize,,,QbdZ'EktIvaIz,AbdZ'EktIvaIz,@bdZ'Ekt@vaIz
@@ -66157,6 +66258,7 @@ octonarius,,,Qkt@n'e@rI@s,Akt@n'ErI@s,QktoUn'e@i:@s
 octonary,,,'Qkt@n@ri:,'Akt@nEri:,'Qkt@nEri:
 octopod,,,'Qkt@pQd,'Akt@pAd,'Qkt@pAd
 octopus,,,'Qkt@p@s,'Akt@p@s,'Qkt@pUs
+octopuses,,,'Qkt@pju:sIz,'Akt@pju:sI#z,
 octoroon,,,Qkt@r'u:n,Akt@`r'u:n,Qkt@`'u:n
 octosyllabic,,,Qkt@sIl'abIk,Akt@sIl'abIk,QktoUsIl'abIk
 octosyllable,,,'Qkt@sIl@b@l,'Akt@sIl@b@l,
@@ -67089,6 +67191,9 @@ origanum,,,'QrIgan@m,'O:rIgan@m,@`'i:g@n@m
 Origen,,,'QraIdZ@n,'O:raIdZ@n,'QrIdZEn
 origin,,,'QrIdZIn,'O:rIdZIn,
 original,,,@r'IdZIn@l,@`r'IdZIn@l,@`'IdZ@n@l
+originalism,,,@r'IdZIn@lIz@m,@`r'IdZIn@lIz@m,
+originalist,,,@r'IdZIn@lIst,@`r'IdZIn@lIst,
+originalists,,,@r'IdZIn@lIsts,@`r'IdZIn@lIsts,
 originality,,,@rIdZIn'alIti:,@`rIdZIn'alIti:,@`IdZ@n'alIti:
 originally,,,@r'IdZIn@li:,@`r'IdZIn@li:,@`'IdZ@n@li:
 originals,,,@r'IdZIn@lz,@`r'IdZIn@lz,@`'IdZ@n@lz
@@ -67144,6 +67249,8 @@ ornithischian,,,O:nIT'Iski:@n,O:rnIT'Iski:@n,O:rn@T'Iski:@n
 ornithoid,,,'O:nITOId,'O:rnITOId,'O:rn@TOId
 ornithological,,,O:nIT@l'QdZIk@l,O:rnIT@l'AdZIk@l,O:rnIT@l'O:dZIk@l
 ornithologically,,,O:nIT@l'QdZIkli:,O:rnIT@l'AdZIkli:,O:rn@T@l'QdZIk@li:
+ornithologist,,,O:nIT'Ql@dZIst,O:rnIT'Al@dZIst,
+ornithologists,,,O:nIT'Ql@dZIsts,O:rnIT'Al@dZIsts,
 ornithology,,,O:nIT'Ql@dZi:,O:rnIT'Al@dZi:,O:rnIT'Ql@dZi:
 ornithomancy,,,'O:nITQm@nsi:,'O:rnITAm@nsi:,'ornIToUmansi:
 ornithopod,,,'O:nITQpQd,'O:rnITApAd,'O:rn@T@pAd
@@ -67502,6 +67609,7 @@ outcomes,,,'aUtkVmz,,
 outcries,,,'aUtkraIz,,
 outcrop,n,,'aUtkrQp,'aUtkrAp,
 outcrop,v,,'aUtkrQp,'aUtkrAp,aUtkr'Qp
+outcropping,,,'aUtkrQpIN,'aUtkrApIN,
 outcross,n,,aUtkr'Qs,aUtkr'O:s,'aUtkrQs
 outcross,v,,aUtkr'Qs,aUtkr'O:s,
 outcrossing,,,aUtkr'QsIN,aUtkr'O:sIN,'aUtkrQsIN
@@ -67728,6 +67836,8 @@ outsides,,,aUts'aIdz,,'aUts'aIdz
 outsing,,,'aUtsIN,,aUts'IN
 outsit,,,aUts'It,,
 outsize,,,aUts'aIz,,'aUtsaIz
+outsized,,,aUts'aIzd,,
+outsizes,,,aUts'aIzIz,,
 outskirt,,,'aUtsk3:t,,
 outskirts,,,'aUtsk3:ts,,
 outsmart,,,aUtsm'At,aUtsm'Art,
@@ -69584,6 +69694,7 @@ parthenocarpic,,,pAT@n@k'ApIk,pArT@n@k'ArpIk,pArT@noUk'ArpIk
 parthenocarpy,,,p'AT@nQkApi:,p'ArT@nAkArpi:,p'ArT@noUkArpi:
 parthenogenesis,,,pAT@noUdZ'EnIsIs,pArT@noUdZ'EnIsIs,pArTInoUdZ'EnIsIs
 parthenogenetic,,,pAT@noUdZn'EtIk,pArT@noUdZn'EtIk,pQrT@noUdZ@n'EtIk
+parthenogenic,,,pAT@noUdZ'EnIk,pArT@noUdZ'EnIk,
 Parthenon,,,p'AT@n@n,p'ArT@n@n,p'ArT@nQn
 Parthenopaeus,,,p'AT@nQpi:@s,p'ArT@nApi:@s,pArT@noUp'i:@s
 Parthenope,,,p'AT@noUp,p'ArT@noUp,pArT'Vn@pi:
@@ -70690,6 +70801,7 @@ perdie,,,p'3:di:,,p@`d'i:
 perdition,,,p3:d'IS@n,,p@`d'IS@n
 perdu,,,p'3:du:,,p@`d'u:
 perdue,,,p'3:dju:,p'3:du:,p@`d'u:
+perdues,,,p'3:dju:z,p'3:du:z,
 perdurable,,,p'3:djUr@b@l,p'3:dZ@`r@b@l,p@`d'Ur@b@l
 perdure,,,p'3:djU@,p'3:dZ@`,p@`d'Ur
 pere,,,p'i:@,p'Ir,p'3:
@@ -71641,6 +71753,7 @@ phosphorate,,,f'Qsf@reIt,f'Asf@`reIt,f'Asf@`eIt
 phosphore,,,f'QsfO:,f'Asfor,
 phosphoresce,,,fQsf@r'Es,fAsf@`r'Es,fAsf@`'Es
 phosphorescence,,,fQsf@r'Es@ns,fAsf@`r'Es@ns,fQsf@`'Es@ns
+phosphorescent,,,fQsf@r'Es@nt,fAsf@`r'Es@nt,
 phosphoric,,,f@sf'QrIk,f@sf'O:rIk,f'Qsf@`Ik
 phosphorism,,,f'Qsf@rIz@m,f'Asf@`rIz@m,f'Asf@`Iz@m
 phosphorite,,,f'QsfO:raIt,f'AsforaIt,f'Qsf@`aIt
@@ -72886,6 +72999,7 @@ pleonal,,,plI'Qn@l,plI'An@l,pl'i:@n@l
 pleonasm,,,plI'Qnaz@m,plI'Anaz@m,pl'i:@nazm
 pleopod,,,plI'QpQd,plI'ApAd,pl'i:@pAd
 plesiosaur,,,pl'i:zIQsO:,pl'i:zIAsO:r,pl'i:si:@sQr
+plesiosaurs,,,pl'i:zIQsO:z,pl'i:zIAsO:rz,
 plessor,,,pl'Es@,pl'Es@`,
 plethora,,,pl'ET@r@,pl'ET@`r@,pl'ET@`@
 plethoric,,,plET'QrIk,plET'O:rIk,
@@ -73005,6 +73119,7 @@ plumbous,,,pl'Vmb@s,,
 plumbum,,,pl'Vmb@m,,
 plumcot,,,pl'VmkQt,pl'VmkAt,
 plume,,,pl'u:m,,
+plumed,,,pl'u:md,,
 plumes,,,pl'u:mz,,
 plummer,,,pl'Vm@,pl'Vm@`,
 plummet,,,pl'VmIt,,pl'Vm@t
@@ -74751,7 +74866,10 @@ prescriptiveness,,,prIskr'IptIvn@s,,prIskr'IptIvnEs
 prescriptivist,,,prIskr'IptIvIst,,prIskr'Ipt@vIst
 prese,,perse
 preselect,,,prIsIl'Ekt,,pri:sIl'Ekt
+preselected,,,prIsIl'EktId,prIsIl'EktI#d,
+preselecting,,,prIsIl'EktIN,,
 preselector,,,prIsIl'Ekt@,prIsIl'Ekt@`,pri:sIl'Ekt@`
+preselects,,,prIsIl'Ekts,,
 presence,,,pr'Ez@ns,,
 presences,,,pr'Ez@nsIz,pr'Ez@nsI#z,
 present,n,,pr'Ez@nt,,
@@ -75141,6 +75259,7 @@ privies,,,pr'Ivi:z,,
 privilege,,,pr'IvIlIdZ,,pr'IvIl@dZ
 privileged,,,pr'IvIlIdZd,,pr'IvIl@dZd
 privileges,,,pr'IvIlIdZIz,pr'IvIlIdZI#z,pr'IvIl@dZ@z
+privileging,,,pr'IvIlIdZIN,,
 privily,,,pr'Ivi:lI,pr'Ivi:li:,pr'Iv@li:
 privity,,,pr'IvIti:,,
 privy,,,pr'Ivi:,,
@@ -76187,6 +76306,7 @@ psychrometric,,,saIkr'oUmtrIk,,saIkr@m'EtrIk
 psychrometry,,,saIkr'Qm@tri:,saIkr'Am@tri:,saIkr'QmItri:
 psychrophile,,,s'aIkr@faIl,,
 psyllium,,,s'Ili:@m,,
+pt,,,pi:t'i:,,
 Ptah,,,t'A,,pt'A
 ptarmigan,,,t'AmIg@n,t'ArmIg@n,t'Arm@g@n
 pteranodon,,,t'Era#nQd@n,t'Era#nAd@n,t@`'an@dQn
@@ -76351,6 +76471,7 @@ pulpiteer,,,pVlpIt'i:@,pVlpIt'Ir,pUlpIt'i:r
 pulpiter,,,p'VlpIt@,p'VlpIt@`,p'UlpIt@`
 pulpits,,,p'VlpIts,,p'UlpIts
 pulpitum,,,p'VlpaIt@m,,p'UlpIt@m
+pulpless,,,p'Vlpl@s,,
 pulpwood,,,p'VlpwUd,,
 pulpy,,,p'Vlpi:,,
 pulque,,,p'Vlk,,p'UlkeI
@@ -76799,8 +76920,10 @@ pyrrhotite,,,p'Irh@taIt,,p'Ir@taIt
 pyrrhuloxia,,,pIrhu:l'Qksi:@,pIrhu:l'Aksi:@,pIr@l'Qksi:@
 pyrrolic,,,pIr'QlIk,pIr'AlIk,
 pyrrolidine,,,p'Ir@lIdi:n,,pIr'oUlIdi:n
+Pythagoras,,,paIT'ag@r@s,paIT'ag@`r@s,
 Pythagorean,,,p'aITa#gO:ri:@n,p'aITa#gori:@n,pIT@g'O:ri:@n
 Pythagoreanism,,,p'aITa#gO:ri:@nIz@m,p'aITa#gori:@nIz@m,pITag@`'i:@nIz@m
+pythagorize,,,p'aITa#g@raIz,p'aITa#g@`raIz,
 Pythia,,,p'aITi:@,,p'ITi:@
 Pythiad,,,p'aITIad,,p'ITi:ad
 Pythian,,,p'aITi:@n,,p'ITi:@n
@@ -76815,6 +76938,7 @@ pyxidia,,,paIks'Idi:@,,pIks'Idi:@
 pyxidium,,,paIks'Idi:@m,,pIks'Idi:@m
 pyxie,,,p'aIksi:,,p'Iksi:
 pyxis,,,p'aIksIs,,p'IksIs
+Qaeda,,,k'aId@,,
 qaid,,,k'eId,,kA'i:D
 Qantas,,,k'ant@z,,k'ant@s
 qasida,,,k'asId@,,k@s'i:d@
@@ -76987,6 +77111,7 @@ quarterfinalist,,,kw'O:t@faIn@lIst,kw'O:rt@`faIn@lIst,kwQrt@`f'aIn@lIst
 quartering,,,kw'O:t@rIN,kw'O:rt@`rIN,kw'Qrt@`IN
 quarterly,,,kw'O:t@li:,kw'O:rt@`li:,
 quartermaster,,,kw'O:t@mast@,kw'O:rt@`mast@`,
+quartermistress,,,kw'O:t@mIstr@s,kw'O:rt@`mIstr@s,
 quartern,,,kw'O:t@n,kw'O:rt@`n,kw'ort@n
 quarters,,,kw'O:t@z,kw'O:rt@`z,
 quartersaw,,,kw'O:t@sO:,kw'O:rt@`sO:,kw'Qrt@`sQ
@@ -77264,6 +77389,7 @@ quizzes,,,kw'IzIz,,
 quizzical,,,kw'IzIk@l,,
 quizzing,,,kw'IzIN,,
 Qumran,,,kw@mr'an,,k'UmrAn
+quo,,,kw'oU,,
 quod,,,kw'Qd,kw'Ad,
 quoin,,,kw'OIn,,k'OIn
 quoit,,,kw'OIt,,
@@ -77538,6 +77664,7 @@ ragged,v,,r'agId,r'agI#d,r'ag@d
 raggedly,,,r'agIdlI,r'agIdli:,
 raggedness,,,r'agIdn@s,r'agI#dn@s,r'agIdnEs
 raggedy,,,r'ag@di:,,
+ragging,,,r'agIN,,
 raggle,,,r'ag@l,,
 ragi,,,r'AgI,r'Agi:,r'agi:
 raging,,,r'eIdZIN,,
@@ -77757,6 +77884,7 @@ Randell,,,r'andEl,,r'and'El
 randem,,,r'and@m,,
 Randers,,,r'and@z,r'and@`z,r'An@`S
 Randi,,,r'andI,r'andi:,
+Randian,,,r'andi:@n,,
 randie,,,r'andi:,,
 Randolph,,,r'andQlf,r'andAlf,
 random,,,r'and@m,,
@@ -78189,6 +78317,7 @@ reanalyze,,,r'i:a#nalaIz,,ri:'an@laIz
 reanalyzed,,,r'i:a#nalaIzd,,ri:'an@laIzd
 reanalyzes,,,r'i:a#nalaIzIz,,ri:'an@laIz@z
 reanalyzing,,,r'i:a#nalaIzIN,,ri:'an@laIzIN
+reanimation,,,ri:a#nIm'eIS@n,,
 reap,,,r'i:p,,
 reaped,,,r'i:pt,,
 reaper,,,r'i:p@,r'i:p@`,
@@ -82151,6 +82280,7 @@ Roy,,,r'OI,,
 royal,,,r'OI@l,,
 royalise,,royalize
 royalist,,,r'OI@lIst,,
+royalists,,,r'OI@lIsts,,
 royalize,,,r'OI@laIz,,
 royally,,,r'OI@li:,,
 royals,,,r'OI@lz,,
@@ -84846,6 +84976,7 @@ Seleucid,,,s'Elu:sId,,sIl'u:sId
 Seleucidan,,,s'Elu:sId@n,,sIl'u:sId@n
 self,,,s'Elf,,
 selfheal,,,s'Elfhi:@l,,s'Elfhi:l
+selfhood,,,s'ElfhUd,,
 selfish,,,s'ElfIS,,
 selfishly,,,s'ElfISli:,,
 selfishness,,,s'ElfISn@s,,s'ElfISnEs
@@ -86400,6 +86531,9 @@ shunted,,,S'VntId,S'VntI#d,
 shunting,,,S'VntIN,,
 shunts,,,S'Vnts,,
 shush,,,S'VS,,S@S
+shushed,,,S'VSt,,
+shushes,,,S'VSIz,S'VSI#z,
+shushing,,,S'VSIN,,
 shut,,,S'Vt,,
 shutdown,,,S'VtdaUn,,
 shutdowns,,,S'VtdaUnz,,
@@ -86540,6 +86674,7 @@ Sidney,,,s'IdnI,s'Idni:,
 Sidon,,,s'IdQn,s'IdAn,s'aId@n
 Sidra,,,s'Idr@,,
 SIDS,,,s'Idz,,
+siecle,,,sj'Ekl@,,
 Siegbahn,,,s'i:gbAn,,
 siege,,,s'i:dZ,,
 siegecraft,,,s'i:dZkraft,,
@@ -87371,6 +87506,7 @@ slaughters,,,sl'O:t@z,sl'O:t@`z,
 Slav,,,sl'av,,sl'Av
 slave,,,sl'eIv,,
 slaveholder,,,sl'eIvhoUld@,sl'eIvhoUld@`,
+slaveholders,,,sl'eIvhoUld@z,sl'eIvhoUld@`z,
 slaver,,,sl'eIv@,sl'eIv@`,
 slavery,,,sl'eIv@rI,sl'eIv@`ri:,sl'eIv@`i:
 slaves,,,sl'eIvz,,
@@ -87571,6 +87707,7 @@ sloshy,,,sl'QSi:,sl'ASi:,
 slot,,,sl'Qt,sl'At,
 sloth,,,sl'QT,sl'AT,sl'oUT
 slothful,,,sl'QTf@l,sl'ATf@l,
+sloths,,,sl'QTs,sl'ATs,
 slots,,,sl'Qts,sl'Ats,
 slotted,,,sl'QtId,sl'AtI#d,
 slotter,,,sl'Qt@,sl'At@`,sl'Qt@`
@@ -88070,6 +88207,7 @@ snows,,,sn'oUz,,
 snowshed,,,sn'oUSEd,,
 snowshoe,,,sn'oUSu:,,
 snowshoed,,snowshed
+snowshoes,,,sn'oUSu:z,,
 snowslide,,,sn'oUslaId,,
 snowstorm,,,sn'oUstO:m,sn'oUstorm,sn'oUstO:rm
 snowstorms,,,sn'oUstO:mz,sn'oUstormz,sn'oUstO:rmz
@@ -89562,6 +89700,8 @@ sportsman,,,sp'O:tsm@n,sp'ortsm@n,sp'O:rtsm@n
 sportsmanly,,,sp'O:tsm@nli:,sp'ortsm@nli:,
 sportsmanship,,,sp'O:tsm@nSIp,sp'ortsm@nSIp,sp'O:rtsm@nSIp
 sportsmen,,,sp'O:tsmEn,sp'ortsmEn,sp'O:rtsmIn
+sportster,,,sp'O:tst@,sp'ortst@`,
+sportsters,,,sp'O:tst@z,sp'ortst@`z,
 sportswear,,,sp'O:tswe@,sp'ortswEr,sp'O:rtswEr
 sportswriter,,,sp'O:tsraIt@,sp'ortsraIt@`,sp'O:rtsraIt@`
 sportswriters,,,sp'O:tsraIt@z,sp'ortsraIt@`z,sp'O:rtsraIt@`z
@@ -89828,6 +89968,7 @@ squiffed,,,skw'Ift,,
 squiffer,,,skw'If@,skw'If@`,
 squiffy,,,skw'IfI,skw'Ifi:,
 squiggle,,,skw'Ig@l,,
+squiggled,,,skw'Ig@ld,,
 squiggles,,,skw'Ig@lz,,
 squilgee,,,skw'IldZi:,,
 squill,,,skw'Il,,
@@ -90976,6 +91117,7 @@ stories,,,st'O:rIz,st'orIz,st'O:ri:z
 storiette,,,stO:rI'Et,storI'Et,stori:'Et
 storing,,,st'O:rIN,st'orIN,
 stork,,,st'O:k,st'ork,st'O:rk
+storks,,,st'O:ks,st'orks,
 storm,,,st'O:m,st'orm,st'O:rm
 stormbound,,,st'O:mbaUnd,st'ormbaUnd,
 stormed,,,st'O:md,st'ormd,st'O:rmd
@@ -92431,6 +92573,8 @@ superconductive,,,su:p@k@nd'VktIv,su:p@`k@nd'VktIv,
 superconductivity,,,su:p@kQnd@kt'IvIti:,su:p@`kAnd@kt'IvIti:,su:p@`kQndVkt'Iv@ti:
 superconductor,,,su:p@k@nd'Vkt@,su:p@`k@nd'Vkt@`,s'u:p@`k@ndVkt@`
 superconductors,,,su:p@k@nd'Vkt@z,su:p@`k@nd'Vkt@`z,s'u:p@`k@ndVkt@`z
+supercontinent,,,su:p@k'QntIn@nt,su:p@`k'AntIn@nt,
+supercontinents,,,su:p@k'QntIn@nts,su:p@`k'AntIn@nts,
 supercool,,,s'u:p@ku:l,s'u:p@`ku:l,su:p@`k'u:l
 supercooled,,,s'u:p@ku:ld,s'u:p@`ku:ld,su:p@`k'u:ld
 supercritical,,,su:p@kr'ItIk@l,su:p@`kr'ItIk@l,
@@ -93914,6 +94058,7 @@ tan,,,t'an,,
 tana,,,t'An@,,
 Tanach,,,t'anatS,,tAn'Ak
 tanager,,,t'anIdZ@,t'anIdZ@`,t'an@dZ@`
+tanagers,,,t'anIdZ@z,t'anIdZ@`z,
 Tanagra,,,tan'agr@,,t'an@gr@
 tanagrine,,,t'ana#gri:n,,t'an@grIn
 Tanana,,,tan'An@,,t'an@nA
@@ -96387,6 +96532,8 @@ toilsome,,,t'OIlsVm,,t'OIls@m
 toilworn,,,t'OIlwO:n,t'OIlworn,
 Tojo,,,t'oUdZoU,,
 tokay,,,t'QkeI,t'AkeI,toUk'eI
+toke,,,t'oUk,,
+toked,,,t'oUkt,,
 token,,,t'oUk@n,,
 tokenism,,,t'oUki:nIz@m,,t'oUk@nIz@m
 tokenize,,,t'oUknaIz,,
@@ -96396,7 +96543,9 @@ tokenizers,,,t'oUknaIz@z,t'oUknaIz@`z,
 tokenizes,,,t'oUknaIzIz,,
 tokenizing,,,t'oUknaIzIN,,
 tokens,,,t'oUk@nz,,
+tokes,,,t'oUks,,
 Tokharian,,,t@k'Ari:@n,,toUk'e@i:@n
+toking,,,t'oUkIN,,
 tokology,,,t@k'Ql@dZi:,t@k'Al@dZi:,toUk'Al@dZi:
 tokonoma,,,tQk@n'oUm@,tAk@n'oUm@,toUk@n'oUm@
 tokos,,,t'oUkoUz,,t'oUkoUs
@@ -96834,6 +96983,7 @@ toucan,,,t'u:k@n,,
 toucanet,,,t'u:ka#nEt,,tu:k@n'Et
 touch,,,t'VtS,,
 touchable,,,t'VtS@b@l,,
+touchables,,,t'VtS@b@lz,,
 touchback,,,t'VtSbak,,
 touchdown,,,t'VtSdaUn,,
 touchdowns,,,t'VtSdaUnz,,
@@ -97722,6 +97872,7 @@ triclad,,,tr'Iklad,,tr'aIklad
 triclinic,,,trIkl'InIk,,traIkl'InIk
 triclinium,,,trIkl'Ini:@m,,traIkl'Ini:@m
 tricolor,,,tr'aIkVl@,tr'aIkVl@`,
+tricolored,,,tr'aIkVl@d,tr'aIkVl@`d,
 tricolour,,tricolor
 tricorn,,,tr'aIkO:n,tr'aIkO:rn,
 tricornered,,,tr'aIkO:n@d,tr'aIkorn@`d,traIk'O:rn@`d
@@ -97818,6 +97969,7 @@ trillo,,,tr'IloU,,
 trilobate,,,tr'aIl@beIt,,traIl'oUbeIt
 trilobed,,,tr'aIloUbd,,
 trilobite,,,tr'aIl@baIt,,
+trilobites,,,tr'aIl@baIts,,
 trilocular,,,traIl'QkjUl@,traIl'AkjUl@`,traIl'QkjUl@`
 trilogy,,,tr'Il@dZi:,,
 trim,,,tr'Im,,
@@ -99257,6 +99409,9 @@ unclenches,,,Vnkl'EntSIz,Vnkl'EntSI#z,
 uncles,,,'VNk@lz,,
 unclinch,,,Vnkl'IntS,,
 uncloak,,,Vnkl'oUk,,
+uncloaked,,,Vnkl'oUkt,,
+uncloaking,,,Vnkl'oUkIN,,
+uncloaks,,,Vnkl'oUks,,
 unclog,,,Vnkl'Qg,Vnkl'Ag,
 uncloister,,,Vnkl'OIst@,Vnkl'OIst@`,
 unclose,,,Vnkl'oUz,,
@@ -100082,6 +100237,7 @@ uniform,,,j'u:nIfO:m,j'u:nIfO:rm,j'u:n@fO:rm
 uniformed,,,j'u:nIfO:md,j'u:nIfO:rmd,j'u:n@fO:rmd
 uniformise,,uniformize
 uniformitarian,,,ju:nIfO:mIt'e@ri:@n,ju:nIformIt'Eri:@n,ju:n@fO:rmIt'e@i:@n
+uniformitarianism,,,ju:nIfO:mIt'e@ri:@nIz@m,ju:nIformIt'Eri:@nIz@m,
 uniformity,,,ju:nIf'O:mIti:,ju:nIf'ormIti:,
 uniformize,,,j'u:nIfO:maIz,j'u:nIformaIz,j'u:n@fO:rmaIz
 uniformly,,,j'u:nIfO:mli:,j'u:nIfO:rmli:,j'u:n@fO:rmli:
@@ -100445,6 +100601,7 @@ unpersuadable,,,Vnp@sw'eId@b@l,Vnp@`sw'eId@b@l,
 unpersuaded,,,Vnp@sw'eIdId,Vnp@`sw'eIdI#d,
 unpersuasive,,,Vnp@sw'eIsIv,Vnp@`sw'eIsIv,
 unperturbed,,,Vnp@t'3:bd,Vnp@`t'3:bd,
+unphilosophical,,,VnfIl@s'QfIk@l,VnfIl@s'AfIk@l,
 unpick,,,Vnp'Ik,,
 unpicked,,,Vnp'Ikt,,
 unpicturesque,,,VnpIktS@r'Esk,VnpIktS@`r'Esk,VnpIktS@`'Esk
@@ -101232,6 +101389,7 @@ upsides,,,'VpsaIdz,,Vps'aIdz
 upsilon,,,'VpsIl@n,,j'u:ps@lQn
 upsize,,,'VpsaIz,,'Vps'aIz
 upsizing,,,'VpsaIzIN,,'Vps'aIzIN
+upslope,,,'VpsloUp,,
 upspring,,,'VpsprIN,,Vpspr'IN
 upstage,,,Vpst'eIdZ,,
 upstaged,,,Vpst'eIdZd,,'Vpst'eIdZd
@@ -103241,8 +103399,8 @@ Vyborg,,,v'aIbO:g,v'aIborg,v'i:bO:rg
 Vycor,,,v'aIk@,v'aIk@`,v'aIkO:r
 vying,,,v'aIIN,,
 vyingly,,,v'aIINlI,v'aIINli:,
-wa,,,w'A,,
 WA,,,w'A,,w'Q
+wa,,,w'A,,
 Waadt,,,w'At,,v'At
 WAAF,,,w'Af,,w'af
 Waal,,,w'Al,,w'Ql
@@ -104581,6 +104739,7 @@ Wicklow,,,w'IkloU,,
 wicks,,,w'Iks,,
 wicopy,,,w'Ik@pi:,,
 widder,,,w'Id@,w'Id@`,
+widdershins,,,w'Id@SInz,w'Id@`SInz,
 widdle,,,w'Id@l,,
 widdled,,,w'Id@ld,,
 widdy,,,w'Idi:,,
@@ -105309,6 +105468,8 @@ worldliness,,,w'3:ldli:n@s,,
 worldling,,,w'3:ldlIN,,
 worldly,,,w'3:ldli:,,
 worlds,,,w'3:ldz,,
+worldview,,,w'3:ldvju:,,
+worldviews,,,w'3:ldvju:z,,
 worldwide,,,w'3:ldwaId,,w'3:ldw'aId
 worm,,,w'3:m,,
 wormhole,,,w'3:mhoUl,,w'VrmhoUl
@@ -105606,10 +105767,17 @@ xiii,,,roUm@nT'3:ti:n,,
 Ximenes,,,z'aImi:nz,,hi:m'EnED
 xiphisternum,,,z'IfIst@n@m,z'IfIst@`n@m,zIfIst'3:n@m
 xiphoid,,,z'IfOId,,
+xiv,,,roUm@nf'O:ti:n,roUm@nf'orti:n,
+xix,,,roUm@nn'aInti:n,,
 Xmas,,,'Eksma#s,,kr'i:sm@s
 xoanon,,,z'oUnQn,z'oUnAn,z'oU@nQn
 xu,,,z'u:,,
 Xuthus,,,z'VT@s,,z'u:T@s
+xv,,,roUm@nf'Ifti:n,,
+xvi,,,roUm@ns'Iksti:n,,
+xvii,,,roUm@ns'Ev@nti:n,,
+xviii,,,roUm@n'eIti:n,,
+xxx,,,EksEks'Eks,,
 xylem,,,z'aIl@m,,z'aIlEm
 xylene,,,z'aIli:n,,
 xylic,,,z'aIlIk,,
@@ -106269,6 +106437,8 @@ zootomic,,,zu:t'QmIk,zu:t'AmIk,zoU@t'QmIk
 zootomy,,,z'u:t@mI,z'u:t@mi:,zoU'At@mi:
 zootoxin,,,z'u:t@ksIn,,zoU@t'QksIn
 zooty,,,z'u:ti:,,
+zooxanthella,,,zu:ksanT'El@,zu:ksa#nT'El@,
+zooxanthellae,,,z'u:ksanTEli:,z'u:ksa#nTEli:,
 zori,,,z'O:ri:,,z'Qri:
 zoril,,,z'O:r@l,z'or@l,z'QrIl
 zorille,,,z'O:rIl,z'orIl,z@`'Il
