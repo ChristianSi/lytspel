@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+
+## [1.0.1] -- 2019-09-16
+
+* POS-tag 'I' to distinguish the pronoun from the roman numeral.
 * Add and correct some dictionary entries.
 
 
