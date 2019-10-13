@@ -1491,9 +1491,9 @@ sub convert_row {
         {
             # Most all-caps words (abbreviations) are either skipped or added unchanged
             if (
-                $tradspell =~ /^(AOL|ASCII|BBC|BBQ|BC|CIA|CNN|DNA|FIFO|GATT|GMT|GOP|HMS|HTML|IL
-                    |ILO|IOU|ISBN|KKK|LIFO|MC|MIT|MPEG|NAFTA|NASA|NASCAR|NASDAQ|NATO|OK|OPEC|OT
-                    |RAF|TNT|TV|UK|USA|USS|WY)$/x
+                $tradspell =~ /^(AOL|ASCII|BBC|BBQ|BC|CIA|CNN|DC|DNA|FIFO|GATT|GMT|GOP
+                    |HMS|HTML|IL|ILO|IOU|ISBN|KKK|LIFO|MC|MIT|MPEG|NAFTA|NASA|NASCAR
+                    |NASDAQ|NATO|NC|NY|OK|OPEC|OT|RAF|TNT|TV|UK|USA|USS|WY)$/x
                 )
             {
                 $converted = $tradspell;
