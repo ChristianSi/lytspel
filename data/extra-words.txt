@@ -37,10 +37,12 @@ archiving
 ardours
 argento
 aristocracies
+arsed
 artisanal
 ascetics
 assented
 assholes
+astra
 Astrid
 auks
 austro
@@ -62,6 +64,7 @@ bawling
 BC
 beakers
 beaks
+beauticians
 befouled
 beheads
 belches
@@ -79,16 +82,20 @@ bitmapped
 bitmaps
 blanched
 blanches
+blasters
+blighting
 blinkers
 blondish
 boatmen
 bobbed
 bondieuserie
 bondsmen
+bongs
 bootable
 boudoirs
 brayed
 breakpoints
+breathable
 brigands
 brocaded
 bromeliad
@@ -116,6 +123,7 @@ cartloads
 cataclysms
 catastrophist
 cellphones
+Centauri
 centralist
 certificated
 cf
@@ -125,10 +133,12 @@ chattels
 chattered
 chatters
 chiefdoms
+chins
 chirurgic
 chirurgical
 chs
 chytrid
+cicatrice
 circ
 civilizing
 civvy
@@ -197,6 +207,7 @@ creationist
 creationists
 cribbers
 Cro
+croaked
 crocks
 crones
 croquettes
@@ -240,6 +251,7 @@ deforested
 delegitimize
 delimiter
 delimiters
+demigods
 deputed
 descriptors
 diabetologist
@@ -269,6 +281,7 @@ dowser
 dowsers
 dullards
 dum
+dunking
 dynamically
 earflaps
 economistic
@@ -402,6 +415,7 @@ governesses
 granaries
 graptolites
 grassing
+grav
 grep
 griffins
 griffons
@@ -436,6 +450,7 @@ hexameters
 hibernated
 hibernates
 hibernating
+hijiki
 hillocks
 hmm
 hmmm
@@ -444,6 +459,8 @@ hobbits
 homogenous
 hotheads
 HTML
+humanoid
+humanoids
 hummed
 hummocks
 humours
@@ -504,6 +521,7 @@ ix
 Javan
 javelins
 jeweled
+jittering
 jousts
 joyously
 Jr
@@ -615,6 +633,7 @@ methodologists
 micrometre
 micrometres
 midcentury
+middles
 militarization
 millennia
 minilanguage
@@ -765,6 +784,7 @@ phoenixes
 phonotype
 phosphorescent
 pillowed
+pinky
 pinnacles
 pipelined
 Piraha
@@ -786,6 +806,7 @@ polisher
 polishers
 polities
 Pompeii
+pootle
 positional
 postprocessor
 postprocessors
@@ -846,7 +867,11 @@ Randian
 ransomed
 raptures
 rapturously
+readouts
 Reaganomic
+reanimated
+reanimates
+reanimating
 reanimation
 recessives
 recompensed
@@ -929,6 +954,7 @@ settable
 sexing
 sextuples
 sh
+shacked
 shama
 shamaness
 shamanist
@@ -963,6 +989,7 @@ snowbank
 snowbanks
 snowdrifts
 snowshoes
+snuck
 snuffled
 snuffles
 snuffling
@@ -975,11 +1002,15 @@ spiflicate
 spiflicates
 spiting
 splinters
+spluttered
+spluttering
+splutters
 spooler
 sportster
 sportsters
 squatted
 squealed
+squids
 squiggled
 squinted
 squiring
@@ -996,6 +1027,7 @@ stotted
 stotting
 streambed
 streambeds
+strimmer
 strobilae
 strongmen
 stupefied
@@ -1048,6 +1080,7 @@ syntaxes
 syphilitic
 systemwide
 tanagers
+tankards
 tanners
 tarball
 tarballs
@@ -1062,6 +1095,7 @@ thirsted
 thongs
 throbbed
 throbs
+thrumming
 timekeeping
 timesharing
 timestamp
@@ -1152,6 +1186,7 @@ unfree
 unhooked
 unhooks
 Unicode
+unicorns
 unifies
 uniformitarianism
 uninstall
@@ -1207,6 +1242,8 @@ whimpers
 whined
 whitespace
 widdershins
+wiggled
+wiggles
 wiki
 Wikipedia
 wikis
