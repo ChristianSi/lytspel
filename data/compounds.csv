@@ -2486,6 +2486,7 @@ astounding,astound=ing
 astoundingly,astounding=ly
 astounds,astound=s
 astrally,astral=ly
+astraphobia,astra-phobia
 astrictive,astrict=ive
 astringent,astringe=ent
 astringently,astringent=ly
@@ -3636,6 +3637,7 @@ beatty,beat=y
 beaus,beau=s
 beauteously,beauteous=ly
 beauteousness,beauteous=ness
+beauticians,beautician=s
 beauties,beauty=es
 beautification,beaut=ification
 beautiful,beauty=ful
@@ -4545,6 +4547,7 @@ blasphemously,blasphemous=ly
 blasphemousness,blasphemous=ness
 blasted,blast=ed
 blaster,blast=er
+blasters,blaster=s
 blasting,blast=ing
 blastment,blast=ment
 blastoff,blast-off
@@ -4593,6 +4596,7 @@ blessings,blessing=s
 blewits,blew-its
 blighted,blight=ed
 blighter,blight=er
+blighting,blight=ing
 blighty,blight=y
 blimps,blimp=s
 blindage,blind=age
@@ -5027,6 +5031,7 @@ bonfire,bon-fire
 bonfires,bonfire=s
 bongos,bongo=s
 bongrace,bon-grace
+bongs,bong=s
 boning,bone=ing
 bonner,bonn=er
 bonnes,bonne=s
@@ -5509,6 +5514,7 @@ breasts,breast=s
 breaststroke,breast-stroke
 breastsummer,breast-summer
 breastwork,breast-work
+breathable,breathe=able
 breathed,breathe=ed
 breather,breathe=er
 breathes,breathe=s
@@ -7598,6 +7604,7 @@ chinks,chink=s
 chinless,chin=less
 chinookan,chinook=an
 chinooks,chinook=s
+chins,chin=s
 chintzy,chintz=y
 chipboard,chip-board
 chipped,chip=ed
@@ -10649,6 +10656,7 @@ critiqued,critique=ed
 critiques,critique=s
 critter,crit=er
 critters,critter=s
+croaked,croak=ed
 croaker,croak=er
 croaking,croak=ing
 croaky,croak=y
@@ -12032,6 +12040,7 @@ demeritorious,de=meritorious
 demerits,de=merits
 demersal,demerse=al
 demigoddess,demigod=ess
+demigods,demigod=s
 demilitarization,de=militarization
 demilitarize,de=militarize
 demilitarized,de=militarized
@@ -14639,6 +14648,7 @@ dungeons,dungeon=s
 dunghill,dung-hill
 dunked,dunk=ed
 dunker,dunk=er
+dunking,dunk=ing
 dunks,dunk=s
 dunlap,dun-lap
 dunlin,dun-lin
@@ -22986,7 +22996,6 @@ hulky,hulk=y
 hulled,hull=ed
 hulling,hull=ing
 hulls,hull=s
-human,hume=an
 humanely,humane=ly
 humanism,human=ism
 humanist,human=ist
@@ -23002,6 +23011,8 @@ humanizing,humanize=ing
 humankind,human-kind
 humanly,human=ly
 humanness,human=ness
+humanoid,human=oid
+humanoids,humanoid=s
 humans,human=s
 humblebee,humble-bee
 humbled,humble=ed
@@ -26309,6 +26320,7 @@ jinks,jink=s
 jinrikisha,jin-rikisha
 jitterbug,jitter-bug
 jitterbugging,jitterbug=ing
+jittering,jitter=ing
 jitters,jitter=s
 jittery,jitter=y
 jiving,jive=ing
@@ -29955,6 +29967,7 @@ middlebuster,middle-buster
 middleman,middle-man
 middlemen,middle-men
 middlemost,middle-most
+middles,middle=s
 middleweight,middle-weight
 middy,mid=y
 mideast,mid-east
@@ -35754,6 +35767,7 @@ pinkeye,pink-eye
 pinkish,pink=ish
 pinkos,pinko=s
 pinks,pink=s
+pinky,pink=y
 pinnacles,pinnacle=s
 pinnate,pin=ate
 pinnation,pin=ation
@@ -38814,6 +38828,7 @@ readmit,re=admit
 readmitted,readmit=ed
 readopt,re=adopt
 readout,read-out
+readouts,readout=s
 reads,read=s
 readying,ready=ing
 reaffirm,re=affirm
@@ -38859,6 +38874,8 @@ reanalyze,re=analyze
 reanalyzed,re=analyzed
 reanalyzes,re=analyzes
 reanalyzing,re=analyzing
+reanimated,re=animated
+reanimates,re=animates
 reanimation,re=animation
 reaped,reap=ed
 reaper,reap=er
@@ -43070,6 +43087,7 @@ sexuality,sexual=ity
 sexualize,sexual=ize
 sexually,sexual=ly
 sexy,sex=y
+shacked,shack=ed
 shackled,shackle=ed
 shackles,shackle=s
 shacks,shack=s
@@ -45271,6 +45289,9 @@ splits,split=s
 splitting,split=ing
 splurged,splurge=ed
 splurging,splurge=ing
+spluttered,splutter=ed
+spluttering,splutter=ing
+splutters,splutter=s
 spoilage,spoil=age
 spoiled,spoil=ed
 spoiler,spoil=er
@@ -45499,6 +45520,7 @@ squeezes,squeeze=s
 squeezing,squeeze=ing
 squelched,squelch=ed
 squelching,squelch=ing
+squids,squid=s
 squiggled,squiggle=ed
 squiggles,squiggle=s
 squinted,squint=ed
@@ -47848,6 +47870,7 @@ tangs,tang=s
 tangy,tang=y
 tanistry,tanist=ry
 tankage,tank=age
+tankards,tankard=s
 tanked,tank=ed
 tanker,tank=er
 tankers,tanker=s
@@ -48700,6 +48723,7 @@ throwers,thrower=s
 throwing,throw=ing
 thrown,throw=n
 throws,throw=s
+thrumming,thrum=ing
 thruput,thru-put
 thrushes,thrush=es
 thruster,thrust=er
@@ -50458,6 +50482,7 @@ unbrace,un=brace
 unbraid,un=braid
 unbranded,un=branded
 unbreakable,un=breakable
+unbreathable,un=breathable
 unbreathed,un=breathed
 unbridle,un=bridle
 unbridled,un=bridled
@@ -51302,6 +51327,7 @@ unicellular,uni=cellular
 unicode,uni=code
 unicolor,uni=color
 unicorn,uni=corn
+unicorns,uni=corns
 unicuspid,uni=cuspid
 unicycle,uni=cycle
 unicycles,uni=cycles
@@ -53975,6 +54001,8 @@ wifelike,wife-like
 wifely,wife=ly
 wigan,wig=an
 wigging,wig=ing
+wiggled,wiggle=ed
+wiggles,wiggle=s
 wiggling,wiggle=ing
 wiggly,wiggle=y
 wigs,wig=s
