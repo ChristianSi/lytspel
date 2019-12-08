@@ -1247,7 +1247,7 @@ sub postprocess_suffixed {
     if (
         $suffix =~ /^(.bility|able|age|aholic|ance|ant|ary|ative|ate|atory|dom|en|ence|es|ent|er
         |ess|est|ful|ing|ise|ish|ism|ist|ize|kinesis|l|less|let|ly|ment|morphism|ness|nik|n|oid
-        |or|up|ry|s|ward|y|zygous)$/x
+        |or|up|ry|s|shire|ward|y|zygous)$/x
         # ‹-ed› is irregular for non-verbs (e.g. «aj: blessed, v: blessd» ‹blessed›)
         || $suffix eq 'ed' && $pos_hint eq 'v'
         )
