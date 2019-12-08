@@ -384,6 +384,8 @@ ff
 fi
 ficus
 findable
+fingerpost
+fingerposts
 firewalls
 flagons
 flailed
@@ -442,6 +444,9 @@ goblets
 goddamnit
 gon
 Gondwana
+gongoozle
+gongoozler
+gongoozlers
 GOP
 governesses
 granaries
