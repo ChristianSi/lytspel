@@ -36419,6 +36419,8 @@ fingerling,,,f'INg3:lIN,,f'INg@`lIN
 fingernail,,,f'INg@neIl,f'INg@`neIl,
 fingernails,,,f'INg@neIlz,f'INg@`neIlz,
 fingerpaint,,,f'INg@peInt,f'INg@`peInt,
+fingerpost,,,f'INg@poUst,f'INg@`poUst,
+fingerposts,,,f'INg@poUsts,f'INg@`poUsts,
 fingerprint,,,f'INg@prInt,f'INg@`prInt,
 fingerprinted,,,f'INg@prIntId,f'INg@`prIntI#d,f'INg@`prIntId
 fingerprinting,,,f'INg@prIntIN,f'INg@`prIntIN,
@@ -41276,6 +41278,9 @@ gonfalon,,,g'Qnfal@n,g'Anfal@n,g'Anf@l@n
 gonfalonier,,,g'Qnfa#l@nI@,g'Anfa#l@nI@`,gAnf@l@n'i:r
 gonfanon,,,g'Qnfan@n,g'Anfan@n,g'Anf@n@n
 gong,,,g'QN,g'O:N,
+gongoozle,,,g'QNgu:z@l,g'O:Ngu:z@l,
+gongoozler,,,g'QNgu:zl@,g'O:Ngu:zl@`,
+gongoozlers,,,g'QNgu:zl@z,g'O:Ngu:zl@`z,
 Gongorism,,,g'QNg@rIz@m,g'O:Ng@`rIz@m,g'ANg@`Iz@m
 gongs,,,g'QNz,g'O:Nz,
 gonia,,,g'oUni:@,,
@@ -63624,7 +63629,7 @@ mutant,,,mj'u:t@nt,,
 mutants,,,mj'u:t@nts,,
 mutase,,,mj'u:teIs,,
 mutate,,,mju:t'eIt,,mj'u:teIt
-mutated,,,mju:t'eItId,mju:t'eItI#d,mj'u:teItId
+mutated,,,mj'u:teItId,mju:t'eItI#d,
 mutating,,,mju:t'eItIN,,mj'u:teItIN
 mutation,,,mju:t'eIS@n,,
 mutations,,,mju:t'eIS@nz,,
@@ -103628,8 +103633,8 @@ Vyborg,,,v'aIbO:g,v'aIborg,v'i:bO:rg
 Vycor,,,v'aIk@,v'aIk@`,v'aIkO:r
 vying,,,v'aIIN,,
 vyingly,,,v'aIINlI,v'aIINli:,
-WA,,,w'A,,w'Q
 wa,,,w'A,,
+WA,,,w'A,,w'Q
 Waadt,,,w'At,,v'At
 WAAF,,,w'Af,,w'af
 Waal,,,w'Al,,w'Ql
