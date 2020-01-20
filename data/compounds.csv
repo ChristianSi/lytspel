@@ -2127,6 +2127,7 @@ arched,arch=ed
 archenemy,arch-enemy
 archer,arch=er
 archerfish,archer-fish
+archers,archer=s
 archery,archer=y
 arches,arch=es
 archetypal,archetype=al
@@ -11817,6 +11818,8 @@ defied,defy=ed
 defier,defy=er
 defies,defy=es
 defile,de=file
+defiler,de=filer
+defilers,de=filers
 defiles,de=files
 definable,de=finable
 define,de=fine
@@ -18219,8 +18222,11 @@ fleshly,flesh=ly
 fleshpot,flesh-pot
 fleshpots,fleshpot=s
 fleshy,flesh=y
+fletched,fletch=ed
 fletcher,fletch=er
 fletcherism,fletcher=ism
+fletches,fletch=es
+fletching,fletch=ing
 flews,flew=s
 flexed,flex=ed
 flexes,flex=es
@@ -26695,6 +26701,7 @@ keyword,key-word
 keywords,keyword=s
 khakis,khaki=s
 khanate,khan=ate
+khazars,khazar=s
 khedivate,khedive=ate
 kibbutznik,kibbutz=nik
 kibbutzniks,kibbutznik=s
@@ -31291,6 +31298,7 @@ muggy,mug=y
 mugs,mug=s
 mugwort,mug-wort
 muhammadan,muhammad=an
+muhammadans,muhammadan=s
 mulattoes,mulatto=es
 mulched,mulch=ed
 mulches,mulch=es
@@ -32449,6 +32457,7 @@ northernmost,northern-most
 northing,north=ing
 northland,north-land
 northman,north-man
+northmen,north-men
 northmost,north-most
 northumbrian,northumbria=n
 northward,north=ward
@@ -36304,6 +36313,7 @@ polaroid,polar=oid
 polaroids,polaroid=s
 polecat,pole-cat
 polecats,polecat=s
+poled,pole=ed
 polemical,polemic=al
 polemics,polemic=s
 polemist,pole-mist
@@ -52086,6 +52096,7 @@ unsharpened,un=sharpened
 unshaved,un=shaved
 unshaven,un=shaven
 unsheathe,un=sheathe
+unsheathed,un=sheathed
 unshed,un=shed
 unshell,un=shell
 unsheltered,un=sheltered
@@ -52515,6 +52526,8 @@ usuriously,usurious=ly
 usuriousness,usurious=ness
 usurpation,usurp=ation
 usurped,usurp=ed
+usurper,usurp=er
+usurpers,usurper=s
 usurping,usurp=ing
 usurps,usurp=s
 usward,us=ward
@@ -53847,6 +53860,7 @@ whangee,whang=ee
 whapper,whap=er
 whapping,whap=ing
 wharfage,wharf=age
+wharfs,wharf=s
 wharves,wharve=s
 whatever,what-ever
 whatnot,what-not

@@ -5389,6 +5389,7 @@ archenteron,,,AtS'Ent@r@n,ArtS'Ent@`r@n,Ark'Ent@`Qn
 Archeozoic,,,'AkIQzoUIk,'ArkIAzoUIk,Arki:@z'oUIk
 archer,,,'AtS@,'ArtS@`,
 archerfish,,,'AtS@fIS,'ArtS@`fIS,
+archers,,,'AtS@z,'ArtS@`z,
 archery,,,'AtS@ri:,'ArtS@`ri:,'ArtS@`i:
 arches,,,'AtSIz,'ArtSI#z,'ArtS@z
 archespore,,,AtSEsp'O:,ArtSEsp'or,'ArkIspor
@@ -25142,6 +25143,8 @@ defier,,,dIf'i:@,dIf'Ir,dIf'aI@`
 defies,,,dIf'aIz,,
 defilade,,,dIf'IleId,,dEf@l'eId
 defile,,,dIf'aIl,,
+defiler,,,dIf'aIl@,dIf'aIl@`,
+defilers,,,dIf'aIl@z,dIf'aIl@`z,
 defiles,,,dIf'aIlz,,
 definable,,,dIf'aIn@b@l,,
 define,,,dIf'aIn,,
@@ -36987,8 +36990,11 @@ fleshpot,,,fl'ESpQt,fl'ESpAt,
 fleshpots,,,fl'ESpQts,fl'ESpAts,
 fleshy,,,fl'ESi:,,
 fletch,,,fl'EtS,,
+fletched,,,fl'EtSt,,
 fletcher,,,fl'EtS@,fl'EtS@`,
 Fletcherism,,,fl'EtS@rIz@m,fl'EtS@`rIz@m,fl'EtS@`Iz@m
+fletches,,,fl'EtSIz,fl'EtSI#z,
+fletching,,,fl'EtSIN,,
 fleurette,,,fl3:r'Et,,fl3:'Et
 fleuron,,,fl'3:rQn,fl'3:rAn,fl'3:Qn
 fleury,,,fl'3:ri:,,fl'Uri:
@@ -53331,6 +53337,7 @@ Khasi,,,k'Asi:,,
 khat,,,k'At,,
 Khayyam,,,k'Ajjam,,kaIj'Am
 Khazar,,,k'AzA,k'AzAr,kAz'Ar
+Khazars,,,k'AzAz,k'AzArz,
 kheda,,,k'Ed@,,
 khedivate,,,k'EdIveIt,k'EdI#veIt,k@d'i:vIt
 khedive,,,k'EdIv,,k@d'i:v
@@ -63245,6 +63252,7 @@ mugwort,,,m'VgwO:t,m'Vgwort,m'Vgw3:t
 mugwump,,,m'VgwVmp,,
 Muhammad,,,moUh'amId,,mUh'am@d
 Muhammadan,,,mj'u:ha#mad@n,,mUh'amId@n
+Muhammadans,,,mj'u:ha#mad@nz,,
 Muharram,,,mj'u:ha#ram,,m@h'ar@m
 muir,,,mj'U@,mj'Ur,
 mujahideen,,,mj'u:dZa#hIdi:n,,mu:dZ@hEd'i:n
@@ -63629,7 +63637,7 @@ mutant,,,mj'u:t@nt,,
 mutants,,,mj'u:t@nts,,
 mutase,,,mj'u:teIs,,
 mutate,,,mju:t'eIt,,mj'u:teIt
-mutated,,,mj'u:teItId,mju:t'eItI#d,
+mutated,,,mju:t'eItId,mju:t'eItI#d,mj'u:teItId
 mutating,,,mju:t'eItIN,,mj'u:teItIN
 mutation,,,mju:t'eIS@n,,
 mutations,,,mju:t'eIS@nz,,
@@ -65582,6 +65590,7 @@ northernmost,,,n'O:D@nmoUst,n'O:rD@`nmoUst,
 northing,,,n'O:TIN,n'O:rTIN,
 northland,,,n'O:Tl@nd,n'O:rTl@nd,n'O:rTland
 Northman,,,n'O:Tm@n,n'O:rTm@n,
+northmen,,,n'O:TmEn,n'O:rTmEn,
 northmost,,,n'O:TmoUst,n'O:rTmoUst,
 Northrop,,,n'O:TrQp,n'O:rTrAp,n'O:rTr@p
 Northrup,,,n'O:TrVp,n'O:rTrVp,n'O:rTr@p
@@ -73526,6 +73535,7 @@ poleax,,,p'oUlaks,,
 poleaxe,,,p'oUleIks,,p'oUlaks
 polecat,,,p'oUlkat,,
 polecats,,,p'oUlkats,,
+poled,,,p'oUld,,
 polemic,,,pQl'EmIk,pAl'EmIk,p@l'EmIk
 polemical,,,pQl'EmIk@l,pAl'EmIk@l,p@l'Em@k@l
 polemicist,,,pQl'EmIsIst,pAl'EmIsIst,p@l'EmIsIst
@@ -101177,6 +101187,7 @@ unsharpened,,,VnS'Ap@nd,VnS'Arp@nd,VnS'Qrp@nd
 unshaved,,,VnS'eIvd,,
 unshaven,,,VnS'eIv@n,,
 unsheathe,,,VnS'i:D,,
+unsheathed,,,VnS'i:Dd,,
 unshed,,,VnS'Ed,,
 unshell,,,VnS'El,,
 unsheltered,,,VnS'Elt@d,VnS'Elt@`d,
@@ -101842,6 +101853,8 @@ usuriousness,,,ju:zj'UrI@sn@s,,ju:Z'Uri:@snEs
 usurp,,,ju:z'3:p,,ju:s'3:p
 usurpation,,,ju:z'3:p'eIS@n,,ju:s@`p'eIS@n
 usurped,,,ju:z'3:pt,,ju:s'3:pt
+usurper,,,ju:z'3:p@,ju:z'3:p@`,
+usurpers,,,ju:z'3:p@z,ju:z'3:p@`z,
 usurping,,,ju:z'3:pIN,,ju:s'3:pIN
 usurps,,,ju:z'3:ps,,ju:s'3:ps
 usury,,,j'u:zjUri:,,j'u:Z@`i:
@@ -104618,6 +104631,7 @@ wharf,,,w'O:f,w'O:rf,
 wharfage,,,w'O:fIdZ,w'O:rfIdZ,w'QrfIdZ
 wharfie,,,w'O:fi:,w'O:rfi:,w'Qrfi:
 wharfinger,,,w'O:fINg@,w'O:rfINg@`,w'QrfIndZ@`
+wharfs,,,w'O:fs,w'O:rfs,
 Wharton,,,w'O:t@n,w'O:rt@n,
 wharve,,,w'O:v,w'O:rv,w'Qrv
 wharves,,,w'O:vz,w'O:rvz,w'Qrvz
