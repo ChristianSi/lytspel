@@ -34,6 +34,7 @@ antisemitism
 appetent
 applets
 arced
+archers
 archiver
 archiving
 ardours
@@ -260,6 +261,8 @@ decanted
 decolonization
 deeps
 deferentially
+defiler
+defilers
 defiles
 deflowered
 deforested
@@ -391,6 +394,9 @@ flagons
 flailed
 flavonoid
 flecked
+fletched
+fletches
+fletching
 flicked
 flitted
 flogged
@@ -572,6 +578,7 @@ jurymen
 jutted
 karmic
 keyboarder
+Khazars
 khor
 kikes
 kins
@@ -705,6 +712,7 @@ moslem
 mournfully
 mouthfuls
 MPs
+Muhammadans
 mulattoes
 multi
 multilingualism
@@ -747,6 +755,7 @@ nonperson
 nonpersons
 nonprintable
 nonspam
+northmen
 noseless
 nota
 notaries
@@ -851,6 +860,7 @@ poetical
 poisoner
 poisoners
 Pokemon
+poled
 polisher
 polishers
 polities
@@ -1281,6 +1291,7 @@ unmounts
 unobtrusively
 unphilosophical
 unrecognizably
+unsheathed
 unsteadily
 untrusted
 uppercase
@@ -1289,6 +1300,8 @@ uprightness
 upslope
 uptime
 urns
+usurper
+usurpers
 validator
 validators
 ve
@@ -1321,6 +1334,7 @@ webservers
 websites
 welled
 wetted
+wharfs
 wheezed
 whimpered
 whimpers
