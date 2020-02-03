@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+* Preserve case of words whose second letter is capitalized (e.g. 'iPod').
+* Add and correct some dictionary entries.
+
 
 ## [1.0.5] -- 2020-01-20
 
