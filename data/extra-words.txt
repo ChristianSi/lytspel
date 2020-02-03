@@ -31,6 +31,7 @@ Anthropocene
 anticommunism
 antisemitic
 antisemitism
+apocalypses
 appetent
 applets
 arced
@@ -109,6 +110,8 @@ brotherhoods
 browseable
 bu
 Buddhas
+buggered
+buggering
 buggier
 bumbled
 bumbles
@@ -127,6 +130,8 @@ candareen
 candareens
 cantrips
 careered
+carpark
+carparks
 cartloads
 cataclysms
 catastrophist
@@ -134,7 +139,9 @@ catwalks
 cellphones
 Centauri
 centralist
+cephalopods
 certificated
+cetera
 cf
 ch
 chanced
@@ -170,6 +177,7 @@ clinked
 clinks
 cloaks
 clubbers
+clucked
 coagulated
 coagulates
 cobbling
@@ -177,6 +185,7 @@ cochair
 codebase
 codename
 coherency
+coiling
 coked
 collated
 colludes
@@ -231,8 +240,11 @@ crotchets
 cruft
 cryonic
 cryonically
+Cthulhu
 cuckolded
 cultivators
+curated
+curates
 curtained
 customization
 cybernetic
@@ -294,6 +306,7 @@ disputants
 disquisitions
 disunited
 divulges
+djinn
 dominions
 dotfile
 dotfiles
@@ -313,6 +326,9 @@ eddying
 editable
 edn
 eds
+effaced
+effaces
+effing
 eg
 ejaculated
 ejaculates
@@ -374,6 +390,7 @@ extraterrestriality
 Facebook
 facto
 faire
+familiars
 fancying
 fantastical
 farted
@@ -401,6 +418,7 @@ flicked
 flitted
 flogged
 floodlit
+flyovers
 focussed
 foghorns
 footbinding
@@ -436,6 +454,7 @@ gaslights
 gaylord
 gaylords
 Gazan
+gents
 geographers
 gerency
 gestational
@@ -448,6 +467,7 @@ GMT
 gnashed
 goblets
 goddamnit
+golems
 gon
 Gondwana
 gongoozle
@@ -462,6 +482,7 @@ grav
 grep
 griffins
 griffons
+gritted
 Gryphon
 Gryphons
 guessable
@@ -492,6 +513,7 @@ heretics
 herpetologist
 herpetologists
 hexameters
+hexes
 hibernated
 hibernates
 hibernating
@@ -502,6 +524,7 @@ hmmm
 HMS
 hobbits
 homogenous
+homunculi
 hotheads
 HTML
 humanoid
@@ -538,6 +561,7 @@ initialization
 initializer
 initializers
 inked
+inklings
 inlays
 innit
 installable
@@ -562,6 +586,7 @@ irritably
 isa
 ISBN
 iterable
+iteration
 iterations
 iv
 ix
@@ -582,13 +607,17 @@ Khazars
 khor
 kikes
 kins
+knacked
 knackered
+knackers
+knacking
 kneaded
 kneader
 kneaders
 kneads
 kneeled
 knowledges
+knuckleheads
 kowtowed
 kowtowing
 kowtows
@@ -605,6 +634,7 @@ latencies
 leapt
 Legos
 lettuces
+levelly
 lianas
 libertarianism
 libre
@@ -618,6 +648,8 @@ logins
 logout
 logouts
 loins
+loitered
+loiters
 longhairs
 longsword
 longswords
@@ -633,6 +665,8 @@ lowlanders
 lunk
 lunks
 Lytspel
+magicked
+magicking
 magnesian
 Magnon
 Magnons
@@ -709,6 +743,7 @@ mooted
 mori
 mosasaurs
 moslem
+mouldering
 mournfully
 mouthfuls
 MPs
@@ -759,6 +794,7 @@ northmen
 noseless
 nota
 notaries
+nutters
 NY
 Obamacare
 obfuscated
@@ -769,6 +805,7 @@ obscurely
 obstinately
 octets
 octopuses
+offhandedly
 ogling
 Okinawan
 onwards
@@ -897,8 +934,12 @@ prosimetric
 prototyping
 pt
 pud
+pulped
 pulpless
 pulsed
+pyromancer
+pyromancers
+pyros
 Pythagoras
 pythagorize
 Qaeda
@@ -907,6 +948,7 @@ quatrains
 queerest
 quenched
 querying
+quids
 quilombo
 quilombos
 quintuples
@@ -983,6 +1025,7 @@ ritualized
 ritualizes
 roadmap
 roguelike
+roundabouts
 roved
 royalists
 ruffians
@@ -1001,6 +1044,7 @@ sauntered
 sauntering
 saunters
 savannahs
+scabbing
 scalability
 schoolgirls
 scriptability
@@ -1009,6 +1053,8 @@ scripting
 scrollbar
 scrollbars
 scrolling
+scrubland
+scrubs
 scuffing
 sedentariness
 seduces
@@ -1017,6 +1063,7 @@ seethes
 selfhood
 semaphores
 semitransparent
+sensitives
 separators
 serialization
 serializes
@@ -1036,6 +1083,7 @@ shingled
 shitheads
 shitload
 shitloads
+shitting
 shushed
 shushes
 shushing
@@ -1054,6 +1102,7 @@ slithers
 sloths
 sluiced
 smallholders
+smirked
 sniffled
 sniveled
 sniveling
@@ -1067,11 +1116,17 @@ snuffled
 snuffles
 snuffling
 snuggled
+sodded
+sodding
+sods
 solicitously
 somatism
 somersaulted
 spars
 speared
+speargun
+spearguns
+specificities
 specters
 spiflicate
 spiflicates
@@ -1109,13 +1164,17 @@ stotted
 stotting
 streambed
 streambeds
+streetlamp
 streetlamps
 streetlights
 strimmer
+striplight
+striplights
 strobilae
 strongmen
 stupefied
 stupider
+stuttered
 stylesheet
 stylesheets
 subdirectories
@@ -1156,6 +1215,8 @@ swaddled
 swaddles
 swaddling
 sweetmeats
+swilled
+swills
 symbiote
 symbiotes
 syndicalist
@@ -1168,6 +1229,7 @@ tankards
 tanners
 tarball
 tarballs
+tattooist
 teacups
 teared
 telegraphically
@@ -1175,7 +1237,9 @@ templates
 templating
 tendrils
 tensed
+texted
 tha
+thermals
 thinko
 thirsted
 thongs
@@ -1185,6 +1249,7 @@ thrumming
 thudded
 thudding
 thuds
+tickling
 timekeeping
 timesharing
 timestamp
@@ -1237,6 +1302,9 @@ tubers
 tuk
 tuple
 tussocks
+tutted
+twat
+twats
 twittered
 twittering
 twitters
@@ -1291,6 +1359,9 @@ unmounts
 unobtrusively
 unphilosophical
 unrecognizably
+unrolled
+unrolling
+unrolls
 unsheathed
 unsteadily
 untrusted
@@ -1352,6 +1423,8 @@ Wikipedia
 wikis
 wildcards
 wisps
+wittered
+wittering
 woogie
 workaround
 workarounds
@@ -1378,6 +1451,7 @@ xvi
 xvii
 xviii
 xxx
+yadda
 yahs
 Yanomamo
 yellowed
