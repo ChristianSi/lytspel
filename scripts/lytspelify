@@ -1,7 +1,7 @@
 #!/usr/bin/perl -CA
 # Convert phonetic SAMPA spellings into Lytspel.
 #
-# Copyright (c) 2016-2019 Christian Siefkes
+# Copyright (c) 2016-2020 Christian Siefkes
 # See accompanying LICENSE.txt file for licensing information.
 #
 # Required modules: Const::Fast, Text::LevenshteinXS, and those listed in PhonEng.pm.
@@ -877,6 +877,11 @@ sub restore_capitalization {
 
     # Capitalize first letter (if not yet done)
     $converted = ucfirst($converted) if $tradspell =~ /^[A-Z]/ && $converted =~ /^[a-z]/;
+
+    # Or very occasionally the second letter
+    if ($tradspell =~ /^[a-z][A-Z]/ && $converted =~ /^[a-z]/) {
+        $converted =~ s/(.)(.)/$1\u$2/;
+    }
 
     if ($tradspell =~ /'/) {
         # Handle contractions

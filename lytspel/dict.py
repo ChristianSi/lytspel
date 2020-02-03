@@ -110,11 +110,11 @@ class Dictionary:
     def is_mixed_case(word: str) -> bool:
         """Test whether a word is MiXed case.
 
-        A word is assumed to be MiXed case if it starts with an upper-case letter and if it
-        contains at least one other upper-case and one lower-case letter. Words must be
+        A word is assumed to be MiXed case if it contains at least one upper-case letter
+        that's not the first letter and at least one lower-case letter. Words must be
         ASCII-fied for this function to work correctly.
         """
-        return bool(CAPTALIZED_RE.match(word)) and bool(INNER_CAP_RE.search(word))
+        return bool(CAPTALIZED_RE.search(word)) and bool(INNER_CAP_RE.search(word))
 
     @lru_cache(maxsize=1048576)
     def lookup(self, word: str, spacy_pos: str = None, at_sent_start: bool = False) -> Union[
@@ -359,10 +359,10 @@ class Dictionary:
         if ALL_CAPS_RE.match(word):
             return converted.upper()  # ALL_CAPS
 
+        if word in self._mixed_dict:
+            return self._mixed_dict[word]  #  MixedCase
+
         if UPPER_CASE_RE.match(word):
-            if word in self._mixed_dict:
-                return self._mixed_dict[word]  #  MixedCase
-            else:
-                return converted[0].upper() + converted[1:]  # Capitalized
+            return converted[0].upper() + converted[1:]  # Capitalized
 
         return converted  # No change
