@@ -10,6 +10,8 @@ acknowledgments
 actuated
 actuates
 actuating
+advisor
+advisors
 aediles
 afterwords
 aggregating
@@ -209,6 +211,7 @@ configurable
 conformant
 conjunctures
 conquistadors
+conscientiousness
 considerateness
 consolingly
 consuls
@@ -218,7 +221,10 @@ controvertible
 convulsed
 convulses
 corporals
+counterintuitive
+counterintuitively
 couplets
+coursework
 courtesans
 cowered
 cowslips
@@ -270,6 +276,7 @@ debugged
 debugger
 debuggers
 decanted
+deciders
 decolonization
 deeps
 deferentially
@@ -278,12 +285,17 @@ defilers
 defiles
 deflowered
 deforested
+dehire
+dehired
+dehires
+dehiring
 delegitimize
 delimiter
 delimiters
 demigods
 deputed
 descriptors
+detraining
 diabetologist
 diabetologists
 didact
@@ -317,8 +329,10 @@ dowsers
 dullards
 dum
 dunking
+durably
 dustbins
 dynamically
+dystopian
 earflaps
 economistic
 eddied
@@ -336,6 +350,8 @@ eldercare
 elegies
 elsewise
 embroils
+empirics
+employability
 emptinesses
 emptive
 emulations
@@ -364,6 +380,7 @@ epaulets
 epaulettes
 epigrams
 errable
+esp
 esthetic
 etherized
 etherizes
@@ -386,9 +403,11 @@ expostulated
 expostulates
 expurgated
 extensibility
+externalities
 extraterrestriality
 Facebook
 facto
+fadeout
 faire
 familiars
 fancying
@@ -519,13 +538,17 @@ hibernates
 hibernating
 hijiki
 hillocks
+hirer
+hirers
 hmm
 hmmm
 HMS
+hoarders
 hobbits
 homogenous
 homunculi
 hotheads
+htm
 HTML
 humanoid
 humanoids
@@ -539,6 +562,7 @@ hypertensives
 Icelanders
 ick
 ideaed
+identifiers
 idlers
 ig
 ii
@@ -581,6 +605,7 @@ invigilated
 invigilation
 invisibly
 invocations
+IQ
 irrelevancies
 irritably
 isa
@@ -692,6 +717,7 @@ maroons
 masticated
 mastodons
 maternally
+maximally
 meditated
 meditatively
 megacities
@@ -725,6 +751,7 @@ millennia
 minilanguage
 minilanguages
 mish
+mismeasurement
 mistranslated
 mistranslates
 moas
@@ -783,7 +810,9 @@ newsreaders
 Nietzschean
 nihilist
 noiselessly
+noncognitive
 noncompact
+noncompletion
 nondramatic
 nonlocking
 nonperson
@@ -794,6 +823,7 @@ northmen
 noseless
 nota
 notaries
+numeracy
 nutters
 NY
 Obamacare
@@ -805,6 +835,7 @@ obscurely
 obstinately
 octets
 octopuses
+OECD
 offhandedly
 ogling
 Okinawan
@@ -827,12 +858,17 @@ outcropping
 outsized
 outsizes
 overcomplicated
+overeducation
 overfilled
 overfilling
 overfills
 overgeneralized
 overgeneralizes
 overgeneralizing
+overinvest
+overinvested
+overinvesting
+overinvests
 overweighting
 ovoids
 packsack
@@ -856,6 +892,7 @@ particularistic
 pated
 paternalist
 patronizingly
+pdf
 pe
 pease
 pec
@@ -887,6 +924,7 @@ piranhas
 pisses
 pissing
 planarity
+plateaus
 playgroups
 plesiosaurs
 plugin
@@ -905,8 +943,11 @@ Pompeii
 pootle
 portholes
 positional
+postgraduation
 postprocessor
 postprocessors
+postsecondary
+posttest
 postulated
 powerlessly
 pp
@@ -918,6 +959,7 @@ preprocessors
 preselected
 preselecting
 preselects
+pretest
 prevalences
 primitives
 princelings
@@ -971,6 +1013,7 @@ Randian
 ransomed
 raptures
 rapturously
+rd
 readouts
 Reaganomic
 reanimated
@@ -988,6 +1031,9 @@ redistributable
 reeked
 reestablishment
 refactoring
+regressed
+regresses
+regressing
 reimplement
 reinitialize
 reink
@@ -1062,6 +1108,7 @@ seethed
 seethes
 selfhood
 semaphores
+semiplausible
 semitransparent
 sensitives
 separators
@@ -1122,6 +1169,7 @@ sods
 solicitously
 somatism
 somersaulted
+soulcraft
 spars
 speared
 speargun
@@ -1194,6 +1242,8 @@ subsists
 substring
 subsumed
 subtasks
+subtest
+subtests
 sudarium
 Sudoku
 suggestibility
@@ -1232,6 +1282,8 @@ tarballs
 tattooist
 teacups
 teared
+technophile
+technophiles
 telegraphically
 templates
 templating
@@ -1297,6 +1349,7 @@ tropes
 trotters
 troubleshooting
 truculently
+truisms
 trunkloads
 tubers
 tuk
@@ -1328,10 +1381,12 @@ uncloaked
 uncloaking
 uncloaks
 uncontacted
+uncredentialed
 undecorated
 underclan
 underclans
 undergown
+undergrads
 underleaf
 underspecified
 understeward
@@ -1349,6 +1404,7 @@ Unicode
 unicorns
 unifies
 uniformitarianism
+uninclined
 uninstall
 Unitarians
 Unixes
@@ -1365,6 +1421,7 @@ unrolls
 unsheathed
 unsteadily
 untrusted
+uplifts
 uppercase
 uprightly
 uprightness
