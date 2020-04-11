@@ -3,6 +3,11 @@
 ## [Unreleased]
 
 
+## [1.0.7] -- 2020-04-11
+
+* Add and correct some dictionary entries.
+
+
 ## [1.0.6] -- 2020-03-06
 
 * Preserve case of words whose second letter is capitalized (e.g. 'iPod').
