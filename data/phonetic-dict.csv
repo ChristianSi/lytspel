@@ -5441,6 +5441,8 @@ archivists,,,'AkaIvIsts,'ArkaIvIsts,
 archivolt,,,'AkaIvoUlt,'ArkaIvoUlt,'Ark@voUlt
 archlute,,,AtSl'u:t,ArtSl'u:t,'ArtSlu:t
 archly,,,'AtSli:,'ArtSli:,
+archmage,,,AtSm'eIdZ,ArtSm'eIdZ,
+archmages,,,AtSm'eIdZIz,ArtSm'eIdZI#z,
 archon,,,'AtSQn,'ArtSAn,'ArkAn
 archoplasm,,,AtS'Qplaz@m,ArtS'Aplaz@m,'Ark@plaz@m
 archpriest,,,AtSpr'i:st,ArtSpr'i:st,'ArtSpr'i:st
@@ -30404,6 +30406,7 @@ earthpea,,,'3:Tpi:@,,'3:Tpi:
 earthquake,,,'3:TkweIk,,
 earthquakes,,,'3:TkweIks,,
 earths,,,'3:Ts,,
+Earthsea,,,'3:Tsi:,,
 earthshaker,,,'3:TSeIk@,'3:TSeIk@`,
 earthshaking,,,'3:TSeIkIN,,
 earthshine,,,'3:TSaIn,,
@@ -33631,6 +33634,7 @@ eunuchism,,,j'u:n@tSIz@m,,j'u:n@kIz@m
 eunuchize,,,j'u:n@tSaIz,,j'u:n@kaIz
 eunuchoid,,,j'u:n@tSOId,,j'u:n@kOId
 eunuchoidism,,,j'u:n@tSOIdIz@m,,j'u:n@kOIdIz@m
+eunuchs,,,j'u:nVtSz,,
 euonymus,,,j'u:@nIm@s,,ju:'An@m@s
 eupatorium,,,ju:pa#t'O:ri:@m,ju:pa#t'ori:@m,ju:p@t'ori:@m
 eupatrid,,,j'u:pa#trId,,ju:p'atrId
@@ -36752,7 +36756,7 @@ flag,,,fl'ag,,
 flagella,,,fladZ'El@,,fl@dZ'El@
 flagellant,,,fl'adZEl@nt,,fl'adZ@l@nt
 flagellate,,,fl'adZIleIt,,fl'adZ@leIt
-flagellated,,,fl'adZIleItId,fl'adZIleItI#d,fl'adZ@leIt@d
+flagellated,,,fl'adZIleItId,,fl'adZ@leIt@d
 flagellatory,,,fl'adZIl@t@ri:,fl'adZIl@tori:,fl'adZ@l@tori:
 flagelliform,,,fl'adZIlIfO:m,fl'adZIlIfO:rm,fl@dZ'El@fO:rm
 flagellum,,,fla#dZ'El@m,,fl@dZ'El@m
@@ -37619,6 +37623,7 @@ footlocker,,,f'UtlQk@,f'UtlAk@`,f'UtlQk@`
 footloose,,,f'Utlu:s,,
 footman,,,f'Utm@n,,
 footmark,,,f'UtmAk,f'UtmArk,
+footmen,,,f'UtmEn,,
 footnote,,,f'UtnoUt,,
 footnoted,,,f'UtnoUtId,f'UtnoUtI#d,
 footnotes,,,f'UtnoUts,,
@@ -43105,6 +43110,7 @@ hagridden,,,h'agrId@n,,
 hagride,,,h'agraId,,
 hagseed,,,h'agsi:d,,
 Hague,,,h'eIg,,
+hah,,,h'A,,
 Hahn,,,h'An,,
 Hahnemann,,,h'AnIman,,h'An@m@n
 haick,,,h'eIk,,h'aIk
@@ -43455,6 +43461,8 @@ handloom,,,h'andlu:m,,
 handlooms,,,h'andlu:mz,,
 handmade,,,h'andmeId,,h'andm'eId
 handmaid,,,h'andmeId,,
+handmaiden,,,h'andmeId@n,,
+handmaidens,,,h'andmeId@nz,,
 handout,,,h'andaUt,,
 handouts,,,h'andaUts,,
 handover,,,h'andoUv@,h'andoUv@`,
@@ -46303,6 +46311,7 @@ hostilities,,,h@st'IlIti:z,,hQst'Il@ti:z
 hostility,,,h@st'IlIti:,,hQst'Il@ti:
 hosting,,,h'oUstIN,,
 hostler,,,h'Qsl@,h'Asl@`,h'Qsl@`
+hostlers,,,h'Qsl@z,h'Asl@`z,
 hostly,,,h'oUstli:,,
 hosts,,,h'oUsts,,
 hot,,,h'Qt,h'At,
@@ -50117,7 +50126,7 @@ instep,,,Inst'Ep,,'InstEp
 instigate,,,'InstIgeIt,'InstI#geIt,'Inst@geIt
 instigated,,,'InstIgeItId,'InstI#geItI#d,'Inst@geItId
 instigates,,,'InstIgeIts,'InstI#geIts,'Inst@geIts
-instigating,,,'InstIgeItIN,,'Inst@geItIN
+instigating,,,'InstIgeItIN,'InstI#geItIN,'Inst@geItIN
 instigation,,,InstIg'eIS@n,,
 instigator,,,'InstIgeIt@,'InstI#geIt@`,'Inst@geIt@`
 instigators,,,'InstIgeIt@z,'InstI#geIt@`z,'Inst@geIt@`z
@@ -58137,6 +58146,7 @@ mage,,,m'eIdZ,,
 Magellan,,,ma#dZ'El@n,,m@dZ'El@n
 Magellanic,,,ma#dZIl'anIk,,madZ@l'anIk
 magenta,,,m@dZ'Ent@,,
+magery,,,m'eIdZ@rI,m'eIdZ@`ri:,
 mages,,,m'eIdZIz,m'eIdZI#z,
 Maggie,,,m'agi:,,
 maggiore,,,m'agi:@,m'agIr,m@dZ'ori:
@@ -70266,6 +70276,8 @@ patter,,,p'at@,p'at@`,
 pattered,,,p'at@d,p'at@`d,
 pattern,,,p'at@n,p'at@`n,
 patterned,,,p'at@nd,p'at@`nd,
+patterner,,,p'at@n@,p'at@`n@`,
+patterners,,,p'at@n@z,p'at@`n@`z,
 patterns,,,p'at@nz,p'at@`nz,
 Patterson,,,p'at@s@n,p'at@`s@n,
 Patti,,,p'ati:,,
@@ -78545,7 +78557,7 @@ realized,,,r'i:@laIzd,,
 realizes,,,r'i:@laIzIz,r'i:@laIzI#z,
 realizing,,,r'i:@laIzIN,,
 reallocate,,,ri:'al@keIt,,
-reallocated,,,ri:'al@keItId,ri:'al@keItI#d,
+reallocated,,,ri:'al@keItId,,
 reallocating,,,ri:'al@keItIN,,
 reallocation,,,ri:al@k'eIS@n,,
 reallot,,,ri:a#l'Qt,ri:a#l'At,ri:@l'Qt
@@ -92751,6 +92763,8 @@ summitry,,,s'VmItri:,,
 summits,,,s'VmIts,,
 summon,,,s'Vm@n,,
 summoned,,,s'Vm@nd,,
+summoner,,,s'Vm@n@,s'Vm@n@`,
+summoners,,,s'Vm@n@z,s'Vm@n@`z,
 summoning,,,s'Vm@nIN,,
 summons,,,s'Vm@nz,,
 summonsed,,,s'Vm@nzd,,
@@ -98685,6 +98699,7 @@ trumpery,,,tr'Vmp@ri:,tr'Vmp@`ri:,tr'Vmp@`i:
 trumpet,,,tr'VmpIt,,tr'Vmp@t
 trumpeted,,,tr'VmpItId,tr'VmpItI#d,tr'Vmp@tId
 trumpeter,,,tr'VmpEt@,tr'VmpEt@`,tr'Vmp@t@`
+trumpeters,,,tr'VmpEt@z,tr'VmpEt@`z,
 trumpetfish,,,tr'VmpEtfIS,,tr'VmpItfIS
 trumpeting,,,tr'VmpItIN,tr'VmpI#tIN,tr'Vmp@tIN
 trumpets,,,tr'VmpIts,,tr'Vmp@ts
@@ -103774,8 +103789,8 @@ Vyborg,,,v'aIbO:g,v'aIborg,v'i:bO:rg
 Vycor,,,v'aIk@,v'aIk@`,v'aIkO:r
 vying,,,v'aIIN,,
 vyingly,,,v'aIINlI,v'aIINli:,
-WA,,,w'A,,w'Q
 wa,,,w'A,,
+WA,,,w'A,,w'Q
 Waadt,,,w'At,,v'At
 WAAF,,,w'Af,,w'af
 Waal,,,w'Al,,w'Ql

@@ -2152,6 +2152,8 @@ archivist,archive=ist
 archivists,archivist=s
 archlute,arch-lute
 archly,arch=ly
+archmage,arch-mage
+archmages,archmage=s
 archpriest,arch-priest
 archrival,arch-rival
 archrivals,archrival=s
@@ -14858,6 +14860,7 @@ earthpea,earth-pea
 earthquake,earth-quake
 earthquakes,earthquake=s
 earths,earth=s
+earthsea,earth-sea
 earthshaker,earth-shaker
 earthshaking,earth-shaking
 earthshine,earth-shine
@@ -16328,6 +16331,7 @@ eunuchism,eunuch=ism
 eunuchize,eunuch=ize
 eunuchoid,eunuch=oid
 eunuchoidism,eunuchoid=ism
+eunuchs,eunuch=s
 euphemisms,euphemism=s
 euphoniously,euphonious=ly
 eurasian,eurasia=n
@@ -18601,6 +18605,7 @@ footlocker,foot-locker
 footloose,foot-loose
 footman,foot-man
 footmark,foot-mark
+footmen,foot-men
 footnote,foot-note
 footnoted,footnote=ed
 footnotes,footnote=s
@@ -21483,6 +21488,8 @@ handloom,hand-loom
 handlooms,handloom=s
 handmade,hand-made
 handmaid,hand-maid
+handmaiden,hand-maiden
+handmaidens,handmaiden=s
 handout,hand-out
 handouts,handout=s
 handover,hand-over
@@ -22450,7 +22457,6 @@ hiltons,hilton=s
 hilts,hilt=s
 himalayan,himalaya=n
 himalayas,himalaya=s
-himation,him=ation
 himself,him-self
 hindbrain,hind-brain
 hindered,hinder=ed
@@ -22943,6 +22949,7 @@ hostesses,hostess=es
 hostilely,hostile=ly
 hostilities,hostility=es
 hosting,host=ing
+hostlers,hostler=s
 hostly,host=ly
 hosts,host=s
 hotbed,hot-bed
@@ -28809,6 +28816,7 @@ magazines,magazine=s
 magazinist,magazine=ist
 magdalenian,magdalene=ian
 magellanic,magellan=ic
+magery,mage=ry
 mages,mage=s
 maggots,maggot=s
 maggs,mag=s
@@ -34863,6 +34871,8 @@ patter,pat=er
 pattered,patter=ed
 pattern,patter=n
 patterned,pattern=ed
+patterner,pattern=er
+patterners,patterner=s
 patterns,pattern=s
 patties,patti=es
 patting,pat=ing
@@ -47186,6 +47196,8 @@ summiteers,summiteer=s
 summitry,summit=ry
 summits,summit=s
 summoned,summon=ed
+summoner,summon=er
+summoners,summoner=s
 summoning,summon=ing
 summons,summon=s
 summonsed,summons=ed
@@ -50198,6 +50210,7 @@ truly,true=ly
 trumped,trump=ed
 trumpeted,trumpet=ed
 trumpeter,trumpet=er
+trumpeters,trumpeter=s
 trumpetfish,trumpet-fish
 trumpeting,trumpet=ing
 trumpets,trumpet=s

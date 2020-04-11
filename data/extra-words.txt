@@ -40,6 +40,8 @@ arced
 archers
 archiver
 archiving
+archmage
+archmages
 ardours
 argento
 aristocracies
@@ -334,6 +336,7 @@ dustbins
 dynamically
 dystopian
 earflaps
+Earthsea
 economistic
 eddied
 eddying
@@ -387,6 +390,7 @@ etherizes
 etherizing
 ethnographer
 ethnographers
+eunuchs
 exampled
 exasperatingly
 executable
@@ -442,6 +446,7 @@ focussed
 foghorns
 footbinding
 footbindings
+footmen
 forager
 foragers
 foraminifera
@@ -511,9 +516,12 @@ Guineans
 gyrocompasses
 hackerspace
 hackerspaces
+hah
 hairpins
 haled
 handhelds
+handmaiden
+handmaidens
 hardwired
 hardwiring
 harems
@@ -547,6 +555,7 @@ hoarders
 hobbits
 homogenous
 homunculi
+hostlers
 hotheads
 htm
 HTML
@@ -690,6 +699,7 @@ lowlanders
 lunk
 lunks
 Lytspel
+magery
 magicked
 magicking
 magnesian
@@ -892,6 +902,8 @@ particularistic
 pated
 paternalist
 patronizingly
+patterner
+patterners
 pdf
 pe
 pease
@@ -1249,6 +1261,8 @@ Sudoku
 suggestibility
 sullenly
 sullying
+summoner
+summoners
 sunburnt
 sunrises
 superannuated
@@ -1350,6 +1364,7 @@ trotters
 troubleshooting
 truculently
 truisms
+trumpeters
 trunkloads
 tubers
 tuk

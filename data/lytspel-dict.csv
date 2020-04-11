@@ -5405,6 +5405,8 @@ archivists,,,arkyvists
 archivolt,,,arkevoalt
 archlute,,,archluut
 archly,,,archli
+archmage,,,archmaij
+archmages,,,archmaijes
 archon,,,arcon
 archoplasm,,,arkeplasm
 archpriest,,,arch'preest
@@ -8705,8 +8707,8 @@ beaut,,,biut
 beauteous,,,biutiass
 beauteously,,,biutiassli
 beauteousness,,,biutiassness
-beautician,,,biutition
-beauticians,,,biutitions
+beautician,,,biu'tition
+beauticians,,,biu'titions
 beauties,,,biuties
 beautification,,,biutifi'caition
 beautiful,,,biutiful
@@ -9202,7 +9204,7 @@ benediction,,,beni'diction
 benedictional,,,beni'dictionel
 benedictory,,,beni'dicteri
 Benedictus,,,Beni'dictuss
-benefaction,,,benefaction
+benefaction,,,bene'faction
 benefactor,,,benefacter
 benefactors,,,benefacters
 benefactress,,,benefactress
@@ -17462,8 +17464,8 @@ circulate,,,surkyulait
 circulated,,,surkyulaited
 circulates,,,surkyulaits
 circulating,,,surkyulaiting
-circulation,,,surkyulaition
-circulations,,,surkyulaitions
+circulation,,,surkyu'laition
+circulations,,,surkyu'laitions
 circulator,,,surkyulaiter
 circulatory,,,surkyuletoari
 circumambient,,,surcum'ambiant
@@ -17850,7 +17852,7 @@ claxon,,,claxen
 clay,,,clay
 claybank,,,claybank
 clayey,,,clayi
-claymation,,,claimaition
+claymation,,,clai'maition
 claymore,,,claimoar
 claypan,,,claypan
 clays,,,clays
@@ -25799,7 +25801,7 @@ deposits,,,di'posits
 depot,,,depo
 depots,,,depoas
 Depp,,,Dep
-depravation,,,depra'vaichen
+depravation,,,depra'vaition
 deprave,,,di'praiv
 depraved,,,di'praivd
 depravedly,,,di'praivdli
@@ -30050,6 +30052,7 @@ dziggetai,,,jigity
 Dzungaria,,,Dzoong'gairia
 e'en,,,ee'n
 e'er,,,ai'r
+ea,,,ee
 each,,,eech
 eager,,,eeger
 eagerly,,,eegerli
@@ -30137,6 +30140,7 @@ earthpea,,,urthpee
 earthquake,,,urthquaik
 earthquakes,,,urthquaiks
 earths,,,urths
+Earthsea,,,Urthsee
 earthshaker,,,urthshaiker
 earthshaking,,,urthshaiking
 earthshine,,,urthshyn
@@ -33340,6 +33344,7 @@ eunuchism,,,iunukism
 eunuchize,,,iunukys
 eunuchoid,,,iunukoid
 eunuchoidism,,,iunukoidism
+eunuchs,,,iunuks
 euonymus,,,iu'onemuss
 eupatorium,,,iupa'toariam
 eupatrid,,,iu'patrid
@@ -37302,6 +37307,7 @@ footlocker,,,footloker
 footloose,,,footluuss
 footman,,,footman
 footmark,,,footmark
+footmen,,,footmen
 footnote,,,footnoat
 footnoted,,,footnoated
 footnotes,,,footnoats
@@ -42723,6 +42729,7 @@ hagridden,,,hagriden
 hagride,,,hagryd
 hagseed,,,hagseed
 Hague,,,Haig
+hah,,,haa
 Hahn,,,Haan
 haick,,,hyk
 Haida,,,Hyda
@@ -43072,6 +43079,8 @@ handloom,,,handluum
 handlooms,,,handluums
 handmade,,,handmaid
 handmaid,,,handmaid
+handmaiden,,,handmaiden
+handmaidens,,,handmaidens
 handout,,,handout
 handouts,,,handouts
 handover,,,handoaver
@@ -45891,6 +45900,7 @@ hostilities,,,ho'stilities
 hostility,,,ho'stiliti
 hosting,,,hoasting
 hostler,,,hosler
+hostlers,,,hoslers
 hostly,,,hoastli
 hosts,,,hoasts
 hot,,,hot
@@ -47531,7 +47541,7 @@ immolate,,,imelait
 immolated,,,imelaited
 immolates,,,imelaits
 immolating,,,imelaiting
-immolation,,,imelaition
+immolation,,,ime'laition
 immoral,,,i'morrel
 immoralism,,,i'morrelism
 immoralist,,,i'morrelist
@@ -49074,8 +49084,8 @@ influentially,,,influ'enshelli
 influenza,,,influ'enza
 influx,,,influx
 info,,,info
-infomercial,,,infoamurshel
-infomercials,,,infoamurshels
+infomercial,,,info'murshel
+infomercials,,,info'murshels
 inform,,,in'form
 informal,,,in'formel
 informality,,,infor'maliti
@@ -53066,7 +53076,7 @@ kilocycle,,,kilecycl
 kilogauss,,,kilegouss
 kilogram,,,kilegram
 kilograms,,,kilegrams
-kilohertz,,,kilehurtz
+kilohertz,,,kilehurts
 kilojoule,,,kilejuul
 kiloliter,,,kileliter
 kilolitre,,kiloliter
@@ -57607,6 +57617,7 @@ mage,,,maij
 Magellan,,,Ma'jelen
 Magellanic,,,Maje'lanic
 magenta,,,ma'jenta
+magery,,,maijri
 mages,,,maijes
 Maggie,,,Magi
 maggiore,,,ma'joari
@@ -59180,7 +59191,7 @@ McCartney,,,McCairtni
 McCarty,,,McCarti
 McClain,,,McClain
 McClellan,,,McClelen
-McClure,,,McCluur
+McClure,,,McCloor
 McConnell,,,McConel
 McCormack,,,McCormek
 McCormick,,,McCormic
@@ -60493,8 +60504,8 @@ midfield,,,midfeeld
 Midgard,,,Midgard
 midge,,,mij
 midges,,,mijes
-midget,,,mijet
-midgets,,,mijets
+midget,,,mijit
+midgets,,,mijits
 midgut,,,midgut
 midi,,,midi
 Midian,,,Midian
@@ -66673,7 +66684,7 @@ ordines,,,ordenees
 ordnance,,,ordnenss
 ordo,,,ordo
 ordonnance,,,ordenenss
-Ordovician,,,Oardo'vician
+Ordovician,,,Ordo'vition
 ordure,,,orjer
 Ordzhonikidze,,,Arjaani'keedzeh
 ore,,,oar
@@ -69627,6 +69638,8 @@ patter,,,pater
 pattered,,,paterd
 pattern,,,patern
 patterned,,,paternd
+patterner,,,paterner
+patterners,,,paterners
 patterns,,,paterns
 Patterson,,,Patersen
 Patti,,,Pati
@@ -91959,6 +91972,8 @@ summitry,,,sumitri
 summits,,,sumits
 summon,,,sumen
 summoned,,,sumend
+summoner,,,sumener
+summoners,,,sumeners
 summoning,,,sumening
 summons,,,sumens
 summonsed,,,sumensd
@@ -92419,7 +92434,7 @@ surging,,,surjing
 surgy,,,surji
 Suribachi,,,Soori'baachi
 suricate,,,sooricait
-Suriname,,,Suurinaam
+Suriname,,,Soorinam
 surly,,,surli
 surmise,,,ser'mys
 surmised,,,ser'mysd
@@ -93064,7 +93079,7 @@ syncom,,,sincom
 syncopal,,,sinkepl
 syncopate,,,sinkepait
 syncopated,,,sinkepaited
-syncopation,,,sinkepaition
+syncopation,,,sinke'paition
 syncope,,,sinkepi
 syncretise,,syncretize
 syncretism,,,sincritism
@@ -96891,7 +96906,7 @@ transducer,,,trans'duesser
 transducers,,,trans'duessers
 transect,,,transect
 transected,,,transected
-transection,,,transection
+transection,,,tran'section
 transenna,,,tran'sena
 transept,,,transept
 transeunt,,,transiant
@@ -97862,6 +97877,7 @@ trumpery,,,trumperi
 trumpet,,,trumpit
 trumpeted,,,trumpited
 trumpeter,,,trumpiter
+trumpeters,,,trumpiters
 trumpetfish,,,trumpitfish
 trumpeting,,,trumpiting
 trumpets,,,trumpits
