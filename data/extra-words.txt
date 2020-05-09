@@ -65,6 +65,7 @@ backbenchers
 backstreets
 balustrades
 bamboos
+barbarisms
 barded
 barding
 bards
@@ -86,6 +87,8 @@ binaries
 bindings
 bionic
 birthed
+Bitcoin
+Bitcoins
 bitmap
 bitmapped
 bitmaps
@@ -248,6 +251,8 @@ crotchets
 cruft
 cryonic
 cryonically
+cryptocurrencies
+cryptocurrency
 Cthulhu
 cuckolded
 cultivators
@@ -280,6 +285,9 @@ debuggers
 decanted
 deciders
 decolonization
+decommodified
+decommodifies
+decommodify
 deeps
 deferentially
 defiler
@@ -321,6 +329,7 @@ disquisitions
 disunited
 divulges
 djinn
+Dogecoin
 dominions
 dotfile
 dotfiles
@@ -478,6 +487,7 @@ gaslights
 gaylord
 gaylords
 Gazan
+GDP
 gents
 geographers
 gerency
@@ -955,12 +965,15 @@ Pompeii
 pootle
 portholes
 positional
+postcapitalist
 postgraduation
 postprocessor
 postprocessors
+postscarcity
 postsecondary
 posttest
 postulated
+postwork
 powerlessly
 pp
 prefigured
@@ -1051,7 +1064,10 @@ reinitialize
 reink
 rejoices
 religionists
+rentiers
 replastered
+replicator
+replicators
 reproached
 reproaches
 reproachfully
@@ -1161,6 +1177,8 @@ slithers
 sloths
 sluiced
 smallholders
+smartphone
+smartphones
 smirked
 sniffled
 sniveled
@@ -1175,6 +1193,7 @@ snuffled
 snuffles
 snuffling
 snuggled
+socialisms
 sodded
 sodding
 sods
@@ -1445,6 +1464,7 @@ uptime
 urns
 usurper
 usurpers
+utopianism
 validator
 validators
 ve
@@ -1497,6 +1517,7 @@ wildcards
 wisps
 wittered
 wittering
+wombs
 woogie
 workaround
 workarounds
