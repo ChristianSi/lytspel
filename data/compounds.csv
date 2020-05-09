@@ -3288,6 +3288,7 @@ baptisms,baptism=s
 baptists,baptist=s
 baptized,baptize=ed
 barbarians,barbarian=s
+barbarisms,barbarism=s
 barbarously,barbarous=ly
 barbarousness,barbarous=ness
 barbate,barb=ate
@@ -4411,6 +4412,8 @@ bitartrate,bi=tartrate
 bitches,bitch=es
 bitchiness,bitchy=ness
 bitchy,bitch=y
+bitcoin,bit-coin
+bitcoins,bitcoin=s
 biter,bite=er
 bites,bite=s
 bitesize,bite-size
@@ -10884,6 +10887,8 @@ cryptanalyze,crypt-analyze
 cryptic,crypt=ic
 cryptoanalysis,crypto-analysis
 cryptocrystalline,crypto-crystalline
+cryptocurrencies,cryptocurrency=es
+cryptocurrency,crypto-currency
 cryptogamous,cryptogam=ous
 cryptogenic,crypto-genic
 cryptographic,cryptograph=ic
@@ -11659,6 +11664,8 @@ decolorize,de=colorize
 decommission,de=commission
 decommissioned,de=commissioned
 decommissioning,de=commissioning
+decommodified,decommodify=ed
+decommodifies,decommodify=es
 decompensation,de=compensation
 decompose,de=compose
 decomposed,de=composed
@@ -14019,6 +14026,7 @@ dogcart,dog-cart
 dogcatcher,dog-catcher
 dogdom,dog=dom
 dogeared,dog-eared
+dogecoin,doge-coin
 dogface,dog-face
 dogfight,dog-fight
 dogfights,dogfight=s
@@ -36717,6 +36725,7 @@ postaxially,post=axially
 postbag,post=bag
 postbox,post=box
 postboy,post=boy
+postcapitalist,post=capitalist
 postcard,post=card
 postcards,post=cards
 postcode,post=code
@@ -36779,6 +36788,7 @@ postprocessor,post=processor
 postprocessors,postprocessor=s
 postretirement,post=retirement
 posts,post=s
+postscarcity,post=scarcity
 postscript,post=script
 postscripts,post=scripts
 postsecondary,post=secondary
@@ -36794,6 +36804,7 @@ posturings,posturing=s
 posturize,posture=ize
 postvocalic,post=vocalic
 postwar,post=war
+postwork,post=work
 posy,pose=y
 potable,pote=able
 potableness,potable=ness
@@ -40251,6 +40262,7 @@ rentals,rental=s
 rented,rent=ed
 renter,rent=er
 renters,renter=s
+rentiers,rentier=s
 renting,rent=ing
 rents,rent=s
 renumber,re=number
@@ -40368,6 +40380,8 @@ replicas,replica=s
 replicated,replicate=ed
 replicates,replicate=s
 replicating,replicate=ing
+replicator,replicate=or
+replicators,replicator=s
 replied,re=plied
 replies,reply=es
 reply,re=ply
@@ -44545,6 +44559,8 @@ smarting,smart=ing
 smartish,smart=ish
 smartly,smart=ly
 smartness,smart=ness
+smartphone,smart-phone
+smartphones,smartphone=s
 smarts,smart=s
 smartweed,smart-weed
 smarty,smart=y
@@ -44831,6 +44847,7 @@ sobersided,sober-sided
 sobs,sob=s
 socager,socage=er
 socialism,social=ism
+socialisms,socialism=s
 socialist,social=ist
 socialistic,socialist=ic
 socialists,socialist=s
@@ -52665,6 +52682,7 @@ utilized,utilize=ed
 utilizes,utilize=s
 utilizing,utilize=ing
 utopian,utopia=n
+utopianism,utopian=ism
 utopians,utopian=s
 utopias,utopia=s
 utter,ut=er
@@ -54553,6 +54571,7 @@ womanly,woman=ly
 womanpower,woman-power
 wombats,wombat=s
 wombles,womble=s
+wombs,womb=s
 womenfolk,women-folk
 wondered,wonder=ed
 wonderful,wonder=ful

@@ -8070,6 +8070,7 @@ barbarians,,,bAb'e@ri:@nz,bArb'Eri:@nz,bQrb'Eri:@nz
 barbaric,,,bAb'arIk,bArb'arIk,
 barbarise,,barbarize
 barbarism,,,b'AbArIz@m,b'ArbArIz@m,b'Arb@`Iz@m
+barbarisms,,,b'AbArIz@mz,b'ArbArIz@mz,
 barbarity,,,bAb'arIti:,bArb'arIti:,
 barbarize,,,b'Ab@raIz,b'Arb@`raIz,b'Arb@`aIz
 Barbarossa,,,b'Aba#rQs@,b'Arba#rO:s@,bArb@`'Qs@
@@ -10312,6 +10313,8 @@ bitchery,,,b'ItS@ri:,b'ItS@`ri:,b'ItS@`i:
 bitches,,,b'ItSIz,b'ItSI#z,
 bitchiness,,,b'ItSIn@s,,b'ItSi:n@s
 bitchy,,,b'ItSi:,,
+Bitcoin,,,b'ItkOIn,,
+Bitcoins,,,b'ItkOInz,,
 bite,,,b'aIt,,
 biter,,,b'aIt@,b'aIt@`,
 bites,,,b'aIts,,
@@ -20276,7 +20279,7 @@ confirmor,,,k@nf'3:m@,k@nf'3:m@`,kQnf@`m'O:r
 confirms,,,k@nf'3:mz,,
 confiscable,,,k'QnfIsk@b@l,k'AnfIsk@b@l,k@nf'Isk@b@l
 confiscate,,,k'QnfIskeIt,k'AnfIskeIt,k'Qnf@skeIt
-confiscated,,,k'QnfIskeItId,k'AnfIskeItI#d,k'Qnf@skeIt@d
+confiscated,,,k'QnfIskeItId,k'AnfIskeItId,k'Qnf@skeIt@d
 confiscating,,,k'QnfIskeItIN,k'AnfIskeItIN,k'Qnf@skeItIN
 confiscation,,,kQnfIsk'eIS@n,kAnfIsk'eIS@n,kQnf@sk'eIS@n
 confiscatory,,,k'QnfIsk@t@ri:,k'AnfIsk@tori:,k@nf'Isk@tO:ri:
@@ -23238,6 +23241,8 @@ cryptoanalysis,,,krIptoUn'al@sIs,,krIptoU@n'alIsIs
 cryptoclastic,,,krIpt@kl'astIk,,
 cryptococcosis,,,krIpt@k@k'oUsIs,,krIptoUkQk'oUsIs
 cryptocrystalline,,,kr'Ipt@krIsta#laIn,,krIptoUkr'Ist@lIn
+cryptocurrencies,,,kr'Ipt@kVr@nsi:z,kr'Ipt@k3:r@nsi:z,
+cryptocurrency,,,kr'Ipt@kVr@nsi:,kr'Ipt@k3:r@nsi:,
 cryptogam,,,kr'Ipt@gam,,
 cryptogamous,,,krIpt'Qga#m@s,krIpt'Aga#m@s,krIpt'Qg@m@s
 cryptogenic,,,krIptoUdZ'EnIk,,krIpt@dZ'EnIk
@@ -24912,6 +24917,9 @@ decolourize,,decolorize
 decommission,,,di:k@m'IS@n,,
 decommissioned,,,di:k@m'IS@nd,,
 decommissioning,,,di:k@m'IS@nIN,,
+decommodified,,,di:k@m'QdIfaId,di:k@m'AdIfaId,
+decommodifies,,,di:k@m'QdIfaIz,di:k@m'AdIfaIz,
+decommodify,,,di:k@m'QdIfaI,di:k@m'AdIfaI,
 decompensation,,,di:k@mp@ns'eIS@n,,di:kQmp@ns'eIS@n
 decompose,,,di:k@mp'oUz,,
 decomposed,,,di:k@mp'oUzd,,
@@ -28818,6 +28826,7 @@ dogcatcher,,,d'QgkatS@,d'AgkatS@`,d'QgkatS@`
 dogdom,,,d'Qgd@m,d'Agd@m,
 doge,,,d'oUdZ,,
 dogeared,,,d'oUdZe@d,d'oUdZErd,d'Qgi:rd
+Dogecoin,,,d'oUdZkOIn,,
 dogface,,,d'QgfeIs,d'AgfeIs,
 dogfight,,,d'QgfaIt,d'AgfaIt,
 dogfights,,,d'QgfaIts,d'AgfaIts,d'O:gfaIts
@@ -36756,7 +36765,7 @@ flag,,,fl'ag,,
 flagella,,,fladZ'El@,,fl@dZ'El@
 flagellant,,,fl'adZEl@nt,,fl'adZ@l@nt
 flagellate,,,fl'adZIleIt,,fl'adZ@leIt
-flagellated,,,fl'adZIleItId,,fl'adZ@leIt@d
+flagellated,,,fl'adZIleItId,fl'adZIleItI#d,fl'adZ@leIt@d
 flagellatory,,,fl'adZIl@t@ri:,fl'adZIl@tori:,fl'adZ@l@tori:
 flagelliform,,,fl'adZIlIfO:m,fl'adZIlIfO:rm,fl@dZ'El@fO:rm
 flagellum,,,fla#dZ'El@m,,fl@dZ'El@m
@@ -39890,6 +39899,7 @@ gazing,,,g'eIzIN,,
 gazogene,,,g'azoUdZi:n,,g'az@dZi:n
 gazpacho,,,gazp'atSoU,,g@zp'AtSoU
 Gdansk,,,g@d'ansk,,gd'ansk
+GDP,,,dZi:di:p'i:,,
 Gdynia,,,dZ'i:d'aIni:@,,g@d'Ini:@
 ge,,,dZ'i:,,
 gean,,,dZ'i:n,,g'i:n
@@ -74265,6 +74275,7 @@ postaxially,,,poUst'eIksI@li:,,poUst'aksi:@li:
 postbag,,,p'oUstbag,,
 postbox,,,p'oUstbQks,p'oUstbAks,
 postboy,,,p'oUstbOI,,
+postcapitalist,,,p'oUstka#pIt@lIst,,
 postcard,,,p'oUstkAd,p'oUstkArd,
 postcards,,,p'oUstkAdz,p'oUstkArdz,p'oUstkQrdz
 postcode,,,p'oUstkoUd,,
@@ -74339,6 +74350,7 @@ postprocessors,,,p'oUstproUsEs@z,p'oUstpr@sEs@`z,
 postremogeniture,,,p'oUstrImoUdZnItS@,p'oUstrImoUdZnItS@`,pAstri:moUdZ'EnItS@`
 postretirement,,,p'oUstrItaI@m@nt,p'oUstrItaI@`m@nt,poUstri:t'aI@`m@nt
 posts,,,p'oUsts,,
+postscarcity,,,poUstsk'e@sIti:,poUstsk'ErsIti:,
 postscript,,,p'oUstskrIpt,,
 postscripts,,,p'oUstskrIpts,,
 postsecondary,,,p'oUstsIk@nd@ri:,p'oUstsIk@nd@`ri:,
@@ -74359,6 +74371,7 @@ posturise,,posturize
 posturize,,,p'QstS@raIz,p'AstS@`raIz,p'AstS@`aIz
 postvocalic,,,poUstv@k'alIk,,poUstvoUk'alIk
 postwar,,,p'oUstwO:,p'oUstwO:r,p'oUstw'O:r
+postwork,,,p'oUstw3:k,,
 posy,,,p'oUzi:,,
 pot,,,p'Qt,p'At,
 potable,,,p'oUt@b@l,,
@@ -78557,7 +78570,7 @@ realized,,,r'i:@laIzd,,
 realizes,,,r'i:@laIzIz,r'i:@laIzI#z,
 realizing,,,r'i:@laIzIN,,
 reallocate,,,ri:'al@keIt,,
-reallocated,,,ri:'al@keItId,,
+reallocated,,,ri:'al@keItId,ri:'al@keItI#d,
 reallocating,,,ri:'al@keItIN,,
 reallocation,,,ri:al@k'eIS@n,,
 reallot,,,ri:a#l'Qt,ri:a#l'At,ri:@l'Qt
@@ -80238,6 +80251,7 @@ rented,,,r'EntId,r'EntI#d,r'Ent@d
 renter,,,r'Ent@,r'Ent@`,
 renters,,,r'Ent@z,r'Ent@`z,
 rentier,,,r'EntI@,r'EntI@`,rAntj'eI
+rentiers,,,r'Enti:@z,r'EntIrz,
 renting,,,r'EntIN,,
 rents,,,r'Ents,,
 renumber,,,rIn'Vmb@,rIn'Vmb@`,ri:n'Vmb@`
@@ -80400,6 +80414,8 @@ replicates,,,r'EplIkeIts,r'EplI#keIts,
 replicating,,,r'EplIkeItIN,r'EplI#keItIN,
 replication,,,rEplIk'eIS@n,,rEpl@k'eIS@n
 replicative,,,r'EplIk@tIv,,
+replicator,,,r'EplIkeIt@,r'EplI#keIt@`,
+replicators,,,r'EplIkeIt@z,r'EplI#keIt@`z,
 replied,,,rIpl'aId,,ri:pl'aId
 replies,,,rIpl'aIz,,ri:pl'aIz
 reply,,,rIpl'aI,,ri:pl'aI
@@ -88140,6 +88156,8 @@ smarting,,,sm'AtIN,sm'ArtIN,sm'QrtIN
 smartish,,,sm'AtIS,sm'ArtIS,
 smartly,,,sm'Atli:,sm'Artli:,sm'Qrtli:
 smartness,,,sm'Atn@s,sm'Artn@s,sm'QrtnIs
+smartphone,,,sm'AtfoUn,sm'ArtfoUn,
+smartphones,,,sm'AtfoUnz,sm'ArtfoUnz,
 smarts,,,sm'Ats,sm'Arts,sm'Qrts
 smartweed,,,sm'Atwi:d,sm'Artwi:d,
 smarty,,,sm'Ati:,sm'Arti:,
@@ -88588,6 +88606,7 @@ socialise,,socialize
 socialised,,socialized
 socialising,,socializing
 socialism,,,s'oUS@lIz@m,,
+socialisms,,,s'oUS@lIz@mz,,
 socialist,,,s'oUS@lIst,,
 socialistic,,,s'oUS@l'IstIk,,soUS@l'IstIk
 socialists,,,s'oUS@lIsts,,
@@ -102031,6 +102050,7 @@ utilizing,,,j'u:tIlaIzIN,,j'u:t@laIzIN
 utmost,,,'VtmoUst,,
 utopia,,,ju:t'oUpi:@,,
 Utopian,,,ju:t'oUpi:@n,,
+utopianism,,,ju:t'oUpi:@nIz@m,,
 Utopians,,,ju:t'oUpi:@nz,,
 utopias,,,ju:t'oUpi:@z,,
 Utrecht,,,j'u:trEkt,,
@@ -105665,6 +105685,7 @@ wombat,,,w'Qmbat,w'Ambat,
 wombats,,,w'Qmbats,w'Ambats,
 womble,,,w'Qmb@l,w'Amb@l,
 wombles,,,w'Qmb@lz,w'Amb@lz,
+wombs,,,w'u:mz,,
 women,,,w'ImIn,,w'Im@n
 womenfolk,,,w'ImInfoUk,,
 womera,,,w'oUmr@,,w'Am@`@
