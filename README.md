@@ -112,9 +112,9 @@ The long vowels and diphthongs are written as follows:
 * «oi» /OI/ as in «oil, point, a'void» ‹...avoid›
 * «ou» /aU/ as in «mouth, doun» ‹...down›
 * «uu» /u:/ as in «muun, ix'cluud, gruup» ‹moon, exclude, group›
-* «iu» (/yU/ or /ju:/) as in «valiu, kiut, com'piuter, modiulait» ‹value,
+* «iu» (/jU/ or /ju:/) as in «valiu, kiut, com'piuter, modiulait» ‹value,
   cute, computer, modulate›
-* The spelling «ue» is used in words that are typically spoken with /yU/ or
+* The spelling «ue» is used in words that are typically spoken with /jU/ or
   /ju:/ in RP, with /u:/ or /U/ in GA, e.g. «due, nuetrel, tuen»
   ‹...neutral, tune›
 * «y» /aI/ as in «pryss, styl, dry» ‹price, style...›
