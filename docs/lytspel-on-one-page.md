@@ -75,7 +75,7 @@ The other consonants are written as expected («**b**e**d**, **m**u**ch**,
 e**v**er, **w**est, **y**et»).
 
 
-## R-colored Consonants
+## R-colored Vowels
 
 * «air» as in «pair»
 * «ar» as in «dark»
