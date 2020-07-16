@@ -3,6 +3,12 @@
 ## [Unreleased]
 
 
+## [1.0.9] -- 2020-07-16
+
+* Fix typos in README and one-page overview.
+* Add some dictionary entries.
+
+
 ## [1.0.8] -- 2020-05-09
 
 * Add and correct some dictionary entries.
