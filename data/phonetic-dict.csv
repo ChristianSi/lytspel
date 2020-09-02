@@ -8910,6 +8910,7 @@ bedspread,,,b'EdsprEd,,
 bedspring,,,b'EdsprIN,,
 bedstand,,,b'Edstand,,
 bedstead,,,b'EdstEd,,
+bedsteads,,,b'EdstEdz,,
 bedstraw,,,b'EdstrO:,,
 bedtable,,,b'Et@b@l,,b'EdteIb@l
 bedtick,,,b'EdtIk,,
@@ -12871,6 +12872,7 @@ bueno,,,bj'u:@noU,,bw'EnQ
 buff,,,b'Vf,,
 buffa,,,b'Vf@,,
 buffalo,,,b'Vf@loU,,
+buffaloes,,,b'Vf@loUz,,
 buffalofish,,,b'Vfa#lQfIS,b'Vfa#lAfIS,b'Vf@loUfIS
 buffe,,,b'Vf,,b@f
 buffer,,,b'Vf@,b'Vf@`,
@@ -20279,7 +20281,7 @@ confirmor,,,k@nf'3:m@,k@nf'3:m@`,kQnf@`m'O:r
 confirms,,,k@nf'3:mz,,
 confiscable,,,k'QnfIsk@b@l,k'AnfIsk@b@l,k@nf'Isk@b@l
 confiscate,,,k'QnfIskeIt,k'AnfIskeIt,k'Qnf@skeIt
-confiscated,,,k'QnfIskeItId,k'AnfIskeItId,k'Qnf@skeIt@d
+confiscated,,,k'QnfIskeItId,k'AnfIskeItI#d,k'Qnf@skeIt@d
 confiscating,,,k'QnfIskeItIN,k'AnfIskeItIN,k'Qnf@skeItIN
 confiscation,,,kQnfIsk'eIS@n,kAnfIsk'eIS@n,kQnf@sk'eIS@n
 confiscatory,,,k'QnfIsk@t@ri:,k'AnfIsk@tori:,k@nf'Isk@tO:ri:
@@ -25663,7 +25665,7 @@ Democritus,,,d'Em@krIt@s,,dIm'QkrIt@s
 demode,,,d'EmoUd,,deImQd'eI
 demoded,,,d'EmoUdId,d'EmoUdI#d,di:m'oUdId
 demodulate,,,dEm'QdjUleIt,d'Em@dZu:leIt,di:mQdZ@l'eIt
-demodulated,,,dEm'QdjUleItId,d'Em@dZu:leItId,di:mQdZ@l'eIt@d
+demodulated,,,dEm'QdjUleItId,d'Em@dZu:leItI#d,di:mQdZ@l'eIt@d
 demodulates,,,dEm'QdjUleIts,d'Em@dZu:leIts,di:mQdZ@l'eIts
 demodulation,,,dEm@djUl'eIS@n,dEm@dZu:l'eIS@n,di:mQdZ@l'eIS@n
 demodulator,,,d'Em@djUleIt@,d'Em@dZu:leIt@`,di:m'QdZ@leIt@`
@@ -55335,6 +55337,7 @@ leanings,,,l'i:nINz,,
 Leann,,,li:'an,,
 Leanna,,,l'i:n@,,li:'an@
 leans,,,l'i:nz,,
+leant,,,l'Ent,,
 leap,,,l'i:p,,
 leaped,,,l'i:pt,,
 leaper,,,l'i:p@,l'i:p@`,
@@ -61230,6 +61233,8 @@ militiamen,,,m'IlISi:@mEn,,m@l'IS@mIn
 militias,,,m@l'IS@z,,mIl'IS@z
 milium,,,m'Ili:@m,,
 milk,,,m'Ilk,,
+milkbar,,,m'IlkbA,m'IlkbAr,
+milkbars,,,m'IlkbAz,m'IlkbArz,
 milked,,,m'Ilkt,,
 milken,,,m'Ilk@n,,
 milker,,,m'Ilk@,m'Ilk@`,
@@ -69550,6 +69555,7 @@ parachuted,,,p'ar@Su:tId,p'ar@Su:tI#d,p'Er@Su:tId
 parachutes,,,p'ar@Su:ts,,p'Er@Su:ts
 parachuting,,,p'ar@Su:tIN,,p'Er@Su:tIN
 parachutist,,,p'ar@tSu:tIst,,p'ar@Su:tIst
+parachutists,,,p'ar@tSu:tIsts,,
 paraclete,,,p'ar@kli:t,,
 paracusis,,,p'ar@kju:si:z,,par@kj'u:sIs
 parade,,,p@r'eId,p@`r'eId,p@`'eId
@@ -72256,7 +72262,9 @@ pianos,,,pI'anoUz,,pi:'anoUz
 piarist,,,p'i@Ist,p'IrIst,p'aI@`Ist
 piassava,,,paI@s'Av@,,pi:@s'Av@
 piaster,,,p'aI@st@,p'aI@st@`,pi:'ast@`
+piasters,,,p'aI@st@z,p'aI@st@`z,
 piastre,,piaster
+piastres,,,p'aI@st@z,p'aI@st@`z,
 Piave,,,p'aI@v,,pj'AvE
 piazza,,,p'aI@z@,,pi:'az@
 pibgorn,,,p'IbgO:n,p'IbgO:rn,
@@ -103815,8 +103823,8 @@ Vyborg,,,v'aIbO:g,v'aIborg,v'i:bO:rg
 Vycor,,,v'aIk@,v'aIk@`,v'aIkO:r
 vying,,,v'aIIN,,
 vyingly,,,v'aIINlI,v'aIINli:,
-wa,,,w'A,,
 WA,,,w'A,,w'Q
+wa,,,w'A,,
 Waadt,,,w'At,,v'At
 WAAF,,,w'Af,,w'af
 Waal,,,w'Al,,w'Ql
@@ -103988,6 +103996,7 @@ walkaway,,,w'O:k@weI,,w'Qk@weI
 walked,,,w'O:kt,,
 walker,,,w'O:k@,w'O:k@`,
 walkers,,,w'O:k@z,w'O:k@`z,
+walkie,,,w'O:ki:,,
 walking,,,w'O:kIN,,
 Walkman,,,w'O:km@n,,w'O:kman
 walkout,,,w'O:kaUt,,
