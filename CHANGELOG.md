@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [1.1.0] -- 2020-09-02
+
+* Add some dictionary entries.
+
 
 ## [1.0.9] -- 2020-07-16
 
