@@ -75,6 +75,7 @@ BC
 beakers
 beaks
 beauticians
+bedsteads
 befouled
 beheads
 belches
@@ -117,6 +118,7 @@ brotherhoods
 browseable
 bu
 Buddhas
+buffaloes
 buggered
 buggering
 buggier
@@ -676,6 +678,7 @@ lanuginous
 laputa
 larn
 latencies
+leant
 leapt
 Legos
 lettuces
@@ -768,6 +771,8 @@ micrometres
 midcentury
 middles
 militarization
+milkbar
+milkbars
 millennia
 minilanguage
 minilanguages
@@ -904,6 +909,7 @@ Palauan
 palefaced
 paleontological
 palpation
+parachutists
 parcellize
 parcellized
 parcellizes
@@ -935,6 +941,8 @@ PhD
 phoenixes
 phonotype
 phosphorescent
+piasters
+piastres
 pillowed
 pinky
 pinnacles
@@ -1493,6 +1501,7 @@ vomitories
 wa
 wafts
 waggled
+walkie
 walkthrough
 waterhole
 waterholes
