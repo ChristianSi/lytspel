@@ -1,4 +1,4 @@
-mypy = mypy --ignore-missing-imports
+mypy = mypy --ignore-missing-imports --no-strict-optional
 
 allpytests: pylint mypy pytest testdir
 	@echo "All checks and tests passed"
@@ -8,7 +8,7 @@ wheel: allpytests
 	twine check dist/lytspel-*.*
 
 pylint:
-	pylint3 lytspel/*.py
+	pylint lytspel/*.py
 
 mypy:
 	$(mypy) lytspel/*.py
