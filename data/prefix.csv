@@ -25,8 +25,10 @@ iso,aIsoU,2
 macro,makroU,A
 meta,m'Et@,A
 micro,maIkroU,A
+milli,mIlI,A
 mis,mIs,A
 multi,mVltI,A
+nano,nanoU,1
 neo,ni:oU,A
 neuro,nU:roU,A
 non,nQn,2
@@ -37,6 +39,7 @@ over,oUv@`,A
 paleo,pali:oU,2
 per,p@`,2
 phyto,faItoU,2
+pico,pi:koU,1
 post,poUst,A
 pre,pri:,A
 pseudo,su:doU,A
