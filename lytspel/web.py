@@ -15,6 +15,7 @@ from uuid import uuid4
 
 from flask import (Flask, flash, make_response, Markup, render_template, request, redirect,
                    send_file, send_from_directory)
+from flask.logging import create_logger
 import misaka
 from werkzeug.utils import secure_filename
 from werkzeug.wrappers import Response
@@ -253,6 +254,7 @@ SERVER_SOFTWARE = os.environ.get('SERVER_SOFTWARE', 'flask')
 
 app = Flask(__name__)  # pylint: disable=invalid-name
 app.config.from_pyfile('web.cfg')
+LOG = create_logger(app)
 
 # Set suitable default values
 app.config.setdefault('UPLOAD_FOLDER', HOME + '/webdata/uploads')
@@ -260,10 +262,10 @@ app.config.setdefault('UPLOAD_FOLDER', HOME + '/webdata/uploads')
 # Configure logging
 if 'gunicorn' in SERVER_SOFTWARE:
     gunicorn_logger = logging.getLogger('gunicorn.error')  # pylint: disable=invalid-name
-    app.logger.handlers = gunicorn_logger.handlers
-    app.logger.setLevel(gunicorn_logger.level)
+    LOG.handlers = gunicorn_logger.handlers
+    LOG.setLevel(gunicorn_logger.level)
 
-app.logger.info('App ready to serve under %s', SERVER_SOFTWARE)
+LOG.info('App ready to serve under %s', SERVER_SOFTWARE)
 
 
 @app.before_request
@@ -452,14 +454,14 @@ def log_web_event(msg: str = None, *args):
     msg += ' (user agent: %s)'
     agent = request.user_agent
     agent_string = '{}/{} {}'.format(
-        agent.platform or '-', agent.browser or '-', agent.version or '-')
+        agent.platform or '-', agent.browser or '-', agent.version or '-')  # type: ignore
 
     if agent_string == '-/- -':
         # Log the raw User-Agent header instead (if sent)
         agent_string = '"{}"'.format(agent.string or '')
 
     args = (*args, agent_string)
-    app.logger.info(msg, *args)
+    LOG.info(msg, *args)
 
 
 def redirect_with_error(msg: str, url: str = '/') -> Response:

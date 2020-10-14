@@ -1,15 +1,15 @@
 """Utility functions for Lytspel."""
 
 from sys import stderr
-from typing import Sequence, TypeVar
+from typing import Optional, Sequence, TypeVar
 
 
 PACKAGENAME = 'lytspel'
 
-T = TypeVar('T')
+T = TypeVar('T')  # pylint: disable=invalid-name
 
 
-def get_elem(seq: Sequence[T], idx: int) -> T:
+def get_elem(seq: Sequence[T], idx: int) -> Optional[T]:
     """Safely retried an element from a sequence.
 
     None is returned if 'seq' ends before the requested 'idx' position.

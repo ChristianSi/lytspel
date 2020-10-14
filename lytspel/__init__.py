@@ -2,7 +2,7 @@
 
 import argparse
 import readline
-from sys import argv
+import sys
 import warnings
 
 from .conv import Converter
@@ -22,10 +22,10 @@ warnings.formatwarning = compact_warning
 
 def main() -> None:
     """Run this script."""
-    if argv[0] in ('-c', '') or '/' in argv[0]:
+    if sys.argv[0] in ('-c', '') or '/' in sys.argv[0]:
         # Set script name if it's not already set or fix it if it contains the full path
-        argv[0] = PACKAGENAME
-    scriptname = argv[0]
+        sys.argv[0] = PACKAGENAME
+    scriptname = sys.argv[0]
 
     parser = argparse.ArgumentParser(
         epilog='Specify "-" instead of a FILE to convert text read from stdin. This only '
@@ -53,14 +53,14 @@ def main() -> None:
         print(conv.convert_para(args.convert, test_if_foreign=False))
     else:
         if not args.files:
-            exit('{}: Specify file(s) to convert or use the -c argument.\n'
-                 "Try '{} -h' for more information.".format(scriptname, scriptname))
+            sys.exit('{name}: Specify file(s) to convert or use the -c argument.\n'
+                     "Try '{name} -h' for more information.".format(name=scriptname))
 
         if args.outfile:
             if not len(args.files) == 1:
-                exit('{}: -o/--outfile argument requires exactly 1 input FILE, not {}.\n'
-                     "Try '{} -h' for more information.".format(
-                         scriptname, len(args.files), scriptname))
+                sys.exit('{name}: -o/--outfile argument requires exactly 1 input FILE, not {fc}.\n'
+                         "Try '{name} -h' for more information.".format(
+                             fc=len(args.files), name=scriptname))
 
         for file in args.files:
             conv.convert_file(file, args.outfile)

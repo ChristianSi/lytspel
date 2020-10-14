@@ -5,7 +5,7 @@ from enum import Enum
 from functools import lru_cache
 from io import TextIOWrapper
 import re
-from typing import List, Tuple, Union
+from typing import Optional, List, Tuple, Union
 from warnings import warn
 
 from pkg_resources import resource_stream
@@ -281,7 +281,7 @@ class Dictionary:
         else:
             return word, ''
 
-    def fallback_lookup(self, lc_word: str) -> str:
+    def fallback_lookup(self, lc_word: str) -> Optional[str]:
         """Fallback lookup if the regular lookup failed.
 
         'lc_word' must be a lower-case word.

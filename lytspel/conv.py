@@ -91,7 +91,7 @@ class Converter:
             except OSError:
                 printmsg('Downloading language model for the spaCy POS tagger\n'
                          "(don't worry, this will only happen once)")
-                from spacy.cli import download
+                from spacy.cli import download  # pylint: disable=import-outside-toplevel
                 download('en')
                 Converter._nlp = spacy.load('en', disable=['parser', 'ner'])
 
