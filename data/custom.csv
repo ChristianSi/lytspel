@@ -392,7 +392,7 @@ ailurophobe,,P
 ailurophobia,,P
 Aintab,,P
 Ainu,,P
-ais,,'Ai:z
+ais,,D
 Aisha,,P
 aisle,,P
 aisling,,B
@@ -999,6 +999,7 @@ Austrasia,,A
 Austronesia,,O:str@n'i:Z@
 authoress,,'O:T@`@s
 autobahn,,'O:t@#bAn
+automata,,O:t'Qm@t@
 automatically,,B
 automatism,,P
 autostrada,,O:t@str'Ad@
@@ -1641,6 +1642,8 @@ callais,,k@l'eIIs
 callan,,k'Al@n
 callant,,P
 callee,,kO:l'i:
+callosal,,kal'oUs@l
+callosum,,k@'loUs@m
 calm,,B
 calorifacient,,ka#lQr@f'eIS@nt
 caltha,,B
@@ -1794,6 +1797,8 @@ cauliculus,,kO:l'Ik@l@s
 cauliflory,,k'O:lIflori:
 cauliflower,,k'O:lI#flaU@`
 cauliform,,k'O:lI#fO:rm
+causalgia,,kO:z'aldZi:@
+causality,,kO:z'alIti:
 Cavafy,,P
 cavalcade,,kav@lk'eId
 Cavan,,k'av@n
@@ -1856,6 +1861,7 @@ ceramist,,s@`'amIst
 Ceram,,P
 cerargyrite,,P
 cerastes,,s@`'asti:z
+cerebellar,,sEr@b'El@`
 cerebration,,sEr@br'eIS@n
 cerebroside,,B
 cerebrospinal,,s@ri:broUsp'aIn@l
@@ -2153,6 +2159,7 @@ clough,,D
 clow,,B
 clozapine,,kl'oUz@pi:n
 Cluj,,kl'UZ
+cm,,O
 coaction,,P
 coactive,,P
 coact,,P
@@ -2442,6 +2449,7 @@ corselette,,kO:rs@l'Et
 corsetiere,,kO:rs@t'i@
 corset,,P
 corticate,,k'O:rtIkIt
+cortices,,k'O:tIsi:z
 cortina,,kO:rt'aIn@
 cortine,,kO:rt'i:ni:
 cortisol,,k'O:rtIsQl
@@ -2507,6 +2515,8 @@ crematoria,,krEm@t'ori:@
 crematorium,,krEm@t'ori:@m
 crematory,,kr'Em@tori:
 crenation,,P
+creolization,,kri:@laIz'eIS@n
+creolize,,kr'i:@laIz
 Creon,,kr'i:Qn
 creosol,,kr'i:@sQl
 crepon,,kr'eIpQn
@@ -3032,6 +3042,7 @@ dodecaphonic,,B
 dodecasyllable,,doUdEk@s:'Il@b@l
 does,n,d'oUz
 dogged,,d'Qg@d
+doi,,O
 doldrums,,d'Qldr@mz
 dolichocephalic,,dQlIkoUs@f'alIk
 dolichocephalism,,dQlIkoUs'Ef@lIz@m
@@ -3351,6 +3362,13 @@ enami,,D
 enamor,,A
 enantiotropy,,B
 encapsulation,,Enkaps@l'eIS@n
+encephalization,,EnsEf@#laIz'eIS@n
+encephalogram,,Ens'Ef@#l@gram
+encephalograph,,Ens'Ef@#l@graf
+encephalographic,,EnsEf@#l@gr'afIk
+encephalomyelitic,,EnsEf@#loUmaI@l'ItIk
+encephalomyelitis,,EnsEf@#loUmaI@l'aItIs
+encephalon,,Ens'Ef@#lQn
 encina,,P
 encoignure,,P
 endocrine,,'End@krIn
@@ -4207,6 +4225,7 @@ frivol,,P
 fromage,,D
 frontality,,B
 frontier,,fr'Vnti@
+frontoparietal,,frVnt@#p@`'aI@t@l
 frottage,,fr'QtAZ
 Fructidor,,D
 fructificative,,fr'VktI#fIkeItIv
@@ -4215,6 +4234,7 @@ frug,,P
 Frunze,,P
 frustule,,B
 fs,,D
+ft,,O
 Fuchs,,D
 fuchsine,,f'U:ksIn
 fuchsin,,f'U:ksIn
@@ -4568,8 +4588,10 @@ Gretchen,,P
 grigri,,P
 grillade,,P
 Grimaldi,,P
+Grimm,,D
 Griqua,,P
 griseofulvin,,grIzIoUf'UlvIn
+gr,,O
 groceteria,,D
 Grodno,,B
 Groenendael,,P
@@ -5379,6 +5401,7 @@ iridosmium,,B
 irisation,,P
 Irkutsk,,Irk'u:tsk
 Irrawaddy,,Ir@w'Qdi:
+irreducibility,,IrIdu:s#Ib'IlIti:
 irrefutable,,B
 irrepressible,,IrIpr'Es#@b@l
 irretrievably,,A
@@ -5681,6 +5704,7 @@ Kerguelen,,B
 Kermanshah,,kErmAnS'A
 kero,,P
 kerygma,,P
+ketamine,,k'i:t@mi:n
 ketonic,,P
 ketonuria,,ki:toUn'U:ri:@
 ketosis,,P
@@ -5688,6 +5712,7 @@ Ketubim,,k@t'u:vIm
 Keven,,D
 Keynesian,,P
 Keynes,,P
+kg,,O
 Khabarovsk,,k@b'Ar@fsk
 Khalid,,k'alId
 khansamah,,k'Ans@mA
@@ -5758,6 +5783,7 @@ Klingon,,B
 klismos,,P
 Klopstock,,D
 Kmart,,D
+km,,O
 Knievel,,D
 knowles,,D
 Knudsen,,D
@@ -6633,6 +6659,7 @@ Michelin,,D
 Michel,,m'Ik@l
 Michelob,,D
 micrify,,m'aIkrI#faI
+microbiome,,maIkr@b'aIoUm
 microcephaly,,maIkr@#s'Ef@li:
 micrography,,P
 micrometer,,maIkr'QmIt@`
@@ -6651,12 +6678,8 @@ militarist,,m'IlIt@`Ist
 military,,P
 millenary,,m'Il@nEri:
 millesimal,,mIl'EsI#m@l
-milliammeter,,mIlI'ami:t@`
-milliampere,,mIlI'ampi:r
 milliary,,P
 Millicent,,B
-millifarad,,m'IlI#far@d
-milliliter,,m'IlI#li:t@`
 million,,P
 millionth,,P
 millirem,,B
@@ -6704,6 +6727,7 @@ mithraea,,mITr'i:@
 mitigatory,,m'ItIg@tori:
 mitrailleur,,mItraIj'3:
 Mitterrand,,D
+mm,,O
 mneme,,P
 mnemic,,P
 mnemon,,P
@@ -6854,6 +6878,7 @@ mph,,mp'oU
 MPs,,O
 Mr,,O
 Mrs,,O
+msec,,O
 Msgr,,D
 ms,,O
 Mss,,O
@@ -6914,6 +6939,7 @@ Myron,,B
 Mysia,,m'Isi:@
 mystagogic,,mIst@g'QdZIk
 mythology,,B
+mythos,,m'ITQs
 myxomatosis,,mIks@#m@t'oUsIs
 myxomatous,,mIks'Qm@t@s
 myxomycete,,mIksoUm'aIsi:t
@@ -6939,7 +6965,7 @@ Namaqualand,,P
 Nammu,,P
 Nanak,,P
 nana,,n'an@
-nanowatt,,n'an@wAt
+nanometer,,n'an@#mi:t@
 Nantes,,n'Ant
 naos,,n'eIQs
 naphthenic,,P
@@ -7062,6 +7088,7 @@ nitrogenous,,P
 nitrosamine,,B
 Nivernais,,P
 nizamate,,P
+nn,,O
 Noachic,,noU'akIk
 Noah,,P
 noctambulist,,nQkt'ambj@lIst
@@ -7327,6 +7354,7 @@ oreide,,'ori:aId
 Oreopithecus,,ori:oUp'ITIk@s
 Oresund,,D
 organization,,P
+organoid,,'O:rg@nOId
 organoleptic,,O:rg@n@l'EptIk
 organometallic,,P
 organotherapy,,P
@@ -7503,6 +7531,7 @@ pangolin,,B
 Pankhurst,,D
 Panmunjom,,pAnmu:ndZ'Qm
 panopticon,,pan'QptIkQn
+panpsychism,,pans'aIkIz@m
 pantalone,,pant@l'oUneI
 pantaloon,,pant@l'u:n
 Pantelleria,,P
@@ -7889,6 +7918,7 @@ Phrygia,,P
 phthalocyanine,,Tal@s'aI@ni:n
 phylactery,,fIl'akt@`i:
 phyllophagous,,P
+phylogenetic,,faIloUdZ@n'EtIk
 physician,,B
 physicochemical,,fIzIkoUk'EmIk@l
 physostomous,,faIs'Qst@m@s
@@ -8329,6 +8359,7 @@ prophylaxis,,B
 propine,,pr@p'i:n
 propinquity,,pr@p'INkwIti:
 propitiation,,pr@#pISI'eIS@n
+propofol,,pr'oUp@fQl
 proportionate,,P
 propositus,,pr@p'QzIt@s
 propraetorial,,D
@@ -9107,8 +9138,11 @@ schizont,,sk'IzQnt
 schizophrenic,,B
 schizopodous,,skIz'Qp@d@s
 schizopod,,sk'Iz@pQd
-Schliemann,,P
+Schlegel,,D
+Schlesien,,D
+Schliemann,,D
 schlimazel,,P
+Schlitz,,D
 schmaltz,,P
 schnorr,,D
 schnorrer,,P
@@ -9251,6 +9285,7 @@ Senghor,,P
 senhora,,sInj'or@
 senora,,seInj'or@
 sensitometric,,B
+sensorimotor,,sEns@rIm'oUt@`
 sensual,,A
 sensuality,,A
 sensuous,,s'EnSu:@s
@@ -9543,6 +9578,7 @@ Somalia,,B
 somatic,,B
 somatism,,s'oUm@tIz@m
 somatoplasm,,s@m'at@plaz@m
+somatosensory,,soUm@t@s:'Ens@ri:
 somatotrophin,,soUm@t@tr'oUfIn
 somatotropin,,soUm@t@tr'oUpIn
 somatotype,,s@m'at@taIp
@@ -9727,6 +9763,7 @@ stichomythy,,stIk'QmITi:
 stich,,st'Ik
 stigma,,B
 stigmasterol,,stIgm'ast@`Ql
+stigmatization,,stIgm@tIz'eIS@n
 stilbestrol,,stIlb'EstrQl
 stipellate,,P
 stipel,,P
@@ -10368,6 +10405,7 @@ transection,,B
 transferrin,,transf'ErIn
 transformation,,P
 transhumance,,P
+transhumant,,transhj'u:m@nt
 transience,,B
 transient,,B
 transire,,P
@@ -10803,6 +10841,7 @@ viscount,,B
 Visigoth,,v'IzIgQT
 Vistula,,B
 visualization,,B
+visuomotor,,v'IZu:UQmoUt@
 vitae,,P
 vitamin,,B
 vitelli,,vIt'ElaI
@@ -11003,6 +11042,7 @@ wiseacre,,P
 Wisla,,P
 wis,,P
 wisteria,,B
+Wittgenstein,,D
 Witwatersrand,,w'ItwO:t@`zrand
 Wm,,D
 wolfram,,w'Ulfr@m
