@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+
+## [1.1.1] -- 2020-10-14
+
+* Add and correct some dictionary entries.
+* Adjust code for newer pylint and mypy versions.
+
+
 ## [1.1.0] -- 2020-09-02
 
 * Add some dictionary entries.
