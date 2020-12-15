@@ -300,6 +300,7 @@ curated
 curates
 curtained
 customization
+cyber
 cybernetic
 cyberpunk
 cyberpunks
@@ -351,6 +352,7 @@ descriptors
 detraining
 diabetologist
 diabetologists
+diacritics
 didact
 didacts
 dinted
@@ -1202,7 +1204,15 @@ refactoring
 regressed
 regresses
 regressing
+regularise
+regularised
+regularises
+regularising
 regularities
+regularize
+regularized
+regularizes
+regularizing
 reimplement
 reinitialize
 reink
@@ -1315,6 +1325,10 @@ shitheads
 shitload
 shitloads
 shitting
+shortlist
+shortlisted
+shortlisting
+shortlists
 shushed
 shushes
 shushing
