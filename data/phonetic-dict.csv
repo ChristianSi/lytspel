@@ -23857,6 +23857,7 @@ cyathiform,,,s'aIa#TIfO:m,s'aIa#TIfO:rm,saI'aT@fO:rm
 cyathium,,,saI'aTi:@m,,
 cyathus,,,s'aIaT@s,,s'aI@T@s
 Cybele,,,s'aIbEl,,s'Ib@li:
+cyber,,,s'aIb@,s'aIb@`,
 cybernetic,,,saIb@n'EtIk,saIb@`n'EtIk,
 cybernetician,,,s'aIb@nIt'IS@n,s'aIb@`nIt'IS@n,saIb@`nIt'IS@n
 cybernetics,,,saIb@n'EtIks,saIb@`n'EtIks,
@@ -26823,6 +26824,7 @@ diaconicon,,,d'aI@kQnIk@n,d'aI@kAnIk@n,daI@k'Qn@kQn
 diaconicum,,,d'aI@kQnIk@m,d'aI@kAnIk@m,daI@k'Qn@k@m
 diacritic,,,daI@kr'ItIk,,
 diacritical,,,daI@kr'ItIk@l,,
+diacritics,,,daI@kr'ItIks,,
 diactinic,,,daI@kt'InIk,,daIakt'InIk
 diadelphous,,,d'aI@dElf@s,,daI@d'Elf@s
 diadem,,,d'aI@d@m,,d'aI@dEm
@@ -79831,8 +79833,16 @@ regs,,,r'EdZz,,r'Egz
 regula,,,r'Egju:l@,,rEg'u:l@
 regulable,,,r'Egju:l@b@l,,r'Egj@l@b@l
 regular,,,r'Egju:l@,r'Egju:l@`,r'Egj@l@`
+regularise,,,r'Egju:l@raIz,r'Egju:l@`raIz,
+regularised,,,r'Egju:l@raIzd,r'Egju:l@`raIzd,
+regularises,,,r'Egju:l@raIzIz,r'Egju:l@`raIzI#z,
+regularising,,,r'Egju:l@raIzIN,r'Egju:l@`raIzIN,
 regularities,,,rEgju:l'arIti:z,,
 regularity,,,rEgju:l'arIti:,,rEgj@l'Er@ti:
+regularize,,,r'Egju:l@raIz,r'Egju:l@`raIz,
+regularized,,,r'Egju:l@raIzd,r'Egju:l@`raIzd,
+regularizes,,,r'Egju:lAraIzIz,,
+regularizing,,,r'Egju:l@raIzIN,r'Egju:l@`raIzIN,
 regularly,,,r'Egju:l@li:,r'Egju:l@`li:,r'Egj@l@`li:
 regulars,,,r'Egju:l@z,r'Egju:l@`z,r'Egj@l@`z
 regulate,,,r'Egju:leIt,,r'Egj@leIt
@@ -86814,6 +86824,10 @@ shorthorn,,,S'O:TO:n,S'O:rTO:rn,S'orTorn
 shortia,,,S'O:S@,S'O:rS@,S'O:rti:@
 shorting,,,S'O:tIN,S'O:rtIN,
 shortish,,,S'O:tIS,S'O:rtIS,
+shortlist,,,S'O:tlIst,S'O:rtlIst,
+shortlisted,,,S'O:tlIstId,S'O:rtlIstI#d,
+shortlisting,,,S'O:tlIstIN,S'O:rtlIstIN,
+shortlists,,,S'O:tlIsts,S'O:rtlIsts,
 shortly,,,S'O:tli:,S'O:rtli:,
 shortness,,,S'O:tn@s,S'O:rtn@s,
 shorts,,,S'O:ts,S'O:rts,
@@ -103996,8 +104010,8 @@ Vyborg,,,v'aIbO:g,v'aIborg,v'i:bO:rg
 Vycor,,,v'aIk@,v'aIk@`,v'aIkO:r
 vying,,,v'aIIN,,
 vyingly,,,v'aIINlI,v'aIINli:,
-WA,,,w'A,,w'Q
 wa,,,w'A,,
+WA,,,w'A,,w'Q
 Waadt,,,w'At,,v'At
 WAAF,,,w'Af,,w'af
 Waal,,,w'Al,,w'Ql
