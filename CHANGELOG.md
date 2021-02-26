@@ -3,6 +3,12 @@
 ## [Unreleased]
 
 
+## [2.0.0] -- 2021-02-26
+
+* Incorporate changes from two surveys held in early 2021, see
+  http://spellingsociety.org/uploaded_iesc/a077rrcdx-siefkes-s266y8df-lytspel-supplement-misc.pdf
+
+
 ## [1.1.3] -- 2021-01-16
 
 * Add some dictionary entries.
