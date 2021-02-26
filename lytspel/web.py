@@ -119,7 +119,7 @@ def build_page_dict() -> 'OrderedDict[str, PageData]':
     result['idea'] = PageData(title, markdown_markup(idea))
 
     # We render this file now so it will be inserted into the navbar in the desired place
-    overview = readfile('docs/lytspel-on-one-page.md')
+    overview = readfile('docs/lytspel-on-two-pages.md')
     overview = replace_first_line(overview, '# Lytspel in Brief')
     result['overview'] = PageData('Brief Overview', markdown_markup(overview))
 
@@ -395,11 +395,11 @@ def favicon() -> Response:
     return redirect('/static/favicon.ico')
 
 
-@app.route("/lytspel-on-one-page.pdf", methods=['GET'])
-def one_page_pdf() -> Response:
+@app.route("/lytspel-on-two-pages.pdf", methods=['GET'])
+def two_page_pdf() -> Response:
     """Serve the requested PDF document."""
     log_web_event()
-    return send_file('../docs/lytspel-on-one-page.pdf', mimetype='application/pdf')
+    return send_file('../docs/lytspel-on-two-pages.pdf', mimetype='application/pdf')
 
 
 @app.route("/robots.txt", methods=['GET'])

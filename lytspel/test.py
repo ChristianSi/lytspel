@@ -34,15 +34,15 @@ def test_lookup_simple(dct):
     assert dct.lookup('earthward') == 'urthwerd'
     assert dct.lookup('shadows') == 'shadoas'
     assert dct.lookup('sharp') == 'sharp'
-    assert dct.lookup('technology') == 'tec’noleji'
-    assert dct.lookup('tahiti') == 'ta’heeti'   # capitalized in dict
+    assert dct.lookup('technology') == 'tecnoleji'
+    assert dct.lookup('tahiti') == 'taheeti'   # capitalized in dict
     assert dct.lookup('notaword') is None
 
 def test_lookup_case_restored(dct):
     """Case should be restored."""
-    assert dct.lookup('Score') == 'Scoar'
+    assert dct.lookup('Score') == 'Scor'
     assert dct.lookup('NETWORK') == 'NETWURK'
-    assert dct.lookup('POLITICAL') == 'PO’LITICL'
+    assert dct.lookup('POLITICAL') == 'POLITICL'
     assert dct.lookup('JavaScript') == 'JaavaScript'
     assert dct.lookup('McCain') == 'McCain'
     assert dct.lookup('MeV') == 'MeV'
@@ -85,42 +85,42 @@ def test_lookup_contractions(dct):
 def test_lookup_nonstandard_contractions(dct):
     assert dct.lookup('Peter’d') == 'Peeter’d'
     assert dct.lookup('PETER’D') == 'PEETER’D'
-    assert dct.lookup("what'll") == 'wot’l'
-    assert dct.lookup("What'll") == 'Wot’l'
-    assert dct.lookup('What’Re') == 'Wot’R'
-    assert dct.lookup("where've") == 'wair’v'
-    assert dct.lookup("WHERE'VE") == 'WAIR’V'
+    assert dct.lookup("what'll") == 'whot’l'
+    assert dct.lookup("What'll") == 'Whot’l'
+    assert dct.lookup('What’Re') == 'Whot’R'
+    assert dct.lookup("where've") == 'whair’v'
+    assert dct.lookup("WHERE'VE") == 'WHAIR’V'
 
 def test_lookup_diacritics(dct):
-    assert dct.lookup('café') == 'ca’fay'
-    assert dct.lookup('continuüm') == 'con’tiniuam'
+    assert dct.lookup('café') == 'cafay'
+    assert dct.lookup('continuüm') == 'contínueem'
     assert dct.lookup('doppelgänger') == 'dopelganger'
-    assert dct.lookup('élite') == 'i’leet'
-    assert dct.lookup('Élite') == 'I’leet'
-    assert dct.lookup('épée') == 'ai’pay'
-    assert dct.lookup('ÉPÉE') == 'AI’PAY'
-    assert dct.lookup('hôtel') == 'hoa’tel'
-    assert dct.lookup('Hôtel') == 'Hoa’tel'
-    assert dct.lookup('mañana') == 'maa’nyaanaa'
-    assert dct.lookup('naïve') == 'naa’eev'
+    assert dct.lookup('élite') == 'ileet'
+    assert dct.lookup('Élite') == 'Ileet'
+    assert dct.lookup('épée') == 'aipáy'
+    assert dct.lookup('ÉPÉE') == 'AIPÁY'
+    assert dct.lookup('hôtel') == 'hoatél'
+    assert dct.lookup('Hôtel') == 'Hoatél'
+    assert dct.lookup('mañana') == 'maanyáanaa'
+    assert dct.lookup('naïve') == 'naaéev'
     assert dct.lookup('œuvre') == 'uuvra'
     assert dct.lookup('Œuvre') == 'Uuvra'
     assert dct.lookup('tōfu') == 'toafu'
 
 def test_lookup_redirects(dct):
     """Test that redirects are resolved correctly."""
-    assert dct.lookup('Anglicised') == 'Anglicysd'
+    assert dct.lookup('Anglicised') == 'Ánglicysd'
     assert dct.lookup('barques') == 'barks'
     assert dct.lookup('calking') == 'cauking'
     assert dct.lookup('castors') == 'casters'
     assert dct.lookup('Centre') == 'Senter'
-    assert dct.lookup('aesthetician') == 'esthi’tition'
+    assert dct.lookup('aesthetician') == 'esthitition'
     assert dct.lookup('ESOP') == 'EESSOP'
     assert dct.lookup('Ier') == 'Yr'
-    assert dct.lookup('OKs') == 'Oa’cays'
+    assert dct.lookup('OKs') == 'Oacáys'
     assert dct.lookup('paralyses') == 'parrelyses'
     assert dct.lookup('prise') == 'prys'
-    assert dct.lookup('reanalyses') == 'ri’anelyses'
+    assert dct.lookup('reanalyses') == 'riánelyses'
 
 def test_lookup_nlp_needed_pos(dct):
     """Test that lookup signals its need for a POS tag if one is necessary but not given."""
@@ -129,10 +129,10 @@ def test_lookup_nlp_needed_pos(dct):
 
 def test_lookup_pos_tagged(dct):
     """Test that POS-tagged words are looked up correctly."""
-    assert dct.lookup('increase', 'NOUN') == 'increess'
-    assert dct.lookup('increase', 'VERB') == 'in’creess'
-    assert dct.lookup('misuse', 'NOUN') == 'mis’iuss'
-    assert dct.lookup('misuse', 'VERB') == 'mis’ius'
+    assert dct.lookup('increase', 'NOUN') == 'íncreess'
+    assert dct.lookup('increase', 'VERB') == 'increess'
+    assert dct.lookup('misuse', 'NOUN') == 'misuess'
+    assert dct.lookup('misuse', 'VERB') == 'misues'
 
 def test_lookup_hyphenated_prefix(dct):
     assert dct.lookup('re-') == 'ri-'
@@ -204,26 +204,26 @@ def test_tokenize_dates_and_numbers(conv):
 
 
 def test_convert_para_simple(conv):
-    assert conv.convert_para('This is a sentence.') == 'Dhiss is a sentenss.'
+    assert conv.convert_para('This is a sentence.') == 'Thiss is a sentenss.'
     assert conv.convert_para('Some words in "double" and \'half quotation\' marks.') ==\
-        'Sum wurds in "dubl" and \'haf quoa’taition\' marks.'
+        'Sum wurds in "dubl" and \'haf quoataition\' marks.'
     assert conv.convert_para('Some words in typographic “double” and ‘half quotation’ marks.') ==\
-        'Sum wurds in typo’grafic “dubl” and ‘haf quoa’taition’ marks.'
+        'Sum wurds in typografic “dubl” and ‘haf quoataition’ marks.'
 
 def test_convert_para_spacy_quotes(conv):
     """Test that quote marks are also handled correctly if spaCy is invoked."""
     assert conv.convert_para('Who could object to some words in "double" and \'half quotation\' marks?') ==\
-        'Hu cood ob’ject tu sum wurds in "dubl" and \'haf quoa’taition\' marks?'
+        'Hu cood object tu sum wurds in "dubl" and \'haf quoataition\' marks?'
     assert conv.convert_para('Who could object to some words in typographic “double” and ‘half quotation’ marks?') ==\
-        'Hu cood ob’ject tu sum wurds in typo’grafic “dubl” and ‘haf quoa’taition’ marks?'
+        'Hu cood object tu sum wurds in typografic “dubl” and ‘haf quoataition’ marks?'
     assert conv.convert_para('Who could object to some words in typographic ‘‘fake double quotation’’ marks?') ==\
-        'Hu cood ob’ject tu sum wurds in typo’grafic ‘‘faik dubl quoa’taition’’ marks?'
+        'Hu cood object tu sum wurds in typografic ‘‘faik dubl quoataition’’ marks?'
 
 def test_convert_para_contractions(conv):
     assert conv.convert_para("Let's hope contractions are handled correctly wheresoe'er they'll occur, don't you think so, O'Connell?") ==\
-        'Let’s hoap con’tractions ar handld ke’rectli wairso’air dhay’l o’cur, doan’t iu think so, O’Conel?'
+        'Let’s hoap contractions ar handeld kerectli wairso’air thay’l ocur, doan’t ue think so, O’Conel?'
     assert conv.convert_para('Let’s hope contractions are handled correctly wheresoe’er they’ll occur, don’t you think so, O’Connell?') ==\
-        'Let’s hoap con’tractions ar handld ke’rectli wairso’air dhay’l o’cur, doan’t iu think so, O’Conel?'
+        'Let’s hoap contractions ar handeld kerectli wairso’air thay’l ocur, doan’t ue think so, O’Conel?'
     assert conv.convert_para("He's happy to see my boyfriend's sister.") ==\
         'Hi’s hapi tu see my boyfrend’s sister.'
     assert conv.convert_para('He’s happy to see my boyfriend’s sister.') ==\
@@ -236,57 +236,57 @@ def test_convert_para_nonstandard_contractions(conv):
     assert conv.convert_para('Sue’ll do it ’cause she can.') ==\
         'Su’l du it ’caus shi can.'
     assert conv.convert_para('Peter’d know what to do.') ==\
-        'Peeter’d noa wot tu du.'
+        'Peeter’d noa whot tu du.'
     assert conv.convert_para("What're they going to do?") ==\
-        'Wot’r dhay going tu du?'
+        'Whot’r thay going tu du?'
     assert conv.convert_para('Where’ve they put it?') ==\
-        'Wair’v dhay poot it?'
+        'Whair’v thay poot it?'
 
 def test_convert_para_nonstandard_contractions_spacy(conv):
     """Likewise with spaCy."""
     assert conv.convert_para("I object: Sue'll do it 'cause she can.") ==\
-        'Y ob’ject: Su’l du it ’caus shi can.'
+        'Y object: Su’l du it ’caus shi can.'
     assert conv.convert_para('I object: Sue’ll do it ’cause she can.') ==\
-        'Y ob’ject: Su’l du it ’caus shi can.'
+        'Y object: Su’l du it ’caus shi can.'
     assert conv.convert_para('I estimate: Peter’d know what to do.') ==\
-        'Y estimait: Peeter’d noa wot tu du.'
+        'Y éstimait: Peeter’d noa whot tu du.'
     assert conv.convert_para("I object: What're they going to do?") ==\
-        'Y ob’ject: Wot’r dhay going tu du?'
+        'Y object: Whot’r thay going tu du?'
 
 def test_convert_para_pos_tagged(conv):
-    assert conv.convert_para('I did not object to the object.') == 'Y did not ob’ject tu dhe object.'
+    assert conv.convert_para('I did not object to the object.') == 'Y did not object tu the óbject.'
     assert conv.convert_para('They were too close to the door to close it.') ==\
-        'Dhay wur tuu cloass tu dhe doar tu cloas it.'
+        'Thay wur tuu cloass tu the dor tu cloas it.'
     assert conv.convert_para('Before I mow the lawn let me place this grain in the mow.') ==\
-        'Bi’foar y mo dhe laun let mi plaiss dhiss grain in dhe mow.'
+        'Bifor y mo the laun let mi plaiss thiss grain in the mow.'
     assert conv.convert_para('He thought it was time to present the present.') ==\
-        'Hi thaut it wos tym tu pri’sent dhe present.'
+        'Hi thaut it wos tym tu prisént the present.'
     assert conv.convert_para('I met an august man last August.') ==\
-        'Y met an au’gust man last August.'
+        'Y met an augúst man last August.'
     assert conv.convert_para('To help with planting, the farmer taught his sow to sow.') ==\
-        'Tu help widh planting, dhe farmer taut his sow tu so.'
+        'Tu help with planting, the farmer taut his sow tu so.'
     assert conv.convert_para('The weather was beginning to affect his affect.') ==\
-        'Dhe wedher wos bi’gining tu a’fect his afect.'
+        'The wether wos bigíning tu afect his áfect.'
     assert conv.convert_para('We must polish the Polish furniture.') ==\
-        'Wi must polish dhe Poalish furnicher.'
+        'Wi must polish the Poalish furnicher.'
     assert conv.convert_para('The dump was so full that it had to refuse more refuse.') ==\
-        'Dhe dump wos so fool dhat it had tu ri’fius moar refiuss.'
+        'The dump wos so fool that it had tu rifues mor réfuess.'
     assert conv.convert_para('I had to subject the subject to a series of tests.') ==\
-        'Y had tu sub’ject dhe subject tu a seerees ov tests.'
+        'Y had tu subjéct the subject tu a seerees ov tests.'
     assert conv.convert_para('Don’t desert me here in the desert!') ==\
-        'Doan’t di’surt mi heer in dhe desert!'
+        'Doan’t disurt mi heer in the desert!'
     assert conv.convert_para('The outright prohibition has caused smoking to be banned outright.') ==\
-            'Dhe outryt prohi’bition has causd smoaking tu bee band out’ryt.'
+            'The óutryt prohibition has causd smoaking tu bee band outryt.'
 
 def test_convert_para_nt_contractions(conv):
     assert conv.convert_para("Don't you think I won't do it, because I will!") ==\
-            'Doan’t iu think y woan’t du it, bi’caus y wil!'
+            'Doan’t ue think y woan’t du it, bicaus y wil!'
     assert conv.convert_para('Don’t you think I won’t do it, because I will!') ==\
-            'Doan’t iu think y woan’t du it, bi’caus y wil!'
+            'Doan’t ue think y woan’t du it, bicaus y wil!'
     assert conv.convert_para("You mustn't believe that they can't do such a thing.") ==\
-            'Iu musn’t bi’leev dhat dhay can’t du such a thing.'
+            'Ue musn’t bileev that thay can’t du such a thing.'
     assert conv.convert_para('You mustn’t believe that they can’t do such a thing.') ==\
-            'Iu musn’t bi’leev dhat dhay can’t du such a thing.'
+            'Ue musn’t bileev that thay can’t du such a thing.'
 
 def test_convert_para_initial_nt(conv):
     """Leading "n't", though certainly irregular, shouldn't cause problems.
@@ -300,7 +300,7 @@ def test_convert_para_initial_nt(conv):
 
 def test_convert_para_diacritics(conv):
     assert conv.convert_para('Mañana me and my naïve doppelgänger will eat tōfu in the café of an élite hôtel.') ==\
-      'Maa’nyaanaa mi and my naa’eev dopelganger wil eet toafu in dhe ca’fay ov an i’leet hoa’tel.'
+      'Maanyáanaa mi and my naaéev dopelganger wil eet toafu in the cafay ov an ileet hoatél.'
 
 
 def test_convert_i_case(conv):
@@ -309,11 +309,11 @@ def test_convert_i_case(conv):
     They should be capitalized at the start, but not in the middle of sentences.
     """
     assert conv.convert_para("I am capitalized at the start of sentences but I'm lower-case in the middle. I am still capitalized at the start.") ==\
-            'Y am capitelysd at dhe start ov sentensses but y’m loer-caiss in dhe midl. Y am stil capitelysd at dhe start.'
+            'Y am capitelysd at the start ov sentensses but y’m loer-caiss in the midel. Y am stil capitelysd at the start.'
     assert conv.convert_para('I’d be capitalized at the start of sentences but I’ll be lower-case in the “middle”! I’d still be capitalized at the start.') ==\
-            'Y’d bee capitelysd at dhe start ov sentensses but y’l bee loer-caiss in dhe “midl”! Y’d stil bee capitelysd at dhe start.'
+            'Y’d bee capitelysd at the start ov sentensses but y’l bee loer-caiss in the “midel”! Y’d stil bee capitelysd at the start.'
     assert conv.convert_para("I've seen that that works but I've not seen whether this works? I've seen it now.") ==\
-            'Y’v seen dhat dhat wurks but y’v not seen wedher dhiss wurks? Y’v seen it now.'
+            'Y’v seen that that wurks but y’v not seen whether thiss wurks? Y’v seen it now.'
 
 def test_convert_i_case_quotes(conv):
     """Test "I" case conversion after quote marks."""
@@ -355,107 +355,107 @@ def test_convert_i_case_dates_and_numbers(conv):
 def test_convert_i_case_spacy(conv):
     """Test that "I" case conversion also works if spaCy is invoked."""
     assert conv.convert_para("I estimate that I am capitalized at the start of sentences but that I'm lower-case in the middle. I am still capitalized at the start.") ==\
-            'Y estimait dhat y am capitelysd at dhe start ov sentensses but dhat y’m loer-caiss in dhe midl. Y am stil capitelysd at dhe start.'
+            'Y éstimait that y am capitelysd at the start ov sentensses but that y’m loer-caiss in the midel. Y am stil capitelysd at the start.'
     assert conv.convert_para('Opening quote marks don’t hurt, I estimate. “I am still capitalized.”') ==\
-            'Oapening quoat marks doan’t hurt, y estimait. “Y am stil capitelysd.”'
+            'Oapening quoat marks doan’t hurt, y éstimait. “Y am stil capitelysd.”'
     assert conv.convert_para('"Closing trailing quote marks don\'t hurt, I estimate?" I\'m still capitalized.') ==\
-            '"Cloasing trailing quoat marks doan’t hurt, y estimait?" Y’m stil capitelysd.'
+            '"Cloasing trailing quoat marks doan’t hurt, y éstimait?" Y’m stil capitelysd.'
     assert conv.convert_para('Closing leading quote marks don’t hurt, ‘I’d estimate’! I am still capitalized.') ==\
-            'Cloasing leeding quoat marks doan’t hurt, ‘y’d estimait’! Y am stil capitelysd.'
+            'Cloasing leeding quoat marks doan’t hurt, ‘y’d éstimait’! Y am stil capitelysd.'
     assert conv.convert_para('After a colon: I should not be capitalized, I’d estimate.') ==\
-            'After a coalen: y shood not bee capitelysd, y’d estimait.'
+            'After a coalen: y shood not bee capitelysd, y’d éstimait.'
     assert conv.convert_para('I said: “I estimate I’ll be capitalized now.”') ==\
-            'Y sed: “Y estimait y’l bee capitelysd now.”'
+            'Y sed: “Y éstimait y’l bee capitelysd now.”'
     assert conv.convert_para('I estimate that around 11 Feb. 2019 I wrote a test.') ==\
-            'Y estimait dhat e’round 11 Feb. 2019 y roat a test.'
+            'Y éstimait that eround 11 Feb. 2019 y roat a test.'
     assert conv.convert_para('Even after a fraction such as 3.5 I should still be lower-case, I estimate.') ==\
-            'Eeven after a fraction such as 3.5 y shood stil bee loer-caiss, y estimait.'
+            'Eeven after a fraction such as 3.5 y shood stil bee loer-caiss, y éstimait.'
 
 def test_convert_i_vs_roman_i(conv):
     """Test that the pronoun 'I' and the roman number 'I' are distinguished."""
     assert conv.convert_para('I survived World War I, but many others didn’t.') ==\
-            'Y ser’vyvd Wurld Wor I, but meni udhers didn’t.'
+            'Y servyvd Wurld Wor I, but meni uthers didn’t.'
 
 
 def test_convert_hyphenated_prefixes(conv):
     assert conv.convert_para('I re-sent the file to you last night.') ==\
-        'Y ri-sent dhe fyl tu iu last nyt.'
+        'Y ri-sent the fyl tu ue last nyt.'
     # Test that it works with spaCy too
     assert conv.convert_para('I estimate that I have to re-press the shirt.') ==\
-        'Y estimait dhat y hav tu ri-press dhe shurt.'
+        'Y éstimait that y hav tu ri-press the shurt.'
     # Also if capitalized
     assert conv.convert_para('The Re-Creation of a Lost Artwork') ==\
-        'Dhe Ri-Cri’aition ov a Lost Artwurk'
+        'The Ri-Criaition ov a Lost Artwurk'
     # Nothing should happen in other cases
     assert conv.convert_para('I talked with her re the case.') ==\
-        'Y taukd widh hur ree dhe caiss.'
+        'Y taukd with hur ree the caiss.'
     assert conv.convert_para('Re: Your mail') ==\
-        'Ree: Iur mail'
+        'Ree: Uer mail'
     # Also test some other prefix
     assert conv.convert_para('She de-emphasized our differences.') ==\
-            'Shi di-emfecysd our diferensses.'
+            'Shi di-émfecysd our diferensses.'
     assert conv.convert_para('The Paleo-Americans arrived in the Americas a long, long time ago.') ==\
-        'Dhe Palio-A’merricans e’ryvd in dhe A’merricas a long, long tym a’go.'
+        'The Palio-Amerricans eryvd in the Amerricas a long, long tym ago.'
 
 def test_convert_other_hyphens(conv):
     """Test that hyphens between words don't cause problems."""
     # Hyphens between independent words
     assert conv.convert_para('We need a state-of-the-art solution.') ==\
-        'Wi need a stait-ov-dhe-art so’luution.'
+        'Wi need a stait-ov-the-art soluution.'
     # Not a prefix, since there is whitespace after the hyphen
     assert conv.convert_para('I’m contacting you re- you might have guessed it -your mail.') ==\
-        'Y’m contacting iu ree- iu myt hav gessd it -iur mail.'
+        'Y’m contacting ue ree- ue myt hav gessd it -uer mail.'
     # Likewise if another hyphen follows
     assert conv.convert_para('I’m contacting you re--you might have guessed it--your mail.') ==\
-        'Y’m contacting iu ree--iu myt hav gessd it--iur mail.'
+        'Y’m contacting ue ree--ue myt hav gessd it--uer mail.'
 
 def test_convert_urls(conv):
     """Test that URLs are not converted."""
     assert conv.convert_para('This is a link: www.lytspel.org/overview, hence it should not be converted.') ==\
-        'Dhiss is a link: www.lytspel.org/overview, henss it shood not bee con’vurted.'
+        'Thiss is a link: www.lytspel.org/overview, henss it shood not bee convurted.'
     assert conv.convert_para('This is a link: https://www.lytspel.org/idea which is not converted.') ==\
-        'Dhiss is a link: https://www.lytspel.org/idea wich is not con’vurted.'
+        'Thiss is a link: https://www.lytspel.org/idea which is not convurted.'
     assert conv.convert_para('This is a link: <https://www.lytspel.org/limitations>, hence it should not be converted.') ==\
-        'Dhiss is a link: <https://www.lytspel.org/limitations>, henss it shood not bee con’vurted.'
+        'Thiss is a link: <https://www.lytspel.org/limitations>, henss it shood not bee convurted.'
     assert conv.convert_para('See the subsequent link (https://www.lytspel.org/rules) which is not converted.') ==\
-        'See dhe subsiquent link (https://www.lytspel.org/rules) wich is not con’vurted.'
+        'See the subsiquent link (https://www.lytspel.org/rules) which is not convurted.'
     assert conv.convert_para('See the subsequent link [https://www.lytspel.org/overview], which is not converted.') ==\
-        'See dhe subsiquent link [https://www.lytspel.org/overview], wich is not con’vurted.'
+        'See the subsiquent link [https://www.lytspel.org/overview], which is not convurted.'
 
 def test_convert_urls_spacy(conv):
     """Ditto with spaCy."""
     assert conv.convert_para('This, I object, is a link: www.lytspel.org/overview, hence it should not be converted.') ==\
-        'Dhiss, y ob’ject, is a link: www.lytspel.org/overview, henss it shood not bee con’vurted.'
+        'Thiss, y object, is a link: www.lytspel.org/overview, henss it shood not bee convurted.'
     assert conv.convert_para('This, I object, is a link: https://www.lytspel.org/idea which is not converted.') ==\
-        'Dhiss, y ob’ject, is a link: https://www.lytspel.org/idea wich is not con’vurted.'
+        'Thiss, y object, is a link: https://www.lytspel.org/idea which is not convurted.'
     assert conv.convert_para('This, I object, is a link: <https://www.lytspel.org/limitations>, hence it should not be converted.') ==\
-        'Dhiss, y ob’ject, is a link: <https://www.lytspel.org/limitations>, henss it shood not bee con’vurted.'
+        'Thiss, y object, is a link: <https://www.lytspel.org/limitations>, henss it shood not bee convurted.'
     assert conv.convert_para('I object: See the subsequent link (https://www.lytspel.org/rules) which is not converted.') ==\
-        'Y ob’ject: See dhe subsiquent link (https://www.lytspel.org/rules) wich is not con’vurted.'
+        'Y object: See the subsiquent link (https://www.lytspel.org/rules) which is not convurted.'
     assert conv.convert_para('I object: See the subsequent link [https://www.lytspel.org/overview], which is not converted.') ==\
-        'Y ob’ject: See dhe subsiquent link [https://www.lytspel.org/overview], wich is not con’vurted.'
+        'Y object: See the subsiquent link [https://www.lytspel.org/overview], which is not convurted.'
 
 def test_convert_emails(conv):
     """Test that email addressed are not converted."""
     assert conv.convert_para('This is an email: christian@example.org, hence it should not be converted.') ==\
-        'Dhiss is an eemail: christian@example.org, henss it shood not bee con’vurted.'
+        'Thiss is an eemail: christian@example.org, henss it shood not bee convurted.'
     assert conv.convert_para('This is an email: mailto:christian@example.org which is not converted.') ==\
-        'Dhiss is an eemail: mailto:christian@example.org wich is not con’vurted.'
+        'Thiss is an eemail: mailto:christian@example.org which is not convurted.'
     assert conv.convert_para('This is an email: <christian@example.org>, hence it should not be converted.') ==\
-        'Dhiss is an eemail: <christian@example.org>, henss it shood not bee con’vurted.'
+        'Thiss is an eemail: <christian@example.org>, henss it shood not bee convurted.'
     assert conv.convert_para('See the subsequent email (christian@example.org) which is not converted.') ==\
-        'See dhe subsiquent eemail (christian@example.org) wich is not con’vurted.'
+        'See the subsiquent eemail (christian@example.org) which is not convurted.'
 
 def test_convert_emails_spacy(conv):
     """Ditto with spaCy."""
     assert conv.convert_para('This, I object, is an email: christian@example.org, hence it should not be converted.') ==\
-        'Dhiss, y ob’ject, is an eemail: christian@example.org, henss it shood not bee con’vurted.'
+        'Thiss, y object, is an eemail: christian@example.org, henss it shood not bee convurted.'
     assert conv.convert_para('This, I object, is an email: mailto:christian@example.org which is not converted.') ==\
-        'Dhiss, y ob’ject, is an eemail: mailto:christian@example.org wich is not con’vurted.'
+        'Thiss, y object, is an eemail: mailto:christian@example.org which is not convurted.'
     assert conv.convert_para('This, I object, is an email: <christian@example.org>, hence it should not be converted.') ==\
-        'Dhiss, y ob’ject, is an eemail: <christian@example.org>, henss it shood not bee con’vurted.'
+        'Thiss, y object, is an eemail: <christian@example.org>, henss it shood not bee convurted.'
     assert conv.convert_para('I object: See the subsequent email (christian@example.org) which is not converted.') ==\
-        'Y ob’ject: See dhe subsiquent eemail (christian@example.org) wich is not con’vurted.'
+        'Y object: See the subsiquent eemail (christian@example.org) which is not convurted.'
 
 def test_is_word_simple(is_word):
     assert is_word('a')
