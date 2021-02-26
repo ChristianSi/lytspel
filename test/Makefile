@@ -26,7 +26,7 @@ stdin:
 	$(lytspel) - < input.txt | diff -U1 expected-output.txt -
 
 convert:
-	$(lytspel) --convert 'The North Wind and the Sun were disputing which was the stronger' | grep -xq 'Dhe North Wind and dhe Sun wur di’spiuting wich wos dhe strongger'
+	$(lytspel) --convert 'The North Wind and the Sun were disputing which was the stronger' | grep -xq 'The North Wind and the Sun wur dispueting which wos the strongger'
 
 version:
 	echo "Checking that script and setup.py show the same version number"
