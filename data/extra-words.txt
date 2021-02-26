@@ -189,6 +189,7 @@ catastrophist
 catwalks
 cauldrons
 cellphones
+censorable
 Centauri
 centralist
 cephalopods
@@ -197,6 +198,7 @@ certificated
 cetera
 cf
 ch
+challengeable
 chanced
 charioteers
 chattels
@@ -275,6 +277,7 @@ configurable
 conformant
 conjunctures
 connectome
+conquerable
 conquistadors
 conscientiousness
 considerateness
@@ -317,6 +320,7 @@ crossbowmen
 crotchets
 crucibles
 cruft
+crushable
 cryonic
 cryonically
 cryptocurrencies
@@ -327,6 +331,7 @@ cultivators
 curated
 curates
 curtained
+customed
 customization
 cyber
 cybernetic
@@ -380,6 +385,7 @@ deputed
 descriptors
 determinatives
 detraining
+Detroiter
 diabetologist
 diabetologists
 diacritics
@@ -527,6 +533,7 @@ fantastical
 farted
 farts
 fastens
+fathomed
 faunas
 feedforward
 felicitations
@@ -546,6 +553,7 @@ fishponds
 flagons
 flailed
 flaked
+flappable
 flavonoid
 flecked
 fletched
@@ -622,12 +630,14 @@ gongoozle
 gongoozler
 gongoozlers
 GOP
+governable
 governesses
 gr
 grammars
 granaries
 granulated
 graptolites
+graspable
 grassing
 grav
 grep
@@ -781,6 +791,7 @@ Judeo
 jurymen
 jutted
 karmic
+kenned
 ketamine
 keyboarder
 kg
@@ -790,6 +801,7 @@ khedives
 khor
 kikes
 kilocalories
+kinesis
 kins
 kleptocracies
 kleptocracy
@@ -891,6 +903,7 @@ maroons
 Marquesas
 masticated
 mastodons
+matchable
 maternally
 maxima
 maximally
@@ -910,6 +923,7 @@ menstruates
 mentalities
 mentionable
 meretriciously
+meritable
 Mesoamerica
 Mesoamerican
 mestizos
@@ -917,6 +931,7 @@ metaclass
 metaclasses
 metadata
 metainformation
+metalled
 metalsmiths
 metamorphosed
 metaprotocol
@@ -940,6 +955,7 @@ minilanguage
 minilanguages
 mish
 mismeasurement
+missable
 mistranslated
 mistranslates
 mitochondrial
@@ -1064,6 +1080,7 @@ offhandedly
 ogling
 Okinawan
 omnivores
+onomatopoeic
 onwards
 openhanded
 opiated
@@ -1117,6 +1134,7 @@ palefaced
 paleontological
 paler
 palpation
+paltriness
 panpsychism
 parachutists
 parcellize
@@ -1255,6 +1273,7 @@ quantifies
 quartermistress
 quatrains
 queerest
+quenchable
 quenched
 querying
 quids
@@ -1342,6 +1361,8 @@ respelling
 respellings
 respells
 retells
+rhotic
+rhoticity
 riffled
 riffles
 riffling
@@ -1403,6 +1424,7 @@ secularizes
 secularizing
 sedentariness
 seduces
+seeable
 seedless
 seethed
 seethes
@@ -1439,10 +1461,12 @@ shitheads
 shitload
 shitloads
 shitting
+shockable
 shortlist
 shortlisted
 shortlisting
 shortlists
+shrinkable
 shushed
 shushes
 shushing
@@ -1452,6 +1476,7 @@ sigil
 silico
 simplicities
 singlehanded
+sinkable
 sisterly
 skinning
 skulking
@@ -1491,6 +1516,7 @@ somatism
 somatosensory
 somersaulted
 soulcraft
+Sovietology
 spacetime
 spars
 speared
@@ -1506,6 +1532,7 @@ spiting
 splayed
 splaying
 splays
+splinterable
 splinters
 spluttered
 spluttering
@@ -1534,6 +1561,8 @@ steamrollers
 steamships
 sterlets
 stigmatization
+stinted
+stinting
 stockbreeders
 stockbreeding
 storerooms
@@ -1588,6 +1617,7 @@ summoner
 summoners
 sumpweed
 sunburnt
+sunned
 sunrises
 superannuated
 superannuates
@@ -1685,6 +1715,8 @@ traduces
 traducing
 trafficked
 trajectories
+trammeled
+trammels
 transfigured
 transformative
 transhumant
@@ -1803,6 +1835,7 @@ urns
 usurper
 usurpers
 utopianism
+utterable
 validator
 validators
 ve
@@ -1825,6 +1858,7 @@ visuomotor
 vivisectionism
 vocabularies
 vol
+volcanology
 vols
 vomited
 vomitories
@@ -1843,6 +1877,7 @@ weatherbeaten
 webserver
 webservers
 websites
+weigher
 weirs
 welled
 wetted
