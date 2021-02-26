@@ -78,7 +78,7 @@ sub build_lc_map {
             my $tag = $colref->[1];
             die "Invalid POS tag '$tag' for entry '$key' in $filename\n"
                 if $tag && !valid_pos_tag($tag);
-            $key = gen_key($key, $tag);
+            $key   = gen_key($key, $tag);
             $value = $valueless ? 1 : $colref->[2];
         } else {
             $value = $valueless ? 1 : $colref->[1];

@@ -54,7 +54,7 @@ sub build_dict {
 
     while ($colref = $CSV_IN->getline($file)) {
         next if scalar @$colref < 4;       # skip redirects
-        my $word = lc $colref->[0];
+        my $word  = lc $colref->[0];
         my @prons = splice @$colref, 3;
 
         if (length $word > 1) {
@@ -131,7 +131,7 @@ sub build_black_and_white_list {
 
     while ($colref = $CSV_IN->getline($file)) {
         my $word = $colref->[0];
-        my $pos = $colref->[1] // '';
+        my $pos  = $colref->[1] // '';
         die "Blacklist entry '$word' has invalid position '$pos'\n" unless $pos =~ /^[12]?$/;
         $blacklist1{$word} = 1 unless $pos eq 2;
         $blacklist2{$word} = 1 unless $pos eq 1;
@@ -192,7 +192,7 @@ sub build_combined_pattern {
     # Allow subsequent /r/ if pron ends in /`/ (e.g. "after-hours")
     s/`$/`r?/ for @$first_prons_aref;
 
-    my $first_pattern = '^(' . join('|', @$first_prons_aref) . ')';
+    my $first_pattern  = '^(' . join('|', @$first_prons_aref) . ')';
     my $second_pattern = '(' . join('|', @$second_prons_aref) . ')$';
     return "$first_pattern$second_pattern";
 }
@@ -263,7 +263,7 @@ sub analyze_as_prefixed_form {
 
     for (my $i = min($max_prefix_len, length($word) - 2) ; $i >= $min_prefix_len ; $i--) {
         my $prefix = substr $word, 0, $i;
-        my $stem = substr $word, $i;
+        my $stem   = substr $word, $i;
 
         if (exists $prefix_set_ref->{$prefix} && valid_entry $word, '', $stem) {
             return "$prefix=$stem";
@@ -312,7 +312,7 @@ sub find_alternative_base {
 # account.
 sub analyze_as_suffixed_form {
     my ($word, $suffix_set_ref, $min_suffix_len, $max_suffix_len) = @_;
-    my $len = length $word;
+    my $len     = length $word;
     my $max_len = min($max_suffix_len, $len - 2);
 
     for (my $i = $min_suffix_len ; $i <= $max_len ; $i++) {
@@ -385,7 +385,7 @@ sub prefer_new_match {
 # Otherwise the algorithm documented in 'prefer_new_match' is used.
 sub check_for_better_match {
     my ($length_of_first_part, $word, $first, $second) = @_;
-    my $new_first = substr $word, 0, $length_of_first_part;
+    my $new_first  = substr $word, 0, $length_of_first_part;
     my $new_second = substr $word, $length_of_first_part;
 
     if (valid_entry $word, $new_first, $new_second) {

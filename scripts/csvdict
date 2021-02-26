@@ -201,6 +201,64 @@ sub untag_espeak_output {
     return $line;
 }
 
+# Restore [ʍ], the voiceless labiovelar approximant, in a single pronunciation (either RP
+# or GA).
+sub restore_wh_in_pron {
+    my ($pron, $word) = @_;
+    my @ws_in_pron = ($pron =~ /w/g);
+    # Match 'w' and 'wh', but not if preceeded by 'a' or 'o'
+    my @ws_and_whs_in_word = ($word =~ /(?<![ao])wh?/g);
+
+    if (scalar @ws_in_pron != scalar @ws_and_whs_in_word) {
+        if (@ws_in_pron == 1 && @ws_and_whs_in_word == 0) {
+            # The exclusion of 'aw' and 'ow' overmatches in a few words such as 'awhile'
+            # and 'nowhere': restore [ʍ] nevertheless
+            $pron =~ s/w/ʍ/;
+        } elsif (@ws_in_pron == 1 && @ws_and_whs_in_word == 2) {
+            # Restore [ʍ] also in words such as 'wheelwright' and 'wholewheat' where one
+            # 'w[h]' is silent or pronounced [h]
+            $pron =~ s/w/ʍ/;
+        } else {
+            # Rare (practically unknown) case not yet handled
+            warn @ws_in_pron
+                . " w's in pronunciation $pron, but "
+                . @ws_and_whs_in_word
+                . "w[h]'s in word $word";
+        }
+    } elsif (grep(/^w$/, @ws_and_whs_in_word)) {
+        # 'w' occurs at least once, so we have to figure out which [w] becomes [ʍ]
+        for my $match (@ws_and_whs_in_word) {
+            if ($match eq 'wh') {
+                $pron =~ s/w/ʍ/;
+            } else {
+                # Replace first [w] by [W], which doesn't occur in IPA – later we change it back
+                $pron =~ s/w/W/;
+            }
+
+            $pron =~ s/W/w/g;
+        }
+    } else {
+        # Since only 'wh' occurs, we change every [w] to [ʍ]
+        $pron =~ s/w/ʍ/g;
+    }
+
+    return $pron;
+}
+
+# Restore [ʍ], the voiceless labiovelar approximant, typically written as 'wh' in tradspell.
+# espeak ever emits this sounds, hence we detect its presence from the writing.
+# $ga should be set to '' if it's identical to $rp.
+# Returns $rp, $ga as modified, if needed (otherwise they are returned unchanged).
+sub restore_wh {
+    my ($rp, $ga, $word) = @_;
+    $word = lc $word;
+    if ($rp =~ /w/ && $word =~ /wh/) {
+        $rp = restore_wh_in_pron $rp, $word;
+        $ga = restore_wh_in_pron $ga, $word if $ga;
+    }
+    return $rp, $ga;
+}
+
 # write_entry $outfh, $word, $rp_pron_ref, $ga_pron_ref, $dict: Write CSV entries for a word.
 # If the pronunciation of the word depends on its POS tag, several CSV entries will
 # be written, otherwise just one. $rp_pron_ref and $ga_pron_ref are array references to the British
@@ -223,6 +281,7 @@ sub write_entry {
                     my $rp = untag_espeak_output(shift @$rp_pron_ref);
                     my $ga = untag_espeak_output(shift @$ga_pron_ref);
                     $ga = '' if $ga eq $rp;  # Only print GA if different from RP
+                    ($rp, $ga) = restore_wh $rp, $ga, $word;
                     $Csv_Out->print($outfh, [$word, $1, '', $2, $rp, $ga]);
                 } else {
                     die "Invalid line: $word$value\n";
@@ -233,6 +292,7 @@ sub write_entry {
             my $rp = shift @$rp_pron_ref;
             my $ga = shift @$ga_pron_ref;
             $ga = '' if $ga eq $rp;          # Only print GA if different from RP
+            ($rp, $ga) = restore_wh $rp, $ga, $word;
             $Csv_Out->print($outfh, [$word, '', '', $1, $rp, $ga]);
         } else {
             die "Invalid line: $word$value\n";

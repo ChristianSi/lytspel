@@ -33,7 +33,7 @@ const my $LYTSPEL_VOWELS => 'aeiouY';
 # Class of consonant letters, with /j/ always a consonant
 const my $SAMPA_SIMPLE_CONSONANT_CLS => '[`bdDfghklmnNprsStTvwzZj#]';
 # Class of consonant letters, with /j/ only considered a consonant if it's not followed
-# by /u:/ or /Ur/ («iu, iur» spellings)
+# by /u:/ or /Ur/ («ue, uer» spellings)
 const my $SAMPA_CONSONANT_CLS => "(?:[`bdDfghklmnNprStTvwzZ]|s#?|j(?!'?(?:u:|Ur)))";
 # Pattern fragment matching an optional stress marker
 const my $OPT_STRESS_MARKER => "(?:=')?";
@@ -44,8 +44,16 @@ const my $LYTSPEL_CONSONANT => '(?:(?:[bcdfghjklmnprstvxz]h?|(?<![ao])[wy]|nn?g|
 # vowel follows (use with /i flag)
 const my $LYTSPEL_CONSONANT_POST_PROC => '(?:(?:[bcdfghjklmnprstvwxz]h?|y(?=[aeiou])|nn?g|qu))';
 # Pattern fragment matching the vowel «e» (excluding «er» and digraphs such as «ee, ue»,
-# but accepting «e» after digraphs such as «ee, oe, ue, iu, qu»)
-const my $PLAIN_E => "(?:[eou]ee|[iq]ue|(?<![eu])e)(?!(e|'?r))";
+# but accepting «e» after digraphs such as «ee, oe, ue, qu»)
+const my $PLAIN_E => "(?:[eou]ee|que|(?<![eu])e)(?!(e|'?r))";
+# Pattern fragment matching a lowercase acute accent
+const my $Acute_Accent => '[áéíóúý]';
+# Pattern fragment matching a lowercase acute accent or diaereses
+const my $Acute_Accent_or_Diaereses => '[áéíóúýäëïöü]';
+# Regex matching a vowel in a converted word (lower-case, accents excluded)
+const my $CONV_VOWEL =>
+    qr/ ((?:all | (?<!q)[iu]a(?![aiy]) | a[aiuwy]? | ee? | (?<=[st])ion | iy(?=[aeiou,]|$) |
+        i(?:er)? | oa(?![ai]) | o[eiouwy]? | (?<!q)u[eu]? | y(?![aeiouy,]))r{0,2})/x;
 
 # XXX Switch all file-scoped variables to Upper_Camel_Case.
 # Stress the second part of a compound if the first part is listed here.
@@ -67,6 +75,25 @@ my %STRESS_BEFORE = map { $_ => 1 } qw/about around away/;
 # the pronunciation to find out).
 my %STRESS_VARIES_IF_FIRST = map { $_ => 1 } qw/ante auto contra electro homo meta mono para
     photo poly pro proto radio retro stereo tetra/;
+
+# Words that should be treated as prefixes if they occur as first part of a compound.
+my %Treat_As_Prefix = map { $_ => 1 } qw/afro allo alpha alto azo extra ethyl infra ultra/;
+
+# Words in which /D/ should be spelled 'th' (some not automatically recognized compounds
+# and some borderline cases -- where both sounds occur -- are also added here)
+my %Use_Th = map { $_ => 1 } qw/although than that the their them then there they this though
+    thus farthest furthest leatherette nevertheless nonetheless these those with withdrew
+    within without withy/;
+
+# Mappings from plain vowels to those with acute accents on them.
+my %AcuteAccents = (
+    a => 'á',
+    e => 'é',
+    i => 'í',
+    o => 'ó',
+    u => 'ú',
+    y => 'ý',
+);
 
 my $CSV_IN  = new_csv_in;
 my $CSV_OUT = new_csv_out;
@@ -109,13 +136,17 @@ my %PROCESSED_CUSTOM_SET;
 # Ditto, for compounds.
 my %PROCESSED_COMPOUND_SET;
 
-# Mapping from prefixes to their Lytspel spellings and stress hints (1: stress prefix;
-# 2: stress main word; 'A': let PhonEng determine stress). Values are two-element
-# array references.
+# Mapping from prefixes to their Lytspel spellings, stress hints (1: stress prefix;
+# 2: stress main word; 'A': let PhonEng determine stress), and a boolean stating whether the
+# prefix is short (= it has just one syllable). Values are three-element array references.
 my %PREFIXES;
 
 # Mapping from suffixes to their Lytspel spellings.
 my %SUFFIXES;
+
+# A mapping from the final version if each word to it's stress-marked equivalent, e.g.
+# seven -> séven.
+my %Stress_Marked_Dict;
 
 # build_standard_patterns $filename, $start: Create an array of leading (set $start = 1) or
 # trailing (set $start = 0) pronunciations that should be standardized. Returns a reference to
@@ -222,7 +253,7 @@ sub build_mapping {
     close $fh;
 
     # Add context-specific spellings to %Lytspel_Set
-    $Lytspel_Set{$_} = 1 for qw/al aw ay c eh n'g nn ow oy si ss s's ti uh ah oh/;
+    $Lytspel_Set{$_} = 1 for qw/al aw ay c eh iY n'g nn ow oy si ss s's ti uea uh ah oh/;
     return \%dict, $maxkeylen;
 }
 
@@ -298,11 +329,138 @@ sub delsep {
     return $str;
 }
 
+# delsep $str: Delete any apostrophes (') from a string.
+sub delapo {
+    my ($str, $hyphens_too) = @_;
+    $str =~ s/'//g;
+    return $str;
+}
+
+# strip_acute_accents $word: Strip any acute accents from a word.
+sub strip_acute_accents {
+    my ($word) = @_;
+    $word =~ s/á/a/g;
+    $word =~ s/Á/A/g;
+    $word =~ s/é/e/g;
+    $word =~ s/É/E/g;
+    $word =~ s/í/i/g;
+    $word =~ s/Í/I/g;
+    $word =~ s/ó/o/g;
+    $word =~ s/Ó/O/g;
+    $word =~ s/ú/u/g;
+    $word =~ s/Ú/U/g;
+    $word =~ s/ý/y/g;
+    $word =~ s/Ý/Y/g;
+    return $word;
+}
+
+# strip_leading_acute_accent $word: Strip the acute accent from the first letter of a word,
+# if it starts with one. Otherwise the word is returned unchanged.
+sub strip_leading_acute_accent {
+    my ($word) = @_;
+    if ($word =~ /^$Acute_Accent/i) {
+        my $first_stripped = strip_acute_accents(substr $word, 0, 1);
+        return $first_stripped . substr($word, 1);
+    } else {
+        return $word;
+    }
+}
+
+# strip_all_accents $word: Strip any acute accents and diaereses from a word.
+sub strip_all_accents {
+    my ($word) = @_;
+    $word =~ s/[áä]/a/g;
+    $word =~ s/[Áä]/A/g;
+    $word =~ s/[éë]/e/g;
+    $word =~ s/[Éë]/E/g;
+    $word =~ s/[íï]/i/g;
+    $word =~ s/[Íï]/I/g;
+    $word =~ s/[óö]/o/g;
+    $word =~ s/[Óö]/O/g;
+    $word =~ s/[úü]/u/g;
+    $word =~ s/[Úü]/U/g;
+    return $word;
+}
+
+# restore_apostrophe_and_strip_accents $word: Restore the apostrophe originally used in
+# front of the stressed vowel and strip all acute accents and diaereses.
+sub restore_apostrophe_and_strip_accents {
+    my ($word) = @_;
+    return $word if !$word;
+
+    # Retrieve fully stress-marked version of word
+    my $marked = $Stress_Marked_Dict{$word};
+    if (!defined($marked)) {
+        warn "No stress-marked version found for $word\n";
+        $marked = $word;
+    }
+
+    # Don't add a stress marker at the very start of a word
+    $marked =~ s/(.)($Acute_Accent)/$1'$2/gi;
+    $marked = strip_all_accents $marked;
+    return $marked;
+}
+
+# split_parts_basic $word: Helper function called by split_parts to do the actual work.
+sub split_parts_basic {
+    my ($word) = @_;
+    $word = strip_acute_accents $word;
+    my @parts = split $CONV_VOWEL, $word;
+
+    # Postprocess parts to split some vowel sequences into two parts
+    my $partstr = join '=', @parts;
+    $partstr =~ s/\b([aeiou])([aeiou]rr)\b/$1==$2/g;
+    $partstr =~ s/\b([iu])ar\b/$1==ar/g;
+    $partstr =~ s/\boer\b/o==er/g;
+    $partstr =~ s/^=aw=(,?)=/=a=w$1=/;               # leading «aw» before vowel is /aw/, not /O:/
+    $partstr =~ s/\boi$/o==i/;                       # final «oi» is read as two vowels
+    $partstr =~ s/\boi=c$/o==i=c/;                   # likewise in final «oic»
+    ##print "$partstr\n";
+    @parts = split '=', $partstr;
+    return @parts;
+}
+
+# split_parts $word: Split a word into a list of parts that are other consonants or
+# vowels and return this list.
+#
+# Elements (0, 2 etc.) are consonants, odd ones (1, 3 etc.) are vowels. Consonant parts
+# may be empty. The word must contain only lowercase letters.
+#
+# An acute accent in the word (indicating the stressed syllable) will be converted into a
+# unaccented vowel in the list of parts. It is, however, possible, that the accent changes
+# the way in which parts are split – e.g. «oáiciss» (oasis) should be parsed as =o==ai=c=i=ss,
+# not =oa==i=c=i=ss (using = to separate parts). In such cases, a comma will be inserted
+# before the accented vowel to indicate that some kind of accent (acute or diaeresis) is
+# needed to get the correct reading.
+sub split_parts {
+    my ($word) = @_;
+    # Insert comma before accented vowel to check if that makes a difference in parsing
+    my $word_with_comma  = $word =~ s/($Acute_Accent)/,$1/r;
+    my @parts            = split_parts_basic $word;
+    my @parts_with_comma = split_parts_basic $word_with_comma;
+    my $partstr          = join '=', @parts;
+    my $alt_partstr      = join '=', @parts_with_comma;
+
+    # No comma is needed in the middle of the two-vowel sequences ia, ua, ion, oe
+    $alt_partstr =~ s/\b([iu])=,=a\b/$1a/;
+    $alt_partstr =~ s/\bi=,=o=n\b/ion=/;
+    $alt_partstr =~ s/\bo=,=e\b/oe/;
+
+    # Delete the comma to see if the alternative parsing looks nevertheless different
+    # and hence must be used
+    my $alt_partstr_wo_comma = $alt_partstr =~ s/,//r;
+
+    # Preserve comma if needed
+    @parts = split '=', $alt_partstr if $partstr ne $alt_partstr_wo_comma;
+    return @parts;
+}
+
 # dist $str1, $str2: Calculate the Levenshtein edit distance between two strings, ignoring case.
-# Separators and hyphens are deleted from both strings before doing the conversion:
+# Separators and hyphens are deleted from both strings before doing the conversion;
+# accented vowels are converted to their non-accented version.
 sub dist {
     my ($str1, $str2) = @_;
-    return distance(lc(delsep $str1, 1), lc(delsep $str2, 1));
+    return distance(lc(strip_all_accents(delsep $str1, 1)), lc(strip_all_accents(delsep $str2, 1)));
 }
 
 # e_or_u_or_other $other, $left, $right, $tradspell: Return 'e', 'u', or $other depending on which
@@ -388,6 +546,15 @@ sub combine {
 sub combine_and_adjust {
     my ($val, $left, $right, $tradspell, $pos) = @_;
 
+    if ($val =~ /^'./) {
+        # If $val is a stressed vowel (occurs only with «'ue» and its variants),
+        # we invoke this method twice
+        my $rest = substr($val, 1);
+        return combine_and_adjust($rest,
+            combine_and_adjust("'", $left, $rest . $right, $tradspell, $pos),
+            $right, $tradspell, $pos);
+    }
+
     if ($right eq '') {
         # End-of-word spellings
 
@@ -395,6 +562,9 @@ sub combine_and_adjust {
             # Final schwa becomes «er» if tradspell ends in ‹r› (typical for non-rhotic RP),
             # otherwise «a» (except in the article 'the')
             $val = $tradspell =~ /r$/ ? 'er' : 'a';
+        } elsif ($val eq 'uee') {
+            # Final «uee» becomes «uea» (just like schwa in general)
+            $val = 'uea';
         } elsif ($val eq 'a') {
             # Final /a/ may be spelled «ah» (but shoudn't usually occur)
             $val = 'ah';
@@ -407,6 +577,10 @@ sub combine_and_adjust {
         } elsif ($val eq 'er' && $left =~ /Y$/) {
             # Final /aI@`/ is written «yr», e.g. «fyr, in'spyr» ‹fire, inspire›
             $val = 'r';
+        } elsif ($val eq 'er' && $left =~ /thh$/) {
+            # Final /T@`/ is written «thur»
+            chop $left;
+            $val = 'ur';
         } elsif ($val eq 'o') {
             # Final /Q/ may be spelled «oh» (but shoudn't usually occur)
             $val = 'oh';
@@ -432,26 +606,14 @@ sub combine_and_adjust {
         }
     }
 
-    if ($val eq '@' && $right eq 'l' && $left =~ /[bpdtfgksz]$/) {
-        # Schwa is omitted between any of /b, p, d, t, f, g, k/ and final /l/
+    if ($val eq '@' && $right eq 'l' && $left =~ /[bkp]$/) {
+        # Schwa is omitted between and of /b, k, p/ and final /l/
         $val = '';
-
-        # Final /s@l/ is written «ssl» and final /z@l/ is written «sl»
-        if ($left =~ /s$/) {
-            $left .= 's';
-        } elsif ($left =~ /z$/) {
-            chop $left;
-            $left .= 's';
-        }
-
     } elsif ($val eq '@' && $right eq 'm' && $left =~ /z$/) {
         # Final /z@m/ is written «sm»
         $val = '';
         chop $left;
         $left .= 's';
-    } elsif ($val eq '@' && $right eq 'm' && $left =~ /dh$/) {
-        # Schwa is also omitted between /D/ and final /m/
-        $val = '';
     } elsif ($val eq '@' && $right eq 'n' && $left =~ /[sz]h$/) {
         # Final /S@n/ becomes «tion» and /Z@n/ becomes «sion»
         $val = 'o';
@@ -492,7 +654,7 @@ sub combine_and_adjust {
         # Unstressed «ee» /i:/ becomes «i» at the end of words and before other vowels
         $val = 'i';
     } elsif ($val eq 'oa'
-        && $right !~ /^$SAMPA_CONSONANT_CLS/
+        && $right     !~ /^$SAMPA_CONSONANT_CLS/
         && $tradspell !~ /^(know|owe)$/)
     {
         # «oa» /oU/ becomes «o» at the end of words and before other vowels
@@ -504,9 +666,9 @@ sub combine_and_adjust {
             || ($right eq '' && $left =~ /[$LYTSPEL_VOWELS]$/))
         )
     {
-        # «y» /aI/ becomes «ai» before and (at the end of words) after other vowels
+        # «y» /aI/ becomes «iy» before and (at the end of words) after other vowels
         # (except before final /@`/ -- that combination becomes «yr»)
-        $val = 'ai';
+        $val = 'iY';
     } elsif ($val eq 'Y' && $tradspell =~ /^(eye|eyeleteer)$/) {
         # 'eye' (and its irregular derivates) remains irregular
         $val = 'e=y';
@@ -520,10 +682,22 @@ sub combine_and_adjust {
         # «uu» /u:/ becomes «u» at the end of words and before other vowels
         # (except in ‹too, two›)
         $val = 'u';
-    } elsif ($val =~ /^ng?$/ && $right =~ /^k/ && $left !~ /^('?[eiu]|[cn]='?o)$/) {
-        # Before /k/, «n» is pronounced /N/ rather then /n/, unless the word starts with
-        # «con, en, in, non, un»; /n/ becomes «nn» in this position
-        $val = $val eq 'n' ? 'nn' : 'n';
+    } elsif ($val eq 'ng' && $right =~ /^k/) {
+        # Before /k/, «n» is pronounced /N/ rather then /n/
+        $val = 'n';
+    } elsif ($val eq 'n' && $right =~ /^k/ && $left !~ /^('?[eiu]|[cn]='?o)$/) {
+        # Before /k/, «n» becomes «nn» to distinguish it from /N/, unless the word starts with
+        # «con, en, in, non, un»
+        $val = 'nn';
+    } elsif ($val eq 'nng' && $left =~ /^('?[eiu]|[cn]='?o)$/) {
+        # «nng» becomes just «ng» in words starting with «con, en, in, non, un»
+        $val = 'ng';
+    } elsif ($val eq 'th' && $right eq '@`') {
+        # Change 'th' before final 'er' – it will become 'thur' in the next step
+        $val = 'thh';
+    } elsif ($val eq 'dh' && (exists $Use_Th{$tradspell} || $right eq '@`')) {
+        # 'dh' becomes 'th' in a handful of words and in those ending in /D@`/
+        $val = 'th';
     } elsif ($val eq 'r' && $left =~ /r$/) {
         # Eliminate double «r»
         $val = '';
@@ -545,142 +719,9 @@ sub combine_and_adjust {
     if ($val =~ /^[$LYTSPEL_VOWELS]/) {
         # /z/ becomes «s» between two vowels
         $left =~ s/([$LYTSPEL_VOWELS]=)z($OPT_STRESS_MARKER)$/$1s$2/;
-
     }
 
     return combine($left, $val);
-}
-
-# insert_at_start $consonants: Insert a stress at the start of a consonant sequence (separated
-# by '='). Also restores the final '='.
-sub insert_at_start {
-    my ($consonants) = @_;
-    return "'$consonants=";
-}
-
-# insert_after_first $cons_pair: Insert a stress marker after the first consonant of a sequence.
-# Also restores the final '='.
-sub insert_after_first {
-    my ($cons_pair) = @_;
-    $cons_pair =~ s/=/='/;
-    return "$cons_pair=";
-}
-
-# insert_after_second $consonants: Insert a stress marker after the second consonant of a sequence.
-# If the sequence contains just one or two consonants, it's inserted at the end instead.
-# Also restores the final '='.
-sub insert_after_second {
-    my ($consonants) = @_;
-    $consonants .= '=';
-    return $consonants =~ s/(.*?=.*?=)/$1'/r;
-}
-
-# insert_at_end $consonants: Insert a stress at the end of a consonant sequence (separated by '=').
-# Also restores the final '='.
-sub insert_at_end {
-    my ($consonants) = @_;
-    return "$consonants='";
-}
-
-# insert_stress_marker_among_multiple_consonants $consonants, $tradspell, $sep_count:
-# Insert a stress marker in the proper place in a sequence of three or more consonants.
-sub insert_stress_marker_among_multiple_consonants {
-    my ($consonants, $tradspell, $sep_count) = @_;
-    my @cons     = split /=/, $consonants;
-    my $left     = '';
-    my $left_sep = '';
-
-    # Break before last three consonants, e.g. «di'scription, e'spresso, in'struction,
-    # converrsaa'tsyoneh» ‹description, espresso, instruction, conversazione›
-    if (   $consonants =~ /(f=r=w|s=c=[^=]+|s=p=[lry]|s=t=r|t=s=y)$/
-        && $tradspell !~ /^(dy|mi|Go|juri)sp/)
-    {
-        return $sep_count == 2 ? insert_at_start $consonants : insert_after_first $consonants;
-    }
-
-    # Break after second consonant, e.g. «temp'taition, punc'tiliass, pont'leviss,
-    # Burg'soanian, dipart'mentl, disp'noic, poast'limeni, Fits'patric» ‹temptation,
-    # punctilious, pontlevis, Bergsonian, departmental, dyspnoic, postliminy, Fitzpatrick›
-    return insert_after_second $consonants
-        if $consonants =~
-        /^( l=c=m | l=f=[cw] | m=p=t | n=c=[nt] | n=s=h | n=t=[cghlp] | r=c=[mt] | r=d=[nv]
-          | r=g=s | r=m=w | r=n=[mw] | r=p=[nst] | r=s=f | r=t=[fms] | r=th=w | s=p=n
-          | s=t=[fml] | t=s=[jpr] )$/x
-        || $tradspell eq 'Kaiserslautern';
-
-    # Otherwise break after first of three consonants, or after second of four
-    return insert_after_first $consonants if $sep_count == 2;
-    return insert_after_second $consonants;
-}
-
-# insert_stress_marker $consonants, $tradspell: Insert a stress marker in the proper place
-# in the sequence of $consonants before a stressed vowel.
-sub insert_stress_marker {
-    my ($consonants, $tradspell) = @_;
-    my $just_consonants = $consonants =~ s/=//gr;
-
-    $consonants =~ s/=$//;  # drop final '='
-    my $sep_count = () = $consonants =~ /=/g;
-
-    # Move stress marker before whole consonant sequence ...
-    return insert_at_start $consonants
-        # if the «sf» in ‹spher› is stressed
-        if ($consonants =~ /s=f/ && $tradspell =~ /spher/)
-        # e.g. «bi'smurch, bi'spred» ‹besmirch, bespread›
-        || ($consonants =~ /^s=/ && $tradspell =~ /^bes[mp]/)
-        # fixes a few special cases
-        || $tradspell =~ '^(respir|Samothracian|Venezuela$)';
-
-    # Break after 'ns', if $tradspell contains 'trans' followed by certain combinations
-    return insert_after_second $consonants
-        if $just_consonants =~ /^(ns)(.*)/
-        && $tradspell =~ /trans(ca|d|p[aou]|[gflmnv])/i
-        && $tradspell ne 'transponder';
-
-    # Three or more consonants
-    return insert_stress_marker_among_multiple_consonants $consonants, $tradspell, $sep_count
-        if $sep_count > 1;
-
-    # Some special cases
-    return insert_at_end $consonants if $tradspell eq 'Antarctica';
-    return insert_after_first $consonants
-        # e.g. «eg'zact, ang'zaieti, lug'zhueriass» ‹exact, anxiety, luxurious›
-        if $consonants =~ /g=z/
-        || ($consonants =~ /^s=/
-        && $tradspell =~
-        /^(dis[^ps]|dys|ascosporous$|casca|chastise$|descant$|extrasystolic$|testosterone$)/i)
-        # Break s'c, s'k in the middle of most proper nouns, e.g. «Wis'consin» ‹Wisconsin›
-        || ($consonants =~ /^s=[ck]$/
-        && $tradspell =~ /^[A-Z]/
-        && $tradspell !~ /^([AI]sca|Esc[ou]|Misk|Sask|Tele)/)
-        # Break s'l in the middle of most proper nouns and a few other words,
-        # e.g. «Is'laam, lejis'laition» ‹Islam, legislation›
-        || ($consonants eq 's=l' && $tradspell =~ /^([A-BD-X]|cisl|legis|mouss)/)
-        || ($consonants eq 'b=r' && $tradspell =~ /^subr/i)
-        || ($consonants eq 'c=l' && $tradspell =~ /^Ma?cL/i)
-        || ($consonants eq 'n=s' && $tradspell =~ /^cons/i)
-        || ($consonants eq 'p=l' && $tradspell =~ /^popl/i)
-        || ($consonants eq 'p=r' && $tradspell =~ /^upr/i)
-        || ($consonants eq 't=r' && $tradspell =~ /^outr/i);
-
-    # Break before both consonants if the first is 's' (not followed by certain combinations),
-    # if the second is 'l' (not preceeded by d|m|n|r|t|v|?h), 'r' (not preceeded by l|m|n|z),
-    # in a few combinations ending in 'r' or 'w', and in 'sht'
-    return insert_at_start $consonants
-        if $consonants =~ /^s=(?![ct]h|[bdfjmn])|[^dmnrtvh]=l|[^lmnz]=r|[fgstv]=w|sh=[wt]$/
-        # Likewise in final ‹tlan›, e.g. «Maassaa'tlaan» ‹Mazatlán›
-        || ($consonants =~ /^t=l$/ && $tradspell =~ /tlan$/)
-        # And usually in the rare «ts» combination
-        || ($consonants =~ /^t=s$/ && $tradspell !~ /^(etcetera|Fitzsimmons)$/);
-
-    # Likewise before combinations ending in 'y' (not preceeded by 'r'), though there are
-    # a few exceptions
-    return insert_at_start $consonants
-        if $consonants =~ /[^r]=y$/
-        && $tradspell !~ /^(goli|pallia)|(iority|yang|yatta|yuan)$/;
-
-    # Otherwise break in middle
-    return insert_after_first $consonants;
 }
 
 # starts_with $haystack, $needle: Compares two strings, checking if $haystack starts with $needle.
@@ -695,54 +736,6 @@ sub ends_with {
     return substr($haystack, -(length $needle)) eq $needle;
 }
 
-# move_stress_marker $word, $tradspell: Move stress marker before the stressed syllable,
-# omitting it if the first vowel is the stressed one.
-sub move_stress_marker {
-    my ($word, $tradspell) = @_;
-
-    # Return word unchanged if it doesn't contain a stress marker and in a handful of
-    # quasi-compounds where the marker is aready properly placed before the vowel,
-    # e.g. «sub'ordinaitiv» ‹subordinative›
-    return $word
-        if $word !~ /'/
-        || $tradspell =~ /^( abampere$ | abaxial$ | abirrita | abohm$ | aboral$ | antalkali$
-          | circumamb | enactory$ | Finsteraarhorn$ | inordinacy$ | permalloy$ | Oberammergau$
-          | subordinat | superannuat | supererogate$ )/x;
-
-    # If the compound contains two stress markers, we keep just the first one
-    $word =~ s/('.*)'/$1/ if $word =~ /'.*'/;
-
-    if ($word =~ /(.*?)($LYTSPEL_CONSONANT*)'/) {
-        my $pre_match                = $1;
-        my $consonants_before_marker = $2;
-
-        if ($pre_match eq '') {
-            # First vowel is the stressed one
-            $word =~ s/'//;
-        } elsif ($consonants_before_marker eq '') {
-            # Stressed vowel is preceded by another vowel: nothing to do
-        } elsif ($consonants_before_marker =~ /^(rr|ss)=$/) {
-            # «rr, ss» are separated by the marker, e.g. «as'sault, hor'rific»
-            $word =~ s/(.)='/'$1=/;
-        } elsif ($consonants_before_marker =~ /^nng/) {
-            # "nng..." becomes "n'g..."
-            $word =~ s/nn(g=.*?)'/n'$1/;
-        } elsif ($consonants_before_marker =~ '^[^=]+=$') {
-            # Move stress marker before the single consonant
-            $word =~ s/$consonants_before_marker'/'$consonants_before_marker/;
-        } else {
-            # Use custom heuristics
-            my $stressed_cons = insert_stress_marker $consonants_before_marker, $tradspell;
-            $word =~ s/$consonants_before_marker'/$stressed_cons/;
-        }
-    } else {
-        # This shouldn't happen
-        warn "Don't know how to move stress in '$word' ($tradspell)\n";
-    }
-
-    return $word;
-}
-
 # insert_hyphens_as_needed $converted, $tradspell: Insert hyphens where necessary to prevent
 # misreadings in words such as «co-orde'naition» ‹coordination›. Returns the converted word
 # with hyphens added as needed.
@@ -754,7 +747,6 @@ sub insert_hyphens_as_needed {
 
     # Eliminate repeated separators
     $converted =~ s/==/=/g;
-
     my $rest          = delsep $converted;
     my $rest_with_sep = $converted;
     my $reconstructed = '';
@@ -774,7 +766,7 @@ OUTER: while ($rest && $rest_with_sep) {
         (my $expected, $rest_with_sep) = split /=/, $rest_with_sep, 2;
 
         while ($charcount) {
-            my $start = substr $rest, 0, $charcount;
+            my $start      = substr $rest, 0, $charcount;
             my $inner_rest = substr $rest, $charcount;
 
             if (exists $Lytspel_Set{$start}) {
@@ -820,19 +812,31 @@ OUTER: while ($rest && $rest_with_sep) {
     $reconstructed =~ s/([aeou])-h/$1=h/g;  # not needed for «ah, eh, oh, uh»
     $reconstructed =~ s/ee-i/ee=i/g;        # not needed for «eei» (only used in a quasi-compound)
     $reconstructed =~ s/i-er/i=er/g;        # not needed for «ier»
+    $reconstructed =~ s/ue-([ea])/ue=$1/g;  # not needed for «uee» and «uea»
     $reconstructed =~ s/u-err/u=err/g;      # not needed for «uerr»
     $reconstructed =~ s/s-sh/s=sh/g;        # not needed for «ssh» (rarely in foreign words)
+    $reconstructed =~ s/o-(a[ai])/o=$1/g;   # not used for «oaa, oai»
     $reconstructed =~ s/o-e(?!e)/o=e/g;     # not used for «oe»
     $reconstructed =~ s/o-i=c$/o=i=c/;      # not used for final «oic»
-    $reconstructed =~ s/([st])-i/$1=i/g;    # not needed for «si, ti»
-    $reconstructed =~ s/([iu])-a/$1=a/g;    # not used for «ia, iai, ua, uai»
-    $reconstructed =~ s/-'/'/g;             # not needed before stress marker
-    $reconstructed =~ s/a-i$/ai/;           # not needed in final «ai» (only used in an abbrev.)
+    $reconstructed =~ s/o-i=c=([li])/o=i=c=$1/;  # nor in its derivates «oicl(li), oicism»
+    $reconstructed =~ s/o-i$/o=i/;               # not needed for final «oi»
+    $reconstructed =~ s/([st])-i/$1=i/g;         # not needed for «si, ti»
+    $reconstructed =~ s/([iu])-a/$1=a/g;  # not used for «ia, iaa, iai, iay, uaa, ua, uai, uay»
+    $reconstructed =~ s/a-i$/ai/;         # not needed in final «ai» (only used in an abbrev.)
+    $reconstructed =~ s/^a=d-h/a=d=h/;    # not used in initial «adh»
+                                          # «iy» before consonant doesn't need a hyphen
+    $reconstructed =~ s/i-Y=('|$LYTSPEL_CONSONANT)/iY=$1/g;
 
     # Treat ‹bio..., micro...› as compound, even if the 2nd part isn't listed
     $reconstructed =~ s/o-a/o=a/ if $tradspell =~ /^(bio|micro)/;
     # Likewise words ending in «ism» after «o»
     $reconstructed =~ s/o-i=s=m$/o=i=s=m/;
+
+    # Add hyphen before 'w' and 'y’ where needed to distinguish them from the second vowel
+    # of «aw/ow/ay/iy/oy»
+    $reconstructed =~ s/=a=w\b/=a-w/g;        # «aw» on the start of words doesn't need a hyphen
+    $reconstructed =~ s/\bo=w\b/o-w/g;
+    $reconstructed =~ s/\b([aio]=)y\b/$1-y/g;
 
     return $reconstructed;
 }
@@ -852,17 +856,23 @@ sub restore_capitalization {
     # Delete separators ('=') and convert capital letters to lower case (vowel «Y» as
     # distinguished from consonant «y»)
     $converted = lc(delsep $converted);
-
     if ($tradspell =~ /[A-Z].*[A-Z]/) {
         # Handle word with two or more uppercase letters
 
         if ($tradspell =~ /^Ma?c[A-Z]/) {
-            if ($converted =~ /^m[ae]c?'/) {
+            if ($converted =~ /^m[ae]c?$LYTSPEL_CONSONANT_POST_PROC*'/i) {
                 # Write names starting with ‹Mc› or ‹Mac› /m@k/ followed by a stressed and
                 # capitalized syllable as «Mc» + capital letter (dropping the stress marker)
-                $converted =~ s/.*'(.)/Mc\U$1/;
-                # Fix ‹MacArthur› and similar words
-                $converted =~ s/^McCa/McA/ if $tradspell =~ /^Ma?cA/;
+                $converted =~ s/'//;
+
+                if ($tradspell =~ /[CK](?!n)/) {
+                    # If the original word contains a capitalized C or K, we repeated the
+                    # capitalized /k/ sound, e.g. «McCoy, McCay» ‹...McKay› – but not
+                    # ‹McKnight›
+                    $converted =~ s/m[ae](.)/Mc\U$1/;
+                } else {
+                    $converted =~ s/m[ae]c?(.)/Mc\U$1/;
+                }
             } elsif ($converted =~ /^mc/) {
                 # Fix derivates of already converted words (e.g. plural forms)
                 $converted =~ s/^mc(.)/Mc\U$1/;
@@ -875,33 +885,358 @@ sub restore_capitalization {
         }
     }
 
-    # Capitalize first letter (if not yet done)
-    $converted = ucfirst($converted) if $tradspell =~ /^[A-Z]/ && $converted =~ /^[a-z]/;
+    # Capitalize first letter after optional stress marker (if not yet done)
+    if ($tradspell =~ /^[A-Z]/) {
+        if ($converted =~ /^\p{Ll}/) {
+            $converted = ucfirst($converted);
+        } elsif ($converted =~ /^'\p{Ll}/) {
+            $converted =~ s/(.)(.)/$1\u$2/;
+        }
+    }
 
     # Or very occasionally the second letter
-    if ($tradspell =~ /^[a-z][A-Z]/ && $converted =~ /^[a-z]/) {
-        $converted =~ s/(.)(.)/$1\u$2/;
+    if ($tradspell =~ /^[a-z][A-Z]/ && $converted =~ /^'?\p{Ll}/) {
+        $converted =~ s/('?\p{Ll})(.)/$1\u$2/;
     }
 
     if ($tradspell =~ /'/) {
         # Handle contractions
 
-        if ($tradspell =~ /'(er|en|am)$/ && $converted !~ /'/) {
+        if ($tradspell =~ /'(er|en|am)$/ && $tradspell !~ /^where/) {
             # Place contraction marker in front of the last letter
+            $converted =~ s/'//;
             $converted =~ s/(.)$/'$1/;
-        } elsif ($tradspell =~ /O'/ && $converted =~ /Oa'/) {
-            # Retain capitalized ‹O'› /oU/ in Irish names (the first letter after the
-            # apostrophe becomes capitalized as well)
-            $converted =~ s/Oa'(.)/O'\U$1/;
-        } elsif ($tradspell =~ /y'/) {
-            # ‹y'all›: keep marker after first vowel
-            $converted =~ s/(.)/$1'/;
+        } elsif ($tradspell =~ /'c/) {
+            # Move before corresponding consonant in converted word
+            $converted =~ s/'//;
+            $converted =~ s/c/'c/;
+        } elsif ($tradspell =~ /'p/) {
+            $converted =~ s/'//;
+            $converted =~ s/p/'p/;
+        } elsif ($tradspell =~ /O'/ && $converted =~ /O[ar]$LYTSPEL_CONSONANT_POST_PROC*'/i) {
+            # Retain capitalized ‹O'› /oU/ in Irish names before a stessed syllable
+            # (the stress marker is dropped and the first letter after the apostrophe is
+            # capitalized as well)
+            $converted =~ s/'//;
+            $converted =~ s/Oa?(.)/O'\U$1/;
         }
     }
 
-    # Move stress marker to the right in a few contractions
-    $converted =~ s/'r/r'/ if $tradspell =~ /^(nor'easter|where'er)$/;
     return $converted;
+}
+
+# accentify $text: Add an acute accent on top of the first letter in $text, which must be
+# a lower-case vowel.
+sub accentify {
+    my ($text) = @_;
+    my $first = substr $text, 0, 1;
+    my $rest  = substr $text, 1;
+    my $first_acc = $AcuteAccents{$first};
+    die "'$text' doesn't start with lower-case vowel\n" unless defined $first_acc;
+    return $first_acc . $rest;
+}
+
+# is_short $vowel: Return a true value if $vowel is a short vowel, a false value otherwise.
+# The vowel sequence must be lower-case.
+sub is_short {
+    my ($vowel) = @_;
+    return $vowel =~ /^([aeiou](rr)?|[ei]r|ion|oor?)$/;
+}
+
+# is_short_or_unstressed $vowel: Return a true value if $vowel is a short vowel or one of
+# the sequences «ia, ier, oe, ua» or a vowel sequence ending in «rr», as these are considered
+# typically unstressed.
+sub is_short_or_unstressed {
+    my ($vowel) = @_;
+    return is_short($vowel) || $vowel =~ /^(ier|[iu]a|oe)$/ || $vowel =~ /rr$/;
+}
+
+# is_two_vowels $text: Return a true value if $text is one of the sequence «ia, ier, ion, oe, ua»
+# which represent two vowels.
+sub is_two_vowels {
+    my ($text) = @_;
+    return $text =~ /^(ier|ion|[iu]a|oe)$/;
+}
+
+# accentify_last $text: Add an acute accent on top on the last vowel in $text, which
+# must be a lower-case vowel or vowel combination. The sequences «ia, ier, ion, oe, ua»
+# represent **two* vowels -- in these cases, the second of them gets the accent.
+# Otherwise the accent is added to the first letter.
+sub accentify_last {
+    my ($text) = @_;
+    if (is_two_vowels $text) {
+        my $first = substr $text, 0, 1;
+        my $rest  = substr $text, 1;
+        return $first . accentify($rest);
+    }
+
+    return accentify $text;
+}
+
+# accentify_before_final_combis @parts: If the word given by @parts (an array of
+# non-vowel/vowel parts) ends in certain combinations such as «tion» or «ic», the vowel
+# before this combination (or sometimes in this combination) is marked with an accent as
+# likely stressed.
+#
+# Otherwise undef is returned.
+sub accentify_before_final_combis {
+    my @parts   = @_;
+    my $wordstr = join('=', @parts);
+
+    if ($wordstr =~ /=ee$/) {
+        # Final ee is stressed
+        $parts[-1] = accentify($parts[-1]);
+        return join('', @parts);
+    } elsif ($wordstr =~ /[st]=ion$/) {
+        # Vowel before tion, sion is stressed
+        $parts[-3] = accentify_last($parts[-3]);
+        return join('', @parts);
+    } elsif ($wordstr =~ /=i=c[ls]?$/) {
+        # ic, icl, ics
+        $parts[-4] = accentify_last($parts[-4]);
+        return join('', @parts);
+    } elsif (scalar @parts >= 5 && $wordstr =~ /(gr=e=f=i|=i=(cll|t)=i|l=e=j=i)$/) {
+        # grefi, iclli (derivated of icl), iti, leji
+        $parts[-5] = accentify_last($parts[-5]);
+        return join('', @parts);
+    } elsif (scalar @parts >= 6 && $wordstr =~ /l=e=j=i=st$/) {
+        # lejist (derivate of leji)
+        $parts[-6] = accentify_last($parts[-6]);
+        return join('', @parts);
+    } elsif (scalar @parts == 4 && $wordstr =~ /=[ai]$/ && !is_two_vowels($parts[1])) {
+        # If a word ends in -a or -i and has just two syllables, the first one is stressed
+        $parts[1] = accentify_last($parts[1]);
+        return join('', @parts);
+    }
+
+    return undef;
+}
+
+# accentify_first_long_vowel @parts: Add an acute accent on the first long vowel in @parts
+# If the word doesn't have any long vowels, undef is returned instead.
+# However, a few long vowels occuring at the end of words with certain endings such as
+# «ait» are excepted – if the stress would fall on such a vowel, undef is returned instead.
+sub accentify_first_long_vowel {
+    my @parts   = @_;
+    my $partstr = join('=', @parts);
+    my $len     = scalar @parts;
+
+    for (my $i = 1 ; $i < $len ; $i += 2) {
+        if (!is_short_or_unstressed($parts[$i])) {
+            $parts[$i] = accentify($parts[$i]);
+
+            if ($i == $len - 2 && $partstr =~ /=(ai=t|y=[st])$/) {
+                # Final ait, ys, yt are considered unstressed
+                return undef;
+            } elsif ($i == $len - 1 && $partstr =~ /(=y|th=ur)$/) {
+                # Ditto final y and the vowel in final "thur", which is actually an r-colored schwa
+                return undef;
+            } else {
+                return join('', @parts);
+            }
+        }
+    }
+
+    return undef;
+}
+
+# accentify_second_if_needed @parts: If a word starts with a short vowel or 'di' or 'ri',
+# add the accent on the second vowel. But if that vowel is 'er' or, otherwise, if the
+# first vowel is 'er', an accent is added to the first vowel that is NOT 'er'.
+#
+# If neither case applied, undef is returned instead.
+sub accentify_second_if_needed {
+    my @parts          = @_;
+    my $partstr        = join('=', @parts);
+    my $part_to_stress = 1;
+    my $len            = scalar @parts;
+
+    if ((!$parts[0] && is_short $parts[1]) || $partstr =~ /^[dr]=i/) {
+        # Skip initial short vowel and di, ri at start of vowel
+        $part_to_stress = 3;
+    }
+
+    for (my $i = $part_to_stress ; $i < $len ; $i += 2) {
+        # Skip the vowel 'er'
+        if ($parts[$i] eq 'er') {
+            $part_to_stress = $i + 2;
+        } else {
+            last;
+        }
+    }
+
+    # Add an accent only if it doesn't fall on the first vowel anyway
+    if ($part_to_stress > 1 && $part_to_stress < $len) {
+        $parts[$part_to_stress] = accentify($parts[$part_to_stress]);
+        return join('', @parts);
+    }
+
+    return undef;
+}
+
+# find_default_stress $word: Find the vowel that is assumed to be stressed.
+# An acute accent is placed on this vowel.
+# The word MUST be lower-case.
+sub find_default_stress {
+    my ($word) = @_;
+
+    # Split in vowel/non-vowel sequences
+    my @parts = split_parts $word;
+
+    # If there are no vowels, return word as is
+    return $word if @parts <= 1;
+
+    # If there is just one vowel, it's the stressed one
+    if (@parts <= 3) {
+        $parts[1] = accentify($parts[1]);
+        return join('', @parts);
+    }
+
+    # Stress vowel before certain final combinations
+    my $accentified = accentify_before_final_combis @parts;
+    return $accentified if defined $accentified;
+
+    # Stress the first long vowel, if any (with certain exceptions)
+    $accentified = accentify_first_long_vowel @parts;
+    return $accentified if defined $accentified;
+
+    # If a word starts with a short vowel, the next one is assumed to be stressed;
+    # if the vowel to be accentified would be 'er', the next one gets the accent instead
+    $accentified = accentify_second_if_needed @parts;
+    return $accentified if defined $accentified;
+
+    # Default case: Assume that first vowel is the stressed one
+    $parts[1] = accentify($parts[1]);
+    return join('', @parts);
+}
+
+# strip_or_adjust_accent_as_needed $word, $lc_word, $default_stress: Strip the acute
+# accent from a word if it is not needed to indicate stress, or change it to a diaeresis
+# if needed.
+#
+# $lc_word is the lowercase version of the word; $default_stress is the same but with the
+# vowel which takes the stress by default accented, and optionally with a comma inserted
+# before the ACTUALLY stressed vowel to indicate that some kind of diacritic is needed to
+# parse the vowel sequence correctly. For example, "o,áiciss" (oasis) signals that a break
+# is needed there as otherwise the word would be read as "oa-i-c-i-ss".
+#
+# If $lc_word and $default_stress, the accent will simply be stripped because it is not
+# needed. If they differ only by the presence of a comma, the acute accent will be
+# changed to a diaeresis which should be preserved even if stress marking is turned off
+# -- e.g. "oäiciss" indicates the correct pronunciation regardless of whether or not
+# stress markers are used.
+sub strip_or_adjust_accent_as_needed {
+    my ($word, $lc_word, $default_stress) = @_;
+    my $orig_word = $word;
+
+    if ($lc_word eq $default_stress) {
+        $word = strip_acute_accents $word;
+    } elsif ($default_stress =~ /,/) {
+        $default_stress =~ s/,//;
+        if ($lc_word eq $default_stress) {
+            # Change acute accent to diaeresis
+            $word =~ s/á/ä/;
+            $word =~ s/Á/Ä/;
+            $word =~ s/é/ë/;
+            $word =~ s/É/Ë/;
+            $word =~ s/í/ï/;
+            $word =~ s/Í/Ï/;
+            $word =~ s/ó/ö/;
+            $word =~ s/Ó/Ö/;
+            $word =~ s/ú/ü/;
+            $word =~ s/Ú/Ü/;
+        }
+    }
+
+    # Special cases: «ey» ‹eye› has just one vowel and so doesn't need an accent;
+    # «Tyyaan» ‹Taiyuan› is stressed regularly but our algorithm cannot detect it
+    $word = strip_acute_accents $word if $word =~ /^(éy$|týy)/i;
+
+    $Stress_Marked_Dict{$word} = $orig_word;
+    return $word;
+}
+
+# do_mark_stress $word: Helper function that removes the acute accent from the stressed
+# vowel if this vowel is assumed to be stressed by default.
+sub do_mark_stress {
+    my ($word) = @_;
+    # Delete stressed vowel if there is no need for it, or change it to a diaereses
+    my $lc_word        = lc $word;
+    my $default_stress = find_default_stress $lc_word;
+    return strip_or_adjust_accent_as_needed $word, $lc_word, $default_stress;
+}
+
+# mark_stress $converted, $tradspell: Replace the stress marker with an acute accent over
+# the stressed vowel. When this accent falls to the vowel assumed to be stressed by default,
+# it is removed.
+sub mark_stress {
+    my ($converted, $tradspell) = @_;
+
+    if ($tradspell =~ /'/ && $tradspell !~ /^N'D/) {
+        # $tradspell already has an apostrophe, so we assume it's a contraction marker,
+        # not a stress marker, and return the word unchanged
+        $Stress_Marked_Dict{$converted} = $converted;
+        return $converted;
+    }
+
+    # Convert stress marker into stressed vowel
+    $converted =~ s/'a/á/;
+    $converted =~ s/'A/Á/;
+    $converted =~ s/'e/é/;
+    $converted =~ s/'E/É/;
+    $converted =~ s/'i/í/;
+    $converted =~ s/'I/Í/;
+    $converted =~ s/'o/ó/;
+    $converted =~ s/'O/Ó/;
+    $converted =~ s/'u/ú/;
+    $converted =~ s/'U/Ú/;
+    $converted =~ s/'y/ý/;
+    $converted =~ s/'Y/Ý/;
+
+    return do_mark_stress $converted;
+}
+
+# has_long_vowel $word: Return true iff $word contains at least one long vowel.
+# Long vowels typically considered unstressed don't count.
+sub has_long_vowel {
+    my ($word)      = @_;
+    my $word_simple = strip_acute_accents(lc $word);
+    my @parts       = split_parts $word_simple;
+    my $len         = scalar @parts;
+
+    for (my $i = 1 ; $i < $len ; $i += 2) {
+        if (!is_short_or_unstressed($parts[$i])) {
+            return 1;
+        }
+    }
+
+    return 0;
+}
+
+# stress_first_vowel $word, $pos: Add an acute accent on vowel number $pos in $word.
+# $pos is 0-indexed, so the first vowel is 0!
+sub stress_vowel {
+    my ($word, $pos) = @_;
+    my $lc_word = lc $word;
+    my @parts   = split_parts $lc_word;
+    $parts[$pos * 2 + 1] = accentify($parts[$pos * 2 + 1]);
+    my $result = join('', @parts);
+
+    # Restore case if needed
+    $result = ucfirst $result if $lc_word ne $word;
+    return $result;
+}
+
+# convert_hyphens_to_diaereses $word: Replace hyphens followed by vowels by a diaeresis
+# placed on top of the vowel, e.g. "po-it" becomes "poït".
+sub convert_hyphens_to_diaereses {
+    my ($word) = @_;
+    $word =~ s/-a/ä/g;
+    $word =~ s/-e/ë/g;
+    $word =~ s/-i/ï/g;
+    $word =~ s/-o/ö/g;
+    $word =~ s/-u/ü/g;
+    return $word;
 }
 
 # convert_pron $pron, $tradspell, $pos: Convert a pronunciation.
@@ -918,7 +1253,7 @@ OUTER: while ($unconverted) {
 
     INNER: while ($charcount) {
             my $start = substr $unconverted, 0, $charcount;
-            my $rest = substr $unconverted, $charcount;
+            my $rest  = substr $unconverted, $charcount;
 
             # No sound starts with '`' or ':'
             if ($rest =~ /^[`:]/) {
@@ -928,7 +1263,7 @@ OUTER: while ($unconverted) {
 
             my $val = $Map_Ref->{$start};
             if (defined $val) {  # Match found
-                $converted = combine_and_adjust $val, $converted, $rest, $tradspell, $pos;
+                $converted   = combine_and_adjust $val, $converted, $rest, $tradspell, $pos;
                 $unconverted = $rest;
                 next OUTER;
             }
@@ -940,8 +1275,8 @@ OUTER: while ($unconverted) {
             . "unconverted part: /$unconverted/\n";
     }
 
-    $converted = move_stress_marker $converted,     $tradspell;
     $converted = restore_capitalization $converted, $tradspell;
+    $converted = mark_stress $converted,            $tradspell;
     return $converted;
 }
 
@@ -973,8 +1308,13 @@ sub build_prefix_dict {
         $converted =~ s/ss$/s/;
         # Final schwa should be «e» rather than «a» because other letters will follow
         $converted =~ s/(?<![a])a$/e/;
+        # Prefixes are written without an accent of the first letter
+        $converted = strip_leading_acute_accent $converted;
+        # Short prefixes have just one syllable
+        my @parts    = split_parts $converted;
+        my $is_short = @parts <= 3 && !is_two_vowels($parts[1]);
 
-        $PREFIXES{$word} = [$converted, $stress_hint];
+        $PREFIXES{$word} = [$converted, $stress_hint, $is_short];
     }
 
     close $fh;
@@ -996,9 +1336,6 @@ sub build_suffix_dict {
         my ($word, $pron) = @$colref[0 .. 1];
         warn "Duplicate key '$word' in $filename\n" if exists($SUFFIXES{$word});
         my $suffix = convert_pron $pron, $word, '';
-        # If the first vowel of the suffix is stressed, the whole suffix should always
-        # be stressed, hence we prepend a stress marker in such cases
-        $suffix = "'$suffix" if $pron =~ /'/ && $suffix !~ /'/;
         $SUFFIXES{$word} = $suffix;
     }
 
@@ -1141,7 +1478,7 @@ sub unify_sounds {
     ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'U@', 'Ur', 'Ur', $tradspell, 1;
     # number, modern -> «er» (schwa vs. r-colored schwa)
     ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, '(?<![ei])@', '@`', '@`', $tradspell, 1;
-    # port, ignore, keyboard, floral -> «oar»
+    # port, ignore, keyboard, floral -> /or/ (once «oar», now simply «or»)
     ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'O:r?', 'or', 'or', $tradspell, 1;
     # sorry, tomorrow -> «orr»
     ($rp, $ga, $phoneng) = unify_sound $rp, $ga, $phoneng, 'Qr', 'O:r', 'Qr', $tradspell, 0;
@@ -1172,7 +1509,7 @@ sub choose_nearer_or_shorter {
     my ($first, $second, $tradspell) = @_;
     return $first unless $second;
 
-    my $comp = dist($first, $tradspell) <=> dist($second, $tradspell);
+    my $comp = dist(delapo($first), $tradspell) <=> dist(delapo($second), $tradspell);
     $comp = length($first) <=> length($second) unless $comp;
     return ($comp < 0) ? $first : $second;
 }
@@ -1182,37 +1519,44 @@ sub choose_nearer_or_shorter {
 # vowels where it's know to be unreliable.
 sub select_best {
     my ($converted_rp, $converted_ga, $converted_phoneng, $rp, $ga, $phoneng, $tradspell) = @_;
+    my $stripped_rp      = restore_apostrophe_and_strip_accents $converted_rp;
+    my $stripped_ga      = restore_apostrophe_and_strip_accents $converted_ga;
+    my $stripped_phoneng = restore_apostrophe_and_strip_accents $converted_phoneng;
 
     # Select the spelling that's nearest to tradspell
-    my $nearest = choose_nearer_or_shorter $converted_rp, $converted_ga, $tradspell;
-    $nearest = choose_nearer_or_shorter $nearest, $converted_phoneng, $tradspell;
+    my $nearest = choose_nearer_or_shorter $stripped_rp, $stripped_ga, $tradspell;
+    $nearest = choose_nearer_or_shorter $nearest, $stripped_phoneng, $tradspell;
 
     # If PhonEng is the nearest spelling, return it immediately
-    return $converted_phoneng if $converted_phoneng eq $nearest;
+    return $converted_phoneng if $stripped_phoneng eq $nearest;
+
+    my $nearest_w_accents = $nearest eq $stripped_rp ? $converted_rp : $converted_ga;
 
     # If the nearest spelling is similar to PhonEng, return it in some cases where it's
     # clearly preferably
-    if ($tradspell =~ /^a/i && $nearest =~ /^a/i && $converted_phoneng =~ /^e/i) {
-        # Keep initial 'a', e.g. «abreevi'aition» ‹abbreviation›, not «ebreevi'aition»
-        return $nearest if substr($nearest, 0, 1) . substr($converted_phoneng, 1) eq $nearest;
+    if ($tradspell =~ /^a/i && $nearest =~ /^a/i && $stripped_phoneng =~ /^e/i) {
+        # Keep initial 'a', e.g. «abreeviaition» ‹abbreviation›, not «ebreeviaition»
+        return $nearest_w_accents
+            if substr($nearest, 0, 1) . substr($stripped_phoneng, 1) eq $nearest;
     }
-    # Except in proper nounds, keep final 'ed' instead of 'id', e.g. «a'cursed« ‹accursed›
-    return $nearest if $converted_phoneng =~ s/id$/ed/r eq $nearest && $tradspell =~ /^[a-z]/;
-    # Keep 'e' if PhonEng has 'i' instead, e.g. «e'xentric» ‹eccentric›
-    return $nearest if $converted_phoneng =~ s/(?<![ao])i(?![aeu])/e/r eq $nearest;
+    # Except in proper nounds, keep final 'ed' instead of 'id', e.g. «acursed« ‹accursed›
+    return $nearest_w_accents
+        if $stripped_phoneng =~ s/id$/ed/r eq $nearest && $tradspell =~ /^[a-z]/;
+    # Keep 'e' if PhonEng has 'i' instead, e.g. «exentric» ‹eccentric›
+    return $nearest_w_accents if $stripped_phoneng =~ s/(?<![ao])i(?![aeu])/e/r eq $nearest;
     # Keep 'ess' if PhonEng has 'iss' instead, e.g. «sorseress» ‹sorceress›
-    return $nearest if $converted_phoneng =~ s/iss/ess/r eq $nearest;
-    # Keep 'i' if PhonEng has 'e' instead, e.g. «abdicait» ‹abdicate›, not «abdecait»
-    return $nearest if $converted_phoneng =~ s/e(?!'?r)/i/r eq $nearest;
-    # Keep 'i' if PhonEng has 'ee' instead, e.g. «is'tablish» ‹establish›
-    return $nearest if $converted_phoneng =~ s/ee/i/r eq $nearest;
-    # Keep 'tion' if PhonEng has 'chen' instead, e.g. «in'tention» ‹intention›
-    return $nearest if $converted_phoneng =~ s/chen/tion/r eq $nearest;
+    return $nearest_w_accents if $stripped_phoneng =~ s/iss/ess/r eq $nearest;
+    # Keep 'i' if PhonEng has 'e' instead, e.g. «ábdicait» ‹abdicate›, not «abdecait»
+    return $nearest_w_accents if $stripped_phoneng =~ s/e(?!'?r)/i/r eq $nearest;
+    # Keep 'i' if PhonEng has 'ee' instead, e.g. «istablish» ‹establish›
+    return $nearest_w_accents if $stripped_phoneng =~ s/ee/i/r eq $nearest;
+    # Keep 'tion' if PhonEng has 'chen' instead, e.g. «intention»
+    return $nearest_w_accents if $stripped_phoneng =~ s/chen/tion/r eq $nearest;
 
-    my $use_phoneng = $converted_phoneng ? 1 : 0;
+    my $use_phoneng = $stripped_phoneng ? 1 : 0;
 
     if ($use_phoneng) {
-        my $nearest_pron = $nearest eq $converted_rp ? $rp : $ga;
+        my $nearest_pron = $nearest eq $stripped_rp ? $rp : $ga;
 
         for my $vowel (qw/A O: Q/) {
             # Heuristic: PhonEng often confuses these tree vowels, hence we don't prefer it
@@ -1224,11 +1568,11 @@ sub select_best {
         }
     }
 
-    return $use_phoneng ? $converted_phoneng : $nearest;
+    return $use_phoneng ? $converted_phoneng : $nearest_w_accents;
 }
 
 # postprocess_suffixed ...: Postprocess a suffixed words, restoring original end-of-word spellings
-# (e.g. final "tion" in derived words such as «options, tra'ditionel, imoatio'naliti»
+# (e.g. final "tion" in derived words such as «options, traditionel, imoationaliti»
 # ‹...traditional, emotionality›.
 sub postprocess_suffixed {
     # XXX Split function into shorter parts
@@ -1244,41 +1588,50 @@ sub postprocess_suffixed {
         if $tradspell =~ /^(essayist|internist|presentist|progressist|teary)$/
         || $suffix =~ /^(ful|less)$/;
     my $conv_base_colref = lookup_part_entry($base, $tradspell, $pos_hint);
-    my $conv_base = restore_capitalization $conv_base_colref->[3], $tradspell;
-    my $conv_suffix = $SUFFIXES{$suffix};
+    my $conv_base        = restore_capitalization $conv_base_colref->[3], $tradspell;
+    my $conv_suffix      = $SUFFIXES{$suffix};
+    my $orig_conv_base   = $conv_base;
+    my $orig_conv_suffix = $conv_suffix;
 
     # XXX Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if (
         $suffix =~ /^(.bility|able|age|aholic|ance|ant|ary|ative|ate|atory|dom|en|ence|es|ent|er
-        |ess|est|ful|ing|ise|ish|ism|ist|ize|kinesis|l|less|let|ly|ment|morphism|ness|nik|n|oid
+        |ess|est|ful|ing|ise|ish|ism|ist|ize|l|less|let|ly|ment|morphism|ness|nik|n|oid
         |or|up|ry|s|shire|ward|y|zygous)$/x
         # ‹-ed› is irregular for non-verbs (e.g. «aj: blessed, v: blessd» ‹blessed›)
         || $suffix eq 'ed' && $pos_hint eq 'v'
         )
     {
         # ‹ate› is spoken in two different ways (/eIt/ or /It/) so we check which one to use
-        $conv_suffix = 'ait' if $suffix eq 'ate' && $converted =~ /ait$/;
+        $conv_suffix = 'ait' if $suffix eq 'ate' && $converted =~ /[aá]it$/;
 
         # Before suffixes starting with e/i/y, final «c» becomes «k»
         # (e.g. «practikebl» ‹practicable›)
-        $conv_base =~ s/c$/k/ if $conv_suffix =~ /^[eiy]/;
+        if ($conv_suffix =~ /^[eiy]/) {
+            $conv_base =~ s/c$/k/;
+        }
 
         # «d» (past tense) becomes «ed» after «d, t»
         $conv_suffix = 'ed' if $conv_suffix eq 'd' && $conv_base =~ /[dt]$/;
 
         # Schwa becomes audible in -ed+ly after certain consonants
-        $conv_base =~ s/d$/ed/
-            if $conv_suffix eq 'li'
+        if (
+               $conv_suffix eq 'li'
             && $conv_base !~ /ed$/
-            && ($tradspell =~ /[cgk]edly$/
-            || ($tradspell =~ /[nr]edly$/ && $conv_base =~ /(ain|air|rn|yn)d$/)
-            || ($tradspell =~ /ssedly$/   && $tradspell ne 'embarrassedly'));
+            && (   $tradspell =~ /[cgk]edly$/
+                || ($tradspell =~ /[nr]edly$/ && $conv_base =~ /(ain|air|rn|yn)d$/)
+                || ($tradspell =~ /ssedly$/   && $tradspell ne 'embarrassedly'))
+            )
+        {
+            $conv_base =~ s/d$/ed/;
+        }
 
+        $orig_conv_base = $conv_base;
         # Final «ment» becomes stressed before some suffixes
         if ($conv_base =~ /ment$/ && $suffix =~ /^(able|ative)$/) {
-            $conv_base =~ s/'//;
-            $conv_base =~ s/ment$/'ment/;
+            $conv_base = strip_acute_accents $conv_base;
+            $conv_base =~ s/ment$/mént/;
         }
 
         # An additional /g/ might become audible between final /N/ and some suffixes
@@ -1293,40 +1646,41 @@ sub postprocess_suffixed {
         # «s» (plural or third person singular) is written «es« after sibilants
         $conv_suffix = 'es' if $conv_suffix eq 's' && $conv_base =~ /([jsxz]|[csz]h)$/;
 
-        # «tys» ‹tise› becomes stressed before «ment»
-        # (e.g. «adver'tysment» ‹advertisement›)
-        if ($conv_base =~ /tys$/ && $suffix eq 'ment') {
-            $conv_base =~ s/'//;
-            $conv_base =~ s/tys$/'tys/;
-        }
-
         # Suffix «n» becomes «en» after some consonants
         $conv_suffix = 'en' if $conv_suffix eq 'n' && $conv_base =~ /[djkhlpstvy]$/;
 
-        # Omitted schwa before final «l» or «m» is restored in front of «ait/et, erri, ism,
+        # Omitted schwa before final «l» is restored in front of «ait/et, erri, ism,
         # ist, oid, ys» ‹ate, ary, ..., ise/ize› (as well as some irregular suffixes,
         # cf. below), unless the schwa is not spoken
-        $conv_base =~ s/(${LYTSPEL_CONSONANT})ssl$/$1sel/
-            || $conv_base =~ s/cl$/kel/
-            || $conv_base =~ s/(.)$/e$1/
-            if $conv_suffix =~ /^(ait|et|erri|ism|ist|oid|ys)$/
-            && $conv_base =~ /([bpdtfgcksz]l|(dh|s)m)$/
-            && $base !~ /^(cycle|simple)$/;
+        if (   $conv_suffix =~ /^(ait|et|erri|ism|ist|oid|ys)$/
+            && $conv_base =~ /[bcp]l$/
+            && $base !~ /^(cycle|simple)$/)
+        {
+            $conv_base =~ s/cl$/kel/ || $conv_base =~ s/(.)$/e$1/;
+        }
 
         # Rules for single-consonant suffix such as «d, n, s»
         if ($conv_suffix =~ /^[^$LYTSPEL_VOWELS]$/) {
             # Final «i» /i:/ becomes «ie» to prevent misreadings
-            $conv_base .= 'e' if $conv_base =~ /i$/;
+            if ($conv_base =~ /i$/) {
+                $conv_base .= 'e';
+            }
+
             # Final «o» /oU/ is restored to «oa»
-            $conv_base .= 'a' if $conv_base =~ /(?<!o)o$/;
+            if ($conv_base =~ /(?<!o)o$/) {
+                $conv_base .= 'a';
+            }
+
             # Final «u» /u:/ is restored to «uu»
-            $conv_base .= 'u' if $conv_base =~ /(?<!i)u$/;
+            if ($conv_base =~ /(?<!i)u$/) {
+                $conv_base .= 'u';
+            }
         }
 
         # Schwa at the start of suffixes is written «a» if the base word ends in /i:/ or /u:/
         substr $conv_suffix, 0, 1, 'a'
             if $conv_suffix =~ /^e[^er]/
-            && $conv_base =~ /(ee|i|[^i]u)$/;
+            && $conv_base =~ /([eé]e|[iuú])$/;
 
         # The suffix ‹ary› is spoken «eri» /s@`i/ in some words (most of them are listed as
         # non-compounds, but after final «ss» they must be treated as compounds to ensure
@@ -1340,10 +1694,24 @@ sub postprocess_suffixed {
             && $tradspell =~ /([^g]ery|dgery)$/
             && $tradspell !~ /(comradery|enginery|riflery)/;
 
-        # Strip stress marker from base word if the suffix contains another one
-        $conv_base =~ s/'// if $conv_suffix =~ /'/;
+        $orig_conv_base = $conv_base;
+        if ($suffix =~ /^(.bility|aholic)$/) {
+            # Strip stress marker from base word if the suffix is one of the stressed ones
+            $conv_base = strip_acute_accents $conv_base;
+        } elsif ($suffix =~ /^(morphism|zygous)/) {
+            # Likewise, but in this case we need to add a stress marker to the first long
+            # vowel in the suffix if the main word also contains long vowels
+            # (not needed after prefixes, as they are considered unstressed)
+            $conv_base = strip_acute_accents $conv_base;
 
-        return "$conv_base$conv_suffix";
+            if (has_long_vowel $conv_base && !exists($PREFIXES{$conv_base})) {
+                $conv_suffix = stress_vowel $conv_suffix, 0;
+            }
+        }
+
+        my $compound = "$conv_base$conv_suffix";
+        $Stress_Marked_Dict{$compound} = "$orig_conv_base$orig_conv_suffix";
+        return $compound;
     }
 
     # Restore end-of-word spellings in potentially irregular suffixed forms.
@@ -1352,25 +1720,35 @@ sub postprocess_suffixed {
     # Not anchored to end of word because of indirect derivates such as ‹emotionality,
     # expressionistic›
     if ($conv_base =~ /tion/) {
-        # Restore «tion» (shen), e.g. «tra'ditionel» ‹traditional›
+        # Restore «tion» (shen), e.g. «traditionel» ‹traditional›
         $converted =~ s/(.*)shen/$1tion/
-            || $converted =~ s/(.*)sho'n/$1tio'n/
+            || $converted =~ s/(.*)shon/$1tion/
             || warn "No match: $converted ($tradspell) from $conv_base";
+
+        # No stress marker needed before -tion as that's the general rule
+        if ($converted =~ /${Acute_Accent}.{0,2}tion/i) {
+            $converted = strip_acute_accents $converted;
+        }
     } elsif ($conv_base =~ /sion/) {
-        # Restore «sion» (zhen), e.g. «o'caisionel» ‹occasional›
+        # Restore «sion» (zhen), e.g. «ocaisionel» ‹occasional›
         $converted =~ s/(.*)[zs]hen/$1sion/
-            || $converted =~ s/(.*)zho'n/$1sio'n/
+            || $converted =~ s/(.*)zhon/$1sion/
             || warn "No match: $converted ($tradspell) from $conv_base";
+
+        # No stress marker needed before -sion as that's the general rule
+        if ($converted =~ /${Acute_Accent}.{0,2}sion/i) {
+            $converted = strip_acute_accents $converted;
+        }
     }
 
     if ($conv_base =~ /all$/) {
-        # Restore final «all», e.g. «spal'laition» ‹spallation› from «spall»
-        $converted =~ s/(.*)au('?)l/$1al$2l/;
+        # Restore final «all», e.g. «spallaition» ‹spallation› from «spall»
+        $converted =~ s/aul/all/;
     } elsif ($conv_base =~ /k$/ && ($conv_suffix !~ /^([eiY]|d$)/ || $suffix eq 'al')) {
-        # Restore final «k», e.g. «embar'kaition« ‹embarkation›
+        # Restore final «k», e.g. «embarkaition« ‹embarkation›
         $converted =~ s/(.*)c/$1k/ || warn "No match: $converted ($tradspell) from $conv_base";
     } elsif ($conv_base =~ /[^o]o$/ && $conv_base !~ /oa/ && $suffix ne 'an') {
-        # Restore final «o» /oU/, e.g. «heelio'taxiss» ‹heliotaxis›
+        # Restore final «o» /oU/, e.g. «heeliotáxiss» ‹heliotaxis›
         $converted =~ s/(.*)oa/$1o/;
     } elsif ($conv_base =~ /s$/ && $converted =~ /z(ian|icl)$/) {
         # Restore final «s», e.g. «Hobsian» ‹Hobbesian›
@@ -1378,47 +1756,56 @@ sub postprocess_suffixed {
     } elsif ($conv_base =~ /sh$/ && $converted =~ /tion$/) {
         # Restore final «sh»: «Sailishen» ‹Salishan›
         $converted =~ s/tion$/shen/;
+        # Delete stress marker if it's not unnecessary ("shen" has other rules than "tion")
+        $converted = do_mark_stress $converted;
     } elsif ($conv_base =~ /ss$/) {
-        # Restore final «ss», e.g «ri'sponssebl, puls'saition» ‹responsible, pulsation›
+        # Restore final «ss», e.g «rispónssebl, pulssaition» ‹responsible, pulsation›
         if ($converted !~ /ss|tion$|shel$/ || $converted =~ /caition$/) {
             my $suffix_start = $1;
             $converted =~ s/(.*)[cs]([eiY])/$1ss$2/
                 || warn "No match: $converted ($tradspell) from $conv_base";
-            $converted =~ s/'ss/s's/;  # Fix stress marker, if needed
-        } elsif ($converted =~ /[^s]'saition$/) {
-            $converted =~ s/'saition$/s'saition/;
+        } elsif ($converted =~ /[^s]saition$/) {
+            $converted =~ s/saition$/ssaition/;
         }
-    } elsif ($conv_base =~ /ssl$/ && $suffix eq 'ation') {
-        # Restore final «ssl», e.g. «canss'laition» ‹cancellation›
-        $converted =~ s/se'laition/ss'laition/;
-    } elsif ($conv_base =~ /[^ao]y$/) {
-        # Restore final «y», e.g. «di'nyel» ‹denial›
-        $converted =~ s/(.*)ai/$1y/ || warn "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /[^aáoó]y$/) {
+        # Restore final «y», e.g. «Perragwyen» ‹Paraguayan›
+        $converted =~ s/(.*)iy/$1y/ || warn "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /ý$/) {
+        # Restore final «ý», e.g. «dinýel» ‹denial›
+        $converted =~ s/(.*)iy/$1ý/ || warn "No match: $converted ($tradspell) from $conv_base";
     } elsif ($conv_base =~ /s'?s/ && $converted !~ /s'?s/) {
         # Restore «ss» in the middle of words (including some special cases), e.g.
         # «classicl» ‹classical›
-               $converted =~ s/('?)c([eiY])/s$1s$2/
-            || $converted =~ s/counsil/counssl/
+        $converted =~ s/c([eiy])/ss$1/
             || $converted =~ s/Ys/Yss/
-            || $converted =~ s/n('?)si/ns$1si/;
-    } elsif ($conv_base =~ /kw/ && $converted !~ /k'?w/) {
-        # Restore «kw» in the middle of words: «Pik'wikian» ‹Pickwickian›
-        $converted =~ s/('?)qu/k$1w/ || warn "No match: $converted ($tradspell) from $conv_base";
-    } elsif ($conv_base =~ /oic/ && $converted =~ /o-i/) {
-        # Restore «oic», e.g. «stoicl« ‹stoical›
-        $converted =~ s/(.*)o-i/$1oi/;
-    } elsif ($conv_base =~ /msi/ && $converted !~ /m'?si/) {
-        # Restore «msi» in the middle of words: «wimsi'caliti» ‹whimsicality›
+            || $converted =~ s/nsi/nssi/;
+    } elsif ($conv_base =~ /kw/ && $converted !~ /kw/) {
+        # Restore «kw» in the middle of words: «Pikwíkian» ‹Pickwickian›
+        $converted =~ s/qu/kw/ || warn "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /oic/ && $converted =~ /oï/) {
+        # Restore «oic» without diaeresis, e.g. «stoicl« ‹stoical›
+        $converted =~ s/oï/oi/;
+    } elsif ($conv_base =~ /msi/ && $converted !~ /msi/) {
+        # Restore «msi» in the middle of words: «whimsicaliti» ‹whimsicality›
         $converted =~ s/mzi/msi/ || warn "No match: $converted ($tradspell) from $conv_base";
+    } elsif ($conv_base =~ /nk/ && $converted !~ /nk/) {
+        # Restore «nk» in the middle of words, e.g. «conkoidel» ‹conchoidal›
+        $converted =~ s/nc/nk/ || warn "No match: $converted ($tradspell) from $conv_base";
     }
-    # If the derived word starts with «e» (not «er») and the base word with another short
-    # vowel (except «i»), use the latter, e.g. «conside'raition» ‹consideration› from
-    # «con'sider»
-    if ($converted =~ /^$LYTSPEL_CONSONANT_POST_PROC*e(?!'?[er])/i) {
-        my ($pre_cons, $first_base_vowel) =
-            $conv_base =~ /^($LYTSPEL_CONSONANT*)([$LYTSPEL_VOWELS]+)/i;
 
-        if ($first_base_vowel !~ /^[ei]$/i) {
+    if ($conv_base =~ /th/i && $converted =~ /dh/i) {
+        # Fix derivates from «ther», e.g. «botheraition» ‹botheration›
+        $converted =~ s/dh/th/ || warn "No match: $converted ($tradspell) from $conv_base";
+    }
+
+    # If the derived word starts with «e» (not «er») and the base word with another short
+    # vowel (except «i»), use the latter, e.g. «consideraition» ‹consideration› from
+    # «consíder»
+    if ($converted =~ /^$LYTSPEL_CONSONANT_POST_PROC*e(?![er])/i) {
+        my ($pre_cons, $first_base_vowel) =
+            $conv_base =~ /^($LYTSPEL_CONSONANT_POST_PROC*)([aeiouyáéíóúýäëïöü])/i;
+
+        if ($first_base_vowel !~ /^[eiéíëï]$/i) {
             if ($pre_cons =~ /c$/) {
                 # Also change «k» preceding the vowel back to «c»
                 $converted =~ s/ke/c$first_base_vowel/;
@@ -1428,41 +1815,30 @@ sub postprocess_suffixed {
         }
     }
 
-    # Schwa before stressed vowel may be represented by any short vowel, but if it's written
-    # «e» in the base word, it shouldn't become a different vowel in a stress-shifted
-    # derived form, hence we correct such cases (except for blacklisted words)
-    if (
-        $converted =~ /(ss|c|qu|[$LYTSPEL_VOWELS]{1,2})? ([aiou]) ((?!'?r)
-                          $LYTSPEL_CONSONANT_POST_PROC*')/x
-        && !exists($DONT_CONVERT_E_BEFORE_STRESS_SREF->{lc $tradspell})
-        && $tradspell !~ /ographic$/
-        )
-    {
-        my $pre_vowel = $1 || '';
+    # Deal with cases where the derivate has an accent, but not the base word
+    if ($converted =~ /$Acute_Accent/i && $conv_base !~ /$Acute_Accent/i) {
+        if ($converted =~ /^$Acute_Accent/i) {
+            # Initial accent can be deleted, e.g. «endian» from «end»
+            $converted = strip_acute_accents $converted;
+        } elsif ($converted =~ /^(.*$Acute_Accent)/i) {
+            my $conv_start = $1;
+            my $stress_marked_conv_base =
+                   $Stress_Marked_Dict{$conv_base}
+                || $Stress_Marked_Dict{lc $conv_base}
+                || $Stress_Marked_Dict{ucfirst $conv_base};
+            if (!defined($stress_marked_conv_base)) {
+                warn "No stress-marked version found for $conv_base\n";
+                $stress_marked_conv_base = $conv_base;
+            }
 
-        # Skip if the vowel is just the second letter of a digraph
-        unless ($pre_vowel =~ /^[$LYTSPEL_VOWELS]$/) {
-            my $vowel        = $2;
-            my $post_vowel   = $3;
-            my $conv_e_count = () = $converted =~ /$PLAIN_E/g;
-            my $base_e_count = () = $conv_base =~ /$PLAIN_E/g;
-
-            # Subtract 1 'e' if occurs in the suffix
-            --$conv_e_count if $conv_suffix =~ /$PLAIN_E/ && $converted =~ /$conv_suffix$/;
-
-            if ($base_e_count > $conv_e_count) {
-                my $pre_mod = $pre_vowel;
-
-                # «ss» before «a/o/u» becomes «c» before «e», while «c» becomes «k»
-                unless ($vowel eq 'i') {
-                    $pre_mod = 'c' if $pre_vowel eq 'ss';
-                    $pre_mod = 'k' if $pre_vowel eq 'c';
-                }
-
-                # Replace the short vowel by «e»
-                $converted =~ s/$pre_vowel$vowel$post_vowel/${pre_mod}e$post_vowel/
-                    || warn
-                    "Cannot normalize schwa before stressed vowel in $converted ($tradspell)";
+            if ($stress_marked_conv_base =~ /^$conv_start/i) {
+                # If the accent was only removed from the original word since it's not needed,
+                # but it was originally in the same place as in the derivate, we can remove it
+                # from the latter was well – e.g. «discriminetori» ‹discriminatory› from
+                # «discriminait» ‹discriminate›. But we excluse words ending in «ic» such as
+                # «cóleric» ‹choleric› because of the special stress rules defined for
+                # this ending.
+                $converted = strip_acute_accents $converted unless $converted =~ /ic$/;
             }
         }
     }
@@ -1514,13 +1890,11 @@ sub convert_row {
 
             # Omit GA if identical to RP
             $converted_ga = '' if $converted_ga eq $converted_rp;
-            $converted = select_best $converted_rp, $converted_ga, $converted_phoneng,
+            $converted    = select_best $converted_rp, $converted_ga, $converted_phoneng,
                 $rp, $ga, $phoneng, $tradspell;
         }
     } else {
-        # Return compound after discarding a spurious hyphen that might have been added before
-        # the stress marker
-        $compound =~ s/-'/'/;
+        # Return compound
         $converted = $compound;
     }
 
@@ -1570,22 +1944,23 @@ sub lookup_part_entry {
                 || ($part eq 'concert'      && $tradspell =~ /er$/)
                 || ($part =~ /^mou(se|th)$/ && $tradspell !~ /^$part(ed|e?r|ing|y)$/)
                 || ($part eq 'sow'          && $tradspell =~ /^sowb/)
+                || $tradspell =~ /^counter/
                 || $tradspell =~ /^(discounter|fluidextract|internship|rebeldom|omnipresent|
-                    subcompact|teardrop|semidesert)$/x;
+                    reentrance|subcompact|teardrop|semidesert)$/x;
             $pos = 'prp' if $part eq 'i';
         }
 
-        $key = gen_key $part, $pos;
+        $key           = gen_key $part, $pos;
         $unconv_colref = $UNCONVERTED_DICT_REF->{$key};
 
         # XXX Simplify this code
         unless ($unconv_colref) {
             # Use 'n' or else 'aj' as fallback
-            $key = gen_key $part, 'n';
+            $key           = gen_key $part, 'n';
             $unconv_colref = $UNCONVERTED_DICT_REF->{$key};
 
             unless ($unconv_colref) {
-                $key = gen_key $part, 'aj';
+                $key           = gen_key $part, 'aj';
                 $unconv_colref = $UNCONVERTED_DICT_REF->{$key};
                 die "No entry found for $key\n" unless $unconv_colref;
             }
@@ -1606,7 +1981,32 @@ sub lookup_part_entry {
 # of a compound to prevent misreading.
 sub hyphen_needed {
     my ($first, $second) = @_;
-    return ($first =~ /o$/i && $second =~ /^[aiou]/i) || ($first =~ /i$/i && $second =~ /^u/i);
+    return ($first =~ /o$/i && $second =~ /^([iou]|a(?!i))/i);
+}
+
+# combine_with_stress_adjusted $first, $second, $part_to_stress: Combine a two-part
+# combination (prefix + main word) into one, adjusting the stress depending on
+# $part_to_stress, which must be 1 or 2.
+sub combine_with_stress_adjusted {
+    my ($first, $second, $part_to_stress) = @_;
+    die "Invalid part_to_stress: $part_to_stress:\n" unless grep /$part_to_stress/, (1, 2);
+    my $part_to_change = $part_to_stress == 1 ? $first : $second;
+
+    if ($part_to_stress == 1) {
+        # Add stress marker on prefix
+        my $first_lower    = lc $first;
+        my $first_stressed = find_default_stress $first_lower;
+
+        # Restore case if needed
+        $first_stressed = ucfirst $first_stressed if $first_lower ne $first;
+
+        # Remove stress marker from main word
+        $second = strip_acute_accents $second;
+        return "$first_stressed$second";
+    } else {
+        # Simple join both parts into one
+        return "$first$second";
+    }
 }
 
 # handle_compound $colref, $parts, $tradspell: Handle a compound or derived form. Contractions
@@ -1656,7 +2056,10 @@ sub handle_compound {
 
         # ‹'ll, 're, 've› lose their second letter, other contractions remain unchanged
         $second_lytspel = $second =~ /^'..$/ ? substr($second, 0, -1) : $second;
-        return "$first_lytspel$second_lytspel";
+
+        $compound = "$first_lytspel$second_lytspel";
+        $Stress_Marked_Dict{$compound} = $compound;
+        return $compound;
     }
 
     return undef unless $parts;
@@ -1668,73 +2071,29 @@ sub handle_compound {
         my $second_conv_colref = lookup_part_entry $second, $tradspell, $pos;
         die "First part $first of compound $tradspell not found\n"   unless $first_conv_colref;
         die "Second part $second of compound $tradspell not found\n" unless $second_conv_colref;
-        $first_lytspel = restore_capitalization $first_conv_colref->[3], $tradspell;
+        $first_lytspel  = restore_capitalization $first_conv_colref->[3], $tradspell;
         $second_lytspel = lc $second_conv_colref->[3];
 
         # Capitalize second part of words with inner capitalization
         $second_lytspel = ucfirst($second_lytspel) if $tradspell =~ /^[A-Z][a-z]+[A-Z]/;
         $first_lytspel = "$first_lytspel-" if hyphen_needed($first_lytspel, $second_lytspel);
+        my $orig_compound = "$first_lytspel$second_lytspel";
+
+        if ($first_lytspel =~ /^$Acute_Accent/i && exists $Treat_As_Prefix{$first}) {
+            # A few words are actually prefexes when they occur in this position, and so they
+            # lose the accent on their first letter
+            $first_lytspel = strip_acute_accents $first_lytspel;
+        }
+
         $compound = "$first_lytspel$second_lytspel";
-
-        # If the compound contains two stress markers, we keep just the second one
-        $compound =~ s/'// if $compound =~ /'.*'/;
-
-        if ($compound =~ /'/) {
-            # Compound already contains a stress marker
-
-            if ($compound_stress eq '1' || exists($STRESS_BEFORE{$second})) {
-                # Strip stress marker from 2nd part
-                $second_lytspel =~ s/'//;
-                return "$first_lytspel$second_lytspel";
-            } elsif ($compound_stress eq '2'
-                || exists($STRESS_IF_SECOND{$second})
-                || exists($STRESS_AFTER{$first}))
-            {
-                # Strip stress marker from 1st part
-                $first_lytspel =~ s/'//;
-                # Add marker before 2nd part (unless it already contains one)
-                return $second_lytspel =~ /'/
-                    ? "$first_lytspel$second_lytspel"
-                    : "$first_lytspel'$second_lytspel";
-            } else {
-                # Retain marker and consider stress settled (unless the first part is
-                # «i'lectro» ‹electro› -- check below which part carries the main stress)
-                return $compound unless $first eq 'electro';
-            }
-        }
-
-        # If this word is listed as a special case, we return it and are done
-        return $compound if $compound_stress eq '1';
-
-        # Insert stress marker before second part if appropriate
-        $compound = "$first_lytspel'$second_lytspel"
-            if exists($STRESS_AFTER{$first})
-            || exists($STRESS_IF_SECOND{$second})
-            || $compound_stress eq '2';
-
-        if (exists($STRESS_VARIES_IF_FIRST{$first})) {
-            # Check pronunciation to find out which part to stress
-            my $pron = $colref->[5] || $colref->[3];  # prefer PhonEng, use RP as fallback
-
-            # In ‹electro...› combinations, we discard the first sound (vowel), since it's
-            # never stressed
-            $pron = substr($pron, 1) if $first eq 'electro';
-
-            if ($pron =~ /[$SAMPA_VOWELS].*'/) {
-                # If a vowel occurs before the stress marker, we assume that the 2nd part is
-                # stressed (in case of ‹electro...› combinations, it may already contain a
-                # stress marker)
-                $first_lytspel =~ s/'//;  # convert «i'lectro» to «ilectro»
-                $compound = "$first_lytspel'$second_lytspel" unless $second_lytspel =~ /'/;
-            }
-        }
-
+        $Stress_Marked_Dict{$compound} = $orig_compound;
         return $compound;
     } else {
         # Otherwise it should be a prefixed or suffixed word (separated by '=')
         my ($first, $second) = split /=/, $parts;
         my $stress_hint;
-        my $suffixed = 0;
+        my $suffixed        = 0;
+        my $prefix_is_short = 0;
 
         unless ($second) {
             warn "Invalid compound definition for $tradspell: $parts\n";
@@ -1748,9 +2107,14 @@ sub handle_compound {
         }
 
         if (exists $PREFIXES{$first}) {
-            $first_lytspel = restore_capitalization $PREFIXES{$first}->[0], $tradspell;
-            $stress_hint = $PREFIXES{$first}->[1];
+            $first_lytspel   = restore_capitalization $PREFIXES{$first}->[0], $tradspell;
+            $stress_hint     = $PREFIXES{$first}->[1];
+            $prefix_is_short = $PREFIXES{$first}->[2];
         }
+
+        # ‹disability› and similar prefix+"ability" compounds: treat second part as regular
+        # word rather than suffix
+        $second_lytspel = '' if $second eq 'ability' && $first_lytspel;
 
         # The part not yet defined must be a regular entry
         unless ($first_lytspel) {
@@ -1769,9 +2133,9 @@ sub handle_compound {
             $second_lytspel = lc $second_conv_colref->[3];
         }
 
-        # /aI/ is written «ai» before vowels: adjust at the end of prefixes such as
+        # /aI/ is written «iy» before vowels: adjust at the end of prefixes such as
         # «by» ‹bi›
-        $first_lytspel =~ s/y$/ai/
+        $first_lytspel =~ s/y$/iy/
             if $stress_hint
             && $first_lytspel =~ /[^ao]y$/
             && $second_lytspel !~ /^'?$LYTSPEL_CONSONANT_POST_PROC/;
@@ -1786,7 +2150,7 @@ sub handle_compound {
         $first_lytspel = 'i' if $first_lytspel eq 'ir' && $second_lytspel =~ /^r/ && $stress_hint;
 
         if ($stress_hint && $suffixed && $first =~ /^(out|post)$/) {
-            # Combination of "out" or "post" with a suffix are converted like non-compounds
+            # Combinations of "out" or "post" with a suffix are converted like non-compounds
             return undef;
         }
 
@@ -1803,14 +2167,19 @@ sub handle_compound {
         }
 
         $first_lytspel = "$first_lytspel-" if hyphen_needed($first_lytspel, $second_lytspel);
-        $compound = "$first_lytspel$second_lytspel";
+        $compound      = "$first_lytspel$second_lytspel";
+        my $orig_compound = "$first_lytspel$second_lytspel";
 
-        if ($stress_hint eq '1' || $compound_stress eq '1') {
-            $second_lytspel =~ s/'//;  # delete stress marker from 2nd part, if any
+        if (!$prefix_is_short || $second =~ /^(s|e[ds]|ing)$/) {
+            # Long prefix or combination of prefix with one of the most basic suffixes:
+            # combine both parts without changing anything
             $compound = "$first_lytspel$second_lytspel";
+        } elsif ($stress_hint eq '1' || $compound_stress eq '1') {
+            # Assume that prefix is stressed if this is requested or if the second part
+            # is a suffix
+            $compound = combine_with_stress_adjusted $first_lytspel, $second_lytspel, 1;
         } elsif ($stress_hint eq '2' || $compound_stress eq '2') {
-            # Insert stress marker before 2nd part (unless it already contains one)
-            $compound = "$first_lytspel'$second_lytspel" unless $second_lytspel =~ /'/;
+            $compound = combine_with_stress_adjusted $first_lytspel, $second_lytspel, 2;
         } elsif ($stress_hint eq 'A') {
             # Check pronunciation to find out which part to stress
             my $pron = $colref->[5] || $colref->[3];  # prefer PhonEng, use RP as fallback
@@ -1818,15 +2187,15 @@ sub handle_compound {
             if ($pron =~ /[$SAMPA_VOWELS].*'/) {
                 # If a vowel occurs before the stress marker, we assume that the 2nd part is
                 # stressed
-                $compound = "$first_lytspel'$second_lytspel" unless $second_lytspel =~ /'/;
+                $compound = combine_with_stress_adjusted $first_lytspel, $second_lytspel, 2;
             } else {
-                $second_lytspel =~ s/'//;  # delete stress marker from 2nd part, if any
-                $compound = "$first_lytspel$second_lytspel";
+                $compound = combine_with_stress_adjusted $first_lytspel, $second_lytspel, 1;
             }
         } else {
             warn "Entry '$tradspell' has invalid stress hint: '$stress_hint'\n";
         }
 
+        $Stress_Marked_Dict{$compound} = $orig_compound;
         return $compound;
     }
 
@@ -1843,6 +2212,17 @@ sub warn_unprocessed_entries {
             || exists $processed_dictref->{gen_key($key, 'v')}
             || exists $processed_dictref->{gen_key($key, 'aj')};
     }
+}
+
+# output_line $outfh, $aref: Print $aref (string array) to $outfh in CSV format.
+# The function 'convert_hyphens_to_diaereses' is only called when this happens
+# to make it work acress part boundaries (e.g. «Afroäishiatic» ‹Afroasiatic›) and so
+# that we can know that interally diaereses are only used on accented vowels.
+sub output_line {
+    my ($outfh, $aref) = @_;
+    my @fields = @$aref;
+    $fields[3] = convert_hyphens_to_diaereses $fields[3] if $fields[3];
+    $CSV_OUT->print($outfh, \@fields);
 }
 
 # convert_dict: Convert SAMPA spellings to Lytspel.
@@ -1865,19 +2245,19 @@ sub convert_dict {
                 my $alt_colref  = $CONVERTED_DICT_REF->{$prefix};
 
                 unless ($alt_colref && $alt_colref->[3] eq $conv_prefix) {
-                    $CSV_OUT->print($outfh, [$key, '', '', "$conv_prefix-"]);
+                    output_line($outfh, [$key, '', '', "$conv_prefix-"]);
                 }
 
             } elsif (scalar @$colref < 4) {
                 # Redirect: Nothing to convert, just output and store line as is
                 # (unless the custom dictionary says the entry should be deleted)
-                my $tradspell = $colref->[0];
+                my $tradspell    = $colref->[0];
                 my $custom_entry = $CUSTOM_DICT_REF->{lc $tradspell} // '';
 
                 if ($custom_entry eq 'D') {
                     $PROCESSED_CUSTOM_SET{lc $tradspell} = 1;
                 } else {
-                    $CSV_OUT->print($outfh, $colref);
+                    output_line($outfh, $colref);
                     $CONVERTED_DICT_REF->{$key} = $colref;
                 }
             }
@@ -1888,14 +2268,13 @@ sub convert_dict {
         my $conv_colref = $CONVERTED_DICT_REF->{$key};
         if ($conv_colref) {
             # Word has already been converted
-            $CSV_OUT->print($outfh, $conv_colref);
+            output_line($outfh, $conv_colref);
             next;
         }
 
         $conv_colref = convert_row $colref, $colref->[0];
         $CONVERTED_DICT_REF->{$key} = $conv_colref;
-        $CSV_OUT->print($outfh, $conv_colref) if $conv_colref;
-
+        output_line($outfh, $conv_colref) if $conv_colref;
     }
 
     close $outfh;
