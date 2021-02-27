@@ -64,8 +64,9 @@ it out aloud and you'll soon get the hang of it.
 > autumn moon. Look out, I shout, for he's foiled you yet again, creating
 > chaos.
 
+## The Rules of Lytspel
 
-## Conventions and Abbreviations
+### Conventions and Abbreviations
 
 The following formatting conventions are used in this document:
 
@@ -85,7 +86,7 @@ Abbreviations used:
   English as typically spoken in the United States
 
 
-## Consonants
+### Consonants
 
 The consonants are written as follows:
 
@@ -170,7 +171,7 @@ The two sounds traditionally written ‹th› are represented as follows:
   spelling is unambiguous.
 
 
-## Vowels
+### Vowels
 
 The short vowels are written as follows:
 
@@ -251,7 +252,7 @@ The long vowels and diphthongs are written as follows:
   «y» /j/ (as in «yet»).
 
 
-## The Schwa
+### The Schwa
 
 The schwa is an unstressed and neutral vowel that occurs frequently in
 English words. Lytspel generally writes it as «e» or «u». «u» is used
@@ -294,7 +295,7 @@ Since all these consonant pairs never occur *without* an intervening vowel
 at the end of words, there is no risk of confusion.
 
 
-## Vowel Spellings before R
+### Vowel Spellings before R
 
 Before «r», the short vowels are spelled as follows:
 
@@ -337,7 +338,7 @@ The long vowels are spelled thus:
   spiral›)
 
 
-## Spellings Involving Several Sounds
+### Spellings Involving Several Sounds
 
 * The vowel combination /i:@/ or /I@/ is written «ia», e.g. «misteeriass,
   mateerial, meediam, óbviass, vairiabl, airia, imeediat» ‹mysterious,
@@ -385,7 +386,7 @@ The long vowels are spelled thus:
   melancholy, nomenclature›.
 
 
-## Spellings Used at the End of Words
+### Spellings Used at the End of Words
 
 Some sound combinations are written in a special way if they occur at the
 end of words:
@@ -407,7 +408,7 @@ end of words:
   ‹national› from «naition» ‹nation›).
 
 
-## Stress
+### Stress
 
 Stress is marked using an acute accent in cases where it deviates from the
 stress pattern predicted by a set of fairly reliable rules. The use of
@@ -455,7 +456,7 @@ accent is added on top of the first one, e.g. «maintáin, uenéek» ‹maintain
 unique›.
 
 
-## Homophones and Irregular Words
+### Homophones and Irregular Words
 
 * The vowels in the articles «the, a, an» retain their traditional
   spelling.
@@ -471,7 +472,7 @@ unique›.
   from «tu» ‹to›.
 
 
-## Rules for Derived and Related Words
+### Rules for Derived and Related Words
 
 * In front of suffixes starting with «e, i, y», final «c» is changed to
   «k», e.g. «trafiking» ‹trafficking› from «trafic» ‹traffic›.
@@ -588,7 +589,7 @@ Stress marking in derived words:
   removed, e.g. «nónsenss, prívue» ‹nonsense, preview›.
 
 
-## Disambiguating Multigraphs
+### Disambiguating Multigraphs
 
 **Note:** This section is of interest mainly to dictionary makers. Users
 only need to know that they should add a diaeresis if a vowel sequence
@@ -645,7 +646,7 @@ sequence could be misread, a hyphen may be added, e.g. «sheeps-hed»
   separator helpful to prevent misreadings or confusion.
 
 
-## Spelling of Proper Nouns
+### Spelling of Proper Nouns
 
 * Proper nouns that are in widespread and general use should preferably be
   respelled, e.g. «Lunden, Juupiter, Micicípi» ‹London, Jupiter,
