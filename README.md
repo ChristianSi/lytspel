@@ -64,9 +64,8 @@ it out aloud and you'll soon get the hang of it.
 > autumn moon. Look out, I shout, for he's foiled you yet again, creating
 > chaos.
 
-## The Rules of Lytspel
 
-### Conventions and Abbreviations
+## The Rules of Lytspel
 
 The following formatting conventions are used in this document:
 

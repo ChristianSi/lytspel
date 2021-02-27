@@ -112,7 +112,7 @@ def build_page_dict() -> 'OrderedDict[str, PageData]':
     # pylint: disable=too-many-locals
     result = OrderedDict()  # type: OrderedDict[str, PageData]
     readme = readfile('README.md')
-    idea, rest = split_at(readme, '## Conventions')
+    idea, rest = split_at(readme, '## The Rules of Lytspel')
     # Replace title
     title = 'Idea and Motivation'
     idea = replace_first_line(idea, '# ' + title)
@@ -125,18 +125,6 @@ def build_page_dict() -> 'OrderedDict[str, PageData]':
 
     # Returning to the README
     rules, rest = split_at(rest, '## International')
-    # Move the second section header in the Rules fragment up, replacing the first one
-    rulelines = rules.splitlines()
-    idx = 0
-    for idx, line in enumerate(rulelines):
-        if idx and line.startswith('## '):
-            break
-    if idx:
-        header_line = rulelines.pop(idx)
-        rulelines[0] = header_line
-    rules = '\n'.join(rulelines)
-    # Boldface first "stress"
-    rules = rules.replace('stress', '**stress**', 1)
     result['rules'] = PageData('Complete Ruleset', markdown_markup(rules, move_headers_up=True))
 
     intl, rest = split_at(rest, '## Limitations')
