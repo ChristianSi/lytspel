@@ -7,12 +7,12 @@ Congress](http://spellingsociety.org/international-english-spelling-congress)
 organized by the [English Spelling Society](http://spellingsociety.org/).
 
 All selected schemes can be
-[downloaded](http://spellingsociety.org/miscellaneous#IESC) from the
-Society's website. Discussion of the proposed schemes is possible on the
-[blog of the Spelling Society](http://spellingsociety.org/blog) or [on
-Reddit](https://www.reddit.com/r/TheEnglishSpellingSoc/). Soon the final
-session of the Congress will take place and participants will vote on their
-final choice – to join in the decision, you have to fill out an
+[downloaded](http://spellingsociety.org/international-english-spelling-congress)
+from the Society's website. Discussion of the proposed schemes is possible
+on the [blog of the Spelling Society](http://spellingsociety.org/blog) or
+[on Reddit](https://www.reddit.com/r/TheEnglishSpellingSoc/). Soon the
+final session of the Congress will take place and participants will vote on
+their final choice – to join in the decision, you have to fill out an
 [application
 form](http://spellingsociety.org/international-english-spelling-congress-application).
 
