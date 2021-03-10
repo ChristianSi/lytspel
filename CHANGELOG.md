@@ -3,6 +3,13 @@
 ## [Unreleased]
 
 
+## [2.0.1] -- 2021-03-10
+
+* Add and correct some dictionary entries.
+* Add some details to the two-page overview.
+* Web app: add anchors to section headers.
+
+
 ## [2.0.0] -- 2021-02-26
 
 * Incorporate changes from two surveys held in early 2021, see
