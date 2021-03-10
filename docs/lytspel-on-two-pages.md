@@ -21,11 +21,13 @@ PDF](lytspel-on-two-pages.pdf).
 
 The schwa is usually written as «e» («cam**e**l, com**e**n» ‹...common›) or
 «u» («álb**u**m, nurv**u**ss» ‹...nervous›), but as «a» at the end of words
-(«extr**a**»).
+(«extr**a**»). A schwa immediately before the stressed syllable can be
+represented by any of the five main vowel letters, e.g. «a» in «about», «o»
+in «compuet» ‹compute›.
 
 The other vowels are written as expected («c**a**t, p**e**n, b**i**g,
-d**o**g, cl**u**b»). These five vowels and «oo» are considered short, all
-others are long.
+d**o**g, cl**u**b»). These five vowels as well as «oo» and the schwa are
+considered short, all others are long.
 
 ¹ Second spelling used at the end of words and before other vowels.
 
@@ -41,10 +43,10 @@ vowel.
 * «g» as in «big»
 * «j» as in «joy»
 * «ng» as in «long»
-* «zh» as in «miraazh» ‹mirage›
 * «w» as in «west»
 * «wh» as in «when» – many people speak this like «w», but not everybody
   does
+* «zh» as in «miraazh» ‹mirage›
 
 /k/ is written
 
@@ -70,8 +72,8 @@ vowel.
 
 /T/ and /D/:
 
-* Voiceless /T/ is always «th», e.g. «thin».
-* Voiced /D/ is usually «dh», e.g. «smuudh, wurdhi» ‹smooth, worthy›.
+* Voiceless /T/ is always «th», e.g. «thin»
+* Voiced /D/ is usually «dh», e.g. «smuudh, wurdhi» ‹smooth, worthy›
 * But it remains «th» in the frequent words «aulthó, tho, than, the, then,
   thay, them, thair, thiss, that, thuss» ‹although, though, than, the,
   then, they, them, their *or* there, this, that, thus› as well as in all
@@ -79,7 +81,7 @@ vowel.
   ‹another, bother, mother, whether›. This spelling is also used in
   derivatives of all these words.
 * The small number of words ending in /T@`/ is written with «thur»:
-  «Arthur, authur, panthur» ‹Arthur, author, panther›.
+  «Arthur, authur, panthur» ‹Arthur, author, panther›
 
 The other consonants are written as expected («**b**e**d**, **m**u**ch**,
 **f**a**t**, **h**ot, **l**eg, **n**ow, **p**op, **r**un, **sh**ip,
@@ -101,7 +103,7 @@ e**v**er, **y**et»).
 * «yr» as in «fyr, vyruss» ‹fire, virus›
 
 Other vowels keep their usual spelling («m**ir**er, p**oor**, p**uer**,
-**our**» ‹mirror, poor, pure, our/hour›).
+**our**» ‹mirror, poor, pure, our *or* hour›).
 
 
 ## Sound Combinations
@@ -113,6 +115,9 @@ Other vowels keep their usual spelling («m**ir**er, p**oor**, p**uer**,
   ‹...permission, musician›
 * Final «sion» /Z@n/ as in «vision, confiusion, iquaision» ‹...confusion,
   equation›
+* Between any of /b, p, k/ and word-final /l/, the schwa is omitted, e.g.
+  «flexebl, simpl, articl» ‹flexible, simple, article›.
+* Final /z@m/ is written «sm» with the schwa omitted, e.g. «sarcasm».
 
 
 ## Stress
@@ -129,15 +134,18 @@ stress pattern predicted by the following rules:
   statistic, publicaition» ‹terminology, statistic, publication›.
 * Otherwise the first long vowel in the word is considered stressed, e.g.
   «compleet, prisuem, sufyss» ‹complete, presume, suffice›. But, except for
-  «y», long vowel written with just one letter (e.g. the «o» in «windo»
+  «y», long vowels written with just one letter (e.g. the «o» in «windo»
   ‹window›) don't count for the purposes of this rule, and neither does the
-  final vowel in word ends in «ait, y, ys, yt».
+  final vowel in words ending in «ait, y, ys, yt».
 * Otherwise, if a word starts with a short vowel or with «di» or «ri», the
   second vowel is considered stressed, e.g. «adopt, difenss, riquest»
   ‹adopt, defense, request›. If not, the first vowel is considered
   stressed, e.g. «current». But in either case, if the chosen vowel would
   be «er», the next vowel that is not «er» is chosen instead, e.g.
   «interject, perhaps».
+
+If a prefix has just one syllable and is stressed, it takes the accent,
+e.g. «nónsenss» ‹nonsense›.
 
 The use of accents is optional, but recommended.
 
