@@ -605,6 +605,7 @@ amman,,Am'An
 ammoniacum,,am@n'aI@:k@m
 ammonification,,a#mQnI#f@k'eIS@n
 ammophilous,,@m'QfI#l@s
+ammunition,,B
 amontillado,,a#mQnt@l'AdoU
 amorino,,am@`'i:noU
 amoroso,,am@`'oUsoU
@@ -744,7 +745,7 @@ antiphonary,,ant'If@#nEri:
 antipodes,,P
 antiquary,,A
 antirrhinum,,antIr'aIn@m
-antithesis,,B
+antithesis,,ant'IT@sIs
 Antofagasta,,P
 Antoine,,'antwAn
 antonomastic,,B
@@ -901,6 +902,7 @@ artisanal,,'ArtIz@n@l
 Artois,,D
 Arturo,,D
 Aruwimi,,P
+Aryan,,'e@ri:@n
 ary,,'e@ri:
 asap,,D
 asar,,D
@@ -1205,6 +1207,7 @@ basophil,,P
 bass,,B
 Basseterre,,P
 Bastia,,D
+bastille,,bast'i:l
 Batangas,,P
 bathos,,b'eITQs
 Batista,,b@t'i:st@
@@ -1220,7 +1223,6 @@ Bayamon,,bAj@m'Qn
 bayamo,,P
 Bayern,,D
 Bayes,,D
-bayou,,b'Aju:
 Bayreuth,,b'aIrOIt
 bazar,,b@z'Ar
 Beatrix,,b'eI@trIks
@@ -1500,7 +1502,7 @@ brachiosaurus,,breIki:@s'O:r@s
 Bracknell,,br'akn@l
 Bradbury,,A
 braggadocio,,brag@d'oUtSi:oU
-Brahe,,P
+Brahe,,D
 Brahui,,P
 branchiopod,,br'aNki:@pQd
 Brancusi,,P
@@ -2157,6 +2159,7 @@ classificatory,,kl@s#'IfIk@tori:
 claucht,,kl'O:kt
 Claudette,,B
 claught,,kl'O:kt
+clausal,,kl'O:z@l
 Clausius,,D
 clausula,,kl'O:Z@l@
 clavicular,,kl@v'Ikj@l@`
@@ -2349,6 +2352,7 @@ conformation,,kQnfO:rm'eIS@n
 conformity,,P
 conga,,k'QNg@
 congee,,P
+congenial,,B
 conge,,P
 conglomerate,,k@ngl'Qm@`@t
 conglomerate,v,P
@@ -2833,7 +2837,7 @@ depilatory,,A
 depletory,,P
 deploration,,P
 deportee,,dIport'i:
-deposit,,B
+deposit,,dIp'QzIt
 depository,,dIp'QzI#tori:
 depravation,,dEpra#v'eIS@n
 deprecate,,B
@@ -3072,7 +3076,8 @@ diwan,,P
 dk,,O
 DMZ,,D
 DNAse,,D
-Dneprodzerzhinsk,,d@nj@pr@dz@`Z'Insk
+Dneprodzerzhinsk,,dnEproUd@`Z'Insk
+Dnepropetrovsk,,dnEproUpItr'Qfsk
 dobla,,P
 Docetism,,doUs'i:tIz@m
 doctrinal,,d'QktrIn@l
@@ -3780,6 +3785,7 @@ excurrent,,Iksk'Vr@nt
 excursive,,P
 excuse,,P
 execrable,,'EksIkr@b@l
+executant,,P
 executive,,P
 executorial,,P
 executor,,P
@@ -4018,6 +4024,7 @@ farrago,,P
 Farrakhan,,D
 fascioliasis,,fa#si:@l'aI@sIs
 fastuous,,f'astju:@s
+fath,,f'aD
 fathometer,,faD'QmIt@`
 fatidical,,feIt'IdIk@l
 fatigable,,f'atIg@b@l
@@ -4303,6 +4310,7 @@ fughetta,,fU:g'Et@
 fuhrer,,fj'Ur@`
 Fujiwara,,fu:dZi:w'Ar@
 Fujiyama,,fu:dZi:j'Am@
+Fukuyama,,fu:ku:j'Am@
 Fulah,,P
 fulcrum,,B
 fulsome,,P
@@ -4424,6 +4432,7 @@ genethliacally,,dZEnETl'aI@kli:
 genethlialogic,,dZ@nETli:@l'QdZIk
 genethlialogy,,dZ@nETli:'Ql@dZi:
 genetrix,,D
+genial,,B
 genipap,,B
 genizah,,P
 genomic,,dZIn'oUmIk
@@ -5291,8 +5300,8 @@ immolate,,P
 immolation,,B
 immortelle,,P
 immunogenicity,,Imj@nQdZ@n'IsIti:
-immunologist,,Imj@n'Ql@dZIst
-immunology,,Imj@n'Ql@dZi:
+immunologist,,B
+immunology,,B
 impact,v,P
 impatiens,,B
 impediment,,B
@@ -5320,7 +5329,9 @@ impropriate,,P
 improvisatore,,ImprQvIz@t'O:ri:
 improvisatory,,Impr@v'aIz@tori:
 improvvisatore,,D
-impudicity,,Impj@d'IsIti:
+impudence,,B
+impudent,,B
+impudicity,,P
 Inanna,,In'An@
 inasmuch,,B
 incandesce,,P
@@ -6355,6 +6366,7 @@ Maginot,,D
 magisterial,,P
 magisterium,,madZIst'i@i:@m
 magnesic,,B
+magnet,,B
 magnetometer,,magnIt'Qm@t@`
 magnetosphere,,magn'i:t@sfi@
 magnetostrictive,,P
@@ -6455,9 +6467,12 @@ mantua,,P
 manubrium,,m@n'U:bri:@m
 Manuela,,manu:'El@
 Manuel,,m'anju:@l
+manufactory,,A
+manufacture,,A
 manuka,,m'an@k@
 manu,,m'anu:
 manure,,m@n'U:r
+manuscript,,B
 manus,,m'eInu:s
 Manutius,,m@n'U:Si:@s
 Manzoni,,P
@@ -8330,7 +8345,7 @@ predicate,n,pr'EdIkIt
 predicate,v,B
 predikant,,prEdIk'ant
 preempt,,B
-prefixion,,prIf'IkS@n
+prefixion,,P
 prejudicial,,prEdZ@d'IS@l
 preliminary,,prIl'ImI#nEri:
 preludial,,prIl'U:dI@l
@@ -11230,6 +11245,7 @@ Xiaoping,,D
 xiii,,O
 xii,,O
 Ximenes,,D
+Xinjiang,,SIndZj'aN
 xiv,,O
 xix,,O
 Xmas,,'Eksm@s

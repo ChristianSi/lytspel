@@ -190,6 +190,7 @@ anucleated
 anybody,any-body
 apian
 apogean,apogee=an
+apostrophic,apostrophe=ic
 appellor
 apply
 appreciably,appreciable=y
@@ -268,6 +269,7 @@ attent
 attest
 attic
 Auden
+audiometer
 Audion
 auditory
 auger
@@ -661,6 +663,7 @@ celluloid
 censor
 censual
 centavo
+centimeter
 centrifugalize
 centrosomic,centrosome=ic
 centurial
@@ -734,6 +737,7 @@ clarabella
 clarification
 classically,classical=ly
 classman,class-man
+clausal,clause=al
 claymore
 claytonia
 cleanly
@@ -750,6 +754,8 @@ coauthor,co-author
 cobbling,cobble=ing
 cochair,co-chair
 cochairman,co-chairman
+coconsciousness,co=consciousness
+codefendant,co=defendant
 codicillary
 codomain,co-domain
 coed
@@ -816,6 +822,7 @@ component
 compony
 compositor
 compotatory
+comptometer
 conation
 concelebrate,con-celebrate
 concelebration,con-celebration
@@ -869,6 +876,7 @@ copen
 coplanar,co-planar
 coplanarity,co-planarity
 copolymer,co-polymer
+coprocessor,co=processor
 coral
 cordate
 cordial
@@ -905,6 +913,7 @@ costermonger,coster-monger
 costmary
 costumer
 cotangent,co-tangent
+cotangential,co=tangential
 coteau
 cotemporary,co-temporary
 cotenant,co-tenant
@@ -963,6 +972,7 @@ crumbly,crumble=y
 cruor
 crusade
 cryology
+cryometer
 cryptocrystalline,crypto-crystalline
 cryptocurrency,crypto-currency
 cryptogam
@@ -1144,6 +1154,7 @@ depicture
 depilate
 deposit
 deposited,deposit=ed
+depositing,deposit=ing
 deposition
 depositional,deposition=al
 depositions,deposition=s
@@ -1606,6 +1617,7 @@ farcy
 farthermost
 fashion
 fashoda
+fathometer
 fauxbourdon
 fawn
 Fayal
@@ -1669,6 +1681,7 @@ floreated
 fluent
 fluor
 fluoride
+fluorimeter
 flyman,fly-man
 foal
 foeman,foe-man
@@ -2154,6 +2167,7 @@ inhalation
 inhaled,inhale=ed
 inhales,inhale=s
 inion
+injunctions,injunction=s
 inkling
 inlays,inlay=s
 inlet
@@ -2182,6 +2196,7 @@ intelligibly,intelligible=y
 Intelsat
 inter
 intercalation,intercalate=ion
+interferometer
 interlocution
 interment
 internee,intern=ee
@@ -2191,6 +2206,7 @@ interred
 interrogation,interrogate=ion
 interrogatorily,interrogatory=ly
 interrogatory,interrogate=ory
+intervalometer
 interview
 interviewed,interview=ed
 interviewer,interview=er
@@ -2345,6 +2361,7 @@ klansman,klans-man
 kleptocracies,kleptocracy=es
 knuckleheads,knucklehead=s
 koan
+konimeter
 kopeisk
 koran
 kraal
@@ -2533,6 +2550,7 @@ lying,lie=ing
 lyman
 lymphoblast
 lyrically,lyrical=ly
+lysimeter
 lytspel,light-spell
 Macy
 madres
@@ -2924,6 +2942,7 @@ onerous
 onto
 open
 optically,optical=ly
+optometer
 oral
 oran
 orangeman,orange-man
@@ -3012,6 +3031,7 @@ Owen
 owing,owe=ing
 oxhide,ox-hide
 oxidable
+oximeter
 oxtongue,ox-tongue
 oxymoron
 oysterman,oyster-man
@@ -3374,6 +3394,8 @@ pree
 preemption,preempt=ion
 preemptor,preempt=or
 prefix
+prefixed,prefix=ed
+prefixes,prefix=es
 prejudicial,prejudice=ial
 Premarin
 premeditated,premeditate=ed
@@ -3383,6 +3405,8 @@ premise
 premiss
 preoperative,pre=operative
 preposition
+prepositional,preposition=al
+prepositions,preposition=s
 prepuce
 pres
 presage
@@ -3466,6 +3490,7 @@ prorogue
 prosect
 proserpine
 prosify
+prosimetric
 prosit
 prospector,prospect=or
 prostate
@@ -3662,6 +3687,10 @@ redintegrate
 redon
 redress
 redressing,redress=ing
+reduplicated,reduplicate=ed
+reduplicating,reduplicate=ing
+reduplication,reduplicate=ion
+reduplicative,reduplicate=ive
 redux
 reed
 reeked,reek=ed
@@ -3671,6 +3700,9 @@ rees,ree=s
 reest
 reeve
 reeves,reeve=s
+refashioned,refashion=ed
+refashioning,refashion=ing
+refashions,refashion=s
 reflex
 reflexed,reflex=ed
 reflexes,reflex=es
@@ -4145,6 +4177,7 @@ spectroscopic,spectroscope=ic
 speedily,speedy=ly
 spencer
 spermary
+spherometer
 spicate
 spier
 spillane
@@ -4160,6 +4193,7 @@ sprightful,sprite=ful
 spurry
 squireen
 stableman,stable-man
+stadiometer
 stagnation
 stalagmite
 stalin
@@ -4215,6 +4249,7 @@ subadar
 subaltern
 subaudition,sub=audition
 subbing,sub=ing
+subbranches,subbranch=es
 subcompacts,subcompact=s
 subdiaconate,sub=diaconate
 subdual,subdue=al
@@ -4322,6 +4357,7 @@ sypher
 taal
 tableland,table-land
 taborin
+tacheometer
 tachism
 tachistoscopic,tachistoscope=ic
 tackling,tackle=ing
@@ -4355,6 +4391,8 @@ tartana
 tartare
 tatami
 tautomerism
+taximeter
+taximeter,taxi-meter
 teal
 teammate,team-mate
 teared
@@ -4408,6 +4446,7 @@ thereto,there-to
 therewithal,there-withal
 therewith,there-with
 thermion,therm-ion
+thermometer
 thermoscope
 thermoscope,thermo=scope
 thermostat
@@ -4678,6 +4717,7 @@ vegas
 velamen
 velcro
 venatic
+venetians,venetian=s
 venosity,venose=ity
 ventilate
 ventilation,ventilate=ion
