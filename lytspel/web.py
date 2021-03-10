@@ -6,6 +6,7 @@ import os
 from os import path
 import logging
 import re
+import string
 from time import time
 
 from typing import Match, NamedTuple, Optional, Sequence, Tuple
@@ -62,6 +63,25 @@ def hexify_string(text: str) -> str:
     """Replace each character in a string by the corresponding HTML character entity."""
     return ''.join('&#x{:x};'.format(ord(c)) for c in text)
 
+def text_to_id(text: str) -> str:
+    """Convert a text (section title or similar) into an ID.
+
+    * Punctuation and outer whitespace is stripped.
+    * Each inner whitespace sequence is converted to a hyphen.
+    * Letters are converted to lowercase.
+    """
+    text = text.strip().lower()
+    text = text.translate(str.maketrans('', '', string.punctuation))
+    return '-'.join(text.split())
+
+def add_section_anchor(matchobj: Match) -> str:
+    """Add anchors (IDs) to section headers.
+
+    Note: This is quite simple and will NOT handle repeated sections with the same title
+    correctly.
+    """
+    idtext = text_to_id(matchobj.group(1))
+    return matchobj.group(0).replace('>', f' id="{idtext}">', 1)
 
 def protect_mailto(matchobj: Match) -> str:
     """Helper function that spam-protects mailto links."""
@@ -89,9 +109,12 @@ def markdown_markup(text: str,
 
     html = (misaka.smartypants(misaka.html(text))
             .replace('&#39;', '&rsquo;')  # smartypants sometimes gets this wrong
+            .replace('&reg;', '(r)')      # revert unwanted replacement
             .replace('<blockquote>', '<blockquote class="alert alert-secondary">')
             .replace('<pre>', '<pre class="alert alert-primary">'))
 
+    # Add anchors to section headers
+    html = re.sub('<h2>(.*?)</h2>', add_section_anchor, html)
     if protect_email_addresses:
         html = re.sub('<a href="mailto:([^"]+)">([^<]+)</a>', protect_mailto, html)
     return Markup(html)
