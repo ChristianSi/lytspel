@@ -1349,6 +1349,9 @@ sub prepare_pron {
     $pron =~ s/(?<![ei])\@r|\@`r|a#r/\@`/g;
     # If there are multiple stress markers, remove all but the last one
     $pron =~ s/'(?=.*')//g;
+    # /j@/ before certain consonants (not followed by the end of words) should typically be /jU/
+    # (but not at the start of words)
+    $pron =~ s/(.)j\@([blpt].)/$1jU$2/g unless $pron =~ /j\@t'E/;
     return $pron;
 }
 
@@ -1596,9 +1599,9 @@ sub postprocess_suffixed {
     # XXX Eliminate regex
     # For suffixes where that's possible, simply append the suffix to the converted base word
     if (
-        $suffix =~ /^(.bility|able|age|aholic|ance|ant|ary|ative|ate|atory|dom|en|ence|es|ent|er
-        |ess|est|ful|ing|ise|ish|ism|ist|ize|l|less|let|ly|ment|morphism|ness|nik|n|oid
-        |or|up|ry|s|shire|ward|y|zygous)$/x
+        $suffix =~ /^(.bility|able|age|aholic|ance|ant|ary|atile|ative|ate|atory|dom|en|ence
+        |es|ent|er|ess|est|ful|.meter|ing|ise|ish|ism|ist|ize|l|less|let|ly|ment|morphism|ness
+        |nik|n|oid|or|up|ry|s|shire|ward|y|zygous)$/x
         # ‹-ed› is irregular for non-verbs (e.g. «aj: blessed, v: blessd» ‹blessed›)
         || $suffix eq 'ed' && $pos_hint eq 'v'
         )
@@ -1695,7 +1698,7 @@ sub postprocess_suffixed {
             && $tradspell !~ /(comradery|enginery|riflery)/;
 
         $orig_conv_base = $conv_base;
-        if ($suffix =~ /^(.bility|aholic)$/) {
+        if ($suffix =~ /^(.bility|aholic|.meter)$/) {
             # Strip stress marker from base word if the suffix is one of the stressed ones
             $conv_base = strip_acute_accents $conv_base;
         } elsif ($suffix =~ /^(morphism|zygous)/) {
