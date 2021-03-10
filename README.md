@@ -114,7 +114,7 @@ The consonants are written as follows:
 
 The sound /k/ is written as «c» or «k», depending on context:
 
-* «k» is used before «e, i, y», e.g. «keep, king, kynd, calkyulaition»
+* «k» is used before «e, i, y», e.g. «keep, king, kynd, calcuelaition»
   ‹...kind, calculation›
 * «k» is also used before «h» to prevent confusion with the digraph «ch»
   /tS/, e.g. «lunkhed» ‹lunkhead›
@@ -150,13 +150,13 @@ The sound /z/ is written as «s» or «z», depending on context:
 
 The two sounds traditionally written ‹th› are represented as follows:
 
-* Voiceless /T/ is always written «th», e.g. «thin».
-* Voiced /D/ is usually «dh», e.g. «smuudh, wurdhi» ‹smooth, worthy›.
+* Voiceless /T/ is always written «th», e.g. «thin»
+* Voiced /D/ is usually «dh», e.g. «smuudh, wurdhi» ‹smooth, worthy›
 * However, it remains «th» in the frequent words «aulthó, tho, than, the,
   then, thay, them, thair, thiss, that, thuss» ‹although, though, than,
-  the, then, they, them, their or there, this, that, thus› as well as in
+  the, then, they, them, their *or* there, this, that, thus› as well as in
   all words ending in /D@`/, such as «anuther, bother, muther, whether»
-  ‹another, bother, mother, whether›.
+  ‹another, bother, mother, whether›
 * This spelling is preserved in derivatives of all these words, such as
   «nevertheléss, nuntheléss» ‹nevertheless, nonetheless› from «the»,
   «themselvs» ‹themselves› from «them», «thairs, thairby, thairfor»
@@ -189,8 +189,8 @@ The long vowels and diphthongs are written as follows:
 * «aa» /A/ as in «paam, faather» ‹palm, father›.
 
 * «ai» /eI/ as in «aim, saint, faiss» ‹...face›. Written «ay» if it occurs
-  at the end of words or before another vowel, e.g. «play, hóliday,
-  holiday, layer, cayoss» ‹...holiday, layer, chaos›.
+  at the end of words or before another vowel, e.g. «play, hóliday, layer,
+  cayoss» ‹...holiday, layer, chaos›.
 
 * «au» /O:/ as in «auther, paus» ‹author, pause›. Written «aw» if it occurs
   at the end of words or before another vowel, e.g. «law, drawing».
@@ -212,16 +212,16 @@ The long vowels and diphthongs are written as follows:
     primachóor, prirequisit; riact, riproduess» ‹antisocial; semifinal,
     semiautomatic; degrade; premature, prerequisite; react, reproduce›.
 
-* «oa» /oU/ as in «boat, hoam» ‹...home› Written «o» if it occurs at the
+* «oa» /oU/ as in «boat, hoam» ‹...home›. Written «o» if it occurs at the
   end of words or before another vowel, e.g. «zeero, coóperait, sho,
   poetic» ‹zero, cooperate, show...›. This poses little risk of confusion,
   as /Q/ (as in «dog») occurs rarely or never before other vowels.
 
     «o» is also used at the end of prefixes such as «biyo, ethno, fyto,
-    hetero, imyuno, jio, keemo, macro, mycro, nio, nuero, palio, suudo,
+    hetero, imueno, jio, keemo, macro, mycro, nio, nuero, palio, suudo,
     thurmo» ‹bio, ethno, phyto, hetero, immuno, geo, chemo, macro, micro,
     neo, neuro, paleo, pseudo, thermo›, e.g. «biyokemistri, ethnosentric,
-    heterosecshual, imyunodifishenssi, jiofisicl, keemotherrepi, mycrowaiv,
+    heterosecshual, imuenodifishenssi, jiofisicl, keemotherrepi, mycrowaiv,
     nioclassic, nuerosurjeri, suudosiyenss, thurmodynamics» ‹biochemistry,
     ethnocentric, heterosexual, immunodeficiency, geophysical,
     chemotherapy, microwave, neoclassic, neurosurgery, pseudoscience,
@@ -314,13 +314,13 @@ Before «r», the short vowels are spelled as follows:
 The long vowels are spelled thus:
 
 * «air» /e@/ as in «pair, shair, vairiaition» ‹...share, variation›
-* «ar» /Ar/ as in «dark, argyument» ‹...argument›
+* «ar» /Ar/ as in «dark, arguement» ‹...argument›
 * «eer» /i@/ as in «cheer, yeer» ‹...year›. Note: GA speakers often
   pronounce this in the same way as the «ir» /Ir/ in «mirer» ‹mirror›
   ([mirror–nearer
   merger](https://en.wikipedia.org/wiki/English-language_vowel_changes_before_historic_/r/#Mirror%E2%80%93nearer_merger)).
 * «or» /O:r/ as in «north, order, port, ignor» ‹...ignore›. Note: Some
-  speakers pronounced the vowel in «north» differently from the one in
+  speakers pronounce the vowel in «north» differently from the one in
   «port», but most do not ([horse–hoarse
   merger](https://en.wikipedia.org/wiki/English-language_vowel_changes_before_historic_%2Fr%2F#Horse%E2%80%93hoarse_merger)),
   and Lytspel does not express this distinction.
@@ -329,10 +329,10 @@ The long vowels are spelled thus:
   obscure›. This spelling is also used in words that are typically spoken
   with /ju:r/ or /jUr/ in RP, with /Ur/ in GA, e.g. «duering, nuerel»
   ‹during, neural›.
-* «ur» /3:/ as in «turn, furst, consurn, obzurvaition» ‹...first,
-  concern, observation›. This sound only occurs before «r» and can be
-  considered a stronger (and often stressed) variant of the schwa.
-* «yr» is spoken /aI@`/ at the end of words (e.g. «fyr, in'spyr» ‹fire,
+* «ur» /3:/ as in «turn, furst, consurn, obzurvaition» ‹...first, concern,
+  observation›. This sound only occurs before «r» and can be considered a
+  stronger (and often stressed) variant of the schwa.
+* «yr» is spoken /aI@`/ at the end of words (e.g. «fyr, inspyr» ‹fire,
   inspire›), /aIr/ elsewhere (e.g. «vyruss, yreni, spyrel» ‹virus, irony,
   spiral›)
 
@@ -351,8 +351,8 @@ The long vowels are spelled thus:
 * The vowel combination /oU@/ is written «oe», e.g. «boe, coelition,
   yssócroess» ‹boa, coalition, isochroous›. If the second vowel is
   stressed, this combination represents /oUE/ instead (e.g. «poetic»), and
-  in a few other words, it does so as well (e.g. «floem» ‹phloem›
-  ‹enthusiasm, zodiac›) -- this distinction is not represented in writing.
+  in a few other words, it does so as well (e.g. «floem» ‹phloem›) -- this
+  distinction is not represented in writing.
 * The vowel combination /u:@/ or /U@/ is written «ua», e.g. «ácchual,
   indivijual, ínfluanss, soopurfluass, crual» ‹actual, individual,
   influence, superfluous, cruel›. If the second vowel is stressed, this
@@ -414,7 +414,7 @@ stress pattern predicted by a set of fairly reliable rules. The use of
 accents is optional (they may be omitted), but recommended -- especially in
 formal contexts such as books and newspapers. In a few cases, two words are
 distinguished only by the presence of absence of an accent, e.g. «díscuss»
-‹discus› versus «discuss» ‹discuss›.
+‹discus› versus «discuss».
 
 The rules for predicting the default stress are as follows:
 
@@ -432,7 +432,7 @@ The rules for predicting the default stress are as follows:
 * Otherwise the first long vowel in the word is considered stressed, e.g.
   «compleet, confurm, enjineer, ixplain, prisuem, sufyss» ‹complete,
   confirm, engineer, explain, presume, suffice›. Generally, all vowels
-  except for «a, e, i, o, u, oo» and the schwa (as well as their r-colored
+  except for «a, e, i, o, oo, u» and the schwa (as well as their r-colored
   variants) are considered long. However, with the exception of «y», if a
   long vowel is written with just one letter (because it precedes another
   vowel or the end of the word), it does not count for the purposes of this
@@ -450,7 +450,7 @@ The rules for predicting the default stress are as follows:
   vowel is considered stressed, e.g. «errer» ‹error›.
 
 If these rules fail to correctly predict the stress, an acute accent is
-added on top of the stressed vowel. If the vowel has two letters, the
+added on top of the stressed vowel. If this vowel has two letters, the
 accent is added on top of the first one, e.g. «maintáin, uenéek» ‹maintain,
 unique›.
 
@@ -533,10 +533,10 @@ unique›.
   fyrwurks» ‹background, extraterrestrial, fireworks›.
 * If the pronunciation of the base word itself changes (beyond mere shifts
   of stress), the spelling reflects this, e.g. «creecher» ‹creature› from
-  «criáit» ‹create›; «discution» ‹discussion› from «discuss» ‹discuss›;
-  «concluusion» ‹conclusion› from «concluud» ‹conclude›; «ácchual» ‹actual›
-  from «act»; «assumption» ‹assumption› from «assuum» ‹assume›; «mentaliti»
-  ‹mentality› from «mentel» ‹mental›.
+  «criáit» ‹create›; «discution» ‹discussion› from «discuss»; «concluusion»
+  ‹conclusion› from «concluud» ‹conclude›; «ácchual» ‹actual› from «act»;
+  «assumption» from «assuum» ‹assume›; «mentaliti» ‹mentality› from
+  «mentel» ‹mental›.
 * The past tense of regular verbs is formed by appending «ed» if /@d/ is
   spoken (e.g. «silécted, waisted» ‹selected, wasted›), «d» if /d/ or /t/
   is spoken (e.g. «riveeld, consíderd, payd, fixd, convínss» ‹revealed,
@@ -557,14 +557,14 @@ unique›.
   a plural (and hence written «ics») even if the corresponding singular
   form (ending in /Ik/) is unknown or rarely used, e.g. «astrofisics,
   diyanetics» ‹astrophysics, dianetics›. This is for consistency with the
-  many cases where «ics» /Iks/ indeed marks a plural or quasi-plural, e.g.
+  many cases where «ics» indeed marks a plural or quasi-plural, e.g.
   «ilectronics» ‹electronics› from «ilectronic» ‹electronic›.
 * For consistency with forms derived by appending «li» ‹ly› to words ending
   in «cl» ‹cal› (e.g. «practiclli» ‹practically› from «practicl»
   ‹practical›), all forms derived by appending ‹ally› (pronounced /@li:/ or
   /li:/) to words ending in «c« are written «clli», e.g. «baissiclli»
   ‹basically› from «baissic» ‹basic›, «specificlli» ‹specifically› from
-  «specific» ‹specific›.
+  «specific».
 
 Stress marking in derived words:
 
@@ -735,6 +735,8 @@ shorter one:
   /O:/, e.g. «sloath» ‹sloth›.
 * /U/ («oo») is preferred if a vowel is commonly spoken as either /U/ or
   /u:/, e.g. «coocu, hoof» ‹cuckoo...›.
+* /jU/ «ue» is preferred if a vowel is commonly spoken as either /jU/ or
+  /j@/, e.g. «dócuement, ócuepy» ‹document, occupy›.
 * /Ir/ («ir») is preferred if an r-colored vowel is commonly spoken as
   either /Ir/ or /3:/, e.g. «squirel» ‹squirrel›.
 * /3:/ («ur») is preferred if an r-colored vowel is commonly spoken as
@@ -747,7 +749,7 @@ shorter one:
 * Otherwise, if a vowel is spoken with a full vowel sound in some regions,
   while reduced to a schwa or omitted altogether elsewhere, Lytspel tends
   to write the full version, e.g. «cátegori, ínevaitiv, militerri,
-  portrait, prymerri, python, roazmairi, téstimoan» ‹category, innovative,
+  portrait, prymerri, python, roazmairi, téstimoani» ‹category, innovative,
   military, portrait, primary, python, rosemary, testimony›.
 * If some people pronounce /I/ and others a schwa, Lytspel uses «i» if
   that's the original representation, e.g. «simplify».
