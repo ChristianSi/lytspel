@@ -87,13 +87,13 @@ class Converter:
         if Converter._nlp is None:
             try:
                 # Load spaCy without any unnecessary components
-                Converter._nlp = spacy.load('en', disable=['parser', 'ner'])
+                Converter._nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
             except OSError:
                 printmsg('Downloading language model for the spaCy POS tagger\n'
                          "(don't worry, this will only happen once)")
                 from spacy.cli import download  # pylint: disable=import-outside-toplevel
-                download('en')
-                Converter._nlp = spacy.load('en', disable=['parser', 'ner'])
+                download('en_core_web_sm')
+                Converter._nlp = spacy.load('en_core_web_sm', disable=['parser', 'ner'])
 
     @staticmethod
     def tokenize_text(text: str) -> List[str]:
