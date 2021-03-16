@@ -22,6 +22,8 @@ advisors
 adzes
 aediles
 Afroasiatic
+aftersurge
+aftersurges
 afterwords
 aggregating
 agitations
@@ -29,6 +31,7 @@ agreeably
 akratic
 algorithmic
 algorithmically
+alienness
 alliterating
 allo
 alpacas
@@ -37,6 +40,8 @@ alternations
 aluminium
 amalgamations
 Amazonia
+ambusher
+ambushers
 amidst
 amplicon
 analogues
@@ -54,6 +59,7 @@ anticlericalism
 anticommunism
 antisemitic
 antisemitism
+antispinward
 apocalypses
 apostrophes
 apothecaries
@@ -93,6 +99,7 @@ autocorrect
 autocorrection
 autocrats
 autodetection
+autoindent
 automata
 avulse
 awakenings
@@ -103,6 +110,7 @@ bacilli
 backbench
 backbencher
 backbenchers
+backsplash
 backstreets
 balustrades
 bamboos
@@ -115,6 +123,7 @@ bawling
 BC
 beakers
 beaks
+beamers
 beauticians
 bedsteads
 befouled
@@ -151,6 +160,8 @@ blondish
 boars
 boatmen
 bobbed
+bodysuit
+bodysuits
 boldfaced
 bondieuserie
 bondsmen
@@ -197,11 +208,13 @@ camisoles
 candareen
 candareens
 cannonballs
+cannoneers
 cantrips
 capitulations
 careered
 carpark
 carparks
+carps
 cartloads
 cataclysms
 catalyzes
@@ -282,6 +295,7 @@ collated
 colludes
 colonizing
 colons
+comm
 commonest
 commoning
 communalist
@@ -317,7 +331,11 @@ convolutional
 convulsed
 convulses
 coolibah
+copyeditor
+copyeditors
 copyists
+coronavirus
+coronaviruses
 corporals
 correspondences
 cortices
@@ -336,6 +354,7 @@ creationist
 creationists
 creepers
 creolization
+crevasses
 cribbers
 Cro
 croaked
@@ -374,6 +393,8 @@ dandled
 dandles
 dandling
 Darwinists
+dataset
+datasets
 datatypes
 DC
 deallocate
@@ -422,6 +443,7 @@ diabetologists
 diacritics
 didact
 didacts
+dimness
 dinted
 dinting
 dints
@@ -441,6 +463,7 @@ disputants
 disquisitions
 dissociative
 disunited
+dithered
 divulges
 djinn
 Dogecoin
@@ -460,6 +483,7 @@ drylands
 dullards
 dum
 dunking
+duos
 durably
 dustbins
 dyads
@@ -467,7 +491,10 @@ dynamically
 dystopian
 earflaps
 Earthsea
+ebook
+ebooks
 ecclesiastics
+ecologies
 economistic
 eddied
 eddying
@@ -518,6 +545,8 @@ envying
 epaulets
 epaulettes
 epigrams
+epilog
+epilogs
 errable
 esp
 esthetic
@@ -537,6 +566,7 @@ Europeanising
 Europeanized
 Europeanizes
 Europeanizing
+evocations
 evolutionarily
 exampled
 exasperatingly
@@ -558,12 +588,14 @@ expurgated
 extensibility
 externalities
 extraterrestriality
+eyrie
 Facebook
 facto
 fadeout
 faire
 familiars
 fancying
+fantails
 fantastical
 farted
 farts
@@ -582,14 +614,19 @@ ff
 fi
 ficus
 findable
+fingerlings
 fingerpost
 fingerposts
+firepit
+firepits
 firewalls
 fishhooks
 fishponds
+fivesome
 flagons
 flailed
 flaked
+flamethrowers
 flappable
 flavonoid
 flecked
@@ -604,6 +641,7 @@ floodplains
 flyovers
 foals
 focussed
+focussing
 foghorns
 footbinding
 footbindings
@@ -613,6 +651,7 @@ foragers
 foraminifera
 forams
 forbiddingly
+forepaws
 foreshaft
 foreshafts
 formatted
@@ -621,6 +660,7 @@ formatters
 formatting
 formers
 foveolae
+frags
 frameworks
 franca
 freedmen
@@ -630,6 +670,7 @@ freelanced
 freelances
 Freemasons
 fricatives
+friendlies
 frolics
 frontoparietal
 ft
@@ -652,12 +693,15 @@ GDP
 genitives
 genomes
 gents
+geoengineering
 geographers
 gerency
 gestational
 gesticulates
 gesticulating
 girdles
+glaciologist
+glaciologists
 glial
 glinted
 glints
@@ -688,6 +732,7 @@ grep
 griffins
 griffons
 gritted
+groundside
 grubbed
 Gryphon
 Gryphons
@@ -705,6 +750,7 @@ haled
 handhelds
 handmaiden
 handmaidens
+hardcopy
 hardwired
 hardwiring
 harems
@@ -742,11 +788,13 @@ hmm
 hmmm
 HMS
 hoarders
+hoardings
 hobbits
 homogenous
 homunculi
 hostlers
 hotheads
+hr
 htm
 HTML
 humanoid
@@ -807,6 +855,7 @@ internetworking
 interneuron
 interneurons
 interoperability
+interpolations
 interprocess
 interrogatives
 intertextual
@@ -825,25 +874,34 @@ isa
 ISBN
 Islamophile
 Islamophiles
+italicized
+italicizes
+italicizing
 iterable
 iteration
 iterations
 itsy
 iv
 ix
+jackboots
 jargons
 Javan
 Javans
 javelins
 jetties
 jeweled
+jigged
 jittering
+jokey
 Jomon
 jousts
 joyously
 Jr
 juddered
 Judeo
+jumpstarted
+jumpstarting
+jumpstarts
 junctions
 jurymen
 jutted
@@ -863,6 +921,7 @@ kins
 kleptocracies
 kleptocracy
 kleptocrats
+klicks
 km
 knacked
 knackered
@@ -881,6 +940,7 @@ kowtows
 krakens
 Kublai
 kulaks
+kurgans
 kuru
 labials
 lactational
@@ -919,9 +979,12 @@ loitered
 loiters
 longboats
 longbows
+longfinger
+longfingers
 longhairs
 longsword
 longswords
+lookouts
 loopiness
 looseness
 lordlings
@@ -931,11 +994,13 @@ lotta
 lotuses
 loveliness
 lowlanders
+luggers
 lunk
 lunks
 Lytspel
 Macedonians
 maces
+macrons
 magery
 magicked
 magicking
@@ -956,6 +1021,7 @@ mandibles
 Manichaean
 Manichaeans
 manliness
+mantises
 manu
 manumissions
 manumitted
@@ -964,6 +1030,7 @@ marginalist
 marginalists
 maroons
 Marquesas
+masquerades
 masticated
 mastodons
 matchable
@@ -1002,6 +1069,7 @@ metaprotocol
 meteorites
 methodologist
 methodologists
+mg
 microbiome
 microgravity
 microlithic
@@ -1217,6 +1285,7 @@ palpation
 paltriness
 panpsychism
 parachutists
+parapets
 parcellize
 parcellized
 parcellizes
@@ -1224,6 +1293,7 @@ parcellizing
 pareidolia
 parthenogenic
 particularistic
+partway
 passives
 pastoralists
 pated
@@ -1248,6 +1318,7 @@ perimetry
 periodontic
 perpends
 perturbational
+perversions
 petrostate
 pharmacologic
 PhD
@@ -1282,6 +1353,8 @@ planarity
 plateaus
 playgroups
 plesiosaurs
+plotline
+plotlines
 plugin
 plugins
 plumed
@@ -1296,6 +1369,7 @@ polishers
 polities
 pollinating
 Polynesians
+polyspecific
 Pompeii
 pootle
 portholes
@@ -1313,6 +1387,7 @@ postwork
 potsherds
 powerlessly
 pp
+pranced
 prefigured
 prefixed
 prefixes
@@ -1343,6 +1418,7 @@ productization
 profilers
 profundities
 progenitors
+prolog
 promontories
 propertyless
 propofol
@@ -1351,10 +1427,14 @@ protohumans
 prototyping
 protruded
 pt
+puckered
+puckers
 pud
 pulped
 pulpless
 pulsed
+pupfish
+pupfishes
 puttered
 pyromancer
 pyromancers
@@ -1420,6 +1500,7 @@ refashions
 regressed
 regresses
 regressing
+regrowth
 regularise
 regularised
 regularises
@@ -1438,6 +1519,7 @@ religionists
 rentiers
 reoccupied
 reoccupies
+repacks
 replastered
 replicator
 replicators
@@ -1480,9 +1562,12 @@ roved
 royalists
 ruffians
 ruki
+ruleset
+rulesets
 ruminating
 ruminative
 ruminatively
+rumps
 runtime
 rustled
 rustles
@@ -1507,6 +1592,9 @@ schoolgirls
 scrabbled
 scrabbles
 scrabbling
+scrimshawed
+scrimshawing
+scrimshaws
 scriptability
 scriptable
 scripting
@@ -1580,11 +1668,15 @@ sidings
 siecle
 sigil
 silico
+silkpaper
+silkpapers
 simplicities
 singlehanded
+singletons
 singulars
 sinkable
 sisterly
+sixsome
 skinning
 skulking
 slaveholders
@@ -1625,6 +1717,8 @@ somatosensory
 somersaulted
 soulcraft
 Sovietology
+sowbug
+sowbugs
 spacetime
 spanners
 spars
@@ -1637,12 +1731,17 @@ specificities
 specters
 spiflicate
 spiflicates
+spillways
+spinward
 spiting
 splayed
 splaying
 splays
 splinterable
 splinters
+splotched
+splotches
+splotching
 spluttered
 spluttering
 splutters
@@ -1651,6 +1750,8 @@ spooler
 sportster
 sportsters
 spotlit
+spymaster
+spymasters
 squashes
 squatted
 squealed
@@ -1664,6 +1765,7 @@ stags
 stammered
 stammering
 stammers
+starships
 statelet
 statelets
 steamrollers
@@ -1719,6 +1821,8 @@ subsumed
 subtasks
 subtest
 subtests
+subthread
+subthreads
 sudarium
 Sudoku
 suffixation
@@ -1758,8 +1862,11 @@ swills
 syllabaries
 syllabification
 syllabified
+symbionts
 symbiote
 symbiotes
+synch
+synched
 syndicalist
 synonyms
 syntactically
@@ -1782,6 +1889,7 @@ teared
 technophile
 technophiles
 telegraphically
+teleoperated
 templates
 templating
 tendrils
@@ -1797,6 +1905,7 @@ thinko
 thirsted
 thongs
 Thrace
+thralls
 throbbed
 throbs
 thrumming
@@ -1813,6 +1922,8 @@ tiptoes
 tithed
 tithes
 tits
+toadlet
+toadlets
 togas
 toggles
 toke
@@ -1844,6 +1955,7 @@ trafficked
 trajectories
 trammeled
 trammels
+transceivers
 transfigured
 transformative
 transhumant
@@ -1852,6 +1964,8 @@ transliterated
 transliterating
 transliteration
 trashcan
+travois
+trellises
 trespasser
 trespassers
 trespasses
@@ -1884,10 +1998,14 @@ tutted
 twat
 twats
 twelver
+twinhull
+twinhulls
 twittered
 twittering
 twitters
 twoness
+txt
+tympana
 tyrannize
 tyrannized
 tyrannizes
@@ -1896,6 +2014,7 @@ ubiquitously
 ubuntu
 udders
 UK
+ultralight
 umlauts
 umma
 ummah
@@ -1946,6 +2065,7 @@ universals
 Unixes
 unkindly
 unkindness
+unlimbering
 unmarshaling
 unmechanical
 unmount
@@ -1976,6 +2096,7 @@ utopianism
 utterable
 validator
 validators
+vanishingly
 ve
 Vedas
 velars
@@ -2012,6 +2133,8 @@ wafts
 waggled
 Wahhabi
 Wahhabis
+wakened
+wakens
 walkie
 walkthrough
 waterhole
@@ -2032,6 +2155,7 @@ wheezed
 whimpered
 whimpers
 whined
+whiney
 whirred
 whirrs
 whitespace
@@ -2074,6 +2198,7 @@ xiii
 Xinjiang
 xiv
 xix
+xor
 xv
 xvi
 xvii
