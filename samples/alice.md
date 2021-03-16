@@ -232,7 +232,7 @@ but now run in to your tea; it's getting late.' So Alice got up and ran
 off, thinking while she ran, as well she might, what a wonderful dream it
 had been.
 
-==========
+----------
 
 But her sister sat still just as she left her, leaning her head on her
 hand, watching the setting sun, and thinking of little Alice and all her
