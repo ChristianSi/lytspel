@@ -32,6 +32,8 @@ h1 { font-size: 1.8rem; text-align: center; }
 h2 { font-size: 1.4rem; padding-top: 80px; margin-top: -80px; }
 h3 { font-size: 1.2rem; }
 
+hr { width: 30%; border: 2px solid #17a2b8; }
+
 li > p  { margin: 0 }
 li > ul { list-style-type: square; margin-top: 1rem; margin-bottom: 1rem; }
 
