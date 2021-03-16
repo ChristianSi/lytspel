@@ -1852,6 +1852,8 @@ aftershave,,,aftershaiv
 aftershaves,,,aftershaivs
 aftershock,,,aftershok
 aftershocks,,,aftershoks
+aftersurge,,,aftersurj
+aftersurges,,,aftersurjes
 aftertaste,,,aftertaist
 aftertastes,,,aftertaists
 aftertax,,,aftertax
@@ -2611,6 +2613,7 @@ alienee,,,ailyenee
 aliener,,,ailyener
 alienism,,,ailyenism
 alienist,,,ailyenist
+alienness,,,ailyenness
 alienor,,,ailyener
 aliens,,,ailyens
 alif,,,aalif
@@ -3234,6 +3237,8 @@ ambuscade,,,ámbuscaid
 ambuscado,,,ambuscaido
 ambush,,,ámboosh
 ambushed,,,ámbooshd
+ambusher,,,ámboosher
+ambushers,,,ámbooshers
 ambushes,,,ámbooshes
 ambushing,,,ámbooshing
 amebocyte,,,ameebecyt
@@ -4618,6 +4623,7 @@ antisociality,,,antisoashialiti
 antisocially,,,antisoashelli
 antisolar,,,antisoaler
 antispasmodic,,,antispazmodic
+antispinward,,,antispinwerd
 antistatic,,,antistatic
 Antisthenes,,,Antísthenees
 antistrophe,,,antistrefi
@@ -6945,6 +6951,7 @@ autohypnosis,,,autohipnoaciss
 autohypnotic,,,autohipnotic
 autoicous,,,autóicuss
 autoimmune,,,autoïmuen
+autoindent,,,autoïndent
 autointoxication,,,autoïntoxicaition
 autoionisation,,autoionization
 autoionization,,,autoïyenisaition
@@ -7500,6 +7507,7 @@ backslide,,,bakslyd
 backsliding,,,bakslyding
 backspace,,,bakspaiss
 backspin,,,bakspin
+backsplash,,,baksplash
 backstab,,,bakstab
 backstage,,,bakstaij
 backstairs,,,bakstairs
@@ -8671,6 +8679,7 @@ beaks,,,beeks
 beam,,,beem
 beamed,,,beemd
 beamer,,,beemer
+beamers,,,beemers
 beaming,,,beeming
 beamingly,,,beemingli
 beamish,,,beemish
@@ -11016,6 +11025,8 @@ body,,,bodi
 bodycheck,,,bodichek
 bodyguard,,,bodigard
 bodyguards,,,bodigards
+bodysuit,,,bódissuut
+bodysuits,,,bódissuuts
 bodywork,,,bodiwurk
 Boehmenism,,Behmenism
 Boehmenist,,Behmenist
@@ -14251,6 +14262,7 @@ cannonade,,,canenaid
 cannonball,,,canenball
 cannonballs,,,canenballs
 cannoneer,,,caneneer
+cannoneers,,,caneneers
 cannonry,,,canenri
 cannons,,,canens
 cannot,,,cannot
@@ -14904,6 +14916,7 @@ carpophore,,,carpefor
 carport,,,carport
 carports,,,carports
 carpospore,,,carpespor
+carps,,,carps
 carpus,,,carpuss
 carr,,,car
 carrack,,,carrek
@@ -19291,6 +19304,7 @@ comites,,,cómitees
 comitia,,,comíshia
 comitial,,,comíshel
 comity,,,comiti
+comm,,,com
 comma,,,coma
 command,,,cománd
 commandant,,,comandánt
@@ -21330,6 +21344,8 @@ copycat,,,copicat
 copycats,,,copicats
 copycatting,,,copicating
 copydesk,,,copidesk
+copyeditor,,,copiéditer
+copyeditors,,,copiéditers
 copyhold,,,copihoald
 copyholder,,,copihoalder
 copying,,,copiing
@@ -21541,6 +21557,8 @@ coronal,n,,correnel
 coronary,,,corenerri
 coronate,,,correnait
 coronation,,,corronaition
+coronavirus,,,keroanavyruss
+coronaviruses,,,keroanavyrusses
 coronel,,,correnel
 coroner,,,correner
 coroners,,,correners
@@ -22657,6 +22675,7 @@ cretinism,,,cretinism
 cretonne,,,critón
 crevalle,,,creváli
 crevasse,,,creváss
+crevasses,,,crevásses
 crevice,,,creviss
 crevices,,,crevisses
 crew,,,cru
@@ -24281,6 +24300,8 @@ database,,,daitabaiss
 databases,,,daitabaisses
 datable,,,daitebl
 datary,,,daiteri
+dataset,,,daitaset
+datasets,,,daitasets
 datatypes,,,daitatyps
 datcha,,,daacha
 date,,,dait
@@ -27194,6 +27215,7 @@ dimmed,,,dimd
 dimmer,,,dimer
 dimmers,,,dimers
 dimming,,,diming
+dimness,,,dimness
 dimorph,,,dymorf
 dimorphic,,,dymorfic
 dimorphism,,,dymorfism
@@ -28418,6 +28440,7 @@ ditching,,,diching
 ditchwater,,,dichwauter
 ditheism,,,dýtheeism
 dither,,,dither
+dithered,,,ditherd
 dithering,,,dithering
 dithers,,,dithers
 dithionate,,,dythíyenait
@@ -29943,6 +29966,7 @@ duologue,,,dueelog
 duomo,,,dwoamo
 duopoly,,,dueopoli
 duopsony,,,dueópseni
+duos,,,dueoas
 duotone,,,dueetoan
 dup,,,dup
 dupe,,,duep
@@ -30347,6 +30371,8 @@ ebonist,,,ébenist
 ebonite,,,ébenyt
 ebonize,,,ébenys
 ebony,,,ébeni
+ebook,,,eebook
+ebooks,,,eebooks
 Eboracum,,,Eberaicum
 ebracteate,,,eebráctiait
 Ebro,,,Eebro
@@ -30441,6 +30467,7 @@ eclosion,,,icloasion
 Eco,,,Eeco
 ecological,,,ecolojicl
 ecologically,,,ecolojiclli
+ecologies,,,icolejies
 ecologist,,,icolejist
 ecologists,,,icolejists
 ecology,,,icoleji
@@ -32632,7 +32659,9 @@ epileptics,,,epileptics
 epileptiform,,,epiléptiform
 epileptoid,,,epiléptoid
 epilimnion,,,epilímnion
+epilog,,,épilog
 epilogist,,,epilejist
+epilogs,,,épilogs
 epilogue,,,épilog
 Epimenides,,,Epiménidees
 epimer,,,épimer
@@ -33739,6 +33768,7 @@ evitable,,,évitebl
 evite,,,ivyt
 evocable,,,évekebl
 evocation,,,evocaition
+evocations,,,evocaitions
 evocative,,,ivoketiv
 evocatively,,,ivoketivli
 evocativeness,,,ivoketivness
@@ -34758,6 +34788,7 @@ eyne,,,yn
 eyot,,,iyet
 eyra,,,aira
 eyre,,,air
+eyrie,,,eeri
 eyrir,,,aireer
 Ezekiel,,,"Ésikeel"
 Ezra,,,Ezra
@@ -35126,6 +35157,7 @@ fanon,,,fanen
 fans,,,fans
 fantabulous,,,fantábueluss
 fantail,,,fantail
+fantails,,,fantails
 fantasia,,,fantaisia
 fantasies,,,fantecies
 fantasise,,fantasize
@@ -36301,6 +36333,7 @@ fingerbreadth,,,finggerbredth
 fingered,,,finggerd
 fingering,,,finggering
 fingerling,,,finggerling
+fingerlings,,,finggerlings
 fingernail,,,finggernail
 fingernails,,,finggernails
 fingerpaint,,,finggerpaint
@@ -36416,6 +36449,8 @@ firelight,,,fyrlyt
 firelock,,,fyrlok
 fireman,,,fyrman
 firemen,,,fyrmen
+firepit,,,fyrpit
+firepits,,,fyrpits
 fireplace,,,fyrplaiss
 fireplaces,,,fyrplaisses
 fireplug,,,fyrplug
@@ -36548,6 +36583,7 @@ fivefold,,,fyvfoald
 fivepenny,,,fyvpeni
 fiver,,,fyver
 fives,,,fyvs
+fivesome,,,fyvsum
 fivestones,,,fyvstoans
 fix,,,fix
 fixable,,,fixebl
@@ -36651,6 +36687,7 @@ flameproof,,,flaimpruuf
 flamer,,,flaimer
 flames,,,flaims
 flamethrower,,,flaimthroer
+flamethrowers,,,flaimthroers
 flamines,,,flámenees
 flaming,,,flaiming
 flamingly,,,flaimingli
@@ -37276,6 +37313,7 @@ focused,,,foacussd
 focuses,,,foacusses
 focusing,,,foacussing
 focussed,,,foacussd
+focussing,,,foacussing
 fodder,,,foder
 fodgel,,,fojel
 foe,,,fo
@@ -37645,6 +37683,7 @@ foreordination,,,forordinaition
 forepart,,,fórpart
 forepassed,,,forpassd
 forepaw,,,fórpaw
+forepaws,,,fórpaws
 forepeak,,,fórpeek
 foreperson,,,fórpursen
 foreplay,,,fórplay
@@ -38102,6 +38141,7 @@ fragrances,,,fraigrensses
 fragrancy,,,fraigrenssi
 fragrant,,,fraigrent
 fragrantly,,,fraigrentli
+frags,,,frags
 frail,,,frail
 frailly,,,frailli
 frailties,,,frailties
@@ -38415,6 +38455,7 @@ Friedrich,,,Freedric
 friend,,,frend
 friended,,,frended
 friendlier,,,frendlier
+friendlies,,,frendlies
 friendliest,,,frendliast
 friendliness,,,frendliness
 friendly,,,frendli
@@ -39983,6 +40024,7 @@ geodesy,,,jiódeci
 geodetic,,,jiodetic
 geodetics,,,jiodetics
 geodynamics,,,jiodynamics
+geoengineering,,,jioenjineering
 Geoffrey,,,Jefri
 geognostic,,,jiognostic
 geognosy,,,jiógnoci
@@ -40469,6 +40511,8 @@ glaciation,,,glaiciaition
 glacier,,,glaicier
 glaciers,,,glaiciers
 glaciological,,,glaicialojicl
+glaciologist,,,glaiciolejist
+glaciologists,,,glaiciolejists
 glaciology,,,glaicioleji
 glacis,,,glaci
 glad,,,glad
@@ -42132,6 +42176,7 @@ groundplot,,,groundplot
 grounds,,,grounds
 groundsel,,,groundsel
 groundsheet,,,groundsheet
+groundside,,,groundsyd
 groundsill,,,groundsil
 groundskeeper,,,groundskeeper
 groundskeepers,,,groundskeepers
@@ -43416,6 +43461,7 @@ hardbake,,,hardbaik
 hardball,,,hardball
 hardboard,,,hardbord
 hardbound,,,hardbound
+hardcopy,,,hardcopi
 hardcore,,,hardcor
 hardcover,,,hardcuver
 hardcovers,,,hardcuvers
@@ -45337,6 +45383,7 @@ hoard,,,hord
 hoarded,,,horded
 hoarders,,,horders
 hoarding,,,hording
+hoardings,,,hordings
 hoards,,,hords
 hoarfrost,,,horfrost
 hoarhound,,,horhound
@@ -46243,6 +46290,7 @@ hoy,,,hoy
 hoyden,,,hoiden
 hoying,,,hoying
 hoyle,,,hoil
+hr,,,hr
 Hrvatska,,,Crvaatscaa
 Hsining,,,Sheening
 Hsinking,,,Shinjíng
@@ -50431,6 +50479,7 @@ interpolar,,,interpoaler
 interpolate,,,inturpelait
 interpolated,,,inturpelaited
 interpolation,,,inturpolaition
+interpolations,,,inturpolaitions
 interpose,,,interpoas
 interposition,,,interposition
 interpret,,,inturprit
@@ -51476,6 +51525,9 @@ italic,,,italic
 italicise,,italicize
 italicism,,,italicism
 italicize,,,italicys
+italicized,,,italicysd
+italicizes,,,italicyses
+italicizing,,,italicysing
 italics,,,italics
 Italophile,,,Itálefyl
 Italy,,,"Íteli"
@@ -51575,6 +51627,7 @@ jackanapes,,,jákenaips
 jackaroo,,,jakerú
 jackass,,,jakass
 jackboot,,,jakbuut
+jackboots,,,jakbuuts
 jackdaw,,,jakdaw
 jacked,,,jakd
 jackeroo,,,jakerú
@@ -52044,6 +52097,7 @@ jiff,,,jif
 jiffy,,,jifi
 jig,,,jig
 jigaboo,,,jigebu
+jigged,,,jigd
 jigger,,,jiger
 jiggered,,,jigerd
 jiggermast,,,jigermast
@@ -52206,6 +52260,7 @@ joker,,,joaker
 jokers,,,joakers
 jokes,,,joaks
 jokester,,,joaxter
+jokey,,,joaki
 joking,,,joaking
 jokingly,,,joakingli
 Jokjakarta,,,Jokyacarta
@@ -52453,6 +52508,9 @@ jumping,,,jumping
 jumpmaster,,,jumpmaster
 jumps,,,jumps
 jumpstart,,,jumpstart
+jumpstarted,,,jumpstarted
+jumpstarting,,,jumpstarting
+jumpstarts,,,jumpstarts
 jumpsuit,,,jumpsuut
 jumpsuits,,,jumpsuuts
 jumpy,,,jumpi
@@ -53534,6 +53592,7 @@ kleptomania,,,cleptomainia
 kleptomaniac,,,cleptomainiac
 klezmer,,,clezmer
 klick,,,clik
+klicks,,,cliks
 Klimt,,,Climt
 Kline,,,Clyn
 Klingon,,,Clinggon
@@ -53923,6 +53982,7 @@ Kurdistan,,,Curdistan
 Kurds,,,Curds
 Kure,,,Cuureh
 kurgan,,,coorgaan
+kurgans,,,coorgaans
 Kurland,,,Coorland
 Kurosawa,,,Coorossaawa
 Kuroshio,,,Cooroashio
@@ -56846,6 +56906,8 @@ longeval,,,lonjeevel
 longevity,,,lonjeviti
 longevous,,,lonjeevuss
 Longfellow,,,Longfelo
+longfinger,,,longfingger
+longfingers,,,longfinggers
 Longford,,,Longferd
 longhair,,,longhair
 longhairs,,,longhairs
@@ -56907,6 +56969,7 @@ looker,,,looker
 lookers,,,lookers
 looking,,,looking
 lookout,,,lookout
+lookouts,,,lookouts
 looks,,,looks
 lookup,,,lookup
 lookups,,,lookups
@@ -57293,6 +57356,7 @@ luger,,,luuger
 lugers,,,luugers
 luggage,,,lugij
 lugger,,,luger
+luggers,,,lugers
 luggie,,,lugi
 lugging,,,luging
 lughole,,,lughoal
@@ -57753,6 +57817,7 @@ macrography,,,macrogrefi
 macromolecular,,,macromolécueler
 macromolecule,,,macromólecuel
 macron,,,macron
+macrons,,,macrons
 macronucleus,,,macronuecliass
 macrophage,,,macrofaij
 macrophages,,,macrofaijes
@@ -58564,6 +58629,7 @@ mantid,,,mantid
 mantilla,,,mantíla
 Mantinea,,,Mantinia
 mantis,,,mantiss
+mantises,,,mantisses
 mantissa,,,mantíssa
 mantle,,,mantel
 mantles,,,mantels
@@ -59038,6 +59104,7 @@ Masqat,,,Mascát
 masque,,,mask
 masquer,,,masker
 masquerade,,,maskeraid
+masquerades,,,maskeraids
 masquerading,,,maskeraiding
 mass,,,mass
 massa,,,massa
@@ -60513,6 +60580,7 @@ mezuzah,,,mesóosa
 mezzanine,,,méseneen
 mezzo,,,meso
 mezzotint,,,métsoatint
+mg,,,mg
 mi,,,mee
 Miami,,,Miyámi
 miaow,,meow
@@ -69337,6 +69405,7 @@ paranormal,,,parranormel
 paranymph,,,parrenimf
 paraparesis,,,parrapereeciss
 parapet,,,parrepet
+parapets,,,parrepets
 paraph,,,parref
 paraphernalia,,,parrefernailia
 paraphrase,,,párrefrais
@@ -69673,6 +69742,7 @@ parts,,,parts
 parturient,,,partúeriant
 parturifacient,,,partuerifáishent
 parturition,,,partuerition
+partway,,,partway
 party,,,parti
 partying,,,partiing
 partyism,,,partiism
@@ -71164,6 +71234,7 @@ perverse,,,pervurss
 perversely,,,pervurssli
 perverseness,,,pervurssness
 perversion,,,pervursion
+perversions,,,pervursions
 perversity,,,pervurssiti
 perversive,,,pervurssiv
 pervert,n,,purvert
@@ -72977,6 +73048,8 @@ plosive,,,ploaciv
 plot,,,plot
 Plotinism,,,Ploatýnism
 Plotinus,,,Ploatýnuss
+plotline,,,plotlyn
+plotlines,,,plotlyns
 plots,,,plots
 plottage,,,plotij
 plotted,,,ploted
@@ -73562,6 +73635,7 @@ polysaccharides,,,polisákeryds
 polysaccharose,,,polisákeroass
 polysemy,,,póliceemi
 polysepalous,,,policépeluss
+polyspecific,,,polispecific
 polystyle,,,polistyl
 polystyrene,,,polistyreen
 polysulfide,,,polisúlfyd
@@ -74267,6 +74341,7 @@ pralltriller,,,praaltriler
 pram,,,pram
 prana,,,praana
 prance,,,pranss
+pranced,,,pranssd
 prancer,,,pransser
 prances,,,pransses
 prancing,,,pranssing
@@ -75538,6 +75613,7 @@ proline,,,proaleen
 prolix,,,proalix
 prolixity,,,proalixiti
 prolocutor,,,proalócueter
+prolog,,,proalog
 prologise,,prologize
 prologize,,,proalogys
 prologue,,,proalog
@@ -76319,6 +76395,8 @@ puce,,,puess
 puck,,,puk
 pucka,,,puca
 pucker,,,puker
+puckered,,,pukerd
+puckers,,,pukers
 puckery,,,pukeri
 Puckett,,,Pukit
 puckish,,,pukish
@@ -76532,6 +76610,8 @@ pup,,,pup
 pupa,,,puepa
 puparium,,,puepáiriam
 pupate,,,puepait
+pupfish,,,pupfish
+pupfishes,,,pupfishes
 pupil,,,puepl
 pupillarity,,,puepilarriti
 pupillary,,,puepelerri
@@ -79363,6 +79443,7 @@ regroup,,,rigruup
 regrouped,,,rigruupd
 regrouping,,,rigruuping
 regrow,,,rigro
+regrowth,,,rigroath
 regs,,,regs
 regula,,,réguela
 regulable,,,réguelebl
@@ -79982,6 +80063,7 @@ repackaged,,,ripakijd
 repackages,,,ripakijes
 repackaging,,,ripakijing
 repacked,,,ripakd
+repacks,,,ripaks
 repaginate,,,ripajinait
 repaid,,,ripayd
 repaint,n,,rípaint
@@ -82377,6 +82459,8 @@ ruled,,,ruuld
 ruler,,,ruuler
 rulers,,,ruulers
 rules,,,ruuls
+ruleset,,,ruulset
+rulesets,,,ruulsets
 ruling,,,ruuling
 rulings,,,ruulings
 rum,,,rum
@@ -82418,6 +82502,7 @@ rumours,,rumors
 rump,,,rump
 rumple,,,rumpl
 rumpled,,,rumpld
+rumps,,,rumps
 rumpus,,,rumpuss
 rumpy,,,rumpi
 rumrunner,,,rumruner
@@ -84334,6 +84419,9 @@ scrimping,,,scrimping
 scrimpy,,,scrimpi
 scrimshank,,,scrimshank
 scrimshaw,,,scrimshaw
+scrimshawed,,,scrimshawd
+scrimshawing,,,scrimshawing
+scrimshaws,,,scrimshaws
 scrip,,,scrip
 script,,,script
 scriptability,,,scriptebiliti
@@ -86784,6 +86872,8 @@ siliques,,,sileeks
 silk,,,silk
 silkaline,,,silcaleen
 silken,,,silken
+silkpaper,,,silkpaiper
+silkpapers,,,silkpaipers
 silks,,,silks
 silkscreen,,,silkscreen
 silkweed,,,silkweed
@@ -86958,6 +87048,7 @@ singles,,,singgels
 singlestick,,,singgelstik
 singlet,,,singglit
 singleton,,,singgelten
+singletons,,,singgeltens
 singletree,,,singgeltree
 singling,,,singgeling
 singly,,,singgeli
@@ -87133,6 +87224,7 @@ sixes,,,sixes
 sixfold,,,sixfoald
 sixpence,,,sixpenss
 sixpenny,,,sixpeni
+sixsome,,,sixsum
 sixte,,,sixt
 sixteen,,,sixteen
 sixteenmo,,,sixteenmo
@@ -88872,6 +88964,8 @@ sowar,,,soawár
 sowback,,,sowbak
 sowbelly,,,sowbeli
 sowbread,,,sowbred
+sowbug,,,sowbug
+sowbugs,,,sowbugs
 sowcar,,,soucár
 sowed,,,soad
 sower,,,soer
@@ -89376,6 +89470,7 @@ spilling,,,spiling
 spillover,,,spiloaver
 spills,,,spils
 spillway,,,spilway
+spillways,,,spilways
 spilosite,,,spylecyt
 spilt,,spilled
 spilth,,,spilth
@@ -89425,6 +89520,7 @@ spinthariscope,,,spinthárrescoap
 spinulae,,spinule
 spinule,,,spynuel
 spinulose,,,spínueloass
+spinward,,,spinwerd
 spiny,,,spyni
 spiracle,,,spyrecl
 spiracular,,,spyrácueler
@@ -89555,6 +89651,9 @@ splodge,,,sploj
 splore,,,splor
 splosh,,,splosh
 splotch,,,sploch
+splotched,,,splochd
+splotches,,,sploches
+splotching,,,sploching
 splurge,,,splurj
 splurged,,,splurjd
 splurging,,,splurjing
@@ -89849,6 +89948,8 @@ spy,,,spy
 spyglass,,,spyglass
 spyhole,,,spyhoal
 spying,,,spying
+spymaster,,,spymaster
+spymasters,,,spymasters
 spyware,,,spywair
 squab,,,squob
 squabble,,,squobl
@@ -90288,6 +90389,7 @@ starrs,,,stars
 starry,,,stari
 stars,,,stars
 starship,,,starship
+starships,,,starships
 starstruck,,,starstruk
 start,,,start
 started,,,started
@@ -92077,6 +92179,8 @@ subterrestrial,,,subterestrial
 subtest,,,subtest
 subtests,,,subtests
 subtext,,,súbtext
+subthread,,,súbthred
+subthreads,,,súbthreds
 subtile,,,sutil
 subtilely,,,sutilli
 subtileness,,,sutilness
@@ -93423,6 +93527,7 @@ sylvite,,,silvyt
 sym,,,sim
 symbion,,,simbian
 symbiont,,,simbiont
+symbionts,,,simbionts
 symbiosis,,,simbiyóaciss
 symbiote,,,símbioat
 symbiotes,,,símbioats
@@ -93519,6 +93624,8 @@ sync,,,sink
 syncarp,,,sínncarp
 syncarpous,,,sincarpuss
 syncarpy,,,sínncarpi
+synch,,,sink
+synched,,,sinkd
 synchondrosis,,,sincondroaciss
 synchro,,,sincro
 synchrocyclotron,,,sincrosycletron
@@ -94713,6 +94820,7 @@ telencephalic,,,telensefalic
 telencephalon,,,telensefalon
 teleological,,,telialojicl
 teleology,,,telioleji
+teleoperated,,,teleóperaited
 teleost,,,teliost
 telepath,,,telepath
 telepathic,,,telepathic
@@ -95852,6 +95960,7 @@ thowless,,,thouless
 Thrace,,,Thraiss
 Thracian,,,Thraition
 thrall,,,thrall
+thralls,,,thralls
 thrash,,,thrash
 thrashed,,,thrashd
 thrasher,,,thrasher
@@ -96467,6 +96576,8 @@ toad,,,toad
 toadeater,,,toadeeter
 toadfish,,,toadfish
 toadflax,,,toadflax
+toadlet,,,toadlit
+toadlets,,,toadlits
 toads,,,toads
 toadstone,,,toadstoan
 toadstool,,,toadstuul
@@ -97365,6 +97476,7 @@ transcalency,,,transcailensi
 transcalent,,,transcailent
 Transcaucasia,,,Transcaucáizha
 transceiver,,,transeever
+transceivers,,,transeevers
 transcend,,,transénd
 transcended,,,transénded
 transcendence,,,transéndenss
@@ -97646,6 +97758,7 @@ travertine,,,travertin
 travesties,,,travesties
 travesty,,,travesti
 travis,,,traviss
+travois,,,travoy
 Travolta,,,Travoalta
 trawl,,,trall
 trawler,,,traller
@@ -97720,6 +97833,7 @@ trekked,,,trekd
 trekking,,,treking
 treks,,,treks
 trellis,,,treliss
+trellises,,,trelisses
 trelliswork,,,trelisswurk
 trematode,,,trémetoad
 tremble,,,trembl
@@ -98869,6 +98983,8 @@ twine,,,twyn
 twined,,,twynd
 twinflower,,,twinflower
 twinge,,,twinj
+twinhull,,,twinhul
+twinhulls,,,twinhuls
 twining,,,twyning
 twinjet,,,twinjet
 twinjets,,,twinjets
@@ -98915,6 +99031,7 @@ twopence,,,tupenss
 twopenny,,,tupeni
 twos,,,tuuus
 twosome,,,tuusum
+txt,,,txt
 Tyburn,,,Tybern
 Tycho,,,Tyco
 tycoon,,,tycúun
@@ -98929,6 +99046,7 @@ tyler,,,tyler
 tylosis,,,tylóaciss
 tymbal,,,timbl
 tympan,,,timpen
+tympana,,,timpena
 tympanic,,,timpanic
 tympanist,,,timpenist
 tympanites,,,timpanytees
@@ -99098,6 +99216,7 @@ ultraconservative,,,ultraconsurvetiv
 ultrafiltrate,,,ultrafiltrait
 ultrafiltration,,,ultrafiltraition
 ultraism,,,ultraism
+ultralight,,,ultralyt
 ultramarine,,,ultramereen
 ultramicrochemistry,,,ultramycrokemistri
 ultramicrometer,,,ultramycrómiter
@@ -100496,6 +100615,7 @@ unlikeable,,,unlykebl
 unlikelihood,,,unlyklihood
 unlikely,,,unlykli
 unlimber,,,unlimber
+unlimbering,,,unlimbering
 unlimited,,,unlimited
 unlimitedly,,,unlimitedli
 unlimitedness,,,unlimitedness
@@ -101973,6 +102093,7 @@ vanish,,,vanish
 vanished,,,vanishd
 vanishes,,,vanishes
 vanishing,,,vanishing
+vanishingly,,,vanishingli
 vanities,,,vanities
 vanity,,,vaniti
 vanman,,,vanman
@@ -103597,7 +103718,9 @@ wakefulness,,,waikfulness
 wakeless,,,waikless
 wakeman,,,waicmen
 waken,,,waiken
+wakened,,,waikend
 wakening,,,waikening
+wakens,,,waikens
 wakerife,,,waikryf
 wakes,,,waiks
 wakeup,,,waikup
@@ -104565,6 +104688,7 @@ whined,,,whynd
 whiner,,,whyner
 whiners,,,whyners
 whines,,,whyns
+whiney,,,whyni
 whinge,,,whinj
 whining,,,whyning
 whinny,,,whini
@@ -105839,6 +105963,7 @@ xiv,,,xiv
 xix,,,xix
 Xmas,,,"Éxmess"
 xoanon,,,zoenon
+xor,,,xor
 xu,,,zu
 Xuthus,,,Zuethuss
 xv,,,xv
