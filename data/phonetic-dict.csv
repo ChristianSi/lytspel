@@ -585,6 +585,7 @@ accompanist,,,a#k'Vmpa#nIst,,@k'Vmp@nIst
 accompany,,,a#k'Vmp@ni:,,@k'Vmp@ni:
 accompanying,,,a#k'Vmp@nIIN,,@k'Vmp@ni:IN
 accompanyist,,,a#k'Vmpa#nIIst,,@k'Vmp@ni:Ist
+accompli,,,a#k'Qmpli:,a#k'Ampli:,
 accomplice,,,a#k'QmplIs,a#k'AmplIs,@k'QmplIs
 accomplices,,,a#k'QmplIsIz,a#k'AmplIsI#z,@k'Qmpl@s@z
 accomplish,,,a#k'QmplIS,a#k'AmplIS,@k'QmplIS
@@ -15568,6 +15569,7 @@ Caucasus,,,k'O:kas@s,,k'O:k@s@s
 Cauchy,,,k'O:tSi:,,koUS'i:
 caucus,,,k'O:k@s,,k'Qk@s
 caucuses,,,k'O:k@sIz,k'O:k@sI#z,
+caucusing,,,k'O:kju:sIN,,
 cauda,,,k'O:d@,,k'aUd@
 caudad,,,k'O:dad,,k'Qdad
 caudal,,,k'O:d@l,,k'Qd@l
@@ -26564,6 +26566,7 @@ detachedly,,,dIt'aSIdlI,dIt'aSIdli:,dIt'atStli:
 detachedness,,,dIt'atStn@s,,dIt'atSIdnIs
 detaches,,,dIt'aSIz,dIt'aSI#z,di:t'atS@z
 detachment,,,dIt'atSm@nt,,
+detachments,,,dIt'atSm@nts,,
 detail,,,d'i:teIl,di:t'eIl,d'IteIl
 detailed,,,d'i:teIld,di:t'eIld,dIt'eIld
 detailedly,,,d'i:teIlIdlI,d'i:teIlIdli:,dIt'eIldli:
@@ -35290,6 +35293,7 @@ fairyland,,,f'e@rIland,f'ErIland,f'e@i:land
 fairytale,,,f'e@rIteIl,f'ErIteIl,f'Eri:teIl
 fairytales,,,f'e@rIteIlz,f'ErIteIlz,f'Eri:teIlz
 Faisal,,,f'eIs@l,,f'aIsAl
+fait,,,f'eIt,,
 faith,,,f'eIT,,
 faithful,,,f'eITf@l,,
 faithfully,,,f'eITf@lI,f'eITf@li:,
@@ -38559,10 +38563,14 @@ fratchy,,,fr'atSi:,,
 frate,,,fr'eIt,,
 frater,,,fr'eIt@,fr'eIt@`,
 fraternal,,,fra#t'3:n@l,,fr@t'3:n@l
+fraternisation,,,fra#t3:naIz'eIS@n,fra#t3:n@z'eIS@n,
+fraternisations,,,fra#t3:naIz'eIS@nz,fra#t3:n@z'eIS@nz,
 fraternise,,fraternize
 fraternising,,fraternizing
 fraternities,,,fra#t'3:nIti:z,,fr@t'3:n@ti:z
 fraternity,,,fra#t'3:nIti:,,fr@t'3:nIti:
+fraternization,,,fra#t3:naIz'eIS@n,,
+fraternizations,,,fra#t3:naIz'eIS@nz,,
 fraternize,,,fra#t'3:naIz,,fr'at@`naIz
 fraternizing,,,fra#t'3:naIzIN,,fr'at@`naIzIN
 fratricide,,,fr'atrIsaId,,
@@ -39874,6 +39882,7 @@ Garrett,,,g'arIt,,
 Garrick,,,g'arIk,,
 garrison,,,g'arIs@n,,
 garrisoned,,,g'arIs@nd,,g'ar@s@nd
+garrisons,,,g'arIs@nz,,
 garron,,,g'ar@n,,
 garrot,,,g@rr'Qt,g@`rr'At,g'ar@t
 garrote,,,ga#r'Qt,ga#r'At,g@`'oUt
@@ -46975,6 +46984,9 @@ hurling,,,h'3:lIN,,
 hurly,,,h'3:li:,,
 Huron,,,hj'UrQn,hj'UrAn,hj'u:rQn
 hurrah,,,h@r'A,h@`r'A,hUr'Q
+hurrahed,,,h@r'Ad,h@`r'Ad,
+hurrahing,,,h@r'ArIN,h@`r'AIN,
+hurrahs,,,h@r'Az,h@`r'Az,
 Hurrian,,,h'Vri:@n,h'3:ri:@n,h'Uri:@n
 hurricane,,,h'VrIkeIn,h'3:r@keIn,h'3:@keIn
 hurricanes,,,h'VrIkeInz,h'3:r@keInz,h'3:@keInz
@@ -48096,6 +48108,7 @@ imbrangle,,,Imbr'aNg@l,,
 imbrex,,,Imbr'Eks,,'ImbrEks
 imbricate,aj,,ImbrIk'eIt,ImbrI#k'eIt,'Imbr@kIt
 imbricate,v,,ImbrIk'eIt,ImbrI#k'eIt,'Imbr@k'eIt
+imbricated,,,ImbrIk'eItId,ImbrI#k'eItI#d,
 imbrication,,,ImbrIk'eIS@n,,Imbr@k'eIS@n
 imbroglio,,,Imbr'QglIoU,Imbr'AglIoU,Imbr'oUljoU
 imbrown,,,Imbr'aUn,,
@@ -48453,6 +48466,7 @@ impishly,,,Imp'ISli:,,'ImpISli:
 impishness,,,Imp'ISn@s,,'ImpISnEs
 implacable,,,Impl'ak@b@l,,
 implacableness,,,Impl'ak@b@ln@s,,Impl'ak@b@lnEs
+implacably,,,Impl'ak@blI,Impl'ak@bli:,
 implacental,,,Impl'eIs@nt@l,,Impl@s'Ent@l
 implant,n,,'Implant,,
 implant,v,,Impl'ant,,
@@ -59976,6 +59990,7 @@ maxim,,,m'aksIm,m'aksI#m,
 maxima,,,m'aksIm@,,
 maximal,,,m'aksIm@l,,
 maximalist,,,m'aksIm@lIst,,
+maximalists,,,m'aksIm@lIsts,,
 maximally,,,m'aksIm@li:,,
 Maximilian,,,maksIm'Ili:@n,,
 maximin,,,m'aksImIn,,m'aks@mIn
@@ -66835,6 +66850,8 @@ octet,,,Qkt'Et,Akt'Et,
 octets,,,Qkt'Ets,Akt'Ets,
 octillion,,,Qkt'Ili:@n,Akt'Ili:@n,Qkt'Ilj@n
 October,,,Qkt'oUb@,Akt'oUb@`,Qkt'oUb@`
+Octobrist,,,'Qkt@brIst,'Akt@brIst,
+Octobrists,,,'Qkt@brIsts,'Akt@brIsts,
 octocentenary,,,Qkt@s@nt'i:n@ri:,Akt@s@nt'i:nEri:,QktoUsEnt'i:n@`i:
 octodecillion,,,Qkt@dIs'Ili:@n,Akt@dIs'Ili:@n,QktoUdIs'Ilj@n
 octodecimo,,,Qkt@dIs'ImoU,Akt@dIs'ImoU,Qkt@d'Es@moU
@@ -71446,6 +71463,7 @@ peregrinity,,,pEr@gr'InIti:,,
 pereion,,,p'EreI@n,,p@`'aIAn
 pereira,,,p'Ere@r@,p'ErEr@,p@`'Er@
 Perelman,,,p'ErElm@n,,p'Er@lm@n
+peremptorily,,,p@r'Empt@r@li:,p'ErImptor@li:,
 peremptory,,,p'ErImpt@ri:,p'ErImpt@`ri:,p@`'Empt@`i:
 perennial,,,p@r'EnI@l,,p@`'Eni:@l
 perenniality,,,p@r'EnI'alIti:,,p@`Eni:'alIti:
@@ -76650,6 +76668,8 @@ protested,,,pr@t'EstId,pr@t'EstI#d,pr'oUtEst@d
 protester,,,pr@t'Est@,pr@t'Est@`,pr'oUtEst@`
 protesters,,,pr@t'Est@z,pr@t'Est@`z,pr'oUtEst@`z
 protesting,,,pr@t'EstIN,,pr'oUtEstIN
+protestor,,,pr@t'Est@,pr@t'Est@`,
+protestors,,,pr@t'Est@z,pr@t'Est@`z,
 protests,n,,pr'oUtEsts,,
 protests,v,,pr@t'Ests,,pr'oUtEsts
 proteus,,,pr'oUtI@s,,pr'oUti:@s
@@ -76781,6 +76801,8 @@ provisory,,,pr@v'Is@ri:,pr@v'Is@`ri:,pr@v'aIz@`i:
 provisos,,,pr@v'aIzoUz,,
 provitamin,,,pr'QvItamIn,pr'AvItamIn,proUv'aIt@mIn
 provo,,,pr'oUvoU,,
+provocateur,,,pr@vQka#t'3:,pr@vAka#t'Ur,
+provocateurs,,,pr@vQka#t'3:z,pr@vAka#t'Urz,
 provocation,,,prQv@k'eIS@n,prAv@k'eIS@n,
 provocations,,,prQv@k'eIS@nz,prAv@k'eIS@nz,
 provocative,,,pr@v'Qk@tIv,pr@v'Ak@tIv,proUv'Qk@tIv
@@ -79433,6 +79455,8 @@ reconditioning,,,ri:k@nd'IS@nIN,,
 reconfiguration,,,ri:k@nfIgjUr'eIS@n,,ri:k@nfIgj@`'eIS@n
 reconfigure,,,ri:k@nf'Ig@,ri:k@nf'Igj@`,ri:k@nf'Ig@`
 reconfigured,,,ri:k@nf'Ig@d,ri:k@nf'Ig@`d,ri:k@nf'Igj@`d
+reconfigures,,,ri:k@nf'Ig@z,ri:k@nf'Igj@`z,
+reconfiguring,,,ri:k@nf'Ig@rIN,ri:k@nf'Igj@`rIN,
 reconfirm,,,ri:k@nf'3:m,,
 reconfirmation,,,ri:kQnf@m'eIS@n,ri:kAnf@`m'eIS@n,ri:kQnf@`m'eIS@n
 reconfirmed,,,ri:k@nf'3:md,,
@@ -81044,6 +81068,8 @@ requisiteness,,,r'EkwIsItn@s,,r'EkwIzItnEs
 requisites,,,r'EkwIsIts,,r'Ekw@z@ts
 requisition,,,rEkwIs'IS@n,,rEkwIz'IS@n
 requisitioned,,,rEkwIs'IS@nd,,rEkw@z'IS@nd
+requisitioning,,,rEkwIs'IS@nIN,,
+requisitions,,,rEkwIs'IS@nz,,
 requital,,,rIkw'It@l,,rIkw'aIt@l
 requite,,,rIkw'aIt,,
 requited,,,rIkw'aItId,rIkw'aItI#d,
@@ -84881,6 +84907,7 @@ scintilla,,,sInt'Il@,,
 scintillant,,,s'IntIl@nt,,s'Int@l@nt
 scintillantly,,,s'IntIl@ntli:,,s'Int@l@ntli:
 scintillate,,,s'IntIleIt,,s'Int@leIt
+scintillating,,,s'IntIleItIN,,
 scintillation,,,sIntIl'eIS@n,,sInt@l'eIS@n
 scintillator,,,s'IntIleIt@,s'IntIleIt@`,s'Int@leIt@`
 scintiscan,,,sInt'Isk@n,,s'IntIskan
@@ -88797,6 +88824,7 @@ smouse,,,sm'aUs,,
 smriti,,,Es'Emr'i:ti:,,smr'Iti:
 smudge,,,sm'VdZ,,
 smudged,,,sm'VdZd,,
+smudges,,,sm'VdZIz,sm'VdZI#z,
 smudgy,,,sm'VdZi:,,
 smug,,,sm'Vg,,
 smuggle,,,sm'Vg@l,,
@@ -94231,6 +94259,7 @@ switchers,,,sw'ItS@z,sw'ItS@`z,
 switches,,,sw'ItSIz,sw'ItSI#z,sw'ItS@z
 switching,,,sw'ItSIN,,
 switchman,,,sw'ItSm@n,,
+switchmen,,,sw'ItSmEn,,
 switchover,,,sw'ItSoUv@,sw'ItSoUv@`,
 switchyard,,,sw'ItSjAd,sw'ItSjArd,
 swith,,,sw'IT,,
@@ -95601,6 +95630,8 @@ Telegonus,,,t'ElIgoUn@s,,t@l'Eg@n@s
 telegony,,,t'ElIg@nI,t'ElIg@ni:,t@l'Eg@ni:
 telegram,,,t'ElIgram,,t'El@gram
 telegrammatic,,,tElIgra#m'atIk,,tEl@gr@m'atIk
+telegrammed,,,t'ElIgramd,,
+telegramming,,,t'ElIgramIN,,
 telegrams,,,t'ElIgramz,,t'El@gramz
 telegraph,,,t'ElIgraf,,t'El@graf
 telegraphed,,,t'ElIgrafd,,t'El@graft
@@ -95610,6 +95641,7 @@ telegraphic,,,tElIgr'afIk,,
 telegraphically,,,tElIgr'afIkli:,,
 telegraphist,,,t'ElIgrafIst,,tIl'Egr@fIst
 telegraphone,,,t'ElIgrafoUn,,t@l'Egr@foUn
+telegraphs,,,t'ElIgrafz,,
 telegraphy,,,t'ElIgr@fi:,,t@l'Egr@fi:
 Telegu,,,t'ElIgu:,,t'El@gu:
 telekinesis,,,tElIk@n'i:sIs,tElIk@n'i:sI#s,tElIkaIn'i:sIs
@@ -98251,6 +98283,7 @@ trajectory,,,tr@dZ'Ekt@rI,tr@dZ'Ekt@`ri:,tr@dZ'Ekt@`i:
 Tralee,,,tr'ali:,,tr@l'i:
 tram,,,tr'am,,
 tramcar,,,tr'amkA,tr'amkAr,
+tramcars,,,tr'amkAz,tr'amkArz,
 tramel,,,tr'eIm@l,,tr'am@l
 tramell,,,tr'eIm@l,,trQm'eIl
 tramlines,,,tr'amlaInz,,
@@ -99396,6 +99429,7 @@ tsar,,czar
 tsarevich,,,ts'e@vItS,ts'ErvItS,z'Ari:vItS
 tsarevitch,,,ts'e@vItS,ts'ErvItS,z'Ar@vItS
 tsarevna,,,ts'e@vn@,ts'Ervn@,zAr'Evn@
+tsarina,,,tsAr'i:n@,,
 tsarist,,,ts'ArIst,,
 tsarists,,,ts'ArIsts,,
 Tsaritsyn,,,ts'ArItsIn,,tsAr'ItsIn
@@ -100501,6 +100535,7 @@ unconventionality,,,Vnk@nvEnS@n'alIti:,,
 unconverted,,,Vnk@nv'3:tId,Vnk@nv'3:tI#d,
 unconvinced,,,Vnk@nv'Inst,,
 unconvincing,,,Vnk@nv'InsIN,,
+unconvincingly,,,Vnk@nv'InsINlI,Vnk@nv'InsINli:,
 uncooked,,,Vnk'Ukt,,
 uncool,,,Vnk'u:l,,
 uncooperative,,,VnkoU'Qp@r@tIv,VnkoU'Ap@`r@tIv,VnkoU'Qp@`@tIv
@@ -104456,8 +104491,8 @@ Vyborg,,,v'aIbO:g,v'aIborg,v'i:bO:rg
 Vycor,,,v'aIk@,v'aIk@`,v'aIkO:r
 vying,,,v'aIIN,,
 vyingly,,,v'aIINlI,v'aIINli:,
-wa,,,w'A,,
 WA,,,w'A,,w'Q
+wa,,,w'A,,
 Waadt,,,w'At,,v'At
 WAAF,,,w'Af,,w'af
 Waal,,,w'Al,,w'Ql
