@@ -9,6 +9,7 @@ abominations
 abundances
 accesses
 acclimatization
+accompli
 accusatives
 achromatopsia
 acknowledgements
@@ -220,6 +221,7 @@ cataclysms
 catalyzes
 catastrophist
 catwalks
+caucusing
 cauldrons
 cawed
 cellphones
@@ -435,6 +437,7 @@ demigods
 demonstratives
 deputed
 descriptors
+detachments
 determinatives
 detraining
 Detroiter
@@ -593,6 +596,7 @@ Facebook
 facto
 fadeout
 faire
+fait
 familiars
 fancying
 fantails
@@ -663,6 +667,10 @@ foveolae
 frags
 frameworks
 franca
+fraternisation
+fraternisations
+fraternization
+fraternizations
 freedmen
 freedpeople
 freefall
@@ -685,6 +693,7 @@ gantries
 gaol
 gaped
 garde
+garrisons
 gaslights
 gaylord
 gaylords
@@ -805,6 +814,9 @@ humours
 hungered
 Hungers
 Huns
+hurrahed
+hurrahing
+hurrahs
 hurtled
 hypertensives
 hyphens
@@ -818,7 +830,9 @@ ii
 iii
 illuminations
 imams
+imbricated
 imperfects
+implacably
 implementations
 implementer
 implementers
@@ -1036,6 +1050,7 @@ mastodons
 matchable
 maternally
 maxima
+maximalists
 maximally
 meditated
 meditatively
@@ -1219,6 +1234,7 @@ objectivists
 obscurely
 obstinately
 octets
+Octobrist
 octopuses
 OECD
 offhandedly
@@ -1312,6 +1328,7 @@ pentoxide
 peopling
 percepts
 perdues
+peremptorily
 perfects
 perfunctorily
 perimetry
@@ -1423,9 +1440,13 @@ promontories
 propertyless
 propofol
 prosimetric
+protestor
+protestors
 protohumans
 prototyping
 protruded
+provocateur
+provocateurs
 pt
 puckered
 puckers
@@ -1483,6 +1504,8 @@ reanimation
 recessives
 recompensed
 recompute
+reconfigures
+reconfiguring
 recurs
 recurse
 recursions
@@ -1529,6 +1552,8 @@ reproachfully
 reproducible
 reproved
 reproves
+requisitioning
+requisitions
 requited
 requites
 requiting
@@ -1589,6 +1614,7 @@ scabbing
 scalability
 scatters
 schoolgirls
+scintillating
 scrabbled
 scrabbles
 scrabbling
@@ -1692,6 +1718,7 @@ smallholders
 smartphone
 smartphones
 smirked
+smudges
 sniffled
 sniveled
 sniveling
@@ -1859,6 +1886,7 @@ swathes
 sweetmeats
 swilled
 swills
+switchmen
 syllabaries
 syllabification
 syllabified
@@ -1888,7 +1916,10 @@ teacups
 teared
 technophile
 technophiles
+telegrammed
+telegramming
 telegraphically
+telegraphs
 teleoperated
 templates
 templating
@@ -1953,6 +1984,7 @@ traduces
 traducing
 trafficked
 trajectories
+tramcars
 trammeled
 trammels
 transceivers
@@ -1988,6 +2020,7 @@ truculently
 truisms
 trumpeters
 trunkloads
+tsarina
 tsarist
 tsarists
 tubers
@@ -2032,6 +2065,7 @@ uncloaked
 uncloaking
 uncloaks
 uncontacted
+unconvincingly
 uncredentialed
 undecorated
 underclan
