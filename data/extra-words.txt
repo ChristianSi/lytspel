@@ -58,6 +58,8 @@ antbirds
 Anthropocene
 anticlericalism
 anticommunism
+antiquark
+antiquarks
 antisemitic
 antisemitism
 antispinward
@@ -395,6 +397,8 @@ dandled
 dandles
 dandling
 Darwinists
+databank
+databanks
 dataset
 datasets
 datatypes
@@ -437,6 +441,7 @@ demigods
 demonstratives
 deputed
 descriptors
+detaching
 detachments
 determinatives
 detraining
@@ -593,6 +598,7 @@ externalities
 extraterrestriality
 eyrie
 Facebook
+factly
 facto
 fadeout
 faire
@@ -836,6 +842,7 @@ implacably
 implementations
 implementer
 implementers
+imploringly
 imposingly
 imprecations
 inattentional
@@ -971,6 +978,7 @@ lateralization
 leant
 leapt
 Legos
+leptons
 lethargica
 lettuces
 levelly
@@ -1560,6 +1568,7 @@ requites
 requiting
 resentfully
 resetting
+resignedly
 resounded
 resounds
 respelled
@@ -1828,6 +1837,8 @@ stuttered
 stylesheet
 stylesheets
 subbranches
+subcenter
+subcenters
 subdirectories
 subdirectory
 subedited
@@ -1927,6 +1938,8 @@ templating
 tendrils
 tensed
 tenses
+Terran
+Terrans
 testable
 texted
 texting
@@ -2031,6 +2044,7 @@ tussocks
 tutted
 twat
 twats
+tweedles
 twelver
 twinhull
 twinhulls
@@ -2207,6 +2221,7 @@ wisps
 wittered
 wittering
 wombs
+woodenly
 woogie
 wooly
 workaround
