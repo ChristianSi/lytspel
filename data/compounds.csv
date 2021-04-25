@@ -1833,6 +1833,8 @@ antiproton,anti=proton
 antipruritic,anti=pruritic
 antipyretic,anti=pyretic
 antiquarian,antiquary=an
+antiquark,anti=quark
+antiquarks,antiquark=s
 antiquated,antiquate=ed
 antiquely,antique=ly
 antiques,antique=s
@@ -11449,6 +11451,8 @@ dashingly,dashing=ly
 dashpot,dash-pot
 dashy,dash=y
 dastardly,dastard=ly
+databank,data-bank
+databanks,databank=s
 database,data-base
 databases,database=s
 datable,date=able
@@ -12683,6 +12687,7 @@ detached,detach=ed
 detachedly,detached=ly
 detachedness,detached=ness
 detaches,detach=s
+detaching,detach=ing
 detachment,detach=ment
 detachments,detachment=s
 detailed,detail=ed
@@ -17210,6 +17215,7 @@ factiousness,factious=ness
 factitiously,factitious=ly
 factitiousness,factitious=ness
 factitively,factitive=ly
+factly,fact=ly
 factoid,fact=oid
 factor,fact=or
 factorage,factor=age
@@ -24001,6 +24007,7 @@ imploratory,implore=atory
 implored,implore=ed
 implores,implore=s
 imploring,implore=ing
+imploringly,imploring=ly
 implosively,implosive=ly
 implying,imply=ing
 impolitely,impolite=ly
@@ -27926,6 +27933,7 @@ leprose,lep-rose
 leprously,leprous=ly
 leprousness,leprous=ness
 leptonic,lepton=ic
+leptons,lepton=s
 lesbianism,lesbian=ism
 lesbians,lesbian=s
 lesions,lesion=s
@@ -47191,6 +47199,8 @@ subcaliber,sub=caliber
 subcartilaginous,sub=cartilaginous
 subcategory,sub=category
 subcaudal,sub=caudal
+subcenter,sub=center
+subcenters,subcenter=s
 subcentral,sub=central
 subcentrally,sub=centrally
 subchapter,sub=chapter
@@ -49015,6 +49025,8 @@ terraces,terrace=s
 terracing,terrace=ing
 terracotta,terra-cotta
 terrains,terrain=s
+terran,terra=n
+terrans,terran=s
 terrier,terri=er
 terriers,terrier=s
 terrified,terrify=ed
@@ -50887,6 +50899,7 @@ twats,twat=s
 tweaked,tweak=ed
 tweaking,tweak=ing
 tweaks,tweak=s
+tweedles,tweedle=s
 tweedy,tweed=y
 tweer,twee=er
 tweest,twee=est
@@ -55142,6 +55155,7 @@ woodcutter,woodcut=er
 wooded,wood=ed
 wooden,wood=en
 woodenhead,wooden-head
+woodenly,wooden=ly
 woodenware,wooden-ware
 woodgrouse,wood-grouse
 woodhouse,wood-house

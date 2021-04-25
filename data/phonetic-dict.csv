@@ -4622,6 +4622,8 @@ antipyresis,,,antIpaIr'i:sIs,,anti:paIr'i:sIs
 antipyretic,,,antIpaIr'EtIk,,anti:paIr'EtIk
 antipyrine,,,antIp'Iri:n,,anti:p'aIrIn
 antiquarian,,,antIkw'e@ri:@n,antIkw'Eri:@n,ant@kw'e@i:@n
+antiquark,,,'antIkwAk,'antIkwArk,
+antiquarks,,,'antIkwAks,'antIkwArks,
 antiquary,,,'antIkw@ri:,'antIkwEri:,'ant@kwEri:
 antiquate,,,'antIkweIt,,'ant@kweIt
 antiquated,,,'antIkweItId,'antIkweItI#d,'ant@kweItId
@@ -24516,6 +24518,8 @@ dasyphyllous,,,d'asIfIl@s,,das@f'Il@s
 dasyure,,,d'asju:r@,,d'asi:jUr
 dat,,,d'at,,
 data,,,d'eIt@,,
+databank,,,d'eIt@baNk,,
+databanks,,,d'eIt@baNks,,
 database,,,d'eIt@beIs,,
 databases,,,d'eIt@beIsIz,d'eIt@beIsI#z,
 datable,,,d'eIt@b@l,,
@@ -26565,6 +26569,7 @@ detached,,,dIt'atSt,,
 detachedly,,,dIt'aSIdlI,dIt'aSIdli:,dIt'atStli:
 detachedness,,,dIt'atStn@s,,dIt'atSIdnIs
 detaches,,,dIt'aSIz,dIt'aSI#z,di:t'atS@z
+detaching,,,dIt'atSIN,,
 detachment,,,dIt'atSm@nt,,
 detachments,,,dIt'atSm@nts,,
 detail,,,d'i:teIl,di:t'eIl,d'IteIl
@@ -35179,6 +35184,7 @@ factitiously,,,fakt'IS@sli:,,
 factitiousness,,,fakt'IS@sn@s,,fakt'IS@snEs
 factitive,,,f'aktItIv,,
 factitively,,,f'aktItIvli:,,
+factly,,,f'aktli:,,
 facto,,,f'aktoU,,
 factoid,,,f'aktOId,,
 factor,,,f'akt@,f'akt@`,
@@ -48516,6 +48522,7 @@ implore,,,Impl'O:,Impl'or,Impl'O:r
 implored,,,Impl'O:d,Impl'ord,Impl'O:rd
 implores,,,Impl'O:z,Impl'orz,Impl'O:rz
 imploring,,,Impl'O:rIN,Impl'orIN,
+imploringly,,,Impl'O:rINlI,Impl'orINli:,
 implosion,,,Impl'oUZ@n,,
 implosive,,,Impl'oUsIv,,
 implosively,,,Impl'oUsIvli:,,
@@ -56058,6 +56065,7 @@ leptodactyl,,,l'Ept@daktaIl,,lEptoUd'aktIl
 leptodactylous,,,l'Ept@daktIl@s,,lEpt@d'akt@l@s
 lepton,,,l'Ept@n,,l'EptQn
 leptonic,,,lEpt'QnIk,lEpt'AnIk,
+leptons,,,l'Ept@nz,,
 leptophyllous,,,l'Ept@fIl@s,,lEptoUf'Il@s
 leptorrhine,,,l'Ept@raIn,,l'Ept@`aIn
 leptosomatic,,,lEpt@s@m'atIk,,lEptoUs@m'atIk
@@ -81202,6 +81210,7 @@ resign,,,rIz'aIn,,
 resignation,,,rIzIgn'eIS@n,,rEzIgn'eIS@n
 resignations,,,rIzIgn'eIS@nz,,rEzIgn'eIS@nz
 resigned,,,rIz'aInd,,ri:z'aInd
+resignedly,,,rIz'aInIdlI,rIz'aInIdli:,
 resigning,,,rIz'aInIN,,ri:s'aInIN
 resigns,,,rIz'aInz,,ri:s'aInz
 resile,,,rIs'aIl,,ri:z'aIl
@@ -92655,6 +92664,8 @@ subcalibre,,subcaliber
 subcartilaginous,,,sVbkAtIl'adZIn@s,sVbkArtIl'adZIn@s,sVbkArt@l'adZ@n@s
 subcategory,,,sVbk'atIg@ri:,sVbk'atIg@`ri:,s@bk'at@gori:
 subcaudal,,,s'VbkO:d@l,,s@bk'Ad@l
+subcenter,,,s'VbsEnt@,s'VbsEnt@`,
+subcenters,,,s'VbsEnt@z,s'VbsEnt@`z,
 subcentral,,,s'Vbs@ntr@l,,s@bs'Entr@l
 subcentrally,,,s'Vbs@ntr@li:,,s@bs'Entr@li:
 subchapter,,,s'VbtSapt@,s'VbtSapt@`,s'VbtS'apt@`
@@ -96067,8 +96078,10 @@ terrain,,,t@r'eIn,t@`r'eIn,t@`'eIn
 terrains,,,t@r'eInz,t@`r'eInz,t@`'eInz
 terramara,,,tEra#m'Ar@,tEra#m'Arr@,tEr@m'Ar@
 terramycin,,,t'Era#mIsIn,,tEr@m'aIsIn
+Terran,,,t'Er@n,,
 Terrance,,,t'Er@ns,,
 terrane,,,t'EreIn,,t@`'eIn
+Terrans,,,t'Er@nz,,
 terrapin,,,t'Era#pIn,,t'Er@pIn
 terraqueous,,,t'EreIkwI@s,,tEr'eIkwi:@s
 terrarium,,,tEr'e@ri:@m,tEr'Eri:@m,tEr'e@i:@m
@@ -99807,6 +99820,7 @@ twee,,,tw'i:,,
 tweed,,,tw'i:d,,
 Tweeddale,,,tw'i:deIl,,
 tweedle,,,tw'i:d@l,,
+tweedles,,,tw'i:d@lz,,
 Tweedsmuir,,,tw'i:dsmjU@,tw'i:dsmjUr,tw'i:dzmjUr
 tweedy,,,tw'i:di:,,
 tweeny,,,tw'i:ni:,,
@@ -106430,6 +106444,7 @@ woodcutter,,,w'UdkVt@,w'UdkVt@`,
 wooded,,,w'UdId,w'UdI#d,
 wooden,,,w'Ud@n,,
 woodenhead,,,w'Ud@nhEd,,
+woodenly,,,w'Ud@nli:,,
 woodenware,,,w'Ud@nwe@,w'Ud@nwEr,
 woodgrouse,,,w'UdgraUs,,
 woodhouse,,,w'UdhaUs,,
