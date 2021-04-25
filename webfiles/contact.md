@@ -7,15 +7,6 @@ mail -- please download my [public key](https://www.siefkes.net/key.txt)
 from my website or from a key server. Its ID is `0x7155F0B5980FA6ED` and
 its fingerprint is `2179 96B8 CB3E 1710 EFAA 23FD 7155 F0B5 980F A6ED`.
 
-My home address is:
-
-Wilhelmshavener Str. 62  
-10551 Berlin  
-Germany
-
-My phone number is +49 163 6312-753. You may use this number in urgent
-emergencies; otherwise please send me an email instead.
-
 
 ## Bugs and Improvements
 

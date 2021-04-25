@@ -18,11 +18,7 @@ relevant information on this page.
 The person responsible according to the GDPR is:
 
 Christian Siefkes  
-Wilhelmshavener Str. 62  
-10551 Berlin  
-Germany  
-Email: <christian@siefkes.net>  
-Phone: +49 163 6312-753
+Email: <christian@siefkes.net>
 
 This privacy policy applies to the domain www.lytspel.org.
 
