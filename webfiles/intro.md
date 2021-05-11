@@ -1,20 +1,18 @@
 ## News
 
-Lytspel has been selected for a shortlist of six spelling reform proposals
-that will be considered in the final round of the [International English
-Spelling
+Lytspel made it into the shortlist of six spelling reform proposals
+considered in the final round of the [International English Spelling
 Congress](http://spellingsociety.org/international-english-spelling-congress)
 organized by the [English Spelling Society](http://spellingsociety.org/).
-
-All selected schemes can be
-[downloaded](http://spellingsociety.org/international-english-spelling-congress)
-from the Society's website. Discussion of the proposed schemes is possible
-on the [blog of the Spelling Society](http://spellingsociety.org/blog) or
-[on Reddit](https://www.reddit.com/r/TheEnglishSpellingSoc/). Soon the
-final session of the Congress will take place and participants will vote on
-their final choice – to join in the decision, you have to fill out an
-[application
-form](http://spellingsociety.org/international-english-spelling-congress-application).
+The final winner was [Traditional Spelling
+Revised](http://spellingsociety.org/uploaded_views/traditional-spelling-revised-personal-view.pdf)
+(PDF), a conservative proposal that eliminates the worst exceptions, but
+still allows various spellings for most sounds, meaning that each word has
+to be essentially memorized. While TSR would be a clear and considerable
+improvement over the status quo and I therefore support its adaptation, I
+still think that a principled solution such as Lytspel is ultimately
+preferable, since it would largely eliminate the need for memorization and
+make English truly follow the alphabetic principle.
 
 
 ## Scope and Purpose of This Website
