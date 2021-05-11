@@ -189,6 +189,7 @@ buffaloes
 buggered
 buggering
 buggier
+Bulgars
 bumbled
 bumbles
 burrowed
@@ -1017,6 +1018,7 @@ lotuses
 loveliness
 lowlanders
 luggers
+lungful
 lunk
 lunks
 Lytspel
@@ -1060,6 +1062,7 @@ maternally
 maxima
 maximalists
 maximally
+maximums
 meditated
 meditatively
 meditator
