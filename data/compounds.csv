@@ -2703,7 +2703,7 @@ austen,aust=en
 auster,aust=er
 austerely,austere=ly
 austereness,austere=ness
-austerity,auster=ity
+austerities,austerity=es
 australasia,austral-asia
 australasian,australasia=n
 australian,australia=n
@@ -4012,6 +4012,8 @@ berserker,berserk=er
 berthage,berth=age
 berths,berth=s
 beryline,beryl=ine
+beseeched,beseech=ed
+beseeches,beseech=es
 beseeching,beseech=ing
 besetting,beset=ing
 besides,beside=s
@@ -4417,6 +4419,8 @@ birthday,birth-day
 birthdays,birthday=s
 birthed,birth=ed
 birthing,birth=ing
+birthless,birth=less
+birthlessness,birthless=ness
 birthmark,birth-mark
 birthmarks,birthmark=s
 birthnight,birth-night
@@ -5423,6 +5427,7 @@ braggs,bragg=s
 brags,brag=s
 brahmanic,brahman=ic
 brahmanism,brahman=ism
+brahmans,brahman=s
 brahminic,brahmin=ic
 braided,braid=ed
 braiding,braid=ing
@@ -9455,6 +9460,7 @@ conscientiousness,conscientious=ness
 conscionableness,conscionable=ness
 consciously,conscious=ly
 consciousness,conscious=ness
+consciousnesses,consciousness=es
 conscripted,conscript=ed
 conscriptionist,conscription=ist
 conscripts,conscript=s
@@ -9637,6 +9643,7 @@ contemnible,contemn=ible
 contemplated,contemplate=ed
 contemplates,contemplate=s
 contemplating,contemplate=ing
+contemplations,contemplation=s
 contemplatively,contemplative=ly
 contemplativeness,contemplative=ness
 contemporaneously,contemporaneous=ly
@@ -11591,6 +11598,7 @@ deathday,death-day
 deathful,death=ful
 deathless,death=less
 deathlessly,deathless=ly
+deathlessness,deathless=ness
 deathlike,death-like
 deathly,death=ly
 deaths,death=s
@@ -11956,6 +11964,7 @@ defied,defy=ed
 defier,defy=er
 defies,defy=es
 defile,de=file
+defiled,de=filed
 defiler,de=filer
 defilers,de=filers
 defiles,de=files
@@ -12883,6 +12892,7 @@ dextroglucose,dextro-glucose
 dextrogyre,dextro-gyre
 dextrorsely,dextrorse=ly
 dextrosinistral,dextro-sinistral
+dharmas,dharma=s
 dhows,dhow=s
 diabasic,diabase=ic
 diabetics,diabetic=s
@@ -14146,6 +14156,7 @@ doghouses,doghouse=s
 dogleg,dog-leg
 doglike,dog-like
 dogman,dog-man
+dogmas,dogma=s
 dogmatic,dogma=tic
 dogmatics,dogmatic=s
 dogs,dog=s
@@ -14874,6 +14885,7 @@ dwarfishly,dwarfish=ly
 dwarfishness,dwarfish=ness
 dwarfism,dwarf=ism
 dwarfs,dwarf=s
+dwelled,dwell=ed
 dweller,dwell=er
 dwellers,dweller=s
 dwelling,dwell=ing
@@ -16087,6 +16099,7 @@ entrap,en=trap
 entrapment,entrap=ment
 entrapped,en=trapped
 entreat,en=treat
+entreated,en=treated
 entreaties,en=treaties
 entreating,en=treating
 entreaty,en=treaty
@@ -25556,6 +25569,7 @@ interatomic,inter=atomic
 interbank,inter=bank
 interbed,inter=bed
 interbedded,inter=bedded
+interbeing,inter=being
 interblend,inter=blend
 interborough,inter=borough
 interbrain,inter=brain
@@ -25787,6 +25801,7 @@ interoffice,inter=office
 interosculate,inter=osculate
 interpellator,interpellate=or
 interpenetrate,inter=penetrate
+interpenetration,inter=penetration
 interpersonal,inter=personal
 interphase,inter=phase
 interphone,inter=phone
@@ -26496,6 +26511,8 @@ jailer,jail=er
 jailers,jailer=s
 jailhouse,jail-house
 jailing,jail=ing
+jailkeeper,jail-keeper
+jailkeepers,jailkeeper=s
 jails,jail=s
 jainism,jain=ism
 jakes,jake=s
@@ -27714,6 +27731,7 @@ layover,lay-over
 layovers,layover=s
 laypeople,lay-people
 layperson,lay-person
+laypersons,layperson=s
 lays,lay=s
 layshaft,lay-shaft
 laystall,lay-stall
@@ -32479,6 +32497,8 @@ nightshade,night-shade
 nightshirt,night-shirt
 nightshirts,nightshirt=s
 nightside,night-side
+nightsoil,night-soil
+nightsoils,nightsoil=s
 nightspot,night-spot
 nightstand,night-stand
 nightstands,nightstand=s
@@ -32593,10 +32613,12 @@ nonaligned,non=aligned
 nonalignment,non=alignment
 nonallergenic,non=allergenic
 nonappearance,non=appearance
+nonattachment,non=attachment
 nonattendance,non=attendance
 nonautomotive,non=automotive
 nonbank,non=bank
 nonbanking,non=banking
+nonbeing,non=being
 nonbeliever,non=believer
 nonbelievers,non=believers
 nonbelligerency,non=belligerency
@@ -32733,6 +32755,7 @@ nonparticipation,non=participation
 nonpartisan,non=partisan
 nonpaying,non=paying
 nonpayment,non=payment
+nonperception,non=perception
 nonperformance,non=performance
 nonperforming,non=performing
 nonperishable,non=perishable
@@ -32774,6 +32797,7 @@ nonrigid,non=rigid
 nonruling,non=ruling
 nonscheduled,non=scheduled
 nonsectarian,non=sectarian
+nonself,non=self
 nonsense,non=sense
 nonsensical,nonsense=ical
 nonsensicality,nonsensical=ity
@@ -38190,6 +38214,7 @@ prospers,prosper=s
 prostaglandins,prostaglandin=s
 prosthetics,prosthetic=s
 prostitutes,prostitute=s
+prostrated,prostrate=ed
 prosy,pros=y
 protagonists,protagonist=s
 protean,protea=n
@@ -41724,6 +41749,7 @@ rivalry,rival=ry
 rivals,rival=s
 riverain,river-ain
 riverbank,river-bank
+riverbanks,riverbank=s
 riverbed,river-bed
 riverboat,river-boat
 riverboats,riverboat=s
@@ -44365,6 +44391,8 @@ signifies,signify=es
 signifying,signify=ing
 signing,sign=ing
 signings,signing=s
+signless,sign=less
+signlessness,signless=ness
 signpost,sign-post
 signposts,signpost=s
 signs,sign=s
@@ -44566,6 +44594,7 @@ sizy,size=y
 sizzled,sizzle=ed
 sizzlers,sizzler=s
 sizzling,sizzle=ing
+skandhas,skandha=s
 skateboard,skate-board
 skateboarding,skateboard=ing
 skated,skate=ed
@@ -47590,6 +47619,7 @@ succumbed,succumb=ed
 succumbing,succumb=ing
 succumbs,succumb=s
 suchlike,such-like
+suchness,such=ness
 sucked,suck=ed
 sucker,suck=er
 suckered,sucker=ed
@@ -51524,6 +51554,7 @@ undeclared,un=declared
 undecorated,un=decorated
 undefeated,un=defeated
 undefended,un=defended
+undefiled,un=defiled
 undefined,un=defined
 undeify,un=deify
 undelivered,un=delivered

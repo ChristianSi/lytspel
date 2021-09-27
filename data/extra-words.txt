@@ -100,6 +100,7 @@ atolls
 attentional
 attestations
 auks
+austerities
 austro
 Austronesians
 autocorrect
@@ -141,6 +142,8 @@ belches
 belemnites
 Belorussia
 beloveds
+beseeched
+beseeches
 besiegers
 betroths
 bevels
@@ -150,6 +153,8 @@ bindings
 biofuel
 bionic
 birthed
+birthless
+birthlessness
 bisection
 bispectral
 Bitcoin
@@ -170,6 +175,7 @@ blondish
 boars
 boatmen
 bobbed
+bodhi
 bodysuit
 bodysuits
 boldfaced
@@ -181,6 +187,7 @@ bootable
 borderlands
 boudoirs
 bourn
+brahmans
 brainstem
 brayed
 breadbaskets
@@ -338,10 +345,12 @@ connectome
 conquerable
 conquistadors
 conscientiousness
+consciousnesses
 considerateness
 consolingly
 constitutionalists
 consuls
+contemplations
 contrabands
 contriving
 controvertible
@@ -422,6 +431,7 @@ datatypes
 DC
 deallocate
 dears
+deathlessness
 debauches
 Debian
 debuggable
@@ -441,6 +451,7 @@ decommodifies
 decommodify
 deeps
 deferentially
+defiled
 defiler
 defilers
 defiles
@@ -463,6 +474,7 @@ detachments
 determinatives
 detraining
 Detroiter
+dharmas
 diabetologist
 diabetologists
 diacritics
@@ -493,6 +505,7 @@ dithered
 divulges
 djinn
 Dogecoin
+dogmas
 doi
 domestications
 dominions
@@ -512,6 +525,7 @@ dunking
 duos
 durably
 dustbins
+dwelled
 dyads
 dynamically
 dystopian
@@ -563,6 +577,7 @@ enslaves
 enslaving
 entendre
 entertainingly
+entreated
 entropic
 entwines
 entwining
@@ -865,6 +880,7 @@ illuminations
 imams
 imbricated
 imperfects
+impermanence
 implacably
 implementations
 implementer
@@ -905,12 +921,14 @@ intakes
 intellectualist
 intelligences
 interactively
+interbeing
 intercedes
 internals
 internetworking
 interneuron
 interneurons
 interoperability
+interpenetration
 interpolations
 interprocess
 interrogatives
@@ -945,6 +963,8 @@ iv
 ix
 jackboots
 Jacobins
+jailkeeper
+jailkeepers
 jargons
 Javan
 Javans
@@ -1016,6 +1036,7 @@ larn
 laryngeals
 latencies
 lateralization
+laypersons
 leant
 leapt
 Legos
@@ -1251,12 +1272,16 @@ newline
 newlines
 newsreaders
 Nietzschean
+nightsoil
+nightsoils
 nihilist
 niner
 nn
 noblemen
 noiselessly
 nomadism
+nonattachment
+nonbeing
 nonbitter
 noncognitive
 noncompact
@@ -1269,9 +1294,11 @@ nonliterate
 nonlocking
 nonobservable
 nonoverlapping
+nonperception
 nonperson
 nonpersons
 nonprintable
+nonself
 nonspam
 Normans
 northmen
@@ -1504,6 +1531,7 @@ promontories
 propertyless
 propofol
 prosimetric
+prostrated
 protestor
 protestors
 protohumans
@@ -1653,6 +1681,7 @@ ripest
 risings
 ritualized
 ritualizes
+riverbanks
 roadmap
 roguelike
 roundabouts
@@ -1678,6 +1707,7 @@ salinate
 salination
 salinize
 salutations
+sangha
 sappers
 Satyricon
 sauntered
@@ -1774,6 +1804,8 @@ sibilants
 sidings
 siecle
 sigil
+signless
+signlessness
 silico
 silkpaper
 silkpapers
@@ -1784,6 +1816,8 @@ singulars
 sinkable
 sisterly
 sixsome
+skandha
+skandhas
 skinning
 skulking
 slaved
@@ -1940,6 +1974,7 @@ subtest
 subtests
 subthread
 subthreads
+suchness
 sudarium
 Sudoku
 suffixation
@@ -2245,6 +2280,7 @@ vibrated
 vicunas
 vii
 viii
+vinaya
 violences
 virginities
 visuomotor

@@ -6882,6 +6882,7 @@ Auster,,,'O:st@,'O:st@`,
 austere,,,O:st'i:@,O:st'Ir,O:st'i:r
 austerely,,,O:st'i:@li:,O:st'Irli:,O:st'i:rli:
 austereness,,,O:st'i:@n@s,O:st'Irn@s,O:st'i:rnEs
+austerities,,,O:st'ErIti:z,,
 austerity,,,O:st'ErIti:,,
 Austerlitz,,,'O:st@lIts,'O:st@`lIts,
 Austin,,,'O:stIn,,'O:st@n
@@ -9572,6 +9573,8 @@ bes,,,b'Es,,
 Besant,,,bIs'ant,,b'Ez@nt
 bescreen,,,bIskr'i:n,,
 beseech,,,bIs'i:tS,,bi:s'i:tS
+beseeched,,,bIs'i:tSt,,
+beseeches,,,bIs'i:tSIz,bIs'i:tSI#z,
 beseeching,,,bIs'i:tSIN,,bi:s'i:tSIN
 beseem,,,bIs'i:m,,
 beset,,,bIs'Et,,
@@ -10304,6 +10307,8 @@ birthday,,,b'3:TdeI,,
 birthdays,,,b'3:TdeIz,,
 birthed,,,b'3:Td,,
 birthing,,,b'3:TIN,,
+birthless,,,b'3:Tl@s,,
+birthlessness,,,b'3:Tl@sn@s,,
 birthmark,,,b'3:TmAk,b'3:TmArk,
 birthmarks,,,b'3:TmAks,b'3:TmArks,b'3:TmQrks
 birthnight,,,b'3:TnaIt,,
@@ -11126,6 +11131,7 @@ bodega,,,b'oUdg@,,bQd'eIgA
 bodegas,,,b'oUdg@z,,boUd'eIg@s
 bodes,,,b'oUdz,,
 bodgie,,,b'QdZi:,b'AdZi:,
+bodhi,,,b'QdhaI,b'AdhaI,
 Bodhidharma,,,b'QdhIdhAm@,b'AdhIdhArm@,b'oUdId'Vrm@
 bodhisattva,,,b'QdhIsatv@,b'AdhIsatv@,boUdIs'atwa
 bodhisattvas,,,b'QdhIsatv@z,b'AdhIsatv@z,boUdIs'Qtv@s
@@ -12011,6 +12017,7 @@ Brahmana,,,brAm'An@,,br'Am@n@
 brahmani,,,brAm'AnI,brAm'Ani:,br'Am@ni:
 Brahmanic,,,brAm'anIk,,
 Brahmanism,,,br'Am@nIz@m,,
+brahmans,,,br'Am@nz,,
 Brahmaputra,,,br'Ama#pVtr@,,brAm@p'u:tr@
 Brahmi,,,br'Ami:,,
 brahmin,,,br'AmIn,,br'QmIn
@@ -20676,6 +20683,7 @@ conscionableness,,,k'QnS@n@b@ln@s,k'AnS@n@b@ln@s,k'QnS@n@b@lnEs
 conscious,,,k'QnS@s,k'AnS@s,
 consciously,,,k'QnS@sli:,k'AnS@sli:,
 consciousness,,,k'QnS@sn@s,k'AnS@sn@s,
+consciousnesses,,,k'QnS@sn@sIz,k'AnS@sn@sI#z,
 conscribe,,,k'QnskraIb,k'AnskraIb,k@nskr'aIb
 conscript,n,,k'QnskrIpt,k'AnskrIpt,
 conscript,v,,k'QnskrIpt,k'AnskrIpt,k@nskr'Ipt
@@ -20984,6 +20992,7 @@ contemplated,,,k'QntImpleItId,k'AntImpleItI#d,k'Qnt@mpleItId
 contemplates,,,k'QntImpleIts,k'AntImpleIts,k'Qnt@mpleIts
 contemplating,,,k'QntImpleItIN,k'AntImpleItIN,k'Qnt@mpleItIN
 contemplation,,,kQntImpl'eIS@n,kAntImpl'eIS@n,kQnt@mpl'eIS@n
+contemplations,,,kQntImpl'eIS@nz,kAntImpl'eIS@nz,
 contemplative,,,k@nt'Empl@tIv,,
 contemplatively,,,k@nt'Empl@tIvli:,,
 contemplativeness,,,k@nt'Empl@tIvn@s,,k@nt'Empl@tIvnEs
@@ -24730,6 +24739,7 @@ deathday,,,d'ETdeI,,
 deathful,,,d'ETf@l,,
 deathless,,,d'ETl@s,,d'ETlIs
 deathlessly,,,d'ETl@slI,d'ETl@sli:,d'ETlIsli:
+deathlessness,,,d'ETl@sn@s,,
 deathlike,,,d'ETlaIk,,
 deathly,,,d'ETli:,,
 deaths,,,d'ETs,,
@@ -25323,6 +25333,7 @@ defier,,,dIf'i:@,dIf'Ir,dIf'aI@`
 defies,,,dIf'aIz,,
 defilade,,,dIf'IleId,,dEf@l'eId
 defile,,,dIf'aIl,,
+defiled,,,dIf'aIld,,
 defiler,,,dIf'aIl@,dIf'aIl@`,
 defilers,,,dIf'aIl@z,dIf'aIl@`z,
 defiles,,,dIf'aIlz,,
@@ -26893,6 +26904,7 @@ dhal,,,d'i:h'al,,D'Al
 Dhammapada,,,dama#p'Ad@,,d'Vm@p@d@
 dharana,,,dar'An@,,d'Ar@nA
 dharma,,,d'Am@,d'Arm@,
+dharmas,,,d'Am@z,d'Arm@z,
 dharna,,,d'An@,d'Arn@,
 Dhaulagiri,,,dO:la#dZ'i@i:,,daUl@g'i:ri:
 dhobi,,,d'oUbaI,,d'oUbi:
@@ -29017,6 +29029,7 @@ dogleg,,,d'QglEg,d'AglEg,
 doglike,,,d'QglaIk,d'AglaIk,d'O:glaIk
 dogma,,,d'Qgm@,d'Agm@,
 dogman,,,d'Qgm@n,d'Agm@n,
+dogmas,,,d'Qgm@z,d'Agm@z,
 dogmatic,,,dQgm'atIk,dAgm'atIk,
 dogmatically,,,dQgm'atIkli:,dAgm'atIkli:,
 dogmatics,,,dQgm'atIks,dAgm'atIks,
@@ -30376,6 +30389,7 @@ dwarfs,,,dw'O:fs,dw'O:rfs,
 Dwayne,,,dw'eIn,,
 dweeb,,,dw'i:b,,
 dwell,,,dw'El,,
+dwelled,,,dw'Eld,,
 dweller,,,dw'El@,dw'El@`,
 dwellers,,,dw'El@z,dw'El@`z,
 dwelling,,,dw'ElIN,,
@@ -32709,6 +32723,7 @@ entrap,,,Entr'ap,,
 entrapment,,,Entr'apm@nt,,Intr'apm@nt
 entrapped,,,Entr'apt,,Intr'apt
 entreat,,,Entr'i:t,,
+entreated,,,Entr'i:tId,Entr'i:tI#d,
 entreaties,,,Entr'i:tIz,,Entr'i:ti:z
 entreating,,,Entr'i:tIN,,
 entreaty,,,Entr'i:ti:,,
@@ -48446,6 +48461,7 @@ imperiousness,,,Imp'i@I@sn@s,,Imp'i:ri:@snEs
 imperishable,,,Imp'ErIS@b@l,,
 imperishableness,,,Imp'ErIS@b@ln@s,,Imp'ErIS@b@lnEs
 imperium,,,Imp'i@I@m,,Imp'i:ri:@m
+impermanence,,,Imp'3:m@n@ns,,
 impermanent,,,Imp'3:m@n@nt,,
 impermanently,,,Imp'3:m@n@ntli:,,
 impermeable,,,Imp'3:m@b@l,,Imp'3:mi:@b@l
@@ -50660,6 +50676,7 @@ interatomic,,,Int@ra#t'QmIk,Int@`ra#t'AmIk,Int@`@t'QmIk
 interbank,,,Int@b'aNk,Int@`b'aNk,
 interbed,,,Int@b'Ed,Int@`b'Ed,
 interbedded,,,Int@b'EdId,Int@`b'EdI#d,Int@`b'EdId
+interbeing,,,Int@b'i:IN,Int@`b'i:IN,
 interblend,,,Int@bl'End,Int@`bl'End,
 interborough,,,Int@b'Vr@,Int@`b'VroU,'Int@`b3:oU
 interbrain,,,Int@br'eIn,Int@`br'eIn,'Int@`breIn
@@ -50952,6 +50969,7 @@ interpellation,,,Int@pEl'eIS@n,Int@`pEl'eIS@n,Int@`p@l'eIS@n
 interpellator,,,Int@pEl'eIt@,Int@`pEl'eIt@`,'Int@`p@leIt@`
 interpenetrable,,,Int@p'EnItr@b@l,Int@`p'EnItr@b@l,
 interpenetrate,,,Int@p'EnItreIt,Int@`p'EnItreIt,
+interpenetration,,,Int@pEnItr'eIS@n,Int@`pEnItr'eIS@n,
 interpersonal,,,Int@p'3:s@n@l,Int@`p'3:s@n@l,
 interphase,,,Int@f'eIz,Int@`f'eIz,'Int@`feIz
 interphone,,,Int@f'oUn,Int@`f'oUn,'Int@`foUn
@@ -52223,6 +52241,8 @@ jailer,,,dZ'eIl@,dZ'eIl@`,
 jailers,,,dZ'eIl@z,dZ'eIl@`z,
 jailhouse,,,dZ'eIlhaUs,,
 jailing,,,dZ'eIlIN,,
+jailkeeper,,,dZ'eIlki:p@,dZ'eIlki:p@`,
+jailkeepers,,,dZ'eIlki:p@z,dZ'eIlki:p@`z,
 jails,,,dZ'eIlz,,
 Jaime,,,dZ'eIm,,h'aImi:
 Jain,,,dZ'eIn,,dZ'aIn
@@ -55581,6 +55601,7 @@ layover,,,l'eIoUv@,l'eIoUv@`,
 layovers,,,l'eIoUv@z,l'eIoUv@`z,
 laypeople,,,l'eIpi:p@l,,leIp'i:p@l
 layperson,,,l'eIp@s@n,l'eIp@`s@n,leIp'3:sIn
+laypersons,,,l'eIp@s@nz,l'eIp@`s@nz,
 lays,,,l'eIz,,
 layshaft,,,l'eISaft,,
 laystall,,,l'eIstO:l,,l'eIstAl
@@ -65481,6 +65502,8 @@ nightshade,,,n'aItSeId,,
 nightshirt,,,n'aItS3:t,,
 nightshirts,,,n'aItS3:ts,,
 nightside,,,n'aItsaId,,
+nightsoil,,,n'aItsOIl,,
+nightsoils,,,n'aItsOIlz,,
 nightspot,,,n'aItspQt,n'aItspAt,
 nightstand,,,n'aItstand,,
 nightstands,,,n'aItstandz,,
@@ -65793,10 +65816,12 @@ nonalignment,,,nQna#l'aInm@nt,nAna#l'aInm@nt,nQn@l'aInm@nt
 nonallergenic,,,nQnal@dZ'EnIk,nAnal@`dZ'EnIk,nQnal@`dZ'EnIk
 nonappearance,,,nQna#p'i@@ns,nAna#p'Ir@ns,nQn@p'i:r@ns
 nonary,,,nQn'Ari:,nAn'Ari:,n'oUn@`i:
+nonattachment,,,nQna#t'atSm@nt,nAna#t'atSm@nt,
 nonattendance,,,nQna#t'End@ns,nAna#t'End@ns,nQn@t'End@ns
 nonautomotive,,,nQnO:toUm'oUtIv,nAnO:toUm'oUtIv,
 nonbank,,,nQnb'aNk,nAnb'aNk,n'Qnb'aNk
 nonbanking,,,nQnb'aNkIN,nAnb'aNkIN,n'Qnb'aNkIN
+nonbeing,,,nQnb'i:IN,nAnb'i:IN,
 nonbeliever,,,nQnbIl'i:v@,nAnbIl'i:v@`,nQnb@l'i:v@`
 nonbelievers,,,nQnbIl'i:v@z,nAnbIl'i:v@`z,nQnb@l'i:v@`z
 nonbelligerency,,,nQnbIl'IdZ@r@nsi:,nAnbIl'IdZ@`r@nsi:,nQnb@l'IdZ@`@nsi:
@@ -65945,6 +65970,7 @@ nonparticipation,,,nQnpAt'IsIp'eIS@n,nAnpArt'IsIp'eIS@n,nQnpArtIs@p'eIS@n
 nonpartisan,,,nQnp'AtIs@n,nAnp'ArtIs@n,n'Qnp'Art@z@n
 nonpaying,,,nQnp'eIIN,nAnp'eIIN,
 nonpayment,,,nQnp'eIm@nt,nAnp'eIm@nt,
+nonperception,,,nQnp@s'EpS@n,nAnp@`s'EpS@n,
 nonperformance,,,nQnp@f'O:m@ns,nAnp@`f'orm@ns,nQnp@`f'O:rm@ns
 nonperforming,,,nQnp@f'O:mIN,nAnp@`f'O:rmIN,nQnp@`f'O:rmIN
 nonperishable,,,nQnp'ErIS@b@l,nAnp'ErIS@b@l,
@@ -65986,6 +66012,7 @@ nonrigid,,,nQnr'IdZId,nAnr'IdZId,
 nonruling,,,nQnr'u:lIN,nAnr'u:lIN,
 nonscheduled,,,nQnS'Edju:ld,nAnsk'EdZu:ld,n'Qnsk'EdZu:ld
 nonsectarian,,,nQnsEkt'e@ri:@n,nAnsEkt'Eri:@n,nQnsEkt'e@i:@n
+nonself,,,nQns'Elf,nAns'Elf,
 nonsense,,,n'Qns@ns,n'Ans@ns,n'QnsEns
 nonsensical,,,nQns'EnzIk@l,nAns'EnzIk@l,nQns'EnsIk@l
 nonsensicality,,,nQns'EnsIk'alIti:,nAns'EnsIk'alIti:,nQnsEnsIk'alIti:
@@ -76671,6 +76698,7 @@ prostitutes,,,pr'QstItju:ts,pr'AstItu:ts,pr'Qst@tu:ts
 prostitution,,,prQstItj'u:S@n,prAstIt'u:S@n,prQstIt'u:S@n
 prostomium,,,pr@st'oUmi:@m,,proUst'oUmi:@m
 prostrate,,,pr'QstreIt,pr'AstreIt,
+prostrated,,,pr'QstreItId,pr'AstreItI#d,
 prostration,,,pr@str'eIS@n,,prQstr'eIS@n
 prostyle,,,pr'QstaIl,pr'AstaIl,pr'oUstaIl
 prosy,,,pr'oUzi:,,
@@ -82468,6 +82496,7 @@ river,,,r'Iv@,r'Iv@`,
 Rivera,,,rIv'e@r@,rIv'Er@,
 riverain,,,r'Iv@reIn,r'Iv@`reIn,r'i:v@`En
 riverbank,,,r'Iv@baNk,r'Iv@`baNk,
+riverbanks,,,r'Iv@baNks,r'Iv@`baNks,
 riverbed,,,r'Iv@bEd,r'Iv@`bEd,
 riverboat,,,r'Iv@boUt,r'Iv@`boUt,
 riverboats,,,r'Iv@boUts,r'Iv@`boUts,
@@ -84114,6 +84143,7 @@ sanga,,,s'aNg@,,s'aN@
 sangar,,,s'aNg@,s'aNg@`,s'aN@`
 sangaree,,,s'aNga#ri:,,saN@`'i:
 sanger,,,s'aNg@,s'aNg@`,s'aN@`
+sangha,,,s'aNh@,,
 Sangiovese,,,saNgIoUv'i:z,,sandZ'i:oUvi:s
 sanglier,,,s'aNgli:@,s'aNgli:@`,s'aNli:@`
 Sangraal,,,s'aNgrAl,,saNgr'eIl
@@ -87691,6 +87721,8 @@ signify,,,s'IgnIfaI,,s'Ign@faI
 signifying,,,s'IgnIfaIIN,,s'Ign@faIIN
 signing,,,s'aInIN,,
 signings,,,s'aInINz,,
+signless,,,s'aInl@s,,
+signlessness,,,s'aInl@sn@s,,
 signor,,,sInj'O:,sInj'or,s'i:njO:r
 signora,,,sInj'O:r@,sInj'or@,
 signore,,,sInj'O:,sInj'or,sInj'oreI
@@ -88140,6 +88172,8 @@ sizzling,,,s'IzlIN,,s'Iz@lIN
 Sjaelland,,,'EsdZ'eIl@nd,,S'ElAn
 sjambok,,,'EsdZ'ambQk,'EsdZ'ambAk,Samb'Ak
 skald,,,sk'ald,,sk'Ald
+skandha,,,sk'andh@,,
+skandhas,,,sk'andh@z,,
 skat,,,sk'at,,sk'At
 skate,,,sk'eIt,,
 skateboard,,,sk'eItbO:d,sk'eItbord,sk'eItbO:rd
@@ -93196,6 +93230,7 @@ succursal,,,s@k'3:s@l,,
 succuss,,,s@k'Vs,,
 such,,,s'VtS,,
 suchlike,,,s'VtSlaIk,,
+suchness,,,s'VtSn@s,,
 suck,,,s'Vk,,
 sucked,,,s'Vkt,,
 sucker,,,s'Vk@,s'Vk@`,
@@ -104005,6 +104040,7 @@ vinaceous,,,vIn'eIS@s,,vaIn'eIS@s
 vinaigrette,,,vIneIgr'Et,,vIn@gr'Et
 vinal,,,v'In@l,,v'aIn@l
 vinasse,,,v'Inas,,vIn'as
+vinaya,,,v'IneI@,,
 vinca,,,v'Ink@,,v'INk@
 Vince,,,v'Ins,,
 Vincennes,,,v'Ins@nz,,vIns'En@s
@@ -104589,8 +104625,8 @@ Vyborg,,,v'aIbO:g,v'aIborg,v'i:bO:rg
 Vycor,,,v'aIk@,v'aIk@`,v'aIkO:r
 vying,,,v'aIIN,,
 vyingly,,,v'aIINlI,v'aIINli:,
-WA,,,w'A,,w'Q
 wa,,,w'A,,
+WA,,,w'A,,w'Q
 Waadt,,,w'At,,v'At
 WAAF,,,w'Af,,w'af
 Waal,,,w'Al,,w'Ql
