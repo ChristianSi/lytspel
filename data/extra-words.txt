@@ -29,6 +29,7 @@ afterwords
 aggregating
 agitations
 agreeably
+agriculturalists
 akratic
 algorithmic
 algorithmically
@@ -43,6 +44,7 @@ amalgamations
 Amazonia
 ambusher
 ambushers
+Amerindians
 amidst
 amplicon
 analogues
@@ -71,6 +73,7 @@ apothecaries
 appetent
 applets
 arced
+archaeobotany
 archaisms
 archbishops
 archdeacons
@@ -166,6 +169,8 @@ blanched
 blanches
 blasphemies
 blasters
+bleeped
+bleeps
 blighting
 bling
 blini
@@ -222,6 +227,7 @@ cahiers
 calcifies
 calcifying
 caldron
+calendrical
 callee
 callosal
 callosum
@@ -270,6 +276,7 @@ chirurgic
 chirurgical
 chromosomal
 chs
+chunkey
 chytrid
 cicatrice
 circ
@@ -304,6 +311,7 @@ clucked
 cm
 coagulated
 coagulates
+coastlands
 cobbling
 cochair
 cockerels
@@ -334,6 +342,7 @@ concierges
 conclaves
 concurrency
 conditionals
+confederacies
 confederations
 confessors
 configurability
@@ -377,6 +386,7 @@ cowered
 cowslips
 cracka
 crags
+crania
 craning
 creationist
 creationists
@@ -387,6 +397,7 @@ cribbers
 Cro
 croaked
 crocks
+crocs
 crones
 crooned
 croquettes
@@ -452,6 +463,7 @@ decommodify
 deeps
 deferentially
 defiled
+defilement
 defiler
 defilers
 defiles
@@ -502,6 +514,7 @@ disquisitions
 dissociative
 disunited
 dithered
+diviners
 divulges
 djinn
 Dogecoin
@@ -517,6 +530,7 @@ doweled
 downloadable
 dowser
 dowsers
+drainages
 dryland
 drylands
 dullards
@@ -528,9 +542,11 @@ dustbins
 dwelled
 dyads
 dynamically
+dynasts
 dystopian
 earflaps
 Earthsea
+earthworks
 ebook
 ebooks
 ecclesiastics
@@ -599,6 +615,8 @@ ethnobiological
 ethnographer
 ethnographers
 ethnolinguistic
+ethnologist
+ethnologists
 etymologies
 eunuchs
 Eurasians
@@ -610,6 +628,8 @@ Europeanizes
 Europeanizing
 evocations
 evolutionarily
+evolutionism
+evolutionists
 exampled
 exasperatingly
 executable
@@ -644,6 +664,8 @@ familists
 fancying
 fantails
 fantastical
+farang
+farangs
 farted
 farts
 fastens
@@ -722,6 +744,7 @@ freefall
 freelanced
 freelances
 Freemasons
+freighted
 fricatives
 friendlies
 frolics
@@ -733,6 +756,7 @@ furled
 gabbled
 gallivanting
 ganged
+ganja
 gannets
 gantries
 gaol
@@ -744,6 +768,8 @@ gaylord
 gaylords
 Gazan
 GDP
+gendered
+genealogies
 genitives
 genomes
 gents
@@ -759,6 +785,7 @@ glaciologists
 glial
 glinted
 glints
+glyphic
 GMT
 gnashed
 goblets
@@ -777,6 +804,7 @@ gr
 grammarians
 grammars
 granaries
+grandees
 granulated
 graptolites
 graspable
@@ -813,6 +841,7 @@ hatchlings
 haunches
 haymaking
 headlamps
+headmen
 healthcare
 healthily
 heartedly
@@ -829,6 +858,8 @@ heretics
 hermaphrodites
 herpetologist
 herpetologists
+heterarchies
+heterarchy
 hewed
 hewers
 hexameters
@@ -848,6 +879,7 @@ hoardings
 hobbits
 homogenous
 homunculi
+horticulturalists
 hostlers
 hotheads
 hr
@@ -901,6 +933,7 @@ incompatibilities
 indecisions
 indifferently
 individualizing
+Indo
 infectiousness
 infelicities
 infinitives
@@ -987,6 +1020,7 @@ jumpstarts
 junctions
 jurymen
 jutted
+kairos
 karmic
 kenned
 ketamine
@@ -996,6 +1030,7 @@ Khazars
 khedival
 khedives
 khor
+kickboxing
 kikes
 kilocalories
 kinesis
@@ -1066,8 +1101,11 @@ longbows
 longfinger
 longfingers
 longhairs
+longhouses
 longsword
 longswords
+longtail
+longtails
 lookouts
 loopiness
 looseness
@@ -1100,6 +1138,8 @@ maintainers
 makebelieve
 makefile
 makefiles
+mamasan
+mamasans
 manacled
 manacles
 mandibles
@@ -1122,6 +1162,7 @@ masticated
 mastodons
 matchable
 maternally
+matriarchies
 maxima
 maximalists
 maximally
@@ -1174,6 +1215,7 @@ militarization
 milkbar
 milkbars
 millennia
+minders
 minilanguage
 minilanguages
 mish
@@ -1191,6 +1233,7 @@ modernisers
 modifiable
 modifiers
 modulations
+moieties
 moister
 molars
 moneychangers
@@ -1280,6 +1323,7 @@ nn
 noblemen
 noiselessly
 nomadism
+nomarchs
 nonattachment
 nonbeing
 nonbitter
@@ -1309,6 +1353,7 @@ nots
 nucleated
 numeracy
 nunneries
+nursemaids
 nutters
 nuzzled
 NY
@@ -1327,6 +1372,7 @@ OECD
 offhandedly
 ogling
 Okinawan
+Olmec
 om
 omnivores
 onomatopoeic
@@ -1340,6 +1386,13 @@ optimized
 optimizing
 orderlies
 ordinals
+ordinated
+freighting
+freights
+gendering
+uplander
+ordinates
+ordinating
 organoid
 organoids
 orientalist
@@ -1439,8 +1492,10 @@ photoreceptors
 phylogenetic
 piasters
 piastres
+pictographic
 pidgins
 pillowed
+pinches
 Pindar
 pinewood
 pinewoods
@@ -1491,13 +1546,17 @@ posttest
 postulated
 postwork
 potsherds
+potting
 powerlessly
 pp
 pranced
 prefigured
 prefixed
 prefixes
+prehispanic
+prehistorians
 prehistorically
+preindustrial
 preinstalled
 premiss
 premolars
@@ -1514,6 +1573,7 @@ preselecting
 preselects
 pretest
 prevalences
+priestesses
 primitives
 princelings
 privateering
@@ -1717,6 +1777,8 @@ savannahs
 scabbing
 scalability
 scatters
+schismogenesis
+schismogenetic
 schoolgirls
 scintillating
 scrabbled
@@ -1777,7 +1839,10 @@ shamaness
 shamanist
 shamefully
 sharecropping
+shat
 sheikhs
+shemale
+shemales
 sherd
 sherds
 shi
@@ -1818,6 +1883,7 @@ sisterly
 sixsome
 skandha
 skandhas
+skilful
 skinning
 skulking
 slaved
@@ -1855,6 +1921,7 @@ snuffles
 snuffling
 snuggled
 socialisms
+sociopolitical
 socketed
 sodded
 sodding
@@ -1876,10 +1943,12 @@ speargun
 spearguns
 spearheads
 spearpoints
+specializations
 specificities
 specters
 spiflicate
 spiflicates
+spikelets
 spillways
 spinward
 spiting
@@ -1992,6 +2061,7 @@ sumpweed
 sunburnt
 sunned
 sunrises
+superabundance
 superannuated
 superannuates
 superannuating
@@ -2070,6 +2140,7 @@ thralls
 threshing
 throbbed
 throbs
+thrones
 thrumming
 thudded
 thudding
@@ -2103,6 +2174,7 @@ toolchains
 toolkit
 toolkits
 toolset
+topographical
 tottered
 totters
 touchables
@@ -2246,6 +2318,7 @@ unrolls
 unsheathed
 unsteadily
 untrusted
+uplanders
 uplifts
 upload
 uploaded
@@ -2264,6 +2337,7 @@ utterable
 validator
 validators
 vanishingly
+varnas
 ve
 Vedas
 velars
