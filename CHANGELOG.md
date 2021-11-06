@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+* Add some dictionary entries.
+
 
 ## [2.0.5] -- 2021-10-26
 
