@@ -6532,6 +6532,7 @@ canadianism,canadian=ism
 canadians,canadian=s
 canalize,canal=ize
 canals,canal=s
+canapes,canape=s
 canaries,canary=es
 cancelable,cancel=able
 canceled,cancel=ed
@@ -6686,6 +6687,7 @@ capitulations,capitulation=s
 capitulatory,capitulate=ory
 caples,caple=s
 caplin,cap-lin
+capos,capo=s
 capouch,cap-ouch
 capped,cap=ed
 capper,cap=er
@@ -7189,6 +7191,8 @@ cellarman,cellar-man
 cellars,cellar=s
 cellblock,cell-block
 celled,cell=ed
+cellmate,cell-mate
+cellmates,cellmate=s
 cellphone,cell-phone
 cellphones,cellphone=s
 cells,cell=s
@@ -21388,6 +21392,8 @@ gunstock,gun-stock
 gunwale,gun-wale
 guppies,guppy=es
 gurges,gurge=s
+gurgled,gurgle=ed
+gurgles,gurgle=s
 gurnards,gurnard=s
 gurus,guru=s
 gushed,gush=ed
@@ -26203,8 +26209,10 @@ ionic,ion=ic
 ionics,ionic=s
 ionization,ionize=ation
 ionize,ion=ize
+ionized,ionize=ed
 ionizer,ionize=er
 ionizers,ionizer=s
+ionizes,ionize=s
 ionizing,ionize=ing
 ionospheric,ionosphere=ic
 ions,ion=s
@@ -26655,6 +26663,8 @@ jeweled,jewel=ed
 jeweler,jewel=er
 jewelers,jeweler=s
 jewelfish,jewel-fish
+jewelled,jewell=ed
+jewelling,jewell=ing
 jewelry,jewel=ry
 jewels,jewel=s
 jewelweed,jewel-weed
@@ -28236,6 +28246,8 @@ lightsomely,lightsome=ly
 lightsomeness,lightsome=ness
 lightweight,light-weight
 lightwood,light-wood
+lightyear,light-year
+lightyears,lightyear=s
 lignes,ligne=s
 ligurian,liguria=n
 likable,like=able
@@ -28576,6 +28588,10 @@ lockjaw,lock-jaw
 lockman,lock-man
 lockout,lock-out
 lockouts,lockout=s
+lockpick,lock-pick
+lockpicked,lockpick=ed
+lockpicking,lockpick=ing
+lockpicks,lockpick=s
 locks,lock=s
 locksman,locks-man
 locksmith,lock-smith
@@ -32888,6 +32904,7 @@ normalized,normalize=ed
 normalizes,normalize=s
 normalizing,normalize=ing
 normally,normal=ly
+normals,normal=s
 normans,norman=s
 normative,norm=ative
 normatively,normative=ly
@@ -35443,6 +35460,7 @@ peen,pee=n
 peens,peen=s
 peeped,peep=ed
 peeper,peep=er
+peepers,peeper=s
 peephole,peep-hole
 peeping,peep=ing
 peeps,peep=s
@@ -36198,6 +36216,7 @@ piers,pier=s
 pies,pie=s
 pietas,pieta=s
 pieties,piety=es
+piezometric,piezo-metric
 pigboat,pig-boat
 pigeonberry,pigeon-berry
 pigeonhole,pigeon-hole
@@ -38918,6 +38937,7 @@ quietness,quiet=ness
 quiets,quiet=s
 quilling,quill=ing
 quillman,quill-man
+quills,quill=s
 quilombos,quilombo=s
 quilted,quilt=ed
 quilter,quilt=er
@@ -44776,6 +44796,7 @@ skysweeper,sky-sweeper
 skyward,sky=ward
 skywave,sky-wave
 skyway,sky-way
+skyways,skyway=s
 skywrite,sky-write
 skywriter,skywrite=er
 skywriters,skywriter=s
@@ -45042,6 +45063,9 @@ slumped,slump=ed
 slumping,slump=ing
 slumps,slump=s
 slums,slum=s
+slurped,slurp=ed
+slurping,slurp=ing
+slurps,slurp=s
 slurred,slur=ed
 slurring,slur=ing
 slurs,slur=s
@@ -45386,6 +45410,7 @@ socially,social=ly
 societies,society=es
 sociobiology,socio=biology
 sociocultural,socio=cultural
+socioeconomics,socioeconomic=s
 sociolinguistic,socio=linguistic
 sociolinguistics,socio=linguistics
 sociologistic,sociologist=ic
@@ -46265,6 +46290,7 @@ squatters,squatter=s
 squatting,squat=ing
 squatty,squat=y
 squawfish,squaw-fish
+squawked,squawk=ed
 squawking,squawk=ing
 squawks,squawk=s
 squawroot,squaw-root
@@ -48992,6 +49018,7 @@ telencephalic,tel-encephalic
 telencephalon,tel-encephalon
 teleoperated,tele=operated
 telepathic,tele=pathic
+telepaths,telepath=s
 telephone,tele=phone
 telephoned,tele=phoned
 telephones,tele=phones

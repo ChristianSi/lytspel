@@ -14147,6 +14147,7 @@ canalise,,canalize
 canalize,,,canálys
 canals,,,canáls
 canape,,,canepi
+canapes,,,canepies
 Canara,,,Canara
 canard,,,canard
 Canarese,,,Canerees
@@ -14491,6 +14492,7 @@ caponise,,caponize
 caponize,,,caipenys
 caporal,,,caperel
 Caporetto,,,Caperéto
+capos,,,caipoas
 capot,,,capót
 capotasto,,,caapoatáasto
 capote,,,capoat
@@ -15653,6 +15655,8 @@ cellblock,,,selblok
 celled,,,seld
 Cellini,,,Cheleeni
 cellist,,,chelist
+cellmate,,,selmait
+cellmates,,,selmaits
 cello,,,chelo
 cellobiose,,,seloabíyoass
 celloidin,,,seloidin
@@ -42657,6 +42661,8 @@ gurge,,,gurj
 gurges,,,gurjes
 gurgitation,,,gurjitaition
 gurgle,,,gurgel
+gurgled,,,gurgeld
+gurgles,,,gurgels
 gurglet,,,gurglit
 gurgling,,,gurgling
 Gurkha,,,Gurca
@@ -51127,8 +51133,10 @@ ionising,,ionizing
 ionium,,,iyóaniam
 ionization,,,iyenisaition
 ionize,,,iyenys
+ionized,,,iyenysd
 ionizer,,,iyenyser
 ionizers,,,iyenysers
+ionizes,,,iyenyses
 ionizing,,,iyenysing
 ionogen,,,iyónejen
 ionomer,,,iyónemer
@@ -52185,9 +52193,11 @@ jeweler,,,jualer
 jewelers,,,jualers
 jewelfish,,,jualfish
 Jewell,,,Jual
+jewelled,,,juald
 jeweller,,jeweler
 jewellers,,jewelers
 jewellery,,jewelry
+jewelling,,,jualing
 jewelry,,,jualri
 jewels,,,juals
 jewelweed,,,jualweed
@@ -56136,6 +56146,8 @@ lightsomely,,,lytsumli
 lightsomeness,,,lytsumness
 lightweight,,,lytwait
 lightwood,,,lytwood
+lightyear,,,lytyeer
+lightyears,,,lytyeers
 lignaloes,,,lynáloas
 ligne,,,leen
 ligneous,,,ligniass
@@ -56832,6 +56844,10 @@ lockjaw,,,lokjaw
 lockman,,,lokman
 lockout,,,lokout
 lockouts,,,lokouts
+lockpick,,,lokpik
+lockpicked,,,lokpikd
+lockpicking,,,lokpiking
+lockpicks,,,lokpiks
 locks,,,loks
 locksman,,,loksman
 locksmith,,,loksmith
@@ -65533,6 +65549,7 @@ normalized,,,normelysd
 normalizes,,,normelyses
 normalizing,,,normelysing
 normally,,,normelli
+normals,,,normels
 norman,,,normen
 Normandy,,,Normendi
 Normans,,,Normens
@@ -70517,6 +70534,7 @@ peens,,,peens
 peep,,,peep
 peeped,,,peepd
 peeper,,,peeper
+peepers,,,peepers
 peephole,,,peephoal
 peeping,,,peeping
 peeps,,,peeps
@@ -72297,6 +72315,7 @@ pietas,,,piaitáas
 pieties,,,piyities
 pietism,,,piyitism
 piety,,,piyiti
+piezo,,,piyeeso
 piezoelectric,,,piyeesoïlectric
 piezoelectricity,,,piyeesoïlectriciti
 piezometer,,,piyesómiter
@@ -73354,6 +73373,7 @@ pneuma,,,nuema
 pneumatic,,,nuematic
 pneumaticity,,,nuematiciti
 pneumatics,,,nuematics
+pneumatique,,,nuematéek
 pneumatograph,,,nuemátegraf
 pneumatologic,,,nuematolojic
 pneumatology,,,nuematoleji
@@ -77476,6 +77496,7 @@ quillet,,,quilit
 quilling,,,quiling
 quillman,,,quilman
 quillon,,,quilen
+quills,,,quils
 Quilmes,,,Keelmess
 quilombo,,,kilómbo
 quilombos,,,kilómboas
@@ -87663,6 +87684,7 @@ skysweeper,,,skysweeper
 skyward,,,skywerd
 skywave,,,skywaiv
 skyway,,,skyway
+skyways,,,skyways
 skywrite,,,skyryt
 skywriter,,,skyryter
 skywriters,,,skyryters
@@ -88043,6 +88065,9 @@ slung,,,slung
 slunk,,,slunk
 slur,,,slur
 slurp,,,slurp
+slurped,,,slurpd
+slurping,,,slurping
+slurps,,,slurps
 slurred,,,slurd
 slurring,,,sluring
 slurry,,,slurri
@@ -88572,6 +88597,7 @@ socio-,,,soacio-
 sociobiology,,,soaciobiyoleji
 sociocultural,,,soacioculcherel
 socioeconomic,,,soacioeconomic
+socioeconomics,,,soacioeconomics
 sociogram,,,soaciagram
 sociolinguistic,,,soaciolinggwistic
 sociolinguistics,,,soaciolinggwistics
@@ -90231,6 +90257,7 @@ squatty,,,squoti
 squaw,,,squaw
 squawfish,,,squawfish
 squawk,,,squauk
+squawked,,,squaukd
 squawking,,,squauking
 squawks,,,squauks
 squawroot,,,squawruut
@@ -95051,6 +95078,7 @@ telepath,,,telepath
 telepathic,,,telepathic
 telepathically,,,telepathiclli
 telepathist,,,telépethist
+telepaths,,,telepaths
 telepathy,,,telépethi
 telephone,,,telefoan
 telephoned,,,telefoand

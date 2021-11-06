@@ -14293,6 +14293,7 @@ canalise,,canalize
 canalize,,,k@n'alaIz,,
 canals,,,k@n'alz,,
 canape,,,k'an@peI,,k'an@pi:
+canapes,,,k'an@peIz,,
 Canara,,,kan'Ar@,kan'Arr@,k@n'Ar@
 canard,,,k'anAd,k'anArd,k@n'Ard
 Canarese,,,k'ane@s,k'anErs,kAn@`'i:z
@@ -14638,6 +14639,7 @@ caponise,,caponize
 caponize,,,k'eIp@naIz,,
 caporal,,,k'ap@r@l,k'ap@`r@l,k'ap@`@l
 Caporetto,,,kapO:r'EtoU,kapor'EtoU,kap@`'EtoU
+capos,,,k'ApoUz,,
 capot,,,k'apQt,k'apAt,k@p'At
 capotasto,,,kap@t'eIstoU,,kApoUt'AstoU
 capote,,,k'apoUt,,k@p'oUt
@@ -15811,6 +15813,8 @@ cellblock,,,s'ElblQk,s'ElblAk,
 celled,,,s'Eld,,
 Cellini,,,sEl'i:nI,sEl'i:ni:,tSEl'i:ni:
 cellist,,,s'ElIst,,tS'ElIst
+cellmate,,,s'ElmeIt,,
+cellmates,,,s'ElmeIts,,
 cello,,,tS'EloU,,
 cellobiose,,,sEl'oUbaIoUz,,sEloUb'aIoUs
 celloidin,,,s'ElOIdIn,,s@l'OIdIn
@@ -43045,6 +43049,8 @@ gurge,,,g'3:dZ,,
 gurges,,,g'3:dZIz,g'3:dZI#z,g'3:dZi:z
 gurgitation,,,g3:dZIt'eIS@n,,
 gurgle,,,g'3:g@l,,
+gurgled,,,g'3:g@ld,,
+gurgles,,,g'3:g@lz,,
 gurglet,,,g'3:gl@t,,g'3:glIt
 gurgling,,,g'3:glIN,,
 Gurkha,,,g'3:k@,,g'UrkA
@@ -51560,8 +51566,10 @@ ionising,,ionizing
 ionium,,,aI'Qni:@m,aI'Ani:@m,aI'oUni:@m
 ionization,,,aI@naIz'eIS@n,,
 ionize,,,'aI@naIz,,
+ionized,,,'aI@naIzd,,
 ionizer,,,'aI@naIz@,'aI@naIz@`,
 ionizers,,,'aI@naIz@z,'aI@naIz@`z,
+ionizes,,,'aI@naIzIz,,
 ionizing,,,'aI@naIzIN,,
 ionogen,,,'aI@n@dZ@n,,aI'An@dZIn
 ionomer,,,'aI@n@m@,'aI@n@m@`,aI'An@m@`
@@ -52626,9 +52634,11 @@ jeweler,,,dZ'u:@l@,dZ'u:@l@`,
 jewelers,,,dZ'u:@l@z,dZ'u:@l@`z,
 jewelfish,,,dZ'u:@lfIS,,
 Jewell,,,dZ'u:@l,,dZ'u:Il
+jewelled,,,dZ'u:@ld,,
 jeweller,,jeweler
 jewellers,,jewelers
 jewellery,,jewelry
+jewelling,,,dZ'u:@lIN,,
 jewelry,,,dZ'u:@lri:,,
 jewels,,,dZ'u:@lz,,
 jewelweed,,,dZ'u:@lwi:d,,
@@ -56656,6 +56666,8 @@ lightsomely,,,l'aItsVmli:,,l'aIts@mli:
 lightsomeness,,,l'aItsVmn@s,,l'aIts@mnEs
 lightweight,,,l'aItweIt,,l'aItw'eIt
 lightwood,,,l'aItwUd,,
+lightyear,,,l'aItji:@,l'aItjIr,
+lightyears,,,l'aItji:@z,l'aItjIrz,
 lignaloes,,,l'Ign@loUz,,laIn'aloUz
 ligne,,,l'i:n,,
 ligneous,,,l'Igni:@s,,
@@ -57354,6 +57366,10 @@ lockjaw,,,l'QkdZO:,l'AkdZO:,l'QkdZQ
 lockman,,,l'Qkm@n,l'Akm@n,
 lockout,,,l'QkaUt,l'AkaUt,
 lockouts,,,l'QkaUts,l'AkaUts,
+lockpick,,,l'QkpIk,l'AkpIk,
+lockpicked,,,l'QkpIkt,l'AkpIkt,
+lockpicking,,,l'QkpIkIN,l'AkpIkIN,
+lockpicks,,,l'QkpIks,l'AkpIks,
 locks,,,l'Qks,l'Aks,
 locksman,,,l'Qksm@n,l'Aksm@n,
 locksmith,,,l'QksmIT,l'AksmIT,
@@ -66148,6 +66164,7 @@ normalized,,,n'O:m@laIzd,n'orm@laIzd,n'O:rm@laIzd
 normalizes,,,n'O:m@laIzIz,n'orm@laIzI#z,n'O:rm@laIzIz
 normalizing,,,n'O:m@laIzIN,n'orm@laIzIN,n'O:rm@laIzIN
 normally,,,n'O:m@li:,n'orm@li:,n'O:rm@li:
+normals,,,n'O:m@lz,n'orm@lz,
 norman,,,n'O:m@n,n'orm@n,n'O:rm@n
 Normand,,,n'O:mand,n'ormand,n'O:rm@nd
 Normandy,,,n'O:mandi:,n'ormandi:,n'O:rm@ndi:
@@ -71171,6 +71188,7 @@ peens,,,p'i:nz,,
 peep,,,p'i:p,,
 peeped,,,p'i:pt,,
 peeper,,,p'i:p@,p'i:p@`,
+peepers,,,p'i:p@z,p'i:p@`z,
 peephole,,,p'i:phoUl,,
 peeping,,,p'i:pIN,,
 peeps,,,p'i:ps,,
@@ -72957,6 +72975,7 @@ pietas,,,pi:'Et@z,,p'aI@tAs
 pieties,,,p'aI@tIz,,p'aI@ti:z
 pietism,,,p'aI@tIz@m,,p'i:tIz@m
 piety,,,p'aI@ti:,,
+piezo,,,p'i:zoU,,
 piezoelectric,,,pi:zoUl'EktrIk,,paI@zoU@l'EktrIk
 piezoelectricity,,,pi:zoUlIktr'IsIti:,,paIi:zoUIlEktr'IsIti:
 piezometer,,,pi:z'QmIt@,pi:z'AmIt@`,paIIz'AmIt@`
@@ -74017,6 +74036,7 @@ pneuma,,,nj'u:m@,,n'u:m@
 pneumatic,,,nju:m'atIk,,nu:m'atIk
 pneumaticity,,,nju:ma#t'IsIti:,,nu:m@t'IsIti:
 pneumatics,,,nju:m'atIks,,nUm'atIks
+pneumatique,,,nju:ma#t'i:k,,
 pneumatograph,,,nj'u:ma#tQgraf,nj'u:ma#tAgraf,n'u:m@t@graf
 pneumatologic,,,nju:ma#t@l'QdZIk,nju:ma#t@l'AdZIk,nu:m@t@l'QdZIk
 pneumatology,,,nju:ma#t'Ql@dZi:,nju:ma#t'Al@dZi:,nu:m@t'Ql@dZi:
@@ -78157,6 +78177,7 @@ quillet,,,kw'IlIt,,
 quilling,,,kw'IlIN,,
 quillman,,,kw'Ilm@n,,kwi:lm'an
 quillon,,,kw'Il@n,,
+quills,,,kw'Ilz,,
 Quilmes,,,kw'IlmIz,,k'i:lmEs
 quilombo,,,kwIl'QmboU,kwIl'AmboU,
 quilombos,,,kwIl'QmboUz,kwIl'AmboUz,
@@ -88448,6 +88469,7 @@ skysweeper,,,sk'aIswi:p@,sk'aIswi:p@`,
 skyward,,,sk'aIw@d,sk'aIw@`d,
 skywave,,,sk'aIweIv,,
 skyway,,,sk'aIweI,,
+skyways,,,sk'aIweIz,,
 skywrite,,,sk'aIraIt,,
 skywriter,,,sk'aIraIt@,sk'aIraIt@`,
 skywriters,,,sk'aIraIt@z,sk'aIraIt@`z,
@@ -88828,6 +88850,9 @@ slung,,,sl'VN,,
 slunk,,,sl'VNk,,sl@Nk
 slur,,,sl'3:,,
 slurp,,,sl'3:p,,
+slurped,,,sl'3:pt,,
+slurping,,,sl'3:pIN,,
+slurps,,,sl'3:ps,,
 slurred,,,sl'3:d,,
 slurring,,,sl'3:rIN,,sl'3:IN
 slurry,,,sl'Vri:,sl'3:ri:,sl'3:i:
@@ -89357,6 +89382,7 @@ Socinus,,,s'QsIn@s,s'AsIn@s,soUs'aIn@s
 sociobiology,,,soUsIoUbaI'Ql@dZi:,soUsIoUbaI'Al@dZi:,
 sociocultural,,,soUsI@k'VltS@r@l,soUsI@k'VltS@`r@l,soUsIoUk'VltS@`@l
 socioeconomic,,,s'oUsIoUk@n'QmIk,s'oUsIoUk@n'AmIk,soUsi:oUEk@n'QmIk
+socioeconomics,,,s'oUsIoUk@n'QmIks,s'oUsIoUk@n'AmIks,
 sociogram,,,s'oUsIQgram,s'oUsIAgram,s'oUsi:@gram
 sociolinguistic,,,s'oUsIoUlINgw'IstIk,,soUsIoUlINgw'IstIk
 sociolinguistics,,,s'oUsIoUlINgw'IstIks,,soUsIoUlINgw'IstIks
@@ -91023,6 +91049,7 @@ squatty,,,skw'Qti:,skw'Ati:,
 squaw,,,skw'O:,,skw'Q
 squawfish,,,skw'O:fIS,,skw'QfIS
 squawk,,,skw'O:k,,
+squawked,,,skw'O:kt,,
 squawking,,,skw'O:kIN,,
 squawks,,,skw'O:ks,,
 squawroot,,,skw'O:ru:t,,skw'Qru:t
@@ -95867,6 +95894,7 @@ telepath,,,t'ElIpaT,,tEl@p'aT
 telepathic,,,tElIp'aTIk,,tEl@p'aTIk
 telepathically,,,tElIp'aTIkli:,,tElIp'aTIk@li:
 telepathist,,,t'ElIp@TIst,,t@l'Ep@TIst
+telepaths,,,t'ElIpaTs,,
 telepathy,,,t@l'Ep@Ti:,,
 telephone,,,t'ElIfoUn,,t'El@foUn
 telephoned,,,t'ElIfoUnd,,t'El@foUnd
