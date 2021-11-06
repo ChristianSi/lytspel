@@ -232,12 +232,14 @@ callee
 callosal
 callosum
 camisoles
+canapes
 candareen
 candareens
 cannonballs
 cannoneers
 cantrips
 capitulations
+capos
 careered
 carpark
 carparks
@@ -251,6 +253,8 @@ catwalks
 caucusing
 cauldrons
 cawed
+cellmate
+cellmates
 cellphones
 censorable
 Centauri
@@ -745,6 +749,8 @@ freelanced
 freelances
 Freemasons
 freighted
+freighting
+freights
 fricatives
 friendlies
 frolics
@@ -769,6 +775,7 @@ gaylords
 Gazan
 GDP
 gendered
+gendering
 genealogies
 genitives
 genomes
@@ -822,6 +829,8 @@ guessable
 guiltily
 Guinean
 Guineans
+gurgled
+gurgles
 gyrocompasses
 hackerspace
 hackerspaces
@@ -976,6 +985,8 @@ invigilated
 invigilation
 invisibly
 invocations
+ionized
+ionizes
 IQ
 Irishmen
 irreducibility
@@ -1004,6 +1015,8 @@ Javans
 javelins
 jetties
 jeweled
+jewelled
+jewelling
 jigged
 jittering
 jokey
@@ -1084,9 +1097,15 @@ libertarianism
 libre
 lictors
 lidded
+lightyear
+lightyears
 limply
 loanwords
 localhost
+lockpick
+lockpicked
+lockpicking
+lockpicks
 logfile
 logfiles
 login
@@ -1344,6 +1363,7 @@ nonpersons
 nonprintable
 nonself
 nonspam
+normals
 Normans
 northmen
 noseless
@@ -1387,10 +1407,6 @@ optimizing
 orderlies
 ordinals
 ordinated
-freighting
-freights
-gendering
-uplander
 ordinates
 ordinating
 organoid
@@ -1464,6 +1480,7 @@ pe
 pease
 pec
 pecked
+peepers
 Peloponnese
 pendants
 pentoxide
@@ -1494,6 +1511,7 @@ piasters
 piastres
 pictographic
 pidgins
+piezo
 pillowed
 pinches
 Pindar
@@ -1519,6 +1537,7 @@ plotlines
 plugin
 plugins
 plumed
+pneumatique
 pockmarks
 poetical
 poisoner
@@ -1623,6 +1642,7 @@ quenchable
 quenched
 querying
 quids
+quills
 quilombo
 quilombos
 quintuples
@@ -1886,6 +1906,7 @@ skandhas
 skilful
 skinning
 skulking
+skyways
 slaved
 slaveholders
 slaveholding
@@ -1902,6 +1923,9 @@ slithers
 sloped
 sloths
 sluiced
+slurped
+slurping
+slurps
 smallholders
 smartphone
 smartphones
@@ -1921,6 +1945,7 @@ snuffles
 snuffling
 snuggled
 socialisms
+socioeconomics
 sociopolitical
 socketed
 sodded
@@ -1972,6 +1997,7 @@ spymaster
 spymasters
 squashes
 squatted
+squawked
 squealed
 squids
 squiggled
@@ -2119,6 +2145,7 @@ telegramming
 telegraphically
 telegraphs
 teleoperated
+telepaths
 templates
 templating
 tendrils
@@ -2318,6 +2345,7 @@ unrolls
 unsheathed
 unsteadily
 untrusted
+uplander
 uplanders
 uplifts
 upload
