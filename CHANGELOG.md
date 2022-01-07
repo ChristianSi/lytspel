@@ -2,6 +2,7 @@
 
 ## [Unreleased]
 
+* Fix bug that caused epub conversion to fail in rare cases.
 * Add some dictionary entries.
 
 
