@@ -495,8 +495,13 @@ class Converter:
         If the element lives within the XHTML namespace, just the local name is returned,
         e.g. '{http://www.w3.org/1999/xhtml}img' becomes 'img'.
 
+        If the element is a comment or PI, None is returned.
+
         In all other cases, the tag name is returned unchanged.
         """
+        if isinstance(elem, (etree._Comment, etree._ProcessingInstruction)):
+            return None
+
         tag = elem.tag
 
         if tag is None:
