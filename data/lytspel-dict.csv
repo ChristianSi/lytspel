@@ -10820,6 +10820,7 @@ blowzed,,,blouzd
 blowzy,,,blousi
 blubber,,,bluber
 blubberhead,,,bluberhed
+blubbering,,,blubering
 blubbery,,,bluberi
 blucher,,,bluuker
 bluchers,,,bluukers
@@ -10967,6 +10968,7 @@ boatel,,,boatél
 boater,,,boater
 boaters,,,boaters
 boathouse,,,boathouss
+boathouses,,,boathousses
 boating,,,boating
 boatlift,,,boatlift
 boatlifts,,,boatlifts
@@ -12188,6 +12190,7 @@ breeks,,,breex
 brees,,,brees
 breeze,,,brees
 breezed,,,breesd
+breezeless,,,breesless
 breezes,,,breeses
 breezeway,,,breesway
 breezy,,,breesi
@@ -28692,7 +28695,9 @@ dockings,,,dokings
 dockland,,,dokland
 docklands,,,doklands
 dockmackie,,,docmaki
+dockman,,,dokman
 dockmaster,,,dokmaster
+dockmen,,,dokmen
 docks,,,doks
 dockside,,,doksyd
 dockworker,,,dokwurker
@@ -41094,6 +41099,7 @@ god,,,god
 Godavari,,,Goadáaveri
 godchild,,,godchyld
 Goddam,,,Godam
+goddammit,,,goddamit
 goddamn,,,godam
 goddamned,,,godamd
 goddamnit,,,goddamit
@@ -49881,6 +49887,7 @@ insectile,,,insectil
 insectival,,,insectyvel
 insectivore,,,inséctivor
 insectivorous,,,insectíveruss
+insectoid,,,ínsectoid
 insectology,,,insectoleji
 insects,,,ínsects
 insecure,,,insicuer
@@ -62962,6 +62969,8 @@ motorcycles,,,moatersycls
 motorcyclist,,,moatersyclist
 motorcyclists,,,moatersyclists
 motored,,,moaterd
+motorhead,,,moaterhed
+motorheads,,,moaterheds
 motorial,,,moatórial
 motoring,,,moatering
 motorise,,motorize
@@ -68052,6 +68061,9 @@ outwitted,,,outwited
 outwitting,,,outwiting
 outwork,n,,óutwurk
 outwork,v,,outwurk
+outworld,,,outwurld
+outworlder,,,outwurlder
+outworlders,,,outwurlders
 outworn,,,outworn
 outwrite,,,outryt
 ouzel,,,uusel
@@ -73121,6 +73133,8 @@ pleasurableness,,,plezhereblness
 pleasure,,,plezher
 pleasures,,,plezhers
 pleat,,,pleet
+pleated,,,pleeted
+pleating,,,pleeting
 pleats,,,pleets
 pleb,,,pleb
 plebe,,,pleeb
@@ -78039,6 +78053,7 @@ ramin,,,rameen
 Ramirez,,,Rameeres
 Ramiro,,,Ramíro
 ramjet,,,ramjet
+ramjets,,,ramjets
 rammed,,,ramd
 rammer,,,ramer
 ramming,,,raming
@@ -81900,6 +81915,7 @@ roadblock,,,roadblok
 roadblocks,,,roadbloks
 roadhouse,,,roadhouss
 roadie,,,roadi
+roadkill,,,roadkil
 roadman,,,roadman
 roadmap,,,roadmap
 roadroller,,,roadroaler
@@ -83897,6 +83913,7 @@ sawhorse,,,sawhorss
 sawing,,,sawing
 sawmill,,,sawmil
 sawmills,,,sawmils
+sawn,,,sawn
 saws,,,saws
 sawtooth,,,sawtuuth
 sawyer,,,sawyer
@@ -84110,8 +84127,10 @@ scattershot,,,scatershot
 scatty,,,scati
 scaur,,,scor
 scavenge,,,scavenj
+scavenged,,,scavenjd
 scavenger,,,scavenjer
 scavengers,,,scavenjers
+scavenges,,,scavenjes
 scavenging,,,scavenjing
 scena,,,shainaa
 scenario,,,sinario
@@ -87378,6 +87397,7 @@ sirloin,,,surloin
 sirocco,,,siróco
 sirrah,,,sira
 sirree,,,seree
+sirs,,,surs
 sirupy,,,sirupi
 sis,,,siss
 sisal,,,sycel
@@ -90101,6 +90121,8 @@ springer,,,springer
 Springfield,,,Springfeeld
 springhalt,,,springhault
 springhead,,,springhed
+springhouse,,,springhouss
+springhouses,,,springhouses
 springing,,,springing
 springless,,,springless
 springlet,,,springlit
@@ -99967,6 +99989,9 @@ uncultured,,,unculcherd
 uncurb,,,uncurb
 uncured,,,uncuerd
 uncurl,,,uncurl
+uncurled,,,uncurld
+uncurling,,,uncurling
+uncurls,,,uncurls
 uncurtailed,,,unkertaild
 uncurtained,,,uncurtend
 uncustomed,,,uncustemd
@@ -100939,6 +100964,7 @@ unmentionable,,,unmentionebl
 unmentioned,,,unmentiond
 unmerchantable,,,unmurchentebl
 unmerciful,,,unmursiful
+unmercifully,,,unmursifulli
 unmeritable,,,unmerritebl
 unmerited,,,unmerrited
 unmeriting,,,unmerriting
@@ -102390,6 +102416,8 @@ vaporization,,,vaiperisaition
 vaporize,,,vaiperys
 vaporized,,,vaiperysd
 vaporizer,,,vaiperyser
+vaporizes,,,vaiperyses
+vaporizing,,,vaiperysing
 vaporosity,,,vaiperossiti
 vaporous,,,vaiperuss
 vapors,,,vaipers
@@ -102399,8 +102427,16 @@ vapour,,vapor
 vapourific,,vaporific
 vapourimeter,,vaporimeter
 vapouring,,vaporing
+vapourise,,,vaiperys
+vapourised,,,vaiperysd
+vapourises,,,vaiperyses
 vapourish,,vaporish
 vapourishness,,vaporishness
+vapourising,,,vaiperysing
+vapourize,,,vaiperys
+vapourized,,,vaiperysd
+vapourizes,,,vaiperyses
+vapourizing,,,vaiperysing
 vapours,,vapors
 vapourware,,vaporware
 vapoury,,vapory
@@ -105119,6 +105155,7 @@ wholegrain,,,hoalgrain
 wholehearted,,,hoalharted
 wholeheartedly,,,hoalhartedli
 wholeheartedness,,,hoalhartedness
+wholely,,,hoalli
 wholemeal,,,hoalmeel
 wholeness,,,hoalness
 wholes,,,hoals
@@ -105168,6 +105205,7 @@ whosesoever,,,huussoéver
 whosis,,,huusiss
 whoso,,,huusso
 whosoever,,,huussoever
+whup,,,whup
 why,,,why
 why'd,,,why'd
 Whyalla,,,Whiyála

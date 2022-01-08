@@ -4832,6 +4832,7 @@ blowtube,blow-tube
 blowup,blow=up
 blowy,blow=y
 blubberhead,blubber-head
+blubbering,blubber=ing
 blubbery,blubber=y
 bluchers,blucher=s
 bludgeoned,bludgeon=ed
@@ -4945,6 +4946,7 @@ boated,boat=ed
 boater,boat=er
 boaters,boater=s
 boathouse,boat-house
+boathouses,boathouse=s
 boating,boat=ing
 boatlift,boat-lift
 boatlifts,boatlift=s
@@ -5613,6 +5615,7 @@ breeding,breed=ing
 breeds,breed=s
 brees,bree=s
 breezed,breeze=ed
+breezeless,breeze=less
 breezes,breeze=s
 breezeway,breeze-way
 breezy,breeze=y
@@ -14100,7 +14103,9 @@ docking,dock=ing
 dockings,docking=s
 dockland,dock-land
 docklands,dockland=s
+dockman,dock-man
 dockmaster,dock-master
+dockmen,dock-men
 docks,dock=s
 dockside,dock-side
 dockworker,dock-worker
@@ -20538,6 +20543,7 @@ goblin,gob-lin
 goblins,goblin=s
 gobs,gob=s
 godchild,god-child
+goddammit,god-dammit
 goddamned,goddamn=ed
 goddamnit,god-damnit
 goddaughter,god-daughter
@@ -25298,6 +25304,7 @@ inseam,in=seam
 insect,in=sect
 insectary,insect=ary
 insecticides,insecticide=s
+insectoid,insect=oid
 insectology,insect=ology
 insects,in=sects
 insecure,in=secure
@@ -31586,6 +31593,8 @@ motorcycles,motorcycle=s
 motorcyclist,motor-cyclist
 motorcyclists,motorcyclist=s
 motored,motor=ed
+motorhead,motor-head
+motorheads,motorhead=s
 motorial,motor=ial
 motoring,motor=ing
 motorist,motor=ist
@@ -34095,6 +34104,9 @@ outwits,outwit=s
 outwitted,outwit=ed
 outwitting,outwit=ing
 outwork,out=work
+outworld,out=world
+outworlder,outworld=er
+outworlders,outworlder=s
 outworn,out=worn
 outwrite,out=write
 ovality,oval=ity
@@ -36646,6 +36658,8 @@ pleasingness,pleasing=ness
 pleasurable,pleasure=able
 pleasurableness,pleasurable=ness
 pleasures,pleasure=s
+pleated,pleat=ed
+pleating,pleat=ing
 pleats,pleat=s
 plebeianize,plebeian=ize
 plebeians,plebeian=s
@@ -39222,6 +39236,7 @@ ramification,ram=ification
 ramifications,ramification=s
 ramify,ram=ify
 ramjet,ram-jet
+ramjets,ramjet=s
 rammed,ram=ed
 rammer,ram=er
 ramming,ram=ing
@@ -41837,6 +41852,7 @@ roadbed,road-bed
 roadblock,road-block
 roadblocks,roadblock=s
 roadhouse,road-house
+roadkill,road-kill
 roadman,road-man
 roadmap,road-map
 roadroller,road-roller
@@ -42752,6 +42768,7 @@ sawhorse,saw-horse
 sawing,saw=ing
 sawmill,saw-mill
 sawmills,sawmill=s
+sawn,saw=n
 saws,saw=s
 sawtooth,saw-tooth
 sawyer,saw-yer
@@ -42868,8 +42885,10 @@ scattering,scatter=ing
 scatters,scatter=s
 scattershot,scatter-shot
 scatty,scatt=y
+scavenged,scavenge=ed
 scavenger,scavenge=er
 scavengers,scavenger=s
+scavenges,scavenge=s
 scavenging,scavenge=ing
 scenarios,scenario=s
 sceneries,scenery=es
@@ -44616,6 +44635,7 @@ sires,sire=s
 sirgang,sir-gang
 sirloin,sir-loin
 sirree,sir=ee
+sirs,sir=s
 sissy,sis=y
 sisterhood,sister-hood
 sisterly,sister=ly
@@ -46195,6 +46215,8 @@ springer,spring=er
 springfield,spring-field
 springhalt,spring-halt
 springhead,spring-head
+springhouse,spring-house
+springhouses,spring-houses
 springing,spring=ing
 springless,spring=less
 springlet,spring=let
@@ -51621,6 +51643,9 @@ uncultured,un=cultured
 uncurb,un=curb
 uncured,un=cured
 uncurl,un=curl
+uncurled,un=curled
+uncurling,un=curling
+uncurls,un=curls
 uncurtailed,un=curtailed
 uncurtained,un=curtained
 uncustomed,un=customed
@@ -52513,6 +52538,7 @@ unmentionable,un=mentionable
 unmentioned,un=mentioned
 unmerchantable,un=merchantable
 unmerciful,un=merciful
+unmercifully,un=mercifully
 unmeritable,un=meritable
 unmerited,un=merited
 unmeriting,un=meriting
@@ -53529,11 +53555,19 @@ vaporization,vaporize=ation
 vaporize,vapor=ize
 vaporized,vaporize=ed
 vaporizer,vaporize=er
+vaporizes,vaporize=s
+vaporizing,vaporize=ing
 vaporosity,vaporous=ity
 vaporous,vapor=ous
 vapors,vapor=s
 vaporware,vapor-ware
 vapory,vapor=y
+vapourised,vapourise=ed
+vapourises,vapourise=s
+vapourising,vapourise=ing
+vapourized,vapourize=ed
+vapourizes,vapourize=s
+vapourizing,vapourize=ing
 varas,vara=s
 variability,vary=ability
 variable,vary=able
@@ -54938,6 +54972,7 @@ wholegrain,whole-grain
 wholehearted,whole-hearted
 wholeheartedly,wholehearted=ly
 wholeheartedness,wholehearted=ness
+wholely,whole=ly
 wholemeal,whole-meal
 wholeness,whole=ness
 wholes,whole=s

@@ -10928,6 +10928,7 @@ blowzed,,,bl'oUzd,,bl'aUzd
 blowzy,,,bl'oUzi:,,bl'aUzi:
 blubber,,,bl'Vb@,bl'Vb@`,
 blubberhead,,,bl'Vb@hEd,bl'Vb@`hEd,
+blubbering,,,bl'Vb@rIN,bl'Vb@`rIN,
 blubbery,,,bl'Vb@ri:,bl'Vb@`ri:,bl'Vb@`i:
 blucher,,,bl'VtS@,bl'VtS@`,bl'u:k@`
 bluchers,,,bl'VtS@z,bl'VtS@`z,bl'u:k@z
@@ -11076,6 +11077,7 @@ boatel,,,b'oUt@l,,boUt'El
 boater,,,b'oUt@,b'oUt@`,
 boaters,,,b'oUt@z,b'oUt@`z,
 boathouse,,,b'oUthaUs,,b'oUth'aUs
+boathouses,,,b'oUthaUsIz,b'oUthaUsI#z,
 boating,,,b'oUtIN,,
 boatlift,,,b'oUtlIft,,
 boatlifts,,,b'oUtlIfts,,
@@ -12313,6 +12315,7 @@ breeks,,,br'i:ks,,
 brees,,,br'i:z,,
 breeze,,,br'i:z,,
 breezed,,,br'i:zd,,
+breezeless,,,br'i:zl@s,,
 breezes,,,br'i:zIz,,
 breezeway,,,br'i:zweI,,
 breezy,,,br'i:zi:,,
@@ -28936,7 +28939,9 @@ dockings,,,d'QkINz,d'AkINz,
 dockland,,,d'Qkl@nd,d'Akl@nd,
 docklands,,,d'Qkl@ndz,d'Akl@ndz,
 dockmackie,,,d'Qkmaki:,d'Akmaki:,
+dockman,,,d'Qkm@n,d'Akm@n,
 dockmaster,,,d'Qkmast@,d'Akmast@`,d'Qkmast@`
+dockmen,,,d'QkmEn,d'AkmEn,
 docks,,,d'Qks,d'Aks,
 dockside,,,d'QksaId,d'AksaId,
 dockworker,,,d'Qkw3:k@,d'Akw3:k@`,d'Qkw3:k@`
@@ -41460,6 +41465,7 @@ Godard,,,g'Qd@d,g'Ad@`d,gQd'ar
 Godavari,,,gQda#v'Ari:,gAda#v'Arri:,goUd'Av@`i:
 godchild,,,g'QdtSaIld,g'AdtSaIld,
 Goddam,,,g'Qdam,g'Adam,
+goddammit,,,g'Qda#mIt,g'Ada#mIt,
 goddamn,,,g'Qdam,g'Adam,
 goddamned,,,g'Qdamd,g'Adamd,g'Ad'amd
 goddamnit,,,g'Qda#mnIt,g'Ada#mnIt,
@@ -50314,6 +50320,7 @@ insectile,,,Ins'EktaIl,,Ins'EktIl
 insectival,,,InsEkt'aIv@l,,
 insectivore,,,Ins'EktIvO:,Ins'EktIvor,Ins'Ekt@vor
 insectivorous,,,InsEkt'Iv@r@s,InsEkt'Iv@`r@s,InsEkt'Iv@`@s
+insectoid,,,Ins'EktOId,,
 insectology,,,InsEkt'Ql@dZi:,InsEkt'Al@dZi:,
 insects,,,'InsEkts,,
 insecure,,,InsIkj'U@,InsIkj'Ur,
@@ -63562,6 +63569,8 @@ motorcycles,,,m'oUt@saIk@lz,m'oUt@`saIk@lz,
 motorcyclist,,,m'oUt@saIklIst,m'oUt@`saIklIst,
 motorcyclists,,,m'oUt@saIklIsts,m'oUt@`saIklIsts,m'oUt@`saIk@lIsts
 motored,,,m'oUt@d,m'oUt@`d,
+motorhead,,,m'oUt@hEd,m'oUt@`hEd,
+motorheads,,,m'oUt@hEdz,m'oUt@`hEdz,
 motorial,,,m'oUt@rI@l,m'oUt@`rI@l,moUt'ori:@l
 motoring,,,m'oUt@rIN,m'oUt@`rIN,m'oUt@`IN
 motorise,,motorize
@@ -68687,6 +68696,9 @@ outwitted,,,aUtw'ItId,aUtw'ItI#d,'aUtwIt@d
 outwitting,,,aUtw'ItIN,,'aUtwItIN
 outwork,n,,aUtw'3:k,,'aUtw3:k
 outwork,v,,aUtw'3:k,,'aUtw3:k
+outworld,,,aUtw'3:ld,,
+outworlder,,,aUtw'3:ld@,aUtw'3:ld@`,
+outworlders,,,aUtw'3:ld@z,aUtw'3:ld@`z,
 outworn,,,aUtw'O:n,aUtw'orn,'aUtw'orn
 outwrite,,,aUtr'aIt,,
 ouzel,,,'u:z@l,,
@@ -73784,6 +73796,8 @@ pleasurableness,,,pl'EZ@r@b@ln@s,pl'EZ@`r@b@ln@s,pl'EZ@`@b@lnEs
 pleasure,,,pl'EZ@,pl'EZ@`,
 pleasures,,,pl'EZ@z,pl'EZ@`z,
 pleat,,,pl'i:t,,
+pleated,,,pl'i:tId,pl'i:tI#d,
+pleating,,,pl'i:tIN,,
 pleats,,,pl'i:ts,,
 pleb,,,pl'Eb,,
 plebe,,,pl'i:b,,
@@ -78725,6 +78739,7 @@ ramin,,,r'amIn,,ram'i:n
 Ramirez,,,ra#m'i@Ez,ra#m'IrEz,r@m'IrEz
 Ramiro,,,ram'i@oU,ram'i:@roU,r@m'IroU
 ramjet,,,r'amdZEt,,
+ramjets,,,r'amdZEts,,
 rammed,,,r'amd,,
 rammer,,,r'am@,r'am@`,
 ramming,,,r'amIN,,
@@ -82613,6 +82628,7 @@ roadblock,,,r'oUdblQk,r'oUdblAk,
 roadblocks,,,r'oUdblQks,r'oUdblAks,
 roadhouse,,,r'oUdhaUs,,
 roadie,,,r'oUdi:,,
+roadkill,,,r'oUdkIl,,
 roadman,,,r'oUdm@n,,
 roadmap,,,r'oUdmap,,
 roadroller,,,r'oUdroUl@,r'oUdroUl@`,
@@ -84632,6 +84648,7 @@ sawhorse,,,s'O:hO:s,s'O:hO:rs,s'QhO:rs
 sawing,,,s'O:IN,,
 sawmill,,,s'O:mIl,,
 sawmills,,,s'O:mIlz,,
+sawn,,,s'O:n,,
 saws,,,s'O:z,,
 sawtooth,,,s'O:tu:T,,s'Atu:T
 sawyer,,,s'OI@,s'OI@`,s'O:j@`
@@ -84847,8 +84864,10 @@ scattershot,,,sk'at@SQt,sk'at@`SAt,sk'at@`SQt
 scatty,,,sk'ati:,,
 scaur,,,sk'O:,sk'O:r,sk'or
 scavenge,,,sk'av@ndZ,,
+scavenged,,,sk'av@ndZd,,
 scavenger,,,sk'avIndZ@,sk'avIndZ@`,sk'av@ndZ@`
 scavengers,,,sk'avIndZ@z,sk'avIndZ@`z,sk'av@ndZ@`z
+scavenges,,,sk'av@ndZIz,sk'av@ndZI#z,
 scavenging,,,sk'avIndZIN,,sk'av@ndZIN
 scena,,,s'i:n@,,S'eInA
 scenario,,,s@n'Ari:oU,s@n'ari:oU,sIn'e@i:oU
@@ -88160,6 +88179,7 @@ sirloin,,,s'3:lOIn,,
 sirocco,,,sIr'QkoU,sIr'AkoU,
 sirrah,,,s'3:r@,,s'Ir@
 sirree,,,s'3:ri:,,s@`'i:
+sirs,,,s'3:z,,
 sirupy,,,s'3:rVpi:,,s'Ir@pi:
 sis,,,s'Is,,
 sisal,,,s'Is@l,,s'aIs@l
@@ -90893,6 +90913,8 @@ springer,,,spr'IN@,spr'IN@`,
 Springfield,,,spr'INfi:ld,,
 springhalt,,,spr'INhQlt,spr'INhAlt,
 springhead,,,spr'INhEd,,
+springhouse,,,spr'INhaUs,,
+springhouses,,,spr'INhaUzIz,,
 springing,,,spr'ININ,,
 springless,,,spr'INl@s,,spr'INlIs
 springlet,,,spr'INgl@t,,spr'INlIt
@@ -100814,6 +100836,9 @@ uncultured,,,Vnk'VltS@d,Vnk'VltS@`d,
 uncurb,,,Vnk'3:b,,
 uncured,,,Vnkj'U@d,Vnkj'Urd,Vnkj'3:d
 uncurl,,,Vnk'3:l,,
+uncurled,,,Vnk'3:ld,,
+uncurling,,,Vnk'3:lIN,,
+uncurls,,,Vnk'3:lz,,
 uncurtailed,,,Vnk3:t'eIld,,Vnk@t'eIld
 uncurtained,,,Vnk'3:t@nd,,
 uncustomed,,,Vnk'Vst@md,,
@@ -101787,6 +101812,7 @@ unmentionable,,,Vnm'EnS@n@b@l,,
 unmentioned,,,Vnm'EnS@nd,,Vnm'EntS@nd
 unmerchantable,,,Vnm'3:tS@nt@b@l,,
 unmerciful,,,Vnm'3:sIf@l,,
+unmercifully,,,Vnm'3:sIf@lI,Vnm'3:sIf@li:,
 unmeritable,,,Vnm'ErIt@b@l,,
 unmerited,,,Vnm'ErItId,Vnm'ErItI#d,Vnm'Eri:tId
 unmeriting,,,Vnm'ErItIN,,
@@ -103248,6 +103274,8 @@ vaporization,,,veIp@raIz'eIS@n,veIp@`raIz'eIS@n,veIp@`Iz'eIS@n
 vaporize,,,v'eIp@raIz,v'eIp@`raIz,v'eIp@`aIz
 vaporized,,,v'eIp@raIzd,v'eIp@`raIzd,v'eIp@`aIzd
 vaporizer,,,v'eIp@raIz@,v'eIp@`raIz@`,v'eIp@`aIz@`
+vaporizes,,,v'eIp@raIzIz,v'eIp@`raIzIz,
+vaporizing,,,v'eIp@raIzIN,v'eIp@`raIzIN,
 vaporosity,,,veIpO:r'QsIti:,veIpor'AsIti:,veIp@`'QsIti:
 vaporous,,,v'eIp@r@s,v'eIp@`r@s,v'eIpe@@s
 vapors,,,v'eIp@z,v'eIp@`z,
@@ -103257,8 +103285,16 @@ vapour,,vapor
 vapourific,,vaporific
 vapourimeter,,vaporimeter
 vapouring,,vaporing
+vapourise,,,v'eIp@raIz,v'eIp@`raIz,
+vapourised,,,v'eIp@raIzd,v'eIp@`raIzd,
+vapourises,,,v'eIp@raIzIz,v'eIp@`raIzI#z,
 vapourish,,vaporish
 vapourishness,,vaporishness
+vapourising,,,v'eIp@raIzIN,v'eIp@`raIzIN,
+vapourize,,,v'eIp@raIz,v'eIp@`raIz,
+vapourized,,,v'eIp@raIzd,v'eIp@`raIzd,
+vapourizes,,,v'eIp@raIzIz,v'eIp@`raIzIz,
+vapourizing,,,v'eIp@raIzIN,v'eIp@`raIzIN,
 vapours,,vapors
 vapourware,,vaporware
 vapoury,,vapory
@@ -104729,8 +104765,8 @@ Vyborg,,,v'aIbO:g,v'aIborg,v'i:bO:rg
 Vycor,,,v'aIk@,v'aIk@`,v'aIkO:r
 vying,,,v'aIIN,,
 vyingly,,,v'aIINlI,v'aIINli:,
-wa,,,w'A,,
 WA,,,w'A,,w'Q
+wa,,,w'A,,
 Waadt,,,w'At,,v'At
 WAAF,,,w'Af,,w'af
 Waal,,,w'Al,,w'Ql
@@ -106013,6 +106049,7 @@ wholegrain,,,h'oUlgreIn,,
 wholehearted,,,h'oUlhAtId,h'oUlhArtI#d,h'oUlh'ArtId
 wholeheartedly,,,h'oUlhAtIdlI,h'oUlhArtIdli:,h'oUlh'ArtIdli:
 wholeheartedness,,,h'oUlhAtIdn@s,h'oUlhArtI#dn@s,h'oUlh'ArtIdnEs
+wholely,,,h'oUlli:,,
 wholemeal,,,h'oUlmi:@l,,h'oUlmi:l
 wholeness,,,h'oUln@s,,h'oUlnIs
 wholes,,,h'oUlz,,
@@ -106062,6 +106099,7 @@ whosesoever,,,hu:sIsoU'Ev@,hu:sIsoU'Ev@`,hu:zsoU'Ev@`
 whosis,,,h'u:si:z,,h'u:zIs
 whoso,,,h'u:soU,,
 whosoever,,,hu:soU'Ev@,hu:soU'Ev@`,
+whup,,,W'Vp,,
 why,,,W'aI,,
 why'd,,,W'aId,,
 Whyalla,,,W'aIal@,,WaI'al@
