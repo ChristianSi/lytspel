@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+
+## [2.0.6] -- 2022-01-08
+
 * Fix bug that caused epub conversion to fail in rare cases.
 * Add some dictionary entries.
 
