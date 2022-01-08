@@ -177,7 +177,9 @@ blini
 blinkered
 blinkers
 blondish
+blubbering
 boars
+boathouses
 boatmen
 bobbed
 bodhi
@@ -198,6 +200,7 @@ brayed
 breadbaskets
 breakpoints
 breathable
+breezeless
 brigands
 brocaded
 bromeliad
@@ -521,6 +524,8 @@ dithered
 diviners
 divulges
 djinn
+dockman
+dockmen
 Dogecoin
 dogmas
 doi
@@ -796,6 +801,7 @@ glyphic
 GMT
 gnashed
 goblets
+goddammit
 goddamnit
 golems
 gon
@@ -955,6 +961,7 @@ inklings
 inlays
 innit
 innovativeness
+insectoid
 installable
 insurrectionist
 insurrectionists
@@ -1270,6 +1277,8 @@ morphemes
 morphologies
 mosasaurs
 moslem
+motorhead
+motorheads
 mouldering
 mournfully
 mouthfuls
@@ -1425,6 +1434,9 @@ outcropping
 outcrops
 outsized
 outsizes
+outworld
+outworlder
+outworlders
 overcomplicated
 overeducation
 overfilled
@@ -1531,6 +1543,8 @@ pissing
 planarity
 plateaus
 playgroups
+pleated
+pleating
 plesiosaurs
 plotline
 plotlines
@@ -1661,6 +1675,7 @@ radiographer
 ragging
 rainforest
 rainforests
+ramjets
 Randian
 ransomed
 ranter
@@ -1762,6 +1777,7 @@ risings
 ritualized
 ritualizes
 riverbanks
+roadkill
 roadmap
 roguelike
 roundabouts
@@ -1794,9 +1810,12 @@ sauntered
 sauntering
 saunters
 savannahs
+sawn
 scabbing
 scalability
 scatters
+scavenged
+scavenges
 schismogenesis
 schismogenetic
 schoolgirls
@@ -1899,6 +1918,7 @@ singlehanded
 singletons
 singulars
 sinkable
+sirs
 sisterly
 sixsome
 skandha
@@ -1993,6 +2013,8 @@ spooler
 sportster
 sportsters
 spotlit
+springhouse
+springhouses
 spymaster
 spymasters
 squashes
@@ -2299,6 +2321,9 @@ uncloaks
 uncontacted
 unconvincingly
 uncredentialed
+uncurled
+uncurling
+uncurls
 undecorated
 underclan
 underclans
@@ -2334,6 +2359,7 @@ unkindness
 unlimbering
 unmarshaling
 unmechanical
+unmercifully
 unmount
 unmounts
 unobtrusively
@@ -2365,6 +2391,16 @@ utterable
 validator
 validators
 vanishingly
+vaporizes
+vaporizing
+vapourise
+vapourised
+vapourises
+vapourising
+vapourize
+vapourized
+vapourizes
+vapourizing
 varnas
 ve
 Vedas
@@ -2436,6 +2472,8 @@ whinnying
 whirred
 whirrs
 whitespace
+wholely
+whup
 wi
 widdershins
 wifi
