@@ -545,6 +545,7 @@ accidence,,,áxidenss
 accident,,,áxident
 accidental,,,axidéntel
 accidentalism,,,axidéntelism
+accidentality,,,axidentaliti
 accidentally,,,axidéntelli
 accidents,,,áxidents
 accidie,,,áxidi
@@ -3652,6 +3653,7 @@ analeptic,,,analeptic
 analgesia,,,analjeesia
 analgesic,,,analjeesic
 analgesics,,,analjeesics
+anality,,,analiti
 anally,,,ainelli
 analog,,,ánelog
 analogic,,,analojic
@@ -7625,6 +7627,7 @@ baff,,,baf
 Baffin,,,Bafin
 baffle,,,bafel
 baffled,,,bafeld
+bafflement,,,bafelment
 baffleplate,,,bafelplait
 baffler,,,bafler
 baffles,,,bafels
@@ -7978,6 +7981,7 @@ banian,,,banyen
 banias,,,banias
 banish,,,banish
 banished,,,banishd
+banishes,,,banishes
 banishing,,,banishing
 banishment,,,banishment
 banister,,,banister
@@ -8941,7 +8945,6 @@ beestings,,,beestings
 beeswax,,,beeswax
 beeswing,,,beeswing
 beet,,,beet
-Beethoven,,,Baitoaven
 Beethovenian,,,Baitoavéenian
 beetle,,,beetel
 beetlehead,,,beetelhed
@@ -9193,6 +9196,7 @@ belomancy,,,belemansi
 belong,,,bilóng
 belonged,,,bilóngd
 belonging,,,bilónging
+belongingness,,,bilóngingness
 belongings,,,bilóngings
 belongs,,,bilóngs
 belonoid,,,bélenoid
@@ -9345,9 +9349,8 @@ bentwood,,,bentwood
 Benue,,,Bainway
 benumb,,,binúm
 benumbedness,,,binúmdness
-Benz,,,Bens
 benzal,,,benzal
-benzaldehyde,,,bensáldehyd
+benzaldehyde,,,benzáldehyd
 Benzedrine,,,Bénzidreen
 benzene,,,bénzeen
 benzidine,,,bénzideen
@@ -9633,6 +9636,7 @@ bey,,,bay
 Beyer,,,Bayer
 beylic,,,bailic
 beyond,,,biónd
+beyonds,,,biónds
 Beyrouth,,,Bairuut
 bezant,,,besent
 bezel,,,besel
@@ -11674,6 +11678,7 @@ bounding,,,bounding
 boundless,,,boundless
 boundlessly,,,boundlessli
 boundlessness,,,boundlessness
+boundness,,,boundness
 bounds,,,bounds
 bounteous,,,bountiass
 bounteously,,,bountiassli
@@ -12041,7 +12046,6 @@ brattishing,,,bratishing
 brattle,,,bratel
 bratty,,,brati
 bratwurst,,,bratwurst
-Braun,,,Broun
 braunite,,,brounyt
 Braunschweig,,,Brounshwyg
 braunschweiger,,,brounshwyger
@@ -15747,6 +15751,7 @@ centennially,,,senténialli
 center,,,senter
 centerboard,,,senterbord
 centered,,,senterd
+centeredness,,,senterdness
 centerfold,,,senterfoald
 centering,,,sentering
 centerline,,,senterlyn
@@ -16267,6 +16272,7 @@ characterize,,,carricterys
 characterized,,,carricterysd
 characterizes,,,carricteryses
 characterizing,,,carricterysing
+characterological,,,carricterolojicl
 characterology,,,carricteroleji
 characters,,,carricters
 charactery,,,carricteri
@@ -17343,7 +17349,6 @@ chrysanthemum,,,crissánthemum
 chrysanthemums,,,crissánthemums
 chrysarobin,,,criceroabin
 chryselephantine,,,cricelefántin
-Chrysler,,,Crysler
 chrysoberyl,,,criceberrel
 chrysocolla,,,crissocóla
 chrysolite,,,cricelyt
@@ -19932,6 +19937,7 @@ conceptualism,,,consépchualism
 conceptuality,,,consepchualiti
 conceptualization,,,consepchualisaition
 conceptualize,,,consépchualys
+conceptualized,,,consépchualysd
 conceptually,,,consépchualli
 concern,,,consurn
 concerned,,,consurnd
@@ -20022,6 +20028,7 @@ concourses,,,cóncorsses
 concrescence,,,concrécenss
 concrete,,,cóncreet
 concretely,,,cóncreetli
+concreteness,,,cóncreetness
 concretion,,,concreetion
 concretionary,,,concreetionerri
 concretise,,concretize
@@ -22587,6 +22594,7 @@ creator,,,criáiter
 creators,,,criáiters
 creatural,,,creecherel
 creature,,,creecher
+creatureliness,,,creecherliness
 creaturely,,,creecherli
 creatures,,,creechers
 creche,,,cresh
@@ -29634,6 +29642,7 @@ drivable,,,dryvebl
 drive,,,dryv
 drivel,,,drivel
 driven,,,driven
+drivenness,,,drivenness
 driver,,,dryver
 driverless,,,dryverless
 drivers,,,dryvers
@@ -31432,6 +31441,7 @@ embay,,,embay
 embayment,,,embayment
 embed,,,embed
 embedded,,,embeded
+embeddedness,,,embededness
 embedding,,,embeding
 embellish,,,embelish
 embellished,,,embelishd
@@ -31554,7 +31564,6 @@ emerging,,,imurjing
 emeritus,,,imerrituss
 emersed,,,imursd
 emersion,,,imursion
-Emerson,,,"Émersen"
 Emersonian,,,Emersoanian
 emery,,,émeri
 emesis,,,émiciss
@@ -32168,6 +32177,7 @@ enisle,,,enyl
 Eniwetok,,,Eniweetok
 enjambment,,,enjament
 enjoin,,,enjoin
+enjoinder,,,enjoinder
 enjoined,,,enjoind
 enjoining,,,enjoining
 enjoy,,,enjoy
@@ -34060,6 +34070,7 @@ excrescential,,,excrecénshel
 excrescently,,,ixcrecentli
 excreta,,,ixcreeta
 excrete,,,ixcreet
+excreting,,,ixcreeting
 excretion,,,ixcreetion
 excretory,,,éxcritori
 excruciate,,,ixcruushiait
@@ -34247,6 +34258,8 @@ existence,,,igzistenss
 existent,,,igzistent
 existential,,,egzisténshel
 existentialism,,,egzisténshelism
+existentialist,,,egzisténshialist
+existentialists,,,egzisténshialists
 existentially,,,egzisténshelli
 existing,,,igzisting
 exists,,,igzists
@@ -34326,6 +34339,7 @@ expansionist,,,ixpantionist
 expansions,,,ixpantions
 expansive,,,ixpanssiv
 expansively,,,ixpanssivli
+expansiveness,,,ixpanssivness
 expansivity,,,expanssiviti
 expat,,,expat
 expatiate,,,expaishiait
@@ -35120,6 +35134,7 @@ fallen,,,fallen
 faller,,,faller
 fallfish,,,fallfish
 fallibilism,,,falebelism
+fallibilities,,,falebilities
 fallibility,,,falebiliti
 fallible,,,falebl
 fallibleness,,,faleblness
@@ -35996,6 +36011,10 @@ fetish,,,fetish
 fetishism,,,fetishism
 fetishist,,,fetishist
 fetishists,,,fetishists
+fetishization,,,fetishisaition
+fetishize,,,fetishys
+fetishized,,,fetishysd
+fetishizes,,,fetishyses
 fetlock,,,fetlok
 fetor,,,feeter
 fetter,,,feter
@@ -37384,6 +37403,7 @@ fob,,,fob
 focaccia,,,focaacha
 focal,,,foacl
 focalise,,focalize
+focalization,,,foakelisaition
 focalize,,,foakelys
 focally,,,foaclli
 focus,,,foacuss
@@ -38506,7 +38526,7 @@ fretter,,,freter
 fretting,,,freting
 fretty,,,freti
 fretwork,,,fretwurk
-Freud,,,Froid
+Freud,,,Freud
 Freudian,,,Froidian
 Frey,,,Fray
 Freya,,,Fraya
@@ -38574,6 +38594,7 @@ frightfulness,,,frytfulness
 frigid,,,frijid
 Frigidaire,,,Frijidair
 frigidarium,,,frijidairiam
+frigidity,,,frijiditi
 frigidly,,,frijidli
 frigidness,,,frijidness
 frigorific,,,frigerific
@@ -38650,7 +38671,6 @@ frolicsomely,,,frolicsumli
 frolicsomeness,,,frolicsumness
 from,,,from
 fromenty,,,froamenti
-Fromm,,,From
 frond,,,frond
 Fronde,,,Frond
 frondescence,,,frondécenss
@@ -42535,6 +42555,7 @@ guilt,,,gilt
 guiltily,,,giltili
 guiltless,,,giltless
 guiltlessly,,,giltlessli
+guilts,,,gilts
 guilty,,,gilti
 guimpe,,,gimp
 Guin,,,Gin
@@ -44852,6 +44873,7 @@ heroines,,,herroïns
 heroise,,heroize
 heroised,,heroized
 heroism,,,hérroism
+heroisms,,,hérroisms
 heroize,,,heeroys
 heroized,,,heeroysd
 heron,,,herren
@@ -48482,6 +48504,7 @@ inaugurations,,,inaugyeraitions
 inauspicious,,,inauspíshuss
 inauspiciously,,,inauspíshussli
 inauspiciousness,,,inauspíshussness
+inauthentic,,,inauthentic
 inbeing,,,ínbeeing
 inboard,,,ínbord
 inbond,,,ínbond
@@ -48681,6 +48704,7 @@ incompetent,,,incompitent
 incompetently,,,incompitentli
 incompetents,,,incompitents
 incomplete,,,incompleet
+incompleteness,,,incompleetness
 incompletion,,,incompleetion
 incompliant,,,incomplýent
 incompliantly,,,incomplýentli
@@ -52660,7 +52684,7 @@ Juneau,,,Juuno
 Juneberry,,,Juunberri
 Junes,,,Juuns
 Juneteenth,,,Juuntéenth
-Jung,,,Ueng
+Jung,,,Jung
 Jungfrau,,,Uengfrow
 Jungian,,,Uengian
 jungle,,,junggel
@@ -54022,7 +54046,6 @@ krater,,,craiter
 kraut,,,crout
 Krebs,,,Crebs
 Krefeld,,,Craifeld
-Kreisler,,,Crysler
 Kremenchug,,,Cremenchóok
 kremlin,,,cremlin
 kremlinologist,,,cremlinolejist
@@ -59927,6 +59950,7 @@ megalocardia,,,megeloacárdia
 megalomania,,,megeloamáinia
 megalomaniac,,,megeloamáiniac
 megalomaniacal,,,megeloamaníyecl
+megalomanic,,,megelomanic
 megalopolis,,,megalópeliss
 megalopolitan,,,megelopóliten
 megalosaurus,,,megelossoruss
@@ -60270,7 +60294,6 @@ mercaptide,,,mercáptyd
 mercapto,,,mercapto
 mercaptopurine,,,mercaptopuereen
 Mercator,,,Mercaiter
-Mercedes,,,Mersaidees
 mercenaries,,,mursenerries
 mercenarily,,,mursenerrili
 mercenary,,,mursenerri
@@ -61464,6 +61487,7 @@ miracle,,,mirecl
 miracles,,,mirecls
 miraculous,,,mirácueluss
 miraculously,,,mirácuelussli
+miraculousness,,,mirácuelussness
 mirador,,,mirador
 Miraflores,,,Mirafloress
 mirage,,,miraazh
@@ -63118,7 +63142,7 @@ mozambican,,,moasambéeken
 Mozambicans,,,Moasambéekens
 Mozambique,,,Moasambéek
 Mozarabic,,,Moasárrebic
-Mozart,,,Moatsart
+Mozart,,,Mozart
 Mozartean,,,Moatsártian
 mozzarella,,,motseréla
 mozzetta,,,moaséta
@@ -63761,6 +63785,7 @@ mysteries,,,misteries
 mysterious,,,misteeriass
 mysteriously,,,misteeriassli
 mysteriousness,,,misteeriassness
+mysterium,,,misteeriam
 mystery,,,misteri
 mystic,,,mistic
 mystical,,,misticl
@@ -64124,6 +64149,7 @@ naturalized,,,nacherelysd
 naturalizes,,,nacherelyses
 naturalizing,,,nacherelysing
 naturally,,,nacherelli
+naturalness,,,nacherelness
 nature,,,naicher
 natured,,,naicherd
 natures,,,naichers
@@ -64633,6 +64659,7 @@ neumatic,,,nuematic
 neume,,,nuem
 neural,,,nuerel
 neuralgia,,,nuerálja
+neurally,,,nuerelli
 neurasthenia,,,nuerasthéenia
 neurasthenic,,,nuerasthenic
 neuration,,,nueraition
@@ -64685,6 +64712,7 @@ neurosurgeon,,,nuerosurjen
 neurosurgeons,,,nuerosurjens
 neurosurgery,,,nuerosurjeri
 neurotic,,,nuerotic
+neurotics,,,nuerotiks
 neurotomy,,,nuerótemi
 neurotoxin,,,nuerotoxin
 neurotransmitter,,,nuerotransmíter
@@ -64914,7 +64942,6 @@ nielli,,,niéli
 niello,,,niélo
 Nielsen,,,Neelsen
 Niersteiner,,,Neerstyner
-Nietzsche,,,Neecha
 Nietzschean,,,Neechian
 nieves,,,neevs
 nifedipine,,,nyfédepeen
@@ -66160,6 +66187,7 @@ obliteration,,,ebliteraition
 obliterative,,,obliteraitiv
 oblivion,,,oblivian
 oblivious,,,obliviass
+obliviousness,,,obliviassness
 oblong,,,óblong
 obloquy,,,óblequi
 obnoxious,,,obnocshuss
@@ -68615,6 +68643,7 @@ overwhelm,,,oaverwhelm
 overwhelmed,,,oaverwhelmd
 overwhelming,,,oaverwhelming
 overwhelmingly,,,oaverwhelmingli
+overwhelmingness,,,oaverwhelmingness
 overwhelms,,,oaverwhelms
 overwind,,,oaverwind
 overwinter,,,oaverwinter
@@ -69865,6 +69894,8 @@ Parthian,,,Parthian
 parti,,,parti
 partial,,,parshel
 partiality,,,parshialiti
+partialization,,,parshialisaition
+partialize,,,parshelys
 partially,,,parshelli
 partible,,,partebl
 participance,,,partícipenss
@@ -71777,6 +71808,7 @@ Philips,,,Filips
 philistia,,,filístia
 philistine,,,fílistyn
 philistines,,,fílistyns
+philistinism,,,fílistynism
 Phillip,,,Filip
 Phillips,,,Filips
 phillumenist,,,filuumenist
@@ -72124,6 +72156,7 @@ physical,,,fisicl
 physicalism,,,fisikelism
 physicality,,,fisicaliti
 physically,,,fisiclli
+physicalness,,,fisiclness
 physicals,,,fisicls
 physician,,,fisition
 physicians,,,fisitions
@@ -72135,6 +72168,7 @@ physicochemical,,,fisicoakemicl
 physicochemically,,,fisicoakemiclli
 physics,,,fisics
 physio,,,fisio
+physiochemical,,,fisiakemicl
 physiocracy,,,fisiócreci
 physiognomy,,,fisiógnemi
 physiography,,,fisiogrefi
@@ -72142,8 +72176,8 @@ physiological,,,fisialojicl
 physiologically,,,fisialojiclli
 physiologist,,,fisiolejist
 physiology,,,fisioleji
-physiopathological,,,fisioapatholojicl
-physiotherapy,,,fisioathérrepi
+physiopathological,,,fisiopatholojicl
+physiotherapy,,,fisiopatholojicl
 physique,,,fiseek
 physis,,,fyciss
 physoclistous,,,fyssoclístuss
@@ -76464,6 +76498,7 @@ psycho,,,syco
 psychoactive,,,sycoáctiv
 psychoanalysis,,,sycoänaliciss
 psychoanalyst,,,sycoánelist
+psychoanalysts,,,sycoánelists
 psychoanalytic,,,sycoänalitic
 psychobabble,,,sycobabl
 psychobiological,,,sycobiyolojicl
@@ -76510,6 +76545,7 @@ psychophysiologically,,,sycofisialojiclli
 psychophysiology,,,sycofisioleji
 psychopomp,,,sycopomp
 psychoprophylaxis,,,sycoprofiláxiss
+psychoses,,,sycoases
 psychosexual,,,sycosecshual
 psychosis,,,sycóaciss
 psychosocial,,,sycosoashel
@@ -79991,6 +80027,7 @@ relocations,,,riloacaitions
 relucent,,,riluucent
 reluct,,,riluct
 reluctance,,,riluctenss
+reluctances,,,riluctensses
 reluctant,,,riluctent
 reluctantly,,,riluctentli
 reluctivity,,,reluctiviti
@@ -86486,6 +86523,7 @@ shithead,,,shithed
 shitheads,,,shitheds
 shitload,,,shitload
 shitloads,,,shitloads
+shits,,,shits
 shitting,,,shiting
 shitty,,,shiti
 shiv,,,shiv
@@ -89447,6 +89485,7 @@ specialized,,,speshelysd
 specializes,,,speshelyses
 specializing,,,speshelysing
 specially,,,speshelli
+specialness,,,speshelness
 specials,,,speshels
 specialties,,,speshelties
 specialty,,,speshelti
@@ -91632,8 +91671,6 @@ stratovision,,,strátevision
 stratum,,,straitum
 stratus,,,straituss
 straucht,,,straact
-Straus,,,Strouss
-Strauss,,,Strouss
 stravaig,,,stravaig
 Stravinsky,,,Stravínski
 straw,,,straw
@@ -93400,6 +93437,7 @@ sustainable,,,sustainebl
 sustained,,,sustaind
 sustainedly,,,sustainedli
 sustaining,,,sustaining
+sustainment,,,sustainment
 sustains,,,sustains
 sustenance,,,sustenenss
 sustentacular,,,sustentácueler
@@ -96586,7 +96624,6 @@ tillandsia,,,tilándzia
 tilled,,,tild
 tiller,,,tiler
 tillerman,,,tilerman
-Tillich,,,Tilic
 tilling,,,tiling
 tillite,,,tilyt
 Tillman,,,Tilman
@@ -97535,7 +97572,6 @@ toying,,,toying
 toyman,,,toyman
 toyo,,,toayo
 toyon,,,toyon
-Toyota,,,Tauyóata
 toys,,,toys
 trabeated,,,traibiaited
 trabeculate,,,trabécuelet
@@ -98809,6 +98845,7 @@ trustees,,,trustees
 trusteeship,,,trusteeship
 trustful,,,trustful
 trusting,,,trusting
+trustingly,,,trustingli
 trustless,,,trustless
 trustor,,,truster
 trusts,,,trusts
@@ -99292,6 +99329,7 @@ twisted,,,twisted
 twister,,,twister
 twisters,,,twisters
 twisting,,,twisting
+twistings,,,twistings
 twists,,,twists
 twisty,,,twisti
 twit,,,twit
@@ -99906,6 +99944,7 @@ unconditionally,,,unconditionelli
 unconditioned,,,unconditiond
 unconfined,,,unconfynd
 unconfirmed,,,unconfurmd
+unconflicted,,,unconflícted
 unconformable,,,unconformebl
 unconformity,,,unconformiti
 uncongenial,,,unconjeenial
@@ -100564,6 +100603,7 @@ unfounded,,,unfounded
 unfoundedness,,,unfoundedness
 unframed,,,unfraimd
 unfree,,,unfree
+unfreedom,,,unfreedem
 unfreeze,,,unfrees
 unfrequented,,,unfreequented
 unfriended,,,unfrended
@@ -100914,6 +100954,7 @@ unlisted,,,unlisted
 unlit,,,unlit
 unlivable,,,unlivebl
 unlive,,,unliv
+unlived,,,unlivd
 unload,,,unload
 unloaded,,,unloaded
 unloader,,,unloader
@@ -101272,6 +101313,7 @@ unrepentant,,,unripentent
 unreported,,,unriported
 unrepresentative,,,unrepriséntetiv
 unrepresented,,,unreprisénted
+unrepressed,,,unripressd
 unreproved,,,unripruuvd
 unrequited,,,unriquyted
 unreserve,,,unrisurv
@@ -101742,6 +101784,7 @@ unworldly,,,unwurldli
 unworn,,,unworn
 unworried,,,unwurried
 unworshipped,,,unwurshipt
+unworthiness,,,unwurdhiness
 unworthy,,,unwurdhi
 unwound,,,unwound
 unwounded,,,unwuunded
@@ -101831,6 +101874,7 @@ uploads,,,úploads
 upmanship,,,úpmenship
 upmarket,,,upmarkit
 upmost,,,úpmoast
+upness,,,upness
 Upolu,,,Uupóalu
 upon,,,upon
 upped,,,upd
