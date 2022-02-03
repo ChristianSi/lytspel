@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+* Add some dictionary entries.
+* Delete some names of persons.
+
 
 ## [2.0.6] -- 2022-01-08
 
