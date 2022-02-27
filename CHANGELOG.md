@@ -2,7 +2,7 @@
 
 ## [Unreleased]
 
-* Add some dictionary entries.
+* Add and correct some dictionary entries.
 * Delete some names of persons.
 
 
