@@ -192,7 +192,7 @@ The long vowels and diphthongs are written as follows:
   at the end of words or before another vowel, e.g. «play, hóliday, layer,
   cayoss» ‹...holiday, layer, chaos›.
 
-* «au» /O:/ as in «auther, paus» ‹author, pause›. Written «aw» if it occurs
+* «au» /O:/ as in «autum, paus» ‹autumn, pause›. Written «aw» if it occurs
   at the end of words or before another vowel, e.g. «law, drawing».
 
 * «ee» /i:/ as in «tree, teem» ‹...team›. Written «i» if it occurs
