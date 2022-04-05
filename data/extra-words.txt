@@ -112,6 +112,7 @@ autocorrect
 autocorrection
 autocrats
 autodetection
+autodial
 autoindent
 automata
 avulse
@@ -287,6 +288,7 @@ chatters
 chenopods
 chickpeas
 chiefdoms
+chiles
 chins
 chirurgic
 chirurgical
@@ -333,6 +335,7 @@ cochair
 cockerels
 codebase
 codename
+codgers
 cognates
 cogs
 coherency
@@ -483,6 +486,7 @@ deeps
 deferentially
 defiled
 defilement
+defilements
 defiler
 defilers
 defiles
@@ -524,6 +528,8 @@ disembarked
 disembarking
 disembarks
 disemboweled
+disemboweling
+disembowels
 disestablishmentarianism
 dishonorably
 dismounted
@@ -543,6 +549,7 @@ dogmas
 doi
 domestications
 dominions
+donburi
 dotfile
 dotfiles
 doublets
@@ -727,6 +734,7 @@ firewalls
 fishhooks
 fishponds
 fivesome
+flaccidity
 flagons
 flailed
 flaked
@@ -800,6 +808,7 @@ gantries
 gaol
 gaped
 garde
+garlands
 garrisons
 gaslights
 gaylord
@@ -935,6 +944,8 @@ humanoids
 hummed
 hummocks
 humours
+humping
+humps
 hungered
 Hungers
 Huns
@@ -1074,6 +1085,10 @@ jurymen
 jutted
 kairos
 karmic
+kathoey
+kathoeys
+katoey
+katoeys
 kenned
 ketamine
 keyboarder
@@ -1509,6 +1524,8 @@ paler
 palpation
 paltriness
 panpsychism
+papasan
+papasans
 papirosa
 parachutists
 parapets
@@ -1546,7 +1563,9 @@ perfects
 perfunctorily
 perimetry
 periodontic
+perp
 perpends
+perps
 perturbational
 perversions
 petrostate
@@ -1868,6 +1887,7 @@ schismogenesis
 schismogenetic
 schoolgirls
 scintillating
+scowls
 scrabbled
 scrabbles
 scrabbling
@@ -1975,6 +1995,7 @@ skandhas
 skilful
 skinning
 skulking
+skullcaps
 skyways
 slaved
 slaveholders
@@ -2020,6 +2041,8 @@ socketed
 sodded
 sodding
 sods
+soi
+sois
 solicitously
 Solomons
 somatism
@@ -2206,6 +2229,7 @@ tarball
 tarballs
 tars
 Tasmanians
+tats
 tattooist
 tavernkeeper
 tavernkeepers
@@ -2499,6 +2523,8 @@ wafts
 waggled
 Wahhabi
 Wahhabis
+wai
+wais
 wakened
 wakens
 walkie
@@ -2546,6 +2572,7 @@ wisps
 wittered
 wittering
 wombs
+woodblocks
 woodenly
 woogie
 wooly
@@ -2580,8 +2607,11 @@ xvi
 xvii
 xviii
 xxx
+yaa
 yadda
 yahs
+yakuza
+yakuzas
 Yanomamo
 yellowed
 yelped
