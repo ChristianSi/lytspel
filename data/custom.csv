@@ -1,6 +1,5 @@
 Word,POS,Prefer
 Aachen,,P
-mia,,m'i:@
 Aalborg,,'O:lbO:rg
 Aalesund,,'O:l@sUn
 aalii,,P
@@ -404,7 +403,7 @@ Aitken,,B
 Ajaccio,,Aj'AtSoU
 ajiva,,P
 Ajmer,,P
-aka,,D
+aka,,'ana#
 akela,,P
 akene,,P
 Akihito,,AkIh'i:toU
@@ -3368,6 +3367,7 @@ electrophorus,,P
 elegiac,,ElIdZ'aI@k
 elegy,,B
 elementary,,B
+elenchi,,Il'ENkaI
 eleoptene,,Eli:'Qpti:n
 elephantiasis,,El@f@nt'aI@sIs
 eleutherococcus,,D
@@ -6777,6 +6777,7 @@ mezereon,,m@z'i:ri:Qn
 mezereum,,m@z'i:ri:@m
 Mfume,,D
 mg,,O
+mia,,m'i:@
 micawber,,mIk'O:b@`
 Micheal,,D
 Michelin,,D
@@ -7015,6 +7016,7 @@ Mss,,O
 mt,,O
 Mubarak,,mu:b'Ar@k
 mucigen,,mj'u:sIdZ@n
+muda,,m'u:d@
 Mueller,,D
 muenster,,m'Vnst@`
 muezzin,,mU:'EzIn
@@ -7165,6 +7167,7 @@ neodymium,,ni:@d'Imi:@m
 neologism,,ni:'Ql@dZIz@m
 neologize,,ni:'Ql@dZaIz
 neology,,ni:'Ql@dZi:
+neonicotinoid,,ni:@n'Ik@tInOId
 neoprene,,n'i:@pri:n
 Neoptolemus,,ni:Qpt'Ql@m@s
 neostigmine,,ni:@st'Igmi:n
