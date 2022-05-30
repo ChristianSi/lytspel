@@ -1,20 +1,3 @@
-## News
-
-Lytspel made it into the shortlist of six spelling reform proposals
-considered in the final round of the [International English Spelling
-Congress](http://spellingsociety.org/international-english-spelling-congress)
-organized by the [English Spelling Society](http://spellingsociety.org/).
-The final winner was [Traditional Spelling
-Revised](http://spellingsociety.org/uploaded_views/traditional-spelling-revised-personal-view.pdf)
-(PDF), a conservative proposal that eliminates the worst exceptions, but
-still allows various spellings for most sounds, meaning that each word has
-to be essentially memorized. While TSR would be a clear and considerable
-improvement over the status quo and I therefore support its adaptation, I
-still think that a principled solution such as Lytspel is ultimately
-preferable, since it would largely eliminate the need for memorization and
-make English truly follow the alphabetic principle.
-
-
 ## Scope and Purpose of This Website
 
 The traditional English spelling system is afflicted with exceptions and
@@ -45,3 +28,20 @@ Human Rights](/sample/udhr).
 As required by law and recommended by common sense, this website has a
 [privacy policy](/privacy). You are welcome to [contact](/contact) us if
 you have questions, ideas for improvement, or any other feedback.
+
+
+## Update (2021)
+
+Lytspel made it into the shortlist of six spelling reform proposals
+considered in the final round of the [International English Spelling
+Congress](http://spellingsociety.org/international-english-spelling-congress)
+organized by the [English Spelling Society](http://spellingsociety.org/).
+The final winner was [Traditional Spelling
+Revised](http://spellingsociety.org/uploaded_views/traditional-spelling-revised-personal-view.pdf)
+(PDF), a conservative proposal that eliminates the worst exceptions, but
+still allows various spellings for most sounds, meaning that each word has
+to be essentially memorized. While TSR would be a clear and considerable
+improvement over the status quo and I therefore support its adaptation, I
+still think that a principled solution such as Lytspel is ultimately
+preferable, since it would largely eliminate the need for memorization and
+make English truly follow the alphabetic principle.
