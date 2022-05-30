@@ -8181,6 +8181,7 @@ cliffhangers,cliffhanger=s
 cliffs,cliff=s
 cliffy,cliff=y
 climacterical,climacteric=al
+climacterics,climacteric=s
 climatal,climate=al
 climate,clime=ate
 climates,climate=s
@@ -12075,6 +12076,7 @@ degrease,de=grease
 degreed,de=greed
 degrees,degree=s
 degressively,degressive=ly
+degrowth,de=growth
 degum,de=gum
 degust,de=gust
 degustation,de=gustation
@@ -12110,6 +12112,7 @@ deigning,deign=ing
 deigns,deign=s
 deinstitutionalization,de=institutionalization
 deinstitutionalize,de=institutionalize
+deintensification,de=intensification
 deionize,de=ionize
 deities,deity=es
 dejected,deject=ed
@@ -13481,6 +13484,7 @@ disdains,disdain=s
 diseased,disease=ed
 diseasedness,diseased=ness
 diseases,disease=s
+diseconomies,dis=economies
 diseconomy,dis=economy
 disembark,dis=embark
 disembarkation,dis=embarkation
@@ -14280,6 +14284,7 @@ donny,donn=y
 donnybrook,donny-brook
 donors,donor=s
 dons,don=s
+donuts,donut=s
 doodads,doodad=s
 doodlebug,doodle-bug
 doodles,doodle=s
@@ -15300,6 +15305,7 @@ elaborated,elaborate=ed
 elaborately,elaborate=ly
 elaborates,elaborate=s
 elaborating,elaborate=ing
+elaborations,elaboration=s
 elaborative,elaborate=ive
 elapsed,elapse=ed
 elastomeric,elastomer=ic
@@ -15798,6 +15804,7 @@ endlessly,endless=ly
 endlong,end-long
 endmost,end-most
 endnote,end-note
+endnotes,endnote=s
 endocarditic,endo=carditic
 endocarditis,endo=carditis
 endocentric,endo=centric
@@ -17674,6 +17681,7 @@ feds,fed=s
 feebleminded,feeble-minded
 feebly,feeb=ly
 feedback,feed-back
+feedbacks,feedback=s
 feedbox,feed-box
 feeder,feed=er
 feeders,feeder=s
@@ -22618,6 +22626,7 @@ hewing,hew=ing
 hews,hew=s
 hexagonal,hexagon=al
 hexagonally,hexagonal=ly
+hexagons,hexagon=s
 hexameters,hexameter=s
 hexamine,hex-amine
 hexane,hex-ane
@@ -22929,6 +22938,7 @@ holmesian,holmes=ian
 holmic,holme=ic
 holograms,hologram=s
 holographic,holograph=ic
+holons,holon=s
 holpen,holp=en
 holts,holt=s
 holy,hole=y
@@ -32094,6 +32104,8 @@ nanogram,nano=gram
 nanograms,nano=grams
 nanosecond,nano=second
 nanoseconds,nano=seconds
+nanotechnologies,nano=technologies
+nanotechnology,nano=technology
 nanowatt,nano=watt
 nantucket,nan-tucket
 naphthenic,naphthene=ic
@@ -32341,6 +32353,7 @@ neological,neo=logical
 neologically,neo=logically
 neonatal,neo=natal
 neonatally,neonatal=ly
+neonicotinoids,neonicotinoid=s
 neons,neon=s
 neophytes,neophyte=s
 neoplastic,neo=plastic
@@ -32436,6 +32449,7 @@ neurosurgeons,neuro=surgeons
 neurosurgery,neuro=surgery
 neurotics,neuro=tics
 neurotoxin,neuro=toxin
+neurotoxins,neuro=toxins
 neurotransmitter,neuro=transmitter
 neurotropic,neuro=tropic
 neurovascular,neuro=vascular
@@ -32660,6 +32674,7 @@ nixed,nix=ed
 nixes,nix=es
 nobby,nob=y
 nobelist,nobel=ist
+nobelists,nobelist=s
 nobleman,noble-man
 noblemen,noble-men
 nobles,noble=s
@@ -39799,6 +39814,7 @@ reciprocants,reciprocant=s
 reciprocated,reciprocate=ed
 reciprocates,reciprocate=s
 reciprocating,reciprocate=ing
+reciprocities,reciprocity=es
 recirculate,re=circulate
 recisions,recision=s
 recital,recite=al
@@ -40107,6 +40123,8 @@ reduces,reduce=s
 reducible,reduce=ible
 reducing,reduce=ing
 reductionism,reduction=ism
+reductionist,reduction=ist
+reductionists,reductionist=s
 reductions,reduction=s
 reductively,reductive=ly
 redundancies,redundancy=es
