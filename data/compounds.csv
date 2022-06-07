@@ -1115,6 +1115,7 @@ aldershot,alder-shot
 alecost,ale-cost
 alee,al=ee
 alehouse,ale-house
+alehouses,ale-houses
 alerted,alert=ed
 alerting,alert=ing
 alertly,alert=ly
@@ -1471,6 +1472,7 @@ amusive,amuse=ive
 amusiveness,amusive=ness
 amylic,amyl=ic
 amyloid,amyl=oid
+anabaptists,anabaptist=s
 anachronisms,anachronism=s
 anachronously,anachronous=ly
 anacreontic,anacreon=tic
@@ -3309,6 +3311,7 @@ banned,ban=ed
 banners,banner=s
 banning,ban=ing
 banns,ban=s
+banqueting,banquet=ing
 banquets,banquet=s
 bans,ban=s
 bantams,bantam=s
@@ -3586,6 +3589,7 @@ batwoman,bat-woman
 baubles,bauble=s
 bavarian,bavaria=n
 bawdry,bawd=ry
+bawds,bawd=s
 bawdy,bawd=y
 bawdyhouse,bawdy-house
 bawled,bawl=ed
@@ -4450,6 +4454,7 @@ bisexuality,bi=sexuality
 bisexuals,bisexual=s
 bishoprics,bishopric=s
 bishops,bishop=s
+bishopsgate,bishops-gate
 bismarckian,bismarck=ian
 bismuthous,bismuth=ous
 bispectral,bi=spectral
@@ -4508,6 +4513,7 @@ bizarreness,bizarre=ness
 bizone,bi=zone
 blabber,blab=er
 blabbermouth,blabber-mouth
+blackamoors,blackamoor=s
 blackball,black-ball
 blackbeard,black-beard
 blackbeetle,black-beetle
@@ -4540,6 +4546,8 @@ blackfin,black-fin
 blackfish,black-fish
 blackfly,black-fly
 blackfoot,black-foot
+blackfriar,black-friar
+blackfriars,blackfriar=s
 blackguard,black-guard
 blackguardly,blackguard=ly
 blackhead,black-head
@@ -5318,6 +5326,7 @@ bouldering,boulder=ing
 boulders,boulder=s
 boulevards,boulevard=s
 boulter,boult=er
+boulting,boult=ing
 bounced,bounce=ed
 bouncer,bounce=er
 bouncers,bouncer=s
@@ -6230,6 +6239,7 @@ businesswomen,business-women
 busing,bus=ing
 busker,busk=er
 buskined,buskin=ed
+buskins,buskin=s
 busload,bus-load
 busloads,busload=s
 busman,bus-man
@@ -6695,6 +6705,7 @@ capitulations,capitulation=s
 capitulatory,capitulate=ory
 caples,caple=s
 caplin,cap-lin
+capons,capon=s
 capos,capo=s
 capouch,cap-ouch
 capped,cap=ed
@@ -7292,6 +7303,7 @@ certifying,certify=ing
 cessation,cess=ation
 cessionary,cession=ary
 cesspit,cess-pit
+cesspits,cesspit=s
 cesspool,cess-pool
 chadless,chad=less
 chafed,chafe=ed
@@ -7431,6 +7443,7 @@ charges,charge=s
 charging,charge=ing
 charily,chary=ly
 chariness,chary=ness
+charing,chare=ing
 charioteer,chariot=eer
 charioteers,charioteer=s
 chariots,chariot=s
@@ -7518,6 +7531,7 @@ cheapest,cheap=est
 cheapjack,cheap-jack
 cheaply,cheap=ly
 cheapness,cheap=ness
+cheapside,cheap-side
 cheapskate,cheap-skate
 cheated,cheat=ed
 cheater,cheat=er
@@ -7889,6 +7903,7 @@ churchly,church=ly
 churchman,church-man
 churchmen,church-men
 churchwarden,church-warden
+churchwardens,churchwarden=s
 churchwoman,church-woman
 churchy,church=y
 churchyard,church-yard
@@ -8460,6 +8475,7 @@ cockerels,cockerel=s
 cockeye,cock-eye
 cockeyed,cock-eyed
 cockfight,cock-fight
+cockfighting,cockfight=ing
 cockhorse,cock-horse
 cockiness,cocky=ness
 cocking,cock=ing
@@ -8635,6 +8651,7 @@ coles,cole=s
 coleseed,cole-seed
 coleslaw,cole-slaw
 colewort,cole-wort
+coleworts,colewort=s
 colfax,col-fax
 colgate,col-gate
 colic,col=ic
@@ -9113,6 +9130,7 @@ compromising,compromise=ing
 compulsions,compulsion=s
 compulsively,compulsive=ly
 compunctiously,compunctious=ly
+compurgators,compurgator=s
 computational,computation=al
 computationalism,computational=ism
 computations,computation=s
@@ -9273,6 +9291,7 @@ conduits,conduit=s
 coneflower,cone-flower
 conenose,cone-nose
 cones,cone=s
+coneys,coney=s
 confabulatory,confabulate=ory
 confectionaries,confectionary=es
 confectionary,confection=ary
@@ -9554,6 +9573,7 @@ consonantally,consonantal=ly
 consonantly,consonant=ly
 consonants,consonant=s
 consorting,consort=ing
+consorts,consort=s
 conspicuously,conspicuous=ly
 conspicuousness,conspicuous=ness
 conspiracies,conspiracy=es
@@ -10106,6 +10126,7 @@ cornhusks,cornhusk=s
 corning,corn=ing
 cornish,corn=ish
 cornishman,cornish-man
+cornishmen,cornish-men
 cornmeal,corn-meal
 corns,corn=s
 cornstalk,corn-stalk
@@ -10234,6 +10255,7 @@ cotswold,cots-wold
 cotswolds,cotswold=s
 cottage,cott=age
 cottager,cottage=er
+cottagers,cottager=s
 cottages,cottage=s
 cotter,cott=er
 cottoned,cotton=ed
@@ -11167,6 +11189,7 @@ curls,curl=s
 curly,curl=y
 curmudgeons,curmudgeon=s
 curran,curr=an
+currants,currant=s
 currencies,currency=es
 currently,current=ly
 currentness,current=ness
@@ -11528,6 +11551,7 @@ dauntlessness,dauntless=ness
 dauphiness,dauphin=ess
 davidic,david=ic
 davids,david=s
+davies,davy=es
 davy,dave=y
 dawned,dawn=ed
 dawning,dawn=ing
@@ -12887,6 +12911,7 @@ devoirs,devoir=s
 devolatilize,de=volatilize
 devolved,devolve=ed
 devonport,devon-port
+devonshire,devon=shire
 devote,de=vote
 devoted,de=voted
 devotedly,devoted=ly
@@ -14478,6 +14503,7 @@ downy,down=y
 dowser,dowse=er
 dowsers,dowser=s
 dowsing,dowse=ing
+doxies,doxy=s
 doxologically,doxological=ly
 doxologies,doxology=es
 doyennes,doyenne=s
@@ -15469,6 +15495,7 @@ elitism,elite=ism
 elitist,elite=ist
 elitists,elitist=s
 elizabethan,elizabeth=an
+elizabethans,elizabethan=s
 elkhound,elk-hound
 elks,elk=s
 ellipsoid,ellipse=oid
@@ -15925,6 +15952,7 @@ englishmen,english-men
 englishness,english=ness
 englishry,english=ry
 englishwoman,english-woman
+englishwomen,english-women
 englut,en=glut
 engorge,en=gorge
 engraft,en=graft
@@ -17514,6 +17542,7 @@ farsightedly,farsighted=ly
 farsightedness,farsighted=ness
 farted,fart=ed
 farthing,far-thing
+farthingales,farthingale=s
 farting,fart=ing
 fartlek,fart-lek
 farts,fart=s
@@ -17641,6 +17670,7 @@ feasting,feast=ing
 feasts,feast=s
 featherbed,feather-bed
 featherbedding,featherbed=ing
+featherbeds,featherbed=s
 featherbrain,feather-brain
 feathercut,feather-cut
 feathered,feather=ed
@@ -18970,6 +19000,7 @@ forensics,forensic=s
 foreordain,fore=ordain
 foreordination,fore=ordination
 forepart,fore=part
+foreparts,fore=parts
 forepassed,fore=passed
 forepaw,fore=paw
 forepaws,fore=paws
@@ -19815,6 +19846,7 @@ galleries,gallery=es
 galleting,gallet=ing
 galleys,galley=s
 gallfly,gall-fly
+galliards,galliard=s
 gallican,gallic=an
 gallicanism,gallican=ism
 galling,gall=ing
@@ -20501,6 +20533,7 @@ glossy,gloss=y
 gloucestershire,gloucester=shire
 gloved,glove=ed
 glover,glove=er
+glovers,glover=s
 gloves,glove=s
 glowed,glow=ed
 glowered,glower=ed
@@ -20652,6 +20685,7 @@ goldminer,goldmine=er
 golds,gold=s
 goldschmidt,gold-schmidt
 goldsmith,gold-smith
+goldsmiths,goldsmith=s
 goldstone,gold-stone
 goldthread,gold-thread
 goldurn,gold-urn
@@ -21090,6 +21124,8 @@ grenadines,grenadine=s
 grewsome,grew-some
 greyback,grey-back
 greybeard,grey-beard
+greyfriar,grey-friar
+greyfriars,greyfriar=s
 greyhen,grey-hen
 greyhound,grey-hound
 greylag,grey-lag
@@ -21570,6 +21606,7 @@ hairball,hair-ball
 hairbrained,hair-brained
 hairbreadth,hair-breadth
 hairbrush,hair-brush
+hairbrushes,hairbrush=es
 haircloth,hair-cloth
 haircut,hair-cut
 haircuts,haircut=s
@@ -21591,6 +21628,7 @@ hairspray,hair-spray
 hairspring,hair-spring
 hairstreak,hair-streak
 hairstyle,hair-style
+hairstyles,hairstyle=s
 hairtail,hair-tail
 hairworm,hair-worm
 hairy,hair=y
@@ -21712,6 +21750,7 @@ handcuffed,handcuff=ed
 handcuffing,handcuff=ing
 handcuffs,handcuff=s
 handed,hand=ed
+handedly,handed=ly
 handedness,handed=ness
 handelian,handel=ian
 hander,hand=er
@@ -21892,6 +21931,7 @@ hardstand,hard-stand
 hardtack,hard-tack
 hardtop,hard-top
 hardware,hard-ware
+hardwick,hard-wick
 hardwired,hard-wired
 hardwiring,hard-wiring
 hardwood,hard-wood
@@ -22704,6 +22744,7 @@ highschool,high-school
 hightail,high-tail
 highway,high-way
 highwayman,highway-man
+highwaymen,highway-men
 highways,highway=s
 hijacked,hijack=ed
 hijacker,hijack=er
@@ -23208,6 +23249,7 @@ hortatively,hortative=ly
 horticultural,horticulture=al
 horticulturist,horticulture=ist
 hosed,hose=ed
+hosen,hose=n
 hoses,hose=s
 hosiery,hosier=y
 hosing,hose=ing
@@ -23343,6 +23385,7 @@ howling,howl=ing
 howls,howl=s
 howsoever,how-soever
 hoying,hoy=ing
+hoys,hoy=s
 hubbly,hub=ly
 hubby,hub=y
 hubcap,hub-cap
@@ -23497,6 +23540,7 @@ hurtling,hurt-ling
 hurts,hurt=s
 husbandage,husband=age
 husbandman,husband-man
+husbandmen,husband-men
 husbandry,husband=ry
 husbands,husband=s
 hushed,hush=ed
@@ -25074,6 +25118,7 @@ infusionism,in=fusionism
 infusions,infusion=s
 infusorian,infusoria=n
 ingate,in=gate
+ingatestone,ingate-stone
 ingather,in=gather
 ingathering,in=gathering
 ingeniously,ingenious=ly
@@ -27056,6 +27101,7 @@ kerns,kern=s
 kerseymere,kersey-mere
 kerygmatic,kerygma=tic
 kestrels,kestrel=s
+ketches,ketch=es
 ketchup,ketch=up
 ketogenesis,keto-genesis
 kettledrum,kettle-drum
@@ -27207,6 +27253,7 @@ kippers,kipper=s
 kirkman,kirk-man
 kirkpatrick,kirk-patrick
 kirkwall,kirk-wall
+kirtles,kirtle=s
 kismets,kismet=s
 kissable,kiss=able
 kissed,kiss=ed
@@ -28203,6 +28250,7 @@ licenser,license=er
 licenses,license=s
 licensing,license=ing
 licensor,license=or
+licentiates,licentiate=s
 licentiously,licentious=ly
 licentiousness,licentious=ness
 lichenism,lichen=ism
@@ -29683,6 +29731,7 @@ masonry,mason=ry
 masons,mason=s
 masquerades,masquerade=s
 masquerading,masquerade=ing
+masques,masque=s
 massacred,massacre=ed
 massacres,massacre=s
 massacring,massacre=ing
@@ -29728,6 +29777,7 @@ masthead,mast-head
 mastic,mast=ic
 masticate,mastic=ate
 masticated,masticate=ed
+mastiffs,mastiff=s
 mastodons,mastodon=s
 mastoid,mast=oid
 masts,mast=s
@@ -30129,6 +30179,7 @@ mercaptopurine,mercapto-purine
 mercenaries,mercenary=es
 mercenarily,mercenary=ly
 mercerize,mercer=ize
+mercers,mercer=s
 mercery,mercer=y
 merchandiser,merchandise=er
 merchandisers,merchandiser=s
@@ -31492,6 +31543,7 @@ moony,moon=y
 moorcock,moor-cock
 moored,moor=ed
 moorfowl,moor-fowl
+moorgate,moor-gate
 moorhen,moor-hen
 mooring,moor=ing
 moorings,mooring=s
@@ -31711,6 +31763,7 @@ mouths,mouth=s
 mouthwash,mouth-wash
 mouthy,mouth=y
 movable,move=able
+moveable,move=able
 moved,move=ed
 moveless,move=less
 movement,move=ment
@@ -32256,6 +32309,7 @@ neckband,neck-band
 neckcloth,neck-cloth
 necked,neck=ed
 necker,neck=er
+neckerchiefs,neckerchief=s
 necking,neck=ing
 necklaces,necklace=s
 necklacing,necklace=ing
@@ -32398,6 +32452,8 @@ netherlander,netherland=er
 netherlandic,netherland=ic
 netherlands,netherland=s
 nethermost,nether-most
+netherstock,nether-stock
+netherstocks,netherstock=s
 netherworld,nether-world
 netlike,net-like
 nets,net=s
@@ -32490,6 +32546,7 @@ newfangle,new-fangle
 newfangled,newfangle=ed
 newfound,new-found
 newfoundlander,newfoundland=er
+newgate,new-gate
 newish,new=ish
 newline,new-line
 newlines,newline=s
@@ -32589,6 +32646,7 @@ niggerhead,nigger-head
 niggers,nigger=s
 nightbird,night-bird
 nightcap,night-cap
+nightcaps,nightcap=s
 nightclothes,night-clothes
 nightclub,night-club
 nightclubs,nightclub=s
@@ -32679,6 +32737,7 @@ nobleman,noble-man
 noblemen,noble-men
 nobles,noble=s
 noblewoman,noble-woman
+noblewomen,noble-women
 nobly,nob=ly
 nobodies,nobody=es
 nobody,no-body
@@ -33208,6 +33267,7 @@ oarfish,oar-fish
 oarlock,oar-lock
 oars,oar=s
 oarsman,oars-man
+oarsmen,oars-men
 oarweed,oar-weed
 oatcake,oat-cake
 oaten,oat=en
@@ -33410,6 +33470,7 @@ offering,offer=ing
 offerings,offering=s
 offers,offer=s
 offhand,off-hand
+offhandedly,off-handedly
 officeholder,office-holder
 officeholders,officeholder=s
 officemax,office-max
@@ -34774,6 +34835,7 @@ packer,pack=er
 packers,packer=s
 packets,packet=s
 packhorse,pack-horse
+packhorses,packhorse=s
 packing,pack=ing
 packinghouse,packing-house
 packman,pack-man
@@ -35186,6 +35248,7 @@ parsimoniously,parsimonious=ly
 parsimoniousness,parsimonious=ness
 parsing,parse=ing
 parsnip,par-snip
+parsnips,parsnip=s
 parsonage,parson=age
 parsonages,parsonage=s
 parsonic,parson=ic
@@ -35221,6 +35284,7 @@ partitioned,partition=ed
 partitioning,partition=ing
 partitions,partition=s
 partlet,part=let
+partlets,partlet=s
 partly,part=ly
 partnering,partner=ing
 partners,partner=s
@@ -35288,6 +35352,7 @@ pasteurizer,pasteurize=er
 pasteurizes,pasteurize=s
 pasteurizing,pasteurize=ing
 pastiches,pastiche=s
+pasties,pasty=s
 pastimes,pastime=s
 pastiness,pasty=ness
 pasting,paste=ing
@@ -35999,6 +36064,7 @@ petunias,petunia=s
 pewholder,pew-holder
 pews,pew=s
 pewterer,pewter=er
+pewterware,pewter-ware
 pfennigs,pfennig=s
 phagedena,phage-dena
 phagocytes,phagocyte=s
@@ -36427,13 +36493,16 @@ pinheaded,pinhead=ed
 pinhole,pin-hole
 pinholes,pinhole=s
 pining,pine=ing
+pinked,pink=ed
 pinker,pink=er
 pinkest,pink=est
 pinkeye,pink-eye
+pinking,pink=ing
 pinkish,pink=ish
 pinkos,pinko=s
 pinks,pink=s
 pinky,pink=y
+pinnaces,pinnace=s
 pinnacles,pinnacle=s
 pinnate,pin=ate
 pinnation,pin=ation
@@ -38802,9 +38871,11 @@ pussyfoot,pussy-foot
 pussyfooted,pussyfoot=ed
 pussyfooting,pussyfoot=ing
 pussyfoots,pussyfoot=s
+pustules,pustule=s
 pustulous,pustule=ous
 putatively,putative=ly
 putout,put-out
+putrefied,putrefy=ed
 puts,put=s
 putted,putt=ed
 putter,putt=er
@@ -38945,6 +39016,7 @@ quavered,quaver=ed
 quavering,quaver=ing
 quavers,quaver=s
 quavery,quaver=y
+quays,quay=s
 quayside,quay-side
 queasiness,queasy=ness
 quebecer,quebec=er
@@ -39028,6 +39100,7 @@ quilter,quilt=er
 quilters,quilter=s
 quilting,quilt=ing
 quilts,quilt=s
+quinces,quince=s
 quindecagon,quin-decagon
 quine,qu=ine
 quinoid,quin=oid
@@ -39065,6 +39138,7 @@ quizzed,quiz=ed
 quizzes,quiz=es
 quizzical,quiz=ical
 quizzing,quiz=ing
+quoits,quoit=s
 quorums,quorum=s
 quotable,quote=able
 quotas,quota=s
@@ -40401,6 +40475,7 @@ reglet,reg=let
 regorge,re=gorge
 regrade,re=grade
 regrate,re=grate
+regrating,re=grating
 regreet,re=greet
 regressed,regress=ed
 regresses,regress=es
@@ -42134,6 +42209,7 @@ rosery,rose=ry
 roses,rose=s
 rosettes,rosette=s
 rosewall,rose-wall
+rosewater,rose-water
 rosewood,rose-wood
 rosier,rosy=er
 rosing,rose=ing
@@ -42303,6 +42379,7 @@ ruffing,ruff=ing
 ruffled,ruffle=ed
 ruffles,ruffle=s
 ruffling,ruffle=ing
+ruffs,ruff=s
 ruggedly,rugged=ly
 rugger,rug=er
 rugging,rug=ing
@@ -43016,6 +43093,7 @@ schoolma'am,school-ma'am
 schoolman,school-man
 schoolmaster,school-master
 schoolmastering,schoolmaster=ing
+schoolmasters,schoolmaster=s
 schoolmate,school-mate
 schoolmates,schoolmate=s
 schoolmistress,school-mistress
@@ -44641,6 +44719,7 @@ simultaneousness,simultaneous=ness
 sincerely,sincere=ly
 sinclair,sin-clair
 sines,sine=s
+sinews,sinew=s
 sinewy,sinew=y
 sinful,sin=ful
 sinfully,sinful=ly
@@ -45101,6 +45180,7 @@ sloppier,sloppy=er
 sloppiest,sloppy=est
 sloppiness,sloppy=ness
 sloppy,slop=y
+slops,slop=s
 slopshop,slop-shop
 slopwork,slop-work
 sloshing,slosh=ing
@@ -45239,9 +45319,11 @@ smirked,smirk=ed
 smirking,smirk=ing
 smirks,smirk=s
 smithereens,smithereen=s
+smithfield,smith-field
 smiths,smith=s
 smithy,smith=y
 smocking,smock=ing
+smocks,smock=s
 smoggiest,smoggy=est
 smoggy,smog=y
 smokechaser,smoke-chaser
@@ -45782,6 +45864,7 @@ southpaw,south-paw
 southport,south-port
 souths,south=s
 southward,south=ward
+southwark,south-wark
 southwest,south-west
 southwester,southwest=er
 southwestern,southwester=n
@@ -46601,6 +46684,7 @@ starlets,starlet=s
 starlight,star-light
 starlike,star-like
 starling,star-ling
+starlings,starling=s
 starlit,star-lit
 starn,star=n
 starns,starn=s
@@ -48353,6 +48437,7 @@ swaggeringly,swaggering=ly
 swagman,swag-man
 swales,swale=s
 swallowed,swallow=ed
+swallower,swallow=er
 swallowing,swallow=ing
 swallows,swallow=s
 swallowtail,swallow-tail
@@ -51003,6 +51088,7 @@ trundled,trundle=ed
 trundletail,trundle-tail
 trunkfish,trunk-fish
 trunkful,trunk=ful
+trunkhose,trunk-hose
 trunking,trunk=ing
 trunkloads,trunk-loads
 trunks,trunk=s
@@ -51065,6 +51151,7 @@ tuitionary,tuition=ary
 tuitions,tuition=s
 tulips,tulip=s
 tulipwood,tulip-wood
+tully,tull=y
 tumblebug,tumble-bug
 tumbled,tumble=ed
 tumbledown,tumble-down
@@ -52296,6 +52383,7 @@ ungentle,un=gentle
 ungentlemanly,un=gentlemanly
 ungird,un=gird
 unglamorous,un=glamorous
+unglazed,un=glazed
 unglue,un=glue
 unglued,un=glued
 ungodly,un=godly
@@ -53858,6 +53946,7 @@ vestigial,vestige=ial
 vestigially,vestigial=ly
 vesting,vest=ing
 vestment,vest=ment
+vestments,vestment=s
 vestry,vest=ry
 vestryman,vestry-man
 vests,vest=s
@@ -54034,6 +54123,7 @@ viperous,viper=ous
 viperously,viperous=ly
 vipers,viper=s
 virgilian,virgil=ian
+virginals,virginal=s
 virginian,virginia=n
 virginians,virginian=s
 virginities,virginity=es
@@ -54280,6 +54370,7 @@ waistband,waist-band
 waistcloth,waist-cloth
 waistcoat,waist-coat
 waistcoating,waistcoat=ing
+waistcoats,waistcoat=s
 waisted,waist=ed
 waister,waist=er
 waistline,waist-line
@@ -54485,6 +54576,7 @@ washer,wash=er
 washerman,washer-man
 washers,washer=s
 washerwoman,washer-woman
+washerwomen,washer-women
 washery,washer=y
 washes,wash=es
 washhouse,wash-house
@@ -54579,6 +54671,8 @@ watermarks,watermark=s
 watermelon,water-melon
 watermelons,watermelon=s
 watermen,water-men
+watermill,water-mill
+watermills,watermill=s
 waterproof,water-proof
 waterproofing,waterproof=ing
 waters,water=s
@@ -54810,6 +54904,7 @@ wending,wend=ing
 wendish,wend=ish
 wends,wend=s
 wendy,wend=y
+wenlock,wen-lock
 wentworth,went-worth
 weregild,were-gild
 wesleyan,wesley=an
@@ -54920,6 +55015,7 @@ whereupon,where-upon
 wherever,where-ever
 wherewith,where-with
 wherewithal,where-withal
+wherries,wherry=s
 wherryman,wherry-man
 whetstone,whet-stone
 whetted,whet=ed
@@ -55145,6 +55241,7 @@ wiggled,wiggle=ed
 wiggles,wiggle=s
 wiggling,wiggle=ing
 wiggly,wiggle=y
+wigmore,wig-more
 wigs,wig=s
 wigwag,wig-wag
 wikis,wiki=s
@@ -55641,6 +55738,7 @@ worshipers,worshiper=s
 worshipful,worship=ful
 worshipfully,worshipful=ly
 worshipfulness,worshipful=ness
+worshipping,worship=ing
 worships,worship=s
 worsted,worst=ed
 worthier,worthy=er
