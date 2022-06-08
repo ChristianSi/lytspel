@@ -15,7 +15,7 @@ __version__ = '2.0.8'
 def compact_warning(message, category, filename, lineno, line=None):
     """Print warnings without showing the warning message line itself."""
     #pylint: disable=unused-argument
-    return '{}:{}: {}: {}\n'.format(filename, lineno, category.__name__, message)
+    return f'{filename}:{lineno}: {category.__name__}: {message}\n'
 
 warnings.formatwarning = compact_warning
 
@@ -42,7 +42,7 @@ def main() -> None:
                         help='list unknown words (repeat option n times to list only words'
                         ' that occur at least that often)')
     parser.add_argument('-v', '--version', action='version',
-                        version='{} {}'.format(scriptname, __version__))
+                        version=f'{scriptname} {__version__}')
 
     args = parser.parse_args()
 

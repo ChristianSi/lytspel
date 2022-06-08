@@ -1,4 +1,5 @@
 """Defines the class that actually converts tradspell to Lytspel."""
+# pylint: disable=consider-using-f-string
 
 from collections import Counter
 from enum import Enum
@@ -470,7 +471,7 @@ class Converter:
                 else:
                     return None
 
-        with open(filename) as file:
+        with open(filename, encoding='utf8') as file:
             for line in file:
                 line = line.strip()
 
@@ -722,7 +723,7 @@ class Converter:
 
         If `out_filename` is omitted, output will be written to stdout.
         """
-        # pylint: disable=too-many-branches
+        # pylint: disable=too-many-branches, consider-using-with
         if filename == '-':
             if stdin.isatty():
                 self.convert_stdin_interactively()
@@ -730,10 +731,10 @@ class Converter:
 
             infile = stdin
         else:
-            infile = open(filename)
+            infile = open(filename, encoding='utf8')
 
         if out_filename:
-            outfile = open(out_filename, 'w')
+            outfile = open(out_filename, 'w', encoding='utf8')
         else:
             outfile = stdout
 

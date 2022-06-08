@@ -1,4 +1,5 @@
 """A web front end for the Lytspel converter."""
+# pylint: disable=consider-using-f-string
 
 from collections import OrderedDict
 from glob import glob
