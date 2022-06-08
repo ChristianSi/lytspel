@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 
-## [2.0.8] -- 2022-06-07
+## [2.0.8] -- 2022-06-08
 
 * Add some dictionary entries.
 
