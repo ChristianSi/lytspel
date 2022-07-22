@@ -137,6 +137,7 @@ backbenchers
 backsplash
 backstreets
 bafflement
+Balan
 balustrades
 bamboos
 banishes
@@ -156,6 +157,9 @@ beamers
 beauticians
 bedsteads
 befouled
+begrudged
+begrudges
+begrudging
 beheads
 Belarusian
 belches
@@ -227,6 +231,7 @@ brainstem
 brayed
 breadbaskets
 breakpoints
+breastplates
 breathable
 breezeless
 Bridgeman
@@ -268,6 +273,7 @@ camisoles
 canapes
 candareen
 candareens
+candlelit
 canions
 cannonballs
 cannoneers
@@ -309,6 +315,7 @@ chapels
 characterological
 Charing
 charioteers
+chasms
 chattels
 chattered
 chatters
@@ -321,6 +328,7 @@ chiles
 chins
 chirurgic
 chirurgical
+Chislehurst
 chromosomal
 chs
 chunkey
@@ -411,6 +419,8 @@ confinements
 conformant
 conjunctures
 connectome
+connexion
+connexions
 conquerable
 conquistadors
 conscientiousness
@@ -438,12 +448,14 @@ corporals
 correspondences
 corsairs
 cortices
+cosmogonical
 cosmologist
 cottagers
 counterintuitive
 counterintuitively
 couplets
 coursework
+Courtenay
 courtesans
 cowered
 cowslips
@@ -451,6 +463,7 @@ cracka
 crags
 crania
 craning
+Crawley
 creationist
 creationists
 creatureliness
@@ -527,6 +540,8 @@ decolonization
 decommodified
 decommodifies
 decommodify
+deedless
+deeming
 deeps
 deferentially
 defiled
@@ -552,12 +567,16 @@ demonstratives
 Deptford
 deputed
 des
+descried
+descries
 descriptors
+descrying
 detaching
 detachments
 determinatives
 detraining
 Detroiter
+deviser
 Devonshire
 dharmas
 diabetologist
@@ -587,6 +606,8 @@ dismounted
 dispossession
 disputants
 disquisitions
+dissembled
+dissensions
 dissociative
 disunited
 dithered
@@ -623,6 +644,7 @@ dunking
 duos
 durably
 dustbins
+dwarves
 dwelled
 dyads
 dynamically
@@ -632,11 +654,14 @@ dystopian
 earflaps
 Earthsea
 earthworks
+Easterlings
+eastwards
 ebook
 ebooks
 ecclesiastics
 ecologies
 economistic
+Ector
 eddied
 eddying
 editable
@@ -651,12 +676,15 @@ ehr
 ejaculated
 ejaculates
 elaborations
+Eldar
 eldercare
 elegies
 elenchi
 elided
 Elizabethans
 elsewise
+Elu
+elven
 emasculation
 embeddedness
 embroils
@@ -664,6 +692,7 @@ empirics
 employability
 emptinesses
 emptive
+emptyhanded
 emulations
 emulator
 emulators
@@ -697,8 +726,14 @@ epaulettes
 epigrams
 epilog
 epilogs
+Erech
 errable
 esp
+espied
+espies
+espying
+essayed
+essaying
 esthetic
 etherized
 etherizes
@@ -719,6 +754,7 @@ Europeanising
 Europeanized
 Europeanizes
 Europeanizing
+Eustace
 evocations
 evolutionarily
 evolutionism
@@ -750,6 +786,7 @@ externalities
 extirpation
 extraterrestriality
 eyrie
+eyries
 Facebook
 factly
 facto
@@ -771,6 +808,7 @@ farts
 fastens
 fathomed
 faunas
+Fawcett
 featherbeds
 feedbacks
 feedforward
@@ -829,6 +867,8 @@ foragers
 foraminifera
 forams
 forbiddingly
+foreboded
+forebodes
 foreparts
 forepaws
 foreshaft
@@ -839,6 +879,7 @@ formatter
 formatters
 formatting
 formers
+Forrester
 foveolae
 frags
 frameworks
@@ -862,14 +903,19 @@ friendlies
 frigidity
 frolics
 frontoparietal
+frothing
 ft
 Fukuyama
 Fulford
 fullers
 furled
 gabbled
+gainsaid
+gainsaying
+gainsays
 galliards
 gallivanting
+Gandalf
 ganged
 ganja
 gannets
@@ -878,6 +924,7 @@ gaol
 gaped
 garde
 garlands
+Garlick
 garrisons
 gaslights
 gaylord
@@ -901,6 +948,7 @@ Gifford
 girdles
 glaciologist
 glaciologists
+gladness
 glial
 glinted
 glints
@@ -935,6 +983,7 @@ grav
 grep
 greyfriar
 greyfriars
+griefs
 griffins
 griffons
 gritted
@@ -944,6 +993,7 @@ Gryphon
 Gryphons
 guessable
 Guildford
+Guilin
 guiltily
 guilts
 Guinean
@@ -978,6 +1028,7 @@ headlamps
 headmen
 healthcare
 healthily
+hearkened
 heartedly
 heartlands
 heathens
@@ -997,6 +1048,7 @@ heterarchies
 heterarchy
 hewed
 hewers
+hewn
 hexagons
 hexameters
 hexes
@@ -1015,12 +1067,16 @@ hoarders
 hoardings
 hobbits
 Holborn
+Hollin
 holon
 holons
+Homerton
 homogenous
 homunculi
+Hopton
 horticulturalists
 hosen
+Hoskins
 hostlers
 hotheads
 hoys
@@ -1084,6 +1140,7 @@ Indo
 infectiousness
 infelicities
 infinitives
+inflowing
 Ingatestone
 inhales
 initialization
@@ -1192,8 +1249,10 @@ khor
 kickboxing
 kikes
 kilocalories
+kindreds
 kinesis
 kins
+kinsmen
 kirtles
 kleptocracies
 kleptocracy
@@ -1222,6 +1281,7 @@ kuru
 labials
 lactational
 laissez
+lamplit
 lances
 landownership
 Lanier
@@ -1232,6 +1292,7 @@ larn
 laryngeals
 latencies
 lateralization
+Latham
 laypersons
 leant
 leapt
@@ -1249,6 +1310,7 @@ lidded
 lightyear
 lightyears
 limply
+Lindon
 loanwords
 localhost
 lockpick
@@ -1279,12 +1341,16 @@ lookouts
 loopiness
 looseness
 lordlings
+lordships
+loremaster
+loremasters
 lossless
 losslessly
 lotta
 lotuses
 loveliness
 lowlanders
+Ludgate
 luggers
 lungful
 lunk
@@ -1300,6 +1366,8 @@ magicking
 magnesian
 Magnon
 Magnons
+Magor
+Mahal
 maidservants
 maildrop
 maintainability
@@ -1318,6 +1386,7 @@ Manichaeans
 manifestoes
 manliness
 mantises
+mantled
 manu
 manumissions
 manumitted
@@ -1374,6 +1443,7 @@ metalsmiths
 metamorphosed
 metaprotocol
 meteorites
+meteoritic
 methodists
 methodologist
 methodologists
@@ -1392,10 +1462,14 @@ militarization
 milkbar
 milkbars
 millennia
+mina
+minas
 minders
 minilanguage
 minilanguages
 miraculousness
+Mirkwood
+misgave
 mish
 mismeasurement
 misogynistic
@@ -1425,6 +1499,7 @@ Montacute
 monumentality
 Moorgate
 mooted
+Mordor
 mori
 Moriori
 morphemes
@@ -1437,6 +1512,7 @@ mouldering
 mournfully
 mouthfuls
 moveable
+Mowbray
 MP
 MPs
 msec
@@ -1461,9 +1537,11 @@ muskets
 mussed
 mutualist
 mutualists
+mynas
 mysterium
 mythos
 myxo
+Nahar
 nakedness
 namespace
 namespaces
@@ -1480,6 +1558,7 @@ Nauruan
 Nauruans
 nautiluses
 naves
+Nazgûl
 NC
 nd
 Neandertal
@@ -1498,6 +1577,7 @@ neoliberalism
 neolocal
 neonicotinoid
 neonicotinoids
+Nessa
 netherstock
 netherstocks
 neurally
@@ -1511,11 +1591,13 @@ neurotoxins
 neuters
 Neville
 Newgate
+Newington
 newline
 newlines
 newsreaders
 Nietzschean
 nightcaps
+nightingales
 nightsoil
 nightsoils
 nihilist
@@ -1524,6 +1606,7 @@ nn
 Nobelists
 noblemen
 noblewomen
+noised
 noiselessly
 nomadism
 nomarchs
@@ -1549,7 +1632,9 @@ nonself
 nonspam
 normals
 Normans
+Norroy
 northmen
+northwards
 noseless
 nota
 notaries
@@ -1612,6 +1697,9 @@ outcropping
 outcrops
 outsized
 outsizes
+outworked
+outworking
+outworks
 outworld
 outworlder
 outworlders
@@ -1628,6 +1716,7 @@ overinvest
 overinvested
 overinvesting
 overinvests
+overmastering
 Overton
 overwater
 overweighting
@@ -1641,6 +1730,7 @@ paddler
 pagans
 pagelink
 pagelinks
+Paget
 palatalization
 palatals
 Palauan
@@ -1682,6 +1772,7 @@ pec
 pecked
 peepers
 peine
+pel
 Peloponnese
 pendants
 pentoxide
@@ -1782,6 +1873,7 @@ potting
 powerlessly
 pp
 pranced
+precipices
 prefigured
 prefixed
 prefixes
@@ -1806,6 +1898,7 @@ preselects
 pretest
 prevalences
 priestesses
+primevally
 primitives
 princelings
 privateering
@@ -1842,6 +1935,8 @@ pulpless
 pulsed
 pupfish
 pupfishes
+purposed
+purposing
 pustules
 putrefied
 puttered
@@ -1851,6 +1946,7 @@ pyros
 Pythagoras
 pythagorize
 Qaeda
+quailed
 quantifies
 quartermistress
 quatrains
@@ -1858,6 +1954,7 @@ quays
 queerest
 quenchable
 quenched
+Quenya
 querying
 quids
 quills
@@ -1896,6 +1993,7 @@ reanimated
 reanimates
 reanimating
 reanimation
+Rebecca
 recessives
 reciprocities
 recompensed
@@ -1907,6 +2005,7 @@ recurse
 recursions
 recursively
 redistributable
+redressed
 reductionist
 reductionists
 reduplicated
@@ -1918,6 +2017,7 @@ refashion
 refashioned
 refashioning
 refashions
+reforged
 regrating
 regressed
 regresses
@@ -1974,12 +2074,15 @@ respelling
 respellings
 respells
 retells
+Reynold
 rhotic
 rhoticity
 riffled
 riffles
 riffling
 riflemen
+Ringwraith
+Ringwraiths
 rinsed
 rinses
 riper
@@ -1992,6 +2095,7 @@ riverbanks
 roadkill
 roadmap
 roguelike
+Rohan
 rosewater
 roundabouts
 roved
@@ -2019,12 +2123,14 @@ salination
 salinize
 salutations
 sangha
+Sansom
 sappers
 sarcenet
 Satyricon
 sauntered
 sauntering
 saunters
+Sauron
 savannahs
 sawn
 scabbing
@@ -2132,7 +2238,9 @@ signlessness
 silico
 silkpaper
 silkpapers
+Silvan
 simplicities
+Sindarin
 sinews
 singlehanded
 singletons
@@ -2157,6 +2265,7 @@ slaveowner
 slaveowners
 slavers
 slaving
+slayers
 slays
 sledges
 slithered
@@ -2172,7 +2281,11 @@ smallholders
 smartphone
 smartphones
 smirked
+smithcraft
 Smithfield
+smithied
+smithies
+smithying
 smocks
 smudges
 sniffled
@@ -2204,6 +2317,7 @@ somatosensory
 Somers
 somersaulted
 soulcraft
+southwards
 Southwark
 Sovietology
 sowbug
@@ -2257,6 +2371,7 @@ squiring
 squirmed
 stableboys
 stags
+stainer
 stammered
 stammering
 stammers
@@ -2264,6 +2379,7 @@ starlings
 starships
 statelet
 statelets
+steadying
 steamrollers
 steamships
 sterlets
@@ -2322,6 +2438,12 @@ subtest
 subtests
 subthread
 subthreads
+succored
+succoring
+succors
+succoured
+succouring
+succours
 suchness
 sudarium
 Sudoku
@@ -2334,10 +2456,13 @@ sullenly
 sullying
 Sumer
 Sumerians
+Summerhill
 summoner
 summoners
 sumpweed
 sunburnt
+sundered
+sundering
 sunned
 sunrises
 superabundance
@@ -2386,6 +2511,10 @@ tannins
 taqlid
 tarball
 tarballs
+tarns
+tarried
+tarries
+tarrying
 tars
 Tasmanians
 tats
@@ -2420,11 +2549,13 @@ Thirsk
 thirsted
 thongs
 Thrace
+thraldom
 thralls
 threshing
 throbbed
 throbs
 thrones
+throve
 thrumming
 thudded
 thudding
@@ -2454,6 +2585,7 @@ tokenizes
 tokenizing
 tokes
 toking
+Tolkien
 toolchain
 toolchains
 toolkit
@@ -2519,6 +2651,7 @@ tuk
 Tully
 tumults
 tuple
+turmoils
 tussocks
 tutted
 twat
@@ -2615,10 +2748,13 @@ unrepressed
 unrolled
 unrolling
 unrolls
+unsated
 unsheathed
 unsteadily
+untended
 untrusted
 unworthiness
+upended
 uplander
 uplanders
 uplifts
@@ -2633,6 +2769,7 @@ uprightness
 upslope
 uptime
 urns
+Urry
 usurper
 usurpers
 utopianism
@@ -2640,6 +2777,7 @@ utterable
 validator
 validators
 vanishingly
+Vanya
 vaporizes
 vaporizing
 vapourise
@@ -2656,6 +2794,7 @@ Vedas
 velars
 venene
 Venetians
+venomed
 ventricles
 verbosely
 versa
@@ -2697,6 +2836,7 @@ wais
 waistcoats
 wakened
 wakens
+Waldman
 walkie
 walkthrough
 Walsingham
@@ -2715,6 +2855,7 @@ weigher
 weirs
 welled
 Wenlock
+werewolves
 Westmorland
 wetted
 wharfs
@@ -2746,6 +2887,7 @@ wiki
 Wikipedia
 wikis
 wildcards
+Wildman
 Willoughby
 wisps
 wittered
@@ -2753,6 +2895,7 @@ wittering
 wombs
 woodblocks
 woodenly
+woodmen
 woogie
 wooly
 workaround
@@ -2767,6 +2910,7 @@ wraiths
 wreathed
 wreathes
 wreathing
+Wressle
 wretchedness
 wretches
 wriggled
