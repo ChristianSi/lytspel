@@ -407,6 +407,13 @@ def favicon() -> Response:
     return redirect('/static/favicon.ico')
 
 
+@app.route("/lytspel-on-one-page.pdf", methods=['GET'])
+def favicon() -> Response:
+    """Redirect from old one-page to current two-page PDF."""
+    log_web_event('/lytspel-on-one-page.pdf: Redirecting to /lytspel-on-two-pages.pdf')
+    return redirect('/lytspel-on-two-pages.pdf')
+
+
 @app.route("/lytspel-on-two-pages.pdf", methods=['GET'])
 def two_page_pdf() -> Response:
     """Serve the requested PDF document."""
