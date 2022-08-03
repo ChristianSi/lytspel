@@ -2,7 +2,11 @@
 
 ## [Unreleased]
 
+
+## [2.0.9] -- 2022-08-03
+
 * Add and correct some dictionary entries.
+* Delete some proper names.
 
 
 ## [2.0.8] -- 2022-06-08
