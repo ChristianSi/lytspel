@@ -1,5 +1,5 @@
 """Defines the dictionary mapping tradspell to Lytspel."""
-# pylint: disable=consider-using-f-string
+# pylint: disable=consider-using-f-string, no-else-return
 
 import csv
 from enum import Enum

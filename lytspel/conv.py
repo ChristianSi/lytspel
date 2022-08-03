@@ -1,5 +1,5 @@
 """Defines the class that actually converts tradspell to Lytspel."""
-# pylint: disable=consider-using-f-string
+# pylint: disable=c-extension-no-member, consider-using-f-string, no-else-return
 
 from collections import Counter
 from enum import Enum

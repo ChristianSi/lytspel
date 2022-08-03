@@ -1,5 +1,5 @@
 """A web front end for the Lytspel converter."""
-# pylint: disable=consider-using-f-string
+# pylint: disable=consider-using-f-string, no-else-return
 
 from collections import OrderedDict
 from glob import glob
@@ -408,7 +408,7 @@ def favicon() -> Response:
 
 
 @app.route("/lytspel-on-one-page.pdf", methods=['GET'])
-def favicon() -> Response:
+def one_page_pdf() -> Response:
     """Redirect from old one-page to current two-page PDF."""
     log_web_event('/lytspel-on-one-page.pdf: Redirecting to /lytspel-on-two-pages.pdf')
     return redirect('/lytspel-on-two-pages.pdf')

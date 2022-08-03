@@ -14,6 +14,7 @@ def get_elem(seq: Sequence[T], idx: int) -> Optional[T]:
 
     None is returned if 'seq' ends before the requested 'idx' position.
     """
+    # pylint: disable=no-else-return
     if len(seq) > idx:
         return seq[idx]
     else:
