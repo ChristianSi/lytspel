@@ -1426,6 +1426,7 @@ ammonoid,ammon=oid
 ammons,ammon=s
 ammunitions,ammunition=s
 amnesties,amnesty=es
+amnionic,amnion=ic
 amoebas,amoeba=s
 amorally,amoral=ly
 amorosity,amorous=ity
@@ -1948,6 +1949,7 @@ apologized,apologize=ed
 apologizes,apologize=s
 apologizing,apologize=ing
 apomictic,apomict=ic
+apostates,apostate=s
 apostles,apostle=s
 apostrophes,apostrophe=s
 apostrophic,apostrophe=ic
@@ -3676,6 +3678,8 @@ bearishness,bearish=ness
 bears,bear=s
 bearskin,bear-skin
 bearwood,bear-wood
+beasting,beast=ing
+beastings,beasting=s
 beastly,beast=ly
 beasts,beast=s
 beaten,beat=en
@@ -4013,6 +4017,7 @@ berkshires,berkshire=s
 berline,berle=ine
 berliner,berlin=er
 berliners,berliner=s
+berman,bur-man
 berms,berm=s
 bermudas,bermuda=s
 bernardine,bernard=ine
@@ -4022,6 +4027,7 @@ berries,berry=es
 berrylike,berry-like
 berserker,berserk=er
 berthage,berth=age
+berthed,berth=ed
 berths,berth=s
 beryline,beryl=ine
 beseeched,beseech=ed
@@ -5781,6 +5787,7 @@ brocaded,brocade=ed
 brocades,brocade=s
 brochures,brochure=s
 brockage,brock=age
+brockman,brock-man
 broidery,broider=y
 broiled,broil=ed
 broiler,broil=er
@@ -6432,7 +6439,9 @@ cajuns,cajun=s
 caked,cake=ed
 cakes,cake=s
 cakewalk,cake-walk
+caking,cake=ing
 caladiums,caladium=s
+calamites,calamite=s
 calamities,calamity=es
 calamitously,calamitous=ly
 calamitousness,calamitous=ness
@@ -7098,6 +7107,7 @@ catfight,cat-fight
 catfish,cat-fish
 catgut,cat-gut
 catharist,cathar=ist
+cathars,cathar=s
 cathead,cat-head
 cathedrals,cathedral=s
 catheterize,catheter=ize
@@ -8455,6 +8465,7 @@ cobber,cobb=er
 cobbing,cobb=ing
 cobbled,cobble=ed
 cobblers,cobbler=s
+cobbles,cobble=s
 cobblestone,cobble-stone
 cobblestones,cobblestone=s
 cobbling,cobble=ing
@@ -9696,6 +9707,7 @@ contemplating,contemplate=ing
 contemplations,contemplation=s
 contemplatively,contemplative=ly
 contemplativeness,contemplative=ness
+contemplatives,contemplative=s
 contemporaneously,contemporaneous=ly
 contemporaneousness,contemporaneous=ness
 contemporaries,contemporary=es
@@ -10130,6 +10142,7 @@ cornflowers,cornflower=s
 cornhusk,corn-husk
 cornhusking,cornhusk=ing
 cornhusks,cornhusk=s
+cornices,cornice=s
 corning,corn=ing
 cornish,corn=ish
 cornishman,cornish-man
@@ -11560,6 +11573,7 @@ dauphiness,dauphin=ess
 davidic,david=ic
 davids,david=s
 davies,davy=es
+davits,davit=s
 davy,dave=y
 dawned,dawn=ed
 dawning,dawn=ing
@@ -12224,6 +12238,7 @@ delisted,de=listed
 delisting,de=listing
 deliverable,deliver=able
 deliverance,deliver=ance
+deliverances,deliverance=s
 delivered,deliver=ed
 deliverer,deliver=er
 deliverers,deliverer=s
@@ -12877,6 +12892,7 @@ devastating,devastate=ing
 devastatingly,devastating=ly
 devastation,devastate=ion
 devein,de=vein
+deveined,devein=ed
 developable,develop=able
 developed,develop=ed
 developer,develop=er
@@ -14634,6 +14650,7 @@ dreamland,dream-land
 dreamlike,dream-like
 dreams,dream=s
 dreamtime,dream-time
+dreamwork,dream-work
 dreamworld,dream-world
 dreamy,dream=y
 dreariness,dreary=ness
@@ -15919,6 +15936,7 @@ energizer,energize=er
 energizes,energize=s
 energizing,energize=ing
 enervated,enervate=ed
+enervating,enervate=ing
 enface,en=face
 enfeeble,en=feeble
 enfeebled,enfeeble=ed
@@ -16224,6 +16242,7 @@ enumerates,enumerate=s
 enumerative,enumerate=ive
 enumerator,enumerate=or
 enunciated,enunciate=ed
+enunciates,enunciate=s
 enunciating,enunciate=ing
 enuretic,en=uretic
 enveloped,envelop=ed
@@ -18947,6 +18966,8 @@ forcer,force=er
 forces,force=s
 forcible,force=ible
 forcing,force=ing
+fordism,ford=ism
+fordist,ford=ist
 fordless,ford=less
 fords,ford=s
 forearm,fore=arm
@@ -20745,6 +20766,8 @@ gongs,gong=s
 goodall,good-all
 goodbye,good-bye
 goodbyes,goodbye=s
+goodfella,good-fella
+goodfellas,goodfella=s
 goodfellow,good-fellow
 goodies,goody=es
 goodish,good=ish
@@ -21191,6 +21214,7 @@ grifter,grift=er
 grillades,grillade=s
 grillage,grill=age
 grilled,grill=ed
+grilles,grille=s
 grilling,grill=ing
 grillroom,grill-room
 grills,grill=s
@@ -21554,6 +21578,7 @@ gymnastic,gymnast=ic
 gymnastics,gymnastic=s
 gymnasts,gymnast=s
 gymnospermous,gymnosperm=ous
+gymnosperms,gymnosperm=s
 gyms,gym=s
 gynecological,gynecologic=al
 gynecologists,gynecologist=s
@@ -21953,6 +21978,7 @@ harding,hard=ing
 hardliner,hard-liner
 hardliners,hardliner=s
 hardly,hard=ly
+hardman,hard-man
 hardness,hard=ness
 hardpan,hard-pan
 hards,hard=s
@@ -22090,6 +22116,7 @@ hatfield,hat-field
 hathaway,hath-away
 hathoric,hathor=ic
 hating,hate=ing
+hatless,hat=less
 hatmaker,hat-maker
 hatpin,hat-pin
 hatrack,hat-rack
@@ -23019,6 +23046,7 @@ holpen,holp=en
 holts,holt=s
 holy,hole=y
 holyhead,holy-head
+holyoak,holy-oak
 holystone,holy-stone
 holytide,holy-tide
 homager,homage=er
@@ -24036,6 +24064,7 @@ immigrants,immigrant=s
 immigrated,immigrate=ed
 imminently,imminent=ly
 imminentness,imminent=ness
+immobilization,immobilize=ation
 immobilized,immobilize=ed
 immobilizing,immobilize=ing
 immoderately,immoderate=ly
@@ -25965,6 +25994,8 @@ interoceanic,inter=oceanic
 interocular,inter=ocular
 interoffice,inter=office
 interosculate,inter=osculate
+interpassive,inter=passive
+interpassivity,inter=passivity
 interpellator,interpellate=or
 interpenetrate,inter=penetrate
 interpenetration,inter=penetration
@@ -26683,6 +26714,7 @@ jailkeeper,jail-keeper
 jailkeepers,jailkeeper=s
 jails,jail=s
 jainism,jain=ism
+jains,jain=s
 jakes,jake=s
 jalapic,jalap=ic
 jamaican,jamaica=n
@@ -26823,6 +26855,8 @@ jigging,jig=ing
 jiggling,jiggle=ing
 jigs,jig=s
 jigsaw,jig-saw
+jihadist,jihad=ist
+jihadists,jihadist=s
 jillian,jill=ian
 jillion,jill=ion
 jillions,jillion=s
@@ -26853,6 +26887,7 @@ jobholder,job-holder
 jobless,job=less
 joblessness,jobless=ness
 jobs,job=s
+jockeyed,jockey=ed
 jockeying,jockey=ing
 jockeys,jockey=s
 jocks,jock=s
@@ -29502,6 +29537,7 @@ managements,management=s
 manager,manage=er
 manageress,manager=ess
 managerial,manager=ial
+managerialism,managerial=ism
 managers,manager=s
 manages,manage=s
 managing,manage=ing
@@ -31320,6 +31356,7 @@ modulator,modulate=or
 modules,module=s
 moes,moe=s
 moguls,mogul=s
+mohammedan,mohammed=an
 mohawks,mohawk=s
 mohicans,mohican=s
 moieties,moiety=es
@@ -31721,6 +31758,7 @@ motility,motile=ity
 motioned,motion=ed
 motioning,motion=ing
 motionless,motion=less
+motionlessly,motionless=ly
 motions,motion=s
 motivate,motive=ate
 motivated,motivate=ed
@@ -32530,12 +32568,14 @@ neurogenesis,neuro=genesis
 neurogenic,neuro=genic
 neurogram,neuro=gram
 neurohormone,neuro=hormone
+neuroimaging,neuro=imaging
 neurologic,neuro=logic
 neurological,neuro=logical
 neurologists,neurologist=s
 neuromast,neuro=mast
 neuromuscular,neuro=muscular
 neuronal,neuron=al
+neuronic,neuron=ic
 neurons,neuron=s
 neuropath,neuro=path
 neuropathic,neuro=pathic
@@ -32545,6 +32585,7 @@ neurophysiology,neuro=physiology
 neuroplasm,neuro=plasm
 neuropsychiatry,neuro=psychiatry
 neuroscience,neuro=science
+neuroscientific,neuro=scientific
 neuroscientist,neuro=scientist
 neuroscientists,neuro=scientists
 neurosecretion,neuro=secretion
@@ -32902,6 +32943,8 @@ nondistinctive,non=distinctive
 nondollar,non=dollar
 nondominant,non=dominant
 nondramatic,non=dramatic
+nondual,non=dual
+nonduality,non=duality
 nondurable,non=durable
 nondurables,non=durables
 noneconomic,non=economic
@@ -33243,6 +33286,7 @@ numbers,number=s
 numbfish,numb-fish
 numbing,numb=ing
 numbingly,numbing=ly
+numbly,numb=ly
 numbness,numb=ness
 numerals,numeral=s
 numerator,numerate=or
@@ -33943,6 +33987,7 @@ otherwhere,other-where
 otherwhile,other-while
 otherwise,other-wise
 otherworld,other-world
+otherworldliness,otherworldly=ness
 otherworldly,otherworld=ly
 otocystic,otocyst=ic
 otologies,otology=es
@@ -34525,6 +34570,7 @@ overlapping,overlap=ing
 overlaps,overlap=s
 overlarge,over=large
 overlay,over=lay
+overlayed,overlay=ed
 overlays,over=lays
 overleaf,over=leaf
 overleap,over=leap
@@ -35155,6 +35201,7 @@ parades,parade=s
 paradigms,paradigm=s
 parading,parade=ing
 paradisal,paradise=al
+paradises,paradise=s
 paradisiacal,paradisiac=al
 paradoxes,paradox=es
 paradoxical,paradox=ical
@@ -37417,6 +37464,7 @@ postmeridian,post=meridian
 postmillennialism,post=millennialism
 postmistress,post-mistress
 postmodern,post=modern
+postmodernity,post=modernity
 postnasal,post=nasal
 postnatal,post=natal
 postnuptial,post=nuptial
@@ -38008,7 +38056,9 @@ presumptively,presumptive=ly
 presumptuously,presumptuous=ly
 presumptuousness,presumptuous=ness
 presuppose,pre=suppose
+presupposed,pre=supposed
 presupposes,pre=supposes
+presupposing,pre=supposing
 presupposition,pre=supposition
 presurmise,pre=surmise
 pretax,pre=tax
@@ -38444,6 +38494,7 @@ proposals,proposal=s
 proposed,propose=ed
 proposes,propose=s
 proposing,propose=ing
+propositional,proposition=al
 propositioned,proposition=ed
 propositions,proposition=s
 propounded,propound=ed
@@ -38818,6 +38869,8 @@ punky,punk=y
 punner,pun=er
 puns,pun=s
 punter,punt=er
+punters,punter=s
+punting,punt=ing
 punts,punt=s
 punty,punt=y
 pupfish,pup-fish
@@ -39619,6 +39672,7 @@ raver,rave=er
 raves,rave=s
 ravines,ravine=s
 raving,rave=ing
+ravings,raving=s
 ravishing,ravish=ing
 ravishment,ravish=ment
 rawboned,raw-boned
@@ -40744,6 +40798,7 @@ relatives,relative=s
 relativism,relative=ism
 relativist,relative=ist
 relativistic,relativist=ic
+relativists,relativist=s
 relativity,relative=ity
 relativize,relative=ize
 relaunch,re=launch
@@ -41098,6 +41153,7 @@ repoint,re=point
 repolish,re=polish
 repopulate,re=populate
 report,re=port
+reportability,re=portability
 reportable,re=portable
 reportage,re=portage
 reported,re=ported
@@ -42769,6 +42825,7 @@ salvaging,salvage=ing
 salvation,salve=ation
 salvationist,salvation=ist
 salverform,salver-form
+salvers,salver=s
 salves,salve=s
 salvos,salvo=s
 saman,sam=an
@@ -43257,6 +43314,7 @@ scouts,scout=s
 scowled,scowl=ed
 scowling,scowl=ing
 scowls,scowl=s
+scows,scow=s
 scrabbled,scrabble=ed
 scrabbles,scrabble=s
 scraggly,scrag=ly
@@ -44073,6 +44131,7 @@ shaky,shake=y
 shales,shale=s
 shallower,shallow=er
 shallowness,shallow=ness
+shallows,shallow=s
 shaman,sham=an
 shamaness,shaman=ess
 shamanic,shaman=ic
@@ -44761,6 +44820,7 @@ simmering,simmer=ing
 simmers,simmer=s
 simoniacal,simoniac=al
 simonize,simon=ize
+simons,simon=s
 simony,simon=y
 simper,simp=er
 simplex,simp-lex
@@ -50700,6 +50760,7 @@ transitorily,transitory=ly
 transitory,transit=ory
 transits,transit=s
 transjordan,trans=jordan
+translatability,translate=ability
 translatable,translate=able
 translate,trans=late
 translated,trans=lated
@@ -53372,6 +53433,7 @@ unteach,un=teach
 untenable,un=tenable
 untended,un=tended
 untendered,un=tendered
+untestable,un=testable
 untested,un=tested
 unthanked,un=thanked
 unthankful,un=thankful
@@ -55014,6 +55076,7 @@ westerns,western=s
 westing,west=ing
 westinghouse,westing-house
 westminster,west-minster
+westport,west-port
 westward,west=ward
 westwardly,westward=ly
 westwards,westward=s
@@ -55332,6 +55395,7 @@ wigmore,wig-more
 wigs,wig=s
 wigwag,wig-wag
 wikis,wiki=s
+wilberforce,wilber-force
 wildcard,wild-card
 wildcards,wildcard=s
 wildcat,wild-cat
