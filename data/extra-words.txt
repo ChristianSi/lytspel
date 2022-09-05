@@ -32,6 +32,9 @@ aggregating
 agitations
 agreeably
 agriculturalists
+airbrushed
+airbrushes
+airbrushing
 akratic
 Aldersgate
 Aldgate
@@ -108,6 +111,7 @@ artisanal
 Aryans
 Asaph
 ascetics
+aspirational
 assemblages
 assented
 assholes
@@ -174,6 +178,7 @@ belongingness
 Belorussia
 beloveds
 Berman
+Bermondsey
 berthed
 beseeched
 beseeches
@@ -184,6 +189,7 @@ beyonds
 bilinguals
 binaries
 bindings
+bingeing
 biofuel
 bionic
 birthed
@@ -211,6 +217,7 @@ bling
 blini
 blinkered
 blinkers
+blogs
 blondish
 blubbering
 boars
@@ -229,6 +236,7 @@ bondsmen
 bongs
 bootable
 borderlands
+Bornstein
 boudoirs
 boulting
 boundness
@@ -352,6 +360,7 @@ chytrid
 cicatrice
 circ
 circumnavigation
+cis
 citadels
 civilising
 civilizing
@@ -482,6 +491,8 @@ crags
 crania
 craning
 Crawley
+creased
+creasing
 creationist
 creationists
 creatureliness
@@ -522,6 +533,7 @@ cyber
 cybernetic
 cyberpunk
 cyberpunks
+cybersexism
 cypresses
 dachas
 daemons
@@ -936,6 +948,7 @@ frolics
 frontoparietal
 frothing
 ft
+fuckable
 Fukuyama
 Fulford
 fullers
@@ -975,6 +988,9 @@ gerency
 gestational
 gesticulates
 gesticulating
+gibbered
+gibbering
+gibbers
 Gifford
 girdles
 glaciologist
@@ -1102,6 +1118,7 @@ Hillsdale
 hirer
 hirers
 Hitchens
+Hite
 hmm
 hmmm
 HMS
@@ -1155,6 +1172,7 @@ ig
 ii
 iii
 illuminations
+imagos
 imams
 imbricated
 immobilization
@@ -1170,6 +1188,8 @@ imposingly
 imprecations
 inattentional
 inauthentic
+inbox
+inboxes
 incantations
 incarnated
 incarnates
@@ -1305,6 +1325,7 @@ khedives
 khor
 kickboxing
 kikes
+Kilburn
 kilocalories
 kindreds
 kinesis
@@ -1359,6 +1380,7 @@ leptons
 lethargica
 lettuces
 levelly
+Liam
 lianas
 libertarianism
 libre
@@ -1612,6 +1634,7 @@ Nahar
 nakedness
 namespace
 namespaces
+nanotech
 nanotechnologies
 nanotechnology
 nasalization
@@ -1727,6 +1750,8 @@ oarsmen
 Obamacare
 obfuscated
 obfuscates
+objectification
+objectifications
 objectivist
 objectivists
 obliviousness
@@ -1738,6 +1763,7 @@ Octobrists
 octopuses
 OECD
 offhandedly
+offline
 ogling
 Okinawan
 Olmec
@@ -1771,6 +1797,7 @@ Osama
 otherguess
 otherworldliness
 ottomans
+outboxes
 outcropping
 outcrops
 outsized
@@ -1898,6 +1925,9 @@ pinches
 Pindar
 pinewood
 pinewoods
+pinioned
+pinioning
+pinions
 pinked
 pinking
 pinky
@@ -1923,6 +1953,7 @@ plotlines
 plugin
 plugins
 plumed
+Plumstead
 pneumatique
 pockmarks
 poetical
@@ -2166,6 +2197,9 @@ respellers
 respelling
 respellings
 respells
+retched
+retches
+retching
 retells
 reterritorialization
 Reynold
@@ -2183,13 +2217,18 @@ riper
 ripest
 Rishton
 risings
+ritualised
+ritualises
+ritualising
 ritualized
 ritualizes
+ritualizing
 riverbanks
 roadkill
 roadmap
 roguelike
 Rohan
+Ropley
 rosewater
 roundabouts
 roved
@@ -2228,6 +2267,7 @@ saunters
 Sauron
 savannahs
 sawn
+scabbed
 scabbing
 scalability
 scatters
@@ -2290,6 +2330,12 @@ sevener
 sexable
 sexing
 sextuples
+sexualised
+sexualises
+sexualising
+sexualized
+sexualizes
+sexualizing
 sh
 shacked
 shahs
@@ -2338,6 +2384,8 @@ silico
 silkpaper
 silkpapers
 Silvan
+silvered
+silvering
 Simons
 simplicities
 Sindarin
@@ -2377,6 +2425,7 @@ sluiced
 slurped
 slurping
 slurps
+sluts
 smallholders
 smartphone
 smartphones
@@ -2425,6 +2474,8 @@ sowbugs
 spacetime
 spanners
 spars
+spasmed
+spasming
 speared
 speargun
 spearguns
@@ -2435,6 +2486,7 @@ specialness
 specificities
 spect
 specters
+specula
 spiflicate
 spiflicates
 spikelets
@@ -2849,6 +2901,7 @@ unmercifully
 unmount
 unmounts
 unobtrusively
+unorthodoxy
 unphilosophical
 unrecognizably
 unrepressed
@@ -2999,6 +3052,7 @@ wikis
 Wilber
 wildcards
 Wildman
+Willesden
 Willoughby
 wisps
 wittered
