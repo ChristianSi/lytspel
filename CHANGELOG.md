@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+* Add some dictionary entries.
+* Delete some proper names.
+* Make "sis-" (cis-) a prefix treated like "dis-" and "mis-".
+
 
 ## [2.0.9] -- 2022-08-03
 
