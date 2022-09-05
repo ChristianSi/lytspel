@@ -134,9 +134,9 @@ The sound /s/ is written as «c», «s», or «ss», depending on context:
 * «ss» is also used at the end of words except after any of the consonants
   /f, k, p, t, T/, e.g. «less, miss, évidenss» ‹...evidence›
 * «s» is used anywhere else, e.g. «sun, desk, chips, upsets»
-* «s» is also used in the prefixes «dis, mis» regardless of which letter
-  follows, e.g. «disagree, disenchantment, misinturprit, misunderstand»
-  ‹disagree, disenchantment, misinterpret, misunderstand›
+* «s» is also used in the prefixes «dis, mis, sis» ‹...cis› regardless of
+  which letter follows, e.g. «disagree, disenchantment, misinturprit,
+  misunderstand» ‹disagree, disenchantment, misinterpret, misunderstand›
 
 The sound /z/ is written as «s» or «z», depending on context:
 
