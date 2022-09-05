@@ -33,14 +33,6 @@ Change to the root of your Lytspel repository and call
 
 ## Starting the web app
 
-In order to run the web app locally, you first need to create a file called
-"web.cfg" in the "lytspel" directory which contains the line:
-
-    SECRET_KEY = '...'
-
-Replace `...` by a dozen or more random characters. That file has to exist
-but isn't tracked by git since otherwise the SECRET_KEY wouldn't be secret!
-
 Ensure that the additional dependencies needed for the web app are installed:
 
     pip3 install flask misaka
@@ -51,9 +43,14 @@ you also need to ensure that all the dependencies listed in the
 
 You also need to create a directory where the app can temporarily store
 uploaded files if it doesn't exist already. By default,
-"$HOME/webdata/uploads" is used for this purpose (where $HOME is your
-home directory). If you want to use another directory, you can add an entry
-`UPLOAD_FOLDER = '...'` to your "web.cfg".
+"$HOME/webdata/uploads" is used for this purpose (where $HOME is your home
+directory). If you want to use another directory, you can create a file
+called "web.cfg" in the "lytspel" directory with the following content:
+
+    UPLOAD_FOLDER = '...'
+
+Replace `...` by the desired directory name. Note that the quotes around
+the filename are required.
 
 Note that the temporary files created in this directory are **not** deleted
 by the web app. You might delete them manually after stopping the app, or

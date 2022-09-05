@@ -265,7 +265,9 @@ SERVER_SOFTWARE = os.environ.get('SERVER_SOFTWARE', 'flask')
 ##### App config #####
 
 app = Flask(__name__)  # pylint: disable=invalid-name
-app.config.from_pyfile('web.cfg')
+
+# Load the instance config from this file, if it exists
+app.config.from_pyfile('web.cfg', silent=True)
 LOG = create_logger(app)
 
 # Set suitable default values
