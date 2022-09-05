@@ -988,6 +988,9 @@ airboat,air-boat
 airboats,airboat=s
 airborne,air-borne
 airbrush,air-brush
+airbrushed,airbrush=ed
+airbrushes,airbrush=es
+airbrushing,airbrush=ing
 airburst,air-burst
 airbus,air-bus
 aircondition,air-condition
@@ -2407,6 +2410,7 @@ asphyxiating,asphyxiate=ing
 aspirants,aspirant=s
 aspirated,aspirate=ed
 aspirates,aspirate=s
+aspirational,aspiration=al
 aspirations,aspiration=s
 aspirator,aspirate=or
 aspired,aspire=ed
@@ -4282,6 +4286,7 @@ binds,bind=s
 bindweed,bind-weed
 bines,bine=s
 binged,binge=ed
+bingeing,binge=ing
 binger,bing=er
 binges,binge=s
 bingy,bing=y
@@ -4757,6 +4762,7 @@ blocky,block=y
 blocs,bloc=s
 blogger,blog=er
 blogging,blog=ing
+blogs,blog=s
 blokes,bloke=s
 blonder,blond=er
 blondes,blonde=s
@@ -5270,6 +5276,7 @@ boresome,bore-some
 borges,borg=es
 boric,bore=ic
 boring,bore=ing
+bornstein,born-stein
 boronic,boron=ic
 boroughs,borough=s
 borrowed,borrow=ed
@@ -7979,6 +7986,11 @@ circumventing,circumvent=ing
 circumvention,circumvent=ion
 circumvents,circumvent=s
 circuses,circus=es
+cisalpine,cis=alpine
+cisatlantic,cis=atlantic
+ciscaucasia,cis=caucasia
+cislunar,cis=lunar
+cismontane,cis=montane
 cisterns,cistern=s
 citadels,citadel=s
 citation,cite=ation
@@ -10721,7 +10733,9 @@ creamiest,creamy=est
 creams,cream=s
 creamware,cream-ware
 creamy,cream=y
+creased,crease=ed
 creases,crease=s
+creasing,crease=ing
 creasy,crease=y
 created,create=ed
 creates,create=s
@@ -11329,6 +11343,7 @@ cybernetics,cybernetic=s
 cyberpunk,cyber-punk
 cyberpunks,cyberpunk=s
 cybersex,cyber-sex
+cybersexism,cybersex=ism
 cyberspace,cyber-space
 cycads,cycad=s
 cyclecar,cycle-car
@@ -11898,7 +11913,7 @@ decoupling,de=coupling
 decoys,decoy=s
 decreased,decrease=ed
 decreases,decrease=s
-decreasing,decrease=ing
+decreasing,de=creasing
 decreasingly,decreasing=ly
 decreed,decree=ed
 decrees,decree=s
@@ -19665,6 +19680,7 @@ fryer,fry=er
 fryers,fryer=s
 frying,fry=ing
 fuchsias,fuchsia=s
+fuckable,fuck=able
 fucked,fuck=ed
 fucker,fuck=er
 fuckers,fucker=s
@@ -20358,7 +20374,10 @@ giantess,giant=ess
 giantism,giant=ism
 giants,giant=s
 gibbed,gib=ed
+gibbered,gibber=ed
+gibbering,gibber=ing
 gibberish,gibber=ish
+gibbers,gibber=s
 gibbons,gibbon=s
 gibbosity,gibbose=ity
 gibbous,gib=ous
@@ -22440,7 +22459,6 @@ heftier,hefty=er
 heftiest,hefty=est
 hefty,heft=y
 hegelianism,hegelian=ism
-heidegger,heid-egger
 heifers,heifer=s
 heighten,height=en
 heightened,heighten=ed
@@ -24022,6 +24040,7 @@ imaging,image=ing
 imagining,imagine=ing
 imaginings,imagining=s
 imagism,image=ism
+imagos,imago=s
 imamate,imam=ate
 imams,imam=s
 imbalances,imbalance=s
@@ -24426,6 +24445,8 @@ inboard,in=board
 inbond,in=bond
 inborn,in=born
 inbound,in=bound
+inbox,in=box
+inboxes,in=boxes
 inbreathe,in=breathe
 inbred,in=bred
 inbreed,in=breed
@@ -24657,7 +24678,7 @@ incorruption,in=corruption
 increased,increase=ed
 increaser,increase=er
 increases,increase=s
-increasing,increase=ing
+increasing,in=creasing
 increasingly,increasing=ly
 incredible,in=credible
 incredibleness,in=credibleness
@@ -32243,6 +32264,7 @@ nanogram,nano=gram
 nanograms,nano=grams
 nanosecond,nano=second
 nanoseconds,nano=seconds
+nanotech,nano=tech
 nanotechnologies,nano=technologies
 nanotechnology,nano=technology
 nanowatt,nano=watt
@@ -33382,6 +33404,8 @@ obfuscates,obfuscate=s
 obits,obit=s
 obituaries,obituary=es
 objected,object=ed
+objectification,object=ification
+objectifications,objectification=s
 objectify,object=ify
 objecting,object=ing
 objectionable,objection=able
@@ -33586,6 +33610,7 @@ offing,off=ing
 offish,off=ish
 offishly,offish=ly
 offishness,offish=ness
+offline,off-line
 offload,off-load
 offprint,off-print
 offs,off=s
@@ -34016,6 +34041,7 @@ outboard,out=board
 outboards,out=boards
 outbound,out=bound
 outbox,out=box
+outboxes,out=boxes
 outbrave,out=brave
 outbreak,out=break
 outbreaks,out=breaks
@@ -36595,6 +36621,9 @@ pinheaded,pinhead=ed
 pinhole,pin-hole
 pinholes,pinhole=s
 pining,pine=ing
+pinioned,pinion=ed
+pinioning,pinion=ing
+pinions,pinion=s
 pinked,pink=ed
 pinker,pink=er
 pinkest,pink=est
@@ -36982,6 +37011,7 @@ plumosity,plumose=ity
 plumped,plump=ed
 plumper,plump=er
 plums,plum=s
+plumstead,plum-stead
 plumy,plum=y
 plundered,plunder=ed
 plundering,plunder=ing
@@ -41593,6 +41623,9 @@ retarder,retard=er
 retarding,retard=ing
 retardment,retard=ment
 retards,retard=s
+retched,retch=ed
+retches,retch=es
+retching,retch=ing
 reteach,re=teach
 retell,re=tell
 retelling,re=telling
@@ -42088,6 +42121,7 @@ ritualistic,ritualist=ic
 ritualize,ritual=ize
 ritualized,ritualize=ed
 ritualizes,ritualize=s
+ritualizing,ritualize=ing
 ritually,ritual=ly
 rituals,ritual=s
 ritziest,ritzy=est
@@ -42410,7 +42444,6 @@ roused,rouse=ed
 rouser,rouse=er
 rousing,rouse=ing
 rousingly,rousing=ly
-rousseauism,rousseau=ism
 roustabout,roust-about
 routed,route=ed
 routeman,route-man
@@ -43060,6 +43093,7 @@ sayers,sayer=s
 sayest,say=est
 saying,say=ing
 sayings,saying=s
+scabbed,scab=ed
 scabbing,scab=ing
 scabby,scab=y
 scabland,scab-land
@@ -44082,8 +44116,14 @@ sextant,sext=ant
 sextuple,sex-tuple
 sextuples,sextuple=s
 sextuplets,sextuplet=s
+sexualised,sexualize=ed
+sexualises,sexualize=s
+sexualising,sexualize=ing
 sexuality,sexual=ity
 sexualize,sexual=ize
+sexualized,sexualize=ed
+sexualizes,sexualize=s
+sexualizing,sexualize=ing
 sexually,sexual=ly
 sexy,sex=y
 shacked,shack=ed
@@ -44794,7 +44834,9 @@ siltstone,silt-stone
 silty,silt=y
 silvas,silva=s
 silverberry,silver-berry
+silvered,silver=ed
 silverfish,silver-fish
+silvering,silver=ing
 silverize,silver=ize
 silverleaf,silver-leaf
 silverly,silver=ly
@@ -45373,6 +45415,7 @@ slurred,slur=ed
 slurring,slur=ing
 slurs,slur=s
 slushy,slush=y
+sluts,slut=s
 slutty,slut=y
 slyboots,sly-boots
 slyly,sly=ly
@@ -46096,6 +46139,8 @@ sparsely,sparse=ly
 spartan,sparta=n
 spartanic,spartan=ic
 spas,spa=s
+spasmed,spasm=ed
+spasming,spasm=ing
 spasms,spasm=s
 spates,spate=s
 spatially,spatial=ly
@@ -52928,6 +52973,7 @@ unoriginal,un=original
 unornamental,un=ornamental
 unornamented,un=ornamented
 unorthodox,un=orthodox
+unorthodoxy,un=orthodoxy
 unpack,un=pack
 unpacked,un=packed
 unpacking,un=packing
