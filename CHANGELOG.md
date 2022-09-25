@@ -2,6 +2,9 @@
 
 ## [Unreleased]
 
+
+## [2.1.0] -- 2022-09-25
+
 * Add some dictionary entries.
 * Delete some proper names.
 * Make "sis-" (cis-) a prefix treated like "dis-" and "mis-".
