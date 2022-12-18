@@ -4,7 +4,7 @@
 from collections import OrderedDict
 from glob import glob
 import os
-from os import path
+from os import path, urandom
 import logging
 import re
 import string
@@ -16,7 +16,7 @@ from typing import Dict  #pylint: disable=unused-import
 from uuid import uuid4
 
 from flask import (Flask, flash, make_response, Markup, render_template, request, redirect,
-                   send_file, send_from_directory)
+                   send_file, send_from_directory, session)
 from flask.logging import create_logger
 import misaka
 from werkzeug.utils import secure_filename
@@ -64,6 +64,7 @@ def hexify_string(text: str) -> str:
     """Replace each character in a string by the corresponding HTML character entity."""
     return ''.join('&#x{:x};'.format(ord(c)) for c in text)
 
+
 def text_to_id(text: str) -> str:
     """Convert a text (section title or similar) into an ID.
 
@@ -75,6 +76,7 @@ def text_to_id(text: str) -> str:
     text = text.translate(str.maketrans('', '', string.punctuation))
     return '-'.join(text.split())
 
+
 def add_section_anchor(matchobj: Match) -> str:
     """Add anchors (IDs) to section headers.
 
@@ -83,6 +85,7 @@ def add_section_anchor(matchobj: Match) -> str:
     """
     idtext = text_to_id(matchobj.group(1))
     return matchobj.group(0).replace('>', f' id="{idtext}">', 1)
+
 
 def protect_mailto(matchobj: Match) -> str:
     """Helper function that spam-protects mailto links."""
@@ -223,7 +226,6 @@ def render_nav_items(page_dict: 'OrderedDict[str, PageData]',
     return Markup('\n'.join(itemlist))
 
 
-
 ##### Constants and immutable values #####
 
 # A mapping from allowed file extensions to their MIME types.
@@ -266,8 +268,9 @@ SERVER_SOFTWARE = os.environ.get('SERVER_SOFTWARE', 'flask')
 
 app = Flask(__name__)  # pylint: disable=invalid-name
 
-# Load the instance config from this file, if it exists
+# Load the instance config from this file (if it exists) and set a secret session key
 app.config.from_pyfile('web.cfg', silent=True)
+app.config.update(SECRET_KEY=urandom(24))
 LOG = create_logger(app)
 
 # Set suitable default values
