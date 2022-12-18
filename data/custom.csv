@@ -1,8 +1,10 @@
 Word,POS,Prefer
-Aachen,,P
-Aalborg,,'O:lbO:rg
-Aalesund,,'O:l@sUn
+Aachen,,D
+Aalborg,,D
+Aalesund,,D
 aalii,,P
+Aalst,,D
+Aalto,,D
 aa,,P
 Aaronical,,P
 Aaronic,,P
@@ -712,7 +714,7 @@ annotation,,an@t'eIS@n
 anoopsia,,anoU'Qpsi:@
 anorectal,,an@`'Ekt@l
 Anschauung,,P
-Anschluss,,P
+Anschluss,,D
 Anselmo,,D
 Ansermet,,P
 Antabuse,,D
@@ -966,7 +968,7 @@ astrophysicist,,astroUf'IzIsIst
 Astroturf,,B
 Asturian,,ast'U:ri:@n
 Asturias,,ast'U:ri:@s
-Asuncion,,Asu:nsj'Qn
+Asuncion,,D
 Aswan,,asw'An
 asymptotically,,asImt'QtIk@li:
 asynergia,,eIsIn'3:dZi:@
@@ -1218,6 +1220,7 @@ Batista,,b@t'i:st@
 batiste,,B
 battue,,bat'U:
 baudekin,,b'O:di:kIn
+Baudelaire,,D
 Baudouin,,D
 baur,,D
 bausond,,b'O:s@nd
@@ -1279,6 +1282,7 @@ benzol,,B
 bequeathal,,bIkw'i:D@l
 bequeath,,bIkw'i:D
 Berchtesgaden,,P
+Bercy,,D
 Berdichev,,b@`d'i:tSEf
 Berenice,,bEr@n'aIsi:
 Berenson,,D
@@ -1431,7 +1435,8 @@ Bolzano,,D
 bombardon,,b'Qmb@`d@n
 bombazine,,b'Qmb@zi:n
 bombora,,bQmb'O:r@
-Bonaparte,,P
+Bonaparte,,D
+Bonapartist,,b'oUn@pArtIst
 Bonaventura,,bQn@vEntS'Ur@
 bondieuserie,,bQnd'I@z@ri:
 Bonheur,,D
@@ -1439,6 +1444,7 @@ bonhomous,,b'Qn@m@s
 bonism,,b'QnIz@m
 bonita,,B
 bonnet,,B
+Bono,,D
 bontebok,,b'Qnt@bQk
 boohoo,,P
 Boolean,,B
@@ -1512,6 +1518,7 @@ Bracknell,,br'akn@l
 Bradbury,,A
 braggadocio,,brag@d'oUtSi:oU
 Brahe,,D
+Brahms,,D
 Brahui,,P
 braies,,br'eI
 branchiopod,,br'aNki:@pQd
@@ -1702,6 +1709,7 @@ Candide,,P
 Candiot,,k'andi:Qt
 canine,,k'anaIn
 cannelure,,k'an@lUr
+Cannes,,D
 cantabile,,P
 cantatrice,,kAntAtr'i:tSeI
 canterbury,,A
@@ -2551,7 +2559,7 @@ coxcombical,,kQksk'oUmIk@l
 coyotillo,,B
 Cozumel,,B
 Craiova,,krAj'O:vA
-Cranach,,P
+Cranach,,D
 cranial,,B
 craniology,,kreIni:'Ql@dZi:
 craniometer,,kreIni:'QmIt@`
@@ -2588,6 +2596,7 @@ Crispi,,D
 Croce,,D
 crocodilian,,B
 crocoisite,,kr'oUkoU@zaIt
+croissant,,kr@s'Ant
 croustade,,P
 crusily,,kr'u:sI#li:
 cryogenic,,kraI@dZ'EnIk
@@ -2710,7 +2719,6 @@ deaminate,,di:'amI#neIt
 deaminize,,P
 Deana,,P
 Deanna,,P
-de,,B
 debauchee,,dEbO:tS'i:
 debenture,,dIb'EntS@`
 Debussyan,,P
@@ -2760,6 +2768,7 @@ decrepit,,B
 decrial,,P
 decuple,,P
 decussation,,dIk@s'eIS@n
+de,,D
 dedans,,P
 dedicate,,A
 dedicative,,d'EdI#keItIv
@@ -2876,6 +2885,7 @@ derogative,,P
 derogatory,,dIr'Qg@tori:
 descant,,B
 Descartes,,D
+des,,D
 desecrate,,B
 desecration,,B
 desert,,d'Ez@`t
@@ -3592,6 +3602,7 @@ Erbil,,'i:rbIl
 Erech,,'IrEk
 Erechtheus,,Ir'EkTju:s
 Ereshkigal,,P
+Erewhon,,'Er@WQn
 erg,,B
 ergocalciferol,,3:goUkals'If@`Ql
 ergosterol,,3:g'Ast@`Ql
@@ -4310,6 +4321,8 @@ Frazier,,D
 Fredericksburg,,fr'EdrIksb3:g
 Frederiksberg,,fr'EdrIksb3:g
 freesia,,fr'i:zi:@
+Freiburg,,D
+Frei,,D
 frequent,v,P
 Frescobaldi,,D
 Freudian,,B
@@ -4879,6 +4892,8 @@ Heidegger,,D
 Heilungkiang,,heIlUNgj'AN
 Heimdall,,P
 Heine,,D
+Heisenberg,,D
+Heisman,,D
 heliacal,,P
 heliac,,P
 heli,,B
@@ -5185,6 +5200,7 @@ Hurrian,,P
 hussar,,hUz'Ar
 huss,,D
 Hussein,,hUs'eIn
+Husserl,,D
 Huysmans,,P
 hyalinization,,haI@lI#nIz'eIS@n
 hyalogen,,haI'al@dZ@n
@@ -5671,8 +5687,8 @@ jongleur,,dZ'QNgl@`
 Jordaens,,j'O:rdAns
 Jorge,,D
 jornada,,P
+Jose,,D
 Josefina,,D
-Jose,,hoUz'eI
 joseph,,dZ'oUz@f
 Josephine,,dZ'oUz@fi:n
 Josephson,,dZ'oUz@fs@n
@@ -6113,8 +6129,9 @@ Laurasia,,lO:r'eIZ@
 laureate,,l'Qri:@t
 laure,,D
 laurel,,l'Qr@l
+Lauren,,l'Qr@n
 laurent,,D
-Laurier,,l'O:ri:eI
+Laurier,,D
 laurustinus,,lO:r@st'aIn@s
 Lausanne,,loUz'an
 lauwine,,D
@@ -6330,7 +6347,7 @@ Louella,,lu:'El@
 lough,,l'Qk
 louie,,B
 Lourdes,,l'Urd
-Louvre,,A
+Louvre,,D
 lovastatin,,loUvast'atIn
 lozenge,,l'QzIndZ
 LP,,D
@@ -6473,8 +6490,9 @@ Mallory,,D
 malm,,P
 malmsey,,P
 Malpighi,,P
+Malta,,m'O:lt@
 maltase,,P
-Maltese,,P
+Maltese,,mO:lt'i:z
 malt,,m'O:lt
 maltol,,m'O:ltQl
 maltose,,P
@@ -6499,7 +6517,7 @@ Mande,,P
 mandorla,,m'Andorl@
 manducate,,m'andZUkeIt
 manege,,man'EZ
-manet,,man'eI
+manet,,D
 Manfred,,D
 manganate,,P
 manganese,,B
@@ -6605,6 +6623,7 @@ Marquita,,D
 marriage,,B
 Marriott,,B
 marseille,,mArs'eI
+marseilles,,mArs'eI
 Marshallese,,D
 marsipobranch,,m'ArsIpoUbraNk
 martel,,m'ArtEl
@@ -6939,6 +6958,7 @@ monarch,,m'Qn@`k
 Monck,,m'VNk
 Monday,,B
 monetarily,,mQn@t'ErIli:
+Monet,,D
 monetize,,B
 mong,,m'VN
 monition,,B
@@ -6974,11 +6994,12 @@ montgolfier,,mQntg'Qlfi:@`
 Montgomery,,mQntg'Vm@`i:
 Montherlant,,D
 monticulate,,m@nt'IkjUl@t
-Montmartre,,mQnm'Artr@
+Montmartre,,D
 Montmorency,,D
-Montparnasse,,mQnpArn'as
+Montparnasse,,D
 Montpelier,,mQntp'i:lj@`
-Montrachet,,moUntr@S'eI
+Montpellier,,D
+Montrachet,,D
 Montreal,,B
 monumental,,B
 monumentality,,mQnjUmEnt'alIti:
@@ -7138,7 +7159,7 @@ Nanak,,P
 nana,,n'an@
 nanoid,,n'anOId
 nanometer,,n'an@#mi:t@
-Nantes,,n'Ant
+Nantes,,D
 naos,,n'eIQs
 naphthenic,,P
 Napier,,A
@@ -7615,6 +7636,7 @@ otosclerosis,,oUt@skl@`'oUsIs
 Ottawa,,'Qt@w@
 Ouachita,,w'QSItO:
 Ouagadougou,,wAg@d'u:gu:
+oui,,D
 Oujda,,P
 Oulu,,'oUlu:
 ou,,'oUu:
@@ -7657,6 +7679,7 @@ paisa,,P
 Paiute,,paI'u:t
 pakeha,,pAk'i:hA
 palabra,,P
+palace,,B
 palaeoethnologic,,D
 palaeography,,peIlI'Qgr@fi:
 Palaeozoic,,P
@@ -7975,9 +7998,9 @@ permalloy,,P
 permute,,P
 Pernik,,P
 Pernod,,D
+Peron,,D
 peroneal,,P
 perone,,D
-Peron,,p@`'oUn
 peroxidic,,p@`Qks'IdIk
 perpend,n,B
 perpetuance,,P
@@ -8189,6 +8212,7 @@ plasmapheresis,,B
 plasmasol,,pl'azm@sQl
 plasminogen,,plazm'In@dZ@n
 plasmogamy,,P
+Plata,,D
 platinotype,,pl'atI#noUtaIp
 platitudinize,,platIt'U:dI#naIz
 platitudinous,,platIt'U:dIn@s
@@ -8260,6 +8284,7 @@ Poitiers,,D
 Pokemon,,p'oUkImQn
 Polack,,p'oUlAk
 polacre,,poUl'Ak@`
+Pola,,D
 Poland,,p'oUla#nd
 polariscope,,P
 Polaris,,p@l'ArIs
@@ -8607,7 +8632,7 @@ Proust,,P
 provant,,B
 Provencale,,prQv@ns'Al
 Provencal,,prQv@ns'Al
-Provence,,pr@v'Ans
+Provence,,D
 provenience,,pr@v'i:ni:@ns
 provine,,proUv'i:n
 provocative,,B
@@ -9058,6 +9083,7 @@ rigol,,B
 rigsdaler,,P
 rikisha,,r'IkSO:
 rilievo,,rIlj'EvoU
+Rimbaud,,D
 rimose,,r'aImoUs
 rimu,,P
 riojas,,D
@@ -9088,6 +9114,7 @@ Rogelio,,D
 Roget,,r'QZeI
 Rohan,,r'oUh@n
 Rohypnol,,roUh'IpnQl
+Rojas,,D
 rolf,,B
 Rolland,,D
 Romagna,,P
@@ -9273,6 +9300,7 @@ Sarnoff,,s'ArnQf
 sarong,,s@`'QN
 sarsaparilla,,sasp@`'Il@
 sars,,D
+Sartre,,D
 Sarum,,s'e@@m
 Saskatchewan,,sask'atS@wQn
 Sassanid,,P
@@ -9349,6 +9377,7 @@ Schlitz,,D
 schmaltz,,P
 schnorr,,D
 schnorrer,,P
+Schoenberg,,D
 scholasticism,,B
 schoolmarm,,A
 schorlaceous,,P
@@ -9488,7 +9517,10 @@ Senegal,,sEnIg'O:l
 senesce,,P
 Senghor,,D
 senhora,,sInj'or@
-senora,,seInj'or@
+senora,,D
+senoras,,D
+senor,,D
+senorita,,D
 sensitometric,,B
 sensorimotor,,sEns@rIm'oUt@`
 sensual,,A
@@ -10997,7 +11029,7 @@ verism,,v'ErIz@m
 veritas,,v'ErItAs
 vermiculation,,v@`mIkj@l'eIS@n
 Vernoleninsk,,v3:n@l@n'Insk
-Versailles,,v@`s'aI
+Versailles,,D
 versification,,B
 versin,,P
 vers,,P
