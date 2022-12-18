@@ -2,12 +2,7 @@ Traditional,POS,Redirect,Lytspel
 a,,,a
 a-,,,ay-
 aa,,,aaaa
-Aachen,,,Aaken
-Aalborg,,,Aulborg
-Aalesund,,,Aulessoon
 aalii,,,aaléei
-Aalst,,,Aalst
-Aalto,,,Aalto
 Aarau,,,Arow
 aardvark,,,ardvark
 aardwolf,,,ardwoolf
@@ -4278,7 +4273,6 @@ anoxia,,,anoxia
 ansa,,,ansa
 ansate,,,ánsait
 Anschauung,,,Aanshowoong
-Anschluss,,,Aanshlooss
 Anselm,,,"Ánselm"
 anserinae,,anserine
 anserine,,,ánseryn
@@ -6401,7 +6395,6 @@ astutely,,,astuetli
 astuteness,,,astuetness
 Astyanax,,,Astiyenax
 astylar,,,aistýler
-Asuncion,,,Aassuunsyón
 asunder,,,assunder
 Asur,,,Acer
 asura,,,ássoora
@@ -8612,7 +8605,6 @@ baubles,,,baubls
 Baucis,,,Bauciss
 baud,,,baud
 baudekin,,,baudeekin
-Baudelaire,,,Boadeláir
 baudrons,,,baudrens
 Bauer,,,Bower
 Bauhaus,,,Bouhouss
@@ -9413,7 +9405,6 @@ berberine,,,burbereen
 berberis,,,burberiss
 berceuse,,,berrsés
 Berchtesgaden,,,Bérrctesgaaden
-Bercy,,,Bairsee
 berdache,,,berdash
 Berdichev,,,Berdeechef
 bere,,,bir
@@ -11264,7 +11255,6 @@ bona,,,boana
 bonaci,,,boanacee
 Bonaire,,,Bonair
 bonanza,,,bonánza
-Bonaparte,,,Boanepart
 Bonapartist,,,Boanepartist
 Bonaventura,,,Bonevenchóora
 Bonaventure,,,Bonevencher
@@ -11326,7 +11316,6 @@ Bonneville,,,Bonevil
 Bonnie,,,Boni
 bonny,,,boni
 bonnyclabber,,,boniclaber
-Bono,,,Boano
 bonobo,,,bonóbo
 bonobos,,,bonóboas
 bonsai,,,bonsy
@@ -11953,7 +11942,6 @@ Brahmaputra,,,Braamapúutra
 Brahmi,,,Braami
 brahmin,,,braamin
 Brahminic,,,Braaminic
-Brahms,,,Braams
 Brahui,,,Braahúi
 braid,,,braid
 braided,,,braided
@@ -14327,7 +14315,6 @@ cannelure,,,caneloor
 canner,,,caner
 canneries,,,caneries
 cannery,,,caneri
-Cannes,,,Cans
 cannibal,,,canibl
 cannibalisation,,cannibalization
 cannibalise,,cannibalize
@@ -22528,7 +22515,6 @@ crampoon,,,crampuun
 cramps,,,cramps
 crams,,,crams
 cran,,,cran
-Cranach,,,Craanaak
 cranage,,,cranij
 cranberries,,,cranberries
 cranberry,,,cranberri
@@ -23000,8 +22986,8 @@ Croesus,,,Creessuss
 croft,,,croft
 crofter,,,crofter
 crofts,,,crofts
-croissant,,,quossónt
-croissants,,,quossónts
+croissant,,,crossaant
+croissants,,,crossaants
 crombie,,,crombi
 cromlech,,,cromlek
 cromorne,,,croamórn
@@ -24552,7 +24538,6 @@ dazzle,,,dasel
 dazzled,,,daseld
 dazzling,,,daseling
 DC,,,DC
-de,,,da
 de-,,,di-
 deacon,,,deeken
 deaconess,,,deekeness
@@ -26262,7 +26247,6 @@ derry,,,derri
 derv,,,durv
 dervish,,,durvish
 Derwent,,,Durwent
-des,,,dess
 desalinate,,,disalinait
 desalination,,,disalinaition
 desalinisation,,desalinization
@@ -30741,7 +30725,9 @@ ecu,,,aicúe
 Ecuador,,,"Équedor"
 Ecuadoran,,,Equedoren
 Ecuadorean,,,Equedorian
+Ecuadoreans,,,Equedorians
 Ecuadorian,,,Equedorian
+Ecuadorians,,,Equedorians
 ecuelle,,,aiquél
 ecumenical,,,ecuemenicl
 ecumenicalism,,,ecuemenikelism
@@ -33136,7 +33122,7 @@ Ereshkigal,,,Airéshkeegaal
 erethic,,,erethic
 erethism,,,érrethism
 erewhile,,,airwhyl
-Erewhon,,,"Érrewhaan"
+Erewhon,,,"Érrewhon"
 Erfurt,,,"Érrfoort"
 erg,,,urg
 ergate,,,urgait
@@ -38608,8 +38594,6 @@ freezers,,,freesers
 freezes,,,freeses
 freezing,,,freesing
 freezingly,,,freesingli
-Frei,,,Fry
-Freiburg,,,Fryburg
 freight,,,frait
 freightage,,,fraitij
 freighted,,,fraited
@@ -44556,8 +44540,6 @@ heirloom,,,airluum
 heirlooms,,,airluums
 heirs,,,airs
 heirship,,,airship
-Heisenberg,,,Hysenburg
-Heisman,,,Hysmen
 heist,,,hyst
 heister,,,hyster
 Hejaz,,,Heejás
@@ -46930,7 +46912,6 @@ husky,,,huski
 Hussain,,,Hússain
 hussar,,,hoosar
 Hussein,,,Hoossain
-Husserl,,,Hoocerrl
 Hussite,,,Hucyt
 hussy,,,huci
 hustings,,,hustings
@@ -52696,7 +52677,6 @@ jordans,,,jordens
 jornada,,,hornáada
 jorum,,,jorum
 Jos,,,Joss
-Jose,,,Hoasáy
 Josef,,,Joacef
 joseph,,,joasef
 Josephine,,,Joasefeen
@@ -55324,12 +55304,11 @@ laureate,,,lorriat
 laureates,,,lorriats
 laurel,,,lorrel
 laurels,,,lorrels
-Lauren,,,Loren
+Lauren,,,Lorren
 Laurence,,,Lorrenss
 Laurentian,,,Lorention
 Lauri,,,Lori
 Laurie,,,Lori
-Laurier,,,Loriay
 laurustinus,,,lorustýnuss
 Lausanne,,,Loasán
 Lautrec,,,Loatrék
@@ -57585,7 +57564,6 @@ louts,,,louts
 Louvain,,,Luuváng
 louvar,,,luuvar
 louver,,,luuver
-Louvre,,,Luuver
 lovable,,,luvebl
 lovableness,,,luveblness
 lovage,,,luvij
@@ -58745,10 +58723,10 @@ malpractice,,,malpractiss
 malpractitioner,,,malpractíshener
 Malraux,,,Malró
 malt,,,mault
-Malta,,,Molta
+Malta,,,Maulta
 maltase,,,maultaiss
 malted,,,maulted
-Maltese,,,Maaltées
+Maltese,,,Maultées
 maltha,,,maltha
 Malthusian,,,Malthuesian
 malting,,,maulting
@@ -58889,7 +58867,6 @@ maned,,,maind
 manege,,,manézh
 manent,,,mainent
 manes,,,mains
-manet,,,manay
 maneuver,,,manuuver
 maneuverability,,,manuuverebiliti
 maneuverable,,,manuuverebl
@@ -59397,7 +59374,7 @@ Marsden,,,Marsden
 marse,,,marss
 Marseillaise,,,Marseláis
 marseille,,,marsáy
-marseilles,,,marsáys
+marseilles,,,marsáy
 marsh,,,marsh
 Marsha,,,Marsha
 marshal,,,marshel
@@ -62609,7 +62586,6 @@ mondo,,,mondo
 Mondrian,,,Mondrian
 Monegasque,,,Monegásk
 Monel,,,Moanel
-Monet,,,Moanáy
 monetarily,,,monetérrili
 monetarism,,,moneterism
 monetarist,,,moneterist
@@ -62908,13 +62884,9 @@ months,,,munths
 Monticello,,,Monticélo
 monticulate,,,montícuelet
 monticule,,,mónticuel
-Montmartre,,,Monmartra
 montmorillonitic,,,montmerilonitic
 Montoya,,,Montoya
-Montparnasse,,,Monparnáss
 Montpelier,,,Montpeelyer
-Montpellier,,,Monpelyay
-Montrachet,,,Moantrasháy
 Montreal,,,Montriäll
 Montrealer,,,Montriäller
 Montrealers,,,Montriällers
@@ -64243,7 +64215,6 @@ nanotechnologies,,,nanotecnolejies
 nanotechnology,,,nanotecnoleji
 nanowatt,,,nanowot
 Nansen,,,Nansen
-Nantes,,,Naant
 Nanticoke,,,Nánticoak
 Nantucket,,,Nantukit
 Naoise,,,Neeci
@@ -68055,7 +68026,6 @@ oud,,,uud
 Oudh,,,Oud
 ought,,,aut
 oughtn't,,,autn't
-oui,,,wee
 Oujda,,,Uujdáa
 Oulu,,,Oalu
 ounce,,,ounss
@@ -69355,8 +69325,8 @@ Pakistanis,,,Pakistánies
 pakora,,,pacora
 pal,,,pal
 palabra,,,paaláavraa
-palace,,,paless
-palaces,,,palesses
+palace,,,paliss
+palaces,,,palisses
 paladin,,,paledin
 Palaearctic,,Palearctic
 palaeethnologic,,paleethnologic
@@ -71599,7 +71569,6 @@ pernicious,,,pernishuss
 Pernik,,,Perrnic
 pernio,,,purnio
 pernoctate,,,pernoctait
-Peron,,,Peroan
 peroneal,,,perroníal
 peroneus,,,perroníass
 perorate,,,perrerait
@@ -73379,7 +73348,6 @@ plastique,,,plasteek
 plastometer,,,plastómiter
 plastron,,,plastren
 plat,,,plat
-Plata,,,Plaataa
 platan,,,platen
 platband,,,platband
 plate,,,plait
@@ -73929,7 +73897,6 @@ pokey,,,poaki
 poking,,,poaking
 poky,,,poaki
 pol,,,pol
-Pola,,,Poala
 polacca,,,poaláca
 Polack,,,Poalaak
 polacre,,,poaláaker
@@ -76674,7 +76641,6 @@ proven,,,pruuven
 provenance,,,provenenss
 Provencal,,,Provensaal
 Provencale,,,Provensaal
-Provence,,,Provaanss
 provender,,,provender
 provenience,,,proveenianss
 proverb,,,proverb
@@ -82151,7 +82117,6 @@ rillettes,,,rilets
 rilling,,,riling
 rim,,,rim
 rima,,,reema
-Rimbaud,,,Rambó
 rime,,,rym
 rimer,,,rymer
 rimes,,,ryms
@@ -82534,7 +82499,6 @@ roiled,,,roild
 roiling,,,roiling
 roily,,,roili
 roister,,,roister
-Rojas,,,Roahaass
 rok,,,rok
 roke,,,roak
 Roland,,,Roalend
@@ -84152,7 +84116,6 @@ sartor,,,sarter
 sartorial,,,sartórial
 sartorially,,,sartórialli
 sartorius,,,sartóriass
-Sartre,,,Sartra
 Sarum,,,Sairum
 sash,,,sash
 Sasha,,,Sasha
@@ -84696,7 +84659,6 @@ schnook,,,shnook
 schnooks,,,shnooks
 schnorkle,,,shnorcl
 schnorrer,,,shnorer
-Schoenberg,,,Shoanberg
 scholar,,,scoler
 scholarch,,,scólaak
 scholarly,,,scolerli
@@ -85901,10 +85863,6 @@ sennet,,,senet
 Sennett,,,Senit
 sennight,,,senyt
 sennit,,,senit
-senor,,,sener
-senora,,,sainyóra
-senoras,,,sainyóras
-senorita,,,sainyeréeta
 sens,,,sens
 sensa,,,sensa
 sensate,,,sensait
@@ -103457,7 +103415,6 @@ verrucous,,,verrucuss
 verry,,,verri
 vers,,,vurss
 versa,,,vursa
-Versailles,,,Versy
 versant,,,vursent
 versatile,,,vursetil
 versatilely,,,vursetilli
