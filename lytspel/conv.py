@@ -736,7 +736,7 @@ class Converter:
         if out_filename:
             outfile = open(out_filename, 'w', encoding='utf8')
         else:
-            outfile = stdout
+            outfile = stdout  # type: ignore
 
         para = ''
 

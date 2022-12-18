@@ -16,7 +16,7 @@ from typing import Dict  #pylint: disable=unused-import
 from uuid import uuid4
 
 from flask import (Flask, flash, make_response, Markup, render_template, request, redirect,
-                   send_file, send_from_directory, session)
+                   send_file, send_from_directory)
 from flask.logging import create_logger
 import misaka
 from werkzeug.utils import secure_filename
