@@ -9,9 +9,11 @@
         document.getElementById('convert-file').setAttribute('disabled', '');
       }
 
-      // Enable the "Convert file" button.
+      // Enable the "Convert file" button and show the name of the selected file.
       function enableFileConversion() {
         document.getElementById('convert-file').removeAttribute('disabled');
+        const filepath = document.getElementById('file').value;
+        document.getElementById('file-label').innerHTML = filepath.split(/(\\|\/)/g).pop();
       }
 
       function hideFileAlerts() {
@@ -105,7 +107,7 @@
                 <input type="file" class="custom-file-input" id="file" name="file"
                   accept=".epub,.htm,.html,.markdown,.md,.rst,.txt,.xht,.xhtml,.xml"
                   oninput="enableFileConversion();">
-                <label class="custom-file-label" for="file">
+                <label class="custom-file-label" for="file" id="file-label" >
                   Or select a file to convert
                   <span class="wide-details">(plain text, HTML, or epub)</span>
                 </label>
