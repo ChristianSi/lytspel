@@ -3,6 +3,12 @@
 ## [Unreleased]
 
 
+## [2.1.1] -- 2022-12-18
+
+* Add and correct some dictionary entries.
+* Delete some proper names.
+
+
 ## [2.1.0] -- 2022-09-25
 
 * Add some dictionary entries.
