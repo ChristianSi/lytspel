@@ -15,9 +15,10 @@ from typing import Match, NamedTuple, Optional, Sequence, Tuple
 from typing import Dict  #pylint: disable=unused-import
 from uuid import uuid4
 
-from flask import (Flask, flash, make_response, Markup, render_template, request, redirect,
+from flask import (Flask, flash, make_response, render_template, request, redirect,
                    send_file, send_from_directory)
 from flask.logging import create_logger
+from markupsafe import Markup
 import misaka
 from werkzeug.utils import secure_filename
 from werkzeug.wrappers import Response
