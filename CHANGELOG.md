@@ -7,6 +7,7 @@
 
 * Correct some dictionary entries.
 * Fixed a typo in the README.
+* Adapted code for better compatibility with newer spaCy versions.
 
 
 ## [2.1.1] -- 2022-12-18
