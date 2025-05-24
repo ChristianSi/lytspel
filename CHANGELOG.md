@@ -2,7 +2,11 @@
 
 ## [Unreleased]
 
+
+## [2.1.2] -- 2025-05-24
+
 * Correct some dictionary entries.
+* Fixed a typo in the README.
 
 
 ## [2.1.1] -- 2022-12-18
