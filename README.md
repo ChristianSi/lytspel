@@ -539,7 +539,7 @@ unique›.
   «mentel» ‹mental›.
 * The past tense of regular verbs is formed by appending «ed» if /@d/ is
   spoken (e.g. «silécted, waisted» ‹selected, wasted›), «d» if /d/ or /t/
-  is spoken (e.g. «riveeld, consíderd, payd, fixd, convínss» ‹revealed,
+  is spoken (e.g. «riveeld, consíderd, payd, fixd, convínssd» ‹revealed,
   considered, paid, fixed, convinced›). The past tense of irregular verbs
   is spelled as it's spoken, e.g. «kept» from «keep».
 * While in tradspell a noun and a related verb are often written the same
