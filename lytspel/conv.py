@@ -343,8 +343,10 @@ class Converter:
             if self.text_looks_foreign(text):
                 return text  # Return text unchanged
 
-            doc = Converter._nlp(text)
-            out_tokens = []  # type: List[str]
+            # Simplify apostrophes in words since the typographic ones can confuse spacy
+            text = re.sub(r'(?<=[A-Za-z])’(?=[A-Za-z])', "'", text)
+            doc = Converter._nlp(text)  # pylint: disable=not-callable
+            out_tokens = []             # type: List[str]
             lasttok = ''
             last_nonword = ''
 
@@ -714,7 +716,7 @@ class Converter:
                 line = input()
                 print(self.convert_para(line))
         except EOFError:
-            return
+            pass
 
     def convert_text_document(self, filename: str, out_filename: str = None) -> None:
         """Convert a plain text file.
