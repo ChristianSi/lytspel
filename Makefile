@@ -14,7 +14,7 @@ mypy:
 	$(mypy) lytspel/*.py
 
 pytest:
-	pytest-3 lytspel/*.py
+	pytest lytspel/*.py
 
 testdir:
 	cd test && make
