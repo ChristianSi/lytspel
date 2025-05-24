@@ -2,13 +2,13 @@
 # pylint: disable=consider-using-f-string, no-else-return
 
 from collections import OrderedDict
+from datetime import datetime, timedelta
 from glob import glob
 import os
 from os import path, urandom
 import logging
 import re
 import string
-from time import time
 
 from typing import Match, NamedTuple, Optional, Sequence, Tuple
 # The following import is for mypy only
@@ -506,7 +506,7 @@ def cacheable(resp_body: str, cache_timeout: int = HTML_MAX_AGE) -> Response:
     resp = make_response(resp_body)
     resp.cache_control.public = True
     resp.cache_control.max_age = cache_timeout
-    resp.expires = int(time() + cache_timeout)
+    resp.expires = datetime.utcnow() + timedelta(seconds=cache_timeout)
     return resp
 
 
