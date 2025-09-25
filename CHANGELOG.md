@@ -3,6 +3,13 @@
 ## [Unreleased]
 
 
+## [2.1.3] -- 2025-09-25
+
+* Add and correct some dictionary entries.
+* Adapt code for newer Python versions – now requires 3.9 as minimal
+  version.
+
+
 ## [2.1.2] -- 2025-05-24
 
 * Correct some dictionary entries.
