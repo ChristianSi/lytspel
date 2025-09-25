@@ -4,12 +4,11 @@
 import csv
 from enum import Enum
 from functools import lru_cache
+from importlib.resources import files
 from io import TextIOWrapper
 import re
 from typing import Optional, List, Tuple, Union
 from warnings import warn
-
-from pkg_resources import resource_stream
 
 from .util import get_elem
 
@@ -67,37 +66,37 @@ class Dictionary:
         self._dict = {}
         self._mixed_dict = {}
 
-        with TextIOWrapper(resource_stream('lytspel', 'lytspel-dict.csv'),
-                           encoding='utf-8') as csv_stream:
-            csvreader = csv.reader(csv_stream)
-            next(csvreader)  # skip header line
-            redirects = {}  # will be resolved later
+        with files('lytspel').joinpath('lytspel-dict.csv').open('rb') as byte_stream:
+            with TextIOWrapper(byte_stream, encoding='utf-8') as csv_stream:
+                csvreader = csv.reader(csv_stream)
+                next(csvreader)  # skip header line
+                redirects = {}  # will be resolved later
 
-            for row in csvreader:
-                tradspell = get_elem(row, 0)
-                pos = get_elem(row, 1)
-                redirect = get_elem(row, 2)
-                lytspel = get_elem(row, 3)
+                for row in csvreader:
+                    tradspell = get_elem(row, 0)
+                    pos = get_elem(row, 1)
+                    redirect = get_elem(row, 2)
+                    lytspel = get_elem(row, 3)
 
-                if tradspell and lytspel:
-                    ts_lower = tradspell.lower()
-                    ls_lower = lytspel.lower()
+                    if tradspell and lytspel:
+                        ts_lower = tradspell.lower()
+                        ls_lower = lytspel.lower()
 
-                    if pos:
-                        # Treat value as a dict of POS-tagged entries
-                        if not ts_lower in self._dict:
-                            self._dict[ts_lower] = {}
-                        self._dict[ts_lower][pos] = ls_lower
+                        if pos:
+                            # Treat value as a dict of POS-tagged entries
+                            if not ts_lower in self._dict:
+                                self._dict[ts_lower] = {}
+                            self._dict[ts_lower][pos] = ls_lower
+                        else:
+                            self._dict[ts_lower] = ls_lower
+
+                        if self.is_mixed_case(lytspel):
+                            self._mixed_dict[tradspell] = lytspel
+
+                    elif tradspell and redirect:
+                        redirects[tradspell.lower()] = redirect.lower()
                     else:
-                        self._dict[ts_lower] = ls_lower
-
-                    if self.is_mixed_case(lytspel):
-                        self._mixed_dict[tradspell] = lytspel
-
-                elif tradspell and redirect:
-                    redirects[tradspell.lower()] = redirect.lower()
-                else:
-                    warn('Unexpected/malformed CSV row: {}'.format(','.join(row)))
+                        warn('Unexpected/malformed CSV row: {}'.format(','.join(row)))
 
         # Resolve redirects
         for key, target in redirects.items():
