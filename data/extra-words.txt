@@ -618,6 +618,7 @@ diabetologists
 diacritics
 didact
 didacts
+digraphs
 dimness
 dinted
 dinting
